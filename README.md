@@ -36,4 +36,5 @@ Did you find a typo, a broken link, or any other issue you can fix?
 
 When you are sure of the problem and how to solve it, then you can make a PR (pull request) and contribute to this repository.
 
-Please see [CONTRIBUTING.md](https://github.com/samyeyo/LuaRT-documentation/CONTRIBUTING.md) first!
+Please see [CONTRIBUTING](https://github.com/samyeyo/LuaRT-documentation/blob/main/CONTRIBUTING.md first !)
+
