@@ -1,0 +1,337 @@
+﻿	<!doctype html>
+	<html lang="en">
+	<head>
+	  <meta charset="utf-8" />
+	  <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+	  <meta content="width=device-width, initial-scale=1" name="viewport" />
+	  <meta content="Tutorial to compile Lua scripts to executable" name="description" />
+	  <title>
+		Compile Lua scripts to Windows executable | LuaRT free and open source Windows programming framework for Lua
+	  </title>
+	  <link href="../../css/bulma-docs.min.css" rel="stylesheet" />
+	  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+			rel="stylesheet" />
+	  <link href="https://luart.org/doc/tutorial/rtc.html" rel="canonical" />
+	  <link href="../../img/favicon.png" rel="icon" sizes="16x16" type="image/png" />
+	  <link rel="stylesheet" href="../prism.css" data-noprefix="">
+	</head>
+	<body class="layout-documentation has-navbar-fixed-top">
+		<nav class="bd-navbar navbar is-fixed-top has-shadow" id="navbar">
+			<div class="navbar-brand">
+			  <a class="navbar-item" href="https://luart.org/">
+				<img alt="LuaRT: Free and open source Windows programming framework for Lua"
+					 height="40"
+					 src="../../img/logo.svg"
+					 width="112" />
+			  </a>
+			  <a class="navbar-item bd-navbar-mobile-icon"
+				 href="https://github.com/samyeyo"
+				 style="margin-left: auto"
+				 target="_blank">
+				<span class="icon" style="color: #000000">
+				  <i class="fab fa-lg fa-github"></i>
+				</span>
+			  </a>
+			  <a class="navbar-item bd-navbar-mobile-icon"
+				 href="https://twitter.com/__LuaRT__"
+				 target="_blank">
+				<span class="icon" style="color: #000000">
+				  <i class="fab fa-lg fa-x-twitter"></i>
+				</span>
+			  </a>
+			  <a class="navbar-item bd-navbar-mobile-icon"
+				 href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+				 target="_blank">
+				<span class="icon" style="color: #FF0000">
+				  <i class="fab fa-lg fa-youtube"></i>
+				</span>
+			  </a> 
+         <a class="navbar-item bd-navbar-mobile-icon"
+          href="https://discord.gg/XJJxQufmvh"
+          target="_blank">
+         <span class="icon" style="color: #5865F2">
+           <i class="fab fa-lg fa-discord"></i>
+         </span>
+       </a><button class="navbar-burger burger"
+					  data-target="navMenuDocumentation"
+					  id="navbarBurger">
+				<span></span>
+				<span></span>
+				<span></span>
+			  </button>
+			</div>
+			<div class="navbar-menu" id="navMenuDocumentation">
+			  <div class="navbar-start bd-navbar-start bd-is-original"
+				   id="navbarStartOriginal">
+				<a class="navbar-item bd-navbar-item bd-navbar-item-bulma-book bd-navbar-item-base"
+				   href="../../index.html#section_features">
+				  <span class="icon has-text-bleeding">
+					<i class="fas fa-certificate"></i>
+				  </span>
+				  <span>Features</span>
+				</a>
+				<a class="navbar-item bd-navbar-item bd-navbar-item-love bd-navbar-item-base"
+				   href="../../index.html#section_download">
+				  <span class="icon has-text-danger">
+					<i class="fas fa-download"></i>
+				  </span>
+				  <span>Download</span>
+				</a>
+				<div class="navbar-item has-dropdown is-hoverable">
+					<a class="navbar-item bd-navbar-item bd-navbar-item-videos bd-navbar-item-base scroll">
+					  <span class="icon has-text-success"><i class="fas fa-circle-play"></i></span><span>Getting started</span>
+					</a>
+					<div class="navbar-dropdown has-background-success-light">
+						<a href="../install.html" class="dropdown-item has-text-success-dark">
+						  <span class="icon"><i class="fa fa-computer"></i></span> Installation
+						</a>
+						<a href="../first.html" class="dropdown-item has-text-success-dark">
+							<span class="icon"><i class="fa fa-play"></i></span> First execution
+						</a>
+						<a href="../tour.html" class="dropdown-item has-text-success-dark">
+						  <span class="icon"><i class="fa fa-bus-simple"></i></span> Take a tour !
+						</a>
+					</div>
+				</div>
+				<div class="navbar-item has-dropdown is-hoverable">
+					<a class="navbar-item bd-navbar-item bd-navbar-item-extensions bd-navbar-item-base scroll">
+					  <span class="icon has-text-info"><i class="fas  fa-book"></i></span><span>Documentation</span>
+					</a>
+					<div class="navbar-dropdown has-background-info-light">
+						<a href="../modules.html" class="dropdown-item has-text-info-dark">
+						  <span class="icon"><i class="fa fa-cubes"></i></span> Modules reference
+						</a>
+						<a href="../object.html" class="dropdown-item has-text-info-dark">
+							<span class="icon"><i class="fa fa-shapes"></i></span> Object oriented programming
+						</a>
+						<a href="../toolchain.html" class="dropdown-item has-text-info-dark">
+						  <span class="icon"><i class="fa fa-wrench"></i></span> Toolchain documentation
+						</a>
+					</div>
+				</div>
+				</a>
+				<a class="navbar-item bd-navbar-item bd-navbar-item-expo bd-navbar-item-base"
+				   href="https://community.luart.org">
+				  <span class="icon has-text-warning">
+					<i class="fas fa-comments"></i>
+				  </span>
+				  <span>Community</span>
+				</a>
+				<a class="navbar-item bd-navbar-item bd-navbar-item-blog bd-navbar-item-base" href="index.html">
+					<span class="icon has-text-rss">
+					  <i class="fas fa-graduation-cap"></i>
+					</span>
+					<span>Tutorials</span>
+				  </a>
+				</div>
+				<div class="navbar-dropdown has-background-info-light">
+				  <a href="../modules.html" class="dropdown-item has-text-info-dark">
+					<span class="icon"><i class="fa fa-cubes"></i></span> Modules reference
+				  </a>
+				  <a href="../object.html" class="dropdown-item has-text-info-dark">
+					  <span class="icon"><i class="fa fa-shapes"></i></span> Object oriented programming
+				  </a>
+				  <a href="../toolchain.html" class="dropdown-item has-text-info-dark">
+					<span class="icon"><i class="fa fa-wrench"></i></span> Toolchain documentation
+				  </a>
+				</div>
+			  </div>
+			</div>
+			<div class="navbar-end">
+			  <a class="bd-navbar-icon navbar-item"
+				 href="https://github.com/samyeyo"
+				 target="_blank">
+				<span class="icon" style="color: #000000">
+				  <i class="fab fa-lg fa-github"></i>
+				</span>
+			  </a>
+			  <a class="bd-navbar-icon navbar-item"
+				 href="https://twitter.com/__LuaRT__"
+				 target="_blank">
+				<span class="icon" style="color: #000000">
+				  <i class="fab fa-lg fa-x-twitter"></i>
+				</span>
+			  </a>
+			  <a class="bd-navbar-icon navbar-item"
+				 href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+				 target="_blank">
+				<span class="icon" style="color: #FF0000">
+				  <i class="fab fa-lg fa-youtube"></i>
+				</span>
+			  </a>
+			  <a class="bd-navbar-icon navbar-item"
+				 href="https://discord.gg/XJJxQufmvh"
+				 target="_blank">
+				<span class="icon" style="color: #5865F2">
+				  <i class="fab fa-lg fa-discord"></i>
+				</span>
+			  </a>
+			</div>
+		  </nav>
+	  
+	  <section class="main-content columns is-centered is-fullheight" style="margin-top: 6%; margin-bottom: 4%">
+		<div class="column is-7">
+		  <div class="card">
+			<div class="card-content">
+			  <div class="content mb-6">
+				<h1 class="title is-2 mb-2 has-text-weight-light" style="color: #004080">Compile Lua scripts to Windows executable</h1>
+				<p class="mt-0 is-size-7 mb-6"><i>By Samir Tine, published on May 2023</i></p>
+				
+				<p><a href="https://github.com/samyeyo/rtc">rtc</a> is an open source command line tool available with Lua<sup>rt</sup> that generates standalone executables from your Lua scripts.</p>
+				<p>Once compiled, an executable can be run on other Windows computers without the need to install Lua, facilitating the deployment of your applications.</p>
+				<p>In this tutorial, we will see how easy it is to make executables from Lua scripts, embed content, and deploy your applications on any Windows computer.</p>
+
+				<h2 class="has-text-weight-light is-size-3 mt-6">Your first executable</h2>
+				<p class="mt-4">Create a simple <code>hello.lua</code> file containing this script :</p>
+				<div class="language-lua mb-5" style="margin-left: 15%; margin-right:15%">
+<code>
+print("Hello World !")
+
+</code>
+				</div>
+				<p>Now, open a command line prompt, go to the folder where you just saved the file, and type the following command to invoke <code>rtc</code> :</p>
+				<div class="language-batch mb-5" style="margin-left: 15%; margin-right:15%">
+<code>
+rtc hello.lua
+
+</code></div>
+				<p>Voila! You have just compiled your Lua script to a Windows executable <code>hello.exe</code>. You can run it like any other Windows program.</p>
+				<p>In fact, by default, your compiled executable is not really standalone, it needs the Lua runtime library <code>lua54.dll</code>, that can be found in the Lua<sup>rt</sup> <code>bin\</code> folder.
+				If you suppress the PATH environment variable, your program <code>hello.exe</code> won't execute as it won't be able to find the Lua runtime library anymore.</p>
+				<article class="message is-warning is-small mt-6 mb-6" style="margin-left: 20%; margin-right: 20%">
+                  <div class="message-header">
+                    <p><i class="fas fa-thumbtack"></i> Sticky note</p>
+                  </div>
+                  <div class="message-body">The <code>hello.exe</code> depends on the Lua dynamic library <code>lua54.dll</code>. This is called <i>dynamic compilation</i>.<br>Dynamic compilation is the standard way to run Lua, as it permits to load binary modules during runtime.</div>
+                </article>	
+				<h2 class="has-text-weight-light is-size-3 mt-6">Let's go static</h2>
+				<p class="mt-4">If you want to get ride of the <code>lua54.dll</code> dependency, you can use <i>static</i> compilation, by using the <code>-s</code> option :</p>
+				<div class="language-bash mb-5" style="margin-left: 15%; margin-right:15%">
+<code>
+rtc -s hello.lua
+
+</code>
+				</div>
+				<p>You can see that the new <code>hello.exe</code> has a bigger size. You guess it, that's because it contains the Lua runtime library. It can now be executed without the need of the <code>lua54.dll</code> library.</p>				
+				<article class="message is-warning is-small mt-6 mb-6" style="margin-left: 20%; margin-right: 20%">
+                  <div class="message-header">
+                    <p><i class="fas fa-thumbtack"></i> Sticky note</p>
+                  </div>
+                  <div class="message-body">Static compilation may sound appealing, but it comes at a price: Binary Lua modules cannot be loaded at runtime.<br>Reserve this type of compilation for simple applications that do not depend on third-party binary modules.</div>
+                </article>
+				<h2 class="has-text-weight-light is-size-3 mt-6">Open a Window</h2>
+				<p class="mt-4">By default, <code>rtc</code> decide to compile executables for console or desktop depending on the file extension :</p>
+				<ul>
+				<li>Lua source file with a <code>.lua</code> extension are compiled for console</li>
+				<li>Lua source file with a <code>.wlua</code> extension are compiled for desktop</li>
+				</ul>
+				<p>Let's go further and compile our first desktop application, by saving the following file to <code>hello.lua</code> :</p>
+				<div class="language-lua mb-5" style="margin-left: 15%; margin-right:15%">
+<code>
+local ui = require "ui"
+
+ui.info("Hello world !")
+
+</code>
+				</div>
+				<p>Now compile it :</p>				
+				<div class="language-bash mb-5" style="margin-left: 15%; margin-right:15%">
+<code>
+rtc hello.lua
+
+</code>
+				</div>				
+				<p>If you run <code>hello.exe</code>, by double clicking on it in the Windows explorer, a console window will show with an error message complaining that the <code>ui</code> module is not found...</p>
+				<p>This happens because we have named our Lua source file with the <code>.lua</code> extension, and <code>rtc</code> compiled our file as a console application (remember that the <code>ui</code> module is only available using desktop interpreter).<p>
+				<p>We have two possibilities to correct this: either rename our source file with the <code>.wlua</code> extension or force <code>rtc</code> to generate a desktop application. Let's use this last method with the <code>-w</code> option:
+				<div class="language-bash mb-5" style="margin-left: 15%; margin-right:15%">
+<code>
+rtc -w hello.lua
+
+</code>
+			   </div>
+				<p>Running <code>hello.exe</code> will show only the message box, without the console window. You just compiled your first Lua desktop application !</p>
+				
+				<h2 class="has-text-weight-light is-size-3 mt-6">You are iconic</h2>
+				<p class="mt-4"><code>rtc</code> provides default applications icons for your compiled executables, depending on console/desktop applications.</p>
+				<p>You can override this default behaviour and provide your own applications icons with the <code>-i</code> option. Let's use a specific icon for our previous <code>hello.lua</code> desktop application :</p>
+				<div class="language-bash mb-5" style="margin-left: 15%; margin-right:15%">
+<code>
+rtc.exe -i path/to/your/icon.ico -w hello.lua
+
+</code>
+				</div>				
+				<p>Just replace the <code>path/to/your/icon.ico</code> with the path of the <code>.ico</code> file to use. Rather simple !</p>
+				<h2 class="has-text-weight-light is-size-3 mt-6">I got this baggage with me</h2>
+				<p class="mt-4">Now imagine that your application is made up of several Lua files in the same directory and even in subdirectories. How to package everything in the executable ?</p>
+				<p>Once again <code>rtc</code> makes it easy. We just need to indicate, in addition to the main Lua source file, the directory to embed entirely in the executable. Yes, you read correctly. <code>rtc</code> is able to include in the compiled executable the entire contents of a directory with all these files and subdirectories.</p>
+				<p>Let's try to compile our desktop application with its entire directory content. To do this, open a command line prompt, got to the folder where our main Lua file <code>hello.lua</code> is and type the following command :</p>
+				<div class="language-batch mb-5" style="margin-left: 15%; margin-right:15%">
+<code>
+rtc.exe -w hello.lua .
+
+</code>
+				</div>				
+				<p>The dot <code>.</code> means we ask <code>rtc</code> to embed the current directory with all its content inside the executable.</p>
+				<h2 class="has-text-weight-light is-size-3 mt-6">The embed module</h2>
+				<p class="mt-4">But wait a minute, how to access our files once they are embedded in our executable ?</p>
+				<p>The <code>embed</code> module comes to the rescue. This module is only available to compiled scripts if embedded content is found inside the executable. This module contains : </p>
+				<ul><li>A <a href="../sys/File.html"><i class="fas fas fa-file"></i> File</a> object to interact with all the embedded files.</li>
+				<li>A  <a href="../compression/Zip.html"><i class="fas fas fa-archive"></i> Zip</a> object instance to access the compressed embedded content.</li></ul>
+				<p>If you want to use a Lua file or a Lua binary module in the embedded content, just use the global <code>require()</code> function seamlessly, without the need to extract files before.</p>
+				<article class="message is-warning is-small mt-6 mb-6" style="margin-left: 20%; margin-right: 20%">
+                  <div class="message-header">
+                    <p><i class="fas fa-thumbtack"></i> Sticky note</p>
+                  </div>
+                  <div class="message-body"><code>rtc</code> creates inside the executable a virtual file system that contains the directory content provided by the command line.<br>This allows access to embedded content transparently from your Lua scripts, both for accessing files and for loading Lua modules, whether binary or not.</div>
+                </article>
+			   </div>
+			</div>
+		  </div>
+	  </section>  
+	  <footer class="footer">
+		<div class="content has-text-centered">
+		  <p class="mb-0">
+			<strong>
+			  Lua
+			  <sup>rt</sup> Documentation
+			</strong> - Windows programming framework for Lua
+		  </p>
+		  <a class="is-hovered" href="https://github.com/samyeyo" target="_blank">
+			<span class="icon" style="color: #A0A0A0">
+			  <i class="fab fa-lg fa-github"></i>
+			</span>
+		  </a>
+		  <a class="is-hovered"
+			 href="https://twitter.com/__LuaRT__"
+			 target="_blank">
+			<span class="icon" style="color: #A0A0A0">
+			  <i class="fab fa-lg fa-x-twitter"></i>
+			</span>
+		  </a>
+		  <a class="is-hovered"
+			 href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+			 target="_blank">
+			<span class="icon" style="color: #A0A0A0">
+			  <i class="fab fa-lg fa-youtube"></i>
+			</span>
+		  </a>
+		  <p class="mt-0">
+			Copyright &copy; 2024
+			<a href="mailto:samir.tine@luart.org">Samir Tine</a>.
+			<br />
+			<a href="https://bulma.io/made-with-bulma/">
+			  <img alt="Made with Bulma"
+				   height="24"
+				   src="https://bulma.io/images/made-with-bulma.png"
+				   width="128" />
+			</a>
+		  </p>
+		</div>
+	  </footer>
+	  <script src="../../js/main.js"></script>
+	  <script src="../prism.js"></script>
+	  <script src="../custom-class.js"></script>
+	  <script>Prism.plugins.customClass.prefix('prism--');</script>
+	</body>
+	</html>	

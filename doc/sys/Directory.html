@@ -1,0 +1,365 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta content="LuaRT Directory module documentation" name="description" />
+  <title>
+    Directory Object reference | LuaRT free and open source Windows programming framework for Lua
+  </title>
+  <link href="../../css/bulma-docs.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        rel="stylesheet" />
+  <link href="https://luart.org/doc/sys/Directory.html" rel="canonical" />
+  <link href="../../img/favicon.png" rel="icon" sizes="16x16" type="image/png" />
+</head>
+<body class="layout-documentation has-navbar-fixed-top">
+  <nav class="bd-navbar navbar is-fixed-top has-shadow" id="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../index.html">
+        <img alt="LuaRT: Free and open source Windows programming framework for Lua"
+             height="40"
+             src="../../img/logo.svg"
+             width="112" />
+      </a>
+      <a class="navbar-item bd-navbar-mobile-icon"
+         href="https://github.com/samyeyo"
+         style="margin-left: auto"
+         target="_blank">
+        <span class="icon" style="color: #000000">
+          <i class="fab fa-lg fa-github"></i>
+        </span>
+      </a>
+      <a class="navbar-item bd-navbar-mobile-icon"
+         href="https://twitter.com/__LuaRT__"
+         target="_blank">
+        <span class="icon" style="color: #000000">
+          <i class="fab fa-lg fa-x-twitter"></i>
+        </span>
+      </a>
+      <a class="navbar-item bd-navbar-mobile-icon"
+         href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+         target="_blank">
+        <span class="icon" style="color: #FF0000">
+          <i class="fab fa-lg fa-youtube"></i>
+        </span>
+      </a><a class="navbar-item bd-navbar-mobile-icon"
+         href="https://discord.gg/XJJxQufmvh"
+         target="_blank">
+        <span class="icon" style="color: #5865F2">
+          <i class="fab fa-discord"></i>
+        </span>
+      </a>
+      <button class="navbar-burger burger"
+              data-target="navMenuDocumentation"
+              id="navbarBurger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div class="navbar-menu" id="navMenuDocumentation">
+      <div class="navbar-start bd-navbar-start bd-is-original"
+           id="navbarStartOriginal">
+        <a class="navbar-item bd-navbar-item bd-navbar-item-bulma-book bd-navbar-item-base"
+           href="../../index.html#section_features">
+          <span class="icon has-text-bleeding">
+            <i class="fas fa-certificate"></i>
+          </span>
+          <span>Features</span>
+        </a>
+        <a class="navbar-item bd-navbar-item bd-navbar-item-love bd-navbar-item-base"
+           href="../../index.html#section_download">
+          <span class="icon has-text-danger">
+            <i class="fas fa-download"></i>
+          </span>
+          <span>Download</span>
+        </a>
+		<div class="navbar-item has-dropdown is-hoverable">
+			<a class="navbar-item bd-navbar-item bd-navbar-item-videos bd-navbar-item-base scroll">
+			  <span class="icon has-text-success"><i class="fas fa-circle-play"></i></span><span>Getting started</span>
+			</a>
+			<div class="navbar-dropdown has-background-success-light">
+				<a href="../install.html" class="dropdown-item has-text-success-dark">
+				  <span class="icon"><i class="fa fa-computer"></i></span> Installation
+				</a>
+				<a href="../first.html" class="dropdown-item has-text-success-dark">
+					<span class="icon"><i class="fa fa-play"></i></span> First execution
+				</a>
+				<a href="../tour.html" class="dropdown-item has-text-success-dark">
+				  <span class="icon"><i class="fa fa-bus-simple"></i></span> Take a tour !
+				</a>
+			</div>
+		</div>
+		<div class="navbar-item has-dropdown is-hoverable">
+			<a class="navbar-item bd-navbar-item bd-navbar-item-extensions bd-navbar-item-base scroll">
+			  <span class="icon has-text-info"><i class="fas fa-book"></i></span><span>Documentation</span>
+			</a>
+			<div class="navbar-dropdown has-background-info-light">
+				<a href="../modules.html" class="dropdown-item has-text-info-dark">
+				  <span class="icon"><i class="fa fa-cubes"></i></span> Modules reference
+				</a>
+				<a href="../object.html" class="dropdown-item has-text-info-dark">
+					<span class="icon"><i class="fa fa-shapes"></i></span> Object oriented programming
+				</a>
+				<a href="../toolchain.html" class="dropdown-item has-text-info-dark">
+				  <span class="icon"><i class="fa fa-wrench"></i></span> Toolchain documentation
+				</a>
+			</div>
+		</div>
+        </a>
+        <a class="navbar-item bd-navbar-item bd-navbar-item-expo bd-navbar-item-base"
+           href="https://community.luart.org">
+          <span class="icon has-text-warning">
+            <i class="fas fa-comments"></i>
+          </span>
+          <span>Community</span>
+        </a>
+        <a class="navbar-item bd-navbar-item bd-navbar-item-blog bd-navbar-item-base"
+           href="https://luart.org/doc/tutorial/index.html">
+          <span class="icon has-text-rss">
+            <i class="fas fa-graduation-cap"></i>
+          </span>
+          <span>Tutorials</span>
+        </a>
+     <div class="ml-6">
+			<span class="icon has-text-grey-light mr-1">
+				<i class="fas fa-search"></i>
+			</span></div>
+			<script async src="https://cse.google.com/cse.js?cx=509c4cdde27f845e7"></script>
+			<div class="gcse-searchbox-only" data-resultsUrl="https://luart.org/search.html"></div>
+      </div>
+    </div>
+    <div class="navbar-end">
+      <a class="bd-navbar-icon navbar-item"
+         href="https://github.com/samyeyo"
+         target="_blank">
+        <span class="icon" style="color: #000000">
+          <i class="fab fa-lg fa-github"></i>
+        </span>
+      </a>
+      <a class="bd-navbar-icon navbar-item"
+         href="https://twitter.com/__LuaRT__"
+         target="_blank">
+        <span class="icon" style="color: #000000">
+          <i class="fab fa-lg fa-x-twitter"></i>
+        </span>
+      </a>
+      <a class="bd-navbar-icon navbar-item"
+         href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+         target="_blank">
+        <span class="icon" style="color: #FF0000">
+          <i class="fab fa-lg fa-youtube"></i>
+        </span>
+      </a>
+      <a class="bd-navbar-icon navbar-item"
+         href="https://discord.gg/XJJxQufmvh"
+         target="_blank">
+        <span class="icon" style="color: #5865F2">
+          <i class="fab fa-lg fa-discord"></i>
+        </span>
+      </a>  
+    </div>
+  </nav>
+  
+  <section class="main-content columns is-centered is-fullheight" style="margin-top: 6%; margin-bottom: 4%">
+    <div class="column is-7">
+      <div class="card">
+       <a id="back" class="button is-white pl-5" href="index.html?objects"><span class="icon has-text-grey-lighter" style="vertical-align: middle"><i class="fas fa-circle-left"></i></span></a>
+        <div class="card-content">
+          <div class="content">
+            <p class="title is-2 has-text-centered has-text-weight-normal" style="color: #004080; vertical-align: middle"><span class="icon bd-link-icon mr-1" style="font-size: 0.8em"><i class="fas fa-folder" style="font-size:1em; color :#367DBB" style="color: #D0D0D0"></i></span>Directory object</p>
+              <div class="tabs is-centered mt-6" id="tabs">
+                <ul aria-orientation="horizontal" role="tablist" class="ml-0">
+                  <li class="is-active" id="methods" data-tab="1"><a><span><span class="icon mx-0"><i class="fa fa-bolt"></i></span>Methods</span></a></li>
+                  <li id="properties" data-tab="2"><a><span class="icon mx-0"><i class="fa fa-tag"></i></span>Properties</span></a></li>
+                  <li id="operations" data-tab="3"><a><span class="icon mx-0"><i class="fa fa-screwdriver-wrench"></i></span>Operations</span></a></li>
+                </ul>
+              </div>
+              <div class="tab-content" id="tab-content">
+                <div data-content="2">
+                <table class="table">
+                  <thead><tr>
+                    <th draggable="false"><span class="is-relative"> Property</span></th>
+                    <th draggable="false"><span class="is-relative"> Description </span></th>
+                    <th draggable="false"><span class="is-relative"> Access</span></th>
+                    <th draggable="false"><span class="is-relative"> Type</span></th>
+                  </tr></thead>
+                  <tbody>
+                    <!------------------ PROPERTIES ------------->
+                        
+                        <tr draggable="false">
+                          <td><a href="Directory-name.html">Directory.name</a></td>
+                          <td><span>Get the Directory name</span></td>
+                          <td><span class="tag is-rounded has-background-danger-light mt-0 is-small">readonly</span></td>
+                          <td><span style="color:#EA6AC3">string</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Directory-fullpath.html">Directory.fullpath</a></td>
+                          <td><span>Get the Directory fullpath</span></td>
+                          <td><span class="tag is-rounded has-background-danger-light mt-0 is-small">readonly</span></td>
+                          <td><span style="color:#EA6AC3">string</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Directory-parent.html">Directory.parent</a></td>
+                          <td><span>Get the parent directory</span></td>
+                          <td><span class="tag is-rounded has-background-danger-light mt-0 is-small">readonly</span></td>
+                          <td><span><a href="Directory.html"><i class="fas fas fa-folder"></i> Directory</a></span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Directory-exists.html">Directory.exists</a></td>
+                          <td><span>Check if the Directory exists</span></td>
+                          <td><span class="tag is-rounded has-background-danger-light mt-0 is-small">readonly</span></td>
+                          <td><span style="color:#ae81ff">boolean</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Directory-isempty.html">Directory.isempty</a></td>
+                          <td><span>Check if the Directory is empty</span></td>
+                          <td><span class="tag is-rounded has-background-danger-light mt-0 is-small">readonly</span></td>
+                          <td><span style="color:#ae81ff">boolean</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Directory-hidden.html">Directory.hidden</a></td>
+                          <td><span>Check if directory is hidden</span></td>
+                          <td><span class="tag is-rounded is-warning is-small">readwrite</span></td>
+                          <td><span style="color:#ae81ff">boolean</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Directory-created.html">Directory.created</a></td>
+                          <td><span>Get/set the Directory creation date and time</span></td>
+                          <td><span class="tag is-rounded is-warning is-small">readwrite</span></td>
+                          <td><a href="Datetime.html"><i class="fas far fa-calendar-alt"></i> Datetime</a></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Directory-modified.html">Directory.modified</a></td>
+                          <td><span>Get/set last time the Directory was accessed</span></td>
+                          <td><span class="tag is-rounded is-warning is-small">readwrite</span></td>
+                          <td><a href="Datetime.html"><i class="fas far fa-calendar-alt"></i> Datetime</a></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Directory-accessed.html">Directory.accessed</a></td>
+                          <td><span>Get/set last time the Directory was accessed</span></td>
+                          <td><span class="tag is-rounded is-warning is-small">readwrite</span></td>
+                          <td><a href="Datetime.html"><i class="fas far fa-calendar-alt"></i> Datetime</a></td>
+                        </tr>
+                  </tbody>
+                </table></div>
+                <div data-content="3">
+                  <table class="table">
+                    <thead><tr>
+                      <th draggable="false"><span class="is-relative"> Operation</span></th>
+                      <th draggable="false"><span class="is-relative"> Description </span></th>
+                    </tr></thead>
+                    <tbody>
+                      <!------------------ OPERATIONS ------------->
+                          
+                          <tr draggable="false">
+                            <td><a href="Directory-iteration.html">Directory iteration</a></td>
+                            <td><span>Iterate over the Directory</span></td>
+                          </tr>
+                    </tbody>
+                  </table></div>
+                <div class="is-active" data-content="1">
+                  <table class="table">
+                    <thead><tr>
+                      <th draggable="false"><span class="is-relative"> Method </span</th>
+                      <th draggable="false"><span class="is-relative"> Description </span></th>
+                      <th draggable="false"><span class="is-relative"> Return value </span></th>
+                    </tr></thead>
+                    <tbody>
+                      
+<!------------------ METHODS ------------->
+                        
+                        <tr draggable="false">
+                          <td><a href="Directory-constructor.html">Directory.constructor()</a></td>
+                          <td><span>Directory object constructor</span></td>
+                          <td><span><a href="Directory.html"><i class="fas fas fa-folder"></i> Directory</a></span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Directory-make.html">Directory.make()</a></td>
+                          <td><span>Create the directory physically on the disk</span></td>
+                          <td><span style="color: #ae81ff">boolean</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Directory-remove.html">Directory.remove()</a></td>
+                          <td><span>Delete the Directory from the disk</span></td>
+                          <td><span style="color: #ae81ff">boolean</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Directory-removeall.html">Directory.removeall()</a></td>
+                          <td><span>Delete the Directory with all its content</span></td>
+                          <td><span style="color: #ae81ff">boolean</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Directory-move.html">Directory.move()</a></td>
+                          <td><span>Move the Directory to another location</span></td>
+                          <td><span style="color: #ae81ff">boolean</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Directory-list.html">Directory.list()</a></td>
+                          <td><span>Iterate over a Directory using a filter</span></td>
+                          <td><span style="color: #c7a170">function</span></td>
+                        </tr>  
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+          </div>
+	      </div>
+      </div>
+    </div>
+  </section>  
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p class="mb-0">
+        <strong>
+          Lua
+          <sup>rt</sup> Documentation
+        </strong> - Windows programming framework for Lua
+      </p>
+      <a class="is-hovered" href="https://github.com/samyeyo" target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-github"></i>
+        </span>
+      </a>
+      <a class="is-hovered"
+         href="https://twitter.com/__LuaRT__"
+         target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-x-twitter"></i>
+        </span>
+      </a>
+<a class="is-hovered"
+         href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+         target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-youtube"></i>
+        </span>
+      </a>      
+      <a class="is-hovered"
+      href="https://discord.gg/XJJxQufmvh"
+      target="_blank">
+     <span class="icon" style="color: #A0A0A0">
+       <i class="fab fa-lg fa-discord"></i>
+     </span>
+     </a>    
+      <p class="mt-0">
+        Copyright &copy; 2024
+        <a href="mailto:samir.tine@luart.org">Samir Tine</a>.
+        <br />
+        <a href="https://bulma.io/made-with-bulma/">
+          <img alt="Made with Bulma"
+               height="24"
+               src="https://bulma.io/images/made-with-bulma.png"
+               width="128" />
+        </a>
+      </p>
+    </div>
+  </footer>
+  <script src="../../js/main.js"></script>
+  <script>window.onpopstate = function() {
+       document.getElementById('back').click();
+    }; history.pushState({}, '');</script>
+</body>
+</html>

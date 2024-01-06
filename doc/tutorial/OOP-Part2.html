@@ -1,0 +1,365 @@
+﻿	<!doctype html>
+	<html lang="en">
+	<head>
+	  <meta charset="utf-8" />
+	  <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+	  <meta content="width=device-width, initial-scale=1" name="viewport" />
+	  <meta content="Lua object oriented programming tutorial (constructor, property)" name="description" />
+	  <title>
+		Object oriented progamming: constructors and properties | LuaRT free and open source Windows programming framework for Lua
+	  </title>
+	  <link href="../../css/bulma-docs.min.css" rel="stylesheet" />
+	  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+			rel="stylesheet" />
+	<link href="https://luart.org/doc/tutorial/OOP-Part2.html" rel="canonical" />
+	  <link href="../../img/favicon.png" rel="icon" sizes="16x16" type="image/png" />
+	  <link rel="stylesheet" href="../prism.css" data-noprefix="">
+	</head>
+	<body class="layout-documentation has-navbar-fixed-top">
+		<nav class="bd-navbar navbar is-fixed-top has-shadow" id="navbar">
+			<div class="navbar-brand">
+			  <a class="navbar-item" href="https://luart.org/">
+				<img alt="LuaRT: Free and open source Windows programming framework for Lua"
+					 height="40"
+					 src="../../img/logo.svg"
+					 width="112" />
+			  </a>
+			  <a class="navbar-item bd-navbar-mobile-icon"
+				 href="https://github.com/samyeyo"
+				 style="margin-left: auto"
+				 target="_blank">
+				<span class="icon" style="color: #000000">
+				  <i class="fab fa-lg fa-github"></i>
+				</span>
+			  </a>
+			  <a class="navbar-item bd-navbar-mobile-icon"
+				 href="https://twitter.com/__LuaRT__"
+				 target="_blank">
+				<span class="icon" style="color: #000000">
+				  <i class="fab fa-lg fa-x-twitter"></i>
+				</span>
+			  </a>
+			  <a class="navbar-item bd-navbar-mobile-icon"
+				 href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+				 target="_blank">
+				<span class="icon" style="color: #FF0000">
+				  <i class="fab fa-lg fa-youtube"></i>
+				</span>
+			  </a> 
+         <a class="navbar-item bd-navbar-mobile-icon"
+          href="https://discord.gg/XJJxQufmvh"
+          target="_blank">
+         <span class="icon" style="color: #5865F2">
+           <i class="fab fa-lg fa-discord"></i>
+         </span>
+       </a><button class="navbar-burger burger"
+					  data-target="navMenuDocumentation"
+					  id="navbarBurger">
+				<span></span>
+				<span></span>
+				<span></span>
+			  </button>
+			</div>
+			<div class="navbar-menu" id="navMenuDocumentation">
+			  <div class="navbar-start bd-navbar-start bd-is-original"
+				   id="navbarStartOriginal">
+				<a class="navbar-item bd-navbar-item bd-navbar-item-bulma-book bd-navbar-item-base"
+				   href="../../index.html#section_features">
+				  <span class="icon has-text-bleeding">
+					<i class="fas fa-certificate"></i>
+				  </span>
+				  <span>Features</span>
+				</a>
+				<a class="navbar-item bd-navbar-item bd-navbar-item-love bd-navbar-item-base"
+				   href="../../index.html#section_download">
+				  <span class="icon has-text-danger">
+					<i class="fas fa-download"></i>
+				  </span>
+				  <span>Download</span>
+				</a>
+				<div class="navbar-item has-dropdown is-hoverable">
+					<a class="navbar-item bd-navbar-item bd-navbar-item-videos bd-navbar-item-base scroll">
+					  <span class="icon has-text-success"><i class="fas fa-circle-play"></i></span><span>Getting started</span>
+					</a>
+					<div class="navbar-dropdown has-background-success-light">
+						<a href="../install.html" class="dropdown-item has-text-success-dark">
+						  <span class="icon"><i class="fa fa-computer"></i></span> Installation
+						</a>
+						<a href="../first.html" class="dropdown-item has-text-success-dark">
+							<span class="icon"><i class="fa fa-play"></i></span> First execution
+						</a>
+						<a href="../tour.html" class="dropdown-item has-text-success-dark">
+						  <span class="icon"><i class="fa fa-bus-simple"></i></span> Take a tour !
+						</a>
+					</div>
+				</div>
+				<div class="navbar-item has-dropdown is-hoverable">
+					<a class="navbar-item bd-navbar-item bd-navbar-item-extensions bd-navbar-item-base scroll">
+					  <span class="icon has-text-info"><i class="fas  fa-book"></i></span><span>Documentation</span>
+					</a>
+					<div class="navbar-dropdown has-background-info-light">
+						<a href="../modules.html" class="dropdown-item has-text-info-dark">
+						  <span class="icon"><i class="fa fa-cubes"></i></span> Modules reference
+						</a>
+						<a href="../object.html" class="dropdown-item has-text-info-dark">
+							<span class="icon"><i class="fa fa-shapes"></i></span> Object oriented programming
+						</a>
+						<a href="../toolchain.html" class="dropdown-item has-text-info-dark">
+						  <span class="icon"><i class="fa fa-wrench"></i></span> Toolchain documentation
+						</a>
+					</div>
+				</div>
+				</a>
+				<a class="navbar-item bd-navbar-item bd-navbar-item-expo bd-navbar-item-base"
+				   href="https://community.luart.org">
+				  <span class="icon has-text-warning">
+					<i class="fas fa-comments"></i>
+				  </span>
+				  <span>Community</span>
+				</a>
+				<a class="navbar-item bd-navbar-item bd-navbar-item-blog bd-navbar-item-base" href="index.html">
+					<span class="icon has-text-rss">
+					  <i class="fas fa-graduation-cap"></i>
+					</span>
+					<span>Tutorials</span>
+				  </a>
+				</div>
+				<div class="navbar-dropdown has-background-info-light">
+				  <a href="../modules.html" class="dropdown-item has-text-info-dark">
+					<span class="icon"><i class="fa fa-cubes"></i></span> Modules reference
+				  </a>
+				  <a href="../object.html" class="dropdown-item has-text-info-dark">
+					  <span class="icon"><i class="fa fa-shapes"></i></span> Object oriented programming
+				  </a>
+				  <a href="../toolchain.html" class="dropdown-item has-text-info-dark">
+					<span class="icon"><i class="fa fa-wrench"></i></span> Toolchain documentation
+				  </a>
+				</div>
+			  </div>
+			</div>
+			<div class="navbar-end">
+			  <a class="bd-navbar-icon navbar-item"
+				 href="https://github.com/samyeyo"
+				 target="_blank">
+				<span class="icon" style="color: #000000">
+				  <i class="fab fa-lg fa-github"></i>
+				</span>
+			  </a>
+			  <a class="bd-navbar-icon navbar-item"
+				 href="https://twitter.com/__LuaRT__"
+				 target="_blank">
+				<span class="icon" style="color: #000000">
+				  <i class="fab fa-lg fa-x-twitter"></i>
+				</span>
+			  </a>
+			  <a class="bd-navbar-icon navbar-item"
+				 href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+				 target="_blank">
+				<span class="icon" style="color: #FF0000">
+				  <i class="fab fa-lg fa-youtube"></i>
+				</span>
+			  </a>
+			  <a class="bd-navbar-icon navbar-item"
+				 href="https://discord.gg/XJJxQufmvh"
+				 target="_blank">
+				<span class="icon" style="color: #5865F2">
+				  <i class="fab fa-lg fa-discord"></i>
+				</span>
+			  </a>
+			</div>
+		  </nav>
+	  
+	  <section class="main-content columns is-centered is-fullheight" style="margin-top: 6%; margin-bottom: 4%">
+		<div class="column is-7">
+		  <div class="card">
+			<div class="card-content">
+			  <div class="content mb-6">
+				<h1 class="title is-2 mb-2 has-text-weight-light" style="color: #004080">Object oriented progamming: constructors and properties</h1>
+				<p class="mt-0 is-size-7 mb-6"><i>By Samir Tine, published on January 2023</i></p>
+				<h2 class="has-text-weight-light is-size-3 mt-6">Object constructors</h2>
+<p class="mt-4">
+Let's remember how we created an instance of the Fruct object :
+
+</p>
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%"><code>
+apple = Fruct()
+
+</code></div><p class="mt-4">
+Under the hood, instance creation calls a special Object method called <code>constructor</code>. But wait, we didn't provide such method to the Fruct object, so how was it possible to create the apple and banana instances ? Because every Object provides an internal constructor method if we don't create one.
+Let's try to add such method to the Fruct object :
+
+</p>
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%"><code>
+function Fruct:constructor(fruct_kind, fruct_color, fruct_shape)
+    self.kind = fruct_name
+    self.color = fruct_color
+    self.shape = fruct_shape
+end
+
+</code></div><p class="mt-4">
+Here, we use the constructor to initialize our instance (represented by the implicit self). We also take advantage of this constructor to add a new attribute to the instance just created : the <code>kind</code> attribute will contain the kind of fruit.
+Let's try to create a new apple now :
+
+</p>
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%"><code>
+redapple = Fruct("red apple", "red", "spherical")
+redapple:describe() -- prints "I am a red and spherical fruct"
+
+</code></div><p class="mt-4">
+Great ! Let's update the describe function now that we have the new attribute <code>name</code> set in the constructor :
+
+</p>
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%"><code>
+function Fruct:describe()
+    print("I am a "..self.kind..", a "..self.color.." and "..self.shape.." fruct")
+end
+
+</code></div><h2 class="has-text-weight-light is-size-3 mt-6">Object properties</h2>
+<p class="mt-4">
+The Fruct object improves as we learn new concepts of object programming with Lua<sup>rt</sup>. 
+Let's continue by changing the <code>kind</code> attribute of the <code>redapple</code> instance:
+
+</p>
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%"><code>
+redapple.kind = "banana"
+redapple:describe() -- prints "I am a banana, a red and spherical fruct"
+
+</code></div><h2 class="has-text-weight-light is-size-3 mt-6">Getter method</h2>
+<p class="mt-4">
+Let's start with a property in the Fruct object that controls the reading of an attribute :
+
+</p>
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%"><code>
+function Fruct:get_name()
+    return self.kind
+end
+
+</code></div><p class="mt-4">
+A property use a <code>getter</code> method to read and return its value. Here we are defining a getter method for the property <code>name</code>. 
+This property returns the value of the <code>self.kind</code> attribute when we try to read the property.
+Let's try to use it :
+
+</p>
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%"><code>
+redapple = Fruct("red apple", "red", "spherical")
+print(redapple.name) -- prints "red apple"
+
+</code></div><h2 class="has-text-weight-light is-size-3 mt-6">Setter method</h2>
+<p class="mt-4">
+Now let's add a setter method to control write access to the <code>name</code> property:
+
+</p>
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%"><code>
+function Fruct:set_name()
+    error("Fruct.name property is not writable)
+end
+
+</code></div><p class="mt-4">
+Here, we have prefixed the property setter method by <code>set_</code>. This method is called every time we try change the value of the <code>name</code> property.
+But remember that we don't want it to be changed, so we throw an error to indicate it. Let's see what it gives :
+
+</p>
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%"><code>
+redapple.name = "banana" -- error !
+
+</code></div><p class="mt-4">
+Encapsulation is one of the key features of object-oriented programming. Encapsulation refers to the bundling of attributes and methods inside a single object.
+It prevents outer objects from accessing and changing attributes and methods of another object. This also helps to achieve data hiding, like here.
+But wait, the self.kind attribute is still there and can be modified :
+
+</p>
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%"><code>
+redapple.kind = "banana" 
+print(redapple.name) -- prints "banana"
+
+</code></div><h2 class="has-text-weight-light is-size-3 mt-6">Accessing private data</h2>
+<p class="mt-4">
+</p>
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%"><code>
+function Fruct:constructor(fruct_kind, fruct_color, fruct_shape)
+    function self:get_name()
+        return fruct_name
+    end
+    self.color = fruct_color
+    self.shape = fruct_shape
+end
+
+</code></div><p class="mt-4">
+We removed the <code>kind</code> attribute in the Fruct constructor, and we defined the getter property method <code>get_read</code> in the current scope of the constructor function.
+There is no other way than creating a new Fruct instance to use another Fruct name :
+
+</p>
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%"><code>
+redapple = Fruct("red apple", "red", "spherical")
+print(redapple.name)     -- prints "red apple"
+redapple.name = "banana" -- error !
+readapple.kind = "banana"-- we create a new field `kind`
+print(redapple.name)     -- prints "red apple" (the get_name() getter method don't use self.kind anymore !)
+
+</code></div><p class="mt-4">
+Lua scope rules permits to mimic private fields by declaring getter/setter method properties inside the constructor function.
+But wait a minute, as the <code>self.kind</code> attribute has been removed, we need to redefine the <code>describe</code> method :
+
+</p>
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%"><code>
+function Fruct:describe()
+    print("I am a "..self.name..", a "..self.color.." and "..self.shape.." fruct")
+end
+
+</code></div>
+			<p>We now come to the end of this tutorial. To summarize : </p>
+			<ul>
+				<li>The getter and setter methods on an object provide an interface for accessing an instance attribute (called a "property" in this case)</li>
+				<li>The getter returns the value of an internal attribute</li>		
+				<li>The setter sets a new value for an internal attribute</li>
+			</ul>
+			</div>
+		  </div>
+		</div>
+	  </section>  
+	  <footer class="footer">
+		<div class="content has-text-centered">
+		  <p class="mb-0">
+			<strong>
+			  Lua
+			  <sup>rt</sup> Documentation
+			</strong> - Windows programming framework for Lua
+		  </p>
+		  <a class="is-hovered" href="https://github.com/samyeyo" target="_blank">
+			<span class="icon" style="color: #A0A0A0">
+			  <i class="fab fa-lg fa-github"></i>
+			</span>
+		  </a>
+		  <a class="is-hovered"
+			 href="https://twitter.com/__LuaRT__"
+			 target="_blank">
+			<span class="icon" style="color: #A0A0A0">
+			  <i class="fab fa-lg fa-x-twitter"></i>
+			</span>
+		  </a>
+		  <a class="is-hovered"
+			 href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+			 target="_blank">
+			<span class="icon" style="color: #A0A0A0">
+			  <i class="fab fa-lg fa-youtube"></i>
+			</span>
+		  </a>
+		  <p class="mt-0">
+			Copyright &copy; 2024
+			<a href="mailto:samir.tine@luart.org">Samir Tine</a>.
+			<br />
+			<a href="https://bulma.io/made-with-bulma/">
+			  <img alt="Made with Bulma"
+				   height="24"
+				   src="https://bulma.io/images/made-with-bulma.png"
+				   width="128" />
+			</a>
+		  </p>
+		</div>
+	  </footer>
+	  <script src="../../js/main.js"></script>
+	  <script src="../prism.js"></script>
+	  <script src="../custom-class.js"></script>
+	  <script>Prism.plugins.customClass.prefix('prism--');</script>
+	</body>
+	</html>	

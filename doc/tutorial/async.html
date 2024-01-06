@@ -1,0 +1,432 @@
+﻿	<!doctype html>
+	<html lang="en">
+	<head>
+	  <meta charset="utf-8" />
+	  <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+	  <meta content="width=device-width, initial-scale=1" name="viewport" />
+	  <meta content="Lua asynchronous/concurrent programming (basic concepts)" name="description" />
+	  <title>
+		Asynchronous programming with LuaRT | LuaRT free and open source Windows programming framework for Lua
+	  </title>
+	  <link href="../../css/bulma-docs.min.css" rel="stylesheet" />
+	  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+			rel="stylesheet" />
+	  <link href="https://luart.org/doc/tutorial/async.html" rel="canonical" />
+	  <link href="../../img/favicon.png" rel="icon" sizes="16x16" type="image/png" />
+	  <link rel="stylesheet" href="../prism.css" data-noprefix="">
+	</head>
+	<body class="layout-documentation has-navbar-fixed-top">
+		<nav class="bd-navbar navbar is-fixed-top has-shadow" id="navbar">
+			<div class="navbar-brand">
+			  <a class="navbar-item" href="https://luart.org/">
+				<img alt="LuaRT: Free and open source Windows programming framework for Lua"
+					 height="40"
+					 src="../../img/logo.svg"
+					 width="112" />
+			  </a>
+			  <a class="navbar-item bd-navbar-mobile-icon"
+				 href="https://github.com/samyeyo"
+				 style="margin-left: auto"
+				 target="_blank">
+				<span class="icon" style="color: #000000">
+				  <i class="fab fa-lg fa-github"></i>
+				</span>
+			  </a>
+			  <a class="navbar-item bd-navbar-mobile-icon"
+				 href="https://twitter.com/__LuaRT__"
+				 target="_blank">
+				<span class="icon" style="color: #000000">
+				  <i class="fab fa-lg fa-x-twitter"></i>
+				</span>
+			  </a>
+			  <a class="navbar-item bd-navbar-mobile-icon"
+				 href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+				 target="_blank">
+				<span class="icon" style="color: #FF0000">
+				  <i class="fab fa-lg fa-youtube"></i>
+				</span>
+			  </a> 
+         <a class="navbar-item bd-navbar-mobile-icon"
+          href="https://discord.gg/XJJxQufmvh"
+          target="_blank">
+         <span class="icon" style="color: #5865F2">
+           <i class="fab fa-lg fa-discord"></i>
+         </span>
+       </a><button class="navbar-burger burger"
+					  data-target="navMenuDocumentation"
+					  id="navbarBurger">
+				<span></span>
+				<span></span>
+				<span></span>
+			  </button>
+			</div>
+			<div class="navbar-menu" id="navMenuDocumentation">
+			  <div class="navbar-start bd-navbar-start bd-is-original"
+				   id="navbarStartOriginal">
+				<a class="navbar-item bd-navbar-item bd-navbar-item-bulma-book bd-navbar-item-base"
+				   href="../../index.html#section_features">
+				  <span class="icon has-text-bleeding">
+					<i class="fas fa-certificate"></i>
+				  </span>
+				  <span>Features</span>
+				</a>
+				<a class="navbar-item bd-navbar-item bd-navbar-item-love bd-navbar-item-base"
+				   href="../../index.html#section_download">
+				  <span class="icon has-text-danger">
+					<i class="fas fa-download"></i>
+				  </span>
+				  <span>Download</span>
+				</a>
+				<div class="navbar-item has-dropdown is-hoverable">
+					<a class="navbar-item bd-navbar-item bd-navbar-item-videos bd-navbar-item-base scroll">
+					  <span class="icon has-text-success"><i class="fas fa-circle-play"></i></span><span>Getting started</span>
+					</a>
+					<div class="navbar-dropdown has-background-success-light">
+						<a href="../install.html" class="dropdown-item has-text-success-dark">
+						  <span class="icon"><i class="fa fa-computer"></i></span> Installation
+						</a>
+						<a href="../first.html" class="dropdown-item has-text-success-dark">
+							<span class="icon"><i class="fa fa-play"></i></span> First execution
+						</a>
+						<a href="../tour.html" class="dropdown-item has-text-success-dark">
+						  <span class="icon"><i class="fa fa-bus-simple"></i></span> Take a tour !
+						</a>
+					</div>
+				</div>
+				<div class="navbar-item has-dropdown is-hoverable">
+					<a class="navbar-item bd-navbar-item bd-navbar-item-extensions bd-navbar-item-base scroll">
+					  <span class="icon has-text-info"><i class="fas  fa-book"></i></span><span>Documentation</span>
+					</a>
+					<div class="navbar-dropdown has-background-info-light">
+						<a href="../modules.html" class="dropdown-item has-text-info-dark">
+						  <span class="icon"><i class="fa fa-cubes"></i></span> Modules reference
+						</a>
+						<a href="../object.html" class="dropdown-item has-text-info-dark">
+							<span class="icon"><i class="fa fa-shapes"></i></span> Object oriented programming
+						</a>
+						<a href="../toolchain.html" class="dropdown-item has-text-info-dark">
+						  <span class="icon"><i class="fa fa-wrench"></i></span> Toolchain documentation
+						</a>
+					</div>
+				</div>
+				</a>
+				<a class="navbar-item bd-navbar-item bd-navbar-item-expo bd-navbar-item-base"
+				   href="https://community.luart.org">
+				  <span class="icon has-text-warning">
+					<i class="fas fa-comments"></i>
+				  </span>
+				  <span>Community</span>
+				</a>
+				<a class="navbar-item bd-navbar-item bd-navbar-item-blog bd-navbar-item-base" href="index.html">
+					<span class="icon has-text-rss">
+					  <i class="fas fa-graduation-cap"></i>
+					</span>
+					<span>Tutorials</span>
+				  </a>
+				</div>
+				<div class="navbar-dropdown has-background-info-light">
+				  <a href="../modules.html" class="dropdown-item has-text-info-dark">
+					<span class="icon"><i class="fa fa-cubes"></i></span> Modules reference
+				  </a>
+				  <a href="../object.html" class="dropdown-item has-text-info-dark">
+					  <span class="icon"><i class="fa fa-shapes"></i></span> Object oriented programming
+				  </a>
+				  <a href="../toolchain.html" class="dropdown-item has-text-info-dark">
+					<span class="icon"><i class="fa fa-wrench"></i></span> Toolchain documentation
+				  </a>
+				</div>
+			  </div>
+			</div>
+			<div class="navbar-end">
+			  <a class="bd-navbar-icon navbar-item"
+				 href="https://github.com/samyeyo"
+				 target="_blank">
+				<span class="icon" style="color: #000000">
+				  <i class="fab fa-lg fa-github"></i>
+				</span>
+			  </a>
+			  <a class="bd-navbar-icon navbar-item"
+				 href="https://twitter.com/__LuaRT__"
+				 target="_blank">
+				<span class="icon" style="color: #000000">
+				  <i class="fab fa-lg fa-x-twitter"></i>
+				</span>
+			  </a>
+			  <a class="bd-navbar-icon navbar-item"
+				 href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+				 target="_blank">
+				<span class="icon" style="color: #FF0000">
+				  <i class="fab fa-lg fa-youtube"></i>
+				</span>
+			  </a>
+			  <a class="bd-navbar-icon navbar-item"
+				 href="https://discord.gg/XJJxQufmvh"
+				 target="_blank">
+				<span class="icon" style="color: #5865F2">
+				  <i class="fab fa-lg fa-discord"></i>
+				</span>
+			  </a>
+			</div>
+		  </nav>
+	  
+	  <section class="main-content columns is-centered is-fullheight" style="margin-top: 6%; margin-bottom: 4%">
+		<div class="column is-7">
+		  <div class="card">
+			<div class="card-content">
+			  <div class="content mb-6">
+				<h1 class="title is-2 mb-2 has-text-weight-light" style="color: #004080">Asynchronous programming with Lua<sup>rt</sup></h1>
+				<p class="mt-0 is-size-7 mb-6"><i>By Samir Tine, published on June 2023</i></p>
+				<h2 class="has-text-weight-light is-size-3 mt-6">Concurrent programming</sup></h2>
+<p class="mt-4">
+Standard Lua programming model uses a unique execution flow, where each line is interpreted in a sequential manner.
+</p>
+<p>But what if you want to execute two functions in the same time ? The answer is simple : you can't.<br>
+The Lua virtual machine don't support multiprocessing : a Lua program is always executed in a single core/single thread.</p>
+
+<p>You can use specific modules to use multicore/multithreading, but it implies multiple Lua virtual machines with inter-process communication mechanisms to exchange values between VM.</p>
+
+<p>Concurrency is a lightweight programming model that <i>mimics</i> parallelism : the execution flow is still sequential, but it alterns execution between different functions (or coroutines).</p>
+
+<p>The underlying concept is based on waiting times. Most of the times, a program spend a lot of time waiting for something, during "blocking" operations (because these operations are blocking program execution) : waiting for user input, waiting for mouse movement, waiting for server response... <br>
+
+<p>Instead of just waiting, concurrency programming model permits to change execution flow to another function (or coroutine), and so on...</p>
+<p>This programming model is very lightweight, and Lua already implements coroutines. But using Lua coroutines is not very straightforward for beginners, as it lacks any scheduling capabilities.</p>
+
+<p>Since version 1.5, Lua<sup>rt</sup> implements a thin layer around coroutines with an integrated scheduler, enabling efficient concurrency in Lua, by using the <a href="../sys/Task.html"><i class="fas fa-bolt" style="color :#367DBB"></i> Task</a> object.</p><p>Let's dive into it !</p>
+
+</code></div><h2 class="has-text-weight-light is-size-3 mt-6">The Task object</h2>
+<p class="mt-4">
+A <a href="../sys/Task.html"><i class="fas fa-bolt" style="color :#367DBB"></i> Task</a> is an object that wraps a Lua coroutine internaly. To create a Task, just use its constructor, with a <code>function</code> as argument. This function will be executed once the Task is started :
+
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%"><code>
+function hello()
+	print("Hello World !")
+end
+
+task = sys.Task(hello)
+
+</code></div><p class="mt-4">
+Now run this script, but you won't see the <code>Hello World !</code> message printed to the console, because when created a Task is not started, you have to start it manually. 
+To start a Task, just call it like a function :</p>
+
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%"><code>
+function hello()
+	print("Hello World !")
+end
+
+task = sys.Task(hello)
+task()
+
+</code></div><p class="mt-4">
+
+Any argument provided when starting the Task will be used to call the function provided during the Task constructor call. Let's see it by customizing the <code>Hello World !</code> message :</p>
+
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%"><code>
+function hello(name)
+	print("Hello "..name.." !")
+end
+
+task = sys.Task(hello)
+
+-- Starts the Task using "LuaRT" as argument for the hello() function
+task("LuaRT")
+
+</code></div><p class="mt-4">
+
+<h2 class="has-text-weight-light is-size-3 mt-6">Your first concurrent program</h2>
+<p class="mt-4">
+For now, we have not used any concurrent paradigm yet, as we could have called the <code>hello</code> function directly...<br>
+Let's going a little further by printing the message after a delay, by using the <code>sleep()</code> function :</p>
+
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%"><code>
+function hello(name)
+	-- wait for 2sec before printing the message
+	sleep(2000)
+	print("Hello "..name.." !")
+end
+
+task = sys.Task(hello)
+
+task("LuaRT")
+
+</code></div><p class="mt-4">
+You may ask why the program exits without waiting and printing the message ?</p>
+<p>The reason is simple : when called inside a Task, the <code>sleep()</code> function don't wait for the time to elapse, it puts the current Task to sleep and bring back execution flow to another Task or to the global execution flow. To illustrate this, we will add a last line of code :</p>
+
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%"><code>
+function hello(name)
+	-- wait for 2sec before printing the message
+	sleep(2000)
+	print("Hello "..name.." !")
+end
+
+task = sys.Task(hello)
+
+task("LuaRT")
+
+-- prints a message before exiting
+print("Program is exiting now !")
+
+</code></div><p class="mt-4">
+At the end of the program, the execution flow is stopped and the Task is cancelled. If you want to wait for a specific Task to terminate, you will need to call the <code>Task.wait()</code> method :</p>
+
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%"><code>
+function hello(name)
+	sleep(2000)
+	print("Hello "..name.." !")
+end
+
+task = sys.Task(hello)
+
+task("LuaRT")
+
+-- Wait fot the task to terminate
+task:wait()
+
+print("Program is exiting now !")
+
+</code></div><p class="mt-4">
+
+Congratulation, you just have coded your first concurrent program with Lua<sup>rt</sup> !<br>
+As you can see, the <code>Task.wait()</code> function stops current execution flow until the Task is terminated, hence the message printed after 2 seconds. Now we will write several messages one after another, with a delay of one second between :</p>
+
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%"><code>
+function hello(msg)
+	sleep(1000)
+	print("Hello "..msg.." !")
+	
+	n = n+1
+	-- Create and start only 3 Tasks, not more
+	if n < 4 then
+		sys.Task(hello)("from task #"..n)
+	end
+end
+
+task = sys.Task(hello)
+
+-- Keeps track of current number of Tasks
+n = 1
+
+task("from task #"..n)
+
+task:wait()
+
+</code></div><p class="mt-4">
+In this example, once a Task is about to terminate, we create and start a new Task, and so on, with a maximum of 3 Tasks. But in this case, we are only waiting on the first task, that's why you will see only the first message. One thing you can do is to wait for each created tasks :</p>
+
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%"><code>
+function hello(msg)
+	sleep(1000)
+	print("Hello "..msg.." !")
+	
+	n = n+1
+	-- Create and start only 3 Tasks, not more
+	if n < 4 then
+		local newtask = sys.Task(hello)
+		newtask("from task #"..n)
+		newtask:wait()
+	end
+end
+
+task = sys.Task(hello)
+
+-- Keeps track of current number of Tasks
+n = 1
+
+task("from task #"..n)
+
+task:wait()
+
+</code></div><p class="mt-4">
+It works now as expected, but the code is bloated. Instead of waiting for each Task, you can use the <code>waitall()</code> function to wait for all Tasks to terminate :</p>
+
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%"><code>
+function hello(msg)
+	sleep(1000)
+	print("Hello "..msg.." !")
+	
+	n = n+1
+	if n < 4 then
+		sys.Task(hello)("from task #"..n)
+	end
+end
+
+task = sys.Task(hello)
+
+-- Keeps track of current number of Tasks
+n = 1
+
+task("from task #"..n)
+
+-- Wait for all Tasks to terminate
+waitall()
+
+</code></div><p class="mt-4">
+
+As you can see the <code>waitall()</code> function is very convenient to block execution flow until all Tasks are terminated.<br>Here is a more simple approach to the previous example :</p>
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%"><code>
+function hello(delay, msg)
+	sleep(delay)
+	print("Hello "..msg.." !")
+end
+
+for n=1,3 do
+	sys.Task(hello)(i*1000, "from task #"..n)
+end
+
+waitall()
+
+</code></div><p class="mt-4">
+
+		<p class="mt-4">Well this first tutorial on concurrent programming with Lua<sup>rt</sup> comes to its end. You have learned the basics to create and start a new Task, to bring execution flow to other Tasks, and to wait on them.</p><br><p>
+		The next part of the concurrent programming tutorial will cover the famous <code>async/await</code> functions.</p>
+			</div>
+		  </div>
+		</div>
+	  </section>  
+	  <footer class="footer">
+		<div class="content has-text-centered">
+		  <p class="mb-0">
+			<strong>
+			  Lua
+			  <sup>rt</sup> Documentation
+			</strong> - Windows programming framework for Lua
+		  </p>
+		  <a class="is-hovered" href="https://github.com/samyeyo" target="_blank">
+			<span class="icon" style="color: #A0A0A0">
+			  <i class="fab fa-lg fa-github"></i>
+			</span>
+		  </a>
+		  <a class="is-hovered"
+			 href="https://twitter.com/__LuaRT__"
+			 target="_blank">
+			<span class="icon" style="color: #A0A0A0">
+			  <i class="fab fa-lg fa-x-twitter"></i>
+			</span>
+		  </a>
+		  <a class="is-hovered"
+			 href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+			 target="_blank">
+			<span class="icon" style="color: #A0A0A0">
+			  <i class="fab fa-lg fa-youtube"></i>
+			</span>
+		  </a>
+		  <p class="mt-0">
+			Copyright &copy; 2024
+			<a href="mailto:samir.tine@luart.org">Samir Tine</a>.
+			<br />
+			<a href="https://bulma.io/made-with-bulma/">
+			  <img alt="Made with Bulma"
+				   height="24"
+				   src="https://bulma.io/images/made-with-bulma.png"
+				   width="128" />
+			</a>
+		  </p>
+		</div>
+	  </footer>
+	  <script src="../../js/main.js"></script>
+	  <script src="../prism.js"></script>
+	  <script src="../custom-class.js"></script>
+	  <script>Prism.plugins.customClass.prefix('prism--');</script>
+	</body>
+	</html>	

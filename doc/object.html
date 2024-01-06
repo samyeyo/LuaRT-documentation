@@ -1,0 +1,298 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta content="LuaRT Object oriented programming reference " name="description" />
+  <title>
+    Object oriented programming | LuaRT free and open source Windows programming framework for Lua
+  </title>
+  <link href="../css/bulma-docs.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        rel="stylesheet" />
+  <link href="https://luart.org/doc/object.html" rel="canonical" />
+  <link href="../img/favicon.png" rel="icon" sizes="16x16" type="image/png" />
+  <link rel="stylesheet" href="prism.css" data-noprefix="">
+</head>
+<body class="layout-documentation has-navbar-fixed-top">
+  <nav class="bd-navbar navbar is-fixed-top has-shadow" id="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://luart.org/">
+        <img alt="LuaRT: Free and open source Windows programming framework for Lua"
+             height="40"
+             src="../img/logo.svg"
+             width="112" />
+      </a>
+      <a class="navbar-item bd-navbar-mobile-icon"
+         href="https://github.com/samyeyo"
+         style="margin-left: auto"
+         target="_blank">
+        <span class="icon" style="color: #000000">
+          <i class="fab fa-lg fa-github"></i>
+        </span>
+      </a>
+      <a class="navbar-item bd-navbar-mobile-icon"
+         href="https://twitter.com/__LuaRT__"
+         target="_blank">
+        <span class="icon" style="color: #000000">
+          <i class="fab fa-lg fa-x-twitter"></i>
+        </span>
+      </a>
+      <a class="navbar-item bd-navbar-mobile-icon"
+         href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+         target="_blank">
+        <span class="icon" style="color: #FF0000">
+          <i class="fab fa-lg fa-youtube"></i>
+        </span>
+      </a><a class="navbar-item bd-navbar-mobile-icon"
+         href="https://discord.gg/XJJxQufmvh"
+         target="_blank">
+        <span class="icon" style="color: #5865F2">
+          <i class="fab fa-discord"></i>
+        </span>
+      </a>
+      <button class="navbar-burger burger"
+              data-target="navMenuDocumentation"
+              id="navbarBurger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div class="navbar-menu" id="navMenuDocumentation">
+      <div class="navbar-start bd-navbar-start bd-is-original"
+           id="navbarStartOriginal">
+        <a class="navbar-item bd-navbar-item bd-navbar-item-bulma-book bd-navbar-item-base"
+           href="../index.html#section_features">
+          <span class="icon has-text-bleeding">
+            <i class="fas fa-certificate"></i>
+          </span>
+          <span>Features</span>
+        </a>
+        <a class="navbar-item bd-navbar-item bd-navbar-item-love bd-navbar-item-base"
+           href="../index.html#section_download">
+          <span class="icon has-text-danger">
+            <i class="fas fa-download"></i>
+          </span>
+          <span>Download</span>
+        </a>
+		<div class="navbar-item has-dropdown is-hoverable">
+			<a class="navbar-item bd-navbar-item bd-navbar-item-videos bd-navbar-item-base scroll">
+			  <span class="icon has-text-success"><i class="fas fa-circle-play"></i></span><span>Getting started</span>
+			</a>
+			<div class="navbar-dropdown has-background-success-light">
+				<a href="install.html" class="dropdown-item has-text-success-dark">
+				  <span class="icon"><i class="fa fa-computer"></i></span> Installation
+				</a>
+				<a href="first.html" class="dropdown-item has-text-success-dark">
+					<span class="icon"><i class="fa fa-play"></i></span> First execution
+				</a>
+				<a href="tour.html" class="dropdown-item has-text-success-dark">
+				  <span class="icon"><i class="fa fa-bus-simple"></i></span> Take a tour !
+				</a>
+			</div>
+		</div>
+		<div class="navbar-item has-dropdown is-hoverable">
+			<a class="navbar-item bd-navbar-item bd-navbar-item-extensions bd-navbar-item-base scroll">
+			  <span class="icon has-text-info"><i class="fas fa-book"></i></span><span>Documentation</span>
+			</a>
+			<div class="navbar-dropdown has-background-info-light">
+				<a href="modules.html" class="dropdown-item has-text-info-dark">
+				  <span class="icon"><i class="fa fa-cubes"></i></span> Modules reference
+				</a>
+				<a href="object.html" class="dropdown-item has-text-info-dark">
+					<span class="icon"><i class="fa fa-shapes"></i></span> Object oriented programming
+				</a>
+				<a href="toolchain.html" class="dropdown-item has-text-info-dark">
+				  <span class="icon"><i class="fa fa-wrench"></i></span> Toolchain documentation
+				</a>
+			</div>
+		</div>
+        </a>
+        <a class="navbar-item bd-navbar-item bd-navbar-item-expo bd-navbar-item-base"
+           href="https://community.luart.org">
+          <span class="icon has-text-warning">
+            <i class="fas fa-comments"></i>
+          </span>
+          <span>Community</span>
+        </a>
+        <a class="navbar-item bd-navbar-item bd-navbar-item-blog bd-navbar-item-base"
+           href="https://luart.org/doc/tutorial/index.html">
+          <span class="icon has-text-rss">
+            <i class="fas fa-graduation-cap"></i>
+          </span>
+          <span>Tutorials</span>
+        </a>
+     <div class="ml-6">
+			<span class="icon has-text-grey-light mr-1">
+				<i class="fas fa-search"></i>
+			</span></div>
+			<script async src="https://cse.google.com/cse.js?cx=509c4cdde27f845e7"></script>
+			<div class="gcse-searchbox-only" data-resultsUrl="https://luart.org/search.html"></div>
+      </div>
+    </div>
+    <div class="navbar-end">
+      <a class="bd-navbar-icon navbar-item"
+         href="https://github.com/samyeyo"
+         target="_blank">
+        <span class="icon" style="color: #000000">
+          <i class="fab fa-lg fa-github"></i>
+        </span>
+      </a>
+      <a class="bd-navbar-icon navbar-item"
+         href="https://twitter.com/__LuaRT__"
+         target="_blank">
+        <span class="icon" style="color: #000000">
+          <i class="fab fa-lg fa-x-twitter"></i>
+        </span>
+      </a>
+      <a class="bd-navbar-icon navbar-item"
+         href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+         target="_blank">
+        <span class="icon" style="color: #FF0000">
+          <i class="fab fa-lg fa-youtube"></i>
+        </span>
+      </a>
+      <a class="bd-navbar-icon navbar-item"
+         href="https://discord.gg/XJJxQufmvh"
+         target="_blank">
+        <span class="icon" style="color: #5865F2">
+          <i class="fab fa-lg fa-discord"></i>
+        </span>
+      </a>  
+    </div>
+  </nav>
+  
+  <section class="main-content columns is-centered is-fullheight" style="margin-top: 6%; margin-bottom: 4%">
+    <div class="column is-7">
+      <div class="card">
+        <a class="button is-white pl-5" href="index.html"><span class="icon has-text-grey-lighter" style="vertical-align: middle"><i class="fas fa-circle-left"></i></span></a>
+        <div class="card-content">
+			<div class="content">
+        <p class="has-text-centered is-size-2 has-text-weight-light mb-0" style="color: #004080">Object oriented programming with Lua<sup>rt</sup></p>
+			  <p class="has-text-justified mt-6">
+				Lua<sup>rt</sup> supports a wide range of object-oriented programming (OOP) concepts out of the box, including multilevel inheritance, polymorphism, encapsulation, etc.
+ 				</p>
+				<p class="has-text-weight-light is-size-3 mt-6 mb-1">Object</p>
+				<p>Objects are at the heart of OOP with Lua<sup>rt</sup>.
+          Objects are specialized tables, made up of fields and methods. The difference with a Lua table is that an object makes it possible to create
+           (or rather "instantiate") a value (called "instance") from this object, i.e. made up of the same fields and methods.</p>
+           <p>Objects are created using the global function <a href="base/Object.html">Object()</a>.
+            <article class="message is-warning" style="margin-left: 15%; margin-right: 15%"><div class="message-body pt-2">
+              <ul><li>Objects can have fields of any value (strings, other Object values, functions...).</li>
+                <li>Object fields are, as for tables, always accessible and public.</li>
+                <li>Field deletion is done by assigning a<code>nil</code>value.</li>
+                <li>Field access is done with ' . ', or ' : ' for methods, or '[ ]'</li>
+                <li>An object has a type of <code>"Object"</code></li>
+                <li>By convention, Lua<sup>rt</sup> use capital letters for objects definitions</li>
+              </ul></div></article>
+          </p>
+				<p class="has-text-weight-light is-size-3 mt-6 mb-1">Instantiation</p>
+				<p>Instantiation is the process of creating a value from an object. An object thus acts as a type, defining the capabilities of the value from its fields and methods.</p>
+          <p>Instantiation is simple with Lua<sup>rt</sup> : just call the previously defined object, which will return a new instance.
+          <article class="message is-warning" style="margin-left: 15%; margin-right: 15%"><div class="message-body pt-2">
+          <ul><li>Instances have a type defined by their object name :  <code>"File"</code>, <code>"Window"</code>,...</li>
+          </ul></div></article>
+  			</p>
+				<p class="has-text-weight-light is-size-3 mt-6 mb-1">Constructor and destructor</p>
+				<p>Under the hood, the instantiation calls a specific object method to construct the instance called <code>constructor</code>. When defined, the <code>constructor</code> method of an object is used to initialize instances.</p>          
+        <p>Conversely, when Lua destroys the instance (during a garbage collection cycle), the object's <code>destructor</code> method, if defined, is called. This allows the instance to finalize/release resources before being destroyed.</p>
+  			<article class="message is-warning" style="margin-left: 15%; margin-right: 15%"><div class="message-body pt-2">
+          <ul><li>Instance destruction order is not predictable (it depends on garbage collection).</li>
+          </ul></div></article>
+          <p class="has-text-weight-light is-size-3 mt-6 mb-1">Iterator</p>
+          <p>An iterator is an object method that is called when using an object instance in a <code>for..in..</code> loop.</p>          
+          <p>At each iteration, the iterator method is called with the <code>self</code> value as first argument and an <code>index</code> value as second argument. When starting the loop, the index value is <code>nil</code></p>
+          <p>Once the iterator method has computed thewanted values, it should return them with the next index as the last return value. If the first returned value is <code>nil</code> the loop ends. Otherwise, the iterator method is called once again with the new index, and so on...</p>
+          <article class="message is-warning" style="margin-left: 15%; margin-right: 15%"><div class="message-body pt-2">
+            <ul><li>The iterator() method permits to iterate over an Object using the each() function</li>
+            </ul></div></article>
+          <p class="has-text-weight-light is-size-3 mt-6 mb-1">Inheritance</p>
+        <p>Inheritance is the capability of one object ("the child") to derive or inherit the fields and methods from another object (called the "ancestor" or "parent").</p>
+        <p>With Lua<sup>rt</sup>, to define a child object that inherits from another parent object, you just need to use the parent object as an argument to the <a href="base/Object.html">Object()</a> global function.</p>
+  			<article class="message is-warning" style="margin-left: 15%; margin-right: 15%"><div class="message-body pt-2">
+          <ul><li>Lua<sup>rt</sup> supports only multilevel inheritance, but can use mixins to extends objects capabilities (see below).</li>
+            <li><a href="base/is.html">is()</a> function is used to determine inheritance of an instance/object.</li>
+            <li><a href="base/super.html">super()</a> function is used to get the inherited parent object.</li>
+          </ul></div></article>
+        
+          <p class="has-text-weight-light is-size-3 mt-6 mb-1">Mixins</p>
+          <p>A mixin is a simple Lua table that can be <i>mixed</i> within an object to extend its capabilites. Mixins are like interfaces, but they also implements fields, methods, and properties to enrich an object.</p>
+          <article class="message is-warning" style="margin-left: 15%; margin-right: 15%"><div class="message-body pt-2">
+          <ul><li>Mixins offer a simple way to share functionality between objects.</li>
+            <li>A mixin can encapsulate common methods and properties, without the need to repeat the same code from object to object.</li>
+          </ul></div></article>
+  			</p>
+        <p class="has-text-weight-light is-size-3 mt-6 mb-1">Polymorphism</p>
+        <p>Polymorphism in programming refers to the use of the same field/method name across different types of objects.<br>
+        Lua<sup>rt</sup> supports polymorphism between different objects and between inherited objects, by the possibility to redefine a field/a method at anytime.</p>
+        <p class="has-text-weight-light is-size-3 mt-6 mb-1">Encapsulation</p>
+        <p>Object-oriented programming (OOP) relies heavily on encapsulation. All intrinsic data needed by the object to function correctly need to be hidden from the outside. This restriction prevents the accidental modification of data by preventing direct access to fields and methods. In this case, the data variables are referred to as private variables.</p>
+        <p>As tables in Lua, Lua<sup>rt</sup> does not provide true private fields for objects. But it's possible to achieve this by using the keyword <code>local</code> for the needed variable outside the scope of the method or property where it is manipulated (see <a href="https://www.lua.org/manual/5.4/manual.html#3.5">Visibility rules in Lua</a>).</p>
+        <article class="message is-warning" style="margin-left: 15%; margin-right: 15%"><div class="message-body pt-2">
+          <ul><li>Lua<sup>rt</sup> object encapsulation is based on Lua visibility rules.</li>
+          </ul></div></article>
+        <p class="has-text-weight-light is-size-3 mt-6 mb-1">Properties</p>
+        <p>Properties are an important concept in OOP to support encapsulation. The term property refers to a special kind of object member, which falls between a field and a method in terms of functionality. The syntax for reading and writing properties is the same as that for fields, but the calls to the 'getter' and 'setter' methods translate properties into fields.</p>
+        <p>With Lua<sup>rt</sup>, properties are supported by the use of getter and setter methods for an object. The name of the getter method must start by the prefix <code>get_</code> followed by the property name (for example, <code>get_time</code> for the <code>time</code> property. The name of the setter method must start by the prefix <code>set_</code> followed by the property name (for example, <code>set_time</code> for the <code>time</code> property.</p>
+        <article class="message is-warning" style="margin-left: 15%; margin-right: 15%"><div class="message-body pt-2">
+          <ul><li>A getter method is defined by the prefix <code>get_</code></li>
+          <li>A setter method is defined by the prefix <code>set_</code></li>
+          </ul></div></article>
+      </div>
+	</div>
+  </section>  
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p class="mb-0">
+        <strong>
+          Lua
+          <sup>rt</sup> Documentation
+        </strong> - Windows programming framework for Lua
+      </p>
+      <a class="is-hovered" href="https://github.com/samyeyo" target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-github"></i>
+        </span>
+      </a>
+      <a class="is-hovered"
+         href="https://twitter.com/__LuaRT__"
+         target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-x-twitter"></i>
+        </span>
+      </a>
+<a class="is-hovered"
+         href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+         target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-youtube"></i>
+        </span>
+      </a>      
+      <a class="is-hovered"
+      href="https://discord.gg/XJJxQufmvh"
+      target="_blank">
+     <span class="icon" style="color: #A0A0A0">
+       <i class="fab fa-lg fa-discord"></i>
+     </span>
+     </a>    
+      <p class="mt-0">
+        Copyright &copy; 2024
+        <a href="mailto:samir.tine@luart.org">Samir Tine</a>.
+        <br />
+        <a href="https://bulma.io/made-with-bulma/">
+          <img alt="Made with Bulma"
+               height="24"
+               src="https://bulma.io/images/made-with-bulma.png"
+               width="128" />
+        </a>
+      </p>
+    </div>
+  </footer>
+  <script src="../js/main.js"></script>
+  <script src="prism.js"></script>
+  <script src="custom-class.js"></script>
+  <script>Prism.plugins.customClass.prefix('prism--');</script>
+</body>
+</html>

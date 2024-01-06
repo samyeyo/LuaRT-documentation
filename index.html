@@ -1,0 +1,308 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="LuaRT is a free, open source, Windows programming framework for Lua">
+    <title>LuaRT | Free and open source Windows programming framework for Lua</title>
+    <link rel="preload stylesheet" href="css/bulma-docs.min.css" as="style">
+    <link rel="preload stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" as="style">
+    <link rel="canonical" href="https://luart.org/index.html">
+    <link rel="icon" type="image/png" href="img/favicon.png" sizes="16x16">
+    <meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:site" content="@__LuaRT__" />
+		<meta name="twitter:title" content="LuaRT" />
+		<meta name="twitter:description" content="Free and open source Windows programming framework for Lua" />
+		<meta name="twitter:image" content="https://luart.org/card.png" />
+		<script>if(!sessionStorage.getItem("_swa")&&document.referrer.indexOf(location.protocol+"//"+location.host)!== 0){fetch("https://counter.dev/track?"+new URLSearchParams({referrer:document.referrer,screen:screen.width+"x"+screen.height,user:"Samyeyo",utcoffset:"2"}))};sessionStorage.setItem("_swa","1");</script>
+  </head>
+  <body class="layout-documentation has-navbar-fixed-top">
+  <nav id="navbar" class="bd-navbar navbar is-fixed-top has-shadow">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://luart.org/">
+        <img alt="LuaRT: Free and open source Windows programming framework for Lua"
+             height="40"
+             src="img/logo.svg"
+             width="112" />
+      </a>
+      <a class="navbar-item bd-navbar-mobile-icon"
+         href="https://github.com/samyeyo"
+         style="margin-left: auto"
+         aria-label="Github"
+         target="_blank">
+        <span class="icon" style="color: #000000">
+          <i class="fab fa-lg fa-github"></i>
+        </span>
+      </a>
+      <a class="navbar-item bd-navbar-mobile-icon"
+         href="https://twitter.com/__LuaRT__"
+         aria-label="X"
+         target="_blank">
+        <span class="icon" style="color: #000000">
+          <i class="fab fa-lg fa-x-twitter"></i>
+        </span>
+      </a>
+      <a class="navbar-item bd-navbar-mobile-icon"
+         href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+         aria-label="YouTube"
+         target="_blank">
+        <span class="icon" style="color: #FF0000">
+          <i class="fab fa-lg fa-youtube"></i>
+        </span>
+      </a>
+      <a class="navbar-item bd-navbar-mobile-icon"
+         href="https://discord.gg/XJJxQufmvh"
+         aria-label="Discord"
+         target="_blank">
+        <span class="icon" style="color: #5865F2">
+          <i class="fab fa-discord"></i>
+        </span>
+      </a>
+      <button aria-label="Menu" class="navbar-burger burger"
+              data-target="navMenuDocumentation"
+              id="navbarBurger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div class="navbar-menu" id="navMenuDocumentation">
+      <div class="navbar-start bd-navbar-start bd-is-original"
+           id="navbarStartOriginal">
+        <a class="navbar-item bd-navbar-item bd-navbar-item-bulma-book bd-navbar-item-base scroll"
+           href="index.html#section_features" data-target="section_features">
+          <span class="icon has-text-bleeding">
+            <i class="fas fa-certificate"></i>
+          </span>
+          <span>Features</span>
+        </a>
+        <a class="navbar-item bd-navbar-item bd-navbar-item-love bd-navbar-item-base scroll"
+           href="index.html#section_download" data-target="section_download">
+          <span class="icon has-text-danger">
+            <i class="fas fa-download"></i>
+          </span>
+          <span>Download</span>
+        </a>
+		<div class="navbar-item has-dropdown is-hoverable">
+			<a class="navbar-item bd-navbar-item bd-navbar-item-videos bd-navbar-item-base" href="index.html">
+			  <span class="icon has-text-success"><i class="fas fa-circle-play"></i></span><span>Getting started</span>
+			</a>
+			<div class="navbar-dropdown has-background-success-light">
+				<a href="doc/install.html" class="dropdown-item has-text-success-dark">
+				  <span class="icon"><i class="fa fa-computer"></i></span> Installation
+				</a>
+				<a href="doc/first.html" class="dropdown-item has-text-success-dark">
+					<span class="icon"><i class="fa fa-play"></i></span> First execution
+				</a>
+				<a href="doc/tour.html" class="dropdown-item has-text-success-dark">
+				  <span class="icon"><i class="fa fa-bus-simple"></i></span> Take a tour !
+				</a>
+			</div>
+		</div>
+		<div class="navbar-item has-dropdown is-hoverable">
+			<a class="navbar-item bd-navbar-item bd-navbar-item-extensions bd-navbar-item-base" href="index.html">
+			  <span class="icon has-text-info"><i class="fas fa-book"></i></span><span>Documentation</span>
+			</a>
+			<div class="navbar-dropdown has-background-info-light">
+				<a href="doc/modules.html" class="dropdown-item has-text-info-dark">
+				  <span class="icon"><i class="fa fa-cubes"></i></span> Modules reference
+				</a>
+				<a href="doc/object.html" class="dropdown-item has-text-info-dark">
+					<span class="icon"><i class="fa fa-shapes"></i></span> Object oriented programming
+				</a>
+				<a href="doc/toolchain.html" class="dropdown-item has-text-info-dark">
+				  <span class="icon"><i class="fa fa-wrench"></i></span> Toolchain documentation
+				</a>
+			</div>
+		</div>
+        </a>
+        <a class="navbar-item bd-navbar-item bd-navbar-item-expo bd-navbar-item-base"
+           href="https://community.luart.org">
+          <span class="icon has-text-warning">
+            <i class="fas fa-comments"></i>
+          </span>
+          <span>Community</span>
+        </a>
+        <a class="navbar-item bd-navbar-item bd-navbar-item-blog bd-navbar-item-base"
+           href="https://luart.org/doc/tutorial/index.html">
+          <span class="icon has-text-rss">
+            <i class="fas fa-graduation-cap" style="margin-right: 5%"></i>
+          </span>
+          <span>Tutorials</span>
+        </a>
+		<div class="ml-6">
+			<span class="icon has-text-grey-light mr-1">
+				<i class="fas fa-search"></i>
+			</span></div>
+      <div>
+			<script defer src="https://cse.google.com/cse.js?cx=509c4cdde27f845e7"></script>
+			<div class="gcse-searchbox-only" data-resultsUrl="https://luart.org/search.html"></div>
+      </div>
+    </div>
+    <div class="navbar-end">
+      <a class="bd-navbar-icon navbar-item"
+         href="https://github.com/samyeyo"
+         aria-label="Github"
+         target="_blank">
+        <span class="icon" style="color: #000000">
+          <i class="fab fa-lg fa-github"></i>
+        </span>
+      </a>
+      <a class="bd-navbar-icon navbar-item"
+         href="https://twitter.com/__LuaRT__"
+         aria-label="X"
+         target="_blank">
+        <span class="icon" style="color: #000000">
+          <i class="fab fa-lg fa-x-twitter"></i>
+        </span>
+      </a>
+      <a class="bd-navbar-icon navbar-item"
+         href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+         aria-label="YouTube"
+         target="_blank">
+         <span class="icon" style="color: #FF0000">
+          <i class="fab fa-lg fa-youtube"></i>
+        </span>
+      </a>
+      <a class="bd-navbar-icon navbar-item"
+           href="https://discord.gg/XJJxQufmvh"
+           aria-label="Discord"
+           target="_blank">
+        <span class="icon" style="color: #5865F2">
+          <i class="fab fa-lg fa-discord"></i>
+        </span>
+      </a>
+    </div>
+  </nav>
+	  <header class="bd-single-header">
+      <div class="container is-max-desktop has-text-dark">
+        <div class="bd-single-titles">
+          <!-- <figure class="image is-3by2"> -->
+		  <h1 class="title mb-3" style="color: #004080">Windows programming framework for Lua</h1>
+		  <p class="subtitle mt-1 has-text-dark">Easy-to-use Lua programming environment for writing console or desktop applications for Windows</p>
+            <video autoplay loop muted preload="auto" kind="caption">
+				<source src="img/caroussel.webm" type="video/webm"/>
+			</video>
+          <!-- </figure>           -->
+        </div>
+      </div>
+    </header>    
+    <div id="section_features" class="bd-single-body bd-is-last">
+      <div  class="container is-max-desktop">
+        <div class="bd-single-titles">
+          <h1 class="title has-text-centered" style="color: #004080">Features</p>
+          <p class="subtitle mt-2">Develop in Lua, a simple and fast programming language with a "batteries included" environment</p>
+        </div>
+        <div class="bd-single-content content mt-6">
+          <div class="bd-docs-content bd-content">
+            <nav class="bd-links">
+              <div class="bd-link">
+                <span class="icon bd-link-icon" style="font-size: 2em"> <i class="fas fa-bolt" style="color: #ff9900"></i></span>
+                <div class="bd-link-body">
+                  <h1 class="is-size-4 bd-link-title" style="margin-bottom: 0; color:#ff9900">Fast</h3>
+                  <div class="bd-link-subtitle">Uses the latest Lua 5.4.5 VM</div>  
+                </div>
+              </div>
+              <div class="bd-link">
+                <span class="icon bd-link-icon" style="font-size: 2em; color: #ffcc00"><i class="fas fa-star"></i></span>
+                <div class="bd-link-body">
+                  <h1 class="is-size-4 bd-link-title" style="margin-bottom: 0; color: #ffcc00">Powerful</h3>
+                  <div class="bd-link-subtitle">Contains modules and objects for a wide variety of programming tasks.</div>  
+                </div>
+              </div>
+              <div class="bd-link">
+                <span class="icon bd-link-icon" style="font-size: 2em"><i class="fab fa-windows has-text-info"></i></span>
+                <div class="bd-link-body">
+                  <h1 class="is-size-4 bd-link-title has-text-info" style="margin-bottom: 0">Windows</h3>
+                  <div class="bd-link-subtitle">Optimized runtime library for Windows</div>  
+                </div>
+              </div>
+              <div class="bd-link">
+                <span class="icon bd-link-icon" style="font-size: 2em"><i class="fas fa-gears" style="color: #e6005c"></i></span>
+                <div class="bd-link-body">
+                  <h1 class="is-size-4 bd-link-title" style="margin-bottom: 0; color: #e6005c">Compiler</h3>
+                  <div class="bd-link-subtitle">Build standalone executables from your Lua scripts with embedded content</div>  
+                </div>
+              </div>
+              <div class="bd-link">
+                <span class="icon bd-link-icon" style="font-size: 2em"><i class="fas fa-feather" style="color: #CCCCCC"></i></span>
+                <div class="bd-link-body">
+                  <h1 class="is-size-4 bd-link-title" style="margin-bottom: 0; color: #888888">Lightweight</h3>
+                  <div class="bd-link-subtitle">No dependencies or any other third party library</div>  
+                </div>
+              </div>   
+              <div class="bd-link">
+                <span class="icon bd-link-icon" style="font-size: 2em"><i class="fas fa-language" style="color: #2eb82e"></i></span>
+                <div class="bd-link-body">
+                  <h1 class="is-size-4 bd-link-title" style="margin-bottom: 0; color: #2eb82e">UTF8 Strings</h3>
+                  <div class="bd-link-subtitle">Full support with patterns, substrings...</div>  
+                </div>
+              </div>    
+              <div class="bd-link">
+                <span class="icon bd-link-icon" style="font-size: 2em"><i class="fas fa-code" style="color: #ff3333"></i></span>
+                <div class="bd-link-body">
+                  <h1 class="is-size-4 bd-link-title" style="margin-bottom: 0; color: #ff3333">IDE</h3>
+                  <div class="bd-link-subtitle">Write and debug code with Lua<sup>rt</sup> Studio</div>  
+                </div>
+              </div> 
+              <div class="bd-link">
+                <span class="icon bd-link-icon" style="font-size: 2em"><i class="fas fa-moon" style="color: #0000b3"></i></span>
+                <div class="bd-link-body">
+                  <h1 class="is-size-4 bd-link-title" style="margin-bottom: 0; color: #0000b3">Develop in Lua</h3>
+                  <div class="bd-link-subtitle">Develop only in Lua, no C/C++ compilation needed</div>  
+                </div>
+              </div>
+            </nav>
+        	</div>
+        </div>
+      </div>
+      <header style="margin-top:8rem; margin-bottom: 0">
+        <div class="bd-single-body bd-is-last">
+          <div class="container is-max-desktop">
+            <div id="section_download" class="bd-single-titles">
+              <p class="title has-text-centered" style="color: #004080">Download</p>
+              <p class="subtitle has-text-centered">Lua<sup>rt</sup> is released under the <a href="https://opensource.org/licenses/mit-license.php" target="_blank">MIT</a> license.              
+              Source code is available on <a href="https://github.com/samyeyo" target="_blank"> Github</a>.</p>
+            </div>
+            <div class="content has-text-centered mt-6">
+              <a class="button is-info is-outlined" href="https://github.com/samyeyo/LuaRT/releases/latest" rel="nofollow" target="_blank">
+                <span class="icon"><i class="fas fa-download"></i></span><span> <b>Download Lua<sup>rt</sup></b></span>
+              </a>
+              <a class="button is-success is-rounded ml-4" href="doc/install.html" rel="nofollow" target="_blank">
+                <span class="icon"><i class="fas fa-circle-play"></i></span><span>Getting started</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </header>
+    </div>
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p class="mb-0"><strong>Lua<sup>rt</sup></strong> - Windows programming framework for Lua</p>
+        <a class="is-hovered mx-1" href="https://github.com/samyeyo" target="_blank" aria-label="Github">
+          <span class="icon" style="color: #A0A0A0"><i class="fab fa-lg fa-github"></i></span>
+        </a>      
+        <a class="is-hovered mx-1" href="https://twitter.com/__LuaRT__" target="_blank" aria-label="X">
+            <span class="icon" style="color: #A0A0A0"><i class="fab fa-lg fa-x-twitter"></i></span>
+        </a>
+        <a class="is-hovered mx-1" href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q" target="_blank" aria-label="YouTube">
+          <span class="icon" style="color: #A0A0A0">
+            <i class="fab fa-lg fa-youtube"></i>
+          </span>
+        </a> 
+        <a class="is-hovered mx-1" href="https://discord.gg/XJJxQufmvh" target="_blank" aria-label="Discord">
+          <span class="icon" style="color: #A0A0A0">
+            <i class="fab fa-lg fa-discord"></i>
+          </span>
+        </a>         
+        <p class="mt-0">Copyright &copy; 2024 <a href="mailto:samir.tine@luart.org">Samir Tine</a>.<br>
+        <a  href="https://bulma.io/made-with-bulma/">
+          <img src="https://bulma.io/images/made-with-bulma.png" alt="Made with Bulma" width="128" height="24">
+        </a></p>
+
+      </div>
+    </footer>   
+    <script src="js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,377 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta content="Lua programming tutorials" name="description" />
+  <title>
+    Basic notions of Lua programming | LuaRT free and open source Windows programming framework for Lua
+  </title>
+  <link href="../../css/bulma-docs.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        rel="stylesheet" />
+  <link href="https://luart.org/doc/tutorial/basic.html" rel="canonical" />
+  <link href="../../img/favicon.png" rel="icon" sizes="16x16" type="image/png" />
+  <link rel="stylesheet" href="../prism.css" data-noprefix="">
+</head>
+<body class="layout-documentation has-navbar-fixed-top">
+    <nav class="bd-navbar navbar is-fixed-top has-shadow" id="navbar">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="https://luart.org/">
+            <img alt="LuaRT: Free and open source Windows programming framework for Lua"
+                 height="40"
+                 src="../../img/logo.svg"
+                 width="112" />
+          </a>
+          <a class="navbar-item bd-navbar-mobile-icon"
+             href="https://github.com/samyeyo"
+             style="margin-left: auto"
+             target="_blank">
+            <span class="icon" style="color: #000000">
+              <i class="fab fa-lg fa-github"></i>
+            </span>
+          </a>
+          <a class="navbar-item bd-navbar-mobile-icon"
+             href="https://twitter.com/__LuaRT__"
+             target="_blank">
+            <span class="icon" style="color: #000000">
+              <i class="fab fa-lg fa-x-twitter"></i>
+            </span>
+          </a>
+          <a class="navbar-item bd-navbar-mobile-icon"
+             href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+             target="_blank">
+            <span class="icon" style="color: #FF0000">
+              <i class="fab fa-lg fa-youtube"></i>
+            </span>
+          </a>
+          <button class="navbar-burger burger"
+                  data-target="navMenuDocumentation"
+                  id="navbarBurger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+        <div class="navbar-menu" id="navMenuDocumentation">
+          <div class="navbar-start bd-navbar-start bd-is-original"
+               id="navbarStartOriginal">
+            <a class="navbar-item bd-navbar-item bd-navbar-item-bulma-book bd-navbar-item-base"
+               href="../../index.html#section_features">
+              <span class="icon has-text-bleeding">
+                <i class="fas fa-certificate"></i>
+              </span>
+              <span>Features</span>
+            </a>
+            <a class="navbar-item bd-navbar-item bd-navbar-item-love bd-navbar-item-base"
+               href="../../index.html#section_download">
+              <span class="icon has-text-danger">
+                <i class="fas fa-download"></i>
+              </span>
+              <span>Download</span>
+            </a>
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-item bd-navbar-item bd-navbar-item-videos bd-navbar-item-base scroll">
+                  <span class="icon has-text-success"><i class="fas fa-circle-play"></i></span><span>Getting started</span>
+                </a>
+                <div class="navbar-dropdown has-background-success-light">
+                    <a href="../install.html" class="dropdown-item has-text-success-dark">
+                      <span class="icon"><i class="fa fa-computer"></i></span> Installation
+                    </a>
+                    <a href="../first.html" class="dropdown-item has-text-success-dark">
+                        <span class="icon"><i class="fa fa-play"></i></span> First execution
+                    </a>
+                    <a href="../tour.html" class="dropdown-item has-text-success-dark">
+                      <span class="icon"><i class="fa fa-bus-simple"></i></span> Take a tour !
+                    </a>
+                </div>
+            </div>
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-item bd-navbar-item bd-navbar-item-extensions bd-navbar-item-base scroll">
+                  <span class="icon has-text-info"><i class="fas  fa-book"></i></span><span>Documentation</span>
+                </a>
+                <div class="navbar-dropdown has-background-info-light">
+                    <a href="../modules.html" class="dropdown-item has-text-info-dark">
+                      <span class="icon"><i class="fa fa-cubes"></i></span> Modules reference
+                    </a>
+                    <a href="../object.html" class="dropdown-item has-text-info-dark">
+                        <span class="icon"><i class="fa fa-shapes"></i></span> Object oriented programming
+                    </a>
+                    <a href="../toolchain.html" class="dropdown-item has-text-info-dark">
+                      <span class="icon"><i class="fa fa-wrench"></i></span> Toolchain documentation
+                    </a>
+                </div>
+            </div>
+            </a>
+            <a class="navbar-item bd-navbar-item bd-navbar-item-expo bd-navbar-item-base"
+               href="https://community.luart.org">
+              <span class="icon has-text-warning">
+                <i class="fas fa-comments"></i>
+              </span>
+              <span>Community</span>
+            </a>
+            <a class="navbar-item bd-navbar-item bd-navbar-item-blog bd-navbar-item-base" href="index.html">
+                <span class="icon has-text-rss">
+                  <i class="fas fa-graduation-cap"></i>
+                </span>
+                <span>Tutorials</span>
+              </a>
+            </div>
+            <div class="navbar-dropdown has-background-info-light">
+              <a href="../modules.html" class="dropdown-item has-text-info-dark">
+                <span class="icon"><i class="fa fa-cubes"></i></span> Modules reference
+              </a>
+              <a href="../object.html" class="dropdown-item has-text-info-dark">
+                  <span class="icon"><i class="fa fa-shapes"></i></span> Object oriented programming
+              </a>
+              <a href="../toolchain.html" class="dropdown-item has-text-info-dark">
+                <span class="icon"><i class="fa fa-wrench"></i></span> Toolchain documentation
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="navbar-end">
+          <a class="bd-navbar-icon navbar-item"
+             href="https://github.com/samyeyo"
+             target="_blank">
+            <span class="icon" style="color: #000000">
+              <i class="fab fa-lg fa-github"></i>
+            </span>
+          </a>
+          <a class="bd-navbar-icon navbar-item"
+             href="https://twitter.com/__LuaRT__"
+             target="_blank">
+            <span class="icon" style="color: #000000">
+              <i class="fab fa-lg fa-x-twitter"></i>
+            </span>
+          </a>
+          <a class="bd-navbar-icon navbar-item"
+             href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+             target="_blank">
+            <span class="icon" style="color: #FF0000">
+              <i class="fab fa-lg fa-youtube"></i>
+            </span>
+          </a>
+          <a class="bd-navbar-icon navbar-item"
+          href="https://discord.gg/XJJxQufmvh"
+          target="_blank">
+         <span class="icon" style="color: #5865F2">
+           <i class="fab fa-lg fa-discord"></i>
+         </span>
+       </a>
+        </div>
+      </nav>
+  
+  <section class="main-content columns is-centered is-fullheight" style="margin-top: 6%; margin-bottom: 4%">
+    <div class="column is-7">
+      <div class="card">
+        <div class="card-content">
+          <div class="content mb-6">
+            <p class="title is-2 mb-0" style="color: #004080">Basic notions of Lua programming</p>
+            <p class="mt-0 is-size-7 mb-6"><i>By Samir Tine, published on December 2021</i></p>
+            <p class="mt-6">With Lua<sup>rt</sup>, you can easily program in Windows using the Lua language. Still, you'll need to know coding in Lua! During this tutorial, you will be able to learn the fundamentals of programming with Lua, which will then enable you to then become familiar with Lua<sup>rt</sup> and start creating your own applications. Let's go !</p>
+
+
+            <h2 class="has-text-weight-light is-size-3 mt-6 mb-3">Let's start with some prehistory...</h2>
+            <p>Programming has always been about solving problems. As the Cro-Magnon man used stones to make fire, modern man uses a computer to facilitate his daily activities.
+            Using tools by humans always follows the same pattern, the same sequence of steps to achieve (or not achieve, if there is an error!) the desired result.</p>
+            To cook meat, prehistoric people prepared leaves and twigs first, then rubbed flints together to make a spark and blew on them to make embers.
+            Today, to write an email, the modern man starts by turning on his computer, logging into his email account, and then writes it, before sending it.
+            <p>Here are two diagrams, one representing cooking meat and one representing sending an email (can we speak of humanity's progress here?). Essentially, these are instruction sequences since the instructions must be followed one after another. That's what programming is all about!</p>          
+            <article class="message is-warning is-small mt-6 mb-6" style="margin-left: 20%; margin-right: 20%">
+              <div class="message-header">
+                <p><i class="fas fa-thumbtack"></i> Sticky note</p>
+              </div>
+              <div class="message-body">
+                A program consists of a series of instructions executed one after another.
+              </div>
+            </article>
+            <h2 class="has-text-weight-light is-size-3 mt-6 mb-3">A modern approach to complexity</h2>
+            <p>Using voice assistants nowadays makes it easier to program your smartphone or computer to do certain tasks: "send Lisa an email" or "wake me up at 6 am tomorrow". It's sort of like programming, but you cannot express the inventiveness that makes you a man (or woman).</p>
+            <p>With the voice assistant, you can only program what was previously defined as being programmable (send an email, set an alarm clock, etc.).</p>
+            <p>Programming languages, such as Lua, provide more flexibility by allowing you to define instruction sequences in much more precise manners, while also being particularly simple. Just as voice assistants translate your words into actions, Lua translates your instructions into actions our computers can understand (don't tell me you thought you were really talking with your phone!). To accomplish this, Lua<sup>rt</sup> uses an <i>interpreter</i>.</p>
+            <article class="message is-warning is-small mt-6 mb-6" style="margin-left: 20%; margin-right: 20%">
+              <div class="message-header">
+                <p><i class="fas fa-thumbtack"></i> Sticky note</p>
+              </div>
+              <div class="message-body">An interpreter translates your instructions into actions that are executed by the computer.</div>
+            </article>
+            Lua<sup>rt</sup> uses an interpreter named <code>luart.exe</code>. In its hands, your instructions will be executed one after another. Wait a minute, how am I going to give it my instructions ?
+            A voice assistant speaks with the voice of his master (hence modern slavery), a Lua<sup>rt</sup> interpreter will use a text file in which you will specify the instructions he must perform.</p>
+            <article class="message is-success is-small mt-6 mb-6" style="margin-left: 20%; margin-right: 20%">
+              <div class="message-header">
+                <p><i class="fas fa-lightbulb"></i> Tips</p>
+              </div>
+              <div class="message-body">You can run your program with Lua<sup>rt</sup> by entering <code>luart.exe myprogram.lua</code> in a console window or by double-clicking the file in Windows Explorer.</div>
+            </article>
+            
+            
+            <h2 class="has-text-weight-light is-size-3 mt-6 mb-3">Your first program</h2>
+            <p>Come on, you will finally be able to write your first program !</p>
+            "Hey Google, how do we write a program" ?<br>You guess right, not like that ! Ok ok I will not use the voice assistant example in my programming tutorials anymore...<p>
+            <p>The first step involves creating a text file (for example, using the famous Notepad) and saving it as <code>"myprogram.lua"</code>. Write the following instructions in this file :
+             <div class="language-lua" style="margin-left: 20%; margin-right:20%"><code>
+print("Listen !")
+sys.beep()
+
+</code></div></p>
+            <p class="mt-4">Go to the directory where you saved your program, then run it in a console window with the following command :</p>
+            <div class="language-batch mb-4"  style="margin-left: 20%; margin-right:20%"><code>
+luart.exe myprogram.lua 
+            </code></div>
+            <p>You should see a message <code>"Listen !"</code> on the screen and then hear a beep.
+            Great, your program was executed sequentially as we requested !  </p>                       
+            <p class="has-text-weight-light is-size-3 mt-6 mb-3">The first line
+            <br>
+            <code class="language-lua is-size-6">print ("Listen !")</code></p>
+            <p>In the first line of the program, the computer is asked to perform an action called <code>print</code> on the screen. Why are there parentheses around the command? Through parentheses, the interpreter is instructed not to print just anything, but rather to print the word inside the double quotes<code>"Listen!"</code>.</p>
+            Just like when you go shopping, you must open your wallet in order to pay. You can then choose whichever method of payment you want, cash or credit card. 
+            Well, in Lua it is the same: opening parentheses tells what the action will be working with.</p>
+            With the same analogy, Lua calls the means of payments <i>arguments</i>.
+            The action with parentheses will then be executed depending on these arguments. The action in question is actually called a <i>function</i> in Lua (reminds us of our math lessons without a doubt !).</p>
+            
+            <article class="message is-warning is-small mt-6 mb-6" style="margin-left: 20%; margin-right: 20%">
+              <div class="message-header">
+                <p><i class="fas fa-thumbtack"></i> Sticky note</p>
+              </div>
+              <div class="message-body">A function allows to perform an action based on arguments enclosed in parentheses.</div>
+            </article>
+                        
+            In summary, your program's first line instructs the interpreter:
+            <table class="table mt-5 mb-6 is-striped">
+				<thead><tr>
+					<th>Instructions</th><th>Interpretation</th></tr></thead>
+					<tr><td><code>print</code></td><td style="color :#838381">Here is the name of a function</td>
+					<tr><td><code>(</code></td><td style="color :#838381">Execute the function with the following arguments</td>
+					<tr><td><code>"Listen !"</code></td><td style="color :#838381">The first argument is a quoted sentence</td>
+					<tr><td><code>)</code></td><td style="color :#838381">No more arguments, execute the function now !</td>
+				</tr>
+			</table>
+            <p>Programming languages have a very specific grammar with words and expressions that are different from our own language, and this is the reason why we need to learn them in order to program. The language we are describing is Lua. Regardless of what language is used, it cannot be translated to other languages like javascript, C, or assembler, whose syntax has to be learned before using them. Hopefully, the concepts remain the same, such as the concept of function.</p>
+            <p>One can ask at this point: where is the function <code>print</code> ? Indeed your program does not indicate to the interpreter where the function is, to be able to run it. It is actually a basic function available throughout your program (it is called a <i>library function</i> part of a whole arsenal of functions already integrated into the interpreter and therefore immediately available to make your life easier. This arsenal is actually called the runtime library). This library does not store books but functions ready to be executed by your programs.</p>
+            <article class="message is-warning is-small mt-6 mb-6" style="margin-left: 20%; margin-right: 20%">
+              <div class="message-header">
+                <p><i class="fas fa-thumbtack"></i> Sticky note</p>
+              </div>
+              <div class="message-body">Lua<sup>rt</sup> provides a much larger library of functions than the standard version of Lua, allowing users to do many more actions in your programs without additional effort.</div>
+            </article>
+            <p class="has-text-weight-light is-size-3 mt-6 mb-3">Second line
+            <br>
+            <code class="language-lua is-size-6">sys.beep()</code></p>
+            <p>Good! The first line of the program covered so many concepts! I assure you, the few concepts you have just learned will help you understand the rest better. According to the first instruction's syntax, and by analogy, we can describe this second line as follows:</p>
+            <table class="table mt-5 mb-6 is-striped">
+              <thead><tr>
+                <th>Instructions</th><th>Interpretation</th></tr></thead>
+					<tr><td><code>sys.beep</code></td><td style="color :#838381">Here is the name of a function</td>
+            <tr><td><code>(</code></td><td style="color :#838381">Execute the function with the following arguments</td>
+              <tr><td><code>)</code></td><td style="color :#838381">No arguments, execute the function now !</td>
+				</tr></thead>
+			</table>
+            <p>I think this is rather clear if you have followed along. Not quite yet, though.</p>
+            <p>Perhaps you are wondering why there is a period <code>.</code> in the middle of a function name. The period is usually used to separate two sentences in human language. Good point! In Lua language, a dot is also used to separate instructions, not sentences. What are <code>sys</code> and <code>beep</code> in this case? Since it is followed by parentheses, <code>beep</code> is the function that the interpreter will execute. But then what is <code>sys</code>?</p>
+            Let's answer this question! Change the second line in your program that way :
+            <div class="language-lua mb-4" style="margin-left: 20%; margin-right:20%"><code>
+print("Listen !")
+beep()              
+              </code></div></p>
+            <p>Run your program by typing <code>luart.exe myprogram.lua</code> in the console window ... and a disaster occurs! Rather than hearing a beep, you just saw a strange error message instead!</p>
+            <div class="language-batch mb-5"  style="margin-left: 20%; margin-right:20%"><code>
+myprogram.lua:2: attempt to call a nil value (global 'beep')
+            </code></div>
+</code></pre>
+        <p>Let's see. The message indicates that the interpreter tried to execute the <code>beep</code> function on line 2 but ended up executing a nil value instead! That is to say, the interpreter found nothing but absolute nothing, the interstellar void !</p>
+        <p>Do you remember the <code>print</code> function? It has been executed, however, because the interpreter stores it in the overall library space (a sort of central aisle), which makes it accessible anywhere in your program (In Lua we call it a global function). In contrast, there is a <code>beep</code> function in the interpreter, but it is stored in a separate library shelf.</p>
+        <p>Yes, it is in the <code>sys</code> aisle, as you probably guessed. Without this primordial indication, the interpreter couldn't find the <code>beep</code> function.</p>
+        <p>The dot in <code>sys.beep</code> tells the interpreter that the <code>beep</code> function is located in the <code>sys</code> aisle of the Lua<sup>rt</sup> runtime library.</p>    
+        <article class="message is-warning is-small mt-6 mb-6" style="margin-left: 20%; margin-right: 20%">
+              <div class="message-header">
+                <p><i class="fas fa-thumbtack"></i> Sticky note</p>
+              </div>
+              <div class="message-body">The point, in Lua, is used to classify elements, for example functions, in the standard library.</div>
+            </article>
+        <p>Keeping all this in mind, here is how the interpreter interprets your first program:</p>    
+        <table class="table mt-5 mb-6 is-striped">
+          <thead><tr>
+            <th>Instructions</th><th>Interpretation</th></tr></thead>
+            <tr><td><code>print(</code></td><td style="color :#838381">I order you to execute that function from the central aisle of the library, using the following arguments</td>
+              <tr><td><code>"Listen !"</code></td><td style="color :#838381">The first argument is a quoted sentence</td>
+                <tr><td><code>)</code></td><td style="color :#838381">No more arguments, execute the function now !</td>
+                  <tr><td><code>sys.</code></td><td style="color :#838381">Here is the name of a shelf in the library</td>
+                    <tr><td><code>sys.beep(</code></td><td style="color :#838381">Here is the name of a function from this shelf that I order you to execute, using the following arguments</td>
+                      <tr><td><code>)</code></td><td style="color :#838381">No arguments, execute the function now !</td>
+            </tr></thead>
+        </table>    
+        <p>A punctuation symbol, which follows a word in Lua, offers information to the interpreter: an open parenthesis indicates a function to be executed. The dot indicates that the word preceding the dot is a shelf, a storage area.</p>
+        <h2 class="has-text-weight-light is-size-3 mt-6 mb-3">In conclusion</h2>
+        <p>What a wide range of concepts this tutorial covers ! If you have followed along correctly, you have already grasped some important Lua concepts:</p>
+        <ul>            
+            <li>A Lua program is sequence of instructions executed by an interpreter</li>
+            <li>A function is an action that is executed (or we prefer the term 'called') by providing arguments in parentheses</li>
+            <li>The Lua<sup>rt</sup> interpreter provides plenty of ready-to-use functions, stored in a runtime library</li>
+            <li>This library has accessible storage shelves when using a dot</li>
+            <li>This library has a central aisle where the functions are accessible without the need to use the dot (they are <i>global</i> functions)</li>
+            <li>If a function is not found in the library, it does not exists, it's <i>nothing</i></li>
+            <li><i>Nothing</i> is called <code>nil</code> in Lua</li>
+            <li>A text sentence is placed in double quotes in Lua</li>
+            <li>The <code>print</code> function is used to display text on the screen</li>
+            <li>The <code>sys.beep</code> function is used to emit a beep</li>            
+        </ul>
+        <p>After reading the first part of this tutorial, it is time to take a short break and go back to your real life, to enjoy your loved ones for example, before diving into the second part with curiosity !</p>          </div> 
+        </div>
+      </div>
+    </div>
+  </section>  
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p class="mb-0">
+        <strong>
+          Lua
+          <sup>rt</sup> Documentation
+        </strong> - Windows programming framework for Lua
+      </p>
+      <a class="is-hovered" href="https://github.com/samyeyo" target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-github"></i>
+        </span>
+      </a>
+      <a class="is-hovered"
+         href="https://twitter.com/__LuaRT__"
+         target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-x-twitter"></i>
+        </span>
+      </a>
+<a class="is-hovered"
+         href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+         target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-youtube"></i>
+        </span>
+      </a>      
+      <a class="is-hovered"
+      href="https://discord.gg/XJJxQufmvh"
+      target="_blank">
+     <span class="icon" style="color: #A0A0A0">
+       <i class="fab fa-lg fa-discord"></i>
+     </span>
+     </a>    
+      <p class="mt-0">
+        Copyright &copy; 2024
+        <a href="mailto:samir.tine@luart.org">Samir Tine</a>.
+        <br />
+        <a href="https://bulma.io/made-with-bulma/">
+          <img alt="Made with Bulma"
+               height="24"
+               src="https://bulma.io/images/made-with-bulma.png"
+               width="128" />
+        </a>
+      </p>
+    </div>
+  </footer>
+  <script src="../../js/main.js"></script>
+  <script src="../prism.js"></script>
+  <script src="../custom-class.js"></script>
+  <script>Prism.plugins.customClass.prefix('prism--');</script>
+</body>
+</html>

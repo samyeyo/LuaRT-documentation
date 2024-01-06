@@ -1,0 +1,374 @@
+﻿	<!doctype html>
+	<html lang="en">
+	<head>
+	  <meta charset="utf-8" />
+	  <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+	  <meta content="width=device-width, initial-scale=1" name="viewport" />
+	  <meta content="Lua object oriented programming tutorial (basic concepts)" name="description" />
+	  <title>
+		Object oriented progamming: basic concepts | LuaRT free and open source Windows programming framework for Lua
+	  </title>
+	  <link href="../../css/bulma-docs.min.css" rel="stylesheet" />
+	  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+			rel="stylesheet" />
+	  <link href="https://luart.org/doc/tutorial/OOP-Part1.html" rel="canonical" />
+	  <link href="../../img/favicon.png" rel="icon" sizes="16x16" type="image/png" />
+	  <link rel="stylesheet" href="../prism.css" data-noprefix="">
+	</head>
+	<body class="layout-documentation has-navbar-fixed-top">
+		<nav class="bd-navbar navbar is-fixed-top has-shadow" id="navbar">
+			<div class="navbar-brand">
+			  <a class="navbar-item" href="https://luart.org/">
+				<img alt="LuaRT: Free and open source Windows programming framework for Lua"
+					 height="40"
+					 src="../../img/logo.svg"
+					 width="112" />
+			  </a>
+			  <a class="navbar-item bd-navbar-mobile-icon"
+				 href="https://github.com/samyeyo"
+				 style="margin-left: auto"
+				 target="_blank">
+				<span class="icon" style="color: #000000">
+				  <i class="fab fa-lg fa-github"></i>
+				</span>
+			  </a>
+			  <a class="navbar-item bd-navbar-mobile-icon"
+				 href="https://twitter.com/__LuaRT__"
+				 target="_blank">
+				<span class="icon" style="color: #000000">
+				  <i class="fab fa-lg fa-x-twitter"></i>
+				</span>
+			  </a>
+			  <a class="navbar-item bd-navbar-mobile-icon"
+				 href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+				 target="_blank">
+				<span class="icon" style="color: #FF0000">
+				  <i class="fab fa-lg fa-youtube"></i>
+				</span>
+			  </a> 
+         <a class="navbar-item bd-navbar-mobile-icon"
+          href="https://discord.gg/XJJxQufmvh"
+          target="_blank">
+         <span class="icon" style="color: #5865F2">
+           <i class="fab fa-lg fa-discord"></i>
+         </span>
+       </a>
+	   <button class="navbar-burger burger"
+					  data-target="navMenuDocumentation"
+					  id="navbarBurger">
+				<span></span>
+				<span></span>
+				<span></span>
+			  </button>
+			</div>
+			<div class="navbar-menu" id="navMenuDocumentation">
+			  <div class="navbar-start bd-navbar-start bd-is-original"
+				   id="navbarStartOriginal">
+				<a class="navbar-item bd-navbar-item bd-navbar-item-bulma-book bd-navbar-item-base"
+				   href="../../index.html#section_features">
+				  <span class="icon has-text-bleeding">
+					<i class="fas fa-certificate"></i>
+				  </span>
+				  <span>Features</span>
+				</a>
+				<a class="navbar-item bd-navbar-item bd-navbar-item-love bd-navbar-item-base"
+				   href="../../index.html#section_download">
+				  <span class="icon has-text-danger">
+					<i class="fas fa-download"></i>
+				  </span>
+				  <span>Download</span>
+				</a>
+				<div class="navbar-item has-dropdown is-hoverable">
+					<a class="navbar-item bd-navbar-item bd-navbar-item-videos bd-navbar-item-base scroll">
+					  <span class="icon has-text-success"><i class="fas fa-circle-play"></i></span><span>Getting started</span>
+					</a>
+					<div class="navbar-dropdown has-background-success-light">
+						<a href="../install.html" class="dropdown-item has-text-success-dark">
+						  <span class="icon"><i class="fa fa-computer"></i></span> Installation
+						</a>
+						<a href="../first.html" class="dropdown-item has-text-success-dark">
+							<span class="icon"><i class="fa fa-play"></i></span> First execution
+						</a>
+						<a href="../tour.html" class="dropdown-item has-text-success-dark">
+						  <span class="icon"><i class="fa fa-bus-simple"></i></span> Take a tour !
+						</a>
+					</div>
+				</div>
+				<div class="navbar-item has-dropdown is-hoverable">
+					<a class="navbar-item bd-navbar-item bd-navbar-item-extensions bd-navbar-item-base scroll">
+					  <span class="icon has-text-info"><i class="fas  fa-book"></i></span><span>Documentation</span>
+					</a>
+					<div class="navbar-dropdown has-background-info-light">
+						<a href="../modules.html" class="dropdown-item has-text-info-dark">
+						  <span class="icon"><i class="fa fa-cubes"></i></span> Modules reference
+						</a>
+						<a href="../object.html" class="dropdown-item has-text-info-dark">
+							<span class="icon"><i class="fa fa-shapes"></i></span> Object oriented programming
+						</a>
+						<a href="../toolchain.html" class="dropdown-item has-text-info-dark">
+						  <span class="icon"><i class="fa fa-wrench"></i></span> Toolchain documentation
+						</a>
+					</div>
+				</div>
+				</a>
+				<a class="navbar-item bd-navbar-item bd-navbar-item-expo bd-navbar-item-base"
+				   href="https://community.luart.org">
+				  <span class="icon has-text-warning">
+					<i class="fas fa-comments"></i>
+				  </span>
+				  <span>Community</span>
+				</a>
+				<a class="navbar-item bd-navbar-item bd-navbar-item-blog bd-navbar-item-base" href="index.html">
+					<span class="icon has-text-rss">
+					  <i class="fas fa-graduation-cap"></i>
+					</span>
+					<span>Tutorials</span>
+				  </a>
+				</div>
+				<div class="navbar-dropdown has-background-info-light">
+				  <a href="../modules.html" class="dropdown-item has-text-info-dark">
+					<span class="icon"><i class="fa fa-cubes"></i></span> Modules reference
+				  </a>
+				  <a href="../object.html" class="dropdown-item has-text-info-dark">
+					  <span class="icon"><i class="fa fa-shapes"></i></span> Object oriented programming
+				  </a>
+				  <a href="../toolchain.html" class="dropdown-item has-text-info-dark">
+					<span class="icon"><i class="fa fa-wrench"></i></span> Toolchain documentation
+				  </a>
+				</div>
+			  </div>
+			</div>
+			<div class="navbar-end">
+			  <a class="bd-navbar-icon navbar-item"
+				 href="https://github.com/samyeyo"
+				 target="_blank">
+				<span class="icon" style="color: #000000">
+				  <i class="fab fa-lg fa-github"></i>
+				</span>
+			  </a>
+			  <a class="bd-navbar-icon navbar-item"
+				 href="https://twitter.com/__LuaRT__"
+				 target="_blank">
+				<span class="icon" style="color: #000000">
+				  <i class="fab fa-lg fa-x-twitter"></i>
+				</span>
+			  </a>
+			  <a class="bd-navbar-icon navbar-item"
+				 href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+				 target="_blank">
+				<span class="icon" style="color: #FF0000">
+				  <i class="fab fa-lg fa-youtube"></i>
+				</span>
+			  </a>
+			  <a class="bd-navbar-icon navbar-item"
+				 href="https://discord.gg/XJJxQufmvh"
+				 target="_blank">
+				<span class="icon" style="color: #5865F2">
+				  <i class="fab fa-lg fa-discord"></i>
+				</span>
+			  </a>
+			</div>
+		  </nav>
+	  
+	  <section class="main-content columns is-centered is-fullheight" style="margin-top: 6%; margin-bottom: 4%">
+		<div class="column is-7">
+		  <div class="card">
+			<div class="card-content">
+			  <div class="content mb-6">
+				<h1 class="title is-2 mb-2 has-text-weight-light" style="color: #004080">Object oriented progamming: basic concepts</h1>
+				<p class="mt-0 is-size-7 mb-6"><i>By Samir Tine, published on January 2023</i></p>
+				<h2 class="has-text-weight-light is-size-3 mt-6">Objects in Lua<sup>rt</sup></h2>
+<p class="mt-4">
+An object in Lua<sup>rt</sup> is a type in its own right, similar to standard data types (strings, numbers, booleans...).
+The concept of an object can be described as a pattern that defines specific capabilities of data.
+
+As an example, a "Fruct" object is defined by :
+
+
+<ul>
+
+<li>Attributes : color, shape...</li>
+
+<li>Behaviors :  peeled, eat...</li>
+</ul>
+<p class="mt-4">
+By doing this, it will be possible to represent any fruit. This is exactly what object programming is all about: defining entities by their behaviors and attributes so that you can then easily create new data values without the need to rewrite code.
+
+Here's how to create a Fruct object with Lua<sup>rt</sup> :
+
+</p>
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%"><code>
+Fruct = Object { }
+-- prints "Object" because Fruct is an Object
+print(type(Fruct))
+
+</code></div><h2 class="has-text-weight-light is-size-3 mt-6">Object attributes</h2>
+<p class="mt-4">
+The attributes of an object can, as we have seen, define the characteristics of an object. Let's define attributes for the "Fruct" object:
+
+</p>
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%"><code>
+Fruct.color = ""
+Fruct.shape = ""
+
+</code></div><p class="mt-4">
+Another way is to provide the attributes directly when defining the object:
+
+</p>
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%"><code>
+Fruct = Object { 
+    color = "",
+    shape = ""
+}
+
+</code></div><h2 class="has-text-weight-light is-size-3 mt-6">Object instances</h2>
+<p class="mt-4">
+An object is therefore a rather conceptual thing that describes how "a value" of this object should behave. 
+"A value" of this object is called an "instance", in real life.
+In our example, a Fruct object is a concept that represent a lot of possible instances in real life : apples, bananas, peers...
+In this case, an apple is called an "instance" of a Fruct.
+
+Let's create our first Fruct instance :
+
+</p>
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%"><code>
+apple = Fruct()
+print(type(apple))
+
+</code></div><p class="mt-4">
+That's it, we have created a new kind of Fruct ! We can see that the apple has a type of "Fruct", and that it has been created by calling the Fruct object like a function.
+An instance is a living value of an object that has been created in memory. Usually an instance will have values assigned to it's attributes that differentiates it from other instances of the same type of object. Now let's customize the attributes of the apple instance :
+
+</p>
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%"><code>
+apple.color = "red"
+appel.shape = "spherical"
+
+</code></div><p class="mt-4">
+We can now create another Fruct instance :
+
+</p>
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%"><code>
+banana.color = "yellow"
+banana.shape = "curved"
+
+</code></div><h2 class="has-text-weight-light is-size-3 mt-6">Object methods</h2>
+<p class="mt-4">
+We have seen that objects are defined by their attributes and abilities. By abilities we actually mean the ability to perform an action, a behavior. This is done simply by defining object functions (also called methods). Let's add a "describe" behaviour to our Fruct object :
+
+</p>
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%"><code>
+function Fruct:describe()
+    print("I am a "..self.color.." and "..self.shape.." fruct")
+end
+
+</code></div><p class="mt-4">
+Object methods are defined like table methods with the colon ":" notation (which provides the implicit <code>self</code> function parameter)
+Let see if we can describe our apple and banana instances :
+
+</p>
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%"><code>
+apple:describe() -- prints "I am a red and spherical fruct"
+banana:describe() -- prints "I am a yellow and curved fruct"
+
+</code></div><p class="mt-4">
+That's it. You just have defined an object behaviour that can be used in instances.
+We can even use this behaviour with the Fruct object, but it's not really functionnal, as an object is not intended to be used (remember, it's just a pattern that describes the capabilities of its instances) :
+
+</p>
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%"><code>
+Fruct:describe() -- prints "I am a  and  fruct"
+
+</code></div><p class="mt-4">
+It's not attractive, let's try to improve this message from the Fruct object :
+
+</p>
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%"><code>
+function Fruct:describe()
+    if type(self) ~= "Object" then
+        -- self is a Fruct instance
+        print("I am a "..self.color.." and "..self.shape.." fruct")    
+    else
+        -- self is the Fruct object
+        print("I am a conceptual Fruct")
+    end
+end
+
+</code></div><p class="mt-4">
+Here we evaluate the type of self to propose a different message depending on whether the describe() method was called by the Fruct object or by one of its instances.
+A more attractive way is to use the global <a href="..\base\is.html">is()</a> function rather than evaluating the type of self :
+
+</p>
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%"><code>
+function Fruct:describe()
+    if is(self, Fruct) then
+        -- self is a Fruct instance
+        print("I am a "..self.color.." and "..self.shape.." fruct")        
+    else
+        -- self is the Fruct object
+        print("I am a conceptual Fruct")
+    end
+end
+
+</code></div><p class="mt-4">
+The <a href="..\base\is.html">is()</a> function checks if a value is an instance of an Object. Let's try it on our apple and banana values :
+
+</p>
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%"><code>
+is(apple, Fruct)  -- true
+is(banana, Fruct) -- true
+is(apple, banana) -- false
+
+</code></div>
+		<p>You know the basics about objects and instances in Lua<sup>rt</sup> now.
+		The next part of the object oriented programming tutorial will cover object constructors and properties.</p>
+			</div>
+		  </div>
+		</div>
+	  </section>  
+	  <footer class="footer">
+		<div class="content has-text-centered">
+		  <p class="mb-0">
+			<strong>
+			  Lua
+			  <sup>rt</sup> Documentation
+			</strong> - Windows programming framework for Lua
+		  </p>
+		  <a class="is-hovered" href="https://github.com/samyeyo" target="_blank">
+			<span class="icon" style="color: #A0A0A0">
+			  <i class="fab fa-lg fa-github"></i>
+			</span>
+		  </a>
+		  <a class="is-hovered"
+			 href="https://twitter.com/__LuaRT__"
+			 target="_blank">
+			<span class="icon" style="color: #A0A0A0">
+			  <i class="fab fa-lg fa-x-twitter"></i>
+			</span>
+		  </a>
+		  <a class="is-hovered"
+			 href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+			 target="_blank">
+			<span class="icon" style="color: #A0A0A0">
+			  <i class="fab fa-lg fa-youtube"></i>
+			</span>
+		  </a>
+		  <p class="mt-0">
+			Copyright &copy; 2024
+			<a href="mailto:samir.tine@luart.org">Samir Tine</a>.
+			<br />
+			<a href="https://bulma.io/made-with-bulma/">
+			  <img alt="Made with Bulma"
+				   height="24"
+				   src="https://bulma.io/images/made-with-bulma.png"
+				   width="128" />
+			</a>
+		  </p>
+		</div>
+	  </footer>
+	  <script src="../../js/main.js"></script>
+	  <script src="../prism.js"></script>
+	  <script src="../custom-class.js"></script>
+	  <script>Prism.plugins.customClass.prefix('prism--');</script>
+	</body>
+	</html>	

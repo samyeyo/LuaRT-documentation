@@ -1,0 +1,368 @@
+﻿	<!doctype html>
+	<html lang="en">
+	<head>
+	  <meta charset="utf-8" />
+	  <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+	  <meta content="width=device-width, initial-scale=1" name="viewport" />
+	  <meta content="Lua object oriented programming tutorial (inheritance and mixins)" name="description" />
+	  <title>
+		Object oriented progamming: inheritance and mixins | LuaRT free and open source Windows programming framework for Lua
+	  </title>
+	  <link href="../../css/bulma-docs.min.css" rel="stylesheet" />
+	  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+			rel="stylesheet" />
+	  <link href="https://luart.org/doc/tutorial/OOP-part3.html" rel="canonical" />
+	  <link href="../../img/favicon.png" rel="icon" sizes="16x16" type="image/png" />
+	  <link rel="stylesheet" href="../prism.css" data-noprefix="">
+	</head>
+	<body class="layout-documentation has-navbar-fixed-top">
+		<nav class="bd-navbar navbar is-fixed-top has-shadow" id="navbar">
+			<div class="navbar-brand">
+			  <a class="navbar-item" href="https://luart.org/">
+				<img alt="LuaRT: Free and open source Windows programming framework for Lua"
+					 height="40"
+					 src="../../img/logo.svg"
+					 width="112" />
+			  </a>
+			  <a class="navbar-item bd-navbar-mobile-icon"
+				 href="https://github.com/samyeyo"
+				 style="margin-left: auto"
+				 target="_blank">
+				<span class="icon" style="color: #000000">
+				  <i class="fab fa-lg fa-github"></i>
+				</span>
+			  </a>
+			  <a class="navbar-item bd-navbar-mobile-icon"
+				 href="https://twitter.com/__LuaRT__"
+				 target="_blank">
+				<span class="icon" style="color: #000000">
+				  <i class="fab fa-lg fa-x-twitter"></i>
+				</span>
+			  </a>
+			  <a class="navbar-item bd-navbar-mobile-icon"
+				 href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+				 target="_blank">
+				<span class="icon" style="color: #FF0000">
+				  <i class="fab fa-lg fa-youtube"></i>
+				</span>
+			  </a> 
+         <a class="navbar-item bd-navbar-mobile-icon"
+          href="https://discord.gg/XJJxQufmvh"
+          target="_blank">
+         <span class="icon" style="color: #5865F2">
+           <i class="fab fa-lg fa-discord"></i>
+         </span>
+       </a><button class="navbar-burger burger"
+					  data-target="navMenuDocumentation"
+					  id="navbarBurger">
+				<span></span>
+				<span></span>
+				<span></span>
+			  </button>
+			</div>
+			<div class="navbar-menu" id="navMenuDocumentation">
+			  <div class="navbar-start bd-navbar-start bd-is-original"
+				   id="navbarStartOriginal">
+				<a class="navbar-item bd-navbar-item bd-navbar-item-bulma-book bd-navbar-item-base"
+				   href="../../index.html#section_features">
+				  <span class="icon has-text-bleeding">
+					<i class="fas fa-certificate"></i>
+				  </span>
+				  <span>Features</span>
+				</a>
+				<a class="navbar-item bd-navbar-item bd-navbar-item-love bd-navbar-item-base"
+				   href="../../index.html#section_download">
+				  <span class="icon has-text-danger">
+					<i class="fas fa-download"></i>
+				  </span>
+				  <span>Download</span>
+				</a>
+				<div class="navbar-item has-dropdown is-hoverable">
+					<a class="navbar-item bd-navbar-item bd-navbar-item-videos bd-navbar-item-base scroll">
+					  <span class="icon has-text-success"><i class="fas fa-circle-play"></i></span><span>Getting started</span>
+					</a>
+					<div class="navbar-dropdown has-background-success-light">
+						<a href="../install.html" class="dropdown-item has-text-success-dark">
+						  <span class="icon"><i class="fa fa-computer"></i></span> Installation
+						</a>
+						<a href="../first.html" class="dropdown-item has-text-success-dark">
+							<span class="icon"><i class="fa fa-play"></i></span> First execution
+						</a>
+						<a href="../tour.html" class="dropdown-item has-text-success-dark">
+						  <span class="icon"><i class="fa fa-bus-simple"></i></span> Take a tour !
+						</a>
+					</div>
+				</div>
+				<div class="navbar-item has-dropdown is-hoverable">
+					<a class="navbar-item bd-navbar-item bd-navbar-item-extensions bd-navbar-item-base scroll">
+					  <span class="icon has-text-info"><i class="fas  fa-book"></i></span><span>Documentation</span>
+					</a>
+					<div class="navbar-dropdown has-background-info-light">
+						<a href="../modules.html" class="dropdown-item has-text-info-dark">
+						  <span class="icon"><i class="fa fa-cubes"></i></span> Modules reference
+						</a>
+						<a href="../object.html" class="dropdown-item has-text-info-dark">
+							<span class="icon"><i class="fa fa-shapes"></i></span> Object oriented programming
+						</a>
+						<a href="../toolchain.html" class="dropdown-item has-text-info-dark">
+						  <span class="icon"><i class="fa fa-wrench"></i></span> Toolchain documentation
+						</a>
+					</div>
+				</div>
+				</a>
+				<a class="navbar-item bd-navbar-item bd-navbar-item-expo bd-navbar-item-base"
+				   href="https://community.luart.org">
+				  <span class="icon has-text-warning">
+					<i class="fas fa-comments"></i>
+				  </span>
+				  <span>Community</span>
+				</a>
+				<a class="navbar-item bd-navbar-item bd-navbar-item-blog bd-navbar-item-base" href="index.html">
+					<span class="icon has-text-rss">
+					  <i class="fas fa-graduation-cap"></i>
+					</span>
+					<span>Tutorials</span>
+				  </a>
+				</div>
+				<div class="navbar-dropdown has-background-info-light">
+				  <a href="../modules.html" class="dropdown-item has-text-info-dark">
+					<span class="icon"><i class="fa fa-cubes"></i></span> Modules reference
+				  </a>
+				  <a href="../object.html" class="dropdown-item has-text-info-dark">
+					  <span class="icon"><i class="fa fa-shapes"></i></span> Object oriented programming
+				  </a>
+				  <a href="../toolchain.html" class="dropdown-item has-text-info-dark">
+					<span class="icon"><i class="fa fa-wrench"></i></span> Toolchain documentation
+				  </a>
+				</div>
+			  </div>
+			</div>
+			<div class="navbar-end">
+			  <a class="bd-navbar-icon navbar-item"
+				 href="https://github.com/samyeyo"
+				 target="_blank">
+				<span class="icon" style="color: #000000">
+				  <i class="fab fa-lg fa-github"></i>
+				</span>
+			  </a>
+			  <a class="bd-navbar-icon navbar-item"
+				 href="https://twitter.com/__LuaRT__"
+				 target="_blank">
+				<span class="icon" style="color: #000000">
+				  <i class="fab fa-lg fa-x-twitter"></i>
+				</span>
+			  </a>
+			  <a class="bd-navbar-icon navbar-item"
+				 href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+				 target="_blank">
+				<span class="icon" style="color: #FF0000">
+				  <i class="fab fa-lg fa-youtube"></i>
+				</span>
+			  </a>
+			  <a class="bd-navbar-icon navbar-item"
+				 href="https://discord.gg/XJJxQufmvh"
+				 target="_blank">
+				<span class="icon" style="color: #5865F2">
+				  <i class="fab fa-lg fa-discord"></i>
+				</span>
+			  </a>
+			</div>
+		  </nav>
+	  
+	  <section class="main-content columns is-centered is-fullheight" style="margin-top: 6%; margin-bottom: 4%">
+		<div class="column is-7">
+		  <div class="card">
+			<div class="card-content">
+			  <div class="content mb-6">
+				<h1 class="title is-2 mb-2 has-text-weight-light" style="color: #004080">Object oriented progamming: inheritance and mixins</h1>
+				<p class="mt-0 is-size-7 mb-6"><i>By Samir Tine, published on January 2023</i></p>
+				<h2 class="has-text-weight-light is-size-3 mt-6">Inheritance</h2>
+<p class="mt-4">
+Inheritance allows an object to reuse the logic of another existing object. This way, it will inherit all attributes, methods and properties that were previously defined.
+Let's go back to our Fruct object. Let's imagine that we want to define a new TropicalFruct object. The simplest way is to use the Fruct object as the basis for defining this new object by proceeding as follows:
+
+</p>
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%"><code>
+TropicalFruct = Object(Fruct)
+
+</code></div><p class="mt-4">
+We define a new object <code>TropicalFruct</code> but this time, we will use the Fruct object as parameter, instead of an empty table.
+This indicates that we are relying on the Fruct object to define the new object, thus retrieving all of its attributes, methods, and properties.
+Let's check that TropicalFruct has the same behaviour than the Fruct object :
+
+</p>
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%"><code>
+-- The Fruct:constructor() method works !
+pineapple = TropicalFruct("pine apple", "lightbrown", "ovoid") 
+
+-- prints "pine apple" => the get_name() getter method property works !
+print(redapple.name)     
+
+-- error => the set_name() setter method property works !
+redapple.name = "banana" 
+
+-- prints "I am a pine apple, a lightbrown and ovoid fruct"
+pineapple:describe()    
+
+</code></div><p class="mt-4">
+With Lua<sup>rt</sup>, an object can have only one single inherited object. But the later can inherits another parent object, and so one... It's a single multiinheritance mechanism.
+In this case, we have the following single inheritance diagram :</p>
+<div class="has-text-centered">
+<figure class="image is-inline-block">
+  <img src="../img/ancestors.png" alt="Ancestors diagram">
+ </figure></div>
+<p>Remember that inheritance can be checked using the  <a href="..\base\is.html">is()</a> global function, it not only works with instances but also with objects :
+
+</p>
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%"><code>
+is(TropicalFruct, Fruct)     -- true
+is(Fruct, TropicalFruct)     -- false
+is(pineapple, TropicalFruct) -- true
+is(pineapple, Fruct)         -- true, pineapple is a TropicalFruct, which in turn is a Fruct too
+is(redapple, TropicalFruct)  -- false, redapple is a Fruct, not a TropicalFruct (which is more specialized/redefined)
+
+</code></div><h2 class="has-text-weight-light is-size-3 mt-6">Method overriding</h2>
+<p class="mt-4">
+That's great, everthing we wrote so far can be reused for our new object ! it's the concept of code reusability.
+What is very interesting is that we can always modify the attributes and methods of this new object, without modifying the ancestor object (also called parent object).
+Let's modifiy the <code>describe</code> method :
+
+</p>
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%"><code>
+function TropicalFruct:describe()
+    print("I am a "..self.name..", a "..self.color.." and "..self.shape.." tropical fruct")
+end
+
+</code></div><p class="mt-4">
+We just customized this method to better match our new object. This customization is called "method overriding".
+It is indeed sometimes preferable to adapt a method for a new object. This new definition overrides the previous one inherited from the parent object, hence the name "overriding", but the original definition of the parent object persists and is not impacted :
+
+</p>
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%"><code>
+redapple = Fruct("red apple", "red", "spherical")
+redapple:describe()    -- prints "I am a red apple, a red and spherical fruct"
+pineapple = TropicalFruct("pine apple", "lightbrown", "ovoid")
+pineapple:describe()   -- prints "I am a pine apple, a lightbrown and ovoid tropical fruct"
+
+</code></div><p class="mt-4">
+Another way to change the message printed using the <code>describe()</code> method when overriding is to call the original method from the Fruct object :
+
+</p>
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%"><code>
+function TropicalFruct:describe()
+    Fruct.describe(self) -- prints "I am a pine apple, a lightbrown and ovoid fruct"
+    print("And I'm from the tropics")
+end
+
+</code></div><p class="mt-4">
+Here we call the <code>Fruct.describe()</code> method directly, but using the current implicit self (which is the current instance of TropicalFruct). We can also use the special global function <a href="..\base\super.html">super()</a> the get the same result :
+
+</p>
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%"><code>
+function TropicalFruct:describe()
+    super(self).describe(self) -- prints "I am a pine apple, a lightbrown and ovoid fruct"
+    print("And I'm from the tropics")
+end
+
+</code></div>
+See you how can use the <code>super()</code> function to call an ancestor method. Please note the use of the "." dot notation.<br>Method call using ":" semicolon is not possible as <code>super()</code> returns an <code>Object</code>, not an instance value.</p>
+
+<h2 class="has-text-weight-light is-size-3 mt-6">Mixins</h2>
+<p class="mt-4">
+Fruit is good but not very consistent. Now let's try to create an object of type Meat (sorry to our vegetarian friends!) :
+
+</p>
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%"><code>
+Meat = Object {}
+
+</code></div><p class="mt-4">
+Now let's add an "eat" behavior to our object by adding the following method:
+
+</p>
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%"><code>
+function Meat:eat()
+    print("I am eating meat")
+end
+
+beef = Meat()
+beef:eat() -- prints "I am eating meat"
+
+</code></div><p class="mt-4">
+Ok it works as expected. But what if we try to set the same "eat" behavior to our Fruct object?
+The easiest way would be to add a new <code>eat()</code> method to the Fruct object. What if we use the same <code>eat()</code> method from the Meat object again?
+To do this, the concept of Mixins comes to our aid:
+
+</p>
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%"><code>
+-- first we define a simple Lua table
+local eat_mixin = {}
+
+-- then we define our eat() method
+-- we change our message to use the current object name
+function eat_mixin:eat()
+    print("I am eating "..type(self))
+end
+
+-- now we use it when defining Fruct and Meat objects
+Fruct = Object({}, eat_mixin)
+Meat = Object({}, eat_mixin)
+
+beef = Meat()
+beef:eat() -- prints "I am eating Meat"
+apple = Fruct()
+apple:eat() -- prints "I am eating Fruct"
+
+</code></div>
+			<p>Mixins are tables of fields and methods used to enhance and extend the functionality of an object.
+			Basically, it lets us group the behaviors that we want to apply to objects. It's like the concept of interfaces in other programming languages.</p>
+			<p>The  <a href="..\base\object.html">Object()</a> function allows you to define any number of mixins you want.</p>			
+			</div>
+		  </div>
+		</div>
+	  </section>  
+	  <footer class="footer">
+		<div class="content has-text-centered">
+		  <p class="mb-0">
+			<strong>
+			  Lua
+			  <sup>rt</sup> Documentation
+			</strong> - Windows programming framework for Lua
+		  </p>
+		  <a class="is-hovered" href="https://github.com/samyeyo" target="_blank">
+			<span class="icon" style="color: #A0A0A0">
+			  <i class="fab fa-lg fa-github"></i>
+			</span>
+		  </a>
+		  <a class="is-hovered"
+			 href="https://twitter.com/__LuaRT__"
+			 target="_blank">
+			<span class="icon" style="color: #A0A0A0">
+			  <i class="fab fa-lg fa-x-twitter"></i>
+			</span>
+		  </a>
+		  <a class="is-hovered"
+			 href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+			 target="_blank">
+			<span class="icon" style="color: #A0A0A0">
+			  <i class="fab fa-lg fa-youtube"></i>
+			</span>
+		  </a>
+		  <p class="mt-0">
+			Copyright &copy; 2024
+			<a href="mailto:samir.tine@luart.org">Samir Tine</a>.
+			<br />
+			<a href="https://bulma.io/made-with-bulma/">
+			  <img alt="Made with Bulma"
+				   height="24"
+				   src="https://bulma.io/images/made-with-bulma.png"
+				   width="128" />
+			</a>
+		  </p>
+		</div>
+	  </footer>
+	  <script src="../../js/main.js"></script>
+	  <script src="../prism.js"></script>
+	  <script src="../custom-class.js"></script>
+	  <script>Prism.plugins.customClass.prefix('prism--');</script>
+	</body>
+	</html>	

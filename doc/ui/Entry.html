@@ -1,0 +1,480 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta content="LuaRT Entry module documentation" name="description" />
+  <title>
+    Entry Object reference | LuaRT free and open source Windows programming framework for Lua
+  </title>
+  <link href="../../css/bulma-docs.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        rel="stylesheet" />
+  <link href="https://luart.org/doc/ui/Entry.html" rel="canonical" />
+  <link href="../../img/favicon.png" rel="icon" sizes="16x16" type="image/png" />
+</head>
+<body class="layout-documentation has-navbar-fixed-top">
+  <nav class="bd-navbar navbar is-fixed-top has-shadow" id="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../index.html">
+        <img alt="LuaRT: Free and open source Windows programming framework for Lua"
+             height="40"
+             src="../../img/logo.svg"
+             width="112" />
+      </a>
+      <a class="navbar-item bd-navbar-mobile-icon"
+         href="https://github.com/samyeyo"
+         style="margin-left: auto"
+         target="_blank">
+        <span class="icon" style="color: #000000">
+          <i class="fab fa-lg fa-github"></i>
+        </span>
+      </a>
+      <a class="navbar-item bd-navbar-mobile-icon"
+         href="https://twitter.com/__LuaRT__"
+         target="_blank">
+        <span class="icon" style="color: #000000">
+          <i class="fab fa-lg fa-x-twitter"></i>
+        </span>
+      </a>
+      <a class="navbar-item bd-navbar-mobile-icon"
+         href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+         target="_blank">
+        <span class="icon" style="color: #FF0000">
+          <i class="fab fa-lg fa-youtube"></i>
+        </span>
+      </a><a class="navbar-item bd-navbar-mobile-icon"
+         href="https://discord.gg/XJJxQufmvh"
+         target="_blank">
+        <span class="icon" style="color: #5865F2">
+          <i class="fab fa-discord"></i>
+        </span>
+      </a>
+      <button class="navbar-burger burger"
+              data-target="navMenuDocumentation"
+              id="navbarBurger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div class="navbar-menu" id="navMenuDocumentation">
+      <div class="navbar-start bd-navbar-start bd-is-original"
+           id="navbarStartOriginal">
+        <a class="navbar-item bd-navbar-item bd-navbar-item-bulma-book bd-navbar-item-base"
+           href="../../index.html#section_features">
+          <span class="icon has-text-bleeding">
+            <i class="fas fa-certificate"></i>
+          </span>
+          <span>Features</span>
+        </a>
+        <a class="navbar-item bd-navbar-item bd-navbar-item-love bd-navbar-item-base"
+           href="../../index.html#section_download">
+          <span class="icon has-text-danger">
+            <i class="fas fa-download"></i>
+          </span>
+          <span>Download</span>
+        </a>
+		<div class="navbar-item has-dropdown is-hoverable">
+			<a class="navbar-item bd-navbar-item bd-navbar-item-videos bd-navbar-item-base scroll">
+			  <span class="icon has-text-success"><i class="fas fa-circle-play"></i></span><span>Getting started</span>
+			</a>
+			<div class="navbar-dropdown has-background-success-light">
+				<a href="../install.html" class="dropdown-item has-text-success-dark">
+				  <span class="icon"><i class="fa fa-computer"></i></span> Installation
+				</a>
+				<a href="../first.html" class="dropdown-item has-text-success-dark">
+					<span class="icon"><i class="fa fa-play"></i></span> First execution
+				</a>
+				<a href="../tour.html" class="dropdown-item has-text-success-dark">
+				  <span class="icon"><i class="fa fa-bus-simple"></i></span> Take a tour !
+				</a>
+			</div>
+		</div>
+		<div class="navbar-item has-dropdown is-hoverable">
+			<a class="navbar-item bd-navbar-item bd-navbar-item-extensions bd-navbar-item-base scroll">
+			  <span class="icon has-text-info"><i class="fas fa-book"></i></span><span>Documentation</span>
+			</a>
+			<div class="navbar-dropdown has-background-info-light">
+				<a href="../modules.html" class="dropdown-item has-text-info-dark">
+				  <span class="icon"><i class="fa fa-cubes"></i></span> Modules reference
+				</a>
+				<a href="../object.html" class="dropdown-item has-text-info-dark">
+					<span class="icon"><i class="fa fa-shapes"></i></span> Object oriented programming
+				</a>
+				<a href="../toolchain.html" class="dropdown-item has-text-info-dark">
+				  <span class="icon"><i class="fa fa-wrench"></i></span> Toolchain documentation
+				</a>
+			</div>
+		</div>
+        </a>
+        <a class="navbar-item bd-navbar-item bd-navbar-item-expo bd-navbar-item-base"
+           href="https://community.luart.org">
+          <span class="icon has-text-warning">
+            <i class="fas fa-comments"></i>
+          </span>
+          <span>Community</span>
+        </a>
+        <a class="navbar-item bd-navbar-item bd-navbar-item-blog bd-navbar-item-base"
+           href="https://luart.org/doc/tutorial/index.html">
+          <span class="icon has-text-rss">
+            <i class="fas fa-graduation-cap"></i>
+          </span>
+          <span>Tutorials</span>
+        </a>
+     <div class="ml-6">
+			<span class="icon has-text-grey-light mr-1">
+				<i class="fas fa-search"></i>
+			</span></div>
+			<script async src="https://cse.google.com/cse.js?cx=509c4cdde27f845e7"></script>
+			<div class="gcse-searchbox-only" data-resultsUrl="https://luart.org/search.html"></div>
+      </div>
+    </div>
+    <div class="navbar-end">
+      <a class="bd-navbar-icon navbar-item"
+         href="https://github.com/samyeyo"
+         target="_blank">
+        <span class="icon" style="color: #000000">
+          <i class="fab fa-lg fa-github"></i>
+        </span>
+      </a>
+      <a class="bd-navbar-icon navbar-item"
+         href="https://twitter.com/__LuaRT__"
+         target="_blank">
+        <span class="icon" style="color: #000000">
+          <i class="fab fa-lg fa-x-twitter"></i>
+        </span>
+      </a>
+      <a class="bd-navbar-icon navbar-item"
+         href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+         target="_blank">
+        <span class="icon" style="color: #FF0000">
+          <i class="fab fa-lg fa-youtube"></i>
+        </span>
+      </a>
+      <a class="bd-navbar-icon navbar-item"
+         href="https://discord.gg/XJJxQufmvh"
+         target="_blank">
+        <span class="icon" style="color: #5865F2">
+          <i class="fab fa-lg fa-discord"></i>
+        </span>
+      </a>  
+    </div>
+  </nav>
+  
+  <section class="main-content columns is-centered is-fullheight" style="margin-top: 6%; margin-bottom: 4%">
+    <div class="column is-7">
+      <div class="card">
+       <a id="back" class="button is-white pl-5" href="index.html?objects"><span class="icon has-text-grey-lighter" style="vertical-align: middle"><i class="fas fa-circle-left"></i></span></a>
+        <div class="card-content">
+          <div class="content">
+            <p class="title is-2 has-text-centered has-text-weight-normal" style="color: #004080; vertical-align: middle"><span class="icon bd-link-icon mr-1" style="font-size: 0.8em"><i class="fas fa-i-cursor" style="color :#367DBB" style="color: #D0D0D0"></i></span>Entry object</p>
+              <div class="tabs is-centered mt-6" id="tabs">
+                <ul aria-orientation="horizontal" role="tablist" class="ml-0">
+                  <li class="is-active" id="methods" data-tab="1"><a><span><span class="icon mx-0"><i class="fa fa-bolt"></i></span>Methods</span></a></li>
+                  <li id="properties" data-tab="2"><a><span class="icon mx-0"><i class="fa fa-tag"></i></span>Properties</span></a></li>
+                  <li id="events" data-tab="3"><a><span class="icon mx-0"><i class="fa fa-paper-plane"></i></span>Events</span></a></li>
+                </ul>
+              </div>
+              <div class="tab-content" id="tab-content">
+                <div data-content="3">
+                <table class="table">
+                  <thead><tr>
+                    <th draggable="false"><span class="is-relative"> Event</span></th>
+                    <th draggable="false"><span class="is-relative"> Description </span></th>
+                  </tr></thead>
+                  <tbody>
+                    
+<!------------------ EVENTS ------------->
+                        <tr draggable="false">
+                        <td><a href="Entry-onClick.html">Entry.onClick()</a></td>
+                        <td><span>Event occurs when the user clicks on the Entry</span></td>
+                        </tr>
+                        <tr draggable="false">
+                          <td><a href="Entry-onShow.html">Entry.onShow()</a></td>
+                          <td><span>Event fired when the Entry is shown</span></td>
+                        </tr>                        <tr draggable="false">
+                          <td><a href="Entry-onHide.html">Entry.onHide()</a></td>
+                          <td><span>Event fired when the Entry is hidden</span></td>
+                        </tr>                        <tr draggable="false">
+                          <td><a href="Entry-onHover.html">Entry.onHover()</a></td>
+                          <td><span>Event fired when the user moves the mouse pointer over the entry</span></td>
+                        </tr>                        <tr draggable="false">
+                          <td><a href="Entry-onLeave.html">Entry.onLeave()</a></td>
+                          <td><span>Event fired when the mouse cursor leaves the entry</span></td>
+                        </tr>                        <tr draggable="false">
+                          <td><a href="Entry-onCreate.html">Entry.onCreate()</a></td>
+                          <td><span>Event fired when Entry has just been created</span></td>
+                        </tr>                        <tr draggable="false">
+                          <td><a href="Entry-onChange.html">Entry.onChange()</a></td>
+                          <td><span>Event fired when Entry has just been modified</span></td>
+                        </tr>                        <tr draggable="false">
+                          <td><a href="Entry-onSelect.html">Entry.onSelect()</a></td>
+                          <td><span>Event fired when the user has pressed the ENTER key</span></td>
+                        </tr>
+                      </tr>                        <tr draggable="false">
+                        <td><a href="Entry-onMouseDown.html">Entry.onMouseDown()</a></td>
+                        <td><span>Event fired when the user presses a mouse button over the Entry</span></td>
+                      </tr>                        <tr draggable="false">
+                        <td><a href="Entry-onMouseUp.html">Entry.onMouseUp()</a></td>
+                        <td><span>Event fired when the user releases a mouse button over the Entry</span></td>
+                      </tr>                        
+                  </tbody>
+                </table></div>
+                <div data-content="2">
+                <table class="table">
+                  <thead><tr>
+                    <th draggable="false"><span class="is-relative"> Property</span></th>
+                    <th draggable="false"><span class="is-relative"> Description </span></th>
+                    <th draggable="false"><span class="is-relative"> Access</span></th>
+                    <th draggable="false"><span class="is-relative"> Type</span></th>
+                  </tr></thead>
+                  <tbody>
+                    <!------------------ PROPERTIES ------------->
+                        
+                         <tr draggable="false">
+                          <td><a href="Entry-text.html">Entry.text</a></td>
+                          <td><span>Get/set the Entry text content</span></td>
+                          <td><span class="tag is-rounded is-warning is-small">readwrite</span></td>
+                          <td><span style="color:#EA6AC3">string</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Entry-textalign.html">Entry.textalign</a></td>
+                          <td><span>Get/set the Entry text alignment</span></td>
+                          <td><span class="tag is-rounded is-warning is-small">readwrite</span></td>
+                          <td><span style="color:#EA6AC3">string</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Entry-x.html">Entry.x</a></td>
+                          <td><span>Get/set the Entry's horizontal position</span></td>
+                          <td><span class="tag is-rounded is-warning is-small">readwrite</span></td>
+                          <td><span style="color:#ae81ff">number</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Entry-y.html">Entry.y</a></td>
+                          <td><span>Get/set the Entry's vertical position</span></td>
+                          <td><span class="tag is-rounded is-warning is-small">readwrite</span></td>
+                          <td><span style="color:#ae81ff">number</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Entry-width.html">Entry.width</a></td>
+                          <td><span>Get/set the Entry's width</span></td>
+                          <td><span class="tag is-rounded is-warning is-small">readwrite</span></td>
+                          <td><span style="color:#ae81ff">number</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Entry-height.html">Entry.height</a></td>
+                          <td><span>Get/set the Entry's height</span></td>
+                          <td><span class="tag is-rounded is-warning is-small">readwrite</span></td>
+                          <td><span style="color:#ae81ff">number</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Entry-cursor.html">Entry.cursor</a></td>
+                          <td><span>Get/set the image of the mouse cursor as it hovers over the Entry</span></td>
+                          <td><span class="tag is-rounded is-warning is-small">readwrite</span></td>
+                          <td><span style="color:#EA6AC3">string</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                        <td><a href="Entry-align.html">Entry.align</a></td>
+                        <td><span>Align the Entry relative to its parent</span></td>
+                        <td><span class="tag is-rounded is-warning is-small">readwrite</span></td>
+                        <td><span style="color:#ae81ff">boolean</span></td>
+                        </tr>
+                       <tr draggable="false">
+                       <td><a href="Entry-enabled.html">Entry.enabled</a></td>
+                          <td><span>Controls whether the Entry responds to mouse and other events</span></td>
+                          <td><span class="tag is-rounded is-warning is-small">readwrite</span></td>
+                          <td><span style="color:#ae81ff">boolean</span</td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Entry-visible.html">Entry.visible</a></td>
+                          <td><span>Controls whether the Entry appears on screen</span></td>
+                          <td><span class="tag is-rounded is-warning is-small">readwrite</span></td>
+                          <td><span style="color:#ae81ff">boolean</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Entry-parent.html">Entry.parent</a></td>
+                          <td><span>Get the Entry's parent widget</span></td>
+                          <td><span class="tag is-rounded has-background-danger-light mt-0 is-small">readonly</span></td>
+                          <td> <a href="./Window.html"><i class="far fa-window-maximize" style="color :#367DBB"></i> Window</a> | <a href="./Groupbox.html"><i class="far fa-square" style="color :#367DBB"></i> Groupbox</a><br><a href="TabItem.html"><i class="fas fa-bookmark" style="color :#367DBB"></i><sup><i class="fas fa-tag" style="margin-left: -0.3em; margin-top: 0.4em"></i></sup>TabItem</a> | <a href="Panel.html"><i class="fas fa-expand" style="color :#367DBB"></i> Panel</a></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Entry-font.html">Entry.font</a></td>
+                          <td><span>Get/set the Entry font</span></td>
+                          <td><span class="tag is-rounded is-warning is-small">readwrite</span></td>
+                          <td><span style="color:#EA6AC3">string</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Entry-fontstyle.html">Entry.fontstyle</a></td>
+                          <td><span>Get/set the Entry font style</span></td>
+                          <td><span class="tag is-rounded is-warning is-small">readwrite</span></td>
+                          <td><span style="color: #B1D928">table</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Entry-fontsize.html">Entry.fontsize</a></td>
+                          <td><span>Get/set the Entry font size</span></td>
+                          <td><span class="tag is-rounded is-warning is-small">readwrite</span></td>
+                          <td><span style="color:#ae81ff">number</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Entry-tooltip.html">Entry.tooltip</a></td>
+                          <td><span>Get/set the Entry tooltip text</span></td>
+                          <td><span class="tag is-rounded is-warning is-small">readwrite</span></td>
+                          <td><span style="color:#EA6AC3">string</span></td>
+                        </tr>                       
+                        <tr draggable="false">
+                          <td><a href="Entry-canundo.html">Entry.canundo</a></td>
+                          <td><span>Get wether the user can undo the last Entry operation</span></td>
+                          <td><span class="tag is-rounded has-background-danger-light mt-0 is-small">readonly</span></td>
+                          <td><span style="color:#ae81ff">boolean</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Entry-masked.html">Entry.masked</a></td>
+                          <td><span>Get/set wether user input is visible or masked</span></td>
+                          <td><span class="tag is-rounded is-warning is-small">readwrite</span></td>
+                          <td><span style="color:#ae81ff">boolean</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Entry-modified.html">Entry.modified</a></td>
+                          <td><span>Get/set wether Entry's content has been modified</span></td>
+                          <td><span class="tag is-rounded is-warning is-small">readwrite</span></td>
+                          <td><span style="color:#ae81ff">boolean</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Entry-textlimit.html">Entry.textlimit</a></td>
+                          <td><span>Get/set the maximum text length of the Entry</span></td>
+                          <td><span class="tag is-rounded is-warning is-small">readwrite</span></td>
+                          <td><span style="color:#ae81ff">number</span></td>
+                        </tr>
+                  </tbody>
+                </table></div>
+                <div class="is-active" data-content="1">
+                  <table class="table">
+                    <thead><tr>
+                      <th draggable="false"><span class="is-relative"> Method </span</th>
+                      <th draggable="false"><span class="is-relative"> Description </span></th>
+                      <th draggable="false"><span class="is-relative"> Return value </span></th>
+                    </tr></thead>
+                    <tbody>
+                      
+<!------------------ METHODS ------------->
+                        
+                        <tr draggable="false">
+                          <td><a href="Entry-constructor.html">Entry.constructor()</a></td>
+                          <td><span>Entry object constructor</span></td>
+                          <td><a href="Entry.html"><i class="fas fas fa-i-cursor"></i> Entry</a></td>
+                        </tr>                        
+                                                
+                        <tr draggable="false">
+                          <td><a href="Entry-center.html">Entry.center()</a></td>
+                          <td><span>Centers the Entry on the parent widget</span></td>
+                          <td><span>-</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Entry-autosize.html">Entry.autosize()</a></td>
+                          <td><span>Autosizes the Entry</span></td>
+                          <td><span>-</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Entry-show.html">Entry.show()</a></td>
+                          <td><span>Shows the Entry</span></td>
+                          <td><span>-</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Entry-hide.html">Entry.hide()</a></td>
+                          <td><span>Hides the Entry</span></td>
+                          <td><span>-</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Entry-cut.html">Entry.cut()</a></td>
+                          <td><span>Cuts the text to the clipboard</span></td>
+                          <td><span>-</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Entry-copy.html">Entry.copy()</a></td>
+                          <td><span>Copies the text to the clipboard</span></td>
+                          <td><span>-</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Entry-paste.html">Entry.paste()</a></td>
+                          <td><span>Pastes the text from the clipboard</span></td>
+                          <td><span>-</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Entry-undo.html">Entry.undo()</a></td>
+                          <td><span>Undoes the last edit operation</span></td>
+                          <td><span>-</span></td>
+                        </tr>
+                        <tr draggable="false">
+                        <td><a href="Entry-tofront.html">Entry.tofront()</a></td>
+                        <td><span>Brings the widget in front</span></td>
+                        <td><span>-</span></td>
+                        </tr>
+                        <tr draggable="false">
+                        <td><a href="Entry-toback.html">Entry.toback()</a></td>
+                        <td><span>Puts the widget to the back</span></td>
+                        <td><span>-</span></td>
+                        </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+          </div>
+	      </div>
+      </div>
+    </div>
+  </section>  
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p class="mb-0">
+        <strong>
+          Lua
+          <sup>rt</sup> Documentation
+        </strong> - Windows programming framework for Lua
+      </p>
+      <a class="is-hovered" href="https://github.com/samyeyo" target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-github"></i>
+        </span>
+      </a>
+      <a class="is-hovered"
+         href="https://twitter.com/__LuaRT__"
+         target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-x-twitter"></i>
+        </span>
+      </a>
+<a class="is-hovered"
+         href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+         target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-youtube"></i>
+        </span>
+      </a>      
+      <a class="is-hovered"
+      href="https://discord.gg/XJJxQufmvh"
+      target="_blank">
+     <span class="icon" style="color: #A0A0A0">
+       <i class="fab fa-lg fa-discord"></i>
+     </span>
+     </a>    
+      <p class="mt-0">
+        Copyright &copy; 2024
+        <a href="mailto:samir.tine@luart.org">Samir Tine</a>.
+        <br />
+        <a href="https://bulma.io/made-with-bulma/">
+          <img alt="Made with Bulma"
+               height="24"
+               src="https://bulma.io/images/made-with-bulma.png"
+               width="128" />
+        </a>
+      </p>
+    </div>
+  </footer>
+  <script src="../../js/main.js"></script>
+  <script>window.onpopstate = function() {
+       document.getElementById('back').click();
+    }; history.pushState({}, '');</script>
+</body>
+</html>

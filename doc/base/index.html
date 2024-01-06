@@ -1,0 +1,302 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta content="LuaRT base module documentation" name="description" />
+  <title>
+    base module reference | LuaRT free and open source Windows programming framework for Lua
+  </title>
+  <link href="../../css/bulma-docs.min.css" rel="stylesheet" />
+  <link href="../../css/bulma-tooltip.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet" />
+  <link href="https://luart.org/doc/base/index.html" rel="canonical" />
+  <link href="../../img/favicon.png" rel="icon" sizes="16x16" type="image/png" />
+</head>
+<body class="layout-documentation has-navbar-fixed-top">
+  <nav class="bd-navbar navbar is-fixed-top has-shadow" id="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../index.html">
+        <img alt="LuaRT: Free and open source Windows programming framework for Lua"
+             height="40"
+             src="../../img/logo.svg"
+             width="112" />
+      </a>
+      <a class="navbar-item bd-navbar-mobile-icon"
+         href="https://github.com/samyeyo"
+         style="margin-left: auto"
+         target="_blank">
+        <span class="icon" style="color: #000000">
+          <i class="fab fa-lg fa-github"></i>
+        </span>
+      </a>
+      <a class="navbar-item bd-navbar-mobile-icon"
+         href="https://twitter.com/__LuaRT__"
+         target="_blank">
+        <span class="icon" style="color: #000000">
+          <i class="fab fa-lg fa-x-twitter"></i>
+        </span>
+      </a>
+      <a class="navbar-item bd-navbar-mobile-icon"
+         href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+         target="_blank">
+        <span class="icon" style="color: #FF0000">
+          <i class="fab fa-lg fa-youtube"></i>
+        </span>
+      </a><a class="navbar-item bd-navbar-mobile-icon"
+         href="https://discord.gg/XJJxQufmvh"
+         target="_blank">
+        <span class="icon" style="color: #5865F2">
+          <i class="fab fa-discord"></i>
+        </span>
+      </a>
+      <button class="navbar-burger burger"
+              data-target="navMenuDocumentation"
+              id="navbarBurger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div class="navbar-menu" id="navMenuDocumentation">
+      <div class="navbar-start bd-navbar-start bd-is-original"
+           id="navbarStartOriginal">
+        <a class="navbar-item bd-navbar-item bd-navbar-item-bulma-book bd-navbar-item-base"
+           href="../../index.html#section_features">
+          <span class="icon has-text-bleeding">
+            <i class="fas fa-certificate"></i>
+          </span>
+          <span>Features</span>
+        </a>
+        <a class="navbar-item bd-navbar-item bd-navbar-item-love bd-navbar-item-base"
+           href="../../index.html#section_download">
+          <span class="icon has-text-danger">
+            <i class="fas fa-download"></i>
+          </span>
+          <span>Download</span>
+        </a>
+		<div class="navbar-item has-dropdown is-hoverable">
+			<a class="navbar-item bd-navbar-item bd-navbar-item-videos bd-navbar-item-base scroll">
+			  <span class="icon has-text-success"><i class="fas fa-circle-play"></i></span><span>Getting started</span>
+			</a>
+			<div class="navbar-dropdown has-background-success-light">
+				<a href="../install.html" class="dropdown-item has-text-success-dark">
+				  <span class="icon"><i class="fa fa-computer"></i></span> Installation
+				</a>
+				<a href="../first.html" class="dropdown-item has-text-success-dark">
+					<span class="icon"><i class="fa fa-play"></i></span> First execution
+				</a>
+				<a href="../tour.html" class="dropdown-item has-text-success-dark">
+				  <span class="icon"><i class="fa fa-bus-simple"></i></span> Take a tour !
+				</a>
+			</div>
+		</div>
+		<div class="navbar-item has-dropdown is-hoverable">
+			<a class="navbar-item bd-navbar-item bd-navbar-item-extensions bd-navbar-item-base scroll">
+			  <span class="icon has-text-info"><i class="fas fa-book"></i></span><span>Documentation</span>
+			</a>
+			<div class="navbar-dropdown has-background-info-light">
+				<a href="../modules.html" class="dropdown-item has-text-info-dark">
+				  <span class="icon"><i class="fa fa-cubes"></i></span> Modules reference
+				</a>
+				<a href="../object.html" class="dropdown-item has-text-info-dark">
+					<span class="icon"><i class="fa fa-shapes"></i></span> Object oriented programming
+				</a>
+				<a href="../toolchain.html" class="dropdown-item has-text-info-dark">
+				  <span class="icon"><i class="fa fa-wrench"></i></span> Toolchain documentation
+				</a>
+			</div>
+		</div>
+        </a>
+        <a class="navbar-item bd-navbar-item bd-navbar-item-expo bd-navbar-item-base"
+           href="https://community.luart.org">
+          <span class="icon has-text-warning">
+            <i class="fas fa-comments"></i>
+          </span>
+          <span>Community</span>
+        </a>
+        <a class="navbar-item bd-navbar-item bd-navbar-item-blog bd-navbar-item-base"
+           href="https://luart.org/doc/tutorial/index.html">
+          <span class="icon has-text-rss">
+            <i class="fas fa-graduation-cap"></i>
+          </span>
+          <span>Tutorials</span>
+        </a>
+     <div class="ml-6">
+			<span class="icon has-text-grey-light mr-1">
+				<i class="fas fa-search"></i>
+			</span></div>
+			<script async src="https://cse.google.com/cse.js?cx=509c4cdde27f845e7"></script>
+			<div class="gcse-searchbox-only" data-resultsUrl="https://luart.org/search.html"></div>
+      </div>
+    </div>
+    <div class="navbar-end">
+      <a class="bd-navbar-icon navbar-item"
+         href="https://github.com/samyeyo"
+         target="_blank">
+        <span class="icon" style="color: #000000">
+          <i class="fab fa-lg fa-github"></i>
+        </span>
+      </a>
+      <a class="bd-navbar-icon navbar-item"
+         href="https://twitter.com/__LuaRT__"
+         target="_blank">
+        <span class="icon" style="color: #000000">
+          <i class="fab fa-lg fa-x-twitter"></i>
+        </span>
+      </a>
+      <a class="bd-navbar-icon navbar-item"
+         href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+         target="_blank">
+        <span class="icon" style="color: #FF0000">
+          <i class="fab fa-lg fa-youtube"></i>
+        </span>
+      </a>
+      <a class="bd-navbar-icon navbar-item"
+         href="https://discord.gg/XJJxQufmvh"
+         target="_blank">
+        <span class="icon" style="color: #5865F2">
+          <i class="fab fa-lg fa-discord"></i>
+        </span>
+      </a>  
+    </div>
+  </nav>
+  
+  <section class="main-content columns is-centered is-fullheight" style="margin-top: 6%; margin-bottom: 4%">
+    <div class="column is-7">
+      <div class="card">
+        <a class="button is-white pl-5" href="../modules.html"><span class="icon has-text-grey-lighter" style="vertical-align: middle"><i class="fas fa-circle-left"></i></span></a>
+        <div class="card-content">
+          <div class="content">
+            <p class="title is-2 has-text-centered has-text-weight-normal" style="color: #004080; vertical-align: middle"><span class="icon bd-link-icon mr-1" style="font-size: 0.8em"><i class="fas fa-layer-group" style="color :#d54d34; vertical-align: top" style="color: #D0D0D0"></i></span>base module</p>
+            <p class="has-text-centered">
+              <span data-tooltip="Module belongs to the LuaRT Core framework" class="tag is-rounded is-small has-background-success-light has-text-success-dark has-tooltip-bottom has-tooltip-success has-tooltip-arrow"><span><i class="fas fa-check has-text-success"></i> Core framework</span></span>              
+              <span data-tooltip="Module is available with luart.exe interpreter" class="tag is-rounded is-small has-background-info-light has-tooltip-bottom has-tooltip-info has-tooltip-arrow has-text-info"><span><i class="fas fa-window-maximize"></i> Console</span></span>
+              <span data-tooltip="Module is available with wluart.exe interpreter" class="tag is-rounded is-small has-background-info-light has-tooltip-bottom has-tooltip-info has-tooltip-arrow has-text-info"><span><i class="fab fa-windows"></i> Desktop</span></span>
+            </p>              
+            <div class="tabs is-centered mt-6" id="tabs">
+                <ul aria-orientation="horizontal" role="tablist" class="ml-0">
+                  <li id="objects" data-tab="1"><a><span><span class="icon mx-0"><i class="fa fa-shapes"></i></span>Objects</span></a></li>                        
+                  <li id="methods" data-tab="2" class="is-active"><a><span><span class="icon mx-0"><i class="fa fa-bolt"></i></span>Functions</span></a></li>
+                    <li id="properties" data-tab="3"><a><span class="icon mx-0"><i class="fa fa-tag"></i></span>Properties</span></a></li>
+                </ul>
+              </div>
+              <div class="tab-content" id="tab-content">
+                <div data-content="3"><p class="has-text-centered mt-6 mb-6"><i>Base module does not have any properties</i></p></div>
+                <div data-content="2" class="is-active">
+                  <table class="table">
+                    <thead><tr>
+                      <th draggable="false"><span class="is-relative"> Function </span</th>
+                      <th draggable="false"><span class="is-relative"> Description </span></th>
+                      <th draggable="false"><span class="is-relative"> Return value </span></th>
+                    </tr></thead>
+                    <tbody>
+                      
+<!------------------ METHODS ------------->
+                        
+                        <tr draggable="false">
+                          <td><a href="sleep.html">sleep()</a></td>
+                          <td><span>Suspend the current execution flow</span></td>
+                          <td>-</td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="async.html">async()</a></td>
+                          <td><span>Run a Task asynchronously</span></td>
+                          <td><a href="../sys/Task.html"><i class="fas fa-bolt" style="font-size:1em; color :#367DBB"></i> Task</a></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="await.html">await()</a></td>
+                          <td><span>Run a Task and wait until it terminates</span></td>
+                          <td>...</td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="waitall.html">waitall()</a></td>
+                          <td><span>Wait for all Tasks to terminate</span></td>
+                          <td>-</td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="is.html">is()</a></td>
+                          <td><span>Check for inheritance</span></td>
+                          <td><span style="color:#ae81ff">boolean</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="super.html">super()</a></td>
+                          <td><span>Get the ancestor of an object/instance.</span></td>
+                          <td><span style="color:#ae81ff">boolean</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="each.html">each()</a></td>
+                          <td><span>Provide a value iterator for tables/objects</span></td>
+                          <td><span style="color: #c7a170">function</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="type.html">type()</a></td>
+                          <td><span>Get the type of a value</span></td>
+                          <td><span style="color:#EA6AC3">string</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Object.html">Object()</a></td>
+                          <td><span>Define a new Object</span></td>
+                          <td><span>Object</span></td>
+                        </tr>  
+                    </tbody>
+                  </table>
+                </div>
+                <div data-content="1"><p class="has-text-centered mt-6 mb-6"><i>Base module does not have any objects</i></p></div>
+              </div>
+          </div>
+	      </div>
+      </div>
+    </div>
+  </section>  
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p class="mb-0">
+        <strong>
+          Lua
+          <sup>rt</sup> Documentation
+        </strong> - Windows programming framework for Lua
+      </p>
+      <a class="is-hovered" href="https://github.com/samyeyo" target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-github"></i>
+        </span>
+      </a>
+      <a class="is-hovered"
+         href="https://twitter.com/__LuaRT__"
+         target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-x-twitter"></i>
+        </span>
+      </a>
+<a class="is-hovered"
+         href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+         target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-youtube"></i>
+        </span>
+      </a>      
+      <a class="is-hovered"
+      href="https://discord.gg/XJJxQufmvh"
+      target="_blank">
+     <span class="icon" style="color: #A0A0A0">
+       <i class="fab fa-lg fa-discord"></i>
+     </span>
+     </a>    
+      <p class="mt-0">
+        Copyright &copy; 2024
+        <a href="mailto:samir.tine@luart.org">Samir Tine</a>.
+        <br />
+        <a href="https://bulma.io/made-with-bulma/">
+          <img alt="Made with Bulma"
+               height="24"
+               src="https://bulma.io/images/made-with-bulma.png"
+               width="128" />
+        </a>
+      </p>
+    </div>
+  </footer>
+  <script src="../../js/main.js"></script>
+</body>
+</html>

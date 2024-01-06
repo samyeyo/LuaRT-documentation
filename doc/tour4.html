@@ -1,0 +1,283 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta content="LuaRT getting started tutorial in 10 minutes" name="description" />
+  <title>
+    Take a tour ! | LuaRT free and open source Windows programming framework for Lua
+  </title>
+  <link href="../css/bulma-docs.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        rel="stylesheet" />
+  <link href="https://luart.org/doc/tour4.html" rel="canonical" />
+  <link href="../img/favicon.png" rel="icon" sizes="16x16" type="image/png" />
+</head>
+<body class="layout-documentation has-navbar-fixed-top">
+  <nav class="bd-navbar navbar is-fixed-top has-shadow" id="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://luart.org/">
+        <img alt="LuaRT: Free and open source Windows programming framework for Lua"
+             height="40"
+             src="../img/logo.svg"
+             width="112" />
+      </a>
+      <a class="navbar-item bd-navbar-mobile-icon"
+         href="https://github.com/samyeyo"
+         style="margin-left: auto"
+         target="_blank">
+        <span class="icon" style="color: #000000">
+          <i class="fab fa-lg fa-github"></i>
+        </span>
+      </a>
+      <a class="navbar-item bd-navbar-mobile-icon"
+         href="https://twitter.com/__LuaRT__"
+         target="_blank">
+        <span class="icon" style="color: #000000">
+          <i class="fab fa-lg fa-x-twitter"></i>
+        </span>
+      </a>
+      <a class="navbar-item bd-navbar-mobile-icon"
+         href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+         target="_blank">
+        <span class="icon" style="color: #FF0000">
+          <i class="fab fa-lg fa-youtube"></i>
+        </span>
+      </a><a class="navbar-item bd-navbar-mobile-icon"
+         href="https://discord.gg/XJJxQufmvh"
+         target="_blank">
+        <span class="icon" style="color: #5865F2">
+          <i class="fab fa-discord"></i>
+        </span>
+      </a>
+      <button class="navbar-burger burger"
+              data-target="navMenuDocumentation"
+              id="navbarBurger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div class="navbar-menu" id="navMenuDocumentation">
+      <div class="navbar-start bd-navbar-start bd-is-original"
+           id="navbarStartOriginal">
+        <a class="navbar-item bd-navbar-item bd-navbar-item-bulma-book bd-navbar-item-base"
+           href="../index.html#section_features">
+          <span class="icon has-text-bleeding">
+            <i class="fas fa-certificate"></i>
+          </span>
+          <span>Features</span>
+        </a>
+        <a class="navbar-item bd-navbar-item bd-navbar-item-love bd-navbar-item-base"
+           href="../index.html#section_download">
+          <span class="icon has-text-danger">
+            <i class="fas fa-download"></i>
+          </span>
+          <span>Download</span>
+        </a>
+		<div class="navbar-item has-dropdown is-hoverable">
+			<a class="navbar-item bd-navbar-item bd-navbar-item-videos bd-navbar-item-base scroll">
+			  <span class="icon has-text-success"><i class="fas fa-circle-play"></i></span><span>Getting started</span>
+			</a>
+			<div class="navbar-dropdown has-background-success-light">
+				<a href="install.html" class="dropdown-item has-text-success-dark">
+				  <span class="icon"><i class="fa fa-computer"></i></span> Installation
+				</a>
+				<a href="first.html" class="dropdown-item has-text-success-dark">
+					<span class="icon"><i class="fa fa-play"></i></span> First execution
+				</a>
+				<a href="tour.html" class="dropdown-item has-text-success-dark">
+				  <span class="icon"><i class="fa fa-bus-simple"></i></span> Take a tour !
+				</a>
+			</div>
+		</div>
+		<div class="navbar-item has-dropdown is-hoverable">
+			<a class="navbar-item bd-navbar-item bd-navbar-item-extensions bd-navbar-item-base scroll">
+			  <span class="icon has-text-info"><i class="fas fa-book"></i></span><span>Documentation</span>
+			</a>
+			<div class="navbar-dropdown has-background-info-light">
+				<a href="modules.html" class="dropdown-item has-text-info-dark">
+				  <span class="icon"><i class="fa fa-cubes"></i></span> Modules reference
+				</a>
+				<a href="object.html" class="dropdown-item has-text-info-dark">
+					<span class="icon"><i class="fa fa-shapes"></i></span> Object oriented programming
+				</a>
+				<a href="toolchain.html" class="dropdown-item has-text-info-dark">
+				  <span class="icon"><i class="fa fa-wrench"></i></span> Toolchain documentation
+				</a>
+			</div>
+		</div>
+        </a>
+        <a class="navbar-item bd-navbar-item bd-navbar-item-expo bd-navbar-item-base"
+           href="https://community.luart.org">
+          <span class="icon has-text-warning">
+            <i class="fas fa-comments"></i>
+          </span>
+          <span>Community</span>
+        </a>
+        <a class="navbar-item bd-navbar-item bd-navbar-item-blog bd-navbar-item-base"
+           href="https://luart.org/doc/tutorial/index.html">
+          <span class="icon has-text-rss">
+            <i class="fas fa-graduation-cap"></i>
+          </span>
+          <span>Tutorials</span>
+        </a>
+     <div class="ml-6">
+			<span class="icon has-text-grey-light mr-1">
+				<i class="fas fa-search"></i>
+			</span></div>
+			<script async src="https://cse.google.com/cse.js?cx=509c4cdde27f845e7"></script>
+			<div class="gcse-searchbox-only" data-resultsUrl="https://luart.org/search.html"></div>
+      </div>
+    </div>
+    <div class="navbar-end">
+      <a class="bd-navbar-icon navbar-item"
+         href="https://github.com/samyeyo"
+         target="_blank">
+        <span class="icon" style="color: #000000">
+          <i class="fab fa-lg fa-github"></i>
+        </span>
+      </a>
+      <a class="bd-navbar-icon navbar-item"
+         href="https://twitter.com/__LuaRT__"
+         target="_blank">
+        <span class="icon" style="color: #000000">
+          <i class="fab fa-lg fa-x-twitter"></i>
+        </span>
+      </a>
+      <a class="bd-navbar-icon navbar-item"
+         href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+         target="_blank">
+        <span class="icon" style="color: #FF0000">
+          <i class="fab fa-lg fa-youtube"></i>
+        </span>
+      </a>
+      <a class="bd-navbar-icon navbar-item"
+         href="https://discord.gg/XJJxQufmvh"
+         target="_blank">
+        <span class="icon" style="color: #5865F2">
+          <i class="fab fa-lg fa-discord"></i>
+        </span>
+      </a>  
+    </div>
+  </nav>
+  
+  <section class="main-content columns is-centered is-fullheight" style="margin-top: 6%; margin-bottom: 4%">
+    <div class="column is-7">
+      <div class="card">
+        <div class="card-content">
+			<div class="content">
+			  <p class="title is-2 mb-0" style="color: #004080">Take a tour !</p>
+			  <p class="subtitle is-5 mt-0 mb-6">A quick overview of Lua<sup>rt</sup></p>
+				<p class="has-text-weight-light is-size-3 mt-6 mb-1">Dive into the framework</p>
+				<p>You are right : doing some "Hello World !", even object-oriented, does not put you anywhere. Now that you have discovered some of the basic concepts provided by Lua<sup>rt</sup>, it's time to dive more into the framework.</p>
+                <p>Lua<sup>rt</sup> provides a lots of modules, objects, and functions to develop Windows programs rapidly. Let's get a sneak peak of what you can do :</p>
+                <div class="columns">
+                    <div class="column is-4">
+                    <div class="box has-background-black p-5 mb-2">
+                        <figure class="ml-0">
+                        <img src="img/tour-4-1.png">
+                        </figure>
+                    </div>
+                    </div>
+                </div>
+                <p>Here we are creating an instance of a <code>Directory</code> object from the <code>sys</code> module, that is available globally, without the need to require for it. By default, the <code>Directory</code> instance represents the current directory if no other path is provided during instantiation.</p>
+                <p>The for loop iterate over each Directory elements (files, or other directories) and prints their names to the console, using their <code>name</code> property. You have reproduced in a few lines of code the <code>dir</code> DOS command !</p>
+                <p class="has-text-weight-light is-size-3 mt-6 mb-1">It's raining again</p>
+                <p>Let's try something more complicated :</p>
+                <div class="columns is-vcentered">
+                    <div class="column is-6">
+                        <div class="box has-background-black p-5 mb-2">
+                            <figure class="ml-0">
+                                <img src="img/tour-4-2.png">
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+                <p>Yes, that's the current weather near your location, in only 3 lines of Lua code !Thanks to the <code>Http</code> object from the <code>net</code> module, calling the <a href="https://github.com/chubin/wttr.in">wttr.in</a> REST API is simple with Lua<sup>rt</sup>.<br>
+                First we need to require the <code>net</code> module, then we create a new <code>Http</code> instance with the address <a href="https://wttr.in">"https://wttr.in"</a>. Once connected to the website, we wait for the <code>Http:get()</code> method to send an HTTP GET request (with the <code>await()</code> helper function). The result of this method call is the server response, a <code>table</code> that contains the current weather as text in its <code>content</code> field.</p>
+                <p class="has-text-weight-light is-size-3 mt-6 mb-1">Open the Window</p>
+                <p>Console is great, but desktop applications are more user-friendly :</p>
+                <div class="columns is-vcentered">
+                  <div class="column is-5">
+                        <div class="box has-background-black p-5 mb-2">
+                          <figure class="ml-0">
+                            <img src="img/tour-4-3.png">
+                          </figure>
+                        </div>
+                      </div>
+                    </div>
+                    <p>We just have required the <code>ui</code> module that provides objects, and functions to build native Windows GUI applications. Then we have created a <code>Window</code> instance with the string "Hello World !", that will be the Window's title.
+                      A call to the <code>Window:center()</code> method centers the Window in the middle of the screen... But wait...nothings happen, where is the Window ?</p>
+                      <div class="columns is-vcentered">
+                        <div class="column is-12 pb-0">
+                          <div class="box has-background-black pl-1 pb-0 mb-2">
+                            <figure class="ml-0 pb-0">
+                              <img src="img/tour-4-4.png">
+                            </figure>
+                          </div>
+                        </div>
+                      </div></p>
+                    <p class="pb-6">By default, a just created Window is hidden. Just call the <code>Window:show()</code> method to show it ! Congratulation ! You have created your first Window with Lua<sup>rt</sup> !</p>
+                    <p class="has-text-weight-light is-size-3 mb-1">Best things come to an end</p>
+                    <p>So that ends the quick tour of Lua<sup>rt</sup>. You have now acquired the basics. I hope you had some fun using the framework. We have a lot more to explore, including the different modules, objects and functions included with Lua<sup>rt</sup></p>
+                    <p>The next step will be to familiarize yourself with the different components of the framework. Do not hesitate to dive into the <a href="index.html">documentation</a>, to try the different examples and <a href="tutorial/index.html">tutorials</a> available, and in case of difficulties, to ask for help on the <a href="https://community.luart.org">Lua<sup>rt</sup> Community</a> forum.</p>
+                <div class="columns mt-5">
+                    <div class="column">
+                        <a class="button is-info is-pulled-left" href="tour3.html"><span class="icon mr-2"><i class="fas fa-circle-left"></i></span> Back </a>
+                    </div>
+                </div>
+	     </div>
+    </div>
+  </section>  
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p class="mb-0">
+        <strong>
+          Lua
+          <sup>rt</sup> Documentation
+        </strong> - Windows programming framework for Lua
+      </p>
+      <a class="is-hovered" href="https://github.com/samyeyo" target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-github"></i>
+        </span>
+      </a>
+      <a class="is-hovered"
+         href="https://twitter.com/__LuaRT__"
+         target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-x-twitter"></i>
+        </span>
+      </a>
+<a class="is-hovered"
+         href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+         target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-youtube"></i>
+        </span>
+      </a>      
+      <a class="is-hovered"
+      href="https://discord.gg/XJJxQufmvh"
+      target="_blank">
+     <span class="icon" style="color: #A0A0A0">
+       <i class="fab fa-lg fa-discord"></i>
+     </span>
+     </a>    
+      <p class="mt-0">
+        Copyright &copy; 2024
+        <a href="mailto:samir.tine@luart.org">Samir Tine</a>.
+        <br />
+        <a href="https://bulma.io/made-with-bulma/">
+          <img alt="Made with Bulma"
+               height="24"
+               src="https://bulma.io/images/made-with-bulma.png"
+               width="128" />
+        </a>
+      </p>
+    </div>
+  </footer>
+  <script src="../js/main.js"></script>
+</body>
+</html>

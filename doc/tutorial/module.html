@@ -1,0 +1,392 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta content="Lua binary module tutorial" name="description" />
+  <title>
+    Writing binary module | LuaRT free and open source Windows programming framework for Lua
+  </title>
+  <link href="../../css/bulma-docs.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        rel="stylesheet" />
+  <link href="https://luart.org/doc/tutorial/module.html" rel="canonical" />
+  <link href="../../img/favicon.png" rel="icon" sizes="16x16" type="image/png" />
+  <link rel="stylesheet" href="../prism.css" data-noprefix="">
+</head>
+<body class="layout-documentation has-navbar-fixed-top">
+    <nav class="bd-navbar navbar is-fixed-top has-shadow" id="navbar">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="https://luart.org/">
+            <img alt="LuaRT: Free and open source Windows programming framework for Lua"
+                 height="40"
+                 src="../../img/logo.svg"
+                 width="112" />
+          </a>
+          <a class="navbar-item bd-navbar-mobile-icon"
+             href="https://github.com/samyeyo"
+             style="margin-left: auto"
+             target="_blank">
+            <span class="icon" style="color: #000000">
+              <i class="fab fa-lg fa-github"></i>
+            </span>
+          </a>
+          <a class="navbar-item bd-navbar-mobile-icon"
+             href="https://twitter.com/__LuaRT__"
+             target="_blank">
+            <span class="icon" style="color: #000000">
+              <i class="fab fa-lg fa-x-twitter"></i>
+            </span>
+          </a>
+          <a class="navbar-item bd-navbar-mobile-icon"
+             href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+             target="_blank">
+            <span class="icon" style="color: #FF0000">
+              <i class="fab fa-lg fa-youtube"></i>
+            </span>
+          </a>
+          <button class="navbar-burger burger"
+                  data-target="navMenuDocumentation"
+                  id="navbarBurger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+        <div class="navbar-menu" id="navMenuDocumentation">
+          <div class="navbar-start bd-navbar-start bd-is-original"
+               id="navbarStartOriginal">
+            <a class="navbar-item bd-navbar-item bd-navbar-item-bulma-book bd-navbar-item-base"
+               href="../../index.html#section_features">
+              <span class="icon has-text-bleeding">
+                <i class="fas fa-certificate"></i>
+              </span>
+              <span>Features</span>
+            </a>
+            <a class="navbar-item bd-navbar-item bd-navbar-item-love bd-navbar-item-base"
+               href="../../index.html#section_download">
+              <span class="icon has-text-danger">
+                <i class="fas fa-download"></i>
+              </span>
+              <span>Download</span>
+            </a>
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-item bd-navbar-item bd-navbar-item-videos bd-navbar-item-base scroll">
+                  <span class="icon has-text-success"><i class="fas fa-circle-play"></i></span><span>Getting started</span>
+                </a>
+                <div class="navbar-dropdown has-background-success-light">
+                    <a href="../install.html" class="dropdown-item has-text-success-dark">
+                      <span class="icon"><i class="fa fa-computer"></i></span> Installation
+                    </a>
+                    <a href="../first.html" class="dropdown-item has-text-success-dark">
+                        <span class="icon"><i class="fa fa-play"></i></span> First execution
+                    </a>
+                    <a href="../tour.html" class="dropdown-item has-text-success-dark">
+                      <span class="icon"><i class="fa fa-bus-simple"></i></span> Take a tour !
+                    </a>
+                </div>
+            </div>
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-item bd-navbar-item bd-navbar-item-extensions bd-navbar-item-base scroll">
+                  <span class="icon has-text-info"><i class="fas  fa-book"></i></span><span>Documentation</span>
+                </a>
+                <div class="navbar-dropdown has-background-info-light">
+                    <a href="../modules.html" class="dropdown-item has-text-info-dark">
+                      <span class="icon"><i class="fa fa-cubes"></i></span> Modules reference
+                    </a>
+                    <a href="../object.html" class="dropdown-item has-text-info-dark">
+                        <span class="icon"><i class="fa fa-shapes"></i></span> Object oriented programming
+                    </a>
+                    <a href="../toolchain.html" class="dropdown-item has-text-info-dark">
+                      <span class="icon"><i class="fa fa-wrench"></i></span> Toolchain documentation
+                    </a>
+                </div>
+            </div>
+            </a>
+            <a class="navbar-item bd-navbar-item bd-navbar-item-expo bd-navbar-item-base"
+               href="https://community.luart.org">
+              <span class="icon has-text-warning">
+                <i class="fas fa-comments"></i>
+              </span>
+              <span>Community</span>
+            </a>
+            <a class="navbar-item bd-navbar-item bd-navbar-item-blog bd-navbar-item-base" href="index.html">
+                <span class="icon has-text-rss">
+                  <i class="fas fa-graduation-cap"></i>
+                </span>
+                <span>Tutorials</span>
+              </a>
+            </div>
+            <div class="navbar-dropdown has-background-info-light">
+              <a href="../modules.html" class="dropdown-item has-text-info-dark">
+                <span class="icon"><i class="fa fa-cubes"></i></span> Modules reference
+              </a>
+              <a href="../object.html" class="dropdown-item has-text-info-dark">
+                  <span class="icon"><i class="fa fa-shapes"></i></span> Object oriented programming
+              </a>
+              <a href="../toolchain.html" class="dropdown-item has-text-info-dark">
+                <span class="icon"><i class="fa fa-wrench"></i></span> Toolchain documentation
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="navbar-end">
+          <a class="bd-navbar-icon navbar-item"
+             href="https://github.com/samyeyo"
+             target="_blank">
+            <span class="icon" style="color: #000000">
+              <i class="fab fa-lg fa-github"></i>
+            </span>
+          </a>
+          <a class="bd-navbar-icon navbar-item"
+             href="https://twitter.com/__LuaRT__"
+             target="_blank">
+            <span class="icon" style="color: #000000">
+              <i class="fab fa-lg fa-x-twitter"></i>
+            </span>
+          </a>
+          <a class="bd-navbar-icon navbar-item"
+             href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+             target="_blank">
+            <span class="icon" style="color: #FF0000">
+              <i class="fab fa-lg fa-youtube"></i>
+            </span>
+          </a>
+          <a class="bd-navbar-icon navbar-item"
+          href="https://discord.gg/XJJxQufmvh"
+          target="_blank">
+         <span class="icon" style="color: #5865F2">
+           <i class="fab fa-lg fa-discord"></i>
+         </span>
+       </a>
+        </div>
+      </nav>
+  
+  <section class="main-content columns is-centered is-fullheight" style="margin-top: 6%; margin-bottom: 4%">
+    <div class="column is-7">
+      <div class="card">
+        <div class="card-content">
+          <div class="content mb-6">
+            <h1 class="title is-2 mb-0" style="color: #004080">Writing binary modules for Lua<sup>rt</sup></h1>
+            <p class="mt-0 is-size-7 mb-6"><i>By Samir Tine, published on October 2022</i></p>
+            <p class="has-text-justified mt-6">
+              The Lua programming language is intended to be extensible. Adding new functionalities is possible through modules called "binary modules".
+              Because these modules are written in C, they are DLL files on Windows.</p>
+              <p>The Lua<sup>rt</sup> runtime is ABI-compatible with Lua, so binary modules for Lua<sup>rt</sup> can be developed the same way as for Lua. Lua<sup>rt</sup> thus supports binary modules compiled for Lua.              
+              There are, however, additional C API provided by the Lua<sup>rt</sup>runtime for the development of binary modules to extend the capabilities of Lua modules, including module properties and module finalizers.</p>
+            <p>In this tutorial, we'll learn how to write a binary module with this additional C API. This module will be called <code>"calc"</code> and will provide :
+              <ul>
+                <li>A <code>calc.add()</code> function to add two <code>numbers</code>, returning the result as a <code>string</code>.</li>
+                <li>A <code>calc.base</code> property to define the formating result of the previous function (<code>"hex"</code> for hexadecimal, <code>"dec"</code> for decimal).</li>
+                <li>An internal module finalizer that just prints "calc module has been finalized".</li>
+              </ul>
+            </p>
+            <h2 class="has-text-weight-light is-size-3 mt-6 mb-2">Module registration</h2>
+            <p>In Lua, a module registration function is needed to register the module with the <code>package</code> subsystem. The function must be declared as <code>extern</code> and defined as exported inside a DLL.
+              The registration function must be named with a prefix <code>luaopen_</code>function :</p>
+            <div class="language-c" style="margin-left: 15%; margin-right:15%"><code>
+//--- include the luart.h for the LuaRT C API
+#include &ltluart.h&gt
+//----- "calc" module registration function
+extern int __declspec(dllexport) luaopen_calc(lua_State *L)
+{
+    //--- lua_regmodulefinalize() registers the specified module with a finalizer function
+    //--- and pushes the module on the stack
+    lua_regmodulefinalize(L, calc);
+    //--- returns one value (the just pushed calc module)
+    return 1;
+}
+            </code></div>
+            <p class="mt-5">The registration function uses a new C API function provided by Lua<sup>rt</sup>, to register a binary module with a finalizer function (called when the module is garbage-collected).
+              To register a binary module without a finalizer function, you can use the <code>lua_regmodule()</code> function.</p>
+            <p>Both registration functions need two static arrays to bind the module functions (available in Lua) with a C function.<br>As in Lua, we use <code>luaL_Reg</code> arrays :</p> 
+            <div class="language-c" style="margin-left: 20%; margin-right:20%"><code>
+//--- luaL_Reg array for module properties, postfixed by "_properties"          
+static const luaL_Reg calc_properties[] = {
+  {"get_base",  calc_getbase}, //--- module "base" property getter
+  {"set_base",  calc_setbase}, //--- module "base" property setter
+  {NULL, NULL}
+};
+
+//--- luaL_Reg array for module functions, postfixed by "lib"  
+static const luaL_Reg calclib[] = {
+  {"add",		calc_add}, //--- module  "add" function
+  {NULL, NULL}
+};
+          </code></div>
+          <p class="mt-5">As you can see, the first array is for declaring modules properties. The name of the array must follow the pattern <code>[module name]_properties</code>.
+          Properties have the same name rule as for Lua objects properties, prefixed by <code>get_</code> for getter function and <code>set_</code> for setter function.</p>
+          <p>The second array is for declaring modules functions. The name of the array must follow the pattern <code>[module name]lib</code>.</p> 
+          <p>To register the module finalizer function, you just have to define the C function this way :</p>
+          <div class="language-c" style="margin-left: 20%; margin-right:20%"><code>
+//--- The finalizer function must be named with a "_finalize" postfix
+int calc_finalize(lua_State *L)
+{
+  puts("calc module has been finalized");
+  //--- finalizer functions returns nothing
+  return 0;
+}
+          </code></div>
+          <p class="mt-5">Now that we have defined and registered the content of the <code>calc</code> module, let's dive into its property and function implementation.</p>
+          <h2 class="has-text-weight-light is-size-3 mt-6 mb-2">Implementing a module property</h2>
+          <p>A module property is just a C function that is called when the user get or set the property. In fact, each property access is implemented by a C function. If a setter C function for a property is not set, then the module property will be readonly.</p>
+          <p>The getter C function for the property <code>calc.base</code> is implemented below :</p>
+          <div class="language-c" style="margin-left: 15%; margin-right:15%"><code>
+//-- number formats supported
+static const char **base_format = { "0x%.04x", "%d" };
+//-- current format for the result of the calc.add() function
+static int base_index = 0;
+
+LUA_PROPERTY_GET(calc, base)
+{
+  //--- pushes the string corresponding to the current base value and returns it
+  lua_pushstring(L, base_index ? "dec" : "hex");
+  return 1;
+}
+          </code></div>
+          <p class="mt-5">Here, the macro <code>LUA_PROPERTY_GET</code> translates to a Lua C function named <code>calc_getbase</code>. The function is pretty simple to implement as you can see, by using standard Lua C API.
+          The result of the getter function must then be pushed and returned.<p>
+          <article class="message is-danger is-small mt-6 mb-6" style="margin-left: 15%; margin-right: 15%">
+            <div class="message-header">
+              <p><i class="fas fa-triangle-exclamation"></i> Warning</p>
+            </div>
+            <div class="message-body">Remember that a getter C function can only return one value. (it's a known internal Lua __index metafunction limitation).</div>
+          </article>  
+          <p>It's now time to implement the setter C function for the property <code>calc.base</code> :</p>
+          <div class="language-c" style="margin-left: 15%; margin-right:15%"><code>
+LUA_PROPERTY_SET(calc, base)
+{
+  //--- The value at the first stack index is the value to set the property with
+  const char *format = luaL_checkstring(L, 1);
+  //--- Compare the provided string and set the global base variable accordingly...
+  if (strcmp(format, "hex") == 0)
+    base_index = 0;
+  else
+    if (strcmp(format, "dec") == 0)
+      base_index = 1;
+    else
+      //--- ...or throw an error if the format is not valid
+      luaL_error(L, "invalid format");
+  //--- A setter function don't return any value
+  return 0;
+}
+          </code></div>
+          <p class="mt-5">The macro <code>LUA_PROPERTY_SET</code> translates to a Lua C function named <code>calc_setbase</code>. You can then retrieve the value to set the property with and do anything you want, as like in this example, set the current format for the output of the <code>calc.add()</code> function.<p>
+            <article class="message is-warning is-small mt-6 mb-6" style="margin-left: 15%; margin-right: 15%">
+              <div class="message-header">
+                <p><i class="fas fa-lightbulb"></i> Note</p>
+              </div>
+              <div class="message-body">A setter C function uses the value at index 1 on the Lua stack to retrieve the value to set the property with.</div>
+            </article>          
+            <h2 class="has-text-weight-light is-size-3 mt-6 mb-2">Implementing a module function</h2>
+            <p>Now that we have learn how to register a binary module, and how to implement C getter/setter function for properties, the implementation of a module function is pretty easy :</p>
+            <div class="language-c" style="margin-left: 15%; margin-right:15%"><code>
+LUA_METHOD(calc, add)
+{
+  char buffer[12] = {0};
+  //--- You access function arguments like any other Lua C function (index 1 => first argument, ...)
+  lua_Integer a,b;
+  //--- Here we are checking and getting integers arguments
+  a = luaL_checkinteger(L, 1);
+  b = luaL_checkinteger(L, 2);
+  //--- pushes a formated string for the result of a+b, using the current base_index format...
+  snprintf(buffer, 12, base_format[base_index], a+b);
+  lua_pushstring(L, buffer);
+  //--- ...and returns it
+  return 1;
+}
+            </code></div>
+            <p class="mt-5">Here, the macro <code>LUA_METHOD</code> translates to a Lua C function named <code>calc_add</code>. Module functions are like standard Lua C functions as you can see.</p>
+            <p>You know now how to define and register a Lua<sup>rt</sup> binary module. You have learned how to define a module property, with getter and setter C functions, and a module function. But you may ask now how we compile it to a DLL ?</p>
+            <h2 class="has-text-weight-light is-size-3 mt-6 mb-2">Compile the binary module</h2>
+            <p>To compile the binary module, you should save all the previous code or download it here : <a href="https://gist.github.com/samyeyo/e6dcad7974a75d0e05dbc00609a0b4dd" target="_blank">calc.c</a>
+            <p>Then open a console prompt (GCC must have been correctly installed, and Lua<sup>rt</sup> sources must be somewhere on your hardrive).<br>Enter the following command :</p>
+            <div class="language-bash" style="margin-left: 15%; margin-right:15%"><code>
+gcc -shared -Ipath\to\LuaRT\src\include calc.c -Lpath\to\LuaRT\src -llua54 -o calc.dll           
+            </code></div>
+            <p class="mt-5">Don't forget to set the -I flag with the path to the Lua<sup>rt</sup> include directory, and the -L flag with the path to the <code>liblua54.a</code> file (generated during Lua<sup>rt</sup> compilation).
+            If everything went right, you should see a new <code>calc.dll</code> the binary module.</p>
+            <p>Let's use it in the following Lua script (save it in the same folder as the <code>calc.dll</code> module) :</p>
+            <div class="language-lua" style="margin-left: 15%; margin-right:15%"><code>
+-- use the calc.dll binary module
+
+-- require for the calc module (will load calc.dll)
+local calc = require "calc"
+
+-- Get the calc.base module property value (calls the C function calc_getbase)
+print("calc.base = "..calc.base)
+
+-- Call the calc.add() module function (calls the C function calc_add)
+print("calc.add(254, 1) = "..calc.add(254, 1))
+
+-- Set the calc.base module property (calls the C function calc_setbase)
+calc.base = "dec"
+
+-- Check that the calc.base property has been changed
+print("calc.base = "..calc.base)
+print("calc.add(254, 1) = "..calc.add(254, 1))
+            </code></div>
+            <p class="mt-5">You can now run this script using the following command :</p>
+            <div class="language-bash" style="margin-left: 15%; margin-right:15%"><code>
+luart usecalc.lua           
+            </code></div>
+            <p class="mt-5">Just see as the module finalizer C function is called when the scripts ends.</p>            
+            <p>And you're done ! Congratulation, you just have build your first binary module using Lua<sup>rt</sup> extensions to the Lua C API !</p>
+          </div>
+      </div>
+    </div>
+  </section>  
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p class="mb-0">
+        <strong>
+          Lua
+          <sup>rt</sup> Documentation
+        </strong> - Windows programming framework for Lua
+      </p>
+      <a class="is-hovered" href="https://github.com/samyeyo" target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-github"></i>
+        </span>
+      </a>
+      <a class="is-hovered"
+         href="https://twitter.com/__LuaRT__"
+         target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-x-twitter"></i>
+        </span>
+      </a>
+<a class="is-hovered"
+         href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+         target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-youtube"></i>
+        </span>
+      </a>      
+      <a class="is-hovered"
+      href="https://discord.gg/XJJxQufmvh"
+      target="_blank">
+     <span class="icon" style="color: #A0A0A0">
+       <i class="fab fa-lg fa-discord"></i>
+     </span>
+     </a>    
+      <p class="mt-0">
+        Copyright &copy; 2024
+        <a href="mailto:samir.tine@luart.org">Samir Tine</a>.
+        <br />
+        <a href="https://bulma.io/made-with-bulma/">
+          <img alt="Made with Bulma"
+               height="24"
+               src="https://bulma.io/images/made-with-bulma.png"
+               width="128" />
+        </a>
+      </p>
+    </div>
+  </footer>
+  <script src="../../js/main.js"></script>
+  <script src="../prism.js"></script>
+  <script src="../custom-class.js"></script>
+  <script>Prism.plugins.customClass.prefix('prism--');</script>
+</body>
+</html>

@@ -1,0 +1,263 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta content="rtc documentation" name="description" />
+  <title>
+    rtc documentation | LuaRT free and open source Windows programming framework for Lua
+  </title>
+  <link href="../../css/bulma-docs.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        rel="stylesheet" />
+  <link href="https://luart.org/doc/toolchain/rtc.html" rel="canonical" />
+  <link href="../../img/favicon.png" rel="icon" sizes="16x16" type="image/png" />
+  <link rel="stylesheet" href="../prism.css" data-noprefix="">
+</head>
+<body class="layout-documentation has-navbar-fixed-top">
+    <nav class="bd-navbar navbar is-fixed-top has-shadow" id="navbar">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="https://luart.org/">
+            <img alt="LuaRT: Free and open source Windows programming framework for Lua"
+                 height="40"
+                 src="../../img/logo.svg"
+                 width="112" />
+          </a>
+          <a class="navbar-item bd-navbar-mobile-icon"
+             href="https://github.com/samyeyo"
+             style="margin-left: auto"
+             target="_blank">
+            <span class="icon" style="color: #000000">
+              <i class="fab fa-lg fa-github"></i>
+            </span>
+          </a>
+          <a class="navbar-item bd-navbar-mobile-icon"
+             href="https://twitter.com/__LuaRT__"
+             target="_blank">
+            <span class="icon" style="color: #000000">
+              <i class="fab fa-lg fa-x-twitter"></i>
+            </span>
+          </a>
+          <a class="navbar-item bd-navbar-mobile-icon"
+             href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+             target="_blank">
+            <span class="icon" style="color: #FF0000">
+              <i class="fab fa-lg fa-youtube"></i>
+            </span>
+          </a>
+          <button class="navbar-burger burger"
+                  data-target="navMenuDocumentation"
+                  id="navbarBurger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+        <div class="navbar-menu" id="navMenuDocumentation">
+          <div class="navbar-start bd-navbar-start bd-is-original"
+               id="navbarStartOriginal">
+            <a class="navbar-item bd-navbar-item bd-navbar-item-bulma-book bd-navbar-item-base"
+               href="../../index.html#section_features">
+              <span class="icon has-text-bleeding">
+                <i class="fas fa-certificate"></i>
+              </span>
+              <span>Features</span>
+            </a>
+            <a class="navbar-item bd-navbar-item bd-navbar-item-love bd-navbar-item-base"
+               href="../../index.html#section_download">
+              <span class="icon has-text-danger">
+                <i class="fas fa-download"></i>
+              </span>
+              <span>Download</span>
+            </a>
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-item bd-navbar-item bd-navbar-item-videos bd-navbar-item-base scroll">
+                  <span class="icon has-text-success"><i class="fas fa-circle-play"></i></span><span>Getting started</span>
+                </a>
+                <div class="navbar-dropdown has-background-success-light">
+                    <a href="../install.html" class="dropdown-item has-text-success-dark">
+                      <span class="icon"><i class="fa fa-computer"></i></span> Installation
+                    </a>
+                    <a href="../first.html" class="dropdown-item has-text-success-dark">
+                        <span class="icon"><i class="fa fa-play"></i></span> First execution
+                    </a>
+                    <a href="../tour.html" class="dropdown-item has-text-success-dark">
+                      <span class="icon"><i class="fa fa-bus-simple"></i></span> Take a tour !
+                    </a>
+                </div>
+            </div>
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-item bd-navbar-item bd-navbar-item-extensions bd-navbar-item-base scroll">
+                  <span class="icon has-text-info"><i class="fas fa-book"></i></span><span>Documentation</span>
+                </a>
+                <div class="navbar-dropdown has-background-info-light">
+                    <a href="../modules.html" class="dropdown-item has-text-info-dark">
+                      <span class="icon"><i class="fa fa-cubes"></i></span> Modules reference
+                    </a>
+                    <a href="../object.html" class="dropdown-item has-text-info-dark">
+                        <span class="icon"><i class="fa fa-shapes"></i></span> Object oriented programming
+                    </a>
+                    <a href="../toolchain.html" class="dropdown-item has-text-info-dark">
+                      <span class="icon"><i class="fa fa-wrench"></i></span> Toolchain documentation
+                    </a>
+                </div>
+            </div>
+            </a>
+            <a class="navbar-item bd-navbar-item bd-navbar-item-expo bd-navbar-item-base"
+               href="https://community.luart.org">
+              <span class="icon has-text-warning">
+                <i class="fas fa-comments"></i>
+              </span>
+              <span>Community</span>
+            </a>
+            <a class="navbar-item bd-navbar-item bd-navbar-item-blog bd-navbar-item-base"
+               href="https://luart.org/doc/tutorial/index.html">
+              <span class="icon has-text-rss">
+                <i class="fas fa-graduation-cap"></i>
+              </span>
+              <span>Tutorials</span>
+            </a>
+          </div>
+        </div>
+        <div class="navbar-end">
+          <a class="bd-navbar-icon navbar-item"
+             href="https://github.com/samyeyo"
+             target="_blank">
+            <span class="icon" style="color: #000000">
+              <i class="fab fa-lg fa-github"></i>
+            </span>
+          </a>
+          <a class="bd-navbar-icon navbar-item"
+             href="https://twitter.com/__LuaRT__"
+             target="_blank">
+            <span class="icon" style="color: #000000">
+              <i class="fab fa-lg fa-x-twitter"></i>
+            </span>
+          </a>
+          <a class="bd-navbar-icon navbar-item"
+             href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+             target="_blank">
+            <span class="icon" style="color: #FF0000">
+              <i class="fab fa-lg fa-youtube"></i>
+            </span>
+          </a>
+          <a class="bd-navbar-icon navbar-item"
+          href="https://discord.gg/XJJxQufmvh"
+          target="_blank">
+         <span class="icon" style="color: #5865F2">
+           <i class="fab fa-lg fa-discord"></i>
+         </span>
+       </a>
+        </div>
+      </nav>
+  
+  <section class="main-content columns is-centered is-fullheight" style="margin-top: 6%; margin-bottom: 4%">
+    <div class="column is-7">
+      <div class="card">
+        <div class="card-content">
+			<div class="content">
+			  <p class="title is-2 mb-0" style="color: #004080">Lua<sup>rt</sup> script to executable compiler</p>
+            <p class="mt-6 mb-1"><code>rtc.exe</code> is a Lua script to executable compiler to build standalone Windows executables from your Lua<sup>rt</sup> scripts. It's then easier to deploy your applications without the need to install Lua<sup>rt</sup> for end users.</p>
+            <p>You can also embed files in your executable, that can be accessed seamlessly from your Lua scripts.</p>
+            <article class="message is-info mt-3 mb-6" style="margin-left:15%; margin-right:15%">
+              <div class="message-body">
+                  <p><code>wrtc.exe</code> is a GUI frontend for rtc, more user friendly, available in the <code>bin\</code> directory.</p>
+              </div>
+              </article>
+            <p class="has-text-weight-light is-size-3 mt-4 mb-1">Usage</p>
+            <p class="has-text-weight-light is-size-5 has-text-link-dark">rtc.exe [-s][-c][-w][-i <i>icon</i>] [-l<i>module</i>][-o <i>output</i>] [directory] main.lua  [file1.lua file2.lua...]</p>
+                <p class="ml-6 has-text-weight-light is-size-5 has-text-link-dark mb-0">[-s]</p>
+                <p class="ml-6">Creates a static executable (without <code>lua54.dll</code> dependency</p>
+                <p class="ml-6 has-text-weight-light is-size-5 has-text-link-dark mb-0">[-c]</p>
+                <p class="ml-6">Create executable for console application (the default).</p>
+                <p class="ml-6 has-text-weight-light is-size-5 has-text-link-dark mb-0">[-w]</p>
+                <p class="ml-6">Creates executable for Windows desktop application.</p>
+                <p class="ml-6 has-text-weight-light is-size-5 has-text-link-dark mb-0">[-i <i>icon</i>]</p>
+                <p class="ml-6">Change default executable icon with the one provided.</p>
+                <p class="ml-6 has-text-weight-light is-size-5 has-text-link-dark mb-0">[-l<i>module</i>]</p>
+                <p class="ml-6">Embed with the executable the provided Lua binary module (searching in the LuaRT <code>\module</code> folder or in the current directory)</p>
+                <p class="ml-6 has-text-weight-light is-size-5 has-text-link-dark mb-0">[-o <i>output</i>]</p>
+                <p class="ml-6">Sets executable name to 'output'.</p>
+                <p class="ml-6 has-text-weight-light is-size-5 has-text-link-dark mb-0">[directory]</p>
+                <p class="ml-6">Optional path of the directory to be embedded in the executable.</p>
+                <p class="ml-6 has-text-weight-light is-size-5 has-text-link-dark mb-0">main.lua</p>
+                <p class="ml-6">The Lua script that will be executed first.</p>
+                <p class="ml-6 has-text-weight-light is-size-5 has-text-link-dark mb-0"> [file1.lua file2.lua...]</p>
+                <p class="ml-6">Other scripts to embed in the executable.</p>
+           </div>
+           <article class="message is-info mt-6 ml-4 mr-6">
+            <div class="message-header">
+                <p><span class="icon"><i class="fas fa-circle-question"></i></span> Howto access embedded files from your Lua<sup>rt</sup> application</p>
+            </div>
+            <div class="message-body">
+                <p>Compiled programs with embedded content have a global <code>embed</code> module loaded at program start. The module contains all the necessary to interact with the embedded content.</p>
+                <p>It contains a "zip" member that hold a <a href="../compression/Zip.html"><i class="fas fas fa-archive"></i> Zip</a> instance already open for read access, that contains the directory content provided during compilation with <code>rtc</code>.<br>
+                If no embedded content exists, <code>embed</code> will be a <code>nil</code> value.</p>
+                <p class="mt-2">You can check that the current script is compiled without embedded content by checking if <code>embed</code> is <code>nil</code>.</p>
+            </div>
+            </article>
+            <article class="message is-info mt-6 ml-4 mr-6">
+                <div class="message-header">
+                    <p><span class="icon"><i class="fas fa-circle-question"></i></span> Howto require for an embedded module in your Lua<sup>rt</sup> application</p>
+                </div>
+                <div class="message-body">
+                    <p>To load an embedded Lua module, just <code>require</code> for the name of the module.<br>
+                    Please note that it works for Lua scripts and for embedded binary modules.</p>
+                </div>
+            </article>
+	</div>
+  </section>  
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p class="mb-0">
+        <strong>
+          Lua
+          <sup>rt</sup> Documentation
+        </strong> - Windows programming framework for Lua
+      </p>
+      <a class="is-hovered" href="https://github.com/samyeyo" target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-github"></i>
+        </span>
+      </a>
+      <a class="is-hovered"
+         href="https://twitter.com/__LuaRT__"
+         target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-x-twitter"></i>
+        </span>
+      </a>
+<a class="is-hovered"
+         href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+         target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-youtube"></i>
+        </span>
+      </a>      
+      <a class="is-hovered"
+      href="https://discord.gg/XJJxQufmvh"
+      target="_blank">
+     <span class="icon" style="color: #A0A0A0">
+       <i class="fab fa-lg fa-discord"></i>
+     </span>
+     </a>    
+      <p class="mt-0">
+        Copyright &copy; 2024
+        <a href="mailto:samir.tine@luart.org">Samir Tine</a>.
+        <br />
+        <a href="https://bulma.io/made-with-bulma/">
+          <img alt="Made with Bulma"
+               height="24"
+               src="https://bulma.io/images/made-with-bulma.png"
+               width="128" />
+        </a>
+      </p>
+    </div>
+  </footer>
+  <script src="../../js/main.js"></script>
+  <script src="../prism.js"></script>
+  <script src="../custom-class.js"></script>
+  <script>Prism.plugins.customClass.prefix('prism--');</script>
+</body>
+</html>

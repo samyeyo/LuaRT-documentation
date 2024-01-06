@@ -1,0 +1,401 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta content="Lua complex types tutorial" name="description" />
+  <title>
+    Lua complex types | LuaRT free and open source Windows programming framework for Lua
+  </title>
+  <link href="../../css/bulma-docs.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        rel="stylesheet" />
+  <link href="https://luart.org/doc/tutorial/complex_types.html" rel="canonical" />
+  <link href="../../img/favicon.png" rel="icon" sizes="16x16" type="image/png" />
+  <link rel="stylesheet" href="../prism.css" data-noprefix="">
+</head>
+<body class="layout-documentation has-navbar-fixed-top">
+    <nav class="bd-navbar navbar is-fixed-top has-shadow" id="navbar">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="https://luart.org/">
+            <img alt="LuaRT: Free and open source Windows programming framework for Lua"
+                 height="40"
+                 src="../../img/logo.svg"
+                 width="112" />
+          </a>
+          <a class="navbar-item bd-navbar-mobile-icon"
+             href="https://github.com/samyeyo"
+             style="margin-left: auto"
+             target="_blank">
+            <span class="icon" style="color: #000000">
+              <i class="fab fa-lg fa-github"></i>
+            </span>
+          </a>
+          <a class="navbar-item bd-navbar-mobile-icon"
+             href="https://twitter.com/__LuaRT__"
+             target="_blank">
+            <span class="icon" style="color: #000000">
+              <i class="fab fa-lg fa-x-twitter"></i>
+            </span>
+          </a>
+          <a class="navbar-item bd-navbar-mobile-icon"
+             href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+             target="_blank">
+            <span class="icon" style="color: #FF0000">
+              <i class="fab fa-lg fa-youtube"></i>
+            </span>
+          </a>
+          <button class="navbar-burger burger"
+                  data-target="navMenuDocumentation"
+                  id="navbarBurger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+        <div class="navbar-menu" id="navMenuDocumentation">
+          <div class="navbar-start bd-navbar-start bd-is-original"
+               id="navbarStartOriginal">
+            <a class="navbar-item bd-navbar-item bd-navbar-item-bulma-book bd-navbar-item-base"
+               href="../../index.html#section_features">
+              <span class="icon has-text-bleeding">
+                <i class="fas fa-certificate"></i>
+              </span>
+              <span>Features</span>
+            </a>
+            <a class="navbar-item bd-navbar-item bd-navbar-item-love bd-navbar-item-base"
+               href="../../index.html#section_download">
+              <span class="icon has-text-danger">
+                <i class="fas fa-download"></i>
+              </span>
+              <span>Download</span>
+            </a>
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-item bd-navbar-item bd-navbar-item-videos bd-navbar-item-base scroll">
+                  <span class="icon has-text-success"><i class="fas fa-circle-play"></i></span><span>Getting started</span>
+                </a>
+                <div class="navbar-dropdown has-background-success-light">
+                    <a href="../install.html" class="dropdown-item has-text-success-dark">
+                      <span class="icon"><i class="fa fa-computer"></i></span> Installation
+                    </a>
+                    <a href="../first.html" class="dropdown-item has-text-success-dark">
+                        <span class="icon"><i class="fa fa-play"></i></span> First execution
+                    </a>
+                    <a href="../tour.html" class="dropdown-item has-text-success-dark">
+                      <span class="icon"><i class="fa fa-bus-simple"></i></span> Take a tour !
+                    </a>
+                </div>
+            </div>
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-item bd-navbar-item bd-navbar-item-extensions bd-navbar-item-base scroll">
+                  <span class="icon has-text-info"><i class="fas  fa-book"></i></span><span>Documentation</span>
+                </a>
+                <div class="navbar-dropdown has-background-info-light">
+                    <a href="../modules.html" class="dropdown-item has-text-info-dark">
+                      <span class="icon"><i class="fa fa-cubes"></i></span> Modules reference
+                    </a>
+                    <a href="../object.html" class="dropdown-item has-text-info-dark">
+                        <span class="icon"><i class="fa fa-shapes"></i></span> Object oriented programming
+                    </a>
+                    <a href="../toolchain.html" class="dropdown-item has-text-info-dark">
+                      <span class="icon"><i class="fa fa-wrench"></i></span> Toolchain documentation
+                    </a>
+                </div>
+            </div>
+            </a>
+            <a class="navbar-item bd-navbar-item bd-navbar-item-expo bd-navbar-item-base"
+               href="https://community.luart.org">
+              <span class="icon has-text-warning">
+                <i class="fas fa-comments"></i>
+              </span>
+              <span>Community</span>
+            </a>
+            <a class="navbar-item bd-navbar-item bd-navbar-item-blog bd-navbar-item-base" href="index.html">
+                <span class="icon has-text-rss">
+                  <i class="fas fa-graduation-cap"></i>
+                </span>
+                <span>Tutorials</span>
+              </a>
+            </div>
+            <div class="navbar-dropdown has-background-info-light">
+              <a href="../modules.html" class="dropdown-item has-text-info-dark">
+                <span class="icon"><i class="fa fa-cubes"></i></span> Modules reference
+              </a>
+              <a href="../object.html" class="dropdown-item has-text-info-dark">
+                  <span class="icon"><i class="fa fa-shapes"></i></span> Object oriented programming
+              </a>
+              <a href="../toolchain.html" class="dropdown-item has-text-info-dark">
+                <span class="icon"><i class="fa fa-wrench"></i></span> Toolchain documentation
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="navbar-end">
+          <a class="bd-navbar-icon navbar-item"
+             href="https://github.com/samyeyo"
+             target="_blank">
+            <span class="icon" style="color: #000000">
+              <i class="fab fa-lg fa-github"></i>
+            </span>
+          </a>
+          <a class="bd-navbar-icon navbar-item"
+             href="https://twitter.com/__LuaRT__"
+             target="_blank">
+            <span class="icon" style="color: #000000">
+              <i class="fab fa-lg fa-x-twitter"></i>
+            </span>
+          </a>
+          <a class="bd-navbar-icon navbar-item"
+             href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+             target="_blank">
+            <span class="icon" style="color: #FF0000">
+              <i class="fab fa-lg fa-youtube"></i>
+            </span>
+          </a>
+          <a class="bd-navbar-icon navbar-item"
+          href="https://discord.gg/XJJxQufmvh"
+          target="_blank">
+         <span class="icon" style="color: #5865F2">
+           <i class="fab fa-lg fa-discord"></i>
+         </span>
+       </a>
+        </div>
+      </nav>
+  
+  <section class="main-content columns is-centered is-fullheight" style="margin-top: 6%; margin-bottom: 4%">
+    <div class="column is-7">
+      <div class="card">
+        <div class="card-content">
+          <div class="content mb-6">
+            <h1 class="title is-2 mb-0" style="color: #004080">Lua complex types</h1>
+            <p class="mt-0 is-size-7 mb-6"><i>By Samir Tine, published on December 2021</i></p>
+            <p class="mt-6">Thanks for taking the time to read the first and second part of this tutorial on learning programming with Lua<sup>rt</sup>.<br>Now we'll talk about complex Lua types. Let's get started !</p>
+            <h2 class="has-text-weight-light is-size-3 mt-6 mb-3">The table type</h2>
+            <p>If you were wondering what a table in a programming language did, then you're not alone! Lua tables are similar to real tables in everyday life: 
+              on a table, you can put plates, forks, glasses, etc. In Lua, however, you will find other values: <code>strings</code>, <code>numbers</code>, <code>booleans</code>, and even other <code>tables</code>.
+              We're not talking about furniture here, but containers.
+              In Lua, a table is a container, which means that it's a type of value that stores other values. </p>
+            <p>Do you remember the Lua<sup>rt</sup> runtime library ?
+            I had hinted at a real library (and now we know of two aisles: <code>sys</code> and <code>string</code>). These aisles are actually Lua tables, that contains functions.
+            As you can see, tables are a simple way to store and organize values.
+            Here is an example that shows how to create a table :</p>
+            <div class="language-lua" style="margin-left: 20%; margin-right:20%"><code>
+print({ "orange", "banana", "apple" })
+print(sys.beep)
+               </code></div>
+               <p class="mt-5">In this example, a table that contains 3 strings is created using braces. Lua will print to the screen <code>table: XXXXX</code> (where XXXX is an hexadecimal value).
+                The content of the table will not be printed, because they are contained inside that table (remember a table is a container !).
+                <p>The second line will print the beep value inside the <code>sys</code> table (remember the dot !), and as you already know it's a function value. Here no sound will be emitted as we don't use the parenthesis to call the <code>beep</code> function.</p>
+                <p>To access table content, we need to use the dot <code>.</code> and the name of the wanted value. That means that every value stored in a table has a "name".</p>
+                <article class="message is-success is-small mt-6 mb-6" style="margin-left: 20%; margin-right: 20%">
+                  <div class="message-header">
+                    <p><i class="fas fa-lightbulb"></i> Tips</p>
+                  </div>
+                  <div class="message-body">Braces <code>{ }</code>in Lua means the creation of a new table.</div>
+                </article>
+                <p>Lua tables are dynamic : it's possible to add or remove values inside tables at anytime. The following lines will add named values inside the <code>sys</code> table :</p>
+                <div class="language-lua" style="margin-left: 20%; margin-right:20%"><code>
+-- Let's add the christmas date to the sys table !
+sys.day = 25
+sys.month = 12
+sys.year = 2021
+sys.message = "Happy Christmas !"
+                </code></div>
+                <p class="mt-5">In this example, we add named values to the <code>sys</code> table, from the Lua<sup>rt</sup> runtime library. A table "named value" is called a <i>field</i> in Lua.</p>
+                <article class="message is-warning is-small mt-6 mb-6" style="margin-left: 20%; margin-right: 20%">
+                  <div class="message-header">
+                    <p><i class="fas fa-thumbtack"></i> Sticky note</p>
+                  </div>
+                  <div class="message-body">As you can see, the equal sign <code>=</code> means to assign the right value to the field at the left.</div>
+                </article>
+                <p>In this case, we are adding 4 fields to the <code>sys</code> table. A more convenient way to store the Christmas date in the <code>sys</code> table is to use a single field like this :</p>
+                <div class="language-lua" style="margin-left: 20%; margin-right:20%"><code>
+sys.christmas = { 25, 12, 2021 }
+                </code></div>
+                <p class="mt-5">The <code>sys.christmas</code> field will now contain a <code>table</code> with three number values. But..wait a minute...how to access those values ? What is the name of the field ?
+                In this case, when no field name is provided, Lua assign an integer number that starts from 1 :
+                <div class="language-lua" style="margin-left: 17%; margin-right:17%"><code>
+print(sys.christmas[1])     -- will print 25, the first element in the table
+print(sys.christmas[2])     -- will print 12, the second element in the table
+print(sys.christmas[3])     -- will print 2021, the third and so on...
+                </code></div>
+                <p class="mt-5">In fact, Lua tables are very powerful containers and use a generic key/value mechanism : each value in the table is stored using a key.<p>
+                <article class="message is-success is-small mt-6 mb-6" style="margin-left: 20%; margin-right: 20%">
+                  <div class="message-header">
+                    <p><i class="fas fa-lightbulb"></i> Tips</p>
+                  </div>
+                  <div class="message-body">There is two methods to access a table key : 
+                    <ul>
+                      <li>The field notation with the dot <code>.</code></li>
+                      <li>The key notation with the brackets <code>[ ]</code></li>
+                    </ul>
+                  </div>
+                </article>
+                <p>A key can be any Lua value : a <code>string</code>, a <code>boolean</code>, a <code>number</code>, a <code>function</code>, even an other <code>table</code>, and, in fact, any other value, except <code>nil</code>.<br>To get or set a table element the universal method is to use the <code>table[key]</code> notation :</p>
+                <div class="language-lua" style="margin-left: 13%; margin-right:13%"><code>
+sys.human = { }               -- sys.human is now an empty table
+sys.human["gender"] = "male"  -- creates a new key "human" inside that table with a "male" value
+sys.human["age"] = 26         -- creates a new key "age" with a number value of 26
+sys.human[1] = true           -- creates a new key 1 (a number) with a true boolean value
+                </code></div>
+                <p class="mt-5"></p>When the key of a table element is a <code>string</code>, and that string begins with a character or a <code>_</code>, that key is considered as a field and only in that case you can use the field
+                notation to access table elements :</p>
+                <div class="language-lua" style="margin-left: 12%; margin-right:12%"><code>
+print(sys.human)                -- prints "table: XXXXX"
+print(sys.human.gender)         -- prints "male"
+print(sys.human.age)            -- prints "26"
+print(sys.human.1)              -- error ! "1" is not a valid field
+print(sys.human[1])             -- Yes ! prints correctly "true"
+print(sys.human.name)           -- prints "nil", the table sys.human does not contain "name" field 
+                </code></div>
+                <p class="mt-5">Please note that indexing a table (using brackets or using the dot notation) with a key that is not contained, it returns a <code>nil</code> value.
+                It makes sense after all, you looked for a something that does not exist. Rather than throwing an error, Lua informs you with the <code>nil</code> value that the key is not valid.w<p>
+                <p>Let's go further using the <code>nil</code> value with tables :
+                <div class="language-lua" style="margin-left: 12%; margin-right:12%"><code>
+sys.humain[nil] = "something"   -- error ! a nil key is not a valid key !
+sys.humain.gender = nil         -- change the element with key "gender" from "male" to nil
+print(sys.human.gender)         -- prints nil ! The "gender" key has been removed from the table !
+                </code></div>
+              <p class="mt-5">Using a <code>nil</code> value as a key is not possible, as you may have already guessed. But assigning a <code>nil</code> value to a key will remove it the table. I think it's pretty well seen and logical.</p>
+              <p>On a side note, as for strings, tables can be handled with specific functions stored in the <code>"table"</code> aisle of the runtime Library.
+              See the <a href="https://www.lua.org/manual/5.4/manual.html#6.6">Lua 5.4 manual</a> for a complete listing.</p>
+              <p>Well, that's all for the moment ! Just remember that tables are much more powerful than they seem with a degree of customization that you cannot yet imagine and which goes well beyond this tutorial for beginners.</p>
+              <h2 class="has-text-weight-light is-size-3 mt-6 mb-3">The function type</h2>
+              <p>You already know what a function is, just remember the <code>print</code> function you already know.</p>
+              <article class="message is-warning is-small mt-6 mb-6" style="margin-left: 20%; margin-right: 20%">
+                <div class="message-header">
+                  <p><i class="fas fa-thumbtack"></i> Sticky note</p>
+                </div>
+                <div class="message-body">A function allows to perform an action based on arguments enclosed in parentheses.</div>
+              </article>
+              <p>There are plenty of functions available in the Lua<sup>rt</sup> runtime Library to perform various actions (create a window, choose a font, open a file, write to the console ...).
+              Functions in Lua are values in their own right and can be used as table keys, as arguments,...</p><p>Let's see now how we can create our own function in Lua :</p>
+              <div class="language-lua" style="margin-left: 20%; margin-right:20%"><code>
+-- declare a function "hello" which takes no argument
+function hello()    
+  -- prints the message "Hello !" to the screen
+  print("Hello !")
+end
+
+-- calls the hello function
+hello()             
+                </code></div>
+                <p class="mt-5">Functions are defined with the special word <code>function</code>. This special word is called a <i>keyword</i>. It is followed by the function name, here <code>hello</code>, with a pair of parenthesis <code>()</code>.</p>
+                <p>There's not much this function can do, so let's add some arguments to make it more useful. What will these arguments be? This brings us to a concept we have not discussed thus far: <code>variables</code>.
+                In reality, a variable is simply a word attached to a Lua value. It is like a table field as we have just seen, but without the table. Here is an example:</p>
+                <div class="language-lua" style="margin-left: 13%; margin-right:13%"><code>
+-- declare a function "hello" which takes one argument : the variable "name"
+function hello(name)
+  -- prints the string "Hello " concatenated with the value represented by the name variable
+  print("Hello "..name)       
+end
+
+-- calls the hello function with one argument, a string value
+hello("Sam")                  
+                </code></div>
+                <p class="mt-5">In this example, the <code>hello</code> function is called with the string <code>"Sam"</code> as first argument. This argument is then passed to the <code>name</code> parameter when calling the function.</p>                
+                <p>In this case, the function just prints a message to the screen, and returns nothing. In fact, functions can return one or more values. This is done with a new keyword : <code>return</code>, the following example demonstrates it :</p>
+                <div class="language-lua" style="margin-left: 13%; margin-right:13%"><code>
+-- declare a function "square" which takes one argument : the variable "number"
+function square(number)         
+  -- return the result of multiplying the variable "number" by itself
+  return number*number        
+end
+
+-- prints the value returned by the "square" function called with the argument 2
+print(square(2))                
+                </code></div>
+                <p class="mt-5">This function calculate the square of a number and return its result, which is then printed to the screen. In fact, this function can be used with any other number. Function are blocks of code that we can reuse at will.</p>
+                <p>Functions are values in Lua, they can for example be assigned to a field in a table :</p>
+                <div class="language-lua" style="margin-left: 13%; margin-right:13%"><code>
+function add(number1, number2)         
+    return number1 + number2
+end
+
+-- create a variable "mathematic" representing a new empty table
+mathematic = { }            
+
+-- add to this table a field "addition" with the add function as a value       
+mathematic.addition = add     
+
+-- print the result of the function mathematic.addition(1, 2)
+print(mathematic.addition(1, 2))    
+                </code></div>
+                <p class="mt-5">Assigning a function value to a table key, makes that key callable using the same function value. In this example, the field <code>addition</code> contains the <code>add</code> function.</p>
+                <p>You may ask why field <code>addition</code> has a value of <code>add</code> and not <code>add()</code>. The reason is simple : when declaring a function, in fact, you declare a variable with the name of the function. Using parenthesis on that variable calls the function. Check the following example :</p>
+                <div class="language-lua" style="margin-left: 13%; margin-right:13%"><code>
+function add(number1, number2)         
+    return number1 + number2
+end
+
+-- add is a variable containing a function value : prints "function: XXXXX" to the screen
+print(add) 
+
+-- error !! (no arguments provided : arguments number1 and number2 are nil)
+print(add())
+
+-- outputs "3"
+print(add(1, 2))    
+                </code></div>   
+                <p class="mt-5">Functions are particularly useful. You can reuse code by using functions rather than writing the same instructions repeatedly. They also allow you to better structure your programs.</p>
+                <p>Functions in Lua have other advanced features (table method, multiple return values, anonymous functions, variable number of arguments..) that go beyond this beginner's tutorial.</p>
+                <p class="mt-5">This tutorial on complex types in Lua has now come to an end, since we chose not to cover <code>userdata</code> and <code>thread</code> types, which are more advanced concepts.</p>
+            </div>
+        </div>
+      </div>
+    </div>
+  </section>  
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p class="mb-0">
+        <strong>
+          Lua
+          <sup>rt</sup> Documentation
+        </strong> - Windows programming framework for Lua
+      </p>
+      <a class="is-hovered" href="https://github.com/samyeyo" target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-github"></i>
+        </span>
+      </a>
+      <a class="is-hovered"
+         href="https://twitter.com/__LuaRT__"
+         target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-x-twitter"></i>
+        </span>
+      </a>
+<a class="is-hovered"
+         href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+         target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-youtube"></i>
+        </span>
+      </a>      
+      <a class="is-hovered"
+      href="https://discord.gg/XJJxQufmvh"
+      target="_blank">
+     <span class="icon" style="color: #A0A0A0">
+       <i class="fab fa-lg fa-discord"></i>
+     </span>
+     </a>    
+      <p class="mt-0">
+        Copyright &copy; 2024
+        <a href="mailto:samir.tine@luart.org">Samir Tine</a>.
+        <br />
+        <a href="https://bulma.io/made-with-bulma/">
+          <img alt="Made with Bulma"
+               height="24"
+               src="https://bulma.io/images/made-with-bulma.png"
+               width="128" />
+        </a>
+      </p>
+    </div>
+  </footer>
+  <script src="../../js/main.js"></script>
+  <script src="../prism.js"></script>
+  <script src="../custom-class.js"></script>
+  <script>Prism.plugins.customClass.prefix('prism--');</script>
+</body>
+</html>

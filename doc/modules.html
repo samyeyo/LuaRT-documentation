@@ -1,0 +1,328 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta content="LuaRT modules documentation" name="description" />
+  <title>
+    Modules reference | LuaRT free and open source Windows programming framework for Lua
+  </title>
+  <link href="../css/bulma-docs.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        rel="stylesheet" />
+  <link href="https://luart.org/doc/modules.html" rel="canonical" />
+  <link href="../img/favicon.png" rel="icon" sizes="16x16" type="image/png" />
+</head>
+<body class="layout-documentation has-navbar-fixed-top">
+  <nav class="bd-navbar navbar is-fixed-top has-shadow" id="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://luart.org/">
+        <img alt="LuaRT: Free and open source Windows programming framework for Lua"
+             height="40"
+             src="../img/logo.svg"
+             width="112" />
+      </a>
+      <a class="navbar-item bd-navbar-mobile-icon"
+         href="https://github.com/samyeyo"
+         style="margin-left: auto"
+         target="_blank">
+        <span class="icon" style="color: #000000">
+          <i class="fab fa-lg fa-github"></i>
+        </span>
+      </a>
+      <a class="navbar-item bd-navbar-mobile-icon"
+         href="https://twitter.com/__LuaRT__"
+         target="_blank">
+        <span class="icon" style="color: #000000">
+          <i class="fab fa-lg fa-x-twitter"></i>
+        </span>
+      </a>
+      <a class="navbar-item bd-navbar-mobile-icon"
+         href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+         target="_blank">
+        <span class="icon" style="color: #FF0000">
+          <i class="fab fa-lg fa-youtube"></i>
+        </span>
+      </a><a class="navbar-item bd-navbar-mobile-icon"
+         href="https://discord.gg/XJJxQufmvh"
+         target="_blank">
+        <span class="icon" style="color: #5865F2">
+          <i class="fab fa-discord"></i>
+        </span>
+      </a>
+      <button class="navbar-burger burger"
+              data-target="navMenuDocumentation"
+              id="navbarBurger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div class="navbar-menu" id="navMenuDocumentation">
+      <div class="navbar-start bd-navbar-start bd-is-original"
+           id="navbarStartOriginal">
+        <a class="navbar-item bd-navbar-item bd-navbar-item-bulma-book bd-navbar-item-base"
+           href="../index.html#section_features">
+          <span class="icon has-text-bleeding">
+            <i class="fas fa-certificate"></i>
+          </span>
+          <span>Features</span>
+        </a>
+        <a class="navbar-item bd-navbar-item bd-navbar-item-love bd-navbar-item-base"
+           href="../index.html#section_download">
+          <span class="icon has-text-danger">
+            <i class="fas fa-download"></i>
+          </span>
+          <span>Download</span>
+        </a>
+		<div class="navbar-item has-dropdown is-hoverable">
+			<a class="navbar-item bd-navbar-item bd-navbar-item-videos bd-navbar-item-base scroll">
+			  <span class="icon has-text-success"><i class="fas fa-circle-play"></i></span><span>Getting started</span>
+			</a>
+			<div class="navbar-dropdown has-background-success-light">
+				<a href="install.html" class="dropdown-item has-text-success-dark">
+				  <span class="icon"><i class="fa fa-computer"></i></span> Installation
+				</a>
+				<a href="first.html" class="dropdown-item has-text-success-dark">
+					<span class="icon"><i class="fa fa-play"></i></span> First execution
+				</a>
+				<a href="tour.html" class="dropdown-item has-text-success-dark">
+				  <span class="icon"><i class="fa fa-bus-simple"></i></span> Take a tour !
+				</a>
+			</div>
+		</div>
+		<div class="navbar-item has-dropdown is-hoverable">
+			<a class="navbar-item bd-navbar-item bd-navbar-item-extensions bd-navbar-item-base scroll">
+			  <span class="icon has-text-info"><i class="fas fa-book"></i></span><span>Documentation</span>
+			</a>
+			<div class="navbar-dropdown has-background-info-light">
+				<a href="modules.html" class="dropdown-item has-text-info-dark">
+				  <span class="icon"><i class="fa fa-cubes"></i></span> Modules reference
+				</a>
+				<a href="object.html" class="dropdown-item has-text-info-dark">
+					<span class="icon"><i class="fa fa-shapes"></i></span> Object oriented programming
+				</a>
+				<a href="toolchain.html" class="dropdown-item has-text-info-dark">
+				  <span class="icon"><i class="fa fa-wrench"></i></span> Toolchain documentation
+				</a>
+			</div>
+		</div>
+        </a>
+        <a class="navbar-item bd-navbar-item bd-navbar-item-expo bd-navbar-item-base"
+           href="https://community.luart.org">
+          <span class="icon has-text-warning">
+            <i class="fas fa-comments"></i>
+          </span>
+          <span>Community</span>
+        </a>
+        <a class="navbar-item bd-navbar-item bd-navbar-item-blog bd-navbar-item-base"
+           href="https://luart.org/doc/tutorial/index.html">
+          <span class="icon has-text-rss">
+            <i class="fas fa-graduation-cap"></i>
+          </span>
+          <span>Tutorials</span>
+        </a>
+     <div class="ml-6">
+			<span class="icon has-text-grey-light mr-1">
+				<i class="fas fa-search"></i>
+			</span></div>
+			<script async src="https://cse.google.com/cse.js?cx=509c4cdde27f845e7"></script>
+			<div class="gcse-searchbox-only" data-resultsUrl="https://luart.org/search.html"></div>
+      </div>
+    </div>
+    <div class="navbar-end">
+      <a class="bd-navbar-icon navbar-item"
+         href="https://github.com/samyeyo"
+         target="_blank">
+        <span class="icon" style="color: #000000">
+          <i class="fab fa-lg fa-github"></i>
+        </span>
+      </a>
+      <a class="bd-navbar-icon navbar-item"
+         href="https://twitter.com/__LuaRT__"
+         target="_blank">
+        <span class="icon" style="color: #000000">
+          <i class="fab fa-lg fa-x-twitter"></i>
+        </span>
+      </a>
+      <a class="bd-navbar-icon navbar-item"
+         href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+         target="_blank">
+        <span class="icon" style="color: #FF0000">
+          <i class="fab fa-lg fa-youtube"></i>
+        </span>
+      </a>
+      <a class="bd-navbar-icon navbar-item"
+         href="https://discord.gg/XJJxQufmvh"
+         target="_blank">
+        <span class="icon" style="color: #5865F2">
+          <i class="fab fa-lg fa-discord"></i>
+        </span>
+      </a>  
+    </div>
+  </nav>
+  
+  <section class="main-content columns is-centered is-fullheight" style="margin-top: 6%; margin-bottom: 4%">
+    <div class="column is-7">
+      <div class="card">
+        <a class="button is-white pl-5" href="index.html"><span class="icon has-text-grey-lighter" style="vertical-align: middle"><i class="fas fa-circle-left"></i></span></a>
+        <div class="card-content">
+          <p class="has-text-centered is-size-2 has-text-weight-light mb-0" style="color: #004080; margin-top:-3%">Lua<sup>rt</sup> modules reference</p>
+        <div class="bd-single-content content mt-6 mb-6">
+            <div class="bd-docs-content bd-content">
+              <nav class="bd-links">
+                <a class="bd-link" href="sys/index.html">
+                  <span class="icon bd-link-icon" style="font-size: 2em"> <i class="fas fa-gear" style="color: #D0D0D0"></i></span>
+                  <div class="bd-link-body">
+                    <h3 class="bd-link-title has-text-weight-normal" style="margin-bottom: 0; color: #004080;">sys</h3>
+                    <div class="bd-link-subtitle">System module to interact with the operating system</div>  
+                  </div>
+                </a>
+                <a class="bd-link" href="console/index.html">
+                  <span class="icon bd-link-icon" style="font-size: 2em"><i class="fas fa-terminal" style="color: #D54D44"></i></span>
+                  <div class="bd-link-body">
+                    <h3 class="bd-link-title has-text-weight-normal" style="margin-bottom: 0; color: #004080;">console</h3>
+                    <div class="bd-link-subtitle">Console module for terminal input/ouput facilities</div>  
+                  </div>
+                </a>
+                <a class="bd-link" href="net/index.html">
+                  <span class="icon bd-link-icon" style="font-size: 2em"><i class="fas fa-wifi" style="color: #367DBB"></i></span>
+                  <div class="bd-link-body">
+                    <h3 class="bd-link-title has-text-weight-normal" style="margin-bottom: 0; color: #004080;">net</h3>
+                    <div class="bd-link-subtitle">Networking module for sockets, FTP, HTTP...</div>  
+                  </div>
+                </a>
+                <a class="bd-link" href="json/index.html">
+                  <span class="icon bd-link-icon" style="font-size: 2em"><i class="fab fa-js-square" style="color: #FFDB4D"></i></span>
+                  <div class="bd-link-body">
+                    <h3 class="bd-link-title has-text-weight-normal" style="margin-bottom: 0; color: #004080;">json</h3>
+                    <div class="bd-link-subtitle">JavaScript Object Notation module</div>  
+                  </div>
+                </a>
+                <a class="bd-link" href="compression/index.html">
+                  <span class="icon bd-link-icon" style="font-size: 2em"><i class="fas fa-archive" style="color: #D2A679"></i></span>
+                  <div class="bd-link-body">
+                    <h3 class="bd-link-title has-text-weight-normal" style="margin-bottom: 0; color: #004080;">compression</h3>
+                    <div class="bd-link-subtitle">Compression module for data archiving</div>  
+                  </div>
+                </a>
+                <a class="bd-link" href="crypto/index.html">
+                  <span class="icon bd-link-icon" style="font-size: 2em"><i class="fas fa-key" style="color: #F0B108"></i></span>
+                  <div class="bd-link-body">
+                    <h3 class="bd-link-title has-text-weight-normal" style="margin-bottom: 0; color: #004080;">crypto</h3>
+                    <div class="bd-link-subtitle">Cryptography with hashing and encryption/decryption</div>  
+                  </div>
+                </a>   
+                <a class="bd-link" href="ui/index.html">
+                  <span class="icon bd-link-icon" style="font-size: 2em"><i class="fas fa-clone" style="color: #0099FF"></i></span>
+                  <div class="bd-link-body">
+                    <h3 class="bd-link-title has-text-weight-normal" style="margin-bottom: 0; color: #004080;">ui</h3>
+                    <div class="bd-link-subtitle">Windows GUI module</div>  
+                  </div>
+                </a>    
+                <a class="bd-link" href="webview/index.html">
+                  <span class="icon bd-link-icon" style="font-size: 2em"><i class="fab fa-edge" style="color: #71e6b5"></i></span>
+                  <div class="bd-link-body">
+                    <h3 class="bd-link-title has-text-weight-normal" style="margin-bottom: 0; color: #004080;">webview</h3>
+                    <div class="bd-link-subtitle">HTML/CSS/JS render module</div>  
+                  </div>
+                </a>    
+                <a class="bd-link" href="canvas/index.html">
+                  <span class="icon bd-link-icon" style="font-size: 2em"><i class="fas fa-palette" style="color: #99358C"></i></span>
+                  <div class="bd-link-body">
+                    <h3 class="bd-link-title has-text-weight-normal" style="margin-bottom: 0; color: #004080;">canvas</h3>
+                    <div class="bd-link-subtitle">Graphics drawing module</div>  
+                  </div>
+                </a>    
+                <a class="bd-link" href="base/index.html">
+                  <span class="icon bd-link-icon" style="font-size: 2em"><i class="fas fa-layer-group" style="color: #d54d34"></i></span>
+                  <div class="bd-link-body">
+                    <h3 class="bd-link-title has-text-weight-normal" style="margin-bottom: 0; color: #004080;">base</h3>
+                    <div class="bd-link-subtitle">Enhanced Lua base module</div>  
+                  </div>
+                </a> 
+                <a class="bd-link" href="string/index.html">
+                  <span class="icon bd-link-icon" style="font-size: 2em"><i class="fas fa-quote-right" style="color: #B1D928"></i></span>
+                  <div class="bd-link-body">
+                    <h3 class="bd-link-title has-text-weight-normal" style="margin-bottom: 0; color: #004080;">string</h3>
+                    <div class="bd-link-subtitle">Enhanced Lua string module</div>  
+                  </div>
+                </a>
+                <a class="bd-link" href="audio/index.html">
+                  <span class="icon bd-link-icon" style="font-size: 2em"><i class="fas fa-music" style="color: #FF8A65" ></i></span>
+                  <div class="bd-link-body">
+                    <h3 class="bd-link-title has-text-weight-normal" style="margin-bottom: 0; color: #004080;">audio</h3>
+                    <div class="bd-link-subtitle">Audio playing module</div>  
+                  </div>
+                </a>
+                <a class="bd-link" href="sqlite/index.html">
+                  <span class="icon bd-link-icon" style="font-size: 2em"><i class="fas fa-database" style="color: #C39BD3" ></i></span>
+                  <div class="bd-link-body">
+                    <h3 class="bd-link-title has-text-weight-normal" style="margin-bottom: 0; color: #004080;">sqlite</h3>
+                    <div class="bd-link-subtitle">SQLite database module</div>  
+                  </div>
+                </a>
+                <a class="bd-link" href="ini/index.html">
+                  <span class="icon bd-link-icon" style="font-size: 2em"><i class="fas fas fa-square-poll-horizontal" style="color: #5DADE2" ></i></span>
+                  <div class="bd-link-body">
+                    <h3 class="bd-link-title has-text-weight-normal" style="margin-bottom: 0; color: #004080;">ini</h3>
+                    <div class="bd-link-subtitle">Ini parser module</div>  
+                  </div>
+                </a>
+              </nav>
+              </div>
+          </div>  
+          </div>
+	</div>
+  </section>  
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p class="mb-0">
+        <strong>
+          Lua
+          <sup>rt</sup> Documentation
+        </strong> - Windows programming framework for Lua
+      </p>
+      <a class="is-hovered" href="https://github.com/samyeyo" target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-github"></i>
+        </span>
+      </a>
+      <a class="is-hovered"
+         href="https://twitter.com/__LuaRT__"
+         target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-x-twitter"></i>
+        </span>
+      </a>
+<a class="is-hovered"
+         href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+         target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-youtube"></i>
+        </span>
+      </a>      
+      <a class="is-hovered"
+      href="https://discord.gg/XJJxQufmvh"
+      target="_blank">
+     <span class="icon" style="color: #A0A0A0">
+       <i class="fab fa-lg fa-discord"></i>
+     </span>
+     </a>    
+      <p class="mt-0">
+        Copyright &copy; 2024
+        <a href="mailto:samir.tine@luart.org">Samir Tine</a>.
+        <br />
+        <a href="https://bulma.io/made-with-bulma/">
+          <img alt="Made with Bulma"
+               height="24"
+               src="https://bulma.io/images/made-with-bulma.png"
+               width="128" />
+        </a>
+      </p>
+    </div>
+  </footer>
+  <script src="../js/main.js"></script>
+</body>
+</html>

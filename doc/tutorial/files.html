@@ -1,0 +1,313 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta content="Lua files tutorial" name="description" />
+  <title>
+    How to use files | LuaRT free and open source Windows programming framework for Lua
+  </title>
+  <link href="../../css/bulma-docs.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        rel="stylesheet" />
+  <link href="https://luart.org/doc/tutorial/files.html" rel="canonical" />
+  <link href="../../img/favicon.png" rel="icon" sizes="16x16" type="image/png" />
+  <link rel="stylesheet" href="../prism.css" data-noprefix="">
+</head>
+<body class="layout-documentation has-navbar-fixed-top">
+    <nav class="bd-navbar navbar is-fixed-top has-shadow" id="navbar">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="https://luart.org/">
+            <img alt="LuaRT: Free and open source Windows programming framework for Lua"
+                 height="40"
+                 src="../../img/logo.svg"
+                 width="112" />
+          </a>
+          <a class="navbar-item bd-navbar-mobile-icon"
+             href="https://github.com/samyeyo"
+             style="margin-left: auto"
+             target="_blank">
+            <span class="icon" style="color: #000000">
+              <i class="fab fa-lg fa-github"></i>
+            </span>
+          </a>
+          <a class="navbar-item bd-navbar-mobile-icon"
+             href="https://twitter.com/__LuaRT__"
+             target="_blank">
+            <span class="icon" style="color: #000000">
+              <i class="fab fa-lg fa-x-twitter"></i>
+            </span>
+          </a>
+          <a class="navbar-item bd-navbar-mobile-icon"
+             href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+             target="_blank">
+            <span class="icon" style="color: #FF0000">
+              <i class="fab fa-lg fa-youtube"></i>
+            </span>
+          </a>
+          <button class="navbar-burger burger"
+                  data-target="navMenuDocumentation"
+                  id="navbarBurger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+        <div class="navbar-menu" id="navMenuDocumentation">
+          <div class="navbar-start bd-navbar-start bd-is-original"
+               id="navbarStartOriginal">
+            <a class="navbar-item bd-navbar-item bd-navbar-item-bulma-book bd-navbar-item-base"
+               href="../../index.html#section_features">
+              <span class="icon has-text-bleeding">
+                <i class="fas fa-certificate"></i>
+              </span>
+              <span>Features</span>
+            </a>
+            <a class="navbar-item bd-navbar-item bd-navbar-item-love bd-navbar-item-base"
+               href="../../index.html#section_download">
+              <span class="icon has-text-danger">
+                <i class="fas fa-download"></i>
+              </span>
+              <span>Download</span>
+            </a>
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-item bd-navbar-item bd-navbar-item-videos bd-navbar-item-base scroll">
+                  <span class="icon has-text-success"><i class="fas fa-circle-play"></i></span><span>Getting started</span>
+                </a>
+                <div class="navbar-dropdown has-background-success-light">
+                    <a href="../install.html" class="dropdown-item has-text-success-dark">
+                      <span class="icon"><i class="fa fa-computer"></i></span> Installation
+                    </a>
+                    <a href="../first.html" class="dropdown-item has-text-success-dark">
+                        <span class="icon"><i class="fa fa-play"></i></span> First execution
+                    </a>
+                    <a href="../tour.html" class="dropdown-item has-text-success-dark">
+                      <span class="icon"><i class="fa fa-bus-simple"></i></span> Take a tour !
+                    </a>
+                </div>
+            </div>
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-item bd-navbar-item bd-navbar-item-extensions bd-navbar-item-base scroll">
+                  <span class="icon has-text-info"><i class="fas  fa-book"></i></span><span>Documentation</span>
+                </a>
+                <div class="navbar-dropdown has-background-info-light">
+                    <a href="../modules.html" class="dropdown-item has-text-info-dark">
+                      <span class="icon"><i class="fa fa-cubes"></i></span> Modules reference
+                    </a>
+                    <a href="../object.html" class="dropdown-item has-text-info-dark">
+                        <span class="icon"><i class="fa fa-shapes"></i></span> Object oriented programming
+                    </a>
+                    <a href="../toolchain.html" class="dropdown-item has-text-info-dark">
+                      <span class="icon"><i class="fa fa-wrench"></i></span> Toolchain documentation
+                    </a>
+                </div>
+            </div>
+            </a>
+            <a class="navbar-item bd-navbar-item bd-navbar-item-expo bd-navbar-item-base"
+               href="https://community.luart.org">
+              <span class="icon has-text-warning">
+                <i class="fas fa-comments"></i>
+              </span>
+              <span>Community</span>
+            </a>
+            <a class="navbar-item bd-navbar-item bd-navbar-item-blog bd-navbar-item-base" href="index.html">
+                <span class="icon has-text-rss">
+                  <i class="fas fa-graduation-cap"></i>
+                </span>
+                <span>Tutorials</span>
+              </a>
+            </div>
+            <div class="navbar-dropdown has-background-info-light">
+              <a href="../modules.html" class="dropdown-item has-text-info-dark">
+                <span class="icon"><i class="fa fa-cubes"></i></span> Modules reference
+              </a>
+              <a href="../object.html" class="dropdown-item has-text-info-dark">
+                  <span class="icon"><i class="fa fa-shapes"></i></span> Object oriented programming
+              </a>
+              <a href="../toolchain.html" class="dropdown-item has-text-info-dark">
+                <span class="icon"><i class="fa fa-wrench"></i></span> Toolchain documentation
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="navbar-end">
+          <a class="bd-navbar-icon navbar-item"
+             href="https://github.com/samyeyo"
+             target="_blank">
+            <span class="icon" style="color: #000000">
+              <i class="fab fa-lg fa-github"></i>
+            </span>
+          </a>
+          <a class="bd-navbar-icon navbar-item"
+             href="https://twitter.com/__LuaRT__"
+             target="_blank">
+            <span class="icon" style="color: #000000">
+              <i class="fab fa-lg fa-x-twitter"></i>
+            </span>
+          </a>
+          <a class="bd-navbar-icon navbar-item"
+             href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+             target="_blank">
+            <span class="icon" style="color: #FF0000">
+              <i class="fab fa-lg fa-youtube"></i>
+            </span>
+          </a>
+          <a class="bd-navbar-icon navbar-item"
+          href="https://discord.gg/XJJxQufmvh"
+          target="_blank">
+         <span class="icon" style="color: #5865F2">
+           <i class="fab fa-lg fa-discord"></i>
+         </span>
+       </a>
+        </div>
+      </nav>
+  
+  <section class="main-content columns is-centered is-fullheight" style="margin-top: 6%; margin-bottom: 4%">
+    <div class="column is-7">
+      <div class="card">
+        <div class="card-content">
+          <div class="content mb-6">
+            <h1 class="title is-2 mb-0" style="color: #004080">How to use files with Lua<sup>rt</sup></h1>
+            <p class="mt-0 is-size-7 mb-6"><i>By Samir Tine, published on December 2021</i></p>          
+			      <p>In the Lua standard library, input / output functionalities are gathered within the <code>io</code> module.<br>In Lua<sup>rt</sup>, they are grouped together within the <a href="../sys/index.html"><i class="fas fa-cog" style="color :#D0D0D0; vertical-align: middle"></i> sys</a> module, and more particularly the <a href="../sys/File.html"><i class="fas fa-file" style="color :#367DBB"></i> File</a> object.</p>
+            <h2 class="has-text-weight-light is-size-3 mt-6 mb-3" id="creating-a-file-value">Creating a File value</h2>
+            <p>At this point, it&#39;s important to understand that a <a href="../sys/File.html"><i class="fas fa-file" style="color :#367DBB"></i> File</a> object represents an abstraction of a file that may <i>*or may not*</i> physically exist. <br>For example, when creating a new file, only the call to the <a href="../sys/File-open.html">File:open()</a> method will physically create the file on the computer storage:</p>
+            <div class="language-lua" style="margin-left: 20%; margin-right:20%"><code>
+local newfile = sys.File("hello.txt") -- newfile holds a File value
+print(newfile.exists) -- outputs false
+newfile:open("write") -- creates the file physically on the disk 
+newfile:close()       -- closes the opened File
+print(newfile.exists) -- now outputs true
+            </code></div>
+            <h2 class="has-text-weight-light is-size-3 mt-6 mb-3" id="file-operations">File operations</h2>
+            <p>Once created, a <a href="../sys/File.html"><i class="fas fa-file" style="color :#367DBB"></i> File</a> instance can be used to perform file operations:</p>
+            <div class="language-lua" style="margin-left: 20%; margin-right:20%"><code>
+local file = sys.File("test.txt") 
+file:copy("test_copy.txt")   -- copies file
+file:move("C:\")             -- moves file
+file:remove()                -- deletes the file			
+            </code></div>
+            <h2 class="has-text-weight-light is-size-3 mt-6 mb-3"  id="opening-and-closing-a-file">Opening and closing a File</h2>
+            <p>A File can be opened to read or write its content. This is done by calling the <a href="../sys/File-open.html">File:open()</a> method. By default, the file is open in <code>"read"</code> mode. The file encoding can be specified as a second argument or autodetected using Byte Mark Order :</p>
+            <div class="language-lua" style="margin-left: 20%; margin-right:20%"><code>
+local file = sys.File("test.bin")
+-- opens the file "test.bin" in read mode (encoding is autodetected)
+file:open()   
+-- closes the file
+file:close()                   
+-- open the file in write mode (erasing its previous content), using "binary" encoding(ie raw binary)
+file:open("write", "binary")   
+          </code></div>
+          <article class="message is-warning is-small mt-6 mb-6" style="margin-left: 20%; margin-right: 20%">
+            <div class="message-header">
+              <p><i class="fas fa-thumbtack"></i> Sticky note</p>
+            </div>
+            <div class="message-body">Do not forget to close a file after the transaction on this one ended. This is done automatically when the <code>File</code> object is garbage collected, but that cannot be predicted.</div>
+          </article>
+          <h2 class="has-text-weight-light is-size-3 mt-6 mb-3" id="reading-and-writing-files">Reading and writing Files</h2>
+          Once the <a href="../sys/File.html"><i class="fas fa-file" style="color :#367DBB"></i> File</a> object has been created, and the <code>File:open()</code> method called, you can write and/or read on the File (depending on the open mode used). These methods return <a href="../sys/Buffer.html"><i class="fas fa-th" style="color :#367DBB"></i> Buffer</a> objects in <code>"binary"</code> mode (containing in memory binary data) or strings in <code>"utf8"</code> or <code>"unicode"</code> mode.
+          <h2 class="is-size-6 mt-6 mb-3 has-text-link-dark" id="reading-file-content">Reading file content</h2>
+			    There are two methods for reading the content of a file: <a href="../sys/File-read.html">File:read()</a> and <a href="../sys/File-readln.html">File:readln()</a>
+			    <div class="language-lua" style="margin-left: 20%; margin-right:20%"><code>
+local file = sys.File("README.TXT"):open()  -- opens the File for reading
+print(file:read())  -- reads and prints all the file content 			
+          </code></div>
+          The <code>File:read()</code> method reads a certain number of characters (when using <code>"utf8"</code> or <code>"unicode"</code> mode) or bytes (in <code>"binary"</code> mode) specified as argument, or all the content of the file if no argument is provided.<br>
+          The <code>File:readln()</code> method reads a line, until end of line characters <span style="color:#EA6AC3">&quot;\r\n&quot;</span> or <span style="color:#EA6AC3">&quot;\n&quot;</span> are encountered. You can iterate through lines of the file with the <a href="../sys/File-lines.html">File.lines</a> iterator.
+          <h2 class="is-size-6 mt-6 mb-3 has-text-link-dark" id="writing-to-files">Writing to files</h2>
+          There are two methods for writing data to a file: <a href="../sys/File-write.html">File:write()</a> and <a href="../sys/File-writeln.html">File:writeln()</a>.<br>
+          Each method take one argument, converted to a string to be written to the file. In <code>"binary"</code> mode, <a href="../sys/Buffer.html"><i class="fas fa-th" style="color :#367DBB"></i> Buffer</a> objects can be used.<br>
+          <code>File:writeln()</code> writes a line to the file, appending <span style="color:#EA6AC3">&quot;\r\n&quot;</span> (the End Of Line marker on Windows platform).
+          <h2 class="has-text-weight-light is-size-3 mt-6 mb-3"  id="using-file-position">File position</h2>
+          The <a href="../sys/File-position.html">File.position</a> property get or set the current file position, as a number. File position always starts at 1 (as for all indexed/positioned values in Lua).<br>
+          File position interpretation depends on the file encoding :
+          <ul><li>In <code>"binary"</code> encoding : the position is expressed in bytes.</li>
+          <li>In <code>"utf8"</code> or <code>"unicode"</code> encoding : the position is expressed in characters.</li>
+          </ul>
+          The <a href="../sys/File-position.html">File.eof</a> property checks if the end of the file have been reached.
+          <h2 class="has-text-weight-light is-size-3 mt-6 mb-3"  id="using-file-timestamps">File timestamps</h2>
+          The <a href="../sys/File-accessed.html">File.accessed</a>, <a href="../sys/File-modified.html">File.modified</a> and <a href="../sys/File-created.html">File.created</a> properties permits to set or get File timestamps using a <a href="../sys/Datetime.html"><i class="fas fa-calendar-alt" style="color :#367DBB"></i> Datetime</a> object.
+          <div class="language-lua" style="margin-left: 20%; margin-right:20%"><code>
+-- Create File instance representing the Windows notepad.exe executable
+local file = sys.File(sys.env.WINDIR.."/notepad.exe")
+-- prints when notepad.exe was created on your system
+print(file.created)   
+          </code></div>          
+          <h2 class="has-text-weight-light is-size-3 mt-6 mb-3" id="managing-file-attributes">File attributes</h2>
+          The <a href="../sys/File-hidden.html">File.hidden</a>, <a href="../sys/File-temporary.html">File.temporary</a> and <a href="../sys/File-readonly.html">File.readonly</a> permits to set or get the corresponding File attributes :
+          <div class="language-lua" style="margin-left: 20%; margin-right:20%"><code>
+-- Create File instance representing the Windows notepad.exe executable
+local file = sys.File(sys.env.WINDIR.."/notepad.exe")
+-- prints if notepad.exe is readonly (should be false)
+print(file.readonly)   
+          </code></div>          
+          <h2 class="has-text-weight-light is-size-3 mt-6 mb-3" id="managing-file-path-and-names">Managing File path and names</h2>
+          The <a href="../sys/File-fullpath.html">File.fullpath</a>, <a href="../sys/File-name.html">File.name</a>, <a href="../sys/File-extension.html">File.extension</a>, <a href="../sys/File-path.html">File.path</a> properties ease filename parsing. Please note that you can use <span style="color:#EA6AC3">"/"</span> or <span style="color:#EA6AC3">"\"</span> for path separators.
+          <div class="language-lua" style="margin-left: 20%; margin-right:20%"><code>
+local file = sys.File("test.lua")
+if file.extension == ".lua" then
+    print("It's a Lua script file !")
+else
+    print("Don't know what kind of file it is...")
+end
+          </code></div>     
+          <p class="mt-5">As you can see, <a href="../sys/File.html"><i class="fas fa-file" style="color :#367DBB"></i> File</a> objects provide easy access to all of the functionality related to creating, reading, writing and manipulating files in Lua<sup>rt</sup>.<br>These features go beyond the capabilities offered by the standard Lua library on the Windows platform.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  </section>  
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p class="mb-0">
+        <strong>
+          Lua
+          <sup>rt</sup> Documentation
+        </strong> - Windows programming framework for Lua
+      </p>
+      <a class="is-hovered" href="https://github.com/samyeyo" target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-github"></i>
+        </span>
+      </a>
+      <a class="is-hovered"
+         href="https://twitter.com/__LuaRT__"
+         target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-x-twitter"></i>
+        </span>
+      </a>
+<a class="is-hovered"
+         href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+         target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-youtube"></i>
+        </span>
+      </a>      
+      <a class="is-hovered"
+      href="https://discord.gg/XJJxQufmvh"
+      target="_blank">
+     <span class="icon" style="color: #A0A0A0">
+       <i class="fab fa-lg fa-discord"></i>
+     </span>
+     </a>    
+      <p class="mt-0">
+        Copyright &copy; 2024
+        <a href="mailto:samir.tine@luart.org">Samir Tine</a>.
+        <br />
+        <a href="https://bulma.io/made-with-bulma/">
+          <img alt="Made with Bulma"
+               height="24"
+               src="https://bulma.io/images/made-with-bulma.png"
+               width="128" />
+        </a>
+      </p>
+    </div>
+  </footer>
+  <script src="../../js/main.js"></script>
+  <script src="../prism.js"></script>
+  <script src="../custom-class.js"></script>
+  <script>Prism.plugins.customClass.prefix('prism--');</script>
+</body>
+</html>

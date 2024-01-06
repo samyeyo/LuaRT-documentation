@@ -1,0 +1,331 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta content="Lua programming tutorials" name="description" />
+  <title>
+    LuaRT tutorials | LuaRT free and open source Windows programming framework for Lua
+  </title>
+  <link href="../../css/bulma-docs.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        rel="stylesheet" />
+  <link href="https://luart.org/doc/tutorial/index.html" rel="canonical" />
+  <link href="../../img/favicon.png" rel="icon" sizes="16x16" type="image/png" />
+  <link rel="stylesheet" href="../prism.css" data-noprefix="">
+</head>
+<body class="layout-documentation has-navbar-fixed-top">
+    <nav class="bd-navbar navbar is-fixed-top has-shadow" id="navbar">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="https://luart.org/">
+            <img alt="LuaRT: Free and open source Windows programming framework for Lua"
+                 height="40"
+                 src="../../img/logo.svg"
+                 width="112" />
+          </a>
+          <a class="navbar-item bd-navbar-mobile-icon"
+             href="https://github.com/samyeyo"
+             style="margin-left: auto"
+             target="_blank">
+            <span class="icon" style="color: #000000">
+              <i class="fab fa-lg fa-github"></i>
+            </span>
+          </a>
+          <a class="navbar-item bd-navbar-mobile-icon"
+             href="https://twitter.com/__LuaRT__"
+             target="_blank">
+            <span class="icon" style="color: #000000">
+              <i class="fab fa-lg fa-x-twitter"></i>
+            </span>
+          </a>
+          <a class="navbar-item bd-navbar-mobile-icon"
+             href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+             target="_blank">
+            <span class="icon" style="color: #FF0000">
+              <i class="fab fa-lg fa-youtube"></i>
+            </span>
+          </a>
+          <button class="navbar-burger burger"
+                  data-target="navMenuDocumentation"
+                  id="navbarBurger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+        <div class="navbar-menu" id="navMenuDocumentation">
+          <div class="navbar-start bd-navbar-start bd-is-original"
+               id="navbarStartOriginal">
+            <a class="navbar-item bd-navbar-item bd-navbar-item-bulma-book bd-navbar-item-base"
+               href="../../index.html#section_features">
+              <span class="icon has-text-bleeding">
+                <i class="fas fa-certificate"></i>
+              </span>
+              <span>Features</span>
+            </a>
+            <a class="navbar-item bd-navbar-item bd-navbar-item-love bd-navbar-item-base"
+               href="../../index.html#section_download">
+              <span class="icon has-text-danger">
+                <i class="fas fa-download"></i>
+              </span>
+              <span>Download</span>
+            </a>
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-item bd-navbar-item bd-navbar-item-videos bd-navbar-item-base scroll">
+                  <span class="icon has-text-success"><i class="fas fa-circle-play"></i></span><span>Getting started</span>
+                </a>
+                <div class="navbar-dropdown has-background-success-light">
+                    <a href="../install.html" class="dropdown-item has-text-success-dark">
+                      <span class="icon"><i class="fa fa-computer"></i></span> Installation
+                    </a>
+                    <a href="../first.html" class="dropdown-item has-text-success-dark">
+                        <span class="icon"><i class="fa fa-play"></i></span> First execution
+                    </a>
+                    <a href="../tour.html" class="dropdown-item has-text-success-dark">
+                      <span class="icon"><i class="fa fa-bus-simple"></i></span> Take a tour !
+                    </a>
+                </div>
+            </div>
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-item bd-navbar-item bd-navbar-item-extensions bd-navbar-item-base scroll">
+                  <span class="icon has-text-info"><i class="fas fa-book"></i></span><span>Documentation</span>
+                </a>
+                <div class="navbar-dropdown has-background-info-light">
+                    <a href="../modules.html" class="dropdown-item has-text-info-dark">
+                      <span class="icon"><i class="fa fa-cubes"></i></span> Modules reference
+                    </a>
+                    <a href="../object.html" class="dropdown-item has-text-info-dark">
+                        <span class="icon"><i class="fa fa-shapes"></i></span> Object oriented programming
+                    </a>
+                    <a href="../toolchain.html" class="dropdown-item has-text-info-dark">
+                      <span class="icon"><i class="fa fa-wrench"></i></span> Toolchain documentation
+                    </a>
+                </div>
+            </div>
+            </a>
+            <a class="navbar-item bd-navbar-item bd-navbar-item-expo bd-navbar-item-base"
+               href="https://community.luart.org">
+              <span class="icon has-text-warning">
+                <i class="fas fa-comments"></i>
+              </span>
+              <span>Community</span>
+            </a>
+            <a class="navbar-item bd-navbar-item bd-navbar-item-blog bd-navbar-item-base" href="index.html">
+                <span class="icon has-text-rss">
+                  <i class="fas fa-graduation-cap"></i>
+                </span>
+                <span>Tutorials</span>
+              </a>
+		<div class="ml-6">
+			<span class="icon has-text-grey-light mr-1">
+				<i class="fas fa-search"></i>
+			</span></div>
+      <div>
+			<script async src="https://cse.google.com/cse.js?cx=509c4cdde27f845e7"></script>
+			<div class="gcse-searchbox-only" data-resultsUrl="https://luart.org/search.html"></div>
+      </div>
+    </div>
+    <div class="navbar-end">
+      <a class="bd-navbar-icon navbar-item"
+         href="https://github.com/samyeyo"
+             target="_blank">
+            <span class="icon" style="color: #000000">
+              <i class="fab fa-lg fa-github"></i>
+            </span>
+          </a>
+          <a class="bd-navbar-icon navbar-item"
+             href="https://twitter.com/__LuaRT__"
+             target="_blank">
+            <span class="icon" style="color: #000000">
+              <i class="fab fa-lg fa-x-twitter"></i>
+            </span>
+          </a>
+          <a class="bd-navbar-icon navbar-item"
+             href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+             target="_blank">
+            <span class="icon" style="color: #FF0000">
+              <i class="fab fa-lg fa-youtube"></i>
+            </span>
+          </a>
+          <a class="bd-navbar-icon navbar-item"
+          href="https://discord.gg/XJJxQufmvh"
+          target="_blank">
+         <span class="icon" style="color: #5865F2">
+           <i class="fab fa-lg fa-discord"></i>
+         </span>
+       </a>        
+        </div>
+      </nav>
+  
+  <section class="main-content columns is-centered is-fullheight" style="margin-top: 6%; margin-bottom: 4%">
+    <div class="column is-7">
+      <div class="card">
+        <a class="button is-white pl-5" href="../index.html"><span class="icon has-text-grey-lighter" style="vertical-align: middle"><i class="fas fa-circle-left"></i></span></a>
+        <div class="card-content">
+          <div class="content mb-6">
+            <p class="has-text-centered is-size-2 has-text-weight-light mb-0" style="color: #004080">Lua<sup>rt</sup> tutorials</p>
+            <p class="mt-6 mb-1">Here you will find the essentials to take your first steps with Lua<sup>rt</sup>, regardless of whether you are an experienced developer or a beginner. With Lua<sup>rt</sup>, you can use and learn the Lua programming language easily thanks to its specific implementation on Windows.</p>
+            <p class="mt-3 mb-6">It only takes a few lines of code to make a simple app, so it's time to get started!</p>
+            <!-- <div class="columns"> -->
+              <!-- <div class="column"> -->
+                <article class="panel is-info mt-6" style="margin-left:15%; margin-right: 15%">
+                  <p class="panel-heading is-size-6"><i class="fas fa-battery-quarter"></i> Tutorials for beginners</p>
+                  <a class="panel-block is-active" href="basic.html">
+                    <span class="panel-icon"><i class="fas fa-caret-right" aria-hidden="true"></i></span>
+                    Basic notions of Lua programming
+                  </a>
+                  <a class="panel-block is-active" href="simple_types.html">
+                    <span class="panel-icon">
+                      <i class="fas fa-caret-right" aria-hidden="true"></i>
+                    </span>
+                    Lua simple types
+                  </a>
+                  <a class="panel-block is-active" href="complex_types.html">
+                    <span class="panel-icon">
+                      <i class="fas fa-caret-right" aria-hidden="true"></i>
+                    </span>
+                   Lua complex types
+                  </a>
+				  <a class="panel-block is-active" href="OOP-Part1.html">
+                    <span class="panel-icon">
+                      <i class="fas fa-caret-right" aria-hidden="true"></i>
+                    </span>
+                    Object Oriented Programming : basic concepts</sup>
+                  </a>
+                  <!-- <a class="panel-block is-active">
+                    <span class="panel-icon">
+                      <i class="fas fa-caret-right" aria-hidden="true"></i>
+                    </span>
+                    Variables and scope notions
+                  </a>
+                  <a class="panel-block is-active">
+                    <span class="panel-icon">
+                      <i class="fas fa-caret-right" aria-hidden="true"></i>
+                    </span>
+                    Loops
+                  </a> -->
+                </article>
+              <!-- </div>                 -->
+              <!-- <div class="column"> -->
+                <article class="panel is-success mt-6" style="margin-left:15%; margin-right: 15%">
+                  <p class="panel-heading is-size-6"><i class="fas fa-battery-half"></i> Tutorials for intermediate users</p>                  
+                  <a class="panel-block is-active" href="async.html">
+                    <span class="panel-icon">
+                      <i class="fas fa-caret-right" aria-hidden="true"></i>
+                    </span>
+                    Asynchronous programming : basic concepts</sup>
+                  </a> 
+                  <a class="panel-block is-active" href="await.html">
+                    <span class="panel-icon">
+                      <i class="fas fa-caret-right" aria-hidden="true"></i>
+                    </span>
+                    Asynchronous programming : async() and await()</sup>
+                  </a> 
+                  <a class="panel-block is-active" href="OOP-Part2.html">
+                    <span class="panel-icon">
+                      <i class="fas fa-caret-right" aria-hidden="true"></i>
+                    </span>
+                    Object Oriented Programming : constructors and properties</sup>
+                  </a> 
+                  <a class="panel-block is-active" href="OOP-part3.html">
+                    <span class="panel-icon">
+                      <i class="fas fa-caret-right" aria-hidden="true"></i>
+                    </span>
+                    Object Oriented Programming : inheritance and mixins</sup>
+                  </a> 				  
+                  <a class="panel-block is-active" href="utf8.html">
+                    <span class="panel-icon">
+                      <i class="fas fa-caret-right" aria-hidden="true"></i>
+                    </span>
+                    How to use UTF8 strings
+                  </a>
+                  <a class="panel-block is-active" href="files.html">
+                    <span class="panel-icon">
+                      <i class="fas fa-caret-right" aria-hidden="true"></i>
+                    </span>
+                    How to use files
+                  </a>
+                  <a class="panel-block is-active" href="Zip.html">
+                    <span class="panel-icon">
+                      <i class="fas fa-caret-right" aria-hidden="true"></i>
+                    </span>
+                    How to use ZIP archives
+                  </a>
+                </article>
+                <article class="panel is-danger mt-6" style="margin-left:15%; margin-right: 15%">
+                  <p class="panel-heading is-size-6"><i class="fas fa-battery-full"></i> Tutorials for advanced users</p>
+                  <a class="panel-block is-active" href="module.html">
+                    <span class="panel-icon"><i class="fas fa-caret-right" aria-hidden="true"></i></span>
+                    Writing binary extension module
+                  </a>
+                  <a class="panel-block is-active" href="OOP-part4.html">
+                    <span class="panel-icon">
+                      <i class="fas fa-caret-right" aria-hidden="true"></i>
+                    </span>
+                    Object Oriented Programming : advanced concepts</sup>
+                  </a> 
+                  <a class="panel-block is-active" href="rtc.html">
+                    <span class="panel-icon"><i class="fas fa-caret-right" aria-hidden="true"></i></span>
+                    Compile Lua scripts to executables
+                  </a>
+				  
+                </article>
+          </div> 
+        </div>
+      </div>
+    </div>
+  </section>  
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p class="mb-0">
+        <strong>
+          Lua
+          <sup>rt</sup> Documentation
+        </strong> - Windows programming framework for Lua
+      </p>
+      <a class="is-hovered" href="https://github.com/samyeyo" target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-github"></i>
+        </span>
+      </a>
+      <a class="is-hovered"
+         href="https://twitter.com/__LuaRT__"
+         target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-x-twitter"></i>
+        </span>
+      </a>
+<a class="is-hovered"
+         href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+         target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-youtube"></i>
+        </span>
+      </a>      
+      <a class="is-hovered"
+      href="https://discord.gg/XJJxQufmvh"
+      target="_blank">
+     <span class="icon" style="color: #A0A0A0">
+       <i class="fab fa-lg fa-discord"></i>
+     </span>
+     </a>    
+      <p class="mt-0">
+        Copyright &copy; 2024
+        <a href="mailto:samir.tine@luart.org">Samir Tine</a>.
+        <br />
+        <a href="https://bulma.io/made-with-bulma/">
+          <img alt="Made with Bulma"
+               height="24"
+               src="https://bulma.io/images/made-with-bulma.png"
+               width="128" />
+        </a>
+      </p>
+    </div>
+  </footer>
+  <script src="../../js/main.js"></script>
+  <script src="../prism.js"></script>
+  <script src="../custom-class.js"></script>
+  <script>Prism.plugins.customClass.prefix('prism--');</script>
+</body>
+</html>

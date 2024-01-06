@@ -1,0 +1,282 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta content="LuaRT getting started tutorial in 10 minutes" name="description" />
+  <title>
+    Take a tour ! | LuaRT free and open source Windows programming framework for Lua
+  </title>
+  <link href="../css/bulma-docs.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        rel="stylesheet" />
+  <link href="https://luart.org/doc/tour2.html" rel="canonical" />
+  <link href="../img/favicon.png" rel="icon" sizes="16x16" type="image/png" />
+</head>
+<body class="layout-documentation has-navbar-fixed-top">
+  <nav class="bd-navbar navbar is-fixed-top has-shadow" id="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://luart.org/">
+        <img alt="LuaRT: Free and open source Windows programming framework for Lua"
+             height="40"
+             src="../img/logo.svg"
+             width="112" />
+      </a>
+      <a class="navbar-item bd-navbar-mobile-icon"
+         href="https://github.com/samyeyo"
+         style="margin-left: auto"
+         target="_blank">
+        <span class="icon" style="color: #000000">
+          <i class="fab fa-lg fa-github"></i>
+        </span>
+      </a>
+      <a class="navbar-item bd-navbar-mobile-icon"
+         href="https://twitter.com/__LuaRT__"
+         target="_blank">
+        <span class="icon" style="color: #000000">
+          <i class="fab fa-lg fa-x-twitter"></i>
+        </span>
+      </a>
+      <a class="navbar-item bd-navbar-mobile-icon"
+         href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+         target="_blank">
+        <span class="icon" style="color: #FF0000">
+          <i class="fab fa-lg fa-youtube"></i>
+        </span>
+      </a><a class="navbar-item bd-navbar-mobile-icon"
+         href="https://discord.gg/XJJxQufmvh"
+         target="_blank">
+        <span class="icon" style="color: #5865F2">
+          <i class="fab fa-discord"></i>
+        </span>
+      </a>
+      <button class="navbar-burger burger"
+              data-target="navMenuDocumentation"
+              id="navbarBurger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div class="navbar-menu" id="navMenuDocumentation">
+      <div class="navbar-start bd-navbar-start bd-is-original"
+           id="navbarStartOriginal">
+        <a class="navbar-item bd-navbar-item bd-navbar-item-bulma-book bd-navbar-item-base"
+           href="../index.html#section_features">
+          <span class="icon has-text-bleeding">
+            <i class="fas fa-certificate"></i>
+          </span>
+          <span>Features</span>
+        </a>
+        <a class="navbar-item bd-navbar-item bd-navbar-item-love bd-navbar-item-base"
+           href="../index.html#section_download">
+          <span class="icon has-text-danger">
+            <i class="fas fa-download"></i>
+          </span>
+          <span>Download</span>
+        </a>
+		<div class="navbar-item has-dropdown is-hoverable">
+			<a class="navbar-item bd-navbar-item bd-navbar-item-videos bd-navbar-item-base scroll">
+			  <span class="icon has-text-success"><i class="fas fa-circle-play"></i></span><span>Getting started</span>
+			</a>
+			<div class="navbar-dropdown has-background-success-light">
+				<a href="install.html" class="dropdown-item has-text-success-dark">
+				  <span class="icon"><i class="fa fa-computer"></i></span> Installation
+				</a>
+				<a href="first.html" class="dropdown-item has-text-success-dark">
+					<span class="icon"><i class="fa fa-play"></i></span> First execution
+				</a>
+				<a href="tour.html" class="dropdown-item has-text-success-dark">
+				  <span class="icon"><i class="fa fa-bus-simple"></i></span> Take a tour !
+				</a>
+			</div>
+		</div>
+		<div class="navbar-item has-dropdown is-hoverable">
+			<a class="navbar-item bd-navbar-item bd-navbar-item-extensions bd-navbar-item-base scroll">
+			  <span class="icon has-text-info"><i class="fas fa-book"></i></span><span>Documentation</span>
+			</a>
+			<div class="navbar-dropdown has-background-info-light">
+				<a href="modules.html" class="dropdown-item has-text-info-dark">
+				  <span class="icon"><i class="fa fa-cubes"></i></span> Modules reference
+				</a>
+				<a href="object.html" class="dropdown-item has-text-info-dark">
+					<span class="icon"><i class="fa fa-shapes"></i></span> Object oriented programming
+				</a>
+				<a href="toolchain.html" class="dropdown-item has-text-info-dark">
+				  <span class="icon"><i class="fa fa-wrench"></i></span> Toolchain documentation
+				</a>
+			</div>
+		</div>
+        </a>
+        <a class="navbar-item bd-navbar-item bd-navbar-item-expo bd-navbar-item-base"
+           href="https://community.luart.org">
+          <span class="icon has-text-warning">
+            <i class="fas fa-comments"></i>
+          </span>
+          <span>Community</span>
+        </a>
+        <a class="navbar-item bd-navbar-item bd-navbar-item-blog bd-navbar-item-base"
+           href="https://luart.org/doc/tutorial/index.html">
+          <span class="icon has-text-rss">
+            <i class="fas fa-graduation-cap"></i>
+          </span>
+          <span>Tutorials</span>
+        </a>
+     <div class="ml-6">
+			<span class="icon has-text-grey-light mr-1">
+				<i class="fas fa-search"></i>
+			</span></div>
+			<script async src="https://cse.google.com/cse.js?cx=509c4cdde27f845e7"></script>
+			<div class="gcse-searchbox-only" data-resultsUrl="https://luart.org/search.html"></div>
+      </div>
+    </div>
+    <div class="navbar-end">
+      <a class="bd-navbar-icon navbar-item"
+         href="https://github.com/samyeyo"
+         target="_blank">
+        <span class="icon" style="color: #000000">
+          <i class="fab fa-lg fa-github"></i>
+        </span>
+      </a>
+      <a class="bd-navbar-icon navbar-item"
+         href="https://twitter.com/__LuaRT__"
+         target="_blank">
+        <span class="icon" style="color: #000000">
+          <i class="fab fa-lg fa-x-twitter"></i>
+        </span>
+      </a>
+      <a class="bd-navbar-icon navbar-item"
+         href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+         target="_blank">
+        <span class="icon" style="color: #FF0000">
+          <i class="fab fa-lg fa-youtube"></i>
+        </span>
+      </a>
+      <a class="bd-navbar-icon navbar-item"
+         href="https://discord.gg/XJJxQufmvh"
+         target="_blank">
+        <span class="icon" style="color: #5865F2">
+          <i class="fab fa-lg fa-discord"></i>
+        </span>
+      </a>  
+    </div>
+  </nav>
+  
+  <section class="main-content columns is-centered is-fullheight" style="margin-top: 6%; margin-bottom: 4%">
+    <div class="column is-7">
+      <div class="card">
+        <div class="card-content">
+			<div class="content mb-2">
+			  <p class="title is-2 mb-0" style="color: #004080">Take a tour !</p>
+			  <p class="subtitle is-5 mt-0 mb-6">A quick overview of Lua<sup>rt</sup></p>
+				<p class="has-text-weight-light is-size-3 mt-6 mb-1">Some computation</p>
+				<p>We can now use Lua<sup>rt</sup> to compute computations the same way as standard Lua :</p>
+                    <div class="columns">
+                        <div class="column is-one-quarter">
+                        <div class="box has-background-black p-1 mb-2">
+                            <figure class="ml-0">
+                            <img src="img/tour-2-1.png">
+                            </figure>
+                        </div>
+                        </div>
+                    </div>
+				<p>As you can see, Lua is capable of handling a range of mathematical operations, thanks to its <code>math</code> module and bits operators.</p>
+                <p class="has-text-weight-light is-size-3 mt-6 mb-1">Iterables</p>
+				<p>Lua<sup>rt</sup> offers iterable values, which can be iterated over. The term iterable refers to values that contain elements that can be iterated over one by one with the global <code>each()</code> function :</p>
+                    <div class="columns is-vcentered">
+                        <div class="column is-two-fifths">
+                        <div class="box has-background-black p-2 mb-2">
+                            <figure class="ml-0">
+                            <img src="img/tour-2-2.png">
+                            </figure>
+                        </div>
+                        </div>
+                    </div>
+				<p>In this example, you may have guessed that strings in Lua<sup>rt</sup> are iterable character by character. Nonetheless, Lua<sup>rt</sup> provides string properties that are not limited to this.</p>
+                <p class="has-text-weight-light is-size-3 mt-6 mb-1">UTF8 strings</p>
+                <p> Since Lua 5.3 a new module <code>utf8</code> is available to help developers with UTF8 encoded strings. But this greatly complicates the use of UTF8 strings, as it uses specific functions. A kind of overlay over strings. Not very friendly : in other modern programming languages, strings are containers for characters and support natively multibytes encodings.</p>
+                <p>Lua<sup>rt</sup> have dedicated UTF8 string functions, to preserve standard Lua string compatibility : </p>
+                    <div class="columns is-vcentered">
+                        <div class="column is-4">
+                        <div class="box has-background-black p-2 mb-2">
+                            <figure class="ml-0">
+                            <img src="img/tour-2-3.png">
+                            </figure>
+                        </div>
+                        </div>
+                    </div>
+                <p>Here, we defined a <code>summer_infrench</code> variable containing the string "été" (it's the word "summer" in french !). This string contains 3 characters but the result of the <code>string.len()</code> operator is 5 !
+                    It's because Lua's <code>string.len()</code> function always returns the number of bytes that a string occupies in memory, not the character length. Lua<sup>rt</sup> provides a specfic length function for UTF8 strings <code>string.ulen()</code> (note the <code>u</code> prefix, that stands for UTF8). Let's now check that the UTF8 character string "été" contains 5 bytes in memory :<br>
+                  </p>
+                    <div class="columns is-vcentered">
+                        <div class="column is-5">
+                            <div class="box has-background-black p-2 mb-2">
+                                <figure class="ml-0">
+                                    <img src="img/tour-2-4.png">
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="columns mt-4">
+                        <div class="column">
+                            <a class="button is-info is-pulled-left" href="tour.html"><span class="icon mr-2"><i class="fas fa-circle-left"></i></span> Back </a>
+                        </div>
+                        <div class="column">
+                            <a class="button is-info is-pulled-right" href="tour3.html">Next <span class="icon ml-2"><i class="fas fa-circle-right"></i></span></a>
+                        </div>
+                    </div>
+            </div>
+		</div>
+	</div>
+  </section>  
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p class="mb-0">
+        <strong>
+          Lua
+          <sup>rt</sup> Documentation
+        </strong> - Windows programming framework for Lua
+      </p>
+      <a class="is-hovered" href="https://github.com/samyeyo" target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-github"></i>
+        </span>
+      </a>
+      <a class="is-hovered"
+         href="https://twitter.com/__LuaRT__"
+         target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-x-twitter"></i>
+        </span>
+      </a>
+<a class="is-hovered"
+         href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+         target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-youtube"></i>
+        </span>
+      </a>      
+      <a class="is-hovered"
+      href="https://discord.gg/XJJxQufmvh"
+      target="_blank">
+     <span class="icon" style="color: #A0A0A0">
+       <i class="fab fa-lg fa-discord"></i>
+     </span>
+     </a>    
+      <p class="mt-0">
+        Copyright &copy; 2024
+        <a href="mailto:samir.tine@luart.org">Samir Tine</a>.
+        <br />
+        <a href="https://bulma.io/made-with-bulma/">
+          <img alt="Made with Bulma"
+               height="24"
+               src="https://bulma.io/images/made-with-bulma.png"
+               width="128" />
+        </a>
+      </p>
+    </div>
+  </footer>
+  <script src="../js/main.js"></script>
+</body>
+</html>

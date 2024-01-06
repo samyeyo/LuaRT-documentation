@@ -1,0 +1,427 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta content="LuaRT ui module documentation" name="description" />
+  <title>
+    ui module reference | LuaRT free and open source Windows programming framework for Lua
+  </title>
+   <link href="../../css/bulma-docs.min.css" rel="stylesheet" />
+  <link href="../../css/bulma-tooltip.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        rel="stylesheet" />
+  <link href="https://luart.org/doc/ui/index.html" rel="canonical" />
+  <link href="../../img/favicon.png" rel="icon" sizes="16x16" type="image/png" />
+</head>
+<body class="layout-documentation has-navbar-fixed-top">
+  <nav class="bd-navbar navbar is-fixed-top has-shadow" id="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../index.html">
+        <img alt="LuaRT: Free and open source Windows programming framework for Lua"
+             height="40"
+             src="../../img/logo.svg"
+             width="112" />
+      </a>
+      <a class="navbar-item bd-navbar-mobile-icon"
+         href="https://github.com/samyeyo"
+         style="margin-left: auto"
+         target="_blank">
+        <span class="icon" style="color: #000000">
+          <i class="fab fa-lg fa-github"></i>
+        </span>
+      </a>
+      <a class="navbar-item bd-navbar-mobile-icon"
+         href="https://twitter.com/__LuaRT__"
+         target="_blank">
+        <span class="icon" style="color: #000000">
+          <i class="fab fa-lg fa-x-twitter"></i>
+        </span>
+      </a>
+      <a class="navbar-item bd-navbar-mobile-icon"
+         href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+         target="_blank">
+        <span class="icon" style="color: #FF0000">
+          <i class="fab fa-lg fa-youtube"></i>
+        </span>
+      </a><a class="navbar-item bd-navbar-mobile-icon"
+         href="https://discord.gg/XJJxQufmvh"
+         target="_blank">
+        <span class="icon" style="color: #5865F2">
+          <i class="fab fa-discord"></i>
+        </span>
+      </a>
+      <button class="navbar-burger burger"
+              data-target="navMenuDocumentation"
+              id="navbarBurger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div class="navbar-menu" id="navMenuDocumentation">
+      <div class="navbar-start bd-navbar-start bd-is-original"
+           id="navbarStartOriginal">
+        <a class="navbar-item bd-navbar-item bd-navbar-item-bulma-book bd-navbar-item-base"
+           href="../index.html#section_features">
+          <span class="icon has-text-bleeding">
+            <i class="fas fa-certificate"></i>
+          </span>
+          <span>Features</span>
+        </a>
+        <a class="navbar-item bd-navbar-item bd-navbar-item-love bd-navbar-item-base"
+           href="../../index.html#section_download">
+          <span class="icon has-text-danger">
+            <i class="fas fa-download"></i>
+          </span>
+          <span>Download</span>
+        </a>
+		<div class="navbar-item has-dropdown is-hoverable">
+			<a class="navbar-item bd-navbar-item bd-navbar-item-videos bd-navbar-item-base scroll">
+			  <span class="icon has-text-success"><i class="fas fa-circle-play"></i></span><span>Getting started</span>
+			</a>
+			<div class="navbar-dropdown has-background-success-light">
+				<a href="../install.html" class="dropdown-item has-text-success-dark">
+				  <span class="icon"><i class="fa fa-computer"></i></span> Installation
+				</a>
+				<a href="../first.html" class="dropdown-item has-text-success-dark">
+					<span class="icon"><i class="fa fa-play"></i></span> First execution
+				</a>
+				<a href="../tour.html" class="dropdown-item has-text-success-dark">
+				  <span class="icon"><i class="fa fa-bus-simple"></i></span> Take a tour !
+				</a>
+			</div>
+		</div>
+		<div class="navbar-item has-dropdown is-hoverable">
+			<a class="navbar-item bd-navbar-item bd-navbar-item-extensions bd-navbar-item-base scroll">
+			  <span class="icon has-text-info"><i class="fas fa-book"></i></span><span>Documentation</span>
+			</a>
+			<div class="navbar-dropdown has-background-info-light">
+				<a href="../modules.html" class="dropdown-item has-text-info-dark">
+				  <span class="icon"><i class="fa fa-cubes"></i></span> Modules reference
+				</a>
+				<a href="../object.html" class="dropdown-item has-text-info-dark">
+					<span class="icon"><i class="fa fa-shapes"></i></span> Object oriented programming
+				</a>
+				<a href="../toolchain.html" class="dropdown-item has-text-info-dark">
+				  <span class="icon"><i class="fa fa-wrench"></i></span> Toolchain documentation
+				</a>
+			</div>
+		</div>
+        </a>
+        <a class="navbar-item bd-navbar-item bd-navbar-item-expo bd-navbar-item-base"
+           href="https://community.luart.org">
+          <span class="icon has-text-warning">
+            <i class="fas fa-comments"></i>
+          </span>
+          <span>Community</span>
+        </a>
+        <a class="navbar-item bd-navbar-item bd-navbar-item-blog bd-navbar-item-base"
+           href="https://luart.org/doc/tutorial/index.html">
+          <span class="icon has-text-rss">
+            <i class="fas fa-graduation-cap"></i>
+          </span>
+          <span>Tutorials</span>
+        </a>
+     <div class="ml-6">
+			<span class="icon has-text-grey-light mr-1">
+				<i class="fas fa-search"></i>
+			</span></div>
+			<script async src="https://cse.google.com/cse.js?cx=509c4cdde27f845e7"></script>
+			<div class="gcse-searchbox-only" data-resultsUrl="https://luart.org/search.html"></div>
+      </div>
+    </div>
+    <div class="navbar-end">
+      <a class="bd-navbar-icon navbar-item"
+         href="https://github.com/samyeyo"
+         target="_blank">
+        <span class="icon" style="color: #000000">
+          <i class="fab fa-lg fa-github"></i>
+        </span>
+      </a>
+      <a class="bd-navbar-icon navbar-item"
+         href="https://twitter.com/__LuaRT__"
+         target="_blank">
+        <span class="icon" style="color: #000000">
+          <i class="fab fa-lg fa-x-twitter"></i>
+        </span>
+      </a>
+      <a class="bd-navbar-icon navbar-item"
+         href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+         target="_blank">
+        <span class="icon" style="color: #FF0000">
+          <i class="fab fa-lg fa-youtube"></i>
+        </span>
+      </a>
+      <a class="bd-navbar-icon navbar-item"
+         href="https://discord.gg/XJJxQufmvh"
+         target="_blank">
+        <span class="icon" style="color: #5865F2">
+          <i class="fab fa-lg fa-discord"></i>
+        </span>
+      </a>  
+    </div>
+  </nav>
+  
+  <section class="main-content columns is-centered is-fullheight" style="margin-top: 6%; margin-bottom: 4%">
+    <div class="column is-7">
+      <div class="card">
+        <a class="button is-white pl-5" href="../modules.html"><span class="icon has-text-grey-lighter" style="vertical-align: middle"><i class="fas fa-circle-left"></i></span></a>
+        <div class="card-content">
+          <div class="content">
+            <p class="title is-2 has-text-centered has-text-weight-normal" style="color: #004080; vertical-align: middle"><span class="icon bd-link-icon mr-1" style="font-size: 0.8em"><i class="fas fa-clone" style="color :#0099FF" ></i></span>ui module</p>
+            <p class="has-text-centered">
+              <span data-tooltip="Module belongs to the LuaRT Core framework" class="tag is-rounded is-small has-background-success-light has-text-success-dark has-tooltip-bottom has-tooltip-success has-tooltip-arrow"><span><i class="fas fa-check has-text-success"></i> Core framework</span></span>
+              <span data-tooltip="Module is available with wluart.exe interpreter" class="tag is-rounded is-small has-background-info-light has-tooltip-bottom has-tooltip-info has-tooltip-arrow has-text-info"><span><i class="fab fa-windows"></i> Desktop</span></span>
+            </p>              
+            <div class="tabs is-centered mt-6" id="tabs">
+                <ul aria-orientation="horizontal" role="tablist" class="ml-0">
+                  <li id="objects" data-tab="1" class="is-active"><a><span><span class="icon mx-0"><i class="fa fa-shapes"></i></span>Objects</span></a></li>                        
+                  <li id="methods" data-tab="2"><a><span><span class="icon mx-0"><i class="fa fa-bolt"></i></span>Functions</span></a></li>
+                    <li id="properties" data-tab="3"><a><span class="icon mx-0"><i class="fa fa-tag"></i></span>Properties</span></a></li>
+                </ul>
+              </div>
+              <div class="tab-content" id="tab-content">
+                <div data-content="3"><p class="has-text-centered mt-6 mb-6"><i>ui module does not have any properties</i></p></div>
+                <div data-content="2">
+                  <table class="table">
+                    <thead><tr>
+                      <th draggable="false"><span class="is-relative"> Function </span</th>
+                      <th draggable="false"><span class="is-relative"> Description </span></th>
+                      <th draggable="false"><span class="is-relative"> Return value </span></th>
+                    </tr></thead>
+                    <tbody>
+                      
+<!------------------ METHODS ------------->
+                        
+                        <tr draggable="false">
+                          <td><a href="msg.html">ui.msg()</a></td>
+                          <td><span>Show a message dialog box</span></td>
+                          <td><span style="color:#EA6AC3">string</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="info.html">ui.info()</a></td>
+                          <td><span>Show an informational message dialog box</span></td>
+                          <td><span style="color:#EA6AC3">string</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="warn.html">ui.warn()</a></td>
+                          <td><span>Show a warning message dialog box</span></td>
+                          <td><span style="color:#EA6AC3">string</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="confirm.html">ui.confirm()</a></td>
+                          <td><span>Show aconfirmation message dialog box</span></td>
+                          <td><span style="color:#EA6AC3">string</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="remove.html">ui.remove()</a></td>
+                          <td><span>Removes a widget from its parent</span></td>
+                          <td><span>-</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="mousepos.html">ui.mousepos()</a></td>
+                          <td><span>Get the current mouse position on the screen</span></td>
+                          <td><span style="color:#ae81ff">number</span>, <span style="color:#ae81ff">number</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="opendialog.html">ui.opendialog()</a></td>
+                          <td><span>Show a Windows open dialog box to select one or more files</span></td>
+                          <td><a href="../sys/File.html"><i class="fas fas fa-file"></i> File</a></span>, ... | nil</td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="savedialog.html">ui.savedialog()</a></td>
+                          <td><span>Show a Windows save dialog box to select one or more files</span></td>
+                          <td><a href="../sys/File.html"><i class="fas fas fa-file"></i> File</a></span>, ... | nil</td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="dirdialog.html">ui.dirdialog()</a></td>
+                          <td><span>Open a Windows dialog box to select a directory</span></td>
+                          <td><a href="../sys/Directory.html"><i class="fas fa-folder" style="font-size:1em; color :#367DBB"></i> Directory</a> | nil</td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="fontdialog.html">ui.fontdialog()</a></td>
+                          <td><span>Open a Windows dialog box to select a font</span></td>
+                          <td><span style="color:#EA6AC3">string</span>, <span style="color:#ae81ff">number</span>, <span style="color:#B1D928">table</span> | nil</td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="colordialog.html">ui.colordialog()</a></td>
+                          <td><span>Opens a Windows dialog box to select a color</span></td>
+                          <td><span style="color:#ae81ff">number</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="run.html">ui.run()</a></td>
+                          <td><span>Run an update Task until the main Window is closed</span></td>
+                          <td><span>-</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="update.html">ui.update()</a></td>
+                          <td><span>Update user interface and process events</span></td>
+                          <td><span>-</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="error.html">ui.error()</a></td>
+                          <td><span>Open a Windows error message dialog box</span></td>
+                          <td><span style="color:#EA6AC3">"ok"</span> </td>
+                        </tr>  
+                    </tbody>
+                  </table>
+                </div>
+                <div class="is-active" data-content="1">
+                  <table class="table">
+                    <thead><tr>
+                      <th draggable="false"><span class="is-relative"> Object </span</th>
+                      <th draggable="false"><span class="is-relative"> Description </span></th>
+                    </tr></thead>
+                    <tbody>
+                      
+<!------------------ OBJECTS ------------->
+                          
+                          <tr draggable="false">
+                            <td><a href="Window.html"><i class="fas far fa-window-maximize"></i> Window</a></td>
+                            <td><span>Object representation of a standard Windows dialog</span></td>
+                          </tr>                          
+                          <tr draggable="false">
+                            <td><a href="Label.html"><i class="fas fas fa-font"></i> Label</a></td>
+                            <td><span>Object representation of a static text</span></td>
+                          </tr>                          
+                          <tr draggable="false">
+                            <td><a href="Button.html"><i class="fas fas fa-square"></i> Button</a></td>
+                            <td><span>Object representation of a button</span></td>
+                          </tr>                          
+                          <tr draggable="false">
+                            <td><a href="Checkbox.html"><i class="fas fas fa-check-square"></i> Checkbox</a></td>
+                            <td><span>Object representation of a push checkbox</span></td>
+                          </tr>                          
+                          <tr draggable="false">
+                            <td><a href="Radiobutton.html"><i class="fas fas fa-dot-circle"></i> Radiobutton</a></td>
+                            <td><span>Object representation of a push radiobutton</span></td>
+                          </tr>                          
+                          <tr draggable="false">
+                            <td><a href="Groupbox.html"><i class="far far fa-square"></i> Groupbox</a></td>
+                            <td><span>Object representation of a groupbox</span></td>
+                          </tr>                          
+                          <tr draggable="false">
+                            <td><a href="Panel.html"><i class="fas fas fa-expand"></i> Panel</a></td>
+                            <td><span>Object representation of a panel</span></td>
+                          </tr>                          
+                          <tr draggable="false">
+                            <td><a href="Entry.html"><i class="fas fas fa-i-cursor"></i> Entry</a></td>
+                            <td><span>Object representation of a single line input control</span></td>
+                          </tr>                          
+                          <tr draggable="false">
+                            <td><a href="Edit.html"><i class="fas fas fa-edit"></i> Edit</a></td>
+                            <td><span>Object representation of a RichEdit control</span></td>
+                          </tr>                          
+                          <tr draggable="false">
+                            <td><a href="Combobox.html"><i class="fas far fa-list-alt"></i> Combobox</a></td>
+                            <td><span>Object representation of a multichoice Combobox</span></td>
+                          </tr>                          
+                          <tr draggable="false">
+                            <td><a href="ComboItem.html"><i class="far fa-list-alt" style="color :#367DBB"></i><sup><i class="fas fa-tag" style="margin-left: -0.3em; margin-top: 0.4em"></i></sup> ComboItem</a></td>
+                            <td><span>Object representation of an item in a Combobox</span></td>
+                          </tr>                          
+                          <tr draggable="false">
+                            <td><a href="List.html"><i class="fas fas fa-list-ul"></i> List</a></td>
+                            <td><span>Object representation of a List of text elements</span></td>
+                          </tr>                          
+                          <tr draggable="false">
+                            <td><a href="ListItem.html"><i class="fas fas fa-list-ul"></i><sup><i class="fas fa-tag" style="margin-left: -0.3em; margin-top: 0.4em"></i></sup> ListItem</a></td>
+                            <td><span>Object representation of an item in a List</span></td>
+                          </tr>                          
+                          <tr draggable="false">
+                            <td><a href="Tab.html"><i class="fas fa-bookmark"></i> Tab</a></td>
+                            <td><span>Object representation of a notebook</span></td>
+                          </tr>                          
+                          <tr draggable="false">
+                            <td><a href="TabItem.html"><i class="fas fa-bookmark"></i><sup><i class="fas fa-tag" style="margin-left: -0.3em; margin-top: 0.4em"></i></sup> TabItem</a></td>
+                            <td><span>Object representation of an item in a Tab</span></td>
+                          </tr>                          
+                          <tr draggable="false">
+                            <td><a href="Progressbar.html"><i class="fas fa-minus"></i> Progressbar</a></td>
+                            <td><span>Object representation of a Progression bar</span></td>
+                          </tr>                          
+                          <tr draggable="false">
+                            <td><a href="Menu.html"><i class="fas fa-bars"></i> Menu</a></td>
+                            <td><span>Object representation of a menu</span></td>
+                          </tr>                          
+                          <tr draggable="false">
+                            <td><a href="MenuItem.html"><i class="fas fa-bars"></i><sup><i class="fas fa-tag" style="margin-left: -0.3em; margin-top: 0.4em"></i></sup> MenuItem</a></td>
+                            <td><span>Object representation of a menu item</span></td>
+                          </tr>                          
+                          <tr draggable="false">
+                            <td><a href="Tree.html"><i class="fas fa-solid fa-diagram-project"></i> Tree</a></td>
+                            <td><span>Object representation of a hierarchical view of text elements</span></td>
+                          </tr>                          
+                          <tr draggable="false">
+                            <td><a href="TreeItem.html"><i class="fas fa-solid fa-diagram-project"></i><sup><i class="fas fa-tag" style="margin-left: -0.3em; margin-top: 0.4em"></i></sup> Treeitem</a></td>
+                            <td><span>Object representation of a Tree item</span></td>
+                          </tr>                          
+                          <tr draggable="false">
+                            <td><a href="Calendar.html"><i class="fas fas fa-calendar-alt"></i> Calendar</a></td>
+                            <td><span>Object representation of a Calendar control</span></td>
+                          </tr>                          
+                          <tr draggable="false">
+                            <td><a href="Picture.html"><i class="fas fas fa-image"></i> Picture</a></td>
+                            <td><span>Object representation of a static image</span></td>
+                          </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+          </div>
+	      </div>
+      </div>
+    </div>
+  </section>  
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p class="mb-0">
+        <strong>
+          Lua
+          <sup>rt</sup> Documentation
+        </strong> - Windows programming framework for Lua
+      </p>
+      <a class="is-hovered" href="https://github.com/samyeyo" target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-github"></i>
+        </span>
+      </a>
+      <a class="is-hovered"
+         href="https://twitter.com/__LuaRT__"
+         target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-x-twitter"></i>
+        </span>
+      </a>
+<a class="is-hovered"
+         href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+         target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-youtube"></i>
+        </span>
+      </a>      
+      <a class="is-hovered"
+      href="https://discord.gg/XJJxQufmvh"
+      target="_blank">
+     <span class="icon" style="color: #A0A0A0">
+       <i class="fab fa-lg fa-discord"></i>
+     </span>
+     </a>    
+      <p class="mt-0">
+        Copyright &copy; 2024
+        <a href="mailto:samir.tine@luart.org">Samir Tine</a>.
+        <br />
+        <a href="https://bulma.io/made-with-bulma/">
+          <img alt="Made with Bulma"
+               height="24"
+               src="https://bulma.io/images/made-with-bulma.png"
+               width="128" />
+        </a>
+      </p>
+    </div>
+  </footer>
+  <script src="../../js/main.js"></script>
+</body>
+</html>

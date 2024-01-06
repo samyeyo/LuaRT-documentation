@@ -1,0 +1,326 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta content="Lua simple types tutorial" name="description" />
+  <title>
+    Lua simple types | LuaRT free and open source Windows programming framework for Lua
+  </title>
+  <link href="../../css/bulma-docs.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        rel="stylesheet" />
+  <link href="https://luart.org/doc/tutorial/simple_types.html" rel="canonical" />
+  <link href="../../img/favicon.png" rel="icon" sizes="16x16" type="image/png" />
+  <link rel="stylesheet" href="../prism.css" data-noprefix="">
+</head>
+<body class="layout-documentation has-navbar-fixed-top">
+    <nav class="bd-navbar navbar is-fixed-top has-shadow" id="navbar">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="https://luart.org/">
+            <img alt="LuaRT: Free and open source Windows programming framework for Lua"
+                 height="40"
+                 src="../../img/logo.svg"
+                 width="112" />
+          </a>
+          <a class="navbar-item bd-navbar-mobile-icon"
+             href="https://github.com/samyeyo"
+             style="margin-left: auto"
+             target="_blank">
+            <span class="icon" style="color: #000000">
+              <i class="fab fa-lg fa-github"></i>
+            </span>
+          </a>
+          <a class="navbar-item bd-navbar-mobile-icon"
+             href="https://twitter.com/__LuaRT__"
+             target="_blank">
+            <span class="icon" style="color: #000000">
+              <i class="fab fa-lg fa-x-twitter"></i>
+            </span>
+          </a>
+          <a class="navbar-item bd-navbar-mobile-icon"
+             href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+             target="_blank">
+            <span class="icon" style="color: #FF0000">
+              <i class="fab fa-lg fa-youtube"></i>
+            </span>
+          </a>
+          <button class="navbar-burger burger"
+                  data-target="navMenuDocumentation"
+                  id="navbarBurger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+        <div class="navbar-menu" id="navMenuDocumentation">
+          <div class="navbar-start bd-navbar-start bd-is-original"
+               id="navbarStartOriginal">
+            <a class="navbar-item bd-navbar-item bd-navbar-item-bulma-book bd-navbar-item-base"
+               href="../../index.html#section_features">
+              <span class="icon has-text-bleeding">
+                <i class="fas fa-certificate"></i>
+              </span>
+              <span>Features</span>
+            </a>
+            <a class="navbar-item bd-navbar-item bd-navbar-item-love bd-navbar-item-base"
+               href="../../index.html#section_download">
+              <span class="icon has-text-danger">
+                <i class="fas fa-download"></i>
+              </span>
+              <span>Download</span>
+            </a>
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-item bd-navbar-item bd-navbar-item-videos bd-navbar-item-base scroll">
+                  <span class="icon has-text-success"><i class="fas fa-circle-play"></i></span><span>Getting started</span>
+                </a>
+                <div class="navbar-dropdown has-background-success-light">
+                    <a href="../install.html" class="dropdown-item has-text-success-dark">
+                      <span class="icon"><i class="fa fa-computer"></i></span> Installation
+                    </a>
+                    <a href="../first.html" class="dropdown-item has-text-success-dark">
+                        <span class="icon"><i class="fa fa-play"></i></span> First execution
+                    </a>
+                    <a href="../tour.html" class="dropdown-item has-text-success-dark">
+                      <span class="icon"><i class="fa fa-bus-simple"></i></span> Take a tour !
+                    </a>
+                </div>
+            </div>
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-item bd-navbar-item bd-navbar-item-extensions bd-navbar-item-base scroll">
+                  <span class="icon has-text-info"><i class="fas  fa-book"></i></span><span>Documentation</span>
+                </a>
+                <div class="navbar-dropdown has-background-info-light">
+                    <a href="../modules.html" class="dropdown-item has-text-info-dark">
+                      <span class="icon"><i class="fa fa-cubes"></i></span> Modules reference
+                    </a>
+                    <a href="../object.html" class="dropdown-item has-text-info-dark">
+                        <span class="icon"><i class="fa fa-shapes"></i></span> Object oriented programming
+                    </a>
+                    <a href="../toolchain.html" class="dropdown-item has-text-info-dark">
+                      <span class="icon"><i class="fa fa-wrench"></i></span> Toolchain documentation
+                    </a>
+                </div>
+            </div>
+            </a>
+            <a class="navbar-item bd-navbar-item bd-navbar-item-expo bd-navbar-item-base"
+               href="https://community.luart.org">
+              <span class="icon has-text-warning">
+                <i class="fas fa-comments"></i>
+              </span>
+              <span>Community</span>
+            </a>
+            <a class="navbar-item bd-navbar-item bd-navbar-item-blog bd-navbar-item-base" href="index.html">
+                <span class="icon has-text-rss">
+                  <i class="fas fa-graduation-cap"></i>
+                </span>
+                <span>Tutorials</span>
+              </a>
+            </div>
+            <div class="navbar-dropdown has-background-info-light">
+              <a href="../modules.html" class="dropdown-item has-text-info-dark">
+                <span class="icon"><i class="fa fa-cubes"></i></span> Modules reference
+              </a>
+              <a href="../object.html" class="dropdown-item has-text-info-dark">
+                  <span class="icon"><i class="fa fa-shapes"></i></span> Object oriented programming
+              </a>
+              <a href="../toolchain.html" class="dropdown-item has-text-info-dark">
+                <span class="icon"><i class="fa fa-wrench"></i></span> Toolchain documentation
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="navbar-end">
+          <a class="bd-navbar-icon navbar-item"
+             href="https://github.com/samyeyo"
+             target="_blank">
+            <span class="icon" style="color: #000000">
+              <i class="fab fa-lg fa-github"></i>
+            </span>
+          </a>
+          <a class="bd-navbar-icon navbar-item"
+             href="https://twitter.com/__LuaRT__"
+             target="_blank">
+            <span class="icon" style="color: #000000">
+              <i class="fab fa-lg fa-x-twitter"></i>
+            </span>
+          </a>
+          <a class="bd-navbar-icon navbar-item"
+             href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+             target="_blank">
+            <span class="icon" style="color: #FF0000">
+              <i class="fab fa-lg fa-youtube"></i>
+            </span>
+          </a>
+          <a class="bd-navbar-icon navbar-item"
+          href="https://discord.gg/XJJxQufmvh"
+          target="_blank">
+         <span class="icon" style="color: #5865F2">
+           <i class="fab fa-lg fa-discord"></i>
+         </span>
+       </a>
+        </div>
+      </nav>
+  
+  <section class="main-content columns is-centered is-fullheight" style="margin-top: 6%; margin-bottom: 4%">
+    <div class="column is-7">
+      <div class="card">
+        <div class="card-content">
+          <div class="content mb-6">
+            <p class="title is-2 mb-0" style="color: #004080">Lua simple types</p>
+            <p class="mt-0 is-size-7 mb-6"><i>By Samir Tine, published on December 2021</i></p>
+            <p class="mt-6">I hope you have enjoyed reading the first part of this tutorial to learn programming with Lua<sup>rt</sup>. Let's dive into the second part !</p>
+            <h1 class="has-text-weight-light is-size-3 mt-6 mb-3">Lua can manipulate different types of values</h1>
+             <p>Do you remember when I made an analogy between function arguments and your wallet ?
+              When you have to buy something you can use a lot of payment methods. 
+              Humans don't exist to have money (well, I hope so !), but I must admit that it plays an important role in relationships.
+              What do computers do if humans handle money? Only data. And you will be manipulating data constantly when coding.</p>
+              
+              <p>In the first part, you have already manipulated data values without even realizing it:
+              <ul>
+               <li>A text value: <code>"Listen!"</code></li>
+               <li>Functions are values too in Lua : <code>beep()</code> and <code>print()</code></li>
+               <li>A value that represent nothing : <code>nil</code></li>
+              </ul>
+              Even the <code>sys</code> aisle in the runtime library is a value, but that will be covered later.</p>
+              In fact money can be represented by different values : cash, credit card, coupons, check... and so on.
+              Even if they all represent money, each one of this values have specific properties. Some are writable (checks), some need an authentication code (credit cards)...
+              Lua values have the same kind of different properties. It's now time to discover the different values that we will manipulate when coding with Lua.</p>
+              <h2 class="has-text-weight-light is-size-3 mt-6 mb-3">Lua data types</h2>
+              Lua can manipulate eight kind of values, called <i>types</i> :
+           <p>Simple types :
+              <ul><li><code>nil</code></li><li><code>boolean</code></li><li><code>number</code></li><li><code>string</code></li></ul></p>
+           <p>Complex types :
+               <ul><li><code>table</code></li><li><code>function</code></li><li><code>userdata</code></li><li><code>thread</code></li></ul></p>
+           <p>Another last complex type is specific to Lua<sup>rt</sup> and is covered in a tutorial for more experimented users : <a href="../object.html">object</a>.</p>
+           <p>This tutorial will now focus on the simple types, the complex types will be covered in the next tutorial.</p>
+           <h1 class="has-text-weight-light is-size-3 mt-6 mb-3">The nil type</h1>
+           <p>It is certainly the easiest type to understand, but it is also the most challenging to imagine. A <code>nil</code> value represents...nothing. But wait, if the value doesn't represent anything, then it can't exist! That's it, the value <code>nil</code> indicates that there is nothing.
+               I find this obscure, even philosophical, concept brilliant:</p>
+               <p>Imagine you are seated at the table. On your plate, you see an apple, which is not surprising since you're terribly hungry. Therefore, there is a fruit-type on your plate. But what happens to the value once you've eaten the apple? It goes to <code>nil</code>. Incredible isn't it ?!
+               In fact, the value <code>nil</code> refers to non-existence or nothing.</p>    
+               <p>You can imagine that with <code>nil</code> you can't do much else except make values disappear. More on that later.</p>       
+               <p>At this time, let's run the <code>print()</code> function with <code>nil</code> as an argument instead of the sentence <code>"Listen !"</code> from <code>myprogram.lua</code> to see what it will look like :
+                <div class="language-lua" style="margin-left: 20%; margin-right:20%"><code>
+print(nil)
+Sys.beep()
+               </code></div>
+               <p class="mt-5">Run the program and see the message printed to the screen, followed by the bip :</p> 
+               <div class="language-batch mb-4"  style="margin-left: 20%; margin-right:20%"><code>
+nil
+               </code></div>
+               <p>Perhaps you are wondering why the <code>print()</code> function prints something when there is no value. However, the subtlety is in the fact that <code>nil</code> means absolutely nothing, but it's still a value! Thus, the word <code>nil</code> appears on the screen.</p>
+               <h1 class="has-text-weight-light is-size-3 mt-6 mb-3">The boolean type</h1>
+               <p>Boolean values only represent logical values, either <code>true</code> or <code>false</code>, and nothing else. These values are very useful when checking if a piece of information is <code>true</code> or <code>false</code>, for example: will it rain? Is it sunny? (Bad example, the value "maybe" is not a Boolean value in meteorology !).
+               </p><p>No arithmetic operations can be performed on boolean values (as for <code>nil</code> values). You can modify our example and see what happens when the <code>print(true)</code> or <code>print(false)</code> function is called. This will display the word "<code>true</code>" or "<code>false</code>" on the screen for the lazier of you.</p>
+               <h1 class="has-text-weight-light is-size-3 mt-6 mb-3">The number type</h1>
+               <p>It's easier this time. The number type represents numeric data, whether real, integer, negative, positive, ...
+                   Let's try something that itches your brain right away and see what happens when we add number values in our example:</p>
+                   <div class="language-lua" style="margin-left: 20%; margin-right:20%"><code>
+print(0.8 + 5)
+sys.beep()
+                   </code></div>
+                   <p class="mt-5">Run the program and see the message printed to the screen, followed by the bip :</p>     
+                   <div class="language-batch mb-4" style="margin-left: 20%; margin-right:20%"><code>
+5.8
+                   </code></div>
+                   <p class="mt-5">Great! You have done your first artihmetic operation in Lua ! As you can see, the result of a mathematical expression in Lua is a value (here the number <code>5.8</code>) that can serve as argument of a function.
+                   As an example, let's do more arithmetic:</p>
+                   <div class="language-lua" style="margin-left: 20%; margin-right:20%"><code>
+print(0.8 + 5) -- addition
+print(2 - 4)   -- soustraction
+print(10 / 5)  -- division
+                   </code></div>
+                   <p class="mt-5">Run the program and see the messages printed to the screen (I must admit, I hate bips now !):</p>     
+                   <div class="language-lua" style="margin-left: 20%; margin-right:20%"><code>
+5.8
+-2
+2.0
+                   </code></div>
+                   <p>I would like to make a few remarks at this point. First of all, Lua knows how to calculate with numbers, and there are still many other operations it can perform.</p><p>You will notice that I added some text next to each call to the <code>print()</code> function. These are comments that are not interpreted because they begin with the two characters <code>"--"</code>, so they are useless except to describe / comment the program.
+                   <p>Finally, you will notice that dividing integers produces a real number. But <code>2.0</code> and <code>2</code> are the same value, so it doesn't matter. It must, however, be taken into account when displaying it, depending on what you want to display.</p>
+                   <p>Lua standard Library contains mathematic functions that operate on numbers. They are in the <code>"math"</code> aisle of the runtime library. See the <a href="https://www.lua.org/manual/5.4/manual.html#6.7">Lua 5.4 manual</a> for a complete listing.</p>
+                   <h1 class="has-text-weight-light is-size-3 mt-6 mb-3">The string type</h1>
+                   <p>You already have used character strings in Lua, with your first program. The first line called the function <code>print()</code> with a double quoted sentence <code>"Listen!"</code>. In fact this sentence is a <code>string</code>.</p>
+                   <p>Strings consist of a series of characters. Indeed strings are only containers for binary data. Lua doesn't even know what a character is, but it is way beyond the scope of this tutorial. Currently, consider a <code>string</code> to be a sequence of characters, with a limitation when using accented characters (Lua<sup>rt</sup> makes it easy to use strings with accented characters, see <a href="utf8.html">How to use UTF8 strings</a> for more details).</p>
+                   Lua allows <code>string</code>-to-<code>number</code> operations if the <code>string</code> contains only numeric characters. Lua then automatically converts strings into numbers, and vice versa.
+                   Try by rewriting <code>myprogram.lua</code> with :  </p>
+                   <div class="language-lua" style="margin-left: 20%; margin-right:20%"><code>
+print("0.8" + 5)            -- addition
+print( 2 - "4")             -- soustraction
+print("Hello ".."world !")  -- concatenation
+print('Hello' / 5)          -- division
+                   </code></div>  
+                   <p>Run the program and see the results :</p>     
+                   <div class="language-batch mb-4" style="margin-left: 20%; margin-right:20%"><code>
+5.8
+-2
+Hello world !
+myprogram.lua:4: attempt to div a 'string' with a 'number'
+
+                  </code></div>
+                   <p>The error message is clear: be careful with that feature of Lua : when doing arithmetic between numbers and strings, be sure that the strings contains only numeric characters.</p>
+                   <p>There is a way to chain strings together to make a new one. You have probably noticed that. Thanks to the two dot <code>".."</code> operator, this operation, called concatenation, is possible. A string can be concatenated with a number (but not the reverse), always with the same vigilance.</p>
+                   <p>Lua standard Library contains functions that operate on strings. They are in the <code>"string"</code> aisle. See the <a href="https://www.lua.org/manual/5.4/manual.html#6.4">Lua 5.4 manual</a> for a complete listing. Lua<sup>rt</sup> implements more strings capabilities, see the <a href="../string/index.html">Lua<sup>rt</sup> string module</a> documentation.</p>
+                   <p>For now, that's all. Complex types will be covered in the next tutorial! Thanks for reading !</p>
+                </div>
+            </div>
+          </div>
+        </div>
+  </section>  
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p class="mb-0">
+        <strong>
+          Lua
+          <sup>rt</sup> Documentation
+        </strong> - Windows programming framework for Lua
+      </p>
+      <a class="is-hovered" href="https://github.com/samyeyo" target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-github"></i>
+        </span>
+      </a>
+      <a class="is-hovered"
+         href="https://twitter.com/__LuaRT__"
+         target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-x-twitter"></i>
+        </span>
+      </a>
+<a class="is-hovered"
+         href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+         target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-youtube"></i>
+        </span>
+      </a>      
+      <a class="is-hovered"
+      href="https://discord.gg/XJJxQufmvh"
+      target="_blank">
+     <span class="icon" style="color: #A0A0A0">
+       <i class="fab fa-lg fa-discord"></i>
+     </span>
+     </a>    
+      <p class="mt-0">
+        Copyright &copy; 2024
+        <a href="mailto:samir.tine@luart.org">Samir Tine</a>.
+        <br />
+        <a href="https://bulma.io/made-with-bulma/">
+          <img alt="Made with Bulma"
+               height="24"
+               src="https://bulma.io/images/made-with-bulma.png"
+               width="128" />
+        </a>
+      </p>
+      </div>
+    </div>
+    </footer>
+  </footer>
+  <script src="../../js/main.js"></script>
+  <script src="../prism.js"></script>
+  <script src="../custom-class.js"></script>
+  <script>Prism.plugins.customClass.prefix('prism--');</script>
+</body>
+</html>

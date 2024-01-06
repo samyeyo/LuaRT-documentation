@@ -1,0 +1,261 @@
+﻿<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta content="LuaRT toolchain documentation " name="description" />
+  <title>
+    Toolchain documentation | LuaRT free and open source Windows programming framework for Lua
+  </title>
+  <link href="../../css/bulma-docs.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        rel="stylesheet" />
+  <link href="https://luart.org/doc/toolchain/interpreter.html" rel="canonical" />
+  <link href="../../img/favicon.png" rel="icon" sizes="16x16" type="image/png" />
+  <link rel="stylesheet" href="../prism.css" data-noprefix="">
+</head>
+<body class="layout-documentation has-navbar-fixed-top">
+    <nav class="bd-navbar navbar is-fixed-top has-shadow" id="navbar">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="https://luart.org/">
+            <img alt="LuaRT: Free and open source Windows programming framework for Lua"
+                 height="40"
+                 src="../../img/logo.svg"
+                 width="112" />
+          </a>
+          <a class="navbar-item bd-navbar-mobile-icon"
+             href="https://github.com/samyeyo"
+             style="margin-left: auto"
+             target="_blank">
+            <span class="icon" style="color: #000000">
+              <i class="fab fa-lg fa-github-alt"></i>
+            </span>
+          </a>
+          <a class="navbar-item bd-navbar-mobile-icon"
+             href="https://twitter.com/__LuaRT__"
+             target="_blank">
+            <span class="icon" style="color: #1DA1F2">
+              <i class="fab fa-lg fa-twitter"></i>
+            </span>
+          </a>
+          <a class="navbar-item bd-navbar-mobile-icon"
+             href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+             target="_blank">
+            <span class="icon" style="color: #FF0000">
+              <i class="fab fa-lg fa-youtube"></i>
+            </span>
+          </a>
+          <button class="navbar-burger burger"
+                  data-target="navMenuDocumentation"
+                  id="navbarBurger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+        <div class="navbar-menu" id="navMenuDocumentation">
+          <div class="navbar-start bd-navbar-start bd-is-original"
+               id="navbarStartOriginal">
+            <a class="navbar-item bd-navbar-item bd-navbar-item-bulma-book bd-navbar-item-base"
+               href="../../index.html#section_features">
+              <span class="icon has-text-bleeding">
+                <i class="fas fa-certificate"></i>
+              </span>
+              <span>Features</span>
+            </a>
+            <a class="navbar-item bd-navbar-item bd-navbar-item-love bd-navbar-item-base"
+               href="../../index.html#section_download">
+              <span class="icon has-text-danger">
+                <i class="fas fa-download"></i>
+              </span>
+              <span>Download</span>
+            </a>
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-item bd-navbar-item bd-navbar-item-videos bd-navbar-item-base scroll">
+                  <span class="icon has-text-success"><i class="fas fa-circle-play"></i></span><span>Getting started</span>
+                </a>
+                <div class="navbar-dropdown has-background-success-light">
+                    <a href="../install.html" class="dropdown-item has-text-success-dark">
+                      <span class="icon"><i class="fa fa-computer"></i></span> Installation
+                    </a>
+                    <a href="../first.html" class="dropdown-item has-text-success-dark">
+                        <span class="icon"><i class="fa fa-play"></i></span> First execution
+                    </a>
+                    <a href="../tour.html" class="dropdown-item has-text-success-dark">
+                      <span class="icon"><i class="fa fa-bus-simple"></i></span> Take a tour !
+                    </a>
+                </div>
+            </div>
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-item bd-navbar-item bd-navbar-item-extensions bd-navbar-item-base scroll">
+                  <span class="icon has-text-info"><i class="fas fa-book"></i></span><span>Documentation</span>
+                </a>
+                <div class="navbar-dropdown has-background-info-light">
+                    <a href="../modules.html" class="dropdown-item has-text-info-dark">
+                      <span class="icon"><i class="fa fa-cubes"></i></span> Modules reference
+                    </a>
+                    <a href="../object.html" class="dropdown-item has-text-info-dark">
+                        <span class="icon"><i class="fa fa-shapes"></i></span> Object oriented programming
+                    </a>
+                    <a href="../toolchain.html" class="dropdown-item has-text-info-dark">
+                      <span class="icon"><i class="fa fa-wrench"></i></span> Toolchain documentation
+                    </a>
+                </div>
+            </div>
+            </a>
+            <a class="navbar-item bd-navbar-item bd-navbar-item-expo bd-navbar-item-base"
+               href="https://community.luart.org">
+              <span class="icon has-text-warning">
+                <i class="fas fa-comments"></i>
+              </span>
+              <span>Community</span>
+            </a>
+            <a class="navbar-item bd-navbar-item bd-navbar-item-blog bd-navbar-item-base"
+               href="https://luart.org/doc/tutorial/index.html">
+              <span class="icon has-text-rss">
+                <i class="fas fa-graduation-cap"></i>
+              </span>
+              <span>Tutorials</span>
+            </a>
+          </div>
+        </div>
+        <div class="navbar-end">
+          <a class="bd-navbar-icon navbar-item"
+             href="https://github.com/samyeyo"
+             target="_blank">
+            <span class="icon" style="color: #000000">
+              <i class="fab fa-lg fa-github-alt"></i>
+            </span>
+          </a>
+          <a class="bd-navbar-icon navbar-item"
+             href="https://twitter.com/__LuaRT__"
+             target="_blank">
+            <span class="icon" style="color: #1DA1F2">
+              <i class="fab fa-lg fa-twitter"></i>
+            </span>
+          </a>
+          <a class="bd-navbar-icon navbar-item"
+             href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+             target="_blank">
+            <span class="icon" style="color: #FF0000">
+              <i class="fab fa-lg fa-youtube"></i>
+            </span>
+          </a>
+        </div>
+      </nav>  
+  <section class="main-content columns is-centered is-fullheight" style="margin-top: 6%; margin-bottom: 4%">
+    <div class="column is-7">
+      <div class="card">
+        <div class="card-content">
+			<div class="content">
+			  <p class="title is-2 mb-0" style="color: #004080">Lua<sup>rt</sup> interpreters</p>
+              <p class="mt-6">The easiest way to run a Lua<sup>rt</sup> application is to double-click on the <code>.lua</code> or <code>.wlua</code> source files in the Windows explorer.
+              <br>All interpreters can also be executed from the command line.</p>
+              <p class="has-text-weight-light is-size-3 mt-4 mb-3">Usage</p>
+              <p class="has-text-weight-light is-size-5 has-text-link-dark">luart.exe [-e "statement"] [filename arg1 arg2...]<br>
+              wluart.exe [-e "statement"] [filename arg1 arg2...]</p>
+                  <p class="ml-6 has-text-weight-light is-size-5 has-text-link-dark mb-0">[-e "statement"]</p>
+                  <p class="ml-6">Executes the Lua statement in double quotes and run the following script if specified (see below).</p>
+                  <p class="ml-6 has-text-weight-light is-size-5 has-text-link-dark mb-0">[filename arg1 arg2...]</p>
+                  <p class="ml-6">Loads and executes the Lua script <code>"filename"</code>, with optional arguments. Each arguments will be available in the global table <code>arg</code> in your Lua script : <code>arg[1]</code> for the first argument, <code>arg[2]</code> for the second and so on... <code>arg[0]</code> is a string representing the executable full path that launched the script.</p>
+                <p class="has-text-weight-light is-size-3 mt-6 mb-1">Lua<sup>rt</sup> interpreters comparison</p>
+                  <p>Lua<sup>rt</sup> comes with serveral versions of the interpreter, located in the <code>\bin</code> subfolder of the installation directory, each with its own specificities explained in the table below :
+           <table class="table has-text-centered mt-6">
+            <thead>
+              <tr>
+                <th class="has-text-info">Interpreter</th>
+                <th class="has-text-info">Windows subsystem</th>
+                <th class="has-text-info">Dependency</th>
+                <th class="has-text-info"><i class="fas fa-clone" style="color :#0099FF"></i> ui module</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code class="has-text-grey has-background-white">luart.exe</td>
+                <td class="has-text-grey"><i class="fas fa-terminal"></i> Console</td>
+                <td><code class="has-text-grey has-background-white">lua54.dll</code></td>
+                <td><i class="fas fa-xmark has-text-danger"></i></td>
+              </tr>
+              <tr>
+                <td><code class="has-text-grey has-background-white">wluart.exe</td>
+                <td class="has-text-link-dark"><i class="fas fa-window-maximize"></i> Desktop</td>
+                <td><code class="has-text-grey has-background-white">lua54.dll</code></td>
+                <td><i class="fas fa-check has-text-success"></i></td>
+               </tr>
+               <tr>
+                <td><code class="has-text-grey has-background-white">luart-static.exe</td>
+                <td class="has-text-grey"><i class="fas fa-terminal"></i> Console</td>
+                <td><code class="has-text-grey has-background-white">-</code></td>
+                <td><i class="fas fa-xmark has-text-danger"></i></td>
+              </tr>
+              <tr>
+                <td><code class="has-text-grey has-background-white">wluart-static.exe</td>
+                <td class="has-text-link-dark"><i class="fas fa-window-maximize"></i> Desktop</td>
+                <td><code class="has-text-grey has-background-white">-</code></td>
+                <td><i class="fas fa-check has-text-success"></i></td>
+               </tr>
+            </tbody>
+        </table>
+        <article class="message is-info mt-6 ml-4 mr-6">
+            <div class="message-header">
+                <p><span class="icon"><i class="fa fa-file-lines"></i></span>Notes</p>
+            </div>
+            <div class="message-body">
+            <ul class="mt-0">
+                <li>Console versions of the interpreter are suitable for command line tools, as they are running in a command prompt window.</li>
+                <li>Desktop versions of the interpreter are for applications based on the Windows GUI, so they include the <code>ui</code> module.</li>
+                <li>Static interpreters do not depend on <code>lua54.dll</code>, but the use of binary modules is strongly discouraged.</li>
+                <li>Since Lua<sup>rt</sup> 1.2.0, better compatibility with PUC Lua is provided by the integration of the PUC Lua <code>os</code>, <code>io</code> and <code>utf8</code> modules.</li>
+            </ul>
+            </div>
+        </article>
+	</div>
+  </section>  
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p class="mb-0">
+        <strong>
+          Lua
+          <sup>rt</sup> Documentation
+        </strong> - Windows programming framework for Lua
+      </p>
+      <a class="is-hovered" href="https://github.com/samyeyo" target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-github-alt"></i>
+        </span>
+      </a>
+      <a class="is-hovered"
+         href="https://twitter.com/__LuaRT__"
+         target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-twitter"></i>
+        </span>
+      </a>
+      <a class="is-hovered"
+         href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+         target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-youtube"></i>
+        </span>
+      </a>
+      <p class="mt-0">
+        Copyright &copy; 2022
+        <a href="mailto:samir.tine@luart.org">Samir Tine</a>.
+        <br />
+        <a href="https://bulma.io/made-with-bulma/">
+          <img alt="Made with Bulma"
+               height="24"
+               src="https://bulma.io/images/made-with-bulma.png"
+               width="128" />
+        </a>
+      </p>
+    </div>
+  </footer>
+  <script src="../../js/main.js"></script>
+  <script src="../prism.js"></script>
+  <script src="../custom-class.js"></script>
+  <script>Prism.plugins.customClass.prefix('prism--');</script>
+</body>
+</html>
+                                                                                                                                                                                                                                                            

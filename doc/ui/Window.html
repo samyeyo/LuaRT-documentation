@@ -1,0 +1,517 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta content="LuaRT Window module documentation" name="description" />
+  <title>
+    Window object reference | LuaRT free and open source Windows programming framework for Lua
+  </title>
+  <link href="../../css/bulma-docs.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        rel="stylesheet" />
+  <link href="https://luart.org/doc/ui/Window.html" rel="canonical" />
+  <link href="../../img/favicon.png" rel="icon" sizes="16x16" type="image/png" />
+</head>
+<body class="layout-documentation has-navbar-fixed-top">
+  <nav class="bd-navbar navbar is-fixed-top has-shadow" id="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../index.html">
+        <img alt="LuaRT: Free and open source Windows programming framework for Lua"
+             height="40"
+             src="../../img/logo.svg"
+             width="112" />
+      </a>
+      <a class="navbar-item bd-navbar-mobile-icon"
+         href="https://github.com/samyeyo"
+         style="margin-left: auto"
+         target="_blank">
+        <span class="icon" style="color: #000000">
+          <i class="fab fa-lg fa-github"></i>
+        </span>
+      </a>
+      <a class="navbar-item bd-navbar-mobile-icon"
+         href="https://twitter.com/__LuaRT__"
+         target="_blank">
+        <span class="icon" style="color: #000000">
+          <i class="fab fa-lg fa-x-twitter"></i>
+        </span>
+      </a>
+      <a class="navbar-item bd-navbar-mobile-icon"
+         href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+         target="_blank">
+        <span class="icon" style="color: #FF0000">
+          <i class="fab fa-lg fa-youtube"></i>
+        </span>
+      </a><a class="navbar-item bd-navbar-mobile-icon"
+         href="https://discord.gg/XJJxQufmvh"
+         target="_blank">
+        <span class="icon" style="color: #5865F2">
+          <i class="fab fa-discord"></i>
+        </span>
+      </a>
+      <button class="navbar-burger burger"
+              data-target="navMenuDocumentation"
+              id="navbarBurger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div class="navbar-menu" id="navMenuDocumentation">
+      <div class="navbar-start bd-navbar-start bd-is-original"
+           id="navbarStartOriginal">
+        <a class="navbar-item bd-navbar-item bd-navbar-item-bulma-book bd-navbar-item-base"
+           href="../../index.html#section_features">
+          <span class="icon has-text-bleeding">
+            <i class="fas fa-certificate"></i>
+          </span>
+          <span>Features</span>
+        </a>
+        <a class="navbar-item bd-navbar-item bd-navbar-item-love bd-navbar-item-base"
+           href="../../index.html#section_download">
+          <span class="icon has-text-danger">
+            <i class="fas fa-download"></i>
+          </span>
+          <span>Download</span>
+        </a>
+		<div class="navbar-item has-dropdown is-hoverable">
+			<a class="navbar-item bd-navbar-item bd-navbar-item-videos bd-navbar-item-base scroll">
+			  <span class="icon has-text-success"><i class="fas fa-circle-play"></i></span><span>Getting started</span>
+			</a>
+			<div class="navbar-dropdown has-background-success-light">
+				<a href="../install.html" class="dropdown-item has-text-success-dark">
+				  <span class="icon"><i class="fa fa-computer"></i></span> Installation
+				</a>
+				<a href="../first.html" class="dropdown-item has-text-success-dark">
+					<span class="icon"><i class="fa fa-play"></i></span> First execution
+				</a>
+				<a href="../tour.html" class="dropdown-item has-text-success-dark">
+				  <span class="icon"><i class="fa fa-bus-simple"></i></span> Take a tour !
+				</a>
+			</div>
+		</div>
+		<div class="navbar-item has-dropdown is-hoverable">
+			<a class="navbar-item bd-navbar-item bd-navbar-item-extensions bd-navbar-item-base scroll">
+			  <span class="icon has-text-info"><i class="fas fa-book"></i></span><span>Documentation</span>
+			</a>
+			<div class="navbar-dropdown has-background-info-light">
+				<a href="../modules.html" class="dropdown-item has-text-info-dark">
+				  <span class="icon"><i class="fa fa-cubes"></i></span> Modules reference
+				</a>
+				<a href="../object.html" class="dropdown-item has-text-info-dark">
+					<span class="icon"><i class="fa fa-shapes"></i></span> Object oriented programming
+				</a>
+				<a href="../toolchain.html" class="dropdown-item has-text-info-dark">
+				  <span class="icon"><i class="fa fa-wrench"></i></span> Toolchain documentation
+				</a>
+			</div>
+		</div>
+        </a>
+        <a class="navbar-item bd-navbar-item bd-navbar-item-expo bd-navbar-item-base"
+           href="https://community.luart.org">
+          <span class="icon has-text-warning">
+            <i class="fas fa-comments"></i>
+          </span>
+          <span>Community</span>
+        </a>
+        <a class="navbar-item bd-navbar-item bd-navbar-item-blog bd-navbar-item-base"
+           href="https://luart.org/doc/tutorial/index.html">
+          <span class="icon has-text-rss">
+            <i class="fas fa-graduation-cap"></i>
+          </span>
+          <span>Tutorials</span>
+        </a>
+     <div class="ml-6">
+			<span class="icon has-text-grey-light mr-1">
+				<i class="fas fa-search"></i>
+			</span></div>
+			<script async src="https://cse.google.com/cse.js?cx=509c4cdde27f845e7"></script>
+			<div class="gcse-searchbox-only" data-resultsUrl="https://luart.org/search.html"></div>
+      </div>
+    </div>
+    <div class="navbar-end">
+      <a class="bd-navbar-icon navbar-item"
+         href="https://github.com/samyeyo"
+         target="_blank">
+        <span class="icon" style="color: #000000">
+          <i class="fab fa-lg fa-github"></i>
+        </span>
+      </a>
+      <a class="bd-navbar-icon navbar-item"
+         href="https://twitter.com/__LuaRT__"
+         target="_blank">
+        <span class="icon" style="color: #000000">
+          <i class="fab fa-lg fa-x-twitter"></i>
+        </span>
+      </a>
+      <a class="bd-navbar-icon navbar-item"
+         href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+         target="_blank">
+        <span class="icon" style="color: #FF0000">
+          <i class="fab fa-lg fa-youtube"></i>
+        </span>
+      </a>
+      <a class="bd-navbar-icon navbar-item"
+         href="https://discord.gg/XJJxQufmvh"
+         target="_blank">
+        <span class="icon" style="color: #5865F2">
+          <i class="fab fa-lg fa-discord"></i>
+        </span>
+      </a>  
+    </div>
+  </nav>
+  
+  <section class="main-content columns is-centered is-fullheight" style="margin-top: 6%; margin-bottom: 4%">
+    <div class="column is-7">
+      <div class="card">
+       <a id="back" class="button is-white pl-5" href="index.html"><span class="icon has-text-grey-lighter" style="vertical-align: middle"><i class="fas fa-circle-left"></i></span></a>
+        <div class="card-content">
+          <div class="content">
+            <p class="title is-2 has-text-centered has-text-weight-normal" style="color: #004080; vertical-align: middle"><span class="icon bd-link-icon mr-1" style="font-size: 0.8em"><i class="far fa-window-maximize" style="color :#367DBB" style="color: #D0D0D0"></i></span>Window object</p>
+              <div class="tabs is-centered mt-6" id="tabs">
+                <ul aria-orientation="horizontal" role="tablist" class="ml-0">
+                  <li class="is-active" id="methods" data-tab="1"><a><span><span class="icon mx-0"><i class="fa fa-bolt"></i></span>Methods</span></a></li>
+                  <li id="properties" data-tab="2"><a><span class="icon mx-0"><i class="fa fa-tag"></i></span>Properties</span></a></li>
+                  <li id="events" data-tab="3"><a><span class="icon mx-0"><i class="fa fa-paper-plane"></i></span>Events</span></a></li>
+                </ul>
+              </div>
+              <div class="tab-content" id="tab-content">
+                <div data-content="3">
+                <table class="table">
+                  <thead><tr>
+                    <th draggable="false"><span class="is-relative"> Event</span></th>
+                    <th draggable="false"><span class="is-relative"> Description </span></th>
+                  </tr></thead>
+                  <tbody>
+                    
+<!------------------ EVENTS ------------->
+                        <tr draggable="false">
+                          <td><a href="Window-onShow.html">Window.onShow()</a></td>
+                          <td><span>Event fired when the Window is shown</span></td>
+                        </tr>                        <tr draggable="false">
+                          <td><a href="Window-onHide.html">Window.onHide()</a></td>
+                          <td><span>Event fired when the Window is hidden</span></td>
+                        </tr>                       <tr draggable="false">
+                          <td><a href="Window-onClose.html">Window.onClose()</a></td>
+                          <td><span>Event fired when the Window is about to be closed by the user</span></td>
+                        </tr>                        <tr draggable="false">
+                          <td><a href="Window-onMove.html">Window.onMove()</a></td>
+                          <td><span>Event fired when the Window has changed its position</span></td>
+                        </tr>                        <tr draggable="false">
+                          <td><a href="Window-onResize.html">Window.onResize()</a></td>
+                          <td><span>Event fired when the Window is resized</span></td>
+                        </tr>                        <tr draggable="false">
+                          <td><a href="Window-onClick.html">Window.onClick()</a></td>
+                          <td><span>Event fired when the user clicks on the Window</span></td>
+                        </tr>                        <tr draggable="false">
+                          <td><a href="Window-onContext.html">Window.onContext()</a></td>
+                          <td><span>Event fired when the user right click on the Window</span></td>
+                        </tr>                        <tr draggable="false">
+                          <td><a href="Window-onHover.html">Window.onHover()</a></td>
+                          <td><span>Event fired when the user moves the mouse pointer over the Window</span></td>
+                        </tr>                        <tr draggable="false">
+                          <td><a href="Window-onKey.html">Window.onKey()</a></td>
+                          <td><span>Event fired when the user press a key</span></td>
+                        </tr>                        <tr draggable="false">
+                          <td><a href="Window-onCreate.html">Window.onCreate()</a></td>
+                          <td><span>Event fired when Window has just been created</span></td>
+                        </tr>                        <tr draggable="false">
+                          <td><a href="Window-onTrayClick.html">Window.onTrayClick()</a></td>
+                          <td><span>Event fired when the user clicks on the notification icon of the Window</span></td>
+                        </tr>                        <tr draggable="false">
+                          <td><a href="Window-onTrayDoubleClick.html">Window.onTrayDoubleClick()</a></td>
+                          <td><span>Event fired when the user double-clicks on the notification icon of the Window</span></td>
+                        </tr>                        <tr draggable="false">
+                          <td><a href="Window-onTrayHover.html">Window.onTrayHover()</a></td>
+                          <td><span>Event fired when the mouse hovers the notification icon of the Window</span></td>
+                        </tr>                        <tr draggable="false">
+                          <td><a href="Window-onTrayContext.html">Window.onTrayContext()</a></td>
+                          <td><span>Event fired when the user right-clicks on the notification icon of the Window</span></td>
+                      </tr>                        <tr draggable="false">                         
+                        <td><a href="Window-onMouseDown.html">Window.onMouseDown()</a></td>
+                        <td><span>Event fired when the user presses a mouse button over the Window</span></td>
+                      </tr>                        <tr draggable="false">
+                        <td><a href="Window-onMouseUp.html">Window.onMouseUp()</a></td>
+                        <td><span>Event fired when the user releases a mouse button over the Window</span></td>
+                      </tr>                        <tr draggable="false">
+                        <td><a href="Window-onMinimize.html">Window.onMinimize()</a></td>
+                        <td><span>Event fired when the Window is minimized</span></td>
+                      </tr>                        <tr draggable="false">
+                        <td><a href="Window-onMaximize.html">Window.onMaximize()</a></td>
+                        <td><span>Event fired when the Window is minimized</span></td>
+                      </tr>                        <tr draggable="false">
+                        <td><a href="Window-onRestore.html">Window.onRestore()</a></td>
+                        <td><span>Event fired when the Window has restored its size and position</span></td>
+                      </tr>                  
+                  </tbody>
+                </table></div>
+                <div data-content="2">
+                <table class="table">
+                  <thead><tr>
+                    <th draggable="false"><span class="is-relative"> Property</span></th>
+                    <th draggable="false"><span class="is-relative"> Description </span></th>
+                    <th draggable="false"><span class="is-relative"> Access</span></th>
+                    <th draggable="false"><span class="is-relative"> Type</span></th>
+                  </tr></thead>
+                  <tbody>
+                    <!------------------ PROPERTIES ------------->
+                        
+                        <tr draggable="false">
+                          <td><a href="Window-title.html">Window.title</a></td>
+                          <td><span>Get/set the Window title</span></td>
+                          <td><span class="tag is-rounded is-warning is-small">readwrite</span></td>
+                          <td><span style="color:#EA6AC3">string</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Window-menu.html">Window.menu</a></td>
+                          <td><span>Get/set the Window's main menu bar</span></td>
+                          <td><span class="tag is-rounded is-warning is-small">readwrite</span></td>
+                          <td><a href="Menu.html"><i class="fas fa-bars"></i> Menu</a></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Window-x.html">Window.x</a></td>
+                          <td><span>Get/set the Window's horizontal position</span></td>
+                          <td><span class="tag is-rounded is-warning is-small">readwrite</span></td>
+                          <td><span style="color:#ae81ff">number</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Window-y.html">Window.y</a></td>
+                          <td><span>Get/set the Window's vertical position</span></td>
+                          <td><span class="tag is-rounded is-warning is-small">readwrite</span></td>
+                          <td><span style="color:#ae81ff">number</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Window-width.html">Window.width</a></td>
+                          <td><span>Get/set the Window's width</span></td>
+                          <td><span class="tag is-rounded is-warning is-small">readwrite</span></td>
+                          <td><span style="color:#ae81ff">number</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Window-height.html">Window.height</a></td>
+                          <td><span>Get/set the Window's height</span></td>
+                          <td><span class="tag is-rounded is-warning is-small">readwrite</span></td>
+                          <td><span style="color:#ae81ff">number</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Window-cursor.html">Window.cursor</a></td>
+                          <td><span>Get/set the image of the mouse cursor as it hovers over the window</span></td>
+                          <td><span class="tag is-rounded is-warning is-small">readwrite</span></td>
+                          <td><span style="color:#EA6AC3">string</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                        <td><a href="Window-align.html">Window.align</a></td>
+                        <td><span>Align the Window relative to its parent</span></td>
+                        <td><span class="tag is-rounded is-warning is-small">readwrite</span></td>
+                        <td><span style="color:#ae81ff">boolean</span></td>
+                        </tr>
+                       <tr draggable="false">
+                       <td><a href="Window-enabled.html">Window.enabled</a></td>
+                          <td><span>Control whether the window responds to mouse, keyboard and other events</span></td>
+                          <td><span class="tag is-rounded is-warning is-small">readwrite</span></td>
+                          <td><span style="color:#ae81ff">boolean</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Window-visible.html">Window.visible</a></td>
+                          <td><span>Control whether the window appears onscreen</span></td>
+                          <td><span class="tag is-rounded is-warning is-small">readwrite</span></td>
+                          <td><span style="color:#ae81ff">boolean</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Window-topmost.html">Window.topmost</a></td>
+                          <td><span>Control whether the Window will always stay above others</span></td>
+                          <td><span class="tag is-rounded is-warning is-small">readwrite</span></td>
+                          <td><span style="color:#ae81ff">boolean</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Window-fullscreen.html">Window.fullscreen</a></td>
+                          <td><span>Control whether the window is fullscreen or not</span></td>
+                          <td><span class="tag is-rounded is-warning is-small">readwrite</span></td>
+                          <td><span style="color:#ae81ff">boolean</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Window-font.html">Window.font</a></td>
+                          <td><span>Get/set the window font</span></td>
+                          <td><span class="tag is-rounded is-warning is-small">readwrite</span></td>
+                          <td><span style="color:#EA6AC3">string</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Window-fontstyle.html">Window.fontstyle</a></td>
+                          <td><span>Get/set the window font style</span></td>
+                          <td><span class="tag is-rounded is-warning is-small">readwrite</span></td>
+                          <td><span style="color:#B1D928">table</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Window-fontsize.html">Window.fontsize</a></td>
+                          <td><span>Get/set the window font size</span></td>
+                          <td><span class="tag is-rounded is-warning is-small">readwrite</span></td>
+                          <td><span style="color:#ae81ff">number</span></td>
+                        </tr>
+                        <tr draggable="false">
+                          <td><a href="Window-bgcolor.html">Window.bgcolor</a></td>
+                          <td><span>Get/set the window background color</span></td>
+                          <td><span class="tag is-rounded is-warning is-small">readwrite</span></td>
+                          <td><span style="color:#ae81ff">number</span></td>
+                        </tr>
+                        <tr draggable="false">
+                          <td><a href="Window-traytooltip.html">Window.traytooltip</a></td>
+                          <td><span>Get/set the window's tray icon tooltip</span></td>
+                          <td><span class="tag is-rounded is-warning is-small">readwrite</span></td>
+                          <td><span style="color:#EA6AC3">string</span></td>
+                        </tr>                          
+                  </tbody>
+                </table></div>
+                <div class="is-active" data-content="1">
+                  <table class="table">
+                    <thead><tr>
+                      <th draggable="false"><span class="is-relative"> Method </span</th>
+                      <th draggable="false"><span class="is-relative"> Description </span></th>
+                      <th draggable="false"><span class="is-relative"> Return value </span></th>
+                    </tr></thead>
+                    <tbody>
+                      
+<!------------------ METHODS ------------->
+                        
+                        <tr draggable="false">
+                          <td><a href="Window-constructor.html">Window.constructor()</a></td>
+                          <td><span>Window object constructor</span></td>
+                          <td><a href="Window.html"><i class="far fa-window-maximize"></i> Window</a></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Window-align.html">Window.align()</a></td>
+                          <td><span>Align the Window relative to Windows Desktop</span></td>
+                          <td><span>-</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Window-center.html">Window.center()</a></td>
+                          <td><span>Centers the Window on the parent widget</span></td>
+                          <td><span>-</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Window-show.html">Window.show()</a></td>
+                          <td><span>Show the Window</span></td>
+                          <td><span>-</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Window-hide.html">Window.hide()</a></td>
+                          <td><span>Hide the Window</span></td>
+                          <td><span>-</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Window-showmodal.html">Window.showmodal()</a></td>
+                          <td><span>Show a Window as modal</span></td>
+                          <td><span>-</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Window-minimize.html">Window.minimize()</a></td>
+                          <td><span>Minimize the Window to the taskbar</span></td>
+                          <td><span>-</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Window-maximize.html">Window.maximize()</a></td>
+                          <td><span>Maximize the Window to the entire Desktop</span></td>
+                          <td><span>-</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Window-restore.html">Window.restore()</a></td>
+                          <td><span>Restore the Window size and position</span></td>
+                          <td><span>-</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Window-popup.html">Window.popup()</a></td>
+                          <td><span>Shows a popup menu at the current window mouse position</span></td>
+                          <td><span>-</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Window-shortcut.html">Window.shortcut()</a></td>
+                          <td><span>Set a new keyboard shortcut</span></td>
+                          <td><span>-</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Window-loadicon.html">Window.loadicon()</a></td>
+                          <td><span>Load the window icon</span></td>
+                          <td><span style="color:#ae81ff">boolean</span></td>
+                        </tr>               
+                        <tr draggable="false">
+                          <td><a href="Window-loadtrayicon.html">Window.loadtrayicon()</a></td>
+                          <td><span>Load the window's tray icon</span></td>
+                          <td><span style="color:#ae81ff">boolean</span></td>
+                        </tr>
+                        <tr draggable="false">
+                          <td><a href="Window-status.html">Window.status()</a></td>
+                          <td><span>Display messages in the window status bar</span></td>
+                          <td><span>-</span></td>
+                        </tr>
+                        <tr draggable="false">
+                        <td><a href="Window-tofront.html">Window.tofront()</a></td>
+                        <td><span>Brings the Window in front</span></td>
+                        <td><span>-</span></td>
+                        </tr>
+                        <tr draggable="false">
+                        <td><a href="Window-toback.html">Window.toback()</a></td>
+                        <td><span>Puts the Window to the back</span></td>
+                        <td><span>-</span></td>
+                        </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+          </div>
+	      </div>
+      </div>
+    </div>
+  </section>  
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p class="mb-0">
+        <strong>
+          Lua
+          <sup>rt</sup> Documentation
+        </strong> - Windows programming framework for Lua
+      </p>
+      <a class="is-hovered" href="https://github.com/samyeyo" target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-github"></i>
+        </span>
+      </a>
+      <a class="is-hovered"
+         href="https://twitter.com/__LuaRT__"
+         target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-x-twitter"></i>
+        </span>
+      </a>
+<a class="is-hovered"
+         href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+         target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-youtube"></i>
+        </span>
+      </a>      
+      <a class="is-hovered"
+      href="https://discord.gg/XJJxQufmvh"
+      target="_blank">
+     <span class="icon" style="color: #A0A0A0">
+       <i class="fab fa-lg fa-discord"></i>
+     </span>
+     </a>    
+      <p class="mt-0">
+        Copyright &copy; 2024
+        <a href="mailto:samir.tine@luart.org">Samir Tine</a>.
+        <br />
+        <a href="https://bulma.io/made-with-bulma/">
+          <img alt="Made with Bulma"
+               height="24"
+               src="https://bulma.io/images/made-with-bulma.png"
+               width="128" />
+        </a>
+      </p>
+    </div>
+  </footer>
+  <script src="../../js/main.js"></script>
+  <script>window.onpopstate = function() {
+       document.getElementById('back').click();
+    }; history.pushState({}, '');</script>
+</body>
+</html>

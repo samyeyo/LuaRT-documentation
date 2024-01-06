@@ -1,0 +1,449 @@
+﻿	<!doctype html>
+	<html lang="en">
+	<head>
+	  <meta charset="utf-8" />
+	  <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+	  <meta content="width=device-width, initial-scale=1" name="viewport" />
+	  <meta content="Lua object oriented programming tutorial (destructors, iterable)" name="description" />
+	  <title>
+		Object oriented progamming : advanced concepts | LuaRT free and open source Windows programming framework for Lua
+	  </title>
+	  <link href="../../css/bulma-docs.min.css" rel="stylesheet" />
+	  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+			rel="stylesheet" />
+	  <link href="https://luart.org/doc/tutorial/OOP-part4.html" rel="canonical" />
+	  <link href="../../img/favicon.png" rel="icon" sizes="16x16" type="image/png" />
+	  <link rel="stylesheet" href="../prism.css" data-noprefix="">
+	</head>
+	<body class="layout-documentation has-navbar-fixed-top">
+		<nav class="bd-navbar navbar is-fixed-top has-shadow" id="navbar">
+			<div class="navbar-brand">
+			  <a class="navbar-item" href="https://luart.org/">
+				<img alt="LuaRT: Free and open source Windows programming framework for Lua"
+					 height="40"
+					 src="../../img/logo.svg"
+					 width="112" />
+			  </a>
+			  <a class="navbar-item bd-navbar-mobile-icon"
+				 href="https://github.com/samyeyo"
+				 style="margin-left: auto"
+				 target="_blank">
+				<span class="icon" style="color: #000000">
+				  <i class="fab fa-lg fa-github"></i>
+				</span>
+			  </a>
+			  <a class="navbar-item bd-navbar-mobile-icon"
+				 href="https://twitter.com/__LuaRT__"
+				 target="_blank">
+				<span class="icon" style="color: #000000">
+				  <i class="fab fa-lg fa-x-twitter"></i>
+				</span>
+			  </a>
+			  <a class="navbar-item bd-navbar-mobile-icon"
+				 href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+				 target="_blank">
+				<span class="icon" style="color: #FF0000">
+				  <i class="fab fa-lg fa-youtube"></i>
+				</span>
+			  </a> 
+         <a class="navbar-item bd-navbar-mobile-icon"
+          href="https://discord.gg/XJJxQufmvh"
+          target="_blank">
+         <span class="icon" style="color: #5865F2">
+           <i class="fab fa-lg fa-discord"></i>
+         </span>
+       </a><button class="navbar-burger burger"
+					  data-target="navMenuDocumentation"
+					  id="navbarBurger">
+				<span></span>
+				<span></span>
+				<span></span>
+			  </button>
+			</div>
+			<div class="navbar-menu" id="navMenuDocumentation">
+			  <div class="navbar-start bd-navbar-start bd-is-original"
+				   id="navbarStartOriginal">
+				<a class="navbar-item bd-navbar-item bd-navbar-item-bulma-book bd-navbar-item-base"
+				   href="../../index.html#section_features">
+				  <span class="icon has-text-bleeding">
+					<i class="fas fa-certificate"></i>
+				  </span>
+				  <span>Features</span>
+				</a>
+				<a class="navbar-item bd-navbar-item bd-navbar-item-love bd-navbar-item-base"
+				   href="../../index.html#section_download">
+				  <span class="icon has-text-danger">
+					<i class="fas fa-download"></i>
+				  </span>
+				  <span>Download</span>
+				</a>
+				<div class="navbar-item has-dropdown is-hoverable">
+					<a class="navbar-item bd-navbar-item bd-navbar-item-videos bd-navbar-item-base scroll">
+					  <span class="icon has-text-success"><i class="fas fa-circle-play"></i></span><span>Getting started</span>
+					</a>
+					<div class="navbar-dropdown has-background-success-light">
+						<a href="../install.html" class="dropdown-item has-text-success-dark">
+						  <span class="icon"><i class="fa fa-computer"></i></span> Installation
+						</a>
+						<a href="../first.html" class="dropdown-item has-text-success-dark">
+							<span class="icon"><i class="fa fa-play"></i></span> First execution
+						</a>
+						<a href="../tour.html" class="dropdown-item has-text-success-dark">
+						  <span class="icon"><i class="fa fa-bus-simple"></i></span> Take a tour !
+						</a>
+					</div>
+				</div>
+				<div class="navbar-item has-dropdown is-hoverable">
+					<a class="navbar-item bd-navbar-item bd-navbar-item-extensions bd-navbar-item-base scroll">
+					  <span class="icon has-text-info"><i class="fas  fa-book"></i></span><span>Documentation</span>
+					</a>
+					<div class="navbar-dropdown has-background-info-light">
+						<a href="../modules.html" class="dropdown-item has-text-info-dark">
+						  <span class="icon"><i class="fa fa-cubes"></i></span> Modules reference
+						</a>
+						<a href="../object.html" class="dropdown-item has-text-info-dark">
+							<span class="icon"><i class="fa fa-shapes"></i></span> Object oriented programming
+						</a>
+						<a href="../toolchain.html" class="dropdown-item has-text-info-dark">
+						  <span class="icon"><i class="fa fa-wrench"></i></span> Toolchain documentation
+						</a>
+					</div>
+				</div>
+				</a>
+				<a class="navbar-item bd-navbar-item bd-navbar-item-expo bd-navbar-item-base"
+				   href="https://community.luart.org">
+				  <span class="icon has-text-warning">
+					<i class="fas fa-comments"></i>
+				  </span>
+				  <span>Community</span>
+				</a>
+				<a class="navbar-item bd-navbar-item bd-navbar-item-blog bd-navbar-item-base" href="index.html">
+					<span class="icon has-text-rss">
+					  <i class="fas fa-graduation-cap"></i>
+					</span>
+					<span>Tutorials</span>
+				  </a>
+				</div>
+				<div class="navbar-dropdown has-background-info-light">
+				  <a href="../modules.html" class="dropdown-item has-text-info-dark">
+					<span class="icon"><i class="fa fa-cubes"></i></span> Modules reference
+				  </a>
+				  <a href="../object.html" class="dropdown-item has-text-info-dark">
+					  <span class="icon"><i class="fa fa-shapes"></i></span> Object oriented programming
+				  </a>
+				  <a href="../toolchain.html" class="dropdown-item has-text-info-dark">
+					<span class="icon"><i class="fa fa-wrench"></i></span> Toolchain documentation
+				  </a>
+				</div>
+			  </div>
+			</div>
+			<div class="navbar-end">
+			  <a class="bd-navbar-icon navbar-item"
+				 href="https://github.com/samyeyo"
+				 target="_blank">
+				<span class="icon" style="color: #000000">
+				  <i class="fab fa-lg fa-github"></i>
+				</span>
+			  </a>
+			  <a class="bd-navbar-icon navbar-item"
+				 href="https://twitter.com/__LuaRT__"
+				 target="_blank">
+				<span class="icon" style="color: #000000">
+				  <i class="fab fa-lg fa-x-twitter"></i>
+				</span>
+			  </a>
+			  <a class="bd-navbar-icon navbar-item"
+				 href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+				 target="_blank">
+				<span class="icon" style="color: #FF0000">
+				  <i class="fab fa-lg fa-youtube"></i>
+				</span>
+			  </a>
+			  <a class="bd-navbar-icon navbar-item"
+				 href="https://discord.gg/XJJxQufmvh"
+				 target="_blank">
+				<span class="icon" style="color: #5865F2">
+				  <i class="fab fa-lg fa-discord"></i>
+				</span>
+			  </a>
+			</div>
+		  </nav>
+	  
+	  <section class="main-content columns is-centered is-fullheight" style="margin-top: 6%; margin-bottom: 4%">
+		<div class="column is-7">
+		  <div class="card">
+			<div class="card-content">
+			  <div class="content mb-6">
+				<h1 class="title is-2 mb-2 has-text-weight-light" style="color: #004080">Object oriented progamming : advanced concepts</h1>
+				<p class="mt-0 is-size-7 mb-6"><i>By Samir Tine, published on January 2023</i></p>
+				<h2 class="has-text-weight-light is-size-3 mt-6">Destructors</h2>
+<p class="mt-4">
+You probably remember the constructor concept, which allows you to initialize an instance with specific attributes/methods/properties. The concept of destructor is the same, but relates to when the instance is destroyed in memory :
+
+</p>
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%"><code>
+-- Defines an INIFile object that inherits from sys.File
+INIFile = Object(sys.File)
+
+-- Adds a constructor
+function INIFile:constructor(filename)
+    -- Adds an instance field "file"
+    self.file = sys.File(filename)
+    -- Checks that its an ini file
+    if self.file.extension ~= ".ini" then
+        error("INIFile constructor expects a INI file")
+    end
+    -- Opens the ini file for reading
+    self.file:open()
+    print("INIFile instance constructed")
+end
+
+-- Adds a destructor
+function INIFile:destructor()
+    print("INIFile instance destructed")
+    self.file:close()
+end
+
+-- Creates a new INIFile instance
+local config = INIFile("config.ini")
+
+</code></div><p class="mt-4">
+Once the program is finished, the garbage collector will do the necessary to erase all objects created in memory and you will see the message "INIFIle object destroyed".
+Using a destructor is simple as adding a <code>destructor()</code> method when defining an object. Destructors are very handy for finalizing/freeing up resources once the object is no longer in use. But be careful, we don't control when the destructor will be called by the garbage collector.
+
+</p><div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%"><code>
+-- Creates a new INIFile instance
+local config = INIFile("config.ini")
+-- Read the entire file content using the File:read() method (inherited)
+local content = config:read() 
+-- set config to nil to destruct the INIFile instance
+config = nil
+print("End of program")
+-- The destructor is not called before the "end of the program" message !
+
+</code></div>
+<p class="mt-4">
+Setting to <code>nil</code> and instance or going out from scope (using a local instance), do not call the instance destructor method immediately. Because Lua<sup>rt</sup> uses a garbage collector, the destructor is called only when a new garbage collection cycle is started.
+You can however force garbage collection if needed, to ensure that a destructor is immediately called upon instance destruction :
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%"><code>
+-- Creates a new INIFile instance
+local config = INIFile("config.ini")
+-- Read the entire file content using the File:read() method (inherited)
+local content = config:read() 
+-- set config to nil to destruct the INIFile instance
+config = nil
+-- forces a garbage colleciton cycle..
+collectgarbage()
+-- ..that will call this time the INIFile destructor before "End of program" message
+print("End of program")
+
+</code></div>
+</p>
+<h2 class="has-text-weight-light is-size-3 mt-6">Iterators</h2>
+<p class="mt-4">
+The iterator construct allows you to traverse elements of a container or collection with <code>for..in..do</code> instructions. In Lua, these collections are often tables, which are used to construct arrays and other data structures. Collections can also be represented by objects in Lua<sup>rt</sup>. An iterator can iterate over an instance that represents a collection. Our object definition only needs to include a new behaviour/method to use such functionality :
+
+</p>
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%"><code>
+-- Defines a BookStore object
+BookStore = Object {}
+
+-- Adds a constructor
+function BookStore:constructor(books)
+    -- Adds an iterator function
+    function self.iterator(index)
+        -- index is set to nil when the iteration begins
+        index = index or 1
+        -- the new index value should be returned as the last value
+        return books[index], index+1
+    end    
+end
+
+-- Creates a new BookStore instance
+local bookstore = BookStore { "Romeo and Juliet", "Of mice and men", "The Wizard of Oz" } 
+
+-- prints the books in the bookstore using a for loop
+for i, book in bookstore do
+    print("Title : "..i.." "..book)
+end
+
+</code></div><p class="mt-4">
+This example illustrates a BookStore instance that defines an iterator using the provided books table in the instance constructor. An iterator method has a single parameter that represent the current indexed value in the loop. During the first iteration, this parameter is set to <code>nil</code>.
+Once the value associated with the requested index has been calculated, that value is returned, followed by the next index (which will be used during the next iteration/call of the iterator method). The iteration stops when the <code>nil</code> value is returned.
+
+Note that an iterator method can return more than one value :
+
+</p>
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%"><code>
+function BookStore:constructor(books)
+    -- Adds an iterator function
+    function self.iterator(index)local Iterable = {
+	items = {},
+	
+	iterator = function (self, index)
+        -- index is set to nil when the iteration begins
+        -- the new index value should be returned as the last value
+		local index, value = next(self.items, index)
+		return index, value, index
+	end
+}
+
+-- Defines a BookStore object
+BookStore = Object({}, Iterable)
+
+-- Adds a constructor
+function BookStore:constructor(books)
+	self.items = books
+end
+
+-- Creates a new BookStore instance
+local bookstore = BookStore { "Romeo and Juliet", "Of mice and men", "The Wizard of Oz" } 
+
+-- prints the books in the bookstore using a for loop
+for i, book in bookstore do
+    print("Book #"..i..": "..book)
+end
+
+        -- index is set to nil when the iteration begins
+        index = index or 1
+        -- the new index value should be returned as the last value
+        -- if the value is not nil, return the index and the associated value
+        local value = books[index]
+        return value and index or nil, value, index+1
+    end    
+end
+
+-- Creates a new BookStore instance
+local bookstore = BookStore { "Romeo and Juliet", "Of mice and men", "The Wizard of Oz" } 
+
+-- prints the index and the books in the bookstore using a for loop
+for i, book in bookstore do
+    print("Book #"..i..": "..book)
+end
+
+</code></div><h2 class="has-text-weight-light is-size-3 mt-6">Iterable mixin</h2>
+<p class="mt-4">
+Now we will use two concepts seen previously: mixins and iterators. We will try to define a behavior called Iterable which can be used on any object.
+Let's do it :
+
+</p>
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%"><code>
+-- Defines an "Iterable" table
+local Iterable = {
+	
+    -- Adds an "items" field
+    items = {},
+	
+    -- Adds an iterator method
+	iterator = function (self, index)
+		local index, value = next(self.items, index)
+		return index, value, index
+	end
+}
+
+-- Defines a BookStore object and use the previous Iterable table as mixin
+BookStore = Object({}, Iterable)
+
+-- Adds a constructor
+function BookStore:constructor(books)
+	self.items = books
+end
+
+-- Creates a new BookStore instance
+local bookstore = BookStore { "Romeo and Juliet", "Of mice and men", "The Wizard of Oz" } 
+
+-- prints the books in the bookstore using a for loop
+-- the "iterator" method from the mixin will be used
+for i, book in bookstore do
+    print("Book #"..i..": "..book)
+end
+
+</code></div><p class="mt-4">
+Very interesting isn't it ? 
+But there's a problem, at any time someone can change the <code>self.items</code> field... Let's protect this field by defining a readonly property :
+
+</p>
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%"><code>
+-- Defines an "Iterable" table
+local Iterable = {
+    -- Adds an iterator method
+	iterator = function (self, index)
+		local index, value = next(self.items or error("'items' field not defined"), index)
+		return index, value, index
+	end
+}
+
+-- Defines a BookStore object and use the previous Iterable table as mixin
+BookStore = Object({}, Iterable)
+
+-- Adds a constructor
+function BookStore:constructor(books)
+    -- self.items is now a readonly property
+	function self:get_items()
+        return books
+    end
+end
+
+-- Creates a new BookStore instance
+local bookstore = BookStore { "Romeo and Juliet", "Of mice and men", "The Wizard of Oz" } 
+
+-- prints the books in the bookstore using a for loop
+-- the "iterator" method from the mixin will be used
+for i, book in bookstore do
+    print("Book #"..i..": "..book)
+end
+
+</code></div>
+			<p>In summary, object oriented programming with Lua<sup>rt</sup> offers very advanced programming paradigms by pooling the different concepts discussed here: properties, mixins, constructors, iterators...</p>
+			<p>This tutorial on object programming with Lua<sup>rt</sup> has now come to an end. I hope you have found it useful.
+			  Please feel free to ask for help on the Lua<sup>rt</sup> community forum if you have any questions.</p>
+			</div>
+		  </div>
+		</div>
+	  </section>  
+	  <footer class="footer">
+		<div class="content has-text-centered">
+		  <p class="mb-0">
+			<strong>
+			  Lua
+			  <sup>rt</sup> Documentation
+			</strong> - Windows programming framework for Lua
+		  </p>
+		  <a class="is-hovered" href="https://github.com/samyeyo" target="_blank">
+			<span class="icon" style="color: #A0A0A0">
+			  <i class="fab fa-lg fa-github"></i>
+			</span>
+		  </a>
+		  <a class="is-hovered"
+			 href="https://twitter.com/__LuaRT__"
+			 target="_blank">
+			<span class="icon" style="color: #A0A0A0">
+			  <i class="fab fa-lg fa-x-twitter"></i>
+			</span>
+		  </a>
+		  <a class="is-hovered"
+			 href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+			 target="_blank">
+			<span class="icon" style="color: #A0A0A0">
+			  <i class="fab fa-lg fa-youtube"></i>
+			</span>
+		  </a>
+		  <p class="mt-0">
+			Copyright &copy; 2024
+			<a href="mailto:samir.tine@luart.org">Samir Tine</a>.
+			<br />
+			<a href="https://bulma.io/made-with-bulma/">
+			  <img alt="Made with Bulma"
+				   height="24"
+				   src="https://bulma.io/images/made-with-bulma.png"
+				   width="128" />
+			</a>
+		  </p>
+		</div>
+	  </footer>
+	  <script src="../../js/main.js"></script>
+	  <script src="../prism.js"></script>
+	  <script src="../custom-class.js"></script>
+	  <script>Prism.plugins.customClass.prefix('prism--');</script>
+	</body>
+	</html>	
