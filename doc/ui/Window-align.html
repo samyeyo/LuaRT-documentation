@@ -192,7 +192,7 @@ local ui = require "ui"
 local win = ui.Window("Window:align() sample", "fixed", 320, 200)
 
 -- create a Window
-local widget = ui.Window(win, "I'm a bottom aligned Window :)", 25, 25)
+local widget = ui.Window("I'm a bottom aligned Window :)", 25, 25)
 
 -- align the Window to the bottom of its parent 
 widget.align = "bottom"
