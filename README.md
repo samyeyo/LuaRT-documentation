@@ -2,7 +2,7 @@
 # :book: LuaRT Documentation <picture><img align="right"  width=160 height=60 valign="center"  src="https://luart.org/img/logo.svg"  alt="LuaRT logo"  /></picture>
 <br/>
 <br/>
-Welcome to the repository for [luart.org](https://luart.org), the website and documentation of LuaRT.
+Welcome to this repository, hosting the source code of the website and documentation of LuaRT.
 <br/>
 <br/>
 
@@ -47,8 +47,9 @@ To do this, simply follow these steps :
 ## :pencil2: Howto make a fix or contribution ?
 
 Reporting is good, but fixing or contributing is better !
+\
 Did you find a typo, a broken link, or any other issue you can fix?
-
+\
 When you are sure of the problem and how to solve it, then you can make a PR (pull request) and contribute to this repository.
 
 Please see [CONTRIBUTING](https://github.com/samyeyo/LuaRT-documentation/blob/main/CONTRIBUTING.md) first !
