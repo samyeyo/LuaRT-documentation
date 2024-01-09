@@ -175,7 +175,7 @@
 			        The Window constructor returns a Window value representing a user interface dialog.
 			          <article class="message is-info" style="margin-left: 15%; margin-right: 15%"><div class="message-body">Please note that a created Window will not be shown until its method <a href="./Window-show.html">Window:show()</a> has been called.</div></article></p>
             <p class="is-size-4 mb-1 mt-6" style="color: #004080">Parameters</p>
-            <p class="has-text-weight-light is-size-5 mt-2 mb-0"><span>parent</span></p>
+            <p class="has-text-weight-light is-size-5 mt-2 mb-0"><span>[parent]</span></p>
             <p>An optional <a href="./Window.html"><i class="far fa-window-maximize" style="color :#367DBB"></i> Window</a>, that represent a parent Window or (owner Window) for the new Window, called a child Window. When this field is set, the new Window won't appear on the Windows Taskbar (only the parent Window).
             </p>
             <p class="has-text-weight-light is-size-5 mt-2 mb-0"><span style="color:#EA6AC3">title</span></p>
@@ -189,9 +189,9 @@
                 <li><span style="color:#EA6AC3">"single"</span> : a fixed size dialog with system menu (only minimize-able).</li>
                 <li><span style="color:#EA6AC3">"raw"</span> : a fixed size without title bar or borders.</li>
               </ul></p>
-            <p class="has-text-weight-light is-size-5 mt-2 mb-0"><span style="color:#ae81ff">width</span></p>
+            <p class="has-text-weight-light is-size-5 mt-2 mb-0"><span style="color:#ae81ff">[width]</span></p>
             <p>An optional number that indicates the Window width, in pixels, defaulting to 640.</p>
-            <p class="has-text-weight-light is-size-5 mt-2 mb-0"><span style="color:#ae81ff">height</span></p>
+            <p class="has-text-weight-light is-size-5 mt-2 mb-0"><span style="color:#ae81ff">[height]</span></p>
             <p>An optional number that indicates the Window height, in pixels, defaulting to 480.
               <article class="message is-warning"><div class="message-body">The width and height arguments represent the size of the client area of window, excluding borders and title bar.</div></article></p>
             <p class="is-size-4 mt-6 mb-0" style="color: #004080">Example</p>
@@ -202,10 +202,7 @@ local ui = require "ui"
 local win = ui.Window("Simple Window")
 
 -- shows the Window
-win:show()
-
--- wait for 2sec before quitting
-sys.sleep(2000)
+ui.run(win):wait()
             </code></div>
             </div>
 	      </div>
