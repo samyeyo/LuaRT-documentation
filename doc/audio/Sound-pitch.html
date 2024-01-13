@@ -185,7 +185,7 @@ local file = sys.File("music.mp3")
 win:status("Playing "..file.name)
 
 local sound = audio.Sound(file)
-sound.pitch = 1.5
+sound.pitch = 1.5 -- Change the pitch of the audio
 sound:play()
 
 win:show()

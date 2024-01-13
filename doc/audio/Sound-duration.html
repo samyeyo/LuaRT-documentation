@@ -178,6 +178,7 @@ local audio = require "audio"
 
 local sound = audio.Sound("music.mp3")
 local time = sys.Datetime()
+-- Calculate the length of the audio
 time.hour = 0
 time.minute = math.floor(sound.duration/60)
 time.second = math.floor(sound.duration - time.minute*60)

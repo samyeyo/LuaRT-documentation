@@ -189,7 +189,7 @@ local sound = audio.Sound(file)
 sound:play()
 
 function ch:onClick()
-    sound.loop = self.checked
+    sound.loop = self.checked -- Toggle if the sound loops
 end
 
 win:show()

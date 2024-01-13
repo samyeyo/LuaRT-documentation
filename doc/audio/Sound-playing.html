@@ -178,8 +178,8 @@ local audio = require "audio"
 
 local sound = audio.Sound("music.mp3")
 sound:play()
-
-while sound.playing do
+-- Keep playing the music until it is finished
+while sound.playing do 
   sys.sleep()
 end
             </code></div>
