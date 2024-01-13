@@ -44,7 +44,7 @@ To do this, simply follow these steps :
 - If not, [create a new issue](https://github.com/samyeyo/LuaRT-documentation/issues/new) to describe your report.
 <br/>
 
-## :pencil2: Howto make a fix or contribution ?
+## :pencil2: How to make a fix or contribution ?
 
 Reporting is good, but fixing or contributing is better !
 \
