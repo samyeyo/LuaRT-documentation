@@ -178,10 +178,11 @@ local audio = require "audio"
 local console = require "console"
 
 local function write_property(name, value)
+    -- Fancy Formatting
     console.writecolor("brightwhite", name.." :\t")
     console.writecolor("cyan", value.."\n")
 end
-
+-- Display audio properties
 write_property("Audio device", "\t"..audio.device)
 write_property("Device samplerate", audio.samplerate)
 write_property("Device channels", audio.channels)

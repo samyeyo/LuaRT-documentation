@@ -184,6 +184,7 @@ local audio = require "audio"
 local console = require "console"
 
 local function printvector(v)
+  -- Fancy Formatting
   console.writecolor("brightwhite", "Listener "..v..(#v < 7 and ":\t\t" or " :\t"))
   local value = "{ "
   for axis, val in pairs(audio[v]) do
