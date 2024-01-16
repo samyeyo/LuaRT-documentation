@@ -35,7 +35,7 @@ It would be helpful if you report :
 When reporting an issue, please :
 - Use clear descriptive titles
 - Provide links to relevant pages/files
-- Guve explanations concerning the reported issue
+- Give explanations concerning the reported issue
 - Propose any potential solution you are thinking of
 
 Contributions to the documentation site are made by editing the repository.

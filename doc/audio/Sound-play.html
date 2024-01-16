@@ -184,7 +184,7 @@ local console = require "console"
 
 -- loads a explosion sound
 local sound = audio.Sound("boom.wav")
-sound:play(1000)
+sound:play(1000) -- Start the audio from 1000ms
 sys.sleep((sound.duration+0.8)*1000)
 console.writecolor("red", "BOOOUUUM !!!\n")
               </code></div>
