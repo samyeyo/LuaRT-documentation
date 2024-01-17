@@ -184,16 +184,16 @@ local console = require "console"
 console.clear()
 
 local message = "Hello World !"
-console.color = "lightyellow"
+console.font = "Consolas"
+console.fontsize = 48
+console.fullscreen = true
+console.x = math.floor((console.width-message:len())/2)
 console.y = math.floor(console.height/2)
+console.writecolor("purple", message)
 
-for x = 1,console.width-message:len() do
-	console.x = x-1
-	console.write(string.rep(" ", message:len()))
-	console.x = x
-	console.write(message)
-	sleep(1)
-end
+console.cursor = false
+console.readchar()
+console.clear()
             </code></div>
             </div>
 	      </div>
