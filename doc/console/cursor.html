@@ -184,12 +184,13 @@ console.cursor = false
 local y = console.height/2
 local max = console.width - string.len("Hello LuaRT")
 
+-- make Hello LuaRT move across the console window
 for x = 1,max do
     console.clear()
     console.locate(x, y)
     console.write("Hello Lua")
     console.writecolor("yellow", "RT")
-    sys.sleep(1)
+    sleep(1)
 end
 
 console.cursor = true

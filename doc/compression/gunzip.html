@@ -184,10 +184,10 @@ local compression = require "compression"
 if #arg == 1 then
     error("error: no input file")
 end
-
+-- open the gzip compressed file and decompress it
 local file = sys.File(arg[2])
 local gunzipped_file = compression.gunzip(file)
-
+-- output the size of the original and decompressed file
 print("GZipped file : "..file.size)
 print("Decompressed File size : "..gunzipped_file.size)
 

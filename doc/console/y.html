@@ -175,7 +175,7 @@
             <p class="is-size-4 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
 local console = require "console"
-
+-- Create a title for the console
 function title(msg, linepos)
 	local length = math.floor((console.width-string.len(msg))/2)
 	console.clear("black")
@@ -190,6 +190,7 @@ function title(msg, linepos)
 	console.writeln("\n\n\n")
 end
 
+-- The title text and the line to start drawing the title
 title("Hello World !", 1)
             </code></div>
             </div>
