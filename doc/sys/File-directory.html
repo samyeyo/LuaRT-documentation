@@ -175,7 +175,7 @@
 			The File.directory property returns a <a href="./Directory.html"><i class="fas fa-folder" style="font-size:1em; color :#367DBB"></i> Directory</a> representing the folder that contains the file.</p>
             <p class="is-size-4 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local interpreter = sys.File(arg[0])
+local interpreter = sys.File(arg[-1])
 
 -- prints interpreter executable ("luart.exe") directory
 print(interpreter.directory.fullpath)

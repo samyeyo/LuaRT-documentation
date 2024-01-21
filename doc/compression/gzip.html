@@ -181,11 +181,11 @@
             <div class="language-lua mr-6 ml-6"><code>
 local compression = require "compression"
 
-if #arg == 1 then
+if #arg == 0 then
     error("error: no input file")
 end
 
-local file = sys.File(arg[2])
+local file = sys.File(arg[1])
 local gzipped_file = compression.gzip(file)
 
 print("File size : "..file.size)
