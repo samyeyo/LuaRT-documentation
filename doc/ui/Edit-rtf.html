@@ -172,7 +172,8 @@
           <div class="content">
             <p class="has-text-weight-light is-size-3 mb-5" style="color: #004080">Edit.rtf  <span class="tag is-rounded is-small is-warning" style="vertical-align: middle">read/write property</span></p>
             <p><br>
-			          Determines if the Edit control uses Rich Text Format (the default) or plain text without any format at all, a <strong style="color:#ae81ff">true</strong> value meaning that the Edit uses Rich Text Format.</p>
+			          Determines if the Edit control uses plain text (the default) or RTF formatted text, a <strong style="color:#ae81ff">true</strong> value meaning that the Edit uses Rich Text Format.</p>
+                <article class="message is-warning"><div class="message-body">Changing this property from <code>false</code> to <code>true</code> may erase the current text if it's not a valid Rich Text Formatted text.</div></article></p>
             <p class="is-size-4 mt-6 mb-0" style="color: #004080">Example</p>
           <div class="language-lua mr-6 ml-6"><code>
 local ui = require "ui"

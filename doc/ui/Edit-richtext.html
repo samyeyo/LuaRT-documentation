@@ -172,7 +172,8 @@
           <div class="content">
             <p class="has-text-weight-light is-size-3 mb-5" style="color: #004080">Edit.richtext  <span class="tag is-rounded is-small is-warning" style="vertical-align: middle">read/write property</span></p>
             <p><br>Get or set the Edit text content as a <strong style="color:#EA6AC3">string</strong>, with Rich Text Formatting.<br>
-            To get the text without formatting, use the <a href="Edit-text">Edit.text</a> property instead.</p>
+            To get the text without formatting, use the <a href="Edit-text">Edit.text</a> property instead.
+            <article class="message is-warning"><div class="message-body">Changing this property may erase the current text if the provided string don't contains Rich Text Formatted text.</div></article></p>
             <p class="is-size-4 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
 local ui = require "ui"
