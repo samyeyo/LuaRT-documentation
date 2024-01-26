@@ -184,10 +184,10 @@ local compression = require "compression"
 if #arg == 0 then
     error("error: no input file")
 end
-
+-- open a file and compress it to a temporary file
 local file = sys.File(arg[1])
 local gzipped_file = compression.gzip(file)
-
+-- output the size of the uncompressed and compressed file
 print("File size : "..file.size)
 print("Gzipped file : "..gzipped_file.size)
 

@@ -185,10 +185,10 @@ ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci ne
 molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat.]]
 
 local compression = require "compression"
-
+-- Compress text
 local compressed = compression.deflate(text)
 
--- outputs true
+-- decompress text and check if it is what we started with
 print(tostring(compression.inflate(compressed)) == text)
             </code></div>
             </div>
