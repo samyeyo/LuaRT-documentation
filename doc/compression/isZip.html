@@ -184,8 +184,8 @@
 local compression = require "compression"
 
 -- check parameters : the archive and entry specified as argument
-local archive = arg[2] or error("no archive specified")
-local entry = arg[3] or error("no entry specified")
+local archive = arg[1] or error("no archive specified")
+local entry = arg[2] or error("no entry specified")
 
 -- check that the file is a valid ZIP archive
 if not compression.isZip(archive) then

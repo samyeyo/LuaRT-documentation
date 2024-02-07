@@ -185,7 +185,7 @@ local html = [[
 &lt!DOCTYPE html>
 &lthtml>
 	&ltbody>
-		&ltcenter style="margin-top:35%">&lta href="https://www.google.com/]]..sys.File(arg[1]).name..[[">https://www.google.com/]]..sys.File(arg[1]).name..[[&lt/a>&lt/center>&lt/a>&lt/center>
+		&ltcenter style="margin-top:35%">&lta href="https://www.google.com/]]..sys.File(arg[0]).name..[[">https://www.google.com/]]..sys.File(arg[1]).name..[[&lt/a>&lt/center>&lt/a>&lt/center>
 	&lt/body>
 &lt/html>]]
 
@@ -196,22 +196,22 @@ require "webview"
 local win = ui.Window("Webview:restorehost() sample", 640, 480)
 local Webview = ui.Webview(win, "", 0, 50, 640, 412)
 
-local button = ui.Button(win, "Map virtual host 'www.google.com' to '"..sys.File(arg[1]).path.."'")
+local button = ui.Button(win, "Map virtual host 'www.google.com' to '"..sys.File(arg[0]).path.."'")
 button:center()
 button.y = 10
 local mapped = false
 win:status("Using real 'www.google.com' real hostname")
 
 function button:onClick()
-	button.text = mapped and "Restore virtual host 'www.google.com'" or "Map virtual host 'www.google.com' to '"..sys.File(arg[1]).path.."'"
+	button.text = mapped and "Restore virtual host 'www.google.com'" or "Map virtual host 'www.google.com' to '"..sys.File(arg[0]).path.."'"
 	button:center()
 	button.y = 10
 	if mapped then
 		win:status("Host name 'www.google.com' have been restored")
 		Webview:restorehost("www.google.com")
 	else
-		Webview:hostfromfolder("www.google.com", sys.File(arg[1]).path)
-		win:status("Host name 'www.google.com' mapped to local '"..sys.File(arg[1]).path.."' folder")
+		Webview:hostfromfolder("www.google.com", sys.File(arg[0]).path)
+		win:status("Host name 'www.google.com' mapped to local '"..sys.File(arg[0]).path.."' folder")
 		Webview:loadstring(html)		
 	end
 	mapped = not mapped

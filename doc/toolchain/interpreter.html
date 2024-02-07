@@ -158,7 +158,13 @@
                   <p class="ml-6 has-text-weight-light is-size-5 has-text-link-dark mb-0">[-e "statement"]</p>
                   <p class="ml-6">Executes the Lua statement in double quotes and run the following script if specified (see below).</p>
                   <p class="ml-6 has-text-weight-light is-size-5 has-text-link-dark mb-0">[filename arg1 arg2...]</p>
-                  <p class="ml-6">Loads and executes the Lua script <code>"filename"</code>, with optional arguments. Each arguments will be available in the global table <code>arg</code> in your Lua script : <code>arg[1]</code> for the first argument, <code>arg[2]</code> for the second and so on... <code>arg[0]</code> is a string representing the executable full path that launched the script.</p>
+                  <p class="ml-6">Loads and executes the Lua script <code>"filename"</code>, with optional arguments. Each arguments will be available in the global table <code>arg</code> in your Lua script : 
+                    <ul class="ml-6 pl-4">
+                      <li><code>arg[-1]</code> contains the fullpath of the running interpreter, as a string, or the current executable fullpath for compiled scripts.</li>
+                      <li><code>arg[0]</code> contains the current running the script or <code>nil</code> for compiled executables.</li>
+                      <li><code>arg[1]</code> contains the first argument</li>
+                      <li><code>arg[2]</code> for the second and so on...</li>
+                    </ul></p>
                 <p class="has-text-weight-light is-size-3 mt-6 mb-1">Lua<sup>rt</sup> interpreters comparison</p>
                   <p>Lua<sup>rt</sup> comes with serveral versions of the interpreter, located in the <code>\bin</code> subfolder of the installation directory, each with its own specificities explained in the table below :
            <table class="table has-text-centered mt-6">

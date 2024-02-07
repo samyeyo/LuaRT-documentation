@@ -181,7 +181,7 @@ local console = require "console"
 
 
 -- check parameters : the archive specified as argument
-local archive = arg[2] or error("no archive specified")
+local archive = arg[1] or error("no archive specified")
 
 -- open the archive
 local z = compression.Zip(archive)

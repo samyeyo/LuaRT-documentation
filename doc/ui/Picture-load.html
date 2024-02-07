@@ -192,7 +192,7 @@ local win = ui.Window("Picture.load() and save() example", 512, 380)
 local img = ui.Picture(win, "")
 
 -- load the image from disk
-img:load(sys.File(arg[1]).path.."\\LuaRT.png")
+img:load(sys.File(arg[0]).path.."\\LuaRT.png")
 
 -- center the Picture on the window
 img:center()
