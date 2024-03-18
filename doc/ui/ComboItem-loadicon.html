@@ -198,7 +198,7 @@ combo.style = "icons"
 
 -- all icons are in a resources directory
 for idx, icon in ipairs(icons) do
-    print(combo.items[idx]:loadicon("shell32.dll", icon))
+    combo.items[idx]:loadicon("shell32.dll", icon)
 end
 
 -- shows the Window
