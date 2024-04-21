@@ -184,11 +184,11 @@ local console = require "console"
 -- executes "cmd.exe" and create a Pipe
 local pipe = sys.Pipe("cmd.exe")
 -- skip cmd.exe welcome message
-pipe:read(100)
+await(pipe:read(100))
 pipe:write("dir\n")
 
 --read the result of the "dir" command excluding the command prompt
-result = pipe:read(200):match(".-\n(.*)\n.-\n")
+result = await(pipe:read()):match(".-\n(.*)\n.-\n")
 print(result)
             </code></div>
             </div>
