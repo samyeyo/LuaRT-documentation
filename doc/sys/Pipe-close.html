@@ -179,7 +179,7 @@
 local pipe = sys.Pipe("cmd.exe /C SET")
 
 -- list all current environment variables in the env_vars table
-local output = pipe:read(200)
+local output = await(pipe:read(200))
 local env_vars = {}
 
 pipe:close()
