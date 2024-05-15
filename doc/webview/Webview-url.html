@@ -172,8 +172,11 @@
           <div class="content">
             <p class="has-text-weight-light is-size-3 mb-5" style="color: #004080">Webview.url  <span class="tag is-rounded is-small is-warning" style="vertical-align: middle">read/write property</span></p>
             <p><br>
-			Get the current Webview URL, a <strong style="color:#EA6AC3">string</strong>.<br>
-			Setting this property will cause navigation to the provided URL.
+            Get the current Webview URL, a <strong style="color:#EA6AC3">string</strong>.<br>
+            Setting this property will cause navigation to the provided URL.
+            <article class="message is-warning" style="margin-left: 10%; margin-right: 10%"><div class="message-body">
+               When setting this property while running in an embedded executable compiled with <code>rtc</code>, and if the URL starts with <code>file:///</code>, any resource not found locally will be searched inside the embedded content too.
+            </div></article>              
             <p class="is-size-4 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
 local ui = require "ui"

@@ -4,14 +4,14 @@
   <meta charset="utf-8" />
   <meta content="IE=edge" http-equiv="X-UA-Compatible" />
   <meta content="width=device-width, initial-scale=1" name="viewport" />
-  <meta name="description" content="controls whether the Edit appears onscreen" />
+  <meta name="description" content="Get a list of current active display monitors" />
   <title>
-    Edit.visible | LuaRT free and open source Windows programming framework for Lua
+    ui.monitors | LuaRT free and open source Windows programming framework for Lua
   </title>
   <link href="../../css/bulma-docs.min.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         rel="stylesheet" />
-  <link href="https://luart.org/doc/ui/Edit-visible.html" rel="canonical" />
+  <link href="https://luart.org/doc/ui/monitors.html" rel="canonical" />
   <link href="../../img/favicon.png" rel="icon" sizes="16x16" type="image/png" />
   <link rel="stylesheet" href="../prism.css" data-noprefix="">
 </head>
@@ -167,35 +167,28 @@
   <section class="main-content columns is-centered is-fullheight" style="margin-top: 6%; margin-bottom: 4%">
     <div class="column is-7">
       <div class="card">
-      <a id="back" class="button is-white pl-5" href="Edit.html?properties"><span class="icon has-text-grey-lighter"><i class="fas fa-circle-left"></i></span></a>
+      <a id="back" class="button is-white pl-5" href="index.html?properties"><span class="icon has-text-grey-lighter"><i class="fas fa-circle-left"></i></span></a>
         <div class="card-content pt-0">
           <div class="content">
-            <p class="has-text-weight-light is-size-3 mb-5" style="color: #004080">Edit.visible  <span class="tag is-rounded is-small is-warning" style="vertical-align: middle">read/write property</span></p>
+            <p class="has-text-weight-light is-size-3 mb-5" style="color: #004080">ui.monitors  <span class="tag is-rounded has-background-danger-light is-small">readonly property</span></p>
             <p><br>
-			Get or set the edit visibility on screen, a <strong style="color:#ae81ff">true</strong> value means that the Edit is shown, a <strong style="color:#ae81ff">false</strong> value means that the Edit is hidden.
-			          <article class="message is-info" style="margin-left: 15%; margin-right: 15%"><div class="message-body">The edit.visible property is also affected by the <a href="./Edit-show.html">Edit:show()</a> and <a href="./Edit-hide.html">Edit:hide()</a> methods.</div></article></p>
+              Retrieves the characteristics of all the active display monitors, as an integer indexed <code>table</code>.<br>
+              Each entry value is a <code>table</code> containing the following fields :<br>
+                <ul>
+                    <li><code>"name"</code> : a <code>string</code> representing the display name</li>
+                    <li><code>"width"</code> : the monitor physical width as a <code>number</code></li>
+                    <li><code>"height"</code> : the monitor physical height as a <code>number</code></li>
+                    <li><code>"primary"</code> : a <code>boolean</code> indicating if the monitor is the primary display</li>
+                </ul>
+            </p>                      
             <p class="is-size-4 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
 local ui = require "ui"
 
--- create a simple edit 
-local win = ui.Window("Edit.visible sample", 320, 200)
-local edit = ui.Edit(win, "", 10, 44, 300, 150)
-local button = ui.Button(win, "Click to hide Edit", 110, 10)
+local win = ui.Window("Window.monitor example", 320, 200)
 
-edit.rtf = true
-edit.font = "Impact"
-edit.fontsize = 24
-edit.selection.align = "center"
-edit:append("\nLuaRT")
-
--- hides the edit and shows it again after 2 sec
-function button:onClick()
-	edit.visible = false
-	button.enabled = false
-	sleep(2000)
-	button.enabled = true
-	edit.visible = true
+ui.Button(win, "Click Me !").onClick = function()
+    ui.info('Window is located on "'..win.monitor.name..'" display')
 end
 
 ui.run(win):wait()

@@ -4,14 +4,14 @@
   <meta charset="utf-8" />
   <meta content="IE=edge" http-equiv="X-UA-Compatible" />
   <meta content="width=device-width, initial-scale=1" name="viewport" />
-  <meta name="description" content="controls whether the Edit appears onscreen" />
+  <meta name="description" content="get the Window's parent" />
   <title>
-    Edit.visible | LuaRT free and open source Windows programming framework for Lua
+    Window.parent | LuaRT free and open source Windows programming framework for Lua
   </title>
   <link href="../../css/bulma-docs.min.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         rel="stylesheet" />
-  <link href="https://luart.org/doc/ui/Edit-visible.html" rel="canonical" />
+  <link href="https://luart.org/doc/ui/Window-parent.html" rel="canonical" />
   <link href="../../img/favicon.png" rel="icon" sizes="16x16" type="image/png" />
   <link rel="stylesheet" href="../prism.css" data-noprefix="">
 </head>
@@ -167,39 +167,13 @@
   <section class="main-content columns is-centered is-fullheight" style="margin-top: 6%; margin-bottom: 4%">
     <div class="column is-7">
       <div class="card">
-      <a id="back" class="button is-white pl-5" href="Edit.html?properties"><span class="icon has-text-grey-lighter"><i class="fas fa-circle-left"></i></span></a>
+      <a id="back" class="button is-white pl-5" href="Window.html?properties"><span class="icon has-text-grey-lighter"><i class="fas fa-circle-left"></i></span></a>
         <div class="card-content pt-0">
           <div class="content">
-            <p class="has-text-weight-light is-size-3 mb-5" style="color: #004080">Edit.visible  <span class="tag is-rounded is-small is-warning" style="vertical-align: middle">read/write property</span></p>
+            <p class="has-text-weight-light is-size-3 mb-5" style="color: #004080">Window.parent  <span class="tag is-rounded is-small has-background-danger-light mt-0" style="vertical-align: middle">readonly property</span></p>
             <p><br>
-			Get or set the edit visibility on screen, a <strong style="color:#ae81ff">true</strong> value means that the Edit is shown, a <strong style="color:#ae81ff">false</strong> value means that the Edit is hidden.
-			          <article class="message is-info" style="margin-left: 15%; margin-right: 15%"><div class="message-body">The edit.visible property is also affected by the <a href="./Edit-show.html">Edit:show()</a> and <a href="./Edit-hide.html">Edit:hide()</a> methods.</div></article></p>
-            <p class="is-size-4 mt-6 mb-0" style="color: #004080">Example</p>
-            <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
-
--- create a simple edit 
-local win = ui.Window("Edit.visible sample", 320, 200)
-local edit = ui.Edit(win, "", 10, 44, 300, 150)
-local button = ui.Button(win, "Click to hide Edit", 110, 10)
-
-edit.rtf = true
-edit.font = "Impact"
-edit.fontsize = 24
-edit.selection.align = "center"
-edit:append("\nLuaRT")
-
--- hides the edit and shows it again after 2 sec
-function button:onClick()
-	edit.visible = false
-	button.enabled = false
-	sleep(2000)
-	button.enabled = true
-	edit.visible = true
-end
-
-ui.run(win):wait()
-            </code></div>
+			      Get the parent <a href="Window.html"><i class="fas far fa-window-maximize"></i> Window</a> if it exists, or <code>nil</code> otherwise.</p>
+            <article class="message is-info" style="margin-left: 10%; margin-right: 10%"><div class="message-body">Child Windows don't appear on the Windows Taskbar (only the parent Window).</div></article></p>            
             </div>
 	      </div>
       </div>

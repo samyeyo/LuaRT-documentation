@@ -4,14 +4,14 @@
   <meta charset="utf-8" />
   <meta content="IE=edge" http-equiv="X-UA-Compatible" />
   <meta content="width=device-width, initial-scale=1" name="viewport" />
-  <meta name="description" content="controls whether the Edit appears onscreen" />
+  <meta name="description" content="Controls whether the tree is readonly by the user" />
   <title>
-    Edit.visible | LuaRT free and open source Windows programming framework for Lua
+    Tree.readonly | LuaRT free and open source Windows programming framework for Lua
   </title>
   <link href="../../css/bulma-docs.min.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         rel="stylesheet" />
-  <link href="https://luart.org/doc/ui/Edit-visible.html" rel="canonical" />
+  <link href="https://luart.org/doc/ui/Tree-readonly.html" rel="canonical" />
   <link href="../../img/favicon.png" rel="icon" sizes="16x16" type="image/png" />
   <link rel="stylesheet" href="../prism.css" data-noprefix="">
 </head>
@@ -167,36 +167,33 @@
   <section class="main-content columns is-centered is-fullheight" style="margin-top: 6%; margin-bottom: 4%">
     <div class="column is-7">
       <div class="card">
-      <a id="back" class="button is-white pl-5" href="Edit.html?properties"><span class="icon has-text-grey-lighter"><i class="fas fa-circle-left"></i></span></a>
+      <a id="back" class="button is-white pl-5" href="Tree.html?properties"><span class="icon has-text-grey-lighter"><i class="fas fa-circle-left"></i></span></a>
         <div class="card-content pt-0">
           <div class="content">
-            <p class="has-text-weight-light is-size-3 mb-5" style="color: #004080">Edit.visible  <span class="tag is-rounded is-small is-warning" style="vertical-align: middle">read/write property</span></p>
+            <p class="has-text-weight-light is-size-3 mb-5" style="color: #004080">Tree.readonly  <span class="tag is-rounded is-small is-warning" style="vertical-align: middle">read/write property</span></p>
             <p><br>
-			Get or set the edit visibility on screen, a <strong style="color:#ae81ff">true</strong> value means that the Edit is shown, a <strong style="color:#ae81ff">false</strong> value means that the Edit is hidden.
-			          <article class="message is-info" style="margin-left: 15%; margin-right: 15%"><div class="message-body">The edit.visible property is also affected by the <a href="./Edit-show.html">Edit:show()</a> and <a href="./Edit-hide.html">Edit:hide()</a> methods.</div></article></p>
+              Controls whether the Tree is editable by the user, a <code>true</code> value meaning that the Tree is readonly (the default).
             <p class="is-size-4 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
 local ui = require "ui"
 
--- create a simple edit 
-local win = ui.Window("Edit.visible sample", 320, 200)
-local edit = ui.Edit(win, "", 10, 44, 300, 150)
-local button = ui.Button(win, "Click to hide Edit", 110, 10)
+local win = ui.Window("List.border sample", 320, 270)
+local tree = ui.Tree(win, {"Item1", "Item2", "Item3"})
+tree:center()
 
-edit.rtf = true
-edit.font = "Impact"
-edit.fontsize = 24
-edit.selection.align = "center"
-edit:append("\nLuaRT")
+local button = ui.Button(win, "Enable Tree item edition", 80, 10)
 
--- hides the edit and shows it again after 2 sec
-function button:onClick()
-	edit.visible = false
-	button.enabled = false
-	sleep(2000)
-	button.enabled = true
-	edit.visible = true
+function update_status()
+    win:status(tree.readonly and "Tree is not editable by user" or "Tree is editable by user")
 end
+
+function button:onClick()
+  tree.readonly = not tree.readonly
+  button.text = tree.readonly and "Enable Tree item edition" or "Disable Tree item edition"
+  update_status()
+end
+
+update_status()
 
 ui.run(win):wait()
             </code></div>
