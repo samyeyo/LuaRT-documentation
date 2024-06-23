@@ -46,7 +46,7 @@
           <i class="fab fa-lg fa-youtube"></i>
         </span>
       </a><a class="navbar-item bd-navbar-mobile-icon"
-         href="https://discord.gg/XJJxQufmvh"
+         href="https://discord.gg/cvQV77nhfr"
          target="_blank">
         <span class="icon" style="color: #5865F2">
           <i class="fab fa-discord"></i>
@@ -155,7 +155,7 @@
         </span>
       </a>
       <a class="bd-navbar-icon navbar-item"
-         href="https://discord.gg/XJJxQufmvh"
+         href="https://discord.gg/cvQV77nhfr"
          target="_blank">
         <span class="icon" style="color: #5865F2">
           <i class="fab fa-lg fa-discord"></i>
@@ -177,7 +177,10 @@
             <p class="has-text-weight-light is-size-5 mt-2 mb-0"><span>parent</span></p>
 <p>An object that will own the Webview. Parent objects can be any of <a href="../ui/Window.html"><i class="far fa-window-maximize" style="color :#367DBB"></i> Window</a>, <a href="../ui/Groupbox.html"><i class="far fa-square" style="color :#367DBB"></i> Groupbox</a>, <a href="../ui/TabItem.html"><i class="fas fas fa-bookmark"  style="color :#367DBB"></i><sup><i class="fas fa-tag" style="margin-left: -0.3em"></i></sup></span> TabItem</a> and <a href="../ui/Panel.html"><i class="fas fa-expand" style="color :#367DBB"></i> Panel</a></p>
 <p class="has-text-weight-light is-size-5 mt-2 mb-0"><span style="color:#EA6AC3">url</span></p>
-<p>A string representing the URL that the Webview widget will navigate too once initialized.</p>
+<p>A string representing the URL that the Webview widget will navigate too once initialized.
+<article class="message is-success" style="margin-left: 5%; margin-right: 15%"><div class="message-body">
+  When running in an embedded executable compiled with <code>rtc</code>, and if the URL starts with <code>file:///</code>, any resource not found locally will be searched inside the embedded content too.
+</div></article></p>
 <p class="has-text-weight-light is-size-5 mt-2 mb-0"><span style="color:#ae81ff">x</span></p>
 <p>An optional number that indicates the Webview horizontal position, in pixels. Zero means the left border of the parent.</p>
 <p class="has-text-weight-light is-size-5 mt-2 mb-0"><span style="color:#ae81ff">y</span></p>
@@ -187,10 +190,9 @@
 <p class="has-text-weight-light is-size-5 mt-2 mb-0"><span style="color:#ae81ff">height</span></p>
 <p>An optional number that indicates the Webview height in pixels, autosized to fit text content if omitted.</p>
 
-<article class="message is-warning" style="margin-left: 10%; margin-right: 10%"><div class="message-body">A just constructed Webview widget does not mean it is ready to be used.<br>In particular, during the widget construction process, it can be displayed while it is still initializing.<br>
+<article class="message is-warning" style="margin-left: 5%; margin-right: 15%"><div class="message-body">A just constructed Webview widget does not mean it is ready to be used.<br>In particular, during the widget construction process, it can be displayed while it is still initializing.<br>
   Once initialized, the Webview widget will throw a <a href="Webview-onReady">Webview.onReady()</a> event, particularly useful to start using the Webview widget.
 </div></article>
-
             <p class="is-size-4 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
 local ui = require "ui"
@@ -243,7 +245,7 @@ until not win.visible
         </span>
       </a>      
       <a class="is-hovered"
-      href="https://discord.gg/XJJxQufmvh"
+      href="https://discord.gg/cvQV77nhfr"
       target="_blank">
      <span class="icon" style="color: #A0A0A0">
        <i class="fab fa-lg fa-discord"></i>

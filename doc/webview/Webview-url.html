@@ -46,7 +46,7 @@
           <i class="fab fa-lg fa-youtube"></i>
         </span>
       </a><a class="navbar-item bd-navbar-mobile-icon"
-         href="https://discord.gg/XJJxQufmvh"
+         href="https://discord.gg/cvQV77nhfr"
          target="_blank">
         <span class="icon" style="color: #5865F2">
           <i class="fab fa-discord"></i>
@@ -155,7 +155,7 @@
         </span>
       </a>
       <a class="bd-navbar-icon navbar-item"
-         href="https://discord.gg/XJJxQufmvh"
+         href="https://discord.gg/cvQV77nhfr"
          target="_blank">
         <span class="icon" style="color: #5865F2">
           <i class="fab fa-lg fa-discord"></i>
@@ -172,8 +172,11 @@
           <div class="content">
             <p class="has-text-weight-light is-size-3 mb-5" style="color: #004080">Webview.url  <span class="tag is-rounded is-small is-warning" style="vertical-align: middle">read/write property</span></p>
             <p><br>
-			Get the current Webview URL, a <strong style="color:#EA6AC3">string</strong>.<br>
-			Setting this property will cause navigation to the provided URL.
+            Get the current Webview URL, a <strong style="color:#EA6AC3">string</strong>.<br>
+            Setting this property will cause navigation to the provided URL.
+            <article class="message is-warning" style="margin-left: 10%; margin-right: 10%"><div class="message-body">
+               When setting this property while running in an embedded executable compiled with <code>rtc</code>, and if the URL starts with <code>file:///</code>, any resource not found locally will be searched inside the embedded content too.
+            </div></article>              
             <p class="is-size-4 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
 local ui = require "ui"
@@ -228,7 +231,7 @@ until not win.visible
         </span>
       </a>      
       <a class="is-hovered"
-      href="https://discord.gg/XJJxQufmvh"
+      href="https://discord.gg/cvQV77nhfr"
       target="_blank">
      <span class="icon" style="color: #A0A0A0">
        <i class="fab fa-lg fa-discord"></i>
