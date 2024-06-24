@@ -185,10 +185,18 @@
             <div class="language-lua mr-6 ml-6"><code>
 local ui = require "ui"
 
-local win = ui.Window("Window.monitor example", 320, 200)
+local win = ui.Window("ui.monitors example", 320, 200)
+local tree = ui.Tree(win, {})
+tree.align = "all"
+tree.style = "icons"
+tree.border = false
 
-ui.Button(win, "Click Me !").onClick = function()
-    ui.info('Window is located on "'..win.monitor.name..'" display')
+for monitor in each(ui.monitors) do
+    local item = tree:add(monitor.name)
+    item:loadicon("shell32.dll", 16)
+    item:add("width : "..monitor.width)
+    item:add("height : "..monitor.height)
+    item:add("primary : "..tostring(monitor.primary))
 end
 
 ui.run(win):wait()
