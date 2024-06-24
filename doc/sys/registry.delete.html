@@ -4,14 +4,14 @@
   <meta charset="utf-8" />
   <meta content="IE=edge" http-equiv="X-UA-Compatible" />
   <meta content="width=device-width, initial-scale=1" name="viewport" />
-  <meta name="description" content="Write key/value in the Windows registry" />
+  <meta name="description" content="Remove key/value in the Windows registry" />
   <title>
     sys.registry.delete() | LuaRT free and open source Windows programming framework for Lua
   </title>
   <link href="../../css/bulma-docs.min.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         rel="stylesheet" />
-  <link href="https://luart.org/doc/sys/registry.write.html" rel="canonical" />
+  <link href="https://luart.org/doc/sys/registry.delete.html" rel="canonical" />
   <link href="../../img/favicon.png" rel="icon" sizes="16x16" type="image/png" />
   <link rel="stylesheet" href="../prism.css" data-noprefix="">
 </head>
@@ -171,7 +171,7 @@
         <div class="card-content pt-0">
           <div class="content">
             <p class="has-text-weight-light is-size-3 mb-5" style="color: #004080; vertical-align: middle">sys.registry.delete(<span style="color:#EA6AC3">root</span>, <span style="color:#EA6AC3">key</span>, <span style="color:#ae81ff">[value]</span>)</p>
-            <p>Removes value(s) at the specified key in the Windows registry.</p>
+            <p>Remove a key and all it's assosciated values, or just a value, from the Windows registry.</p>
             <p class="is-size-4 mb-1 mt-6" style="color: #004080">Parameters</p>
             <p class="has-text-weight-light is-size-5 mt-2 mb-0"><span style="color:#EA6AC3">root</span></p>
             <p>Indicates the predefined entry point in the Windows registry, from which the key/value will be accessed. Must be one of the following string :              
@@ -182,7 +182,7 @@
                     <li><span style="color:#EA6AC3">"HKEY_LOCAL_MACHINE"</span> : data about the computer, system memory, and installed hardware and software</li>
                 </ul></p>
             <p class="has-text-weight-light is-size-5 mt-2 mb-0"><span style="color:#EA6AC3">key</span></p>
-            <p>Indicates the name of the key under which the value will be written.</p>                                 
+            <p>Indicates the name of the key to be deleted, or the path to the value to be deleted (the value must be provided as a third parameter).</p>                                 
           <p class="has-text-weight-light is-size-5 mt-2 mb-0"><span style="color:#ae81ff">[value]</span></p>
           <p>Indicates the specific value to be deleted, removes all values for the key if omitted </p>               
           <p class="is-size-4 mb-1 mt-6" style="color: #004080">Return value</p>
@@ -190,7 +190,7 @@
           
             <p class="is-size-4 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local removed = sys.registry.delete("HKEY_CURRENT_USER", "Environment", "Path")
+local removed = sys.registry.delete("HKEY_CURRENT_USER", "Environment", "value")
 if removed then
     print("Removed registry key")
 else
