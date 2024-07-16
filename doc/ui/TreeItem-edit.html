@@ -172,6 +172,7 @@
           <div class="content">
             <p class="has-text-weight-light is-size-3 mb-5" style="color: #004080; vertical-align: middle">TreeItem:edit() <span class="tag is-rounded is-small has-background-info-light" style="background:#367DBB;vertical-align: middle">method</span><br></p>
             <p><br>Begins in-place editing of the specified TreeItem's caption.<br>When the user has done editing it, the parent Tree will receive a <a href="./Tree-onChange.html">Tree:onChange()</a> event.</p>
+            <article class="message is-warning" style="margin-left: 15%; margin-right: 15%"><div class="message-body">Be sure to set the <a href="./Tree-readonly.html">Tree.readonly</a> property to <code>true</code> before beginning in-place editing.</div></article>
             <p class="is-size-4 mb-1 mt-6" style="color: #004080">Return value</p>
             This function returns no value.
             <p class="is-size-4 mt-6 mb-0" style="color: #004080">Example</p>
@@ -189,7 +190,7 @@ function tree:onDoubleClick(item)
   tree.selected:edit()
 end
 
--- Tree onChangek() event
+-- Tree onChange() event
 function tree:onChange(item, action)
   if action == "edited" then
     win:status(edited.." has been renamed to "..item.text)
