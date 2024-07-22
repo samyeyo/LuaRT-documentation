@@ -184,7 +184,7 @@ local client = net.Http("http://download.thinkbroadband.com")
 await(client:download("/10MB.zip"))
 
 if client.response then
-  print("Successfully downloaded "..file.name)
+  print("Successfully downloaded "..client.response.file.name)
 end
               </code></div>
             </div>
