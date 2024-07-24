@@ -213,10 +213,6 @@
             Returns the corresponding Lua value or a <code>nil</code> value in case of error.
             <p class="is-size-4 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
---
---  LuaRT geo.lua example
---  Find the location where you currently are
---
 local net = require "net" 
 local json = require "json"
 
@@ -224,13 +220,14 @@ local json = require "json"
 local url = "http://ip-api.com"
 local client = net.Http(url)
 
--- make a GET request, returning the response as a JSON string
--- decoded using json.decode() function
-local uri = "/json/"
-local response = json.decode(client:get(uri))
+-- wait for a GET request to terminate
+await(client:get("/json/"))
 
--- parse the response (a Lua table)
-print("You are located in "..response.country.." near "..response.city)
+-- decode the response as a JSON string or throw an error 
+local data = json.decode(client.response and client.response.content or error(net.error))
+
+-- use the needed response fields
+print("You are located in "..data.country.." near "..data.city)
               </code></div>
             </div>
 	      </div>
