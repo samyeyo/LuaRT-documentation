@@ -179,13 +179,15 @@
 local pipe = sys.Pipe("cmd.exe /C SET")
 
 -- list all current environment variables in the env_vars table
-local output = await(pipe:read(200))
+sleep(200)
+local output = await(pipe:read())
 local env_vars = {}
 
 pipe:close()
 
 for var, value in output:gmatch("(%w+)=(.-)\r\n") do
-	env_vars[var] = value
+  env_vars[var] = value
+    print("Variable `"..var.."` : \t", value)
 end
             </code></div>
             </div>

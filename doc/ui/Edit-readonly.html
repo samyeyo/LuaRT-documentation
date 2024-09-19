@@ -181,7 +181,7 @@ local ui = require "ui"
 local win = ui.Window("Edit.readonly sample", "fixed", 580, 360)
 local label = ui.Label(win, "Enter command : ", 2, 6)
 label.height = 16
-local entry = ui.Entry(win, "", label.width, 4, win.width-label.width-4, 20)
+local entry = ui.Entry(win, "", label.width+2, 4, win.width-label.width-2, 20)
 local edit = ui.Edit(win, "", -1, entry.height+6, win.width+4, win.height-entry.height-4)
 
 edit.font = "Consolas"
@@ -193,21 +193,23 @@ edit.readonly = true
 edit.wordwrap = true
 
 local pipe = sys.Pipe("cmd.exe /k chcp 65001>nul")
-edit:append(pipe:read(100))
+sleep(100)
+
+function win:onShow()
+    edit:append(await(pipe:read()))
+end
 
 function entry:onSelect()
-	local cmd = self.text.."\n" 
-	-- write command to pipe
-	pipe:write(cmd)
-	-- wait for command to execute
-	sleep(150)
-	edit:append(cmd)
-	-- append error msg if exists
-	edit:append(pipe:readerror() or "")
-	-- print pipe output excluding last written command
-	edit.selection.from = edit.selection.from - 1
-	edit.selection.text = pipe:read():gsub("^"..self.text, "")
-	self.text = ""
+  local cmd = self.text.."\n" 
+  -- write command to pipe
+  pipe:write(cmd)
+  -- wait for command to execute
+  sleep(150)
+  edit:append(cmd)
+  -- print pipe output excluding last written command
+  edit.selection.from = edit.selection.from - 1
+  edit.selection.text = await(pipe:read()):gsub("^"..self.text, "")
+  self.text = ""
 end
 
 ui.run(win):wait()

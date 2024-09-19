@@ -187,11 +187,9 @@ local ui = require "ui"
 -- create a new Pipe to capture output of the "ver" command
 local pipe = sys.Pipe("cmd.exe /K ver")
 
--- wait for output
-sys.sleep(50)
-
 -- capture output
-local version = pipe:read():match("M.*%]")
+sleep(100)
+local version = await(pipe:read()):match("M.*%]")
 
 -- Displays Windows version
 print(ui.info(version, "Windows version"))

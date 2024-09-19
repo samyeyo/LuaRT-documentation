@@ -187,11 +187,11 @@ local ui = require "ui"
 -- create a new Pipe to capture output of the "WMIC ui Win32_Battery Get EstimatedChargeRemaining" command
 local pipe = sys.Pipe('cmd.exe /K "WMIC ui Win32_Battery Get EstimatedChargeRemaining"')
 
--- wait one second for output
-sys.sleep(1000)
-
 -- capture output
-local charge = pipe:read():match("%d+")
+if await(pipe:readerror()) ~= nil then
+    error("No battery found")
+end
+local charge = await(pipe:read()):match("%d+")
 
 -- Displays current battery remaining charge
 ui.warn("Battery left : "..charge.."%", "Battery remainging charge")
