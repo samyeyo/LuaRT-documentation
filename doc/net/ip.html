@@ -4,14 +4,14 @@
   <meta charset="utf-8" />
   <meta content="IE=edge" http-equiv="X-UA-Compatible" />
   <meta content="width=device-width, initial-scale=1" name="viewport" />
-  <meta name="description" content="CRC32 hashing algorithm" />
+  <meta name="description" content="Gets the last network related error message" />
   <title>
-    crypto.crc32() | LuaRT free and open source Windows programming framework for Lua
+    net.ip | LuaRT free and open source Windows programming framework for Lua
   </title>
   <link href="../../css/bulma-docs.min.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         rel="stylesheet" />
-  <link href="https://luart.org/doc/net/ip.html" rel="canonical" />
+  <link href="https://luart.org/doc/net/error.html" rel="canonical" />
   <link href="../../img/favicon.png" rel="icon" sizes="16x16" type="image/png" />
   <link rel="stylesheet" href="../prism.css" data-noprefix="">
 </head>
@@ -64,7 +64,7 @@
       <div class="navbar-start bd-navbar-start bd-is-original"
            id="navbarStartOriginal">
         <a class="navbar-item bd-navbar-item bd-navbar-item-bulma-book bd-navbar-item-base"
-           href="../index.html#section_features">
+           href="../../index.html#section_features">
           <span class="icon has-text-bleeding">
             <i class="fas fa-certificate"></i>
           </span>
@@ -167,27 +167,22 @@
   <section class="main-content columns is-centered is-fullheight" style="margin-top: 6%; margin-bottom: 4%">
     <div class="column is-7">
       <div class="card">
-        <a id="back" class="button is-white pl-5" href="index.html?methods"><span class="icon has-text-grey-lighter"><i class="fas fa-circle-left"></i></span></a>
+      <a class="button is-white pl-5" href="index.html?properties"><span class="icon has-text-grey-lighter"><i class="fas fa-circle-left"></i></span></a>
         <div class="card-content pt-0">
           <div class="content">
-            <p class="has-text-weight-light is-size-3 mb-5" style="color: #004080; vertical-align: middle">crypto.crc32(<span style="color:#EA6AC3">data</span>)</p>
-            <p>Calculate the Cyclic Redundancy Check (CRC) value of the given data.</a>.</p>
-            <p class="is-size-4 mb-1 mt-6" style="color: #004080">Parameters</p>
-            <p class="has-text-weight-light is-size-5 mt-2 mb-0"><span style="color:#EA6AC3">data</span></p>
-<p>A <span style="color:#EA6AC3">string</span> or a <a href="../sys/Buffer.html"><i class="fas fa-th" style="color :#367DBB"></i> Buffer</a>.</p>
-
-            <p class="is-size-4 mb-1 mt-6" style="color: #004080">Return value</p>
-            Returns a <span style="color:#ae81ff">number</span> containing CRC32 checksum.
+            <p class="has-text-weight-light is-size-3 mb-5" style="color: #004080">net.error <span class="tag is-rounded is-small has-background-danger-light mt-0" style="vertical-align: middle">readonly property</span></p>
+            <p><br><br>
+			net.ip returns a <span style="color:gray">string</span></p>
             <p class="is-size-4 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local crypto = require "crypto"
-local console = require "console"
+local net = require "net"
 
-local file = sys.File(console.readln("Enter the file to calculate CRC32 : ")):open()
-local crc32 = crypto.crc32(file:read())
+local function GetLocalIP ()
+	return net.ip
+end    
 
-console.write("CRC32 : ")
-console.writecolor("lightgreen",crc32,"\n")
+print(GetLocalIP()) -- Public and local ip addresses are different. Should output "192.168.x.x", or "127.0.0.x" (if offline.)
+ --net.ip page made by _FN10_
             </code></div>
             </div>
 	      </div>
@@ -230,4 +225,22 @@ console.writecolor("lightgreen",crc32,"\n")
      </a>    
       <p class="mt-0">
         Copyright &copy; 2024
-        <a href="mailto:samir.tine@luart.org">Samir T
+        <a href="mailto:samir.tine@luart.org">Samir Tine</a>.
+        <br />
+        <a href="https://bulma.io/made-with-bulma/">
+          <img alt="Made with Bulma"
+               height="24"
+               src="https://bulma.io/images/made-with-bulma.png"
+               width="128" />
+        </a>
+      </p>
+    </div>
+  </footer>
+</body>
+<script src="../../js/main.js"></script>
+<script src="../prism.js"></script>
+<script src="../custom-class.js"></script>
+<script>Prism.plugins.customClass.prefix('prism--');</script>
+</html>
+
+  
