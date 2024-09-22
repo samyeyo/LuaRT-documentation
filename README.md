@@ -29,7 +29,7 @@ Whether you are a beginner in web programming or an experienced webmaster, you c
 You can learn more about LuaRT, get support, and meet other devs in :
 
 - [LuaRT Community forum](https://community.luart.org)
-- [LuaRT Community Discord server](https://discord.gg/XJJxQufmvh)
+- [LuaRT Community Discord server](https://discord.gg/WRwDMnQR4d)
 <br/>
 
 ## :scroll: How to report an issue ?
