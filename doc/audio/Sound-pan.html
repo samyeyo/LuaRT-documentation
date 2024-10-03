@@ -190,7 +190,7 @@ sound:play()
 while (not console.keyhit) and sound.playing do
     p = p+delta
     sound.pan = p
-    sys.sleep(1000)
+    sleep(1000)
     if p <-0.5 then
         delta = 0.1 
     elseif p > 0.5 then

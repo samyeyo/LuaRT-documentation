@@ -187,13 +187,13 @@ local sound = audio.Sound("music.mp3")
 sound:play()
 
 -- plays the sound 2 sec...
-sys.sleep(2000)
+sleep(2000)
 
 -- ...then advance cursor position at 33.1 seconds
 sound:seek(33.1)
 
 while sound.playing do
-  sys.sleep()
+  sleep()
 end
               </code></div>
             </div>
