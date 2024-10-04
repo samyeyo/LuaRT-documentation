@@ -196,7 +196,7 @@ local win = ui.Window("RadialGradient.constructor() sample", "fixed", 500, 400)
 local canvas = ui.Canvas(win)
 canvas.align = "all"
 
-local logo = canvas:Image("examples/canvas/LuaRT.png")
+local logo = canvas:Image("LuaRT.png")
 
 local gradient = canvas:RadialGradient { [0] = 0xffffe600, [1] = 0x000000FF }
 gradient.radius = { canvas.width/4, canvas.height/4 }

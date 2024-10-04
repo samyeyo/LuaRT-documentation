@@ -177,6 +177,33 @@
             The event returns no value.
 
             </div>
+            <p class="is-size-4 mt-6 mb-0" style="color: #004080">Example</p>
+            <div class="language-lua mr-6 ml-6"><code>
+local ui = require "ui"
+require "canvas"
+
+-- create a simple Canvas 
+local win = ui.Window("Canvas:onHide sample", "fixed", 640, 480)
+local Canvas = ui.Canvas(win, 0, 50, 640, 430)
+
+function Canvas:onHide()
+  ui.msg("Window Hidden")
+end
+
+local button = ui.Button(win, "Hide the Canvas widget")
+button:center()
+button.y = 10
+
+win:show()
+
+function button:onClick()
+  Canvas:hide()
+end
+
+while win.visible do
+  ui.update()
+end
+            </code></div>
 	      </div>
       </div>
     </div>

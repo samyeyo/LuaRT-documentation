@@ -176,6 +176,33 @@
             <p class="is-size-4 mb-1 mt-6" style="color: #004080">Return value</p>
             The event returns no value.
             </div>
+            <p class="is-size-4 mt-6 mb-0" style="color: #004080">Example</p>
+            <div class="language-lua mr-6 ml-6"><code>
+local ui = require "ui"
+require "canvas"
+
+-- create a simple Window
+local win = ui.Window("Canvas:onShow() sample", 640, 480)
+
+-- create a canvas and center it
+local canvas = ui.Canvas(win, 0, 0, 600, 400)
+canvas.align = "all"
+
+-- set the onShow() event handler to draw on the canvas
+function canvas:onShow()
+   -- clears the canvas backbuffer with white color
+   canvas:clear(0xFFFFFFFF)
+   -- prints text
+   canvas:print("onShow Example", 10, 10)
+end
+
+win:show()
+
+-- update the user interface until the user closes the Window
+repeat
+    ui.update()
+until not win.visible	
+            </code></div>
 	      </div>
       </div>
     </div>
