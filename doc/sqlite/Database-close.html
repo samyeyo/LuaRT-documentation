@@ -176,6 +176,13 @@
             <p class="is-size-4 mb-1 mt-6" style="color: #004080">Return value</p>
             The function returns no value.
             </div>
+            <div class="language-lua mr-6 ml-6"><code>
+local sqlite = require "sqlite"
+              
+-- Create an in-:memory: database
+local db = sqlite.Database(":memory:")
+db:close()
+              </code></div>
 	      </div>
       </div>
     </div>
