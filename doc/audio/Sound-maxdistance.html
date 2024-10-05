@@ -174,7 +174,16 @@
             <p><br>Get or set the maximum distance for attentation calculation. This property default value is set to <code>3.4028234663853e+38</code></p>
             <p><article class="message is-warning" style="margin-left: 15%; margin-right: 15%"><div class="message-body">             
               If you don't want to use sound spatialization, just ignore this property
-            </div></article></p>            
+            </div></article></p>
+            <p class="is-size-4 mt-6 mb-0" style="color: #004080">Example</p>
+            <div class="language-lua mr-6 ml-6"><code>
+local audio = require "audio"
+local console = require "console"
+
+local sound = audio.Sound("music.mp3")
+
+print(sound.maxdistance)
+            </code></div>            
 	      </div>
       </div>
     </div>

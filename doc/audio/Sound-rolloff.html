@@ -175,7 +175,16 @@
             <p>This property expects a <code>number</code>, representing how quickly a sound rolls off as it moves away from the listener. The default value is set to <code>1.0</code><br>
             <p><article class="message is-warning" style="margin-left: 15%; margin-right: 15%"><div class="message-body">             
               If you don't want to use sound spatialization, just ignore this property
-            </div></article></p>            
+            </div></article></p>
+            <p class="is-size-4 mt-6 mb-0" style="color: #004080">Example</p>
+            <div class="language-lua mr-6 ml-6"><code>
+local audio = require "audio"
+local console = require "console"
+
+local sound = audio.Sound("music.mp3")
+
+print(sound.rolloff)
+            </code></div>      
             </div>
 	      </div>
       </div>

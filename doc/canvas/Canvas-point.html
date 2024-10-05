@@ -196,7 +196,8 @@ local canvas = ui.Canvas(win)
 canvas.align = "all"
 
 function canvas:onPaint()
-  canvas:point(text, xpos, ypos, math.random(0xFFFFFFFF))
+  --Draws a point at 18,40 with a random color
+  canvas:point(18,40, math.random(0xFFFFFFFF))
 end
 
 win:show()

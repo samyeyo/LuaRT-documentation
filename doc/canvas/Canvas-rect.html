@@ -211,7 +211,7 @@ canvas.bgcolor = 0x000000FF
 
 local w = canvas.width
 local h = canvas.height
-local img = canvas:Image("examples/canvas/LuaRT.png")
+local img = canvas:Image("LuaRT.png")
 
 function canvas:onPaint()
   img:draw(math.random(w)-80, math.random(h), math.random(), math.random())

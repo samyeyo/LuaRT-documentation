@@ -185,7 +185,7 @@ local win = ui.Window("Canvas.visible sample", "fixed", 640, 480)
 local Canvas = ui.Canvas(win, 0, 50, 640, 430)
 
 function Canvas:onPaint()
-  canvas:clear() 
+  Canvas:clear() 
   self:print("Hello", math.random(0,630), math.random(0, 390))
 end
 
