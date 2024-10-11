@@ -176,6 +176,10 @@
             <p class="has-text-weight-light is-size-5 mt-2 mb-0"><span style="color:#EA6AC3">path</span></p>
 <p>A string representing the path to the folder. The path may exist physically on a disk or not. To create the folder on a disk, use the <a href="./Directory-make.html">Directory:make()</a> method. 
 				          <article class="message is-info" style="margin-left: 15%; margin-right: 15%"><div class="message-body">If a relative path is given to the Directory constructor, it will be converted to an absolute path (relative to the current working folder).</div></article></p>
+                  <div class="language-lua mr-6 ml-6"><code>
+                    local currentDir = sys.Directory(sys.currentdir)
+                    local tempDir = sys.Directory("temp")
+                  </code></div>
             </div>
 	      </div>
       </div>

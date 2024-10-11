@@ -183,7 +183,7 @@ local b = sys.Buffer(4)
 print(b.size)
 
 -- pack 3 integers (4 bytes each) in the buffer, and resize it automagically
-print(b:pack("I4I4I4", 0x1111, 0x2222, 0x3333))
+b:pack("I4I4I4", 0x1111, 0x2222, 0x3333)
 
 -- outputs "12"
 print(b.size)

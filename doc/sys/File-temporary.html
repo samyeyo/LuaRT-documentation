@@ -175,7 +175,7 @@
 			The File.temporary property set or get a <strong style="color:#ae81ff">boolean</strong> value indicating if the File is considered temporary or not (meaning that cache data will not be written to disk once the File is closed). The file must exist physically on the disk.</p>
             <p class="is-size-4 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local file = File("example\\notepad.wlua")
+local file = sys.File("example\\notepad.wlua")
 file.temporary = true
 
 -- outputs "true"
