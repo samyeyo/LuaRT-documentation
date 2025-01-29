@@ -187,18 +187,22 @@ canvas.align = "all"
 canvas:clear(0x000000FF)
 canvas:flip()
 
--- don't use onPaint()
-canvas.sync = false
+local blue = 0x0000FFFF --Pure Blue
+local red = 0xFF000088 --Red with some transparency
+local magenta = 0xFF00FFFF -- Magenta
 
+canvas.sync = false
 win:show()
+
 
 -- update user interface
 repeat
   canvas:begin()
-  for i=1,10 do
-    canvas:fillellipse(math.random(500), math.random(400), 10, 10, math.random(0xFFFFFFFF))
-  end
+  canvas:fillcircle(300, 120, 50, blue)
+  canvas:fillcircle(60, 300, 56, magenta)
+  canvas:fillcircle(40, 20, 300, red)
   canvas:flip()
+
   ui.update()
 until not win.visible
             </code></div>
