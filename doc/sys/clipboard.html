@@ -172,15 +172,79 @@
           <div class="content">
             <p class="has-text-weight-light is-size-3 mb-5" style="color: #004080">sys.clipboard <span class="tag is-rounded is-small is-warning" style="vertical-align: middle">read/write property</span></p>
             <p><br><br>
-			The sys.clipboard property retrieve/put a <strong style="color:#EA6AC3">string</strong> from/to the Windows clipboard content.
-			          <article class="message is-info" style="margin-left: 15%; margin-right: 15%"><div class="message-body">sys.clipboard returns <strong>nil</strong> if the clipboard is empty or if its content is not textual</div></article></p>
+			      Get or set data from/to the Windows clipboard.
+			      <article class="message is-warning is-small mt-6 mb-6" style="margin-left: 10%; margin-right: 10%">
+              <div class="message-header mb-0">
+                <p><i class="fas fa-pencil"></i> Notes</p>
+              </div>
+              <div class="message-body mb-0 is-size-7">
+              <ul class="mt-0">
+                <li>This property returns <code>nil</code> if the clipboard is empty or if the kind of data is not compatible with LuaRT.</li>              
+              </ul></div></article>
+            </p>
+            <p class="is-size-5 mb-1 mt-6" style="color: #004080">Getting clipboard data</p>
+           Getting clipboard data will return a <code>table</code> with the following fields :
+           <table class="table has-text-centered mt-3">
+            <thead>
+              <tr>
+                <th class="has-text-info">sys.clipboard.kind</th>
+                <th class="has-text-info">sys.clipboard.content</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code >"text"</code></td>
+                <td><code>string</code></td>
+              </tr>
+              <tr>
+                <td><code>"files"</code></td>
+                <td><code>table</code><br>(list of <a href="File.html"><i class="fas fas fa-file"></i> File</a> and <a href="Directory.html"><i class="fas fa-folder" style="font-size:1em; color :#367DBB"></i> Directory</a>)</td>
+              </tr>
+              <tr>
+                <td><code >"unknown"</code></td>
+                <td><code>nil</code></td>
+              </tr>
+            </tbody>
+            </table>
+            <p class="is-size-5 mb-1 mt-6" style="color: #004080">Setting clipboard data</p>
+            To set clipboard data, affect any of the following type of values to the property :
+            <table class="table has-text-centered mt-3">
+              <thead>
+                <tr>
+                  <th class="has-text-info">Set sys.clipboard with...</th>
+                  <th class="has-text-info">Clipboard format</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>string</code></td>
+                  <td><code>text</code></td>
+                </tr>
+                <tr>
+                  <td><code>table</code><br>(list of <a href="File.html"><i class="fas fas fa-file"></i> File</a> and <a href="Directory.html"><i class="fas fa-folder" style="font-size:1em; color :#367DBB"></i> Directory</a>)</td>
+                  <td><code>Files/Directories</code></td>
+                </tr>
+                <tr>
+                  <td><code>nil</code></td>
+                  <td><i class="is-size-6">Empties the clipboard</i></td>
+                </tr>
+              </tbody>
+              </table>
             <p class="is-size-4 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local content = sys.clipboard
-if content == nil then
-	print("Clipboard is empty")
+local clipboard = sys.clipboard
+if not clipboard then
+  print("Windows clipboard is empty")
 else
-	print("Clipboard content is :"..content)
+  print("Clipboard contains "..clipboard.kind..":")
+  if clipboard.kind == "files" then
+      for entry in each(clipboard.content) do
+          print("\t"..entry.fullpath)
+      end
+      sys.clipboard = nil
+  else
+      print("\t"..(clipboard.content or "nil"))
+  end
 end
             </code></div>
             </div>
@@ -223,7 +287,7 @@ end
      </span>
      </a>    
       <p class="mt-0">
-        Copyright &copy; 2024
+        Copyright &copy; 2025
         <a href="mailto:samir.tine@luart.org">Samir Tine</a>.
         <br />
         <a href="https://bulma.io/made-with-bulma/">

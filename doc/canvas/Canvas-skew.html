@@ -178,13 +178,16 @@ local skew = 0
 
 -- Uses internal timer for 30fps drawing
 function c:onPaint()
+  self:begin()
   self:clear(0xffffffff)
+  c:identity()
   c:skew(skew, 0)
-  c:rect(50,50,100,100)
-  skew = skew + 2
+  c:fillrect(50,50,100,100, 0x37A0D7)
+  skew = skew + 0.1
+  self:flip()
 end
 
-ui.run(win)
+ui.run(win):wait()
             </code></div>
             </div>
 	      </div>
@@ -219,7 +222,7 @@ ui.run(win)
         </span>
       </a>
       <p class="mt-0">
-        Copyright &copy; 2024
+        Copyright &copy; 2025
         <a href="mailto:samir.tine@luart.org">Samir Tine</a>.
         <br />
         <a href="https://bulma.io/made-with-bulma/">

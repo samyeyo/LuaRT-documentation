@@ -177,7 +177,6 @@
         <li>A RGBA color can be represented as an hexadecimal number :<span style="color:#ae81ff"> 0xRRGGBBAA</span> , RR meaning a 8bit hexadecimal red value, and so on.</li></ul></div></article></p>
             <p class="is-size-4 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
 require "canvas"
 
 -- create a simple window
@@ -185,18 +184,15 @@ local win = ui.Window("canvas.color sample", "fixed", 500, 400)
 local canvas = ui.Canvas(win)
 canvas.align = "all"
 canvas:clear(0x000000FF)
-canvas:flip()
-
--- don't use onPaint()
-canvas.sync = false
 
 win:show()
 
 -- update user interface
 repeat
   canvas:begin()
+  canvas.color = math.random(0xFFFFFFFF)
   for i=1,10 do
-    canvas:fillellipse(math.random(500), math.random(400), 10, 10, math.random(0xFFFFFFFF))
+    canvas:fillellipse(math.random(500), math.random(400), math.random(15), math.random(15))
   end
   canvas:flip()
   ui.update()
@@ -242,7 +238,7 @@ until not win.visible
      </span>
      </a>    
       <p class="mt-0">
-        Copyright &copy; 2024
+        Copyright &copy; 2025
         <a href="mailto:samir.tine@luart.org">Samir Tine</a>.
         <br />
         <a href="https://bulma.io/made-with-bulma/">

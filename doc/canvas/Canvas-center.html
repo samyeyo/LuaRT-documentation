@@ -189,16 +189,14 @@ canvas:center()
 
 -- set the onPaint() event handler to draw on the canvas
 function canvas:onPaint()
-  canvas:clear() 
-  canvas:print("I'm a centered Canvas!", 10, 10)
+  self:begin()
+  self:clear() 
+  self:print("I'm a centered Canvas!", 10, 10)
+  self:flip()
 end
 
-win:show()
-
--- update the user interface until the user closes the Window
-repeat
-    ui.update()
-until not win.visible
+-- update the user interface asynchronously until the user closes the Window
+ui.run(win):wait()
             </code></div>
             </div>
 	      </div>
@@ -240,7 +238,7 @@ until not win.visible
      </span>
      </a>    
       <p class="mt-0">
-        Copyright &copy; 2024
+        Copyright &copy; 2025
         <a href="mailto:samir.tine@luart.org">Samir Tine</a>.
         <br />
         <a href="https://bulma.io/made-with-bulma/">

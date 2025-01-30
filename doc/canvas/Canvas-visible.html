@@ -172,7 +172,7 @@
           <div class="content">
             <p class="has-text-weight-light is-size-3 mb-5" style="color: #004080">Canvas.visible  <span class="tag is-rounded is-small is-warning" style="vertical-align: middle">read/write property</span></p>
             <p><br>
-			Get or set the Canvas visibility on screen, a <strong style="color:#ae81ff">true</strong> value means that the Canvas is shown, a <strong style="color:#ae81ff">false</strong> value means that the Canvas is hidden.
+			        Get or set the Canvas visibility on screen, a <strong style="color:#ae81ff">true</strong> value means that the Canvas is shown, a <strong style="color:#ae81ff">false</strong> value means that the Canvas is hidden.
 			          <article class="message is-info" style="margin-left: 15%; margin-right: 15%"><div class="message-body">The Canvas.visible property is also affected by the <a href="./Canvas-show.html">Canvas:show()</a> and <a href="./Canvas-hide.html">Canvas:hide()</a> methods.</div></article></p>
             <p class="is-size-4 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
@@ -180,29 +180,27 @@ local ui = require "ui"
 require "canvas"
 
 -- create a simple Canvas 
-local win = ui.Window("Canvas.visible sample", 640, 480)
+local win = ui.Window("Canvas.visible sample", "fixed", 640, 480)
 local Canvas = ui.Canvas(win, 0, 50, 640, 430)
-Canvas.fontsize = 28
-Canvas:hide()
+Canvas.fontsize = 30
 
-local button = ui.Button(win, "Show the Canvas widget")
+function Canvas:onPaint()
+  self:begin()
+  self:clear() 
+  self:print("Hello", math.random(0,630), math.random(0, 390), math.random(0xFFFFFFFF))
+  self:flip()
+end
+
+local button = ui.Button(win, "Hide the Canvas widget")
 button:center()
 button.y = 10
 
-win:show()
-
-function Canvas:onPaint()
-  self:clear()
-  self:print("Hello, it's me !", 250, 190, math.random(0, 0xFFFFFFFF))
-end
-
 function button:onClick()
-  Canvas.visible = true
+  Canvas.visible = not Canvas.visible
+  button.text = (Canvas.visible and "Hide" or "Show").. " the Canvas widget"
 end
 
-while win.visible do
-  ui.update()
-end
+ui.run(win):wait()
             </code></div>
             </div>
 	      </div>
@@ -244,7 +242,7 @@ end
      </span>
      </a>    
       <p class="mt-0">
-        Copyright &copy; 2024
+        Copyright &copy; 2025
         <a href="mailto:samir.tine@luart.org">Samir Tine</a>.
         <br />
         <a href="https://bulma.io/made-with-bulma/">

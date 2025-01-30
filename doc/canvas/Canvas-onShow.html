@@ -187,21 +187,26 @@ local win = ui.Window("Canvas:onShow() sample", 640, 480)
 -- create a canvas and center it
 local canvas = ui.Canvas(win, 0, 0, 600, 400)
 canvas.align = "all"
+canvas.visible = false
 
 -- set the onShow() event handler to draw on the canvas
 function canvas:onShow()
-   -- clears the canvas backbuffer with white color
-   canvas:clear(0xFFFFFFFF)
-   -- prints text
-   canvas:print("onShow Example", 10, 10)
+    self:begin()
+    -- clears the canvas backbuffer with white color
+    self:clear(0xFFFFFFFF)
+    -- prints text
+    self:print("Canvas is now visible !", 10, 10)
+    -- shows the backbuffer
+    self:flip()
 end
 
-win:show()
+-- Launch a Task to show the Canvas in 2sec
+async(function()
+    sleep(2000)
+    canvas:show()
+end)
 
--- update the user interface until the user closes the Window
-repeat
-    ui.update()
-until not win.visible	
+ui.run(win):wait()
             </code></div>
 	      </div>
       </div>
@@ -242,7 +247,7 @@ until not win.visible
      </span>
      </a>    
       <p class="mt-0">
-        Copyright &copy; 2024
+        Copyright &copy; 2025
         <a href="mailto:samir.tine@luart.org">Samir Tine</a>.
         <br />
         <a href="https://bulma.io/made-with-bulma/">

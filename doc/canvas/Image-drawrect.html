@@ -204,15 +204,12 @@ local h = canvas.height
 local img = canvas:Image("LuaRT.png")
 
 function canvas:onPaint()
+  self:begin()
   img:drawrect(math.random(w), math.random(h), math.random(500), math.random(400), math.random(), math.random())
+  self:flip()
 end
 
-win:show()
-
--- update user interface
-repeat
-  ui.update()
-until not win.visible
+ui.run(win):wait()
             </code></div>
             </div>
 	      </div>
@@ -254,7 +251,7 @@ until not win.visible
      </span>
      </a>    
       <p class="mt-0">
-        Copyright &copy; 2024
+        Copyright &copy; 2025
         <a href="mailto:samir.tine@luart.org">Samir Tine</a>.
         <br />
         <a href="https://bulma.io/made-with-bulma/">

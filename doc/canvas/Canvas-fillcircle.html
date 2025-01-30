@@ -210,17 +210,14 @@ local h = canvas.height
 
 
 function canvas:onPaint()
-  local radial = canvas:RadialGradient { [0] = math.random(0xFFFFFFFF), [1] = math.random(0xFFFFFFFF) }
+  self:begin()
+  local radial = self:RadialGradient { [0] = math.random(0xFFFFFFFF), [1] = math.random(0xFFFFFFFF) }
   radial.radius = { 400, 400 }
   self:fillcircle(math.random(w), math.random(h), math.random(150), radial)
+  self:flip()
 end
 
-win:show()
-
--- update user interface
-repeat
-  ui.update()
-until not win.visible
+ui.run(win):wait()
             </code></div>
             </div>
 	      </div>
@@ -262,7 +259,7 @@ until not win.visible
      </span>
      </a>    
       <p class="mt-0">
-        Copyright &copy; 2024
+        Copyright &copy; 2025
         <a href="mailto:samir.tine@luart.org">Samir Tine</a>.
         <br />
         <a href="https://bulma.io/made-with-bulma/">

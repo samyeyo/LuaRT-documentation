@@ -189,7 +189,7 @@ function checkbox:onHover()
 end
 
 -- Shows the checkbox when hovering the checkbox area
-function win:onHover(x, y)
+function win:onHover(x,y buttons)
 	if (x < checkbox.x or x > checkbox.x + checkbox.width) or (y < checkbox.y or y > checkbox.y + checkbox.height) then
 		checkbox:show()
 	end
@@ -200,12 +200,7 @@ function checkbox:onClick()
 	ui.msg("Great job !!")
 end
 
-win:show()
-
--- update the user interface until the user closes the Window
-repeat
-	ui.update()
-until not win.visible
+ui.run(win):wait()
             </code></div>
             </div>
 	      </div>
@@ -247,7 +242,7 @@ until not win.visible
      </span>
      </a>    
       <p class="mt-0">
-        Copyright &copy; 2024
+        Copyright &copy; 2025
         <a href="mailto:samir.tine@luart.org">Samir Tine</a>.
         <br />
         <a href="https://bulma.io/made-with-bulma/">

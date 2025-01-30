@@ -186,17 +186,12 @@ local button = ui.Button(win, "Hide me !", 35)
 function button:onClick()
 	win:hide()
 	ui.update()
-	sys.sleep(1500)
+	sleep(1500)
 	win:show()
 end
 
--- shows the Window
-win:show()
-
--- update user interface
-repeat
-	ui.update()
-until not win.visible
+-- Show the window and update user interface asynchronously
+ui.run(win):wait()
             </code></div>
             </div>
 	      </div>

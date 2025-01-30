@@ -202,11 +202,13 @@ local gradient = canvas:RadialGradient { [0] = 0xffffe600, [1] = 0x000000FF }
 gradient.radius = { canvas.width/4, canvas.height/4 }
 
 function canvas:onPaint()
-    logo:draw(20, 100)
+    self:begin()
+    logo:draw(20, 100, 1, 1, "linear")
     self:fillrect(0, 0, canvas.width, canvas.height, gradient)
+    self:flip()
 end
 
-function canvas:onHover(x, y)
+function canvas:onHover(x,y, buttons)
     gradient.center = { x, y }
 end
 
@@ -252,7 +254,7 @@ ui.run(win):wait()
      </span>
      </a>    
       <p class="mt-0">
-        Copyright &copy; 2024
+        Copyright &copy; 2025
         <a href="mailto:samir.tine@luart.org">Samir Tine</a>.
         <br />
         <a href="https://bulma.io/made-with-bulma/">

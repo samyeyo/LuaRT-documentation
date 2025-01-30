@@ -172,16 +172,21 @@ local c = ui.Canvas(win)
 c.align = "all"
 
 local degree = 0
+local width, height = c:size()
+width = width/2
+height = height/2
 
--- Uses internal timer for 30fps drawing
 function c:onPaint()
-  self:clear(0xffffffff)
+  self:begin()
+  self:clear()
   c:rotate(degree)
-  c:rect(50,50,100,100)
-  degree = degree + 2
+  c:fillrect(width-35, height-35, width+35, height+35, 0xA569BDFF)
+  degree = degree + 0.0005
+  sleep()
+  self:flip()
 end
 
-ui.run(win)
+ui.run(win):wait()
             </code></div>
             </div>
 	      </div>
@@ -216,7 +221,7 @@ ui.run(win)
         </span>
       </a>
       <p class="mt-0">
-        Copyright &copy; 2024
+        Copyright &copy; 2025
         <a href="mailto:samir.tine@luart.org">Samir Tine</a>.
         <br />
         <a href="https://bulma.io/made-with-bulma/">

@@ -1,0 +1,397 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta name="description" content="Defines a FFI C functions" />
+  <title>
+    Library function definition comparison | LuaRT free and open source Windows programming framework for Lua
+  </title>
+  <link href="../../css/bulma-docs.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        rel="stylesheet" />
+  <link href="https://luart.org/doc/C/Library-function-def.html" rel="canonical" />
+  <link href="../../img/favicon.png" rel="icon" sizes="16x16" type="image/png" />
+  <link rel="stylesheet" href="../prism.css" data-noprefix="">
+</head>
+<body class="layout-documentation has-navbar-fixed-top">
+  <nav class="bd-navbar navbar is-fixed-top has-shadow" id="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../index.html">
+        <img alt="LuaRT: Free and open source Windows programming framework for Lua"
+             height="40"
+             src="../../img/logo.svg"
+             width="112" />
+      </a>
+      <a class="navbar-item bd-navbar-mobile-icon"
+         href="https://github.com/samyeyo"
+         style="margin-left: auto"
+         target="_blank">
+        <span class="icon" style="color: #000000">
+          <i class="fab fa-lg fa-github"></i>
+        </span>
+      </a>
+      <a class="navbar-item bd-navbar-mobile-icon"
+         href="https://twitter.com/__LuaRT__"
+         target="_blank">
+        <span class="icon" style="color: #000000">
+          <i class="fab fa-lg fa-x-twitter"></i>
+        </span>
+      </a>
+      <a class="navbar-item bd-navbar-mobile-icon"
+         href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+         target="_blank">
+        <span class="icon" style="color: #FF0000">
+          <i class="fab fa-lg fa-youtube"></i>
+        </span>
+      </a><a class="navbar-item bd-navbar-mobile-icon"
+         href="https://discord.gg/cvQV77nhfr"
+         target="_blank">
+        <span class="icon" style="color: #5865F2">
+          <i class="fab fa-discord"></i>
+        </span>
+      </a>
+      <button class="navbar-burger burger"
+              data-target="navMenuDocumentation"
+              id="navbarBurger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div class="navbar-menu" id="navMenuDocumentation">
+      <div class="navbar-start bd-navbar-start bd-is-original"
+           id="navbarStartOriginal">
+        <a class="navbar-item bd-navbar-item bd-navbar-item-bulma-book bd-navbar-item-base"
+           href="../../index.html#section_features">
+          <span class="icon has-text-bleeding">
+            <i class="fas fa-certificate"></i>
+          </span>
+          <span>Features</span>
+        </a>
+        <a class="navbar-item bd-navbar-item bd-navbar-item-love bd-navbar-item-base"
+           href="../../index.html#section_download">
+          <span class="icon has-text-danger">
+            <i class="fas fa-download"></i>
+          </span>
+          <span>Download</span>
+        </a>
+		<div class="navbar-item has-dropdown is-hoverable">
+			<a class="navbar-item bd-navbar-item bd-navbar-item-videos bd-navbar-item-base scroll">
+			  <span class="icon has-text-success"><i class="fas fa-circle-play"></i></span><span>Getting started</span>
+			</a>
+			<div class="navbar-dropdown has-background-success-light">
+				<a href="../install.html" class="dropdown-item has-text-success-dark">
+				  <span class="icon"><i class="fa fa-computer"></i></span> Installation
+				</a>
+				<a href="../first.html" class="dropdown-item has-text-success-dark">
+					<span class="icon"><i class="fa fa-play"></i></span> First execution
+				</a>
+				<a href="../tour.html" class="dropdown-item has-text-success-dark">
+				  <span class="icon"><i class="fa fa-bus-simple"></i></span> Take a tour !
+				</a>
+			</div>
+		</div>
+		<div class="navbar-item has-dropdown is-hoverable">
+			<a class="navbar-item bd-navbar-item bd-navbar-item-extensions bd-navbar-item-base scroll">
+			  <span class="icon has-text-info"><i class="fas fa-book"></i></span><span>Documentation</span>
+			</a>
+			<div class="navbar-dropdown has-background-info-light">
+				<a href="../modules.html" class="dropdown-item has-text-info-dark">
+				  <span class="icon"><i class="fa fa-cubes"></i></span> Modules reference
+				</a>
+				<a href="../object.html" class="dropdown-item has-text-info-dark">
+					<span class="icon"><i class="fa fa-shapes"></i></span> Object oriented programming
+				</a>
+				<a href="../toolchain.html" class="dropdown-item has-text-info-dark">
+				  <span class="icon"><i class="fa fa-wrench"></i></span> Toolchain documentation
+				</a>
+			</div>
+		</div>
+        </a>
+        <a class="navbar-item bd-navbar-item bd-navbar-item-expo bd-navbar-item-base"
+           href="https://community.luart.org">
+          <span class="icon has-text-warning">
+            <i class="fas fa-comments"></i>
+          </span>
+          <span>Community</span>
+        </a>
+        <a class="navbar-item bd-navbar-item bd-navbar-item-blog bd-navbar-item-base"
+           href="https://luart.org/doc/tutorial/index.html">
+          <span class="icon has-text-rss">
+            <i class="fas fa-graduation-cap"></i>
+          </span>
+          <span>Tutorials</span>
+        </a>
+     <div class="ml-6">
+			<span class="icon has-text-grey-light mr-1">
+				<i class="fas fa-search"></i>
+			</span></div>
+			<script async src="https://cse.google.com/cse.js?cx=509c4cdde27f845e7"></script>
+			<div class="gcse-searchbox-only" data-resultsUrl="https://luart.org/search.html"></div>
+      </div>
+    </div>
+    <div class="navbar-end">
+      <a class="bd-navbar-icon navbar-item"
+         href="https://github.com/samyeyo"
+         target="_blank">
+        <span class="icon" style="color: #000000">
+          <i class="fab fa-lg fa-github"></i>
+        </span>
+      </a>
+      <a class="bd-navbar-icon navbar-item"
+         href="https://twitter.com/__LuaRT__"
+         target="_blank">
+        <span class="icon" style="color: #000000">
+          <i class="fab fa-lg fa-x-twitter"></i>
+        </span>
+      </a>
+      <a class="bd-navbar-icon navbar-item"
+         href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+         target="_blank">
+        <span class="icon" style="color: #FF0000">
+          <i class="fab fa-lg fa-youtube"></i>
+        </span>
+      </a>
+      <a class="bd-navbar-icon navbar-item"
+         href="https://discord.gg/cvQV77nhfr"
+         target="_blank">
+        <span class="icon" style="color: #5865F2">
+          <i class="fab fa-lg fa-discord"></i>
+        </span>
+      </a>  
+    </div>
+  </nav>
+  
+  <section class="main-content columns is-centered is-fullheight" style="margin-top: 6%; margin-bottom: 4%">
+    <div class="column is-7">
+      <div class="card">
+      <a id="back" class="button is-white pl-5" href="Library.html?operations"><span class="icon has-text-grey-lighter"><i class="fas fa-circle-left"></i></span></a>
+        <div class="card-content pt-0">
+          <div class="content">
+            <p class="has-text-weight-light is-size-3 mb-5" style="color: #004080">C functions definition</p>
+            <p>Before calling C functions inside a Library, they must be defined first.<br>
+              The function definition permits to understand how to call the C function from Lua<sup>rt</sup> and what kind of arguments it takes.</p>
+
+              <p>Each function is defined by adding a <code>string</code> field to the Library instance : it's the C function <i>signature</i>.
+              <br>Please note that this field must be named as the C function to be called. 
+
+              <p class="is-size-4 mb-1 mt-6" style="color: #004080">C function signature</p>
+              <p>The function signature is a <code>string</code> that contains 3 optional fields (only parentheses are required) with the following format :</p>
+
+              <p style="margin-left:20%; margin-right:20%; font-size: 1.2em;"><b>"<code class="has-text-link">[callmethod]</code> ( <code class="has-text-success">[arguments]</code> ) <code class="has-text-danger">[returnvalue]</code>"</b></p>
+              
+              <p class="mt-6"><b><code class="has-text-link" style="font-size: 1.2em">[callmethod]</code></b></p>
+              <p>This field is <i>optional</i>, and is used to define the calling method for the C function, represented by any of the following single character : </p>
+              <table class="table has-text-centered">
+                <thead>
+                  <tr>
+                    <th class="has-text-info ml-6">character</th>
+                    <th class="has-text-info mr-6">C calling convention</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code class="has-text-link">d</code></td>
+                    <td>C default function call</td>
+                  </tr>
+                  <tr>
+                    <td><code class="has-text-link">c</code></td>
+                    <td><code>__cdecl</code></td>
+                  </tr>
+                  <tr>
+                    <td><code class="has-text-link">s</code></td>
+                    <td><code>stdcall</code></td>
+                  </tr>
+                  <tr>
+                    <td><code class="has-text-link">f</code></td>
+                    <td><code>fastcall (MSVC)</code></td>
+                  </tr>
+                  <tr>
+                    <td><code class="has-text-link">F</code></td>
+                    <td><code>fastcall (GNU)</code></td>
+                  </tr>
+                </tbody>
+              </table>
+              <p class="mt-6"><b><code class="has-text-success" style="font-size: 1.2em">[arguments]</code></b></p>
+              <p>This field is <i>optional</i>, and is used to define arguments types of the C function, represented by a succession of the following characters : </p>
+              <table class="table has-text-centered">
+                <thead>
+                  <tr>
+                    <th class="has-text-info ml-6">character</th>
+                    <th class="has-text-info mr-6">argument type</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code class="has-text-success">B</code></td>
+                    <td><code>int</code> (or <code>bool</code> for C++)</td>
+                  </tr>
+                  <tr>
+                    <td><code class="has-text-success">c</code></td>
+                    <td><code>char</code></td>
+                  </tr>
+                  <tr>
+                    <td><code class="has-text-success">C</code></td>
+                    <td><code>unsigned char</code></td>
+                  </tr>
+                  <tr>
+                    <td><code class="has-text-success">s</code></td>
+                    <td><code>short</code> / <code>int16_t</code></td>
+                  </tr>
+                  <tr>
+                    <td><code class="has-text-success">S</code></td>
+                    <td><code>unsigned short</code> / <code>uint16_t</code></td>
+                  </tr>
+                  <tr>
+                    <td><code class="has-text-success">i</code></td>
+                    <td><code>int</code> / <code>int32_t</code></td>
+                  </tr>
+                  <tr>
+                    <td><code class="has-text-success">I</code></td>
+                    <td><code>unsigned int</code> / <code>uint32_t</code></td>
+                  </tr>
+                  <tr>
+                    <td><code class="has-text-success">j</code></td>
+                    <td><code>long</code> / <code>int32_t</code></td>
+                  </tr>
+                  <tr>
+                    <td><code class="has-text-success">J</code></td>
+                    <td><code>unsigned long</code> / <code>uint32_t</code></td>
+                  </tr>
+                  <tr>
+                    <td><code class="has-text-success">l</code></td>
+                    <td><code>long long</code> / <code>int64_t</code></td>
+                  </tr>
+                  <tr>
+                    <td><code class="has-text-success">L</code></td>
+                    <td><code>unsigned long long</code> / <code>uint64_t</code></td>
+                  </tr>
+                  <tr>
+                    <td><code class="has-text-success">#</code></td>
+                    <td><code>size_t</code></td>
+                  </tr>
+                  <tr>
+                    <td><code class="has-text-success">f</code></td>
+                    <td><code>float</code></td>
+                  </tr>
+                  <tr>
+                    <td><code class="has-text-success">d</code></td>
+                    <td><code>double</code></td>
+                  </tr>
+                  <tr>
+                    <td><code class="has-text-success">Z</code></td>
+                    <td><code>char*</code> / ><code>const char*</code></td>
+                  </tr>
+                  <tr>
+                    <td><code class="has-text-success">W</code></td>
+                    <td><code>wchar_t*</code> / ><code>const wchar_t*</code></td>
+                  </tr>
+                  <tr>
+                    <td><code class="has-text-success">p</code></td>
+                    <td><code>void*</code></td>
+                  </tr>
+                  <tr>
+                    <td><code class="has-text-success">u</code></td>
+                    <td><code>union</code></td>
+                  </tr>
+                  <tr>
+                    <td><code class="has-text-success">.</code></td>
+                    <td><code>struct</code></td>
+                  </tr>
+                </tbody>
+              </table>
+              <p class="mt-6"><b><code class="has-text-danger" style="font-size: 1.2em">[returnvalue]</code></b></p>
+              <p>This field is <i>optional</i> (if omitted, the C function returns nothing) and is used to define the return type of the C function, represented by a single character, from the same characters list from the <b><code class="has-text-success">[arguments]</code></b> field.</p>
+              
+              <p class="is-size-4 mb-1 mt-6" style="color: #004080">C function call</p>
+              <p>Once the C function have been defined, it can be called as a Lua function by providing Lua arguments (converted to their equivalent in C, see <a href="Lua-to-c.html">Lua to C conversion rules</a>). You can use any of the following objects as arguments and for return values :
+                <ul>
+                  <li><a href="Value.html"><i class="fas fa-hashtag"></i> Value</a></li>
+                  <li><a href="Struct.html"><i class="fas fa-bars-staggered"></i> Struct</a></li>
+                  <li><a href="Union.html"><i class="fas fa-link"></i> Union</a></li>
+                  <li><a href="Pointer.html"><i class="fas fa-map-pin"></i> Pointer</a></li>
+                  <li><a href="Array.html"><b>[  ]</b> Array</a</li>
+                </ul>
+                These objects and Lua strings can even be used as pointer argument (this is managed by the C FFI module).
+              </p>
+              <p class="is-size-4 mt-6 mb-0" style="color: #004080">Example</p>
+            <div class="language-lua mr-6 ml-6"><code>
+local c = require "c"
+
+-- loads the C runtime library
+local crt = c.Library()       
+
+-- Use the Library instance to define the C function "strstr()"
+-- this function takes two arguments of the Z type (const char *)
+-- and returns a char * value
+-- the convention call is not defined (optional, using default)
+crt.strstr = "(ZZ)Z"
+
+-- Calls the defined C function
+print(crt.strstr("Hello LuaRT", "RT"))
+            </code></div>
+            </div>
+	      </div>
+      </div>
+    </div>
+  </section>  
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p class="mb-0">
+        <strong>
+          Lua
+          <sup>rt</sup> Documentation
+        </strong> - Windows programming framework for Lua
+      </p>
+      <a class="is-hovered" href="https://github.com/samyeyo" target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-github"></i>
+        </span>
+      </a>
+      <a class="is-hovered"
+         href="https://twitter.com/__LuaRT__"
+         target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-x-twitter"></i>
+        </span>
+      </a>
+<a class="is-hovered"
+         href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+         target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-youtube"></i>
+        </span>
+      </a>      
+      <a class="is-hovered"
+      href="https://discord.gg/cvQV77nhfr"
+      target="_blank">
+     <span class="icon" style="color: #A0A0A0">
+       <i class="fab fa-lg fa-discord"></i>
+     </span>
+     </a>    
+      <p class="mt-0">
+        Copyright &copy; 2025
+        <a href="mailto:samir.tine@luart.org">Samir Tine</a>.
+        <br />
+        <a href="https://bulma.io/made-with-bulma/">
+          <img alt="Made with Bulma"
+               height="24"
+               src="https://bulma.io/images/made-with-bulma.png"
+               width="128" />
+        </a>
+      </p>
+    </div>
+  </footer>
+</body>
+<script src="../../js/main.js"></script>
+<script src="../prism.js"></script>
+<script src="../custom-class.js"></script>
+<script>Prism.plugins.customClass.prefix('prism--');</script>
+<script>window.onpopstate = function() {
+       document.getElementById('back').click();
+    }; history.pushState({}, '');</script>
+</html>
+
+  

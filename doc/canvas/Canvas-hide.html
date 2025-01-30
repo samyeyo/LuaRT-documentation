@@ -183,25 +183,25 @@ require "canvas"
 -- create a simple Canvas 
 local win = ui.Window("Canvas.visible sample", "fixed", 640, 480)
 local Canvas = ui.Canvas(win, 0, 50, 640, 430)
+Canvas.fontsize = 30
 
 function Canvas:onPaint()
-  Canvas:clear() 
-  self:print("Hello", math.random(0,630), math.random(0, 390))
+  self:begin()
+  self:clear() 
+  self:print("Hello", math.random(0,630), math.random(0, 390), math.random(0xFFFFFFFF))
+  self:flip()
 end
 
 local button = ui.Button(win, "Hide the Canvas widget")
 button:center()
 button.y = 10
 
-win:show()
-
 function button:onClick()
-  Canvas:hide()
+  Canvas.visible = not Canvas.visible
+  button.text = (Canvas.visible and "Hide" or "Show").. " the Canvas widget"
 end
 
-while win.visible do
-  ui.update()
-end
+ui.run(win):wait()
             </code></div>
             </div>
 	      </div>
@@ -243,7 +243,7 @@ end
      </span>
      </a>    
       <p class="mt-0">
-        Copyright &copy; 2024
+        Copyright &copy; 2025
         <a href="mailto:samir.tine@luart.org">Samir Tine</a>.
         <br />
         <a href="https://bulma.io/made-with-bulma/">

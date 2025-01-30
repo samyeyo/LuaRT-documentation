@@ -170,11 +170,22 @@
         <a id="back" class="button is-white pl-5" href="index.html?methods"><span class="icon has-text-grey-lighter"><i class="fas fa-circle-left"></i></span></a>
         <div class="card-content pt-0">
           <div class="content">
-            <p class="has-text-weight-light is-size-3 mb-5" style="color: #004080; vertical-align: middle">ui.dirdialog(<span style="color:#EA6AC3">[prompt]</span>)</p>
-            <p>Displays a dialog box for the user to choose an existing directory.</p>
+            <p class="has-text-weight-light is-size-3 mb-5" style="color: #004080; vertical-align: middle">ui.dirdialog(<span style="color:#EA6AC3">[title]</span>, <span style="color:#EA6AC3">[path]</span>)</p>
+            <p>Displays a Windows dialog for the user to choose a directory.</p>
+            <article class="message is-warning is-small mt-6 mb-6" style="margin-left: 10%; margin-right: 10%">
+              <div class="message-header mb-0">
+                <p><i class="fas fa-pen-clip"></i> Notes</p>
+              </div>
+              <div class="message-body mb-0 is-size-7">
+              <ul class="mt-0">
+                <li>The dialog box only uses the current Windows system theme</li>
+            </ul></div></article>
+  
             <p class="is-size-4 mb-1 mt-6" style="color: #004080">Parameters</p>
-            <p class="has-text-weight-light is-size-5 mt-2 mb-0"><span style="color:#EA6AC3">prompt</span></p>
-<p>An optional string that gives the user indication for the selection.</p>
+            <p class="has-text-weight-light is-size-5 mt-2 mb-0"><span style="color:#EA6AC3">[title]</span></p>
+            <p>An optional <code>string</code> that provides a dialog title.</p>
+            <p class="has-text-weight-light is-size-5 mt-2 mb-0"><span style="color:#EA6AC3">[path]</span></p>
+            <p>An optional <a href="../sys/Directory.html"><i class="fas fa-folder" style="font-size:1em; color :#367DBB"></i> Directory</a> or <code>string</code> that indicates the folder selected when the dialog shows.</p>
 
             <p class="is-size-4 mb-1 mt-6" style="color: #004080">Return value</p>
             The function returns the selected folder as a <a href="../sys/Directory.html"><i class="fas fa-folder" style="font-size:1em; color :#367DBB"></i> Directory</a> object or <span style="color: gray">nil</span> if the user selected none.
@@ -231,7 +242,7 @@ end
      </span>
      </a>    
       <p class="mt-0">
-        Copyright &copy; 2024
+        Copyright &copy; 2025
         <a href="mailto:samir.tine@luart.org">Samir Tine</a>.
         <br />
         <a href="https://bulma.io/made-with-bulma/">

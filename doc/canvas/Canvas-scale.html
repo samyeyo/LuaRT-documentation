@@ -174,16 +174,28 @@ local c = ui.Canvas(win)
 c.align = "all"
 
 local scale = 0
+local delta = 0.02
 
 -- Uses internal timer for 30fps drawing
 function c:onPaint()
-  self:clear(0xffffffff)
-  c:scale(scale, scale)
-  c:rect(50,50,100,100)
-  scale = scale + 0.02
+    self:begin()
+    self:clear(0xffffffff)
+    -- Resets the canvas transformations
+    c:identity()
+    -- Sets the new scale transformation
+    c:scale(scale, scale)
+    c:fillrect(50,50,100,100, 0xF0A0D7FF)
+    self:flip()
+    sleep()
+    scale = scale + delta
+    if scale > 2 then
+        delta = -0.02
+    elseif scale < 0.02 then
+        delta = 0.02
+    end
 end
 
-ui.run(win)
+ui.run(win):wait()
             </code></div>
             </div>
 	      </div>
@@ -218,7 +230,7 @@ ui.run(win)
         </span>
       </a>
       <p class="mt-0">
-        Copyright &copy; 2024
+        Copyright &copy; 2025
         <a href="mailto:samir.tine@luart.org">Samir Tine</a>.
         <br />
         <a href="https://bulma.io/made-with-bulma/">

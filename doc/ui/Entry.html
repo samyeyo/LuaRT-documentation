@@ -211,7 +211,7 @@
                           <td><span>Event fired when Entry has just been modified</span></td>
                         </tr>                        <tr draggable="false">
                           <td><a href="Entry-onSelect.html">Entry.onSelect()</a></td>
-                          <td><span>Event fired when the user has pressed the ENTER key</span></td>
+                          <td><span>Event fired when the user has entered a new text</span></td>
                         </tr>
                       </tr>                        <tr draggable="false">
                         <td><a href="Entry-onMouseDown.html">Entry.onMouseDown()</a></td>
@@ -220,7 +220,10 @@
                         <td><a href="Entry-onMouseUp.html">Entry.onMouseUp()</a></td>
                         <td><span>Event fired when the user releases a mouse button over the Entry</span></td>
                       </tr>                        
-                  </tbody>
+                    </tr>                        <tr draggable="false">
+                      <td><a href="Entry-onDrop.html">Entry.onDrop()</a><sup><i class="fas fa-star" style="color: #f1c32b; font-size: 0.75em; margin-bottom: 2%"></i></sup></td>
+                      <td><span>Event fired when the Entry received a drag and drop content</span></td>
+                    </tr>                  </tbody>
                 </table></div>
                 <div data-content="2">
                 <table class="table">
@@ -292,7 +295,13 @@
                           <td><span>Controls whether the Entry appears on screen</span></td>
                           <td><span class="tag is-rounded is-warning is-small">readwrite</span></td>
                           <td><span style="color:#ae81ff">boolean</span></td>
-                        </tr>                        
+                        </tr>
+                        <tr draggable="false">
+                          <td><a href="Entry-allowdrop.html">Entry.allowdrop()</a><sup><i class="fas fa-star" style="color: #f1c32b; font-size: 0.75em; margin-bottom: 2%"></i></sup></td>
+                          <td><span>Controls whether the Entry is a drag and drop target</span></td>
+                          <td><span class="tag is-rounded is-warning is-small">readwrite</span></td>
+                          <td><span style="color:#ae81ff">boolean</span></td>
+                        </tr>                         
                         <tr draggable="false">
                           <td><a href="Entry-parent.html">Entry.parent</a></td>
                           <td><span>Get the Entry's parent widget</span></td>
@@ -460,7 +469,7 @@
      </span>
      </a>    
       <p class="mt-0">
-        Copyright &copy; 2024
+        Copyright &copy; 2025
         <a href="mailto:samir.tine@luart.org">Samir Tine</a>.
         <br />
         <a href="https://bulma.io/made-with-bulma/">

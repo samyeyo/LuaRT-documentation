@@ -197,16 +197,14 @@ canvas.align = "all"
 
 -- set the onPaint() event handler to draw on the canvas
 function canvas:onPaint()
-  canvas:clear()
-  canvas:print("Hello World !", 10, 10)
+    self:begin()
+    self:clear()
+    self:print("Hello World !", 10, 10)
+    self:flip()
 end
 
--- shows the Window
-win:show()
-
-while win.visible do
-	ui.update()
-end
+-- shows the Window and update ui asynchronously
+ui.run(win):wait()
             </code></div>
             </div>
 	      </div>
@@ -248,7 +246,7 @@ end
      </span>
      </a>    
       <p class="mt-0">
-        Copyright &copy; 2024
+        Copyright &copy; 2025
         <a href="mailto:samir.tine@luart.org">Samir Tine</a>.
         <br />
         <a href="https://bulma.io/made-with-bulma/">

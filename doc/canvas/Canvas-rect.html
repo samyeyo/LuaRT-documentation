@@ -211,18 +211,14 @@ canvas.bgcolor = 0x000000FF
 
 local w = canvas.width
 local h = canvas.height
-local img = canvas:Image("LuaRT.png")
 
 function canvas:onPaint()
-  img:draw(math.random(w)-80, math.random(h), math.random(), math.random())
+    self:begin()
+    self:rect(math.random(w), math.random(h), math.random(w), math.random(h), math.random(0xFFFFFFFF))
+    self:flip()
 end
 
-win:show()
-
--- update user interface
-repeat
-  ui.update()
-until not win.visible
+ui.run(win):wait()
             </code></div>
             </div>
 	      </div>
@@ -264,7 +260,7 @@ until not win.visible
      </span>
      </a>    
       <p class="mt-0">
-        Copyright &copy; 2024
+        Copyright &copy; 2025
         <a href="mailto:samir.tine@luart.org">Samir Tine</a>.
         <br />
         <a href="https://bulma.io/made-with-bulma/">

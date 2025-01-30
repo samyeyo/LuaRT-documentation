@@ -172,7 +172,7 @@
           <div class="content">
             <p class="has-text-weight-light is-size-3 mb-5" style="color: #004080">Canvas.height  <span class="tag is-rounded is-small is-warning" style="vertical-align: middle">read/write property</span></p>
             <p><br>
-			Get or set the height of the Canvas area. The height starts from <span style="color:#ae81ff">0</span> (top side of the Canvas) and increase to the bottom direction.</p>
+			      Get or set the height of the Canvas area. The height starts from <span style="color:#ae81ff">0</span> (top side of the Canvas) and increase to the bottom direction.</p>
             <p class="is-size-4 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
 local ui = require "ui"
@@ -184,18 +184,29 @@ local Canvas = ui.Canvas(win)
 Canvas.align = "all"
 
 function Canvas:onPaint()
-  Canvas:clear() 
+  self:begin()
+  self:clear() 
   self:fillellipse(300,200, 50, 50, 0xdc4f2bff)
+  self:flip()
 end
 
--- shows the window
-win:show()
+-- Launch async Task for ui
+ui.run(win)
 
--- update user interface and increase Canvas horizontal position
-repeat
-  ui.update()
-  Canvas.height = Canvas.height - 5
-until not win.visible or (Canvas.height == 0)
+-- Async Task to decrease Canvas height
+async(function()
+    while win.visible do
+        Canvas.height = Canvas.height - 5
+        if Canvas.height <= 0 then
+            win:hide()
+            sys.exit()
+        end
+        sleep()
+    end
+end)
+
+-- wait for all tasks
+waitall()
             </code></div>
             </div>
 	      </div>
@@ -237,7 +248,7 @@ until not win.visible or (Canvas.height == 0)
      </span>
      </a>    
       <p class="mt-0">
-        Copyright &copy; 2024
+        Copyright &copy; 2025
         <a href="mailto:samir.tine@luart.org">Samir Tine</a>.
         <br />
         <a href="https://bulma.io/made-with-bulma/">

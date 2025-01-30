@@ -179,23 +179,34 @@ local ui = require "ui"
 require "canvas"
 
 -- create a simple window
-local win = ui.Window("Canvas.width sample", 600, 400)
+local win = ui.Window("Canvas.height sample", 600, 400)
 local Canvas = ui.Canvas(win)
 Canvas.align = "all"
 
 function Canvas:onPaint()
-  self:clear()
+  self:begin()
+  self:clear() 
   self:fillellipse(300,200, 50, 50, 0xdc4f2bff)
+  self:flip()
 end
 
--- shows the window
-win:show()
+-- Launch async Task for ui
+ui.run(win)
 
--- update user interface and increase Canvas horizontal position
-repeat
-  ui.update()
-  Canvas.width = Canvas.width - 5
-until not win.visible or (Canvas.width == 0)
+-- Async Task to decrease Canvas height
+async(function()
+    while win.visible do
+        Canvas.width = Canvas.width - 5
+        if Canvas.width <= 0 then
+            win:hide()
+            sys.exit()
+        end
+        sleep()
+    end
+end)
+
+-- wait for all tasks
+waitall()
             </code></div>
             </div>
 	      </div>
@@ -237,7 +248,7 @@ until not win.visible or (Canvas.width == 0)
      </span>
      </a>    
       <p class="mt-0">
-        Copyright &copy; 2024
+        Copyright &copy; 2025
         <a href="mailto:samir.tine@luart.org">Samir Tine</a>.
         <br />
         <a href="https://bulma.io/made-with-bulma/">

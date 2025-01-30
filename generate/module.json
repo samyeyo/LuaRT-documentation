@@ -1,0 +1,49 @@
+{
+    "name"          : "systutils",
+    "icon"          : "fas fa-screwdriver-wrench",
+    "color"         : "0x99FFFF",
+    "description"   : "System add-on with various Windows functionality",
+    "properties"    :   {
+                            "drives"        :     {
+                                "readonly"  : true,
+                                "returns"   : ["table", null]
+                            },
+                            "locale"        :     {
+                                "readonly"  : true,
+                                "returns"   : ["string", null]
+                            },
+                            "language"        :     {
+                                "readonly"  : true,
+                                "returns"   : ["string", null]
+                            }
+                        },
+    "functions"    :   {
+                            "diskusage"        :     {
+                                "readonly"  : true,
+                                "returns"   : ["table", null]
+                            },
+                            "dirsize"        :     {
+                                "readonly"  : true,
+                                "returns"   : ["string", null]
+                            },
+                            "where"        :     {
+                                "readonly"  : true,
+                                "returns"   : ["string", null]
+                            },
+                            "watch"        :    {
+                                "description"   :   "This function monitor the specified folder for any change (file creation, deletion, renaming...), calling a callback function with 3 arguments : <ul><li>action that occured as a <code>string</code></li>A File or Directory instance<li></li>",
+                                "parameters"    :   {
+                                                        "dir"       :   {
+                                                            "types" :   ["string", "sys.Directory"],
+                                                            "desc"  :   "representing the folder that will be monitored"
+                                                        },
+                                                        "callback"  :   {
+                                                            "types" :   ["function"],
+                                                            "desc"  :   "the callback function called when a change is detected"
+                                                        }
+                                                    },
+                                "returns"       : ["string", null]
+                            }
+                        }
+
+}

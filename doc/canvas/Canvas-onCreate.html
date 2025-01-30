@@ -187,18 +187,14 @@ local Canvas = ui.Canvas(win, 320, 200)
 
 -- Canvas:onCreate() event to center and draw text on the Canvas widget
 function Canvas:onCreate()
-  Canvas:center()
-  Canvas:clear(0x000000FF)
-  Canvas:print("Hello LuaRT !", 130, 100, 0xFFA300FF)
-  Canvas:flip()
+  self:begin()
+  self:center()
+  self:clear(0x000000FF)
+  self:print("Hello LuaRT !", 130, 100, 0xFFA300FF)
+  self:flip()
 end
 
-win:show()
-
--- update the ui
-while win.visible do
-  ui.update()
-end              
+ui.run(win):wait()            
             </code></div>
             </div>
 	      </div>
@@ -240,7 +236,7 @@ end
      </span>
      </a>    
       <p class="mt-0">
-        Copyright &copy; 2024
+        Copyright &copy; 2025
         <a href="mailto:samir.tine@luart.org">Samir Tine</a>.
         <br />
         <a href="https://bulma.io/made-with-bulma/">

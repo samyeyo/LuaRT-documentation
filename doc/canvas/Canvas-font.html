@@ -188,16 +188,9 @@ canvas.font = "Times New Roman"
 canvas.fontsize = 40
 
 -- don't use onPaint() event, draw only once
-canvas:begin()
 canvas:print(canvas.font, 6, 70)
-canvas:flip()
 
--- shows the Window
-win:show()
-
-while win.visible do
-  ui.update()
-end
+ui.run(win):wait()
             </code></div>
             </div>
 	      </div>
@@ -239,7 +232,7 @@ end
      </span>
      </a>    
       <p class="mt-0">
-        Copyright &copy; 2024
+        Copyright &copy; 2025
         <a href="mailto:samir.tine@luart.org">Samir Tine</a>.
         <br />
         <a href="https://bulma.io/made-with-bulma/">

@@ -180,30 +180,32 @@
 local ui = require "ui"
 require "canvas"
 
--- create a simple Canvas 
-local win = ui.Window("Canvas.show() sample", 640, 480)
-local Canvas = ui.Canvas(win, 0, 50, 640, 430)
-Canvas.fontsize = 28
-Canvas:hide()
+-- create a simple Window
+local win = ui.Window("Canvas:onShow() sample", 640, 480)
 
-local button = ui.Button(win, "Show the Canvas widget")
-button:center()
-button.y = 10
+-- create a canvas and center it
+local canvas = ui.Canvas(win, 0, 0, 600, 400)
+canvas.align = "all"
+canvas.visible = false
 
-win:show()
-
-function Canvas:onPaint()
-  self:clear()
-  self:print("Hello, it's me !", 250, 190, math.random(0, 0xFFFFFFFF))
+-- set the onShow() event handler to draw on the canvas
+function canvas:onShow()
+    self:begin()
+    -- clears the canvas backbuffer with white color
+    self:clear(0xFFFFFFFF)
+    -- prints text
+    self:print("Canvas is now visible !", 10, 10)
+    -- shows the backbuffer
+    self:flip()
 end
 
-function button:onClick()
-  Canvas:show()
-end
+-- Launch a Task to show the Canvas in 2sec
+async(function()
+    sleep(2000)
+    canvas:show()
+end)
 
-while win.visible do
-  ui.update()
-end
+ui.run(win):wait()
             </code></div>
             </div>
 	      </div>
@@ -245,7 +247,7 @@ end
      </span>
      </a>    
       <p class="mt-0">
-        Copyright &copy; 2024
+        Copyright &copy; 2025
         <a href="mailto:samir.tine@luart.org">Samir Tine</a>.
         <br />
         <a href="https://bulma.io/made-with-bulma/">

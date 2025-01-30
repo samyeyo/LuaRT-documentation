@@ -250,9 +250,21 @@
                             <td><span style="color:#ae81ff">number</span></td>
                           </tr>                        
                           <tr draggable="false">
-                            <td><a href="device.html">audio.device</a></td>
-                            <td><span>Get the current device name</span></td>
+                            <td><a href="devices.html">audio.devices<sup><i class="fas fa-star" style="color: #f1c32b; font-size: 0.75em; margin-bottom: 2%"></i></sup></a></td>
+                            <td><span>Get the list of detected audio devices</span></td>
                             <td><span class="tag is-rounded has-background-danger-light mt-0 is-small">readonly</span></td>
+                            <td><span style="color:#B1D928">table</span></td>
+                          </tr>                        
+                          <tr draggable="false">
+                            <td><a href="playdevice.html">audio.playdevice<sup><i class="fas fa-star" style="color: #f1c32b; font-size: 0.75em; margin-bottom: 2%"></i></sup></a></td>
+                            <td><span>Get/set the current audio playing device</span></td>
+                            <td><span class="tag is-rounded is-warning is-small">readwrite</span></td>
+                            <td><span style="color:#EA6AC3">string</span></td>
+                          </tr>                        
+                          <tr draggable="false">
+                            <td><a href="recdevice.html">audio.recdevice<sup><i class="fas fa-star" style="color: #f1c32b; font-size: 0.75em; margin-bottom: 2%"></i></sup></a></td>
+                            <td><span>Get/set the current audio recording device</span></td>
+                            <td><span class="tag is-rounded is-warning is-small">readwrite</span></td>
                             <td><span style="color:#EA6AC3">string</span></td>
                           </tr>                        
                     </tbody>
@@ -273,6 +285,16 @@
                             <td><a href="play.html">audio.play()</a></td>
                             <td><span>Play a sound</span></td>
                             <td><span style="color:#ae81ff">boolean</span></td>
+                          </tr>                        
+                          <tr draggable="false">
+                            <td><a href="record-start.html">audio.record.start()<sup><i class="fas fa-star" style="color: #f1c32b; font-size: 0.75em; margin-bottom: 2%"></i></sup></a></td>
+                            <td><span>Start audio recording session</span></td>
+                            <td>-</td>
+                          </tr>                        
+                          <tr draggable="false">
+                            <td><a href="record-stop.html">audio.record.stop()<sup><i class="fas fa-star" style="color: #f1c32b; font-size: 0.75em; margin-bottom: 2%"></i></sup></a></td>
+                            <td><span>Stop current audio recording session</span></td>
+                            <td>-</td>
                           </tr>                        
                       </tbody>
                     </table>
@@ -334,7 +356,7 @@
      </span>
      </a>    
       <p class="mt-0">
-        Copyright &copy; 2024
+        Copyright &copy; 2025
         <a href="mailto:samir.tine@luart.org">Samir Tine</a>.
         <br />
         <a href="https://bulma.io/made-with-bulma/">

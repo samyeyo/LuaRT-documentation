@@ -217,8 +217,10 @@
                       </tr>                        <tr draggable="false">
                         <td><a href="Edit-onMouseUp.html">Edit.onMouseUp()</a></td>
                         <td><span>Event fired when the user releases a mouse button over the Edit</span></td>
-                      </tr>                        
-                  </tbody>
+                      </tr>                        <tr draggable="false">
+                        <td><a href="Edit-onDrop.html">Edit.onDrop()</a><sup><i class="fas fa-star" style="color: #f1c32b; font-size: 0.75em; margin-bottom: 2%"></i></sup></td>
+                        <td><span>Event fired when the Edit received a drag and drop content</span></td>
+                      </tr>                  </tbody>
                 </table></div>
                 <div data-content="2">
                 <table class="table">
@@ -283,9 +285,15 @@
                           <td><span>Controls whether the Edit appears on screen</span></td>
                           <td><span class="tag is-rounded is-warning is-small">readwrite</span></td>
                           <td><span style="color:#ae81ff">boolean</span></td>
-                        </tr>                        
+                        </tr>               
                         <tr draggable="false">
-                          <td><a href="Edit-border.html">Edit.border</a> <span data-tooltip="New in LuaRT 1.8.0" class="is-white has-background-white has-text-warning-dark has-tooltip-bottom has-tooltip-warning has-tooltip-arrow"><i class="fas fa-star" style="color: #f1c32b; font-size: 0.75em"></i></span></td>
+                          <td><a href="Edit-allowdrop.html">Edit.allowdrop()</a><sup><i class="fas fa-star" style="color: #f1c32b; font-size: 0.75em; margin-bottom: 2%"></i></sup></td>
+                          <td><span>Controls whether the Edit is a drag and drop target</span></td>
+                          <td><span class="tag is-rounded is-warning is-small">readwrite</span></td>
+                          <td><span style="color:#ae81ff">boolean</span></td>
+                        </tr>                    
+                        <tr draggable="false">
+                          <td><a href="Edit-border.html">Edit.border</a></td>
                           <td><span>Controls whether the Edit border is visible</span></td>
                           <td><span class="tag is-rounded is-warning is-small">readwrite</span></td>
                           <td><span style="color:#ae81ff">boolean</span></td>
@@ -399,6 +407,12 @@
                           <td><span style="color:#ae81ff">number</span></td>
                         </tr>                        
                         <tr draggable="false">
+                          <td><a href="Edit-mousepos.html">Edit.mousepos</a><sup><i class="fas fa-star" style="color: #f1c32b; font-size: 0.75em; margin-bottom: 2%"></i></sup></td>
+                          <td><span>Get the nearest character position from the mouse coordinates</span></td>
+                          <td><span class="tag is-rounded has-background-danger-light mt-0 is-small">readonly</span></td>
+                          <td><span style="color:#ae81ff">number</span></td>
+                        </tr>                        
+                        <tr draggable="false">
                           <td><a href="Edit-wordwrap.html">Edit.wordwrap</a></td>
                           <td><span>Get/set the Edit wordwrap mode</span></td>
                           <td><span class="tag is-rounded is-warning is-small">readwrite</span></td>
@@ -479,8 +493,13 @@
                           <td><span>-</span></td>
                         </tr>                        
                         <tr draggable="false">
-                          <td><a href="Edit-scroll.html">Edit.scroll()</a> <span data-tooltip="New in LuaRT 1.8.0" class="is-white has-background-white has-text-warning-dark has-tooltip-bottom has-tooltip-warning has-tooltip-arrow"><i class="fas fa-star" style="color: #f1c32b; font-size: 0.75em"></i></span></td>
+                          <td><a href="Edit-scroll.html">Edit.vscroll()</a><sup><i class="fas fa-star" style="color: #f1c32b; font-size: 0.75em; margin-bottom: 2%"></i></sup></td>
                           <td><span>Scrolls the text vertically</span></td>
+                          <td><span>-</span></td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="Edit-scroll.html">Edit.hscroll()</a><sup><i class="fas fa-star" style="color: #f1c32b; font-size: 0.75em; margin-bottom: 2%"></i></sup>></td>
+                          <td><span>Scrolls the text horizontally</span></td>
                           <td><span>-</span></td>
                         </tr>                        
                         <tr draggable="false">
@@ -547,7 +566,7 @@
      </span>
      </a>    
       <p class="mt-0">
-        Copyright &copy; 2024
+        Copyright &copy; 2025
         <a href="mailto:samir.tine@luart.org">Samir Tine</a>.
         <br />
         <a href="https://bulma.io/made-with-bulma/">

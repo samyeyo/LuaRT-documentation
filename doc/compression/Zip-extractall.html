@@ -185,13 +185,12 @@ local compression = require "compression"
 
 -- check parameters : the archive and entry specified as argument
 local archive = arg[1] or error("no archive specified")
-local entry = arg[2] or error("no entry specified")
 
 -- open the archive
 local z = compression.Zip(archive)
 
--- extract the entry on the disk in the current directory or throws an error if false
-local extracted = z:extract(entry) or error(z.error)
+-- extract the archive on the disk in the current directory or throws an error if false
+local extracted = z:extract() or error(z.error)
 
 print(extracted.name.." has been successfully extracted to "..extracted.path)
             </code></div>
@@ -235,7 +234,7 @@ print(extracted.name.." has been successfully extracted to "..extracted.path)
      </span>
      </a>    
       <p class="mt-0">
-        Copyright &copy; 2024
+        Copyright &copy; 2025
         <a href="mailto:samir.tine@luart.org">Samir Tine</a>.
         <br />
         <a href="https://bulma.io/made-with-bulma/">

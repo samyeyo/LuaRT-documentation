@@ -173,18 +173,20 @@ c.align = "all"
 
 local t = 0
 
--- Uses internal timer for 30fps drawing
 function c:onPaint()
+  self:begin()
   self:clear(0xffffffff)
-  c:translate(t, 0)
-  c:rect(0,0,50,50)
+  self:identity()
+  self:translate(t, 0)
+  self:fillrect(0, 90,50,140, 0x52BE80FF)
   t = t + 2
-  if t > 150 then 
+  if t > 300 then 
     t = -50
   end
+  self:flip()
 end
 
-ui.run(win)
+ui.run(win):wait()
             </code></div>
             </div>
 	      </div>
@@ -219,7 +221,7 @@ ui.run(win)
         </span>
       </a>
       <p class="mt-0">
-        Copyright &copy; 2024
+        Copyright &copy; 2025
         <a href="mailto:samir.tine@luart.org">Samir Tine</a>.
         <br />
         <a href="https://bulma.io/made-with-bulma/">

@@ -171,12 +171,21 @@
         <div class="card-content pt-0">
           <div class="content">
             <p class="has-text-weight-light is-size-3 mb-5" style="color: #004080; vertical-align: middle">File:copy(<span style="color:#EA6AC3">filename</span>) <span class="tag is-rounded is-small has-background-info-light" style="background:#367DBB;vertical-align: middle"> method</p>
-            <p>Copies the file physically on the disk to the specified filename.</p>
+            <p>Copies the file physically on the disk to the specified filename.
+              <article class="message is-warning is-small mt-6 mb-6" style="margin-left: 10%; margin-right: 10%">
+                <div class="message-header mb-0">
+                  <p><i class="fas fa-triangle-exclamation"></i> Warning</p>
+                </div>
+                <div class="message-body mb-0 is-size-7">
+                <ul class="mt-0">
+                  <li>This operation will block program flow execution.</li>
+                  <li>Use <a href = "File-copytask.html">File.copytask()</a> to copy the file asynchronously.</li>
+                </ul></div></article>
             <p class="is-size-4 mb-1 mt-6" style="color: #004080">Parameters</p>
             <p class="has-text-weight-light is-size-5 mt-2 mb-0"><span style="color:#EA6AC3">filename</span></p>
             <p>A string representing the destination filename.<br>If the filename contains a path, the path must already exist. If the destination file exists, the function will fail.</p>
             <p class="is-size-4 mb-1 mt-6" style="color: #004080">Return value</p>
-            Returns a <a href="File.html"><i class="fas fas fa-file"></i> File</a> if the operation succeeded or <strong style="color:gray">nil</strong> otherwise.
+            Returns a <code>boolean</code> value indicating if the operation succeeded.
             <p class="is-size-4 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
 local file = sys.File("test.txt"):open("write")
@@ -226,7 +235,7 @@ print(file:copy("test.txt"))
      </span>
      </a>    
       <p class="mt-0">
-        Copyright &copy; 2024
+        Copyright &copy; 2025
         <a href="mailto:samir.tine@luart.org">Samir Tine</a>.
         <br />
         <a href="https://bulma.io/made-with-bulma/">

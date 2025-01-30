@@ -1,0 +1,779 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta name="description" content="List of supported keys codes" />
+  <title>
+    Supported key codes | LuaRT free and open source Windows programming framework for Lua
+  </title>
+  <link href="../../css/bulma-docs.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        rel="stylesheet" />
+  <link href="https://luart.org/doc/keyboard/keys.html" rel="canonical" />
+  <link href="../../img/favicon.png" rel="icon" sizes="16x16" type="image/png" />
+  <link rel="stylesheet" href="../prism.css" data-noprefix="">
+</head>
+<body class="layout-documentation has-navbar-fixed-top">
+  <nav class="bd-navbar navbar is-fixed-top has-shadow" id="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../index.html">
+        <img alt="LuaRT: Free and open source Windows programming framework for Lua"
+             height="40"
+             src="../../img/logo.svg"
+             width="112" />
+      </a>
+      <a class="navbar-item bd-navbar-mobile-icon"
+         href="https://github.com/samyeyo"
+         style="margin-left: auto"
+         target="_blank">
+        <span class="icon" style="color: #000000">
+          <i class="fab fa-lg fa-github"></i>
+        </span>
+      </a>
+      <a class="navbar-item bd-navbar-mobile-icon"
+         href="https://twitter.com/__LuaRT__"
+         target="_blank">
+        <span class="icon" style="color: #000000">
+          <i class="fab fa-lg fa-x-twitter"></i>
+        </span>
+      </a>
+      <a class="navbar-item bd-navbar-mobile-icon"
+         href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+         target="_blank">
+        <span class="icon" style="color: #FF0000">
+          <i class="fab fa-lg fa-youtube"></i>
+        </span>
+      </a><a class="navbar-item bd-navbar-mobile-icon"
+         href="https://discord.gg/XJJxQufmvh"
+         target="_blank">
+        <span class="icon" style="color: #5865F2">
+          <i class="fab fa-discord"></i>
+        </span>
+      </a>
+      <button class="navbar-burger burger"
+              data-target="navMenuDocumentation"
+              id="navbarBurger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div class="navbar-menu" id="navMenuDocumentation">
+      <div class="navbar-start bd-navbar-start bd-is-original"
+           id="navbarStartOriginal">
+        <a class="navbar-item bd-navbar-item bd-navbar-item-bulma-book bd-navbar-item-base"
+           href="../../index.html#section_features">
+          <span class="icon has-text-bleeding">
+            <i class="fas fa-certificate"></i>
+          </span>
+          <span>Features</span>
+        </a>
+        <a class="navbar-item bd-navbar-item bd-navbar-item-love bd-navbar-item-base"
+           href="../../index.html#section_download">
+          <span class="icon has-text-danger">
+            <i class="fas fa-download"></i>
+          </span>
+          <span>Download</span>
+        </a>
+		<div class="navbar-item has-dropdown is-hoverable">
+			<a class="navbar-item bd-navbar-item bd-navbar-item-videos bd-navbar-item-base scroll">
+			  <span class="icon has-text-success"><i class="fas fa-circle-play"></i></span><span>Getting started</span>
+			</a>
+			<div class="navbar-dropdown has-background-success-light">
+				<a href="../install.html" class="dropdown-item has-text-success-dark">
+				  <span class="icon"><i class="fa fa-computer"></i></span> Installation
+				</a>
+				<a href="../first.html" class="dropdown-item has-text-success-dark">
+					<span class="icon"><i class="fa fa-play"></i></span> First execution
+				</a>
+				<a href="../tour.html" class="dropdown-item has-text-success-dark">
+				  <span class="icon"><i class="fa fa-bus-simple"></i></span> Take a tour !
+				</a>
+			</div>
+		</div>
+		<div class="navbar-item has-dropdown is-hoverable">
+			<a class="navbar-item bd-navbar-item bd-navbar-item-extensions bd-navbar-item-base scroll">
+			  <span class="icon has-text-info"><i class="fas fa-book"></i></span><span>Documentation</span>
+			</a>
+			<div class="navbar-dropdown has-background-info-light">
+				<a href="../modules.html" class="dropdown-item has-text-info-dark">
+				  <span class="icon"><i class="fa fa-cubes"></i></span> Modules reference
+				</a>
+				<a href="../object.html" class="dropdown-item has-text-info-dark">
+					<span class="icon"><i class="fa fa-shapes"></i></span> Object oriented programming
+				</a>
+				<a href="../toolchain.html" class="dropdown-item has-text-info-dark">
+				  <span class="icon"><i class="fa fa-wrench"></i></span> Toolchain documentation
+				</a>
+			</div>
+		</div>
+        </a>
+        <a class="navbar-item bd-navbar-item bd-navbar-item-expo bd-navbar-item-base"
+           href="https://community.luart.org">
+          <span class="icon has-text-warning">
+            <i class="fas fa-comments"></i>
+          </span>
+          <span>Community</span>
+        </a>
+        <a class="navbar-item bd-navbar-item bd-navbar-item-blog bd-navbar-item-base"
+           href="https://luart.org/doc/tutorial/index.html">
+          <span class="icon has-text-rss">
+            <i class="fas fa-graduation-cap"></i>
+          </span>
+          <span>Tutorials</span>
+        </a>
+     <div class="ml-6">
+			<span class="icon has-text-grey-light mr-1">
+				<i class="fas fa-search"></i>
+			</span></div>
+			<script async src="https://cse.google.com/cse.js?cx=509c4cdde27f845e7"></script>
+			<div class="gcse-searchbox-only" data-resultsUrl="https://luart.org/search.html"></div>
+      </div>
+    </div>
+    <div class="navbar-end">
+      <a class="bd-navbar-icon navbar-item"
+         href="https://github.com/samyeyo"
+         target="_blank">
+        <span class="icon" style="color: #000000">
+          <i class="fab fa-lg fa-github"></i>
+        </span>
+      </a>
+      <a class="bd-navbar-icon navbar-item"
+         href="https://twitter.com/__LuaRT__"
+         target="_blank">
+        <span class="icon" style="color: #000000">
+          <i class="fab fa-lg fa-x-twitter"></i>
+        </span>
+      </a>
+      <a class="bd-navbar-icon navbar-item"
+         href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+         target="_blank">
+        <span class="icon" style="color: #FF0000">
+          <i class="fab fa-lg fa-youtube"></i>
+        </span>
+      </a>
+      <a class="bd-navbar-icon navbar-item"
+         href="https://discord.gg/XJJxQufmvh"
+         target="_blank">
+        <span class="icon" style="color: #5865F2">
+          <i class="fab fa-lg fa-discord"></i>
+        </span>
+      </a>  
+    </div>
+  </nav>
+  
+  <section class="main-content columns is-centered is-fullheight" style="margin-top: 6%; margin-bottom: 4%">
+    <div class="column is-7">
+      <div class="card">
+        <a id="back" class="button is-white pl-5" href="javascript:history.back()"><span class="icon has-text-grey-lighter"><i class="fas fa-circle-left"></i></span></a>
+        <div class="card-content pt-0">
+          <div class="content">
+            <p class="has-text-weight-light is-size-3 mb-5" style="color: #004080; vertical-align: middle">Supported Key codes</p>
+            <p>The keyboard modules uses two kind of values to represent a physical key :
+              <ul>
+                <li>A <code>string</code> : the key can be represented by its name (either in lower or upper case).</li>
+                <li>A <code>number</code> : the key can be represented by its Windows Virtual Key Code.</li>
+              </ul>
+              <br>Here is the list of all the supported keys using both representations :</p>
+              <table class="table has-text-centered mt-5">
+                <thead>
+                  <tr>
+                    <th class="has-text-info ml-auto mr-auto">Key name</th>
+                    <th class="has-text-info ml-auto mr-auto">Virtual Key Code</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>"LBUTTON"</code></td>
+                    <td><code>0x1</code></td>
+                  </tr>                  <tr>
+                    <td><code>"RBUTTON"</code></td>
+                    <td><code>0x2</code></td>
+                  </tr>                  <tr>
+                    <td><code>"CANCEL"</code></td>
+                    <td><code>0x3</code></td>
+                  </tr>                  <tr>
+                    <td><code>"MBUTTON"</code></td>
+                    <td><code>0x4</code></td>
+                  </tr>                  <tr>
+                    <td><code>"XBUTTON1"</code></td>
+                    <td><code>0x5</code></td>
+                  </tr>                  <tr>
+                    <td><code>"XBUTTON2"</code></td>
+                    <td><code>0x6</code></td>
+                  </tr>                  <tr>
+                    <td><code>"BACK"</code></td>
+                    <td><code>0x8</code></td>
+                  </tr>                  <tr>
+                    <td><code>"TAB"</code></td>
+                    <td><code>0x9</code></td>
+                  </tr>                  <tr>
+                    <td><code>"CLEAR"</code></td>
+                    <td><code>0xC</code></td>
+                  </tr>                  <tr>
+                    <td><code>"RETURN"</code></td>
+                    <td><code>0xD</code></td>
+                  </tr>                  <tr>
+                    <td><code>"SHIFT"</code></td>
+                    <td><code>0x10</code></td>
+                  </tr>                  <tr>
+                    <td><code>"CONTROL"</code></td>
+                    <td><code>0x11</code></td>
+                  </tr>                  <tr>
+                    <td><code>"MENU"</code></td>
+                    <td><code>0x12</code></td>
+                  </tr>                  <tr>
+                    <td><code>"PAUSE"</code></td>
+                    <td><code>0x13</code></td>
+                  </tr>                  <tr>
+                    <td><code>"CAPITAL"</code></td>
+                    <td><code>0x14</code></td>
+                  </tr>                  <tr>
+                    <td><code>"KANA"</code></td>
+                    <td><code>0x15</code></td>
+                  </tr>                  <tr>
+                    <td><code>"HANGUEL"</code></td>
+                    <td><code>0x15</code></td>
+                  </tr>                  <tr>
+                    <td><code>"HANGUL"</code></td>
+                    <td><code>0x15</code></td>
+                  </tr>                  <tr>
+                    <td><code>"IME_ON"</code></td>
+                    <td><code>0x16</code></td>
+                  </tr>                  <tr>
+                    <td><code>"JUNJA"</code></td>
+                    <td><code>0x17</code></td>
+                  </tr>                  <tr>
+                    <td><code>"FINAL"</code></td>
+                    <td><code>0x18</code></td>
+                  </tr>                  <tr>
+                    <td><code>"HANJA"</code></td>
+                    <td><code>0x19</code></td>
+                  </tr>                  <tr>
+                    <td><code>"KANJI"</code></td>
+                    <td><code>0x19</code></td>
+                  </tr>                  <tr>
+                    <td><code>"IME_OFF"</code></td>
+                    <td><code>0x1A</code></td>
+                  </tr>                  <tr>
+                    <td><code>"ESCAPE"</code></td>
+                    <td><code>0x1B</code></td>
+                  </tr>                  <tr>
+                    <td><code>"CONVERT"</code></td>
+                    <td><code>0x1C</code></td>
+                  </tr>                  <tr>
+                    <td><code>"NONCONVERT"</code></td>
+                    <td><code>0x1D</code></td>
+                  </tr>                  <tr>
+                    <td><code>"ACCEPT"</code></td>
+                    <td><code>0x1E</code></td>
+                  </tr>                  <tr>
+                    <td><code>"MODECHANGE"</code></td>
+                    <td><code>0x1F</code></td>
+                  </tr>                  <tr>
+                    <td><code>"SPACE"</code></td>
+                    <td><code>0x20</code></td>
+                  </tr>                  <tr>
+                    <td><code>"PRIOR"</code></td>
+                    <td><code>0x21</code></td>
+                  </tr>                  <tr>
+                    <td><code>"NEXT"</code></td>
+                    <td><code>0x22</code></td>
+                  </tr>                  <tr>
+                    <td><code>"END"</code></td>
+                    <td><code>0x23</code></td>
+                  </tr>                  <tr>
+                    <td><code>"HOME"</code></td>
+                    <td><code>0x24</code></td>
+                  </tr>                  <tr>
+                    <td><code>"LEFT"</code></td>
+                    <td><code>0x25</code></td>
+                  </tr>                  <tr>
+                    <td><code>"UP"</code></td>
+                    <td><code>0x26</code></td>
+                  </tr>                  <tr>
+                    <td><code>"RIGHT"</code></td>
+                    <td><code>0x27</code></td>
+                  </tr>                  <tr>
+                    <td><code>"DOWN"</code></td>
+                    <td><code>0x28</code></td>
+                  </tr>                  <tr>
+                    <td><code>"SELECT"</code></td>
+                    <td><code>0x29</code></td>
+                  </tr>                  <tr>
+                    <td><code>"PRINT"</code></td>
+                    <td><code>0x2A</code></td>
+                  </tr>                  <tr>
+                    <td><code>"EXECUTE"</code></td>
+                    <td><code>0x2B</code></td>
+                  </tr>                  <tr>
+                    <td><code>"SNAPSHOT"</code></td>
+                    <td><code>0x2C</code></td>
+                  </tr>                  <tr>
+                    <td><code>"INSERT"</code></td>
+                    <td><code>0x2D</code></td>
+                  </tr>                  <tr>
+                    <td><code>"DELETE"</code></td>
+                    <td><code>0x2E</code></td>
+                  </tr>                  <tr>
+                    <td><code>"HELP"</code></td>
+                    <td><code>0x2F</code></td>
+                  </tr>                  <tr>
+                    <td><code>"0"</code></td>
+                    <td><code>0x30</code></td>
+                  </tr>                  <tr>
+                    <td><code>"1"</code></td>
+                    <td><code>0x31</code></td>
+                  </tr>                  <tr>
+                    <td><code>"2"</code></td>
+                    <td><code>0x32</code></td>
+                  </tr>                  <tr>
+                    <td><code>"3"</code></td>
+                    <td><code>0x33</code></td>
+                  </tr>                  <tr>
+                    <td><code>"4"</code></td>
+                    <td><code>0x34</code></td>
+                  </tr>                  <tr>
+                    <td><code>"5"</code></td>
+                    <td><code>0x35</code></td>
+                  </tr>                  <tr>
+                    <td><code>"6"</code></td>
+                    <td><code>0x36</code></td>
+                  </tr>                  <tr>
+                    <td><code>"7"</code></td>
+                    <td><code>0x37</code></td>
+                  </tr>                  <tr>
+                    <td><code>"8"</code></td>
+                    <td><code>0x38</code></td>
+                  </tr>                  <tr>
+                    <td><code>"9"</code></td>
+                    <td><code>0x39</code></td>
+                  </tr>                  <tr>
+                    <td><code>"A"</code></td>
+                    <td><code>0x41</code></td>
+                  </tr>                  <tr>
+                    <td><code>"B"</code></td>
+                    <td><code>0x42</code></td>
+                  </tr>                  <tr>
+                    <td><code>"C"</code></td>
+                    <td><code>0x43</code></td>
+                  </tr>                  <tr>
+                    <td><code>"D"</code></td>
+                    <td><code>0x44</code></td>
+                  </tr>                  <tr>
+                    <td><code>"E"</code></td>
+                    <td><code>0x45</code></td>
+                  </tr>                  <tr>
+                    <td><code>"F"</code></td>
+                    <td><code>0x46</code></td>
+                  </tr>                  <tr>
+                    <td><code>"G"</code></td>
+                    <td><code>0x47</code></td>
+                  </tr>                  <tr>
+                    <td><code>"H"</code></td>
+                    <td><code>0x48</code></td>
+                  </tr>                  <tr>
+                    <td><code>"I"</code></td>
+                    <td><code>0x49</code></td>
+                  </tr>                  <tr>
+                    <td><code>"J"</code></td>
+                    <td><code>0x4A</code></td>
+                  </tr>                  <tr>
+                    <td><code>"K"</code></td>
+                    <td><code>0x4B</code></td>
+                  </tr>                  <tr>
+                    <td><code>"L"</code></td>
+                    <td><code>0x4C</code></td>
+                  </tr>                  <tr>
+                    <td><code>"M"</code></td>
+                    <td><code>0x4D</code></td>
+                  </tr>                  <tr>
+                    <td><code>"N"</code></td>
+                    <td><code>0x4E</code></td>
+                  </tr>                  <tr>
+                    <td><code>"O"</code></td>
+                    <td><code>0x4F</code></td>
+                  </tr>                  <tr>
+                    <td><code>"P"</code></td>
+                    <td><code>0x50</code></td>
+                  </tr>                  <tr>
+                    <td><code>"Q"</code></td>
+                    <td><code>0x51</code></td>
+                  </tr>                  <tr>
+                    <td><code>"R"</code></td>
+                    <td><code>0x52</code></td>
+                  </tr>                  <tr>
+                    <td><code>"S"</code></td>
+                    <td><code>0x53</code></td>
+                  </tr>                  <tr>
+                    <td><code>"T"</code></td>
+                    <td><code>0x54</code></td>
+                  </tr>                  <tr>
+                    <td><code>"U"</code></td>
+                    <td><code>0x55</code></td>
+                  </tr>                  <tr>
+                    <td><code>"V"</code></td>
+                    <td><code>0x56</code></td>
+                  </tr>                  <tr>
+                    <td><code>"W"</code></td>
+                    <td><code>0x57</code></td>
+                  </tr>                  <tr>
+                    <td><code>"X"</code></td>
+                    <td><code>0x58</code></td>
+                  </tr>                  <tr>
+                    <td><code>"Y"</code></td>
+                    <td><code>0x59</code></td>
+                  </tr>                  <tr>
+                    <td><code>"Z"</code></td>
+                    <td><code>0x5A</code></td>
+                  </tr>                  <tr>
+                    <td><code>"LWIN"</code></td>
+                    <td><code>0x5B</code></td>
+                  </tr>                  <tr>
+                    <td><code>"RWIN"</code></td>
+                    <td><code>0x5C</code></td>
+                  </tr>                  <tr>
+                    <td><code>"APPS"</code></td>
+                    <td><code>0x5D</code></td>
+                  </tr>                  <tr>
+                    <td><code>"SLEEP"</code></td>
+                    <td><code>0x5F</code></td>
+                  </tr>                  <tr>
+                    <td><code>"NUMPAD0"</code></td>
+                    <td><code>0x60</code></td>
+                  </tr>                  <tr>
+                    <td><code>"NUMPAD1"</code></td>
+                    <td><code>0x61</code></td>
+                  </tr>                  <tr>
+                    <td><code>"NUMPAD2"</code></td>
+                    <td><code>0x62</code></td>
+                  </tr>                  <tr>
+                    <td><code>"NUMPAD3"</code></td>
+                    <td><code>0x63</code></td>
+                  </tr>                  <tr>
+                    <td><code>"NUMPAD4"</code></td>
+                    <td><code>0x64</code></td>
+                  </tr>                  <tr>
+                    <td><code>"NUMPAD5"</code></td>
+                    <td><code>0x65</code></td>
+                  </tr>                  <tr>
+                    <td><code>"NUMPAD6"</code></td>
+                    <td><code>0x66</code></td>
+                  </tr>                  <tr>
+                    <td><code>"NUMPAD7"</code></td>
+                    <td><code>0x67</code></td>
+                  </tr>                  <tr>
+                    <td><code>"NUMPAD8"</code></td>
+                    <td><code>0x68</code></td>
+                  </tr>                  <tr>
+                    <td><code>"NUMPAD9"</code></td>
+                    <td><code>0x69</code></td>
+                  </tr>                  <tr>
+                    <td><code>"MULTIPLY"</code></td>
+                    <td><code>0x6A</code></td>
+                  </tr>                  <tr>
+                    <td><code>"ADD"</code></td>
+                    <td><code>0x6B</code></td>
+                  </tr>                  <tr>
+                    <td><code>"SEPARATOR"</code></td>
+                    <td><code>0x6C</code></td>
+                  </tr>                  <tr>
+                    <td><code>"SUBTRACT"</code></td>
+                    <td><code>0x6D</code></td>
+                  </tr>                  <tr>
+                    <td><code>"DECIMAL"</code></td>
+                    <td><code>0x6E</code></td>
+                  </tr>                  <tr>
+                    <td><code>"DIVIDE"</code></td>
+                    <td><code>0x6F</code></td>
+                  </tr>                  <tr>
+                    <td><code>"F1"</code></td>
+                    <td><code>0x70</code></td>
+                  </tr>                  <tr>
+                    <td><code>"F2"</code></td>
+                    <td><code>0x71</code></td>
+                  </tr>                  <tr>
+                    <td><code>"F3"</code></td>
+                    <td><code>0x72</code></td>
+                  </tr>                  <tr>
+                    <td><code>"F4"</code></td>
+                    <td><code>0x73</code></td>
+                  </tr>                  <tr>
+                    <td><code>"F5"</code></td>
+                    <td><code>0x74</code></td>
+                  </tr>                  <tr>
+                    <td><code>"F6"</code></td>
+                    <td><code>0x75</code></td>
+                  </tr>                  <tr>
+                    <td><code>"F7"</code></td>
+                    <td><code>0x76</code></td>
+                  </tr>                  <tr>
+                    <td><code>"F8"</code></td>
+                    <td><code>0x77</code></td>
+                  </tr>                  <tr>
+                    <td><code>"F9"</code></td>
+                    <td><code>0x78</code></td>
+                  </tr>                  <tr>
+                    <td><code>"F10"</code></td>
+                    <td><code>0x79</code></td>
+                  </tr>                  <tr>
+                    <td><code>"F11"</code></td>
+                    <td><code>0x7A</code></td>
+                  </tr>                  <tr>
+                    <td><code>"F12"</code></td>
+                    <td><code>0x7B</code></td>
+                  </tr>                  <tr>
+                    <td><code>"F13"</code></td>
+                    <td><code>0x7C</code></td>
+                  </tr>                  <tr>
+                    <td><code>"F14"</code></td>
+                    <td><code>0x7D</code></td>
+                  </tr>                  <tr>
+                    <td><code>"F15"</code></td>
+                    <td><code>0x7E</code></td>
+                  </tr>                  <tr>
+                    <td><code>"F16"</code></td>
+                    <td><code>0x7F</code></td>
+                  </tr>                  <tr>
+                    <td><code>"F17"</code></td>
+                    <td><code>0x80</code></td>
+                  </tr>                  <tr>
+                    <td><code>"F18"</code></td>
+                    <td><code>0x81</code></td>
+                  </tr>                  <tr>
+                    <td><code>"F19"</code></td>
+                    <td><code>0x82</code></td>
+                  </tr>                  <tr>
+                    <td><code>"F20"</code></td>
+                    <td><code>0x83</code></td>
+                  </tr>                  <tr>
+                    <td><code>"F21"</code></td>
+                    <td><code>0x84</code></td>
+                  </tr>                  <tr>
+                    <td><code>"F22"</code></td>
+                    <td><code>0x85</code></td>
+                  </tr>                  <tr>
+                    <td><code>"F23"</code></td>
+                    <td><code>0x86</code></td>
+                  </tr>                  <tr>
+                    <td><code>"F24"</code></td>
+                    <td><code>0x87</code></td>
+                  </tr>                  <tr>
+                    <td><code>"NUMLOCK"</code></td>
+                    <td><code>0x90</code></td>
+                  </tr>                  <tr>
+                    <td><code>"SCROLL"</code></td>
+                    <td><code>0x91</code></td>
+                  </tr>                  <tr>
+                    <td><code>"LSHIFT"</code></td>
+                    <td><code>0xA0</code></td>
+                  </tr>                  <tr>
+                    <td><code>"RSHIFT"</code></td>
+                    <td><code>0xA1</code></td>
+                  </tr>                  <tr>
+                    <td><code>"LCONTROL"</code></td>
+                    <td><code>0xA2</code></td>
+                  </tr>                  <tr>
+                    <td><code>"RCONTROL"</code></td>
+                    <td><code>0xA3</code></td>
+                  </tr>                  <tr>
+                    <td><code>"LMENU"</code></td>
+                    <td><code>0xA4</code></td>
+                  </tr>                  <tr>
+                    <td><code>"RMENU"</code></td>
+                    <td><code>0xA5</code></td>
+                  </tr>                  <tr>
+                    <td><code>"BROWSER_BACK"</code></td>
+                    <td><code>0xA6</code></td>
+                  </tr>                  <tr>
+                    <td><code>"BROWSER_FORWARD"</code></td>
+                    <td><code>0xA7</code></td>
+                  </tr>                  <tr>
+                    <td><code>"BROWSER_REFRESH"</code></td>
+                    <td><code>0xA8</code></td>
+                  </tr>                  <tr>
+                    <td><code>"BROWSER_STOP"</code></td>
+                    <td><code>0xA9</code></td>
+                  </tr>                  <tr>
+                    <td><code>"BROWSER_SEARCH"</code></td>
+                    <td><code>0xAA</code></td>
+                  </tr>                  <tr>
+                    <td><code>"BROWSER_FAVORITES"</code></td>
+                    <td><code>0xAB</code></td>
+                  </tr>                  <tr>
+                    <td><code>"BROWSER_HOME"</code></td>
+                    <td><code>0xAC</code></td>
+                  </tr>                  <tr>
+                    <td><code>"VOLUME_MUTE"</code></td>
+                    <td><code>0xAD</code></td>
+                  </tr>                  <tr>
+                    <td><code>"VOLUME_DOWN"</code></td>
+                    <td><code>0xAE</code></td>
+                  </tr>                  <tr>
+                    <td><code>"VOLUME_UP"</code></td>
+                    <td><code>0xAF</code></td>
+                  </tr>                  <tr>
+                    <td><code>"MEDIA_NEXT_TRACK"</code></td>
+                    <td><code>0xB0</code></td>
+                  </tr>                  <tr>
+                    <td><code>"MEDIA_PREV_TRACK"</code></td>
+                    <td><code>0xB1</code></td>
+                  </tr>                  <tr>
+                    <td><code>"MEDIA_STOP"</code></td>
+                    <td><code>0xB2</code></td>
+                  </tr>                  <tr>
+                    <td><code>"MEDIA_PLAY_PAUSE"</code></td>
+                    <td><code>0xB3</code></td>
+                  </tr>                  <tr>
+                    <td><code>"LAUNCH_MAIL"</code></td>
+                    <td><code>0xB4</code></td>
+                  </tr>                  <tr>
+                    <td><code>"LAUNCH_MEDIA_SELECT"</code></td>
+                    <td><code>0xB5</code></td>
+                  </tr>                  <tr>
+                    <td><code>"LAUNCH_APP1"</code></td>
+                    <td><code>0xB6</code></td>
+                  </tr>                  <tr>
+                    <td><code>"LAUNCH_APP2"</code></td>
+                    <td><code>0xB7</code></td>
+                  </tr>                  <tr>
+                    <td><code>"OEM_1"</code></td>
+                    <td><code>0xBA</code></td>
+                  </tr>                  <tr>
+                    <td><code>"OEM_PLUS"</code></td>
+                    <td><code>0xBB</code></td>
+                  </tr>                  <tr>
+                    <td><code>"OEM_COMMA"</code></td>
+                    <td><code>0xBC</code></td>
+                  </tr>                  <tr>
+                    <td><code>"OEM_MINUS"</code></td>
+                    <td><code>0xBD</code></td>
+                  </tr>                  <tr>
+                    <td><code>"OEM_PERIOD"</code></td>
+                    <td><code>0xBE</code></td>
+                  </tr>                  <tr>
+                    <td><code>"OEM_2"</code></td>
+                    <td><code>0xBF</code></td>
+                  </tr>                  <tr>
+                    <td><code>"OEM_3"</code></td>
+                    <td><code>0xC0</code></td>
+                  </tr>                  <tr>
+                    <td><code>"OEM_4"</code></td>
+                    <td><code>0xDB</code></td>
+                  </tr>                  <tr>
+                    <td><code>"OEM_5"</code></td>
+                    <td><code>0xDC</code></td>
+                  </tr>                  <tr>
+                    <td><code>"OEM_6"</code></td>
+                    <td><code>0xDD</code></td>
+                  </tr>                  <tr>
+                    <td><code>"OEM_7"</code></td>
+                    <td><code>0xDE</code></td>
+                  </tr>                  <tr>
+                    <td><code>"OEM_8"</code></td>
+                    <td><code>0xDF</code></td>
+                  </tr>                  <tr>
+                    <td><code>"OEM_102"</code></td>
+                    <td><code>0xE2</code></td>
+                  </tr>                  <tr>
+                    <td><code>"PROCESSKEY"</code></td>
+                    <td><code>0xE5</code></td>
+                  </tr>                  <tr>
+                    <td><code>"PACKET"</code></td>
+                    <td><code>0xE7</code></td>
+                  </tr>                  <tr>
+                    <td><code>"ATTN"</code></td>
+                    <td><code>0xF6</code></td>
+                  </tr>                  <tr>
+                    <td><code>"CRSEL"</code></td>
+                    <td><code>0xF7</code></td>
+                  </tr>                  <tr>
+                    <td><code>"EXSEL"</code></td>
+                    <td><code>0xF8</code></td>
+                  </tr>                  <tr>
+                    <td><code>"EREOF"</code></td>
+                    <td><code>0xF9</code></td>
+                  </tr>                  <tr>
+                    <td><code>"PLAY"</code></td>
+                    <td><code>0xFA</code></td>
+                  </tr>                  <tr>
+                    <td><code>"ZOOM"</code></td>
+                    <td><code>0xFB</code></td>
+                  </tr>                  <tr>
+                    <td><code>"NONAME"</code></td>
+                    <td><code>0xFC</code></td>
+                  </tr>                  <tr>
+                    <td><code>"PA1"</code></td>
+                    <td><code>0xFD</code></td>
+                  </tr>                  <tr>
+                    <td><code>"OEM_CLEAR"</code></td>
+                    <td><code>0xFE</code></td>
+                  </tr>
+                </tbody>
+              </table>
+            </p>
+            </div>
+	      </div>
+      </div>
+    </div>
+  </section>  
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p class="mb-0">
+        <strong>
+          Lua
+          <sup>rt</sup> Documentation
+        </strong> - Windows programming framework for Lua
+      </p>
+      <a class="is-hovered" href="https://github.com/samyeyo" target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-github"></i>
+        </span>
+      </a>
+      <a class="is-hovered"
+         href="https://twitter.com/__LuaRT__"
+         target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-x-twitter"></i>
+        </span>
+      </a>
+<a class="is-hovered"
+         href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+         target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-youtube"></i>
+        </span>
+      </a>      
+      <a class="is-hovered"
+      href="https://discord.gg/XJJxQufmvh"
+      target="_blank">
+     <span class="icon" style="color: #A0A0A0">
+       <i class="fab fa-lg fa-discord"></i>
+     </span>
+     </a>    
+      <p class="mt-0">
+        Copyright &copy; 2025
+        <a href="mailto:samir.tine@luart.org">Samir Tine</a>.
+        <br />
+        <a href="https://bulma.io/made-with-bulma/">
+          <img alt="Made with Bulma"
+               height="24"
+               src="https://bulma.io/images/made-with-bulma.png"
+               width="128" />
+        </a>
+      </p>
+    </div>
+  </footer>
+</body>
+<script src="../../js/main.js"></script>
+<script src="../prism.js"></script>
+<script src="../custom-class.js"></script>
+<script>Prism.plugins.customClass.prefix('prism--');</script>
+<script>window.onpopstate = function() {
+       document.getElementById('back').click();
+    }; history.pushState({}, '');</script>
+</html>
+
+  

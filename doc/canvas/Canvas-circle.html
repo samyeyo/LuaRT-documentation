@@ -200,7 +200,7 @@ local ui = require "ui"
 require "canvas"
 
 -- create a simple Window
-local win = ui.Window("Canvas.circle() sample", "fixed", 500, 400)
+local win = ui.Window("Canvas.rect() sample", "fixed", 500, 400)
 
 -- create a Canvas
 local canvas = ui.Canvas(win)
@@ -211,15 +211,12 @@ local w = canvas.width
 local h = canvas.height
 
 function canvas:onPaint()
-  self:circle(math.random(w), math.random(h), math.random(150), math.random(0xFFFFFFFF), 5)
+    self:begin()
+    self:circle(math.random(w), math.random(h), math.random(150), math.random(0xFFFFFFFF), 5)
+    self:flip()
 end
 
-win:show()
-
--- update user interface
-repeat
-  ui.update()
-until not win.visible
+ui.run(win):wait()
             </code></div>
             </div>
 	      </div>
@@ -261,7 +258,7 @@ until not win.visible
      </span>
      </a>    
       <p class="mt-0">
-        Copyright &copy; 2024
+        Copyright &copy; 2025
         <a href="mailto:samir.tine@luart.org">Samir Tine</a>.
         <br />
         <a href="https://bulma.io/made-with-bulma/">

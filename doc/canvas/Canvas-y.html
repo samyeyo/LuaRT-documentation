@@ -179,17 +179,23 @@ local ui = require "ui"
 require "canvas"
 
 -- create a simple window
-local win = ui.Window("canvas.y sample", 500, 400)
-local canvas = ui.Canvas(win)
+local win = ui.Window("canvas.y sample", 600, 300)
+local canvas = ui.Canvas(win, 140, 0)
+ui.run(win)
 
--- shows the window
-win:show()
+async(function()
+    while win.visible and (canvas.y < 282) do
+        canvas.y = canvas.y + 2
+        canvas:begin()
+        canvas:clear(math.random(0xFFFFFFFF))
+        canvas:flip()
+        sleep(5)
+        win:status("y = "..canvas.y)
+    end
+    sys.exit()
+end)
 
--- update user interface and increase canvas horizontal position
-repeat
-  ui.update()
-  canvas.y = canvas.y + 1
-until not win.visible or (canvas.y > 400)
+waitall()
             </code></div>
             </div>
 	      </div>
@@ -231,7 +237,7 @@ until not win.visible or (canvas.y > 400)
      </span>
      </a>    
       <p class="mt-0">
-        Copyright &copy; 2024
+        Copyright &copy; 2025
         <a href="mailto:samir.tine@luart.org">Samir Tine</a>.
         <br />
         <a href="https://bulma.io/made-with-bulma/">

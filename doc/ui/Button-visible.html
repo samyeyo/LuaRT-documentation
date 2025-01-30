@@ -187,12 +187,7 @@ function button:onHover()
 	self:hide()
 end
 
-win:show()
-
--- update the user interface until the user closes the button
-repeat
-	ui.update()
-until not win.visible
+ui.run(win):wait()
             </code></div>
             </div>
 	      </div>
@@ -234,7 +229,7 @@ until not win.visible
      </span>
      </a>    
       <p class="mt-0">
-        Copyright &copy; 2024
+        Copyright &copy; 2025
         <a href="mailto:samir.tine@luart.org">Samir Tine</a>.
         <br />
         <a href="https://bulma.io/made-with-bulma/">

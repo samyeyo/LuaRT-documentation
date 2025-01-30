@@ -209,15 +209,12 @@ local w = canvas.width
 local h = canvas.height
 
 function canvas:onPaint()
+  self:begin()
   self:fillellipse(math.random(w), math.random(h), math.random(150), math.random(150), math.random(0xFFFFFFFF))
+  self:flip()
 end
 
-win:show()
-
--- update user interface
-repeat
-  ui.update()
-until not win.visible
+ui.run(win):wait()
             </code></div>
             </div>
 	      </div>
@@ -259,7 +256,7 @@ until not win.visible
      </span>
      </a>    
       <p class="mt-0">
-        Copyright &copy; 2024
+        Copyright &copy; 2025
         <a href="mailto:samir.tine@luart.org">Samir Tine</a>.
         <br />
         <a href="https://bulma.io/made-with-bulma/">

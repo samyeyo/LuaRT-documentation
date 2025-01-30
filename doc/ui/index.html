@@ -195,37 +195,37 @@
                       <!------------------ PROPERTIES ------------->
                           
                           <tr draggable="false">
-                            <td><a href="rtl.html">ui.rtl</a> <span data-tooltip="New in LuaRT 1.8.0" class="is-white has-background-white has-text-warning-dark has-tooltip-bottom has-tooltip-warning has-tooltip-arrow"><i class="fas fa-star" style="color: #f1c32b; font-size: 0.75em"></i></span></td>
+                            <td><a href="rtl.html">ui.rtl</a></td>
                             <td><span>Enable or disable the right to left mode</span></td>
                             <td><span class="tag is-rounded is-warning is-small">readwrite</span></td>
                             <td><span style="color:#ae81ff">boolean</span></td>
                           </tr>                        
                           <tr draggable="false">
-                            <td><a href="theme.html">ui.theme</a> <span data-tooltip="New in LuaRT 1.8.0" class="is-white has-background-white has-text-warning-dark has-tooltip-bottom has-tooltip-warning has-tooltip-arrow"><i class="fas fa-star" style="color: #f1c32b; font-size: 0.75em"></i></span></td>
+                            <td><a href="theme.html">ui.theme</a></td>
                             <td><span>Get/set the current application theme</span></td>
                             <td><span class="tag is-rounded is-warning is-small">readwrite</span></td>
                             <td><span style="color:#EA6AC3">string</span></td>
                           </tr>                        
                           <tr draggable="false">
-                            <td><a href="systheme.html">ui.systheme</a> <span data-tooltip="New in LuaRT 1.8.0" class="is-white has-background-white has-text-warning-dark has-tooltip-bottom has-tooltip-warning has-tooltip-arrow"><i class="fas fa-star" style="color: #f1c32b; font-size: 0.75em"></i></span></td>
+                            <td><a href="systheme.html">ui.systheme</a></td>
                             <td><span>Get the current Windows theme</span></td>
                             <td><span class="tag is-rounded has-background-danger-light is-small">readonly</span></td>
                             <td><span style="color:#EA6AC3">string</span></td>
                           </tr>  
                          <tr draggable="false">
-                         <td><a href="monitors.html">ui.monitors</a> <span data-tooltip="New in LuaRT 1.8.0" class="is-white has-background-white has-text-warning-dark has-tooltip-bottom has-tooltip-warning has-tooltip-arrow"><i class="fas fa-star" style="color: #f1c32b; font-size: 0.75em"></i></span></td>
+                         <td><a href="monitors.html">ui.monitors</a></td>
                             <td><span>Get a list of current active monitors</span></td>
                             <td><span class="tag is-rounded has-background-danger-light is-small">readonly</span></td>
                             <td><span style="color:#B1D928">table</span></td>
                           </tr>                        
                           <tr draggable="false">
-                            <td><a href="dpi.html">ui.dpi</a> <span data-tooltip="New in LuaRT 1.8.0" class="is-white has-background-white has-text-warning-dark has-tooltip-bottom has-tooltip-warning has-tooltip-arrow"><i class="fas fa-star" style="color: #f1c32b; font-size: 0.75em"></i></span></td>
+                            <td><a href="dpi.html">ui.dpi</a></td>
                             <td><span>Get the current Windows DPI scaling factor</span></td>
                             <td><span class="tag is-rounded has-background-danger-light is-small">readonly</span></td>
                             <td><span style="color:#ae81ff">number</span></td>
                           </tr>                        
                           <tr draggable="false">
-                            <td><a href="windows.html">ui.windows</a> <span data-tooltip="New in LuaRT 1.8.0" class="is-white has-background-white has-text-warning-dark has-tooltip-bottom has-tooltip-warning has-tooltip-arrow"><i class="fas fa-star" style="color: #f1c32b; font-size: 0.75em"></i></span></td>
+                            <td><a href="windows.html">ui.windows</a></td>
                             <td><span>Get a list of all created <a href="Window.html"><i class="fas far fa-window-maximize"></i> Window</a> objects</span></td>
                             <td><span class="tag is-rounded has-background-danger-light is-small">readonly</span></td>
                             <td><span style="color:#B1D928">table</span></td>
@@ -262,6 +262,11 @@
                           <td><a href="confirm.html">ui.confirm()</a></td>
                           <td><span>Show aconfirmation message dialog box</span></td>
                           <td><span style="color:#EA6AC3">string</span></td>
+                        </tr>     
+                        <tr draggable="false">
+                          <td><a href="drag.html">ui.drag()</a><sup><i class="fas fa-star" style="color: #f1c32b; font-size: 0.75em; margin-bottom: 2%"></i></sup></td>
+                          <td><span>Start a drag and drop operation</span></td>
+                          <td><span style="color:#ae81ff">boolean</span>, <span style="color:#ae81ff">number</span></td>
                         </tr>                        
                         <tr draggable="false">
                           <td><a href="remove.html">ui.remove()</a></td>
@@ -286,6 +291,11 @@
                         <tr draggable="false">
                           <td><a href="dirdialog.html">ui.dirdialog()</a></td>
                           <td><span>Open a Windows dialog box to select a directory</span></td>
+                          <td><a href="../sys/Directory.html"><i class="fas fa-folder" style="font-size:1em; color :#367DBB"></i> Directory</a> | nil</td>
+                        </tr>                        
+                        <tr draggable="false">
+                          <td><a href="selectdir.html">ui.selectdir()</a><sup><i class="fas fa-star" style="color: #f1c32b; font-size: 0.75em; margin-bottom: 2%"></i></sup></td>
+                          <td><span>Open a shell dialog box to choose a folder</span></td>
                           <td><a href="../sys/Directory.html"><i class="fas fa-folder" style="font-size:1em; color :#367DBB"></i> Directory</a> | nil</td>
                         </tr>                        
                         <tr draggable="false">
@@ -458,7 +468,7 @@
      </span>
      </a>    
       <p class="mt-0">
-        Copyright &copy; 2024
+        Copyright &copy; 2025
         <a href="mailto:samir.tine@luart.org">Samir Tine</a>.
         <br />
         <a href="https://bulma.io/made-with-bulma/">

@@ -187,22 +187,18 @@ local win = ui.Window("Canvas:onHide sample", "fixed", 640, 480)
 local Canvas = ui.Canvas(win, 0, 50, 640, 430)
 
 function Canvas:onHide()
-  ui.msg("Window Hidden")
+  ui.msg("Canvas Hidden")
 end
 
 local button = ui.Button(win, "Hide the Canvas widget")
 button:center()
 button.y = 10
 
-win:show()
-
 function button:onClick()
   Canvas:hide()
 end
 
-while win.visible do
-  ui.update()
-end
+ui.run(win):wait()
             </code></div>
 	      </div>
       </div>
@@ -243,7 +239,7 @@ end
      </span>
      </a>    
       <p class="mt-0">
-        Copyright &copy; 2024
+        Copyright &copy; 2025
         <a href="mailto:samir.tine@luart.org">Samir Tine</a>.
         <br />
         <a href="https://bulma.io/made-with-bulma/">

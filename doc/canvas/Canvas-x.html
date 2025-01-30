@@ -180,16 +180,22 @@ require "canvas"
 
 -- create a simple window
 local win = ui.Window("canvas.x sample", 600, 300)
-local canvas = ui.Canvas(win)
+local canvas = ui.Canvas(win, 0, 20)
+ui.run(win)
 
--- shows the window
-win:show()
+async(function()
+    while win.visible and (canvas.x < 600) do
+        canvas.x = canvas.x + 2
+        canvas:begin()
+        canvas:clear(math.random(0xFFFFFFFF))
+        canvas:flip()
+        sleep()
+        win:status("x = "..canvas.x)
+    end
+    sys.exit()
+end)
 
--- update user interface and increase canvas horizontal position
-repeat
-	ui.update()
-	canvas.x = canvas.x + 1
-until not win.visible or (canvas.x > 600)
+waitall()
             </code></div>
             </div>
 	      </div>
@@ -231,7 +237,7 @@ until not win.visible or (canvas.x > 600)
      </span>
      </a>    
       <p class="mt-0">
-        Copyright &copy; 2024
+        Copyright &copy; 2025
         <a href="mailto:samir.tine@luart.org">Samir Tine</a>.
         <br />
         <a href="https://bulma.io/made-with-bulma/">

@@ -1,0 +1,499 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta name="description" content="Checks if a key is down" />
+  <title>
+    keyboard.sendkeys() | LuaRT free and open source Windows programming framework for Lua
+  </title>
+  <link href="../../css/bulma-docs.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        rel="stylesheet" />
+  <link href="https://luart.org/doc/keyboard/sendkeys.html" rel="canonical" />
+  <link href="../../img/favicon.png" rel="icon" sizes="16x16" type="image/png" />
+  <link rel="stylesheet" href="../prism.css" data-noprefix="">
+</head>
+<body class="layout-documentation has-navbar-fixed-top">
+  <nav class="bd-navbar navbar is-fixed-top has-shadow" id="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../index.html">
+        <img alt="LuaRT: Free and open source Windows programming framework for Lua"
+             height="40"
+             src="../../img/logo.svg"
+             width="112" />
+      </a>
+      <a class="navbar-item bd-navbar-mobile-icon"
+         href="https://github.com/samyeyo"
+         style="margin-left: auto"
+         target="_blank">
+        <span class="icon" style="color: #000000">
+          <i class="fab fa-lg fa-github"></i>
+        </span>
+      </a>
+      <a class="navbar-item bd-navbar-mobile-icon"
+         href="https://twitter.com/__LuaRT__"
+         target="_blank">
+        <span class="icon" style="color: #000000">
+          <i class="fab fa-lg fa-x-twitter"></i>
+        </span>
+      </a>
+      <a class="navbar-item bd-navbar-mobile-icon"
+         href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+         target="_blank">
+        <span class="icon" style="color: #FF0000">
+          <i class="fab fa-lg fa-youtube"></i>
+        </span>
+      </a><a class="navbar-item bd-navbar-mobile-icon"
+         href="https://discord.gg/XJJxQufmvh"
+         target="_blank">
+        <span class="icon" style="color: #5865F2">
+          <i class="fab fa-discord"></i>
+        </span>
+      </a>
+      <button class="navbar-burger burger"
+              data-target="navMenuDocumentation"
+              id="navbarBurger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div class="navbar-menu" id="navMenuDocumentation">
+      <div class="navbar-start bd-navbar-start bd-is-original"
+           id="navbarStartOriginal">
+        <a class="navbar-item bd-navbar-item bd-navbar-item-bulma-book bd-navbar-item-base"
+           href="../../index.html#section_features">
+          <span class="icon has-text-bleeding">
+            <i class="fas fa-certificate"></i>
+          </span>
+          <span>Features</span>
+        </a>
+        <a class="navbar-item bd-navbar-item bd-navbar-item-love bd-navbar-item-base"
+           href="../../index.html#section_download">
+          <span class="icon has-text-danger">
+            <i class="fas fa-download"></i>
+          </span>
+          <span>Download</span>
+        </a>
+		<div class="navbar-item has-dropdown is-hoverable">
+			<a class="navbar-item bd-navbar-item bd-navbar-item-videos bd-navbar-item-base scroll">
+			  <span class="icon has-text-success"><i class="fas fa-circle-play"></i></span><span>Getting started</span>
+			</a>
+			<div class="navbar-dropdown has-background-success-light">
+				<a href="../install.html" class="dropdown-item has-text-success-dark">
+				  <span class="icon"><i class="fa fa-computer"></i></span> Installation
+				</a>
+				<a href="../first.html" class="dropdown-item has-text-success-dark">
+					<span class="icon"><i class="fa fa-play"></i></span> First execution
+				</a>
+				<a href="../tour.html" class="dropdown-item has-text-success-dark">
+				  <span class="icon"><i class="fa fa-bus-simple"></i></span> Take a tour !
+				</a>
+			</div>
+		</div>
+		<div class="navbar-item has-dropdown is-hoverable">
+			<a class="navbar-item bd-navbar-item bd-navbar-item-extensions bd-navbar-item-base scroll">
+			  <span class="icon has-text-info"><i class="fas fa-book"></i></span><span>Documentation</span>
+			</a>
+			<div class="navbar-dropdown has-background-info-light">
+				<a href="../modules.html" class="dropdown-item has-text-info-dark">
+				  <span class="icon"><i class="fa fa-cubes"></i></span> Modules reference
+				</a>
+				<a href="../object.html" class="dropdown-item has-text-info-dark">
+					<span class="icon"><i class="fa fa-shapes"></i></span> Object oriented programming
+				</a>
+				<a href="../toolchain.html" class="dropdown-item has-text-info-dark">
+				  <span class="icon"><i class="fa fa-wrench"></i></span> Toolchain documentation
+				</a>
+			</div>
+		</div>
+        </a>
+        <a class="navbar-item bd-navbar-item bd-navbar-item-expo bd-navbar-item-base"
+           href="https://community.luart.org">
+          <span class="icon has-text-warning">
+            <i class="fas fa-comments"></i>
+          </span>
+          <span>Community</span>
+        </a>
+        <a class="navbar-item bd-navbar-item bd-navbar-item-blog bd-navbar-item-base"
+           href="https://luart.org/doc/tutorial/index.html">
+          <span class="icon has-text-rss">
+            <i class="fas fa-graduation-cap"></i>
+          </span>
+          <span>Tutorials</span>
+        </a>
+     <div class="ml-6">
+			<span class="icon has-text-grey-light mr-1">
+				<i class="fas fa-search"></i>
+			</span></div>
+			<script async src="https://cse.google.com/cse.js?cx=509c4cdde27f845e7"></script>
+			<div class="gcse-searchbox-only" data-resultsUrl="https://luart.org/search.html"></div>
+      </div>
+    </div>
+    <div class="navbar-end">
+      <a class="bd-navbar-icon navbar-item"
+         href="https://github.com/samyeyo"
+         target="_blank">
+        <span class="icon" style="color: #000000">
+          <i class="fab fa-lg fa-github"></i>
+        </span>
+      </a>
+      <a class="bd-navbar-icon navbar-item"
+         href="https://twitter.com/__LuaRT__"
+         target="_blank">
+        <span class="icon" style="color: #000000">
+          <i class="fab fa-lg fa-x-twitter"></i>
+        </span>
+      </a>
+      <a class="bd-navbar-icon navbar-item"
+         href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+         target="_blank">
+        <span class="icon" style="color: #FF0000">
+          <i class="fab fa-lg fa-youtube"></i>
+        </span>
+      </a>
+      <a class="bd-navbar-icon navbar-item"
+         href="https://discord.gg/XJJxQufmvh"
+         target="_blank">
+        <span class="icon" style="color: #5865F2">
+          <i class="fab fa-lg fa-discord"></i>
+        </span>
+      </a>  
+    </div>
+  </nav>
+  
+  <section class="main-content columns is-centered is-fullheight" style="margin-top: 6%; margin-bottom: 4%">
+    <div class="column is-7">
+      <div class="card">
+        <a id="back" class="button is-white pl-5" href="index.html?methods"><span class="icon has-text-grey-lighter"><i class="fas fa-circle-left"></i></span></a>
+        <div class="card-content pt-0">
+          <div class="content">
+            <p class="has-text-weight-light is-size-3 mb-5" style="color: #004080; vertical-align: middle">keyboard.sendkeys(<span style="color:#EA6AC3">keys</span>)</p>
+            <p>Sends virtual key presses to other applications.</p>
+            <p class="is-size-4 mb-1 mt-6" style="color: #004080">Parameters</p>
+            <p class="has-text-weight-light is-size-5 mt-2 mb-0"><span style="color:#EA6AC3">keys</span></p>
+            A <code>string</code> that contains one or more key codes/commands combination.
+
+            <p class="is-size-4 mb-1 mt-6" style="color: #004080">Key codes</p>
+            <table class="table mt-5 is-size-7"><thead>
+              <tr>
+                <th class="has-text-info">Key</th>
+                <th class="has-text-info">Code</th>
+              </tr></thead>
+            <tbody>
+              <tr>
+                <td>BACKSPACE</td>
+                <td>{BACKSPACE},&nbsp;&nbsp;&nbsp;{BS}, or {BKSP}</td>
+              </tr></thead>
+              <tr>
+                <td>BREAK</td>
+                <td>{BREAK}</td>
+              </tr>
+              <tr>
+                <td>CAPS&nbsp;&nbsp;&nbsp;LOCK</td>
+                <td>{CAPSLOCK}</td>
+              </tr>
+              <tr>
+                <td>DEL or&nbsp;&nbsp;&nbsp;DELETE</td>
+                <td>{DELETE}&nbsp;&nbsp;&nbsp;or {DEL}</td>
+              </tr>
+              <tr>
+                <td>DOWN&nbsp;&nbsp;&nbsp;ARROW</td>
+                <td>{DOWN}</td>
+              </tr>
+              <tr>
+                <td>END</td>
+                <td>{END}</td>
+              </tr>
+              <tr>
+                <td>ENTER</td>
+                <td>{ENTER}&nbsp;&nbsp;&nbsp;or ~</td>
+              </tr>
+              <tr>
+                <td>ESC</td>
+                <td>{ESC}</td>
+              </tr>
+              <tr>
+                <td>HELP</td>
+                <td>{HELP}</td>
+              </tr>
+              <tr>
+                <td>HOME</td>
+                <td>{HOME}</td>
+              </tr>
+              <tr>
+                <td>INS or&nbsp;&nbsp;&nbsp;INSERT</td>
+                <td>{INS}</td>
+              </tr>
+              <tr>
+                <td>LEFT&nbsp;&nbsp;&nbsp;ARROW</td>
+                <td>{LEFT}</td>
+              </tr>
+              <tr>
+                <td>NUM LOCK</td>
+                <td>{NUMLOCK}</td>
+              </tr>
+              <tr>
+                <td>PAGE&nbsp;&nbsp;&nbsp;DOWN</td>
+                <td>{PGDN}</td>
+              </tr>
+              <tr>
+                <td>PAGE UP</td>
+                <td>{PGUP}</td>
+              </tr>
+              <tr>
+                <td>PRINT&nbsp;&nbsp;&nbsp;SCREEN</td>
+                <td>{PRTSC}&nbsp;&nbsp;&nbsp;(reserved for future use)</td>
+              </tr>
+              <tr>
+                <td>RIGHT&nbsp;&nbsp;&nbsp;ARROW</td>
+                <td>{RIGHT}</td>
+              </tr>
+              <tr>
+                <td>SCROLL&nbsp;&nbsp;&nbsp;LOCK</td>
+                <td>{SCROLL}</td>
+              </tr>
+              <tr>
+                <td>TAB</td>
+                <td>{TAB}</td>
+              </tr>
+              <tr>
+                <td>UP ARROW</td>
+                <td>{UP}</td>
+              </tr>
+              <tr>
+                <td>F1</td>
+                <td>{F1}</td>
+              </tr>
+              <tr>
+                <td>F2</td>
+                <td>{F2}</td>
+              </tr>
+              <tr>
+                <td>F3</td>
+                <td>{F3}</td>
+              </tr>
+              <tr>
+                <td>F4</td>
+                <td>{F4}</td>
+              </tr>
+              <tr>
+                <td>F5</td>
+                <td>{F5}</td>
+              </tr>
+              <tr>
+                <td>F6</td>
+                <td>{F6}</td>
+              </tr>
+              <tr>
+                <td>F7</td>
+                <td>{F7}</td>
+              </tr>
+              <tr>
+                <td>F8</td>
+                <td>{F8}</td>
+              </tr>
+              <tr>
+                <td>F9</td>
+                <td>{F9}</td>
+              </tr>
+              <tr>
+                <td>F10</td>
+                <td>{F10}</td>
+              </tr>
+              <tr>
+                <td>F11</td>
+                <td>{F11}</td>
+              </tr>
+              <tr>
+                <td>F12</td>
+                <td>{F12}</td>
+              </tr>
+              <tr>
+                <td>F13</td>
+                <td>{F13}</td>
+              </tr>
+              <tr>
+                <td>F14</td>
+                <td>{F14}</td>
+              </tr>
+              <tr>
+                <td>F15</td>
+                <td>{F15}</td>
+              </tr>
+              <tr>
+                <td>F16</td>
+                <td>{F16}</td>
+              </tr>
+              <tr>
+                <td>Keypad&nbsp;&nbsp;&nbsp;add</td>
+                <td>{ADD}</td>
+              </tr>
+              <tr>
+                <td>Keypad&nbsp;&nbsp;&nbsp;subtract</td>
+                <td>{SUBTRACT}</td>
+              </tr>
+              <tr>
+                <td>Keypad&nbsp;&nbsp;&nbsp;multiply</td>
+                <td>{MULTIPLY}</td>
+              </tr>
+              <tr>
+                <td>Keypad&nbsp;&nbsp;&nbsp;divide</td>
+                <td>{DIVIDE}</td>
+              </tr>
+              <tr>
+                <td>+</td>
+                <td>{PLUS}</td>
+              </tr>
+              <tr>
+                <td>@</td>
+                <td>{AT}</td>
+              </tr>
+              <tr>
+                <td>APPS</td>
+                <td>{APPS}</td>
+              </tr>
+              <tr>
+                <td>^</td>
+                <td>{CARET}</td>
+              </tr>
+              <tr>
+                <td>~</td>
+                <td>{TILDE}</td>
+              </tr>
+              <tr>
+                <td>{ }</td>
+                <td>{LEFTBRACE}&nbsp;&nbsp;&nbsp;{RIGHTBRACE}</td>
+              </tr>
+              <tr>
+                <td>( )</td>
+                <td>{LEFTPAREN}&nbsp;&nbsp;&nbsp;{RIGHTPAREN}</td>
+              </tr>
+              <tr>
+                <td>Left/Right&nbsp;&nbsp;&nbsp;WINKEY</td>
+                <td>{LWIN}&nbsp;&nbsp;&nbsp;{RWIN}</td>
+              </tr>
+              <tr>
+                <td>WINKEY</td>
+                <td>{WIN}&nbsp;&nbsp;&nbsp;equivalent to {LWIN}</td>
+              </tr>
+              <tr>
+                <td>WINKEY</td>
+                <td>@</td>
+              </tr>
+              <tr>
+                <td>SHIFT</td>
+                <td>+</td>
+              </tr>
+              <tr>
+                <td>CTRL</td>
+                <td>^</td>
+              </tr>
+              <tr>
+                <td>ALT</td>
+                <td>%</td>
+              </tr>
+            </tbody></table>
+            <p class="is-size-4 mb-1 mt-6" style="color: #004080">Commands</p>
+            <table class="table mt-5 is-size-7"><thead>
+              <tr>
+                <th class="has-text-info">Command</th>
+                <th class="has-text-info">Description</th>
+              </tr></thead>
+              <tbody>
+              <tr>
+                <td>{VKEY X}</td>
+                <td>Sends the VKEY of value X.<br>Very useful to add new Vkey to the hardcoded previous keys table.<br>For example, {VKEY 13} is equivalent to VK_RETURN.</td>
+              </tr>
+              <tr>
+                <td>{BEEP X Y}</td>
+                <td>Beeps with a frequency of X and a duration of Y milliseconds.</td>
+              </tr>
+              <tr>
+                <td>{DELAY X}</td>
+                <td>Delays sending the next key of X milliseconds. After the delaying the following key, the subsequent keys will not be further delayed unless there is a default delay value (see DELAY=X).<br>Example: {DELAY 1000} &lt;-- delays subsequent key stroke for 1 second.</td>
+              </tr>
+              <tr>
+                <td>{DELAY=X}</td>
+                <td>Sets the default delay value to X milliseconds. This will cause every key to be delayed X ms.<br>If a value is already set and you specify {DELAY Y} you will have your following key delay Y ms but the subsequent keys will be delayed X ms.<br>Example: {DELAY=1000} &lt;-- all subsequent keys will be delayed for 1 second.<br></td>
+              </tr>
+              <tr>
+                <td>{APPACTIVATE WindowTitle}</td>
+                <td>Activates an application using is WindowTitle.<br>Very useful if you want to send different keys to different applications.</td>
+              </tr>
+              </tbody></table>
+            <p class="is-size-4 mb-1 mt-6" style="color: #004080">Return value</p>
+            This function <code>true</code> if the key/command sequence has been successfully sended, or <code>false</code> otherwise.
+            <p class="is-size-4 mt-6 mb-0" style="color: #004080">Example</p>
+            <div class="language-lua mr-6 ml-6"><code>
+local kb = require "keyboard"
+
+-- Send virtual keys to launch the Windows Run... command
+-- then types "notepad", presses Enter, and enters slowly the letters Hello LuaRT !
+print(kb.sendkeys("{DELAY=100}@rnotepad{ENTER}{DELAY=600}H{DELAY=100}ello LuaRT !"))
+              </code></div>
+            </div>
+	      </div>
+      </div>
+    </div>
+  </section>  
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p class="mb-0">
+        <strong>
+          Lua
+          <sup>rt</sup> Documentation
+        </strong> - Windows programming framework for Lua
+      </p>
+      <a class="is-hovered" href="https://github.com/samyeyo" target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-github"></i>
+        </span>
+      </a>
+      <a class="is-hovered"
+         href="https://twitter.com/__LuaRT__"
+         target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-x-twitter"></i>
+        </span>
+      </a>
+<a class="is-hovered"
+         href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+         target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-youtube"></i>
+        </span>
+      </a>      
+      <a class="is-hovered"
+      href="https://discord.gg/XJJxQufmvh"
+      target="_blank">
+     <span class="icon" style="color: #A0A0A0">
+       <i class="fab fa-lg fa-discord"></i>
+     </span>
+     </a>    
+      <p class="mt-0">
+        Copyright &copy; 2025
+        <a href="mailto:samir.tine@luart.org">Samir Tine</a>.
+        <br />
+        <a href="https://bulma.io/made-with-bulma/">
+          <img alt="Made with Bulma"
+               height="24"
+               src="https://bulma.io/images/made-with-bulma.png"
+               width="128" />
+        </a>
+      </p>
+    </div>
+  </footer>
+</body>
+<script src="../../js/main.js"></script>
+<script src="../prism.js"></script>
+<script src="../custom-class.js"></script>
+<script>Prism.plugins.customClass.prefix('prism--');</script>
+<script>window.onpopstate = function() {
+       document.getElementById('back').click();
+    }; history.pushState({}, '');</script>
+</html>
+
+  

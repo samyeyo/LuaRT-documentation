@@ -172,9 +172,19 @@
           <div class="content">
             <p class="has-text-weight-light is-size-3 mb-5" style="color: #004080; vertical-align: middle">Canvas:onPaint() <span class="tag is-rounded is-small has-background-link-light" style="background:#f0c245;vertical-align: middle"> event</span></p>
             <p><br>
-			This event is fired when the Canvas is about to be redrawn, at a frequency of 30 times per seconds. This event occurs only when the <a href="./Canvas-sync.html">Canvas.sync</a> property is set to <code>true</code>.</p>
-      <article class="message is-danger" style="margin-left: 10%; margin-right: 10%"><div class="message-body">During this event, all drawing operations occur on the internal backbuffer. When this function returns, the Canvas object will swap it to display it. So there is no need to call the <a href="./Canvas-flip.html">Canvas.flip()</a> method.<br>
-      </div></article></p>
+			      This event is fired continuously to redraw the Canvas. You can put all your drawing operations inside this event handler function.</p>
+            <article class="message is-warning is-small mt-6 mb-6" style="margin-left: 10%; margin-right: 10%">
+              <div class="message-header mb-0">
+                <p><i class="fas fa-pencil"></i> Notes</p>
+              </div>
+              <div class="message-body mb-0 is-size-7">
+                To initialize Array fields, you can provide as arguments :
+                <ul class="mt-0">
+                  <li>This event is thrown asynchronously by a Task, so be sure to call <a href="../base/sleep.html">sleep()</a> if you use an <a href="../ui/update.html">ui.update()</a> loop.</li>                   
+                  <li>When drawing operations are executed inside an event or in a Task, <a href="Canvas-begin.html">Canvas.begin()</a> and <a href="Canvas-flip.html">Canvas.flip()</a> must be called to preserve the Direct2D drawing state across Tasks.</li>                  
+                </ul>
+              </div></article>
+            </p>
             <p class="is-size-4 mb-1 mt-6" style="color: #004080">Return value</p>
             This event returns no value.
             <p class="is-size-4 mt-6 mb-0" style="color: #004080">Example</p>
@@ -182,27 +192,25 @@
 local ui = require "ui"
 require "canvas"
 
--- create a simple Window
-local win = ui.Window("Canvas:onPaint() sample", 640, 480)
+-- create a fixed Window
+local win = ui.Window("Canvas:align() sample", "fixed", 320, 200)
 
--- create a canvas and center it
-local canvas = ui.Canvas(win, 0, 0, 600, 400)
+-- create a Canvas
+local canvas = ui.Canvas(win)
+
+-- align the Canvas in all of its parent area 
 canvas.align = "all"
 
 -- set the onPaint() event handler to draw on the canvas
 function canvas:onPaint()
-   -- clears the canvas backbuffer with white color
-   canvas:clear(0xFFFFFFFF)
-   -- prints text
-   canvas:print("Hello World !", 10, 10)
+    self:begin()
+    self:clear()
+    self:print("Hello World !", 10, 10)
+    self:flip()
 end
 
-win:show()
-
--- update the user interface until the user closes the Window
-repeat
-    ui.update()
-until not win.visible	
+-- shows the Window
+ui.run(win):wait()
             </code></div>	
 	      </div>
       </div>
@@ -243,7 +251,7 @@ until not win.visible
      </span>
      </a>    
       <p class="mt-0">
-        Copyright &copy; 2024
+        Copyright &copy; 2025
         <a href="mailto:samir.tine@luart.org">Samir Tine</a>.
         <br />
         <a href="https://bulma.io/made-with-bulma/">

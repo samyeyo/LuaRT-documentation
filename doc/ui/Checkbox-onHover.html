@@ -170,15 +170,24 @@
         <a id="back" class="button is-white pl-5" href="Checkbox.html?events"><span class="icon has-text-grey-lighter"><i class="fas fa-circle-left"></i></span></a>
         <div class="card-content pt-0">
           <div class="content">
-            <p class="has-text-weight-light is-size-3 mb-5" style="color: #004080; vertical-align: middle">Checkbox:onHover(<span style="color:#ae81ff">x</span>, <span style="color:#ae81ff">y</span>) <span class="tag is-rounded is-small has-background-link-light" style="background:#f0c245;vertical-align: middle"> event</span></p>
+            <p class="has-text-weight-light is-size-3 mb-5" style="color: #004080; vertical-align: middle">Checkbox:onHover(<span style="color:#ae81ff">x</span>, <span style="color:#ae81ff">y</span>, <span style="color:#B1D928">buttons</span>) <span class="tag is-rounded is-small has-background-link-light" style="background:#f0c245;vertical-align: middle"> event</span></p>
             <p><br>
 			This event is fired when the user moves the mouse pointer over the Checkbox.</p>
             <p class="is-size-4 mb-1 mt-6" style="color: #004080">Parameters</p>
             <p class="has-text-weight-light is-size-5 mt-2 mb-0"><span style="color:#ae81ff">x</span></p>
-<p>The horizontal position of the mouse in the Checkbox area (zero means the left border of the widget).</p>
-<p class="has-text-weight-light is-size-5 mt-2 mb-0"><span style="color:#ae81ff">y</span></p>
-<p>The vertical position of the mouse in the Checkbox area (zero means the top border of the widget).</p>
-
+            <p>The horizontal position of the mouse in the Checkbox area (zero means the left border of the widget).</p>
+            <p class="has-text-weight-light is-size-5 mt-2 mb-0"><span style="color:#ae81ff">y</span></p>
+            <p>The vertical position of the mouse in the Checkbox area (zero means the top border of the widget).</p>
+            <p class="has-text-weight-light is-size-5 mt-2 mb-0"><span style="color:#B1D928">buttons</span></p>
+            <p>A <code>table</code> which fields indicates if mouse buttons or special keys have been pressed during the move :
+              <ul>
+                <li><code>"left"</code>: <code>true</code> if left mouse button is pressed, <code>false</code> otherwise</li>
+                <li><code>"right"</code>: <code>true</code> if right mouse button is pressed, <code>false</code> otherwise</li>
+                <li><code>"middle"</code>: <code>true</code> if middle mouse button is pressed, <code>false</code> otherwise</li>
+                <li><code>"control"</code>: <code>true</code> if the CONTROL key is pressed, <code>false</code> otherwise</li>
+                <li><code>"shift"</code>: <code>true</code> if the SHIFT mouse button is pressed, <code>false</code> otherwise</li>
+              </ul>
+            </p>
             <p class="is-size-4 mb-1 mt-6" style="color: #004080">Return value</p>
             The event returns no value.
             <p class="is-size-4 mt-6 mb-0" style="color: #004080">Example</p>
@@ -214,11 +223,7 @@ function checkbox:onClick()
 end
 
 checkbox:onClick()
-win:show()
-
-while win.visible do
-	ui.update()
-end
+ui.run(win):wait()
             </code></div>
             </div>
 	      </div>
@@ -260,7 +265,7 @@ end
      </span>
      </a>    
       <p class="mt-0">
-        Copyright &copy; 2024
+        Copyright &copy; 2025
         <a href="mailto:samir.tine@luart.org">Samir Tine</a>.
         <br />
         <a href="https://bulma.io/made-with-bulma/">
