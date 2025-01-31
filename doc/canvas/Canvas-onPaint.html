@@ -192,12 +192,10 @@ local ui = require "ui"
 require "canvas"
 
 -- create a fixed Window
-local win = ui.Window("Canvas:align() sample", "fixed", 320, 200)
+local win = ui.Window("Canvas:onPait() sample", "fixed", 320, 200)
 
 -- create a Canvas
 local canvas = ui.Canvas(win)
-
--- align the Canvas in all of its parent area 
 canvas.align = "all"
 
 -- set the onPaint() event handler to draw on the canvas
@@ -208,7 +206,7 @@ function canvas:onPaint()
     self:flip()
 end
 
--- shows the Window
+-- shows the Window and wait for it to be closed
 ui.run(win):wait()
             </code></div>	
 	      </div>
