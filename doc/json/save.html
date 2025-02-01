@@ -170,11 +170,13 @@
         <a id="back" class="button is-white pl-5" href="index.html?methods"><span class="icon has-text-grey-lighter"><i class="fas fa-circle-left"></i></span></a>
         <div class="card-content pt-0">
           <div class="content">
-            <p class="has-text-weight-light is-size-3 mb-5" style="color: #004080; vertical-align: middle">json.save(<span style="color:gray">file</span>)</p>
+            <p class="has-text-weight-light is-size-3 mb-5" style="color: #004080; vertical-align: middle">json.save(<span style="color:gray">file</span>, <span style="color:#B1D928">value</span>)</p>
             <p>Encode a Lua value to a JSON representation string and save it to a file.</p>
             <p class="is-size-4 mb-1 mt-6" style="color: #004080">Parameters</p>
             <p class="has-text-weight-light is-size-5 mt-2 mb-0"><span style="color:gray">file</span></p>
             <p>A <a href="../sys/File.html"><i class="fas fa-file" style="color :#367DBB"></i> File</a> object or a filename <span style="color:#EA6AC3">string</span>, representing the file to save the JSON data.</p>
+            <p class="has-text-weight-light is-size-5 mt-2 mb-0"><span style="color:#B1D928">value</span></p>
+            <p>Lua value to be encoded.</p>
             <p class="is-size-4 mb-1 mt-6" style="color: #004080">Return value</p>
             Returns <code>true</code> or <code>false</code> in case of error.
             <p class="is-size-4 mt-6 mb-0" style="color: #004080">Example</p>
