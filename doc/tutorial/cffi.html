@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta content="LuaRT C FFI module tutorial" name="description" />
+  <title>
+    C FFI with LuaRT | LuaRT free and open source Windows programming framework for Lua
+  </title>
+  <link href="../../css/bulma-docs.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        rel="stylesheet" />
+  <link href="https://luart.org/doc/tutorial/cffi.html" rel="canonical" />
+  <link href="../../img/favicon.png" rel="icon" sizes="16x16" type="image/png" />
+  <link rel="stylesheet" href="../prism.css" data-noprefix="">
+</head>
+<body class="layout-documentation has-navbar-fixed-top">
+    <nav class="bd-navbar navbar is-fixed-top has-shadow" id="navbar">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="https://luart.org/">
+            <img alt="LuaRT: Free and open source Windows programming framework for Lua"
+                 height="40"
+                 src="../../img/logo.svg"
+                 width="112" />
+          </a>
+          <a class="navbar-item bd-navbar-mobile-icon"
+             href="https://github.com/samyeyo"
+             style="margin-left: auto"
+             target="_blank">
+            <span class="icon" style="color: #000000">
+              <i class="fab fa-lg fa-github"></i>
+            </span>
+          </a>
+          <a class="navbar-item bd-navbar-mobile-icon"
+             href="https://twitter.com/__LuaRT__"
+             target="_blank">
+            <span class="icon" style="color: #000000">
+              <i class="fab fa-lg fa-x-twitter"></i>
+            </span>
+          </a>
+          <a class="navbar-item bd-navbar-mobile-icon"
+             href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+             target="_blank">
+            <span class="icon" style="color: #FF0000">
+              <i class="fab fa-lg fa-youtube"></i>
+            </span>
+          </a> 
+     <a class="navbar-item bd-navbar-mobile-icon"
+      href="https://discord.gg/cvQV77nhfr"
+      target="_blank">
+     <span class="icon" style="color: #5865F2">
+       <i class="fab fa-lg fa-discord"></i>
+     </span>
+   </a><button class="navbar-burger burger"
+                  data-target="navMenuDocumentation"
+                  id="navbarBurger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+        <div class="navbar-menu" id="navMenuDocumentation">
+          <div class="navbar-start bd-navbar-start bd-is-original"
+               id="navbarStartOriginal">
+            <a class="navbar-item bd-navbar-item bd-navbar-item-bulma-book bd-navbar-item-base"
+               href="../../index.html#section_features">
+              <span class="icon has-text-bleeding">
+                <i class="fas fa-certificate"></i>
+              </span>
+              <span>Features</span>
+            </a>
+            <a class="navbar-item bd-navbar-item bd-navbar-item-love bd-navbar-item-base"
+               href="../../index.html#section_download">
+              <span class="icon has-text-danger">
+                <i class="fas fa-download"></i>
+              </span>
+              <span>Download</span>
+            </a>
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-item bd-navbar-item bd-navbar-item-videos bd-navbar-item-base scroll">
+                  <span class="icon has-text-success"><i class="fas fa-circle-play"></i></span><span>Getting started</span>
+                </a>
+                <div class="navbar-dropdown has-background-success-light">
+                    <a href="../install.html" class="dropdown-item has-text-success-dark">
+                      <span class="icon"><i class="fa fa-computer"></i></span> Installation
+                    </a>
+                    <a href="../first.html" class="dropdown-item has-text-success-dark">
+                        <span class="icon"><i class="fa fa-play"></i></span> First execution
+                    </a>
+                    <a href="../tour.html" class="dropdown-item has-text-success-dark">
+                      <span class="icon"><i class="fa fa-bus-simple"></i></span> Take a tour !
+                    </a>
+                </div>
+            </div>
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-item bd-navbar-item bd-navbar-item-extensions bd-navbar-item-base scroll">
+                  <span class="icon has-text-info"><i class="fas  fa-book"></i></span><span>Documentation</span>
+                </a>
+                <div class="navbar-dropdown has-background-info-light">
+                    <a href="../modules.html" class="dropdown-item has-text-info-dark">
+                      <span class="icon"><i class="fa fa-cubes"></i></span> Modules reference
+                    </a>
+                    <a href="../object.html" class="dropdown-item has-text-info-dark">
+                        <span class="icon"><i class="fa fa-shapes"></i></span> Object oriented programming
+                    </a>
+                    <a href="../toolchain.html" class="dropdown-item has-text-info-dark">
+                      <span class="icon"><i class="fa fa-wrench"></i></span> Toolchain documentation
+                    </a>
+                </div>
+            </div>
+            </a>
+            <a class="navbar-item bd-navbar-item bd-navbar-item-expo bd-navbar-item-base"
+               href="https://community.luart.org">
+              <span class="icon has-text-warning">
+                <i class="fas fa-comments"></i>
+              </span>
+              <span>Community</span>
+            </a>
+            <a class="navbar-item bd-navbar-item bd-navbar-item-blog bd-navbar-item-base" href="index.html">
+                <span class="icon has-text-rss">
+                  <i class="fas fa-graduation-cap"></i>
+                </span>
+                <span>Tutorials</span>
+              </a>
+            </div>
+            <div class="navbar-dropdown has-background-info-light">
+              <a href="../modules.html" class="dropdown-item has-text-info-dark">
+                <span class="icon"><i class="fa fa-cubes"></i></span> Modules reference
+              </a>
+              <a href="../object.html" class="dropdown-item has-text-info-dark">
+                  <span class="icon"><i class="fa fa-shapes"></i></span> Object oriented programming
+              </a>
+              <a href="../toolchain.html" class="dropdown-item has-text-info-dark">
+                <span class="icon"><i class="fa fa-wrench"></i></span> Toolchain documentation
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="navbar-end">
+          <a class="bd-navbar-icon navbar-item"
+             href="https://github.com/samyeyo"
+             target="_blank">
+            <span class="icon" style="color: #000000">
+              <i class="fab fa-lg fa-github"></i>
+            </span>
+          </a>
+          <a class="bd-navbar-icon navbar-item"
+             href="https://twitter.com/__LuaRT__"
+             target="_blank">
+            <span class="icon" style="color: #000000">
+              <i class="fab fa-lg fa-x-twitter"></i>
+            </span>
+          </a>
+          <a class="bd-navbar-icon navbar-item"
+             href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+             target="_blank">
+            <span class="icon" style="color: #FF0000">
+              <i class="fab fa-lg fa-youtube"></i>
+            </span>
+          </a>
+          <a class="bd-navbar-icon navbar-item"
+             href="https://discord.gg/cvQV77nhfr"
+             target="_blank">
+            <span class="icon" style="color: #5865F2">
+              <i class="fab fa-lg fa-discord"></i>
+            </span>
+          </a>
+        </div>
+      </nav>
+  
+  <section class="main-content columns is-centered is-fullheight" style="margin-top: 6%; margin-bottom: 4%">
+    <div class="column is-7">
+      <div class="card">
+        <div class="card-content">
+          <div class="content mb-6">
+            <h1 class="title is-2 mb-2 has-text-weight-light" style="color: #004080">C FFI with Lua<sup>rt</sup></h1>
+            <p class="mt-0 is-size-7 mb-6"><i>By Samir Tine, published on February 2025</i></p>
+            <h2 class="has-text-weight-light is-size-3 mt-6">The C module</sup></h2>
+<p class="mt-4">
+The <a href="../C/index.html">C</a> module in Lua<sup>rt</sup> provides C compatible data types and allows calling functions in DLL libraries, compiled in another programming language such as C/C++. It can be used to wrap these libraries in pure Lua.</p>
+<p><i>Before diving into this tutorial on using C FFI with LuaRT, it's important to have a foundational understanding of the C programming language, specifically around data types (like integers, floats, pointers), how to declare functions, and understanding of memory management, is crucial.
+If you're new to the C programming language, consider reviewing basic tutorials or documentation on C programming.</i></p>
+
+</code></div><h2 class="has-text-weight-light is-size-3 mt-6">Loading Dynamic Link Libraries (DLL)</h2>
+<p class="mt-4">
+The C module provides on object oriented approach to the foreign function interface. Loading a DLL is the first step before accessing its content (variables, functions,...).
+<br>The <a href="../C/Library.html"><i class="fas fa-shapes" style="color :#367DBB"></i> Library</a> object is used to load a DLL in memory, by using the DLL path when creating a Library instance :</p>
+
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%">
+<code>-- use the C FFI module
+local c = require "c"
+
+-- create a new Library instance to load the "kernel32.dll"
+local kernel32 = c.Library("kernel32.dll") 
+
+</code></div><p class="mt-5">
+By default, the current folder and the system <code>PATH</code> are used to search the DLL. If no argument is provided, the standard C library is loaded.</p>
+
+<h2 class="has-text-weight-light is-size-3 mt-6">Accessing DLL functions</h2>
+<p class="mt-4">
+Before using a DLL function, it must be defined first. Function definition is used to understand how to call the function, and what kind of parameters the function expects.<br>
+To define a function, just set a new Library instance field with the exact name of the DLL function. The value of this field must be a <code>string</code>. This string defines, the C type for the arguments and for the return value:
+
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%">
+<code>-- use the C FFI module
+local c = require "c"
+
+-- create a new Library instance to load the "kernel32.dll"
+local kernel32 = c.Library("kernel32.dll") 
+
+-- define the kernel32 Beep() function
+kernel32.Beep = "(JJ)B"
+
+</code></div><p class="mt-5">
+In this case, the <code>Beep()</code> functions expects two <code>32bits unsigned integer</code> (represented by the <code>`J`</code> character) and a <code>bool</code> return value (represented by the <code>B</code>character).</p>
+<p class="mt-2">As you can see, each character between the parenthesis is associated with a C type for the corresponding argument (first character for the first argument and so on...). Then, after the parenthesis, the last character represents the return value type (and if omitted, the function will return nothing).
+This string is called a <i>function signature</i>. You can find other signature character in <a href="../C/Library-function-def.html">function definition</a>.</p>
+
+Once the function have been defined with its signature, it can be called from Lua as any other Lua function :
+
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%"><code>
+kernel32.Beep(750, 300)
+
+</code></div><p class="mt-5">
+Lua<sup>rt</sup> will convert internaly the given Lua value to the corresponding C type, using the function signature previously defined. The same for the return value. Rather simple !
+</p>
+<p class="mt-4">
+<h2 class="has-text-weight-light is-size-3 mt-6">Using C data types</h2>
+<p class="mt-4">
+The C FFI module provides a set of C data types abstracted around the <a href="Value.html"><i class="fas fa-hashtag"></i> Value</a> object :
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%">
+<code>-- use the C FFI module
+local c = require "c
+
+local int32 = c.int32(405)
+print(int32)       -- Output : 405
+
+local float = c.float(3.14)
+print(float)       -- Ouput : 3.14
+
+local str = c.string("Hello")
+print(str)         -- Output : "Hello"
+
+</code></div><p class="mt-5">
+The Value object can be used to convert the internal C value to a string, to a number, and can be used for mathematical operations for numerical values.</p>
+<p class="mt-4">
+<h2 class="has-text-weight-light is-size-3 mt-6">Working with Structures</h2>
+<p class="mt-4">
+The <a href="Struct.html"><i class="fas fa-bars-staggered"></i> Struct</a> object allow grouping different C data types together, similar to C structs. To use a C struct from Lua, you must first create a C Struct definition to define it.
+The Struct definition is used to define each field and to calculate the Struct size in memory :
+</p>
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%">
+<code>-- use the C FFI module
+local c = require "c
+
+-- Create a Struct definition object
+local POINT = c.Struct("ii", "x", "y")
+
+</code></div><p class="mt-5">	
+
+Struct definition need to know each C type of its fields. That's why the Struct constructor takes a signature string as first parameter, that contains a succession of characters, each character defines the field type, in order of the provided field names.
+In this example, we have created a C struct object definition <code>POINT</code> that contains two C <code>integer</code> fields, named <code>"x"</code> for the first field and <code>"y"</code> for the second.You can even use Struct and Union as fields.</p>
+<p>To create a new Struct from this definition, just call it. All fields will be initialized to zero by default, unless a table with the field values ​​is provided:</p>
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%">
+<code>-- use the C FFI module
+local c = require "c
+
+-- Create a Struct definition object
+local POINT = c.Struct("ii", "x", "y")
+
+-- Creates a new Struct of type POINT 
+local p1 = POINT()
+
+-- Creates a new POINT Struct with initialization values
+local p2 = POINT { x = 300, y = 200 }
+
+print(p1.x, p1.y) -- Outputs 0 0
+print(p2.x, p2.y) -- Outputs 300 200
+
+</code></div><p class="mt-5">
+<p class="mt-4">
+<h2 class="has-text-weight-light is-size-3 mt-6">Working with Unions</h2>
+<p class="mt-4">
+The <a href="Union.html"><i class="fas fa-link"></i> Union</a> object allows to store different data types in the same memory location. It is similar to a struct, but with a key difference: all members of a union share the same memory space.
+To use a C union from Lua, you must first create a C Union definition to define it.	This Union definition is used to define each field and to calculate the Union total size in memory :
+</p>
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%">
+<code>-- use the C FFI module
+local c = require "c
+
+-- Create an Union definition object
+local CHAR = c.Union("Cc", "char", "byte")
+
+</code></div><p class="mt-5">	
+
+Union definition need to know each C type of its fields : the Union constructor takes a signature string as first parameter, that contains a succession of characters, each character defines the field type, in order of the provided field names, as for Struct object.
+In this example, we have created a C struct object definition <code>CHAR</code> that contains a C <code>unsigned char</code> field, named <code>"char"</code>, and a <code>"byte"</code> field of C type <code>char</code>.You can even use Struct and Union as fields.</p>
+<p>To create a new Union from this definition, just call it. The Union memory will be initialized to zero by default :</p>
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%">
+<code>-- use the C FFI module
+local c = require "c
+
+-- Create an Union definition object
+local CHAR = c.Union("Cc", "char", "byte")
+
+-- Creates a new Struct of type CHAR 
+local ch = CHAR()
+
+ch.char = 'A'
+
+print(ch.byte) -- Outputs the byte value of the 'A' character
+    
+</code></div><p class="mt-5">
+        
+<h2 class="has-text-weight-light is-size-3 mt-6">Working with C Pointers</h2>
+<p class="mt-4">
+C memory pointers can be manipulated using the <a href="../C/Pointer.html"><i class="fas fa-map-pin"></i> Pointer</a> object :
+</p>
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%">
+<code>-- use the C FFI module
+local c = require "c"
+
+-- Create a C integer Value
+local cint = c.int(123)
+
+-- Create a C Pointer to this integer 
+local ptr = c.Pointer(cint)
+
+</code></div><p class="mt-5">
+
+<a href="../C/Pointer.html"><i class="fas fa-map-pin"></i> Pointer</a> objects provides methods and properties to manipulate the memory content, to cast the Pointer to another type, and to do pointer arithmetics :
+<div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%">
+<code>-- use the C FFI module
+local c = require "c"
+
+-- Create a C integer Value
+local cint = c.int(123)
+
+-- Create a C Pointer to this integer 
+local ptr = c.Pointer(cint)
+
+-- Print the cint value
+print("before : ".. cint)
+
+-- Change pointer content
+ptr.content = 321
+
+-- The memory used by cint has changed
+print("after :  "..cint) -- Outputs 321
+
+</code></div><p class="mt-5">
+
+<p class="mt-4">This tutorial on using the C FFI module for Lua<sup>rt</sup> comes to its end. You have learned the basics to call functions, to create C values and more complex C types. If you need more explanations don't hesitate to read the documentation for the C FFI module, or to ask on the Lua<sup>rt</sup> Community forum, or on the Discord server.</p><br>
+        </div>
+      </div>
+    </div>
+  </section>  
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p class="mb-0">
+        <strong>
+          Lua
+          <sup>rt</sup> Documentation
+        </strong> - Windows programming framework for Lua
+      </p>
+      <a class="is-hovered" href="https://github.com/samyeyo" target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-github"></i>
+        </span>
+      </a>
+      <a class="is-hovered"
+         href="https://twitter.com/__LuaRT__"
+         target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-x-twitter"></i>
+        </span>
+      </a>
+      <a class="is-hovered"
+         href="https://www.youtube.com/channel/UCS4DTQ3-6xKmkVrFr8Xxc7Q"
+         target="_blank">
+        <span class="icon" style="color: #A0A0A0">
+          <i class="fab fa-lg fa-youtube"></i>
+        </span>
+      </a>
+      <p class="mt-0">
+        Copyright &copy; 2025
+        <a href="mailto:samir.tine@luart.org">Samir Tine</a>.
+        <br />
+        <a href="https://bulma.io/made-with-bulma/">
+          <img alt="Made with Bulma"
+               height="24"
+               src="https://bulma.io/images/made-with-bulma.png"
+               width="128" />
+        </a>
+      </p>
+    </div>
+  </footer>
+  <script src="../../js/main.js"></script>
+  <script src="../prism.js"></script>
+  <script src="../custom-class.js"></script>
+  <script>Prism.plugins.customClass.prefix('prism--');</script>
+</body>
+</html>	
