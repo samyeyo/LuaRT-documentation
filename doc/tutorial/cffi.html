@@ -231,7 +231,7 @@ Lua<sup>rt</sup> will convert internaly the given Lua value to the corresponding
 The C FFI module provides a set of C data types abstracted around the <a href="Value.html"><i class="fas fa-hashtag"></i> Value</a> object :
 <div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%">
 <code>-- use the C FFI module
-local c = require "c
+local c = require "c"
 
 local int32 = c.int32(405)
 print(int32)       -- Output : 405
@@ -252,7 +252,7 @@ The Struct definition is used to define each field and to calculate the Struct s
 </p>
 <div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%">
 <code>-- use the C FFI module
-local c = require "c
+local c = require "c"
 
 -- Create a Struct definition object
 local POINT = c.Struct("ii", "x", "y")
@@ -264,7 +264,7 @@ In this example, we have created a C struct object definition <code>POINT</code>
 <p>To create a new Struct from this definition, just call it. All fields will be initialized to zero by default, unless a table with the field values ​​is provided:</p>
 <div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%">
 <code>-- use the C FFI module
-local c = require "c
+local c = require "c"
 
 -- Create a Struct definition object
 local POINT = c.Struct("ii", "x", "y")
@@ -287,10 +287,10 @@ To use a C union from Lua, you must first create a C Union definition to define 
 </p>
 <div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%">
 <code>-- use the C FFI module
-local c = require "c
+local c = require "c"
 
 -- Create an Union definition object
-local CHAR = c.Union("Cc", "char", "byte")
+local CHAR = c.Union("cC", "char", "byte")
 
 </code></div><p class="mt-5">	
 
@@ -299,17 +299,17 @@ In this example, we have created a C struct object definition <code>CHAR</code> 
 <p>To create a new Union from this definition, just call it. The Union memory will be initialized to zero by default :</p>
 <div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%">
 <code>-- use the C FFI module
-local c = require "c
+local c = require "c"
 
 -- Create an Union definition object
-local CHAR = c.Union("Cc", "char", "byte")
+local CHAR = c.Union("cC", "char", "byte")
 
 -- Creates a new Struct of type CHAR 
-local ch = CHAR()
+local ch = CHAR {
+    byte = 65
+}
 
-ch.char = 'A'
-
-print(ch.byte) -- Outputs the byte value of the 'A' character
+print(ch.char) -- Outputs the byte value of the 'A' character
     
 </code></div><p class="mt-5">
         
