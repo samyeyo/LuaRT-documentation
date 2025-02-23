@@ -4,17 +4,35 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="LuaRT is a free, open source, Windows programming framework for Lua">
-    <title>LuaRT | Free and open source Windows programming framework for Lua</title>
-    <link rel="preload stylesheet" href="css/bulma-docs.min.css" as="style">
-    <link rel="preload stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" as="style">
-    <link rel="canonical" href="/index.html">
+    <meta name="description" content="LuaRT: Free, open-source Windows programming framework for Lua. Build fast, easy desktop and console apps in Lua for Windows.">
+    <title>LuaRT - Free Windows Programming Framework for Lua</title>
+    <link rel="preload stylesheet" href="css/styles.pure.css" as="style">
+    <!-- <link rel="preload stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" as="style"> -->
+    <link rel="canonical" href="https://luart.org/index.html">
     <link rel="icon" type="image/png" href="img/favicon.png" sizes="16x16">
     <meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:site" content="@__LuaRT__" />
 		<meta name="twitter:title" content="LuaRT" />
 		<meta name="twitter:description" content="Free and open source Windows programming framework for Lua" />
-		<meta name="twitter:image" content="/card.png" />
+		<meta name="twitter:image" content="https://luart.org/card.png" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "LuaRT",
+        "operatingSystem": "Windows",
+        "applicationCategory": "Developer Tools",
+        "description": "Free and open-source Windows programming framework for Lua",
+        "url": "https://luart.org",
+        "downloadUrl": "https://github.com/samyeyo/LuaRT/releases/tag/v1.9.0",
+        "license": "https://opensource.org/licenses/mit-license.php",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      }
+      </script>
 		<script>if(!sessionStorage.getItem("_swa")&&document.referrer.indexOf(location.protocol+"//"+location.host)!== 0){fetch("https://counter.dev/track?"+new URLSearchParams({referrer:document.referrer,screen:screen.width+"x"+screen.height,user:"Samyeyo",utcoffset:"2"}))};sessionStorage.setItem("_swa","1");</script>
   </head>
   <body class="layout-documentation has-navbar-fixed-top">
@@ -125,7 +143,7 @@
           <span>Community</span>
         </a>
         <a class="navbar-item bd-navbar-item bd-navbar-item-blog bd-navbar-item-base"
-           href="/doc/tutorial/index.html">
+           href="doc/tutorial/index.html">
           <span class="icon has-text-rss">
             <i class="fas fa-graduation-cap" style="margin-right: 5%"></i>
           </span>
@@ -182,7 +200,7 @@
             <img width="160" height="90" src="img/logo.svg"/>
           </figure>
 		      <h1 class="title mb-3" style="color: #004080">Windows programming framework for Lua</h1>
-		      <p class="subtitle mt-1 has-text-dark">Windows console and desktop applications made simple with Lua</p>
+		      <p class="subtitle mt-1 has-text-dark">Lua<sup>rt</sup> empowers developers to create Windows console and desktop applications using Lua’s simplicity</p>
         </div>
       </div>
     </header>    
@@ -191,60 +209,60 @@
         <div class="columns is-multiline">
           <div class="column is-6 is-5-desktop mt-5 mx-auto">            
             <div class="mb-6 is-flex">              
-              <span class="icon bd-link-icon" style="font-size: 2em"> <i class="fas fa-bolt" style="color: #ff9900"></i></span>
+              <span class="icon bd-link-icon" style="font-size: 2em"> <i class="fas fa-bolt" style="color: #ff9900" aria-label="Fast performance"></i></span>
               <div>
-                <h4 class="is-size-4 has-text-weight-bold mb-0" style="color:#ff9900">Fast and easy</h4>
+                <h2 class="is-size-4 has-text-weight-bold mb-0" style="color:#ff9900">Fast and easy</h2>
                 <p class="subtitle has-text-grey">Develop with Lua, a simple and fast programming language</p>
               </div>
             </div>
             <div class="mb-6 is-flex">              
-              <span class="icon bd-link-icon" style="font-size: 2em"> <i class="fas fa-moon" style="color: #7d7dec"></i></span>
+              <span class="icon bd-link-icon" style="font-size: 2em"> <i class="fas fa-moon" style="color: #7d7dec" aria-label="Beginner friendly"></i></span>
               <div>
-                <h4 class="is-size-4 has-text-weight-bold" style="margin-bottom: 0; color: #7d7dec">Beginner friendly</h4>
+                <h2 class="is-size-4 has-text-weight-bold" style="margin-bottom: 0; color: #7d7dec">Beginner friendly</h2>
                 <p class="subtitle has-text-grey">Develop only in Lua<br>No C/C++ compilation needed</p>  
               </div>
             </div>
             <div class="mb-6 is-flex">              
-              <span class="icon bd-link-icon" style="font-size: 2em; color: #2eb82e"> <i class="fas fa-cubes"></i></span>
+              <span class="icon bd-link-icon" style="font-size: 2em; color: #2eb82e"> <i class="fas fa-cubes" aria-label="Object oriented"></i></span>
               <div>
-                <h4 class="is-size-4 has-text-weight-bold" style="margin-bottom: 0; color: #2eb82e">Lua object oriented programming</h4>
-                <p class="subtitle has-text-grey">Use Lua objects, constructors, properties, inheritance, mixins...</p>  
+                <h2 class="is-size-4 has-text-weight-bold" style="margin-bottom: 0; color: #2eb82e">Lua object oriented programming</h2>
+                <p class="subtitle has-text-grey">Use Lua objects, constructors, properties, inheritance, mixins...(see <a href="doc/tutorial/OOP-Part1.html">more</a>)</p>  
               </div>
             </div>
             <div class="mb-6 is-flex">              
-              <span class="icon bd-link-icon" style="font-size: 2em"> <i class="fas fa-rocket" style="color: #e6005c"></i></span>
+              <span class="icon bd-link-icon" style="font-size: 2em"> <i class="fas fa-rocket" style="color: #e6005c" aria-label="Asynchronous"></i></span>
               <div>
-                <h4 class="is-size-4 has-text-weight-bold mb-0" style="color:#e6005c">Asynchronous</h4>
-                <p class="subtitle has-text-grey">Use asynchronous tasks for non blocking operations</p>
+                <h2 class="is-size-4 has-text-weight-bold mb-0" style="color:#e6005c">Asynchronous</h2>
+                <p class="subtitle has-text-grey">Use asynchronous tasks for non blocking operations (see <a href="doc/tutorial/async.html">more</a>)</p>
               </div>
             </div>
           </div>
           <div class="column is-6 is-5-desktop mt-5 mx-auto">            
             <div class="mb-6 is-flex">              
-              <span class="icon bd-link-icon" style="font-size: 2em"> <i class="fas fa-gears" style="color: #e600d3cc"></i></span>
+              <span class="icon bd-link-icon" style="font-size: 2em"> <i class="fas fa-gears" style="color: #e600d3cc" aria-label="Compile Lua to executables"></i></span>
               <div>
-                <h4 class="is-size-4 has-text-weight-bold mb-0" style="color:#e600d3cc">Lua compiler</h4>
-                <p class="subtitle has-text-grey">Build standalone executables from your Lua scripts with embedded content</p>
+                <h2 class="is-size-4 has-text-weight-bold mb-0" style="color:#e600d3cc">Lua compiler</h2>
+                <p class="subtitle has-text-grey">Build standalone executables from your Lua scripts with embedded content (see <a href="doc/toolchain/rtc.html">more</a>)</p>
               </div>
             </div>
             <div class="mb-6 is-flex">              
-              <span class="icon bd-link-icon" style="font-size: 2em"> <i class="fas fa-code" style="color: #f58ea8"></i></span>
+              <span class="icon bd-link-icon" style="font-size: 2em"> <i class="fas fa-code" style="color: #f58ea8" aria-label="Integrated IDE, GUI builder and compiler"></i></span>
               <div>
-                <h4 class="is-size-4 has-text-weight-bold mb-0" style="color:#f58ea8">Integrated tools</h4>
+                <h2 class="is-size-4 has-text-weight-bold mb-0" style="color:#f58ea8">Integrated tools</h2>
                 <p class="subtitle has-text-grey">Code and debug with the Lua<sup>rt</sup> Studio IDE<br>Design desktop applications with <span style="color: #cfa706">RT</span>Builder </p>
               </div>
             </div>
             <div class="mb-6 is-flex">              
-              <span class="icon bd-link-icon" style="font-size: 2em"> <i class="fas fa-star" style="color: #ffcc00"></i></span>
+              <span class="icon bd-link-icon" style="font-size: 2em"> <i class="fas fa-star" style="color: #ffcc00" aria-label="Batteries included"></i></span>
               <div>
-                <h4 class="is-size-4 has-text-weight-bold mb-0" style="color:#ffcc00">Batteries included</h4>
-                <p class="subtitle has-text-grey">Lua modules for native GUI, audio, graphics, networking, C FFI... </p>
+                <h2 class="is-size-4 has-text-weight-bold mb-0" style="color:#ffcc00">Batteries included</h2>
+                <p class="subtitle has-text-grey">Lua modules for native GUI, audio, graphics, networking, C FFI... (see <a href="doc/modules.html">more</a>) </p>
               </div>
             </div>
             <div class="mb-6 is-flex">              
-              <span class="icon bd-link-icon" style="font-size: 2em"> <i class="fas fa-book-open-reader" style="color: #22a2dd"></i></span>
+              <span class="icon bd-link-icon" style="font-size: 2em"> <i class="fas fa-book-open-reader" style="color: #22a2dd" aria-label="Complete documentation"></i></span>
               <div>
-                <h4 class="is-size-4 has-text-weight-bold mb-0" style="color:#22a2dd">Documentation</h4>
+                <h2 class="is-size-4 has-text-weight-bold mb-0" style="color:#22a2dd">Documentation</h2>
                 <p class="subtitle has-text-grey">More than 1K+ pages of documentation with examples and tutorials</p>
               </div>
             </div>
@@ -256,7 +274,7 @@
         <div class="bd-single-body bd-is-last">
           <div class="container is-max-desktop">
             <div id="section_download" class="bd-single-titles">
-              <p class="title has-text-centered" style="color: #004080">Download</p>
+              <h2 class="title has-text-centered" style="color: #004080">Download</h2>
               <p class="subtitle has-text-centered">Lua<sup>rt</sup> is released under the <a href="https://opensource.org/licenses/mit-license.php" target="_blank">MIT</a> license.              
               Source code is available on <a href="https://github.com/samyeyo" target="_blank"> Github</a>.</p>
             </div>
@@ -292,8 +310,8 @@
           </span>
         </a>         
         <p class="mt-0">Copyright &copy; 2024 <a href="mailto:samir.tine@luart.org">Samir Tine</a>.<br>
-        <a  href="https://bulma.io/made-with-bulma/">
-          <img src="https://bulma.io/images/made-with-bulma.png" alt="Made with Bulma" width="128" height="24">
+        <a href="https://bulma.io/made-with-bulma/">
+          <img loading="lazy" src="https://bulma.io/images/made-with-bulma.png" alt="Made with Bulma" width="128" height="24">
         </a></p>
 
       </div>

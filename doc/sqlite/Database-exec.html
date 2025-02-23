@@ -11,7 +11,7 @@
   <link href="../../css/bulma-docs.min.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         rel="stylesheet" />
-  <link href="/doc/sqlite/Database-exec.html" rel="canonical" />
+  <link href="https://luart.org/doc/sqlite/Database-exec.html" rel="canonical" />
   <link href="../../img/favicon.png" rel="icon" sizes="16x16" type="image/png" />
   <link rel="stylesheet" href="../prism.css" data-noprefix="">
 </head>
@@ -118,7 +118,7 @@
           <span>Community</span>
         </a>
         <a class="navbar-item bd-navbar-item bd-navbar-item-blog bd-navbar-item-base"
-           href="/doc/tutorial/index.html">
+           href="../tutorial/index.html">
           <span class="icon has-text-rss">
             <i class="fas fa-graduation-cap"></i>
           </span>
@@ -176,6 +176,15 @@
             <p class="is-size-4 mb-1 mt-6" style="color: #004080">Parameters</p>
             <p class="has-text-weight-light is-size-5 mt-2 mb-0"><span style="color:#EA6AC3">sql</span></p>
             <p>A <code>string</code> that contains a SQL statement.</p>
+            <article class="message is-warning is-small mt-6 mb-6" style="margin-left: 10%; margin-right: 10%"></article>
+              <div class="message-header mb-0">
+                <p><i class="fas fa-pencil"></i> Notes</p>
+              </div>
+              <div class="message-body mb-0 is-size-7">
+                <ul class="mt-0">
+                 <li></li>
+                </ul>
+              </div></article>
             <p class="is-size-4 mb-1 mt-6" style="color: #004080">Return value</p>
             Returns the result of the SQL statement as rows (each row is represented as a Lua <code>table</code> with column names as keys) or <code>nil</code> if there is no result.
             <p class="is-size-4 mt-6 mb-0" style="color: #004080">Example</p>
@@ -192,7 +201,7 @@ db:exec([[CREATE TABLE users (
             age  integer)]])
 
 -- Insert a new row
-db:exec("INSERT INTO users (name, age) VALUES('John', 32)")
+db:exec("INSERT INTO users (name, age) VALUES(?, ?)", "John", 32)
 
 -- Get a row from the SELECT statement
 local row = db:exec("SELECT * FROM users WHERE(name == 'John')")

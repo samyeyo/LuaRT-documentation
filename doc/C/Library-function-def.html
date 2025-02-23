@@ -11,7 +11,7 @@
   <link href="../../css/bulma-docs.min.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         rel="stylesheet" />
-  <link href="/doc/C/Library-function-def.html" rel="canonical" />
+  <link href="https://luart.org/doc/C/Library-function-def.html" rel="canonical" />
   <link href="../../img/favicon.png" rel="icon" sizes="16x16" type="image/png" />
   <link rel="stylesheet" href="../prism.css" data-noprefix="">
 </head>
@@ -118,7 +118,7 @@
           <span>Community</span>
         </a>
         <a class="navbar-item bd-navbar-item bd-navbar-item-blog bd-navbar-item-base"
-           href="/doc/tutorial/index.html">
+           href="../tutorial/index.html">
           <span class="icon has-text-rss">
             <i class="fas fa-graduation-cap"></i>
           </span>
@@ -238,35 +238,35 @@
                   </tr>
                   <tr>
                     <td><code class="has-text-success">s</code></td>
-                    <td><code>short</code> / <code>int16_t</code></td>
+                    <td><code>short</code> / <code>16bit int</code> / <code>int16_t</code></td>
                   </tr>
                   <tr>
                     <td><code class="has-text-success">S</code></td>
-                    <td><code>unsigned short</code> / <code>uint16_t</code></td>
+                    <td><code>unsigned short</code> / <code>unsigned 16bit int</code> / <code>uint16_t</code></td>
                   </tr>
                   <tr>
                     <td><code class="has-text-success">i</code></td>
-                    <td><code>int</code> / <code>int32_t</code></td>
+                    <td><code>32bit int</code> / <code>int32_t</code></td>
                   </tr>
                   <tr>
                     <td><code class="has-text-success">I</code></td>
-                    <td><code>unsigned int</code> / <code>uint32_t</code></td>
+                    <td><code>unsigned 32bit int</code> / <code>uint32_t</code></td>
                   </tr>
                   <tr>
                     <td><code class="has-text-success">j</code></td>
-                    <td><code>long</code> / <code>int32_t</code></td>
+                    <td><code>long</code> / <code>32bit int</code> / <code>int32_t</code></td>
                   </tr>
                   <tr>
                     <td><code class="has-text-success">J</code></td>
-                    <td><code>unsigned long</code> / <code>uint32_t</code></td>
+                    <td><code>unsigned long</code> / <code>unsigned 32bit int</code> / <code>uint32_t</code></td>
                   </tr>
                   <tr>
                     <td><code class="has-text-success">l</code></td>
-                    <td><code>long long</code> / <code>int64_t</code></td>
+                    <td><code>long long</code> / <code>64bit int</code> / <code>int64_t</code></td>
                   </tr>
                   <tr>
                     <td><code class="has-text-success">L</code></td>
-                    <td><code>unsigned long long</code> / <code>uint64_t</code></td>
+                    <td><code>unsigned long long</code> / <code>64bit unsigned int</code> / <code>uint64_t</code></td>
                   </tr>
                   <tr>
                     <td><code class="has-text-success">#</code></td>
@@ -302,7 +302,7 @@
                   </tr>
                 </tbody>
               </table>
-              <p class="mt-6"><b><code class="has-text-danger" style="font-size: 1.2em">[returnvalue]</code></b></p>
+              <p id="call" class="mt-6"><b><code class="has-text-danger" style="font-size: 1.2em">[returnvalue]</code></b></p>
               <p>This field is <i>optional</i> (if omitted, the C function returns nothing) and is used to define the return type of the C function, represented by a single character, from the same characters list from the <b><code class="has-text-success">[arguments]</code></b> field.</p>
               
               <p class="is-size-4 mb-1 mt-6" style="color: #004080">C function call</p>
@@ -312,7 +312,7 @@
                   <li><a href="Struct.html"><i class="fas fa-bars-staggered"></i> Struct</a></li>
                   <li><a href="Union.html"><i class="fas fa-link"></i> Union</a></li>
                   <li><a href="Pointer.html"><i class="fas fa-map-pin"></i> Pointer</a></li>
-                  <li><a href="Array.html"><b>[  ]</b> Array</a</li>
+                  <li><a href="Array.html"><b>[  ]</b> Array</a></li>
                 </ul>
                 These objects and Lua strings can even be used as pointer argument (this is managed by the C FFI module).
               </p>

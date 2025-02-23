@@ -11,7 +11,7 @@
 	  <link href="../../css/bulma-docs.min.css" rel="stylesheet" />
 	  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
 			rel="stylesheet" />
-	  <link href="/doc/tutorial/OOP-part3.html" rel="canonical" />
+	  <link href="https://luart.org/doc/tutorial/OOP-part3.html" rel="canonical" />
 	  <link href="../../img/favicon.png" rel="icon" sizes="16x16" type="image/png" />
 	  <link rel="stylesheet" href="../prism.css" data-noprefix="">
 	</head>
@@ -211,7 +211,7 @@ In this case, we have the following single inheritance diagram :</p>
 <figure class="image is-inline-block">
   <img src="../img/ancestors.png" alt="Ancestors diagram">
  </figure></div>
-<p>Remember that inheritance can be checked using the  <a href="..\base\is.html">is()</a> global function, it not only works with instances but also with objects :
+<p>Remember that inheritance can be checked using the  <a href="../base/is.html">is()</a> global function, it not only works with instances but also with objects :
 
 </p>
 <div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%"><code>
@@ -255,7 +255,7 @@ function TropicalFruct:describe()
 end
 
 </code></div><p class="mt-4">
-Here we call the <code>Fruct.describe()</code> method directly, but using the current implicit self (which is the current instance of TropicalFruct). We can also use the special global function <a href="..\base\super.html">super()</a> the get the same result :
+Here we call the <code>Fruct.describe()</code> method directly, but using the current implicit self (which is the current instance of TropicalFruct). We can also use the special global function <a href="../base/super.html">super()</a> the get the same result :
 
 </p>
 <div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%"><code>
@@ -315,7 +315,7 @@ apple:eat() -- prints "I am eating Fruct"
 </code></div>
 			<p>Mixins are tables of fields and methods used to enhance and extend the functionality of an object.
 			Basically, it lets us group the behaviors that we want to apply to objects. It's like the concept of interfaces in other programming languages.</p>
-			<p>The  <a href="..\base\object.html">Object()</a> function allows you to define any number of mixins you want.</p>			
+			<p>The  <a href="../base/object.html">Object()</a> function allows you to define any number of mixins you want.</p>			
 			</div>
 		  </div>
 		</div>
