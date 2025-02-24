@@ -1,5 +1,7 @@
 "use strict";
 
+const navbarHeight = document.getElementById("navbar").offsetHeight;
+
 document.addEventListener("DOMContentLoaded", function () {
 
   // Navbar
@@ -182,9 +184,9 @@ document.addEventListener("DOMContentLoaded", function () {
         window.scroll({ 
           behavior: 'smooth', 
           left: 0, 
-          top: document.getElementById(target).getBoundingClientRect().top - /*document.getElementById('navbar').getBoundingClientRect().bottom*/+120 + window.scrollY 
+          top: document.getElementById(target).getBoundingClientRect().top - navbarHeight + window.scrollY 
         });
-      });
+      }, { passive: true });
     });
   }
 
@@ -197,10 +199,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     resizeTimer = window.setTimeout(function () {
       setNavbarVisibility();
-    }, 10);
+    }, 200);
   }
 
-  window.addEventListener("resize", handleResize);
+  window.addEventListener("resize", handleResize, { passive: true });
 
   // Tabs
   const TABS = [...document.querySelectorAll('#tabs li')];
