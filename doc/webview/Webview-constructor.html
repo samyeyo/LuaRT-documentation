@@ -170,14 +170,18 @@
         <a id="back" class="button is-white pl-5" href="Webview.html?methods"><span class="icon has-text-grey-lighter"><i class="fas fa-circle-left"></i></span></a>
         <div class="card-content pt-0">
           <div class="content">
-            <p class="has-text-weight-light is-size-3 mb-5" style="color: #004080; vertical-align: middle">Webview.constructor(<span>parent</span>, <span style="color:#EA6AC3">url</span>, <span style="color:#ae81ff">[ x ]</span>, <span style="color:#ae81ff">[ y ]</span>, <span style="color:#ae81ff">[ width ]</span>, <span style="color:#ae81ff">[ height ]</span>) <span class="tag is-rounded is-small has-background-warning" style="background:#367DBB;vertical-align: middle"> constructor</p>
+            <p class="has-text-weight-light is-size-4 mb-5" style="color: #004080; vertical-align: middle">Webview.constructor(<span>parent</span>, <span style="color:#B1D928">[props]</span>, <span style="color:#ae81ff">[ x ]</span>, <span style="color:#ae81ff">[ y ]</span>, <span style="color:#ae81ff">[ width ]</span>, <span style="color:#ae81ff">[ height ]</span>) <span class="tag is-rounded is-small has-background-warning" style="background:#367DBB;vertical-align: middle"> constructor</p>
             <p><br>
 			The Webview constructor returns a Webview instance representing a Microsoft Edge Webview2 component.</p>
             <p class="is-size-4 mb-1 mt-6" style="color: #004080">Parameters</p>
             <p class="has-text-weight-light is-size-5 mt-2 mb-0"><span>parent</span></p>
 <p>An object that will own the Webview. Parent objects can be any of <a href="../ui/Window.html"><i class="far fa-window-maximize" style="color :#367DBB"></i> Window</a>, <a href="../ui/Groupbox.html"><i class="far fa-square" style="color :#367DBB"></i> Groupbox</a>, <a href="../ui/TabItem.html"><i class="fas fas fa-bookmark"  style="color :#367DBB"></i><sup><i class="fas fa-tag" style="margin-left: -0.3em"></i></sup></span> TabItem</a> and <a href="../ui/Panel.html"><i class="fas fa-expand" style="color :#367DBB"></i> Panel</a></p>
-<p class="has-text-weight-light is-size-5 mt-2 mb-0"><span style="color:#EA6AC3">url</span></p>
-<p>A string representing the URL that the Webview widget will navigate too once initialized.
+<p class="has-text-weight-light is-size-5 mt-2 mb-0"><span style="color:#B1D928">[props]</span></p>
+<p>An optional <code>table</code>  that accepts the following optional fields as keys :
+  <ul>
+    <li><code>"url"</code>: string representing the URL that the Webview widget will navigate to once initialized.</li>
+    <li><code>"options"</code>: string representing some custom Chromium command-line arguments (see <a href="https://peter.sh/experiments/chromium-command-line-switches/">Chromium commandline options</a>).</li>
+  </ul>.
 <article class="message is-success" style="margin-left: 5%; margin-right: 15%"><div class="message-body">
   When running in an embedded executable compiled with <code>rtc</code>, and if the URL starts with <code>file:///</code>, any resource not found locally will be searched inside the embedded content too.
 </div></article></p>
@@ -202,15 +206,10 @@ require "webview"
 local win = ui.Window("Webview.constructor() sample", 320, 200)
 
 -- create a Webview on this window
-local Webview = ui.Webview(win, "https://www.luart.org")
+local Webview = ui.Webview(win, { url = "https://www.luart.org" })
 Webview.align = "all"
 
-win:show()
-
--- update the user interface until the user closes the Window
-repeat
-	ui.update()
-until not win.visible
+ui.run(win):wait()
             </code></div>
             </div>
 	      </div>

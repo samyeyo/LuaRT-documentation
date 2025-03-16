@@ -184,7 +184,7 @@ require "webview"
 
 local win = ui.Window("Webview:reload() sample", "fixed", 436, 276)
 win.bgcolor = 0xFFFFFF
-local Webview = ui.Webview(win, "https://www.google.com", 0, 50, 436, 246)
+local Webview = ui.Webview(win, { url = "https://www.google.com" }, 0, 50, 436, 246)
 
 local button = ui.Button(win, "Reload the page")
 button:center()

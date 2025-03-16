@@ -179,7 +179,11 @@
             <p>A string representing a valid Javascript expression to be evaluated.</p>
             <p class="is-size-4 mb-1 mt-6" style="color: #004080">Return value</p>
             This function returns a <a href="../sys/Task.html"><i class="fas fa-bolt" style="font-size:1em; color :#367DBB"></i> Task</a> instance.
-            <br>Once finished, the Task will return the result of the Javascript execution as a <code>string</code>, encoded using JSON.
+            Once finished, the Task will return two values :
+            <ul>
+              <li>A <code>boolean</code> indicating if the operation succeeded</li>
+              <li>A <code>string</code> representing either an error message in case of failure, or the result as a JSON encoded string</li>
+            </ul>
             <p class="is-size-4 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
 local ui = require "ui"
@@ -187,16 +191,20 @@ require "webview"
 
 -- create a simple Webview 
 local win = ui.Window("Webview:eval() sample", 640, 480)
-local Webview = ui.Webview(win, "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/PI", 0, 50, 640, 500)
+local Webview = ui.Webview(win, { url = "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/PI" }, 0, 50, 640, 500)
 
 local button = ui.Button(win, "Evaluate Javascript Math.PI")
 button:center()
 button.y = 10
 
 function button:onClick()
-    Webview:eval("Math.PI").after = function(value)
-    ui.info(value, "Math.PI value from Javascript")
-  end
+    Webview:eval("Math.PI").after = function(success, result)
+        if success then
+            ui.info(result, "Math.PI value from Javascript")
+        else
+            ui.error(result)
+        end
+    end
 end
               
 -- update user interface

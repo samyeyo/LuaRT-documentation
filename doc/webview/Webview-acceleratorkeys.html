@@ -195,7 +195,7 @@ require "webview"
 
 -- create a simple window
 local win = ui.Window("Webview.acceleratorkeys sample", 600, 300)
-local Webview = ui.Webview(win, "https://www.google.com")
+local Webview = ui.Webview(win, { url = "https://www.google.com" })
 Webview.align = "all"
 
 function Webview:onReady()

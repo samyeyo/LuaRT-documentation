@@ -187,7 +187,7 @@ require "webview"
 
 -- creates a simple window
 local win = ui.Window("Webview:onLoaded() event sample", 320, 200)
-local Webview = ui.Webview(win, "https://www.luart.org", 150, 70)
+local Webview = ui.Webview(win, { url = "https://www.luart.org" }, 150, 70)
 
 -- Use the Webview:onLoaded() event to set the window title
 function wv:onLoaded(success, status) 

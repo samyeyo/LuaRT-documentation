@@ -186,7 +186,7 @@ local ui = require "ui"
 require "webview"
 
 local win = ui.Window("Webview.useragent property example", "fixed", 320, 200)
-local wv = ui.Webview(win, "", 0, 0, 320, 160)
+local wv = ui.Webview(win, 0, 0, 320, 160)
 
 local btn = ui.Button(win, "Click to change Webview.useragent")
 btn:center()

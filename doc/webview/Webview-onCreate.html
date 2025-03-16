@@ -183,7 +183,7 @@ require "webview"
 
 -- creates a simple window
 local win = ui.Window("Webview:onCreate() event sample", 320, 200)
-local Webview = ui.Webview(win, "https://www.luart.org", 150, 70)
+local Webview = ui.Webview(win, { url = "https://www.luart.org" }, 150, 70)
 
 -- Webview:onCreate() event to center the Webview widget
 function Webview:onCreate()

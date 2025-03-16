@@ -170,11 +170,15 @@
         <a id="back" class="button is-white pl-5" href="Pipe.html?methods"><span class="icon has-text-grey-lighter"><i class="fas fa-circle-left"></i></span></a>
         <div class="card-content pt-0">
           <div class="content">
-            <p class="has-text-weight-light is-size-3 mb-5" style="color: #004080; vertical-align: middle">Pipe:read( ) <span class="tag is-rounded is-small has-background-info-light" style="background:#367DBB;vertical-align: middle"> method</p>
+            <p class="has-text-weight-light is-size-3 mb-5" style="color: #004080; vertical-align: middle">Pipe:read(<span style="color:#ae81ff">[ delay ]</span>) <span class="tag is-rounded is-small has-background-info-light" style="background:#367DBB;vertical-align: middle"> method</p>
             <p>Reads from the Pipe (from the stdout and stderr of the executed process).</p>
+
+            <p class="is-size-4 mb-1 mt-6" style="color: #004080">Parameters</p>
+            <p class="has-text-weight-light is-size-5 mt-2 mb-0"><span style="color:#ae81ff">[ delay ]</span></p>
+            An optional <code>number</code> representing the delay to wait before reading, in milliseconds, defaulting to <code>100</code>
             <p class="is-size-4 mt-6 mb-0" style="color: #004080">Return value</p>
             Returns a <a href="./Task.html"><i class="fas fa-bolt" style="font-size:1em; color :#367DBB"></i> Task</a> instance.
-            <br>Once finished, the Task will return a <code>string</code> or <code>nil</code> if the standard output of the executed process is empty.
+            <br>Once finished, the Task will return a <code>string</code> or <code>nil</code> if the executed process has been terminated.
             <p class="is-size-4 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
 local pipe = sys.Pipe('cmd /K dir /B')

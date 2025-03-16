@@ -182,7 +182,7 @@ require "webview"
 
 -- create a simple Window
 local win = ui.Window("Webview:center() sample", 640, 480)
-ui.Webview(win, "https://www.luart.org", 0, 0, 600, 400):center()
+ui.Webview(win, { url = "https://www.luart.org" }, 0, 0, 600, 400):center()
 
 win:show()
 

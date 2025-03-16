@@ -181,7 +181,7 @@ require "webview"
 
 -- create a simple Webview 
 local win = ui.Window("Webview.visible sample", 640, 480)
-local Webview = ui.Webview(win, "https://www.google.com", 0, 50, 640, 430)
+local Webview = ui.Webview(win, { url = "https://www.google.com" }, 0, 50, 640, 430)
 
 local button = ui.Button(win, "Click to hide Webview for 2sec")
 button:center()

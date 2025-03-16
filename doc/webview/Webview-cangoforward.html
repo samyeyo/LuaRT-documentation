@@ -189,7 +189,7 @@ local nextBtn = ui.Button(win, "\xe2\x87\xa8", 616, 3, 16, 16)
 nextBtn.font="Lucida Console"
 nextBtn.fontsize = 12
 nextBtn.fontstyle = { bold = true }
-local Webview = ui.Webview(win, "", 0, 30, 640, 430)
+local Webview = ui.Webview(win, 0, 30, 640, 430)
 
 function prevBtn:onClick()
     if Webview.cangoback then

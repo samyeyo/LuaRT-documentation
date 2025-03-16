@@ -185,7 +185,7 @@ require "webview"
 -- create a simple Webview 
 local win = ui.Window("Webview.url sample", 640, 480)
 local addressbar = ui.Entry(win, "", 0, 6, 640, 24)
-local Webview = ui.Webview(win, "", 0, 30, 640, 430)
+local Webview = ui.Webview(win, 0, 30, 640, 430)
 
 function addressbar:onSelect()
     Webview.url = addressbar.text

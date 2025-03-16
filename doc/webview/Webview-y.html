@@ -180,7 +180,7 @@ require "webview"
 
 -- create a simple window
 local win = ui.Window("Webview.x sample", 500, 400)
-local Webview = ui.Webview(win, "https://www.google.com/?mobile", 25, 0, 450, 300)
+local Webview = ui.Webview(win, { url = "https://www.google.com/?mobile" }, 25, 0, 450, 300)
 
 -- shows the window
 win:show()
