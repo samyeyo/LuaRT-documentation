@@ -188,13 +188,13 @@ function button:onClick()
 	button.text = entry.masked and "Show secret code" or "Hide secret code"
 end 
 
--- mask the entry
+-- mask the Entry
 entry.masked = true
 win:show()
 
 -- entry:onClick() event (won't be fired !)
 function entry:onClick()
-	ui.info("You have clicked on the entry !!")
+	ui.info("You have clicked on the Entry !!")
 end
 
 -- update user interface

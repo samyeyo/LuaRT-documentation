@@ -172,7 +172,7 @@
           <div class="content">
             <p class="has-text-weight-light is-size-3 mb-5" style="color: #004080">Picture.visible  <span class="tag is-rounded is-small is-warning" style="vertical-align: middle">read/write property</span></p>
             <p><br>
-			Get or set the picture visibility on screen, a <strong style="color:#ae81ff">true</strong> value means that the Picture is shown, a <strong style="color:#ae81ff">false</strong> value means that the Picture is hidden.
+			Get or set the Picture visibility on screen, a <strong style="color:#ae81ff">true</strong> value means that the Picture is shown, a <strong style="color:#ae81ff">false</strong> value means that the Picture is hidden.
 			          <article class="message is-info" style="margin-left: 15%; margin-right: 15%"><div class="message-body">The picture.visible property is also affected by the <a href="./Picture-show.html">Picture:show()</a> and <a href="./Picture-hide.html">Picture:hide()</a> methods.</div></article></p>
             <p class="is-size-4 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
@@ -186,7 +186,7 @@ local button = ui.Button(win, "Click to hide picture", 120, 170)
 picture.font = "Impact"
 picture.fontsize = 24
 
--- hides the picture and shows it again after 2 sec
+-- hides the Picture and shows it again after 2 sec
 function button:onClick()
 	picture.visible = false
 	button.enabled = false
@@ -197,7 +197,7 @@ end
 
 win:show()
 
--- update the user interface until the user closes the picture
+-- update the user interface until the user closes Picture
 repeat
 	ui.update()
 until not win.visible
