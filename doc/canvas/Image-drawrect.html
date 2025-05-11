@@ -170,7 +170,7 @@
         <a id="back" class="button is-white pl-5" href="Image.html?methods"><span class="icon has-text-grey-lighter"><i class="fas fa-circle-left"></i></span></a>
         <div class="card-content pt-0">
           <div class="content">
-            <p class="has-text-weight-light is-size-3 mb-5" style="color: #004080; vertical-align: middle">Image:drawrect(<span style="color:#ae81ff">x</span>, <span style="color:#ae81ff">y</span>, <span style="color:#ae81ff">width</span>, <span style="color:#ae81ff">height</span>, <span style="color:#ae81ff">[ opacity ]</span>  ) <span class="tag is-rounded is-small has-background-info-light" style="background:#367DBB;vertical-align: middle"> method</span></p>
+            <p class="has-text-weight-light is-size-3 mb-5" style="color: #004080; vertical-align: middle">Image:drawrect(<span style="color:#ae81ff">x</span>, <span style="color:#ae81ff">y</span>, <span style="color:#ae81ff">width</span>, <span style="color:#ae81ff">height</span>, <span style="color:#ae81ff">[opacity]</span>, <span style="color:#ae81ff">[interpolation]</span> ) <span class="tag is-rounded is-small has-background-info-light" style="background:#367DBB;vertical-align: middle"> method</span></p>
             <p><br>
             Draws the Image on its Canvas, using the specified position, width, height and opacity.</p>            
             <p class="is-size-4 mb-1 mt-6" style="color: #004080">Parameters</p>
@@ -182,8 +182,15 @@
             <p>A number that represent the Image width</p>
             <p class="has-text-weight-light is-size-5 mt-2 mb-0"><span style="color:#ae81ff">height</span></p>
             <p>A number that represent the Image height</p>
-            <p class="has-text-weight-light is-size-5 mt-2 mb-0"><span style="color:#ae81ff">[ opacity ]</span></p>
+            <p class="has-text-weight-light is-size-5 mt-2 mb-0"><span style="color:#ae81ff">[opacity]</span></p>
             <p>An optional number representing the degree of opacity, defaulting to 1 (full opacity). A value of 0.5 means middle transparency</p>
+            <p class="has-text-weight-light is-size-5 mt-2 mb-0"><span style="color:#ae81ff">[interpolation]</span></p>
+            <p>An optional <code>string</code> used to specify the quality of image scaling :
+              <ul>
+                <li><code>"nearest"</code> : Use the exact color of the nearest bitmap pixel to the current rendering pixel (the default).</code></li>
+                <li><code>"linear"</code> : Uses a four point sample and linear interpolation, using more processing time, but outputs a higher quality image.</li>
+              </ul>
+            </p>
             <p class="is-size-4 mb-1 mt-6" style="color: #004080">Return value</p>
             This function returns no value.
             <p class="is-size-4 mt-6 mb-0" style="color: #004080">Example</p>

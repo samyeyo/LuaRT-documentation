@@ -170,13 +170,15 @@
         <a class="button is-white pl-5" href="Http.html?methods"><span class="icon has-text-grey-lighter"><i class="fas fa-circle-left"></i></span></a>
         <div class="card-content pt-0">
           <div class="content">
-            <p class="has-text-weight-light is-size-3 mb-5" style="color: #004080; vertical-align: middle">Http:delete(<span style="color:#EA6AC3">uri</span>)</p>
+            <p class="has-text-weight-light is-size-3 mb-5" style="color: #004080; vertical-align: middle">Http:delete(<span style="color:#EA6AC3">uri</span>, <span style="color: #B1D928">content</span>)</p>
             <p><br>
 			        Send an asynchronous DELETE request to the connected HTTP server to delete the specified resource on the server.</p>
               <article class="message is-warning" style="margin-left: 10%; margin-right: 10%"><div class="message-body">Sending the DELETE request and receiveing the HTTP response is done by a Task asynchronously (other Tasks will be executed concurrently without blocking execution flow)</div></article>
             <p class="is-size-4 mb-1 mt-6" style="color: #004080">Parameters</p>
             <p class="has-text-weight-light is-size-5 mt-2 mb-0"><span style="color:#EA6AC3">uri</span></p>
             <p>A <code>string</code>  representing the target resource on the server to delete.</p>
+            <p class="has-text-weight-light is-size-5 mt-2 mb-0"><span style="color: #B1D928">content</span></p>
+            <p>A <a href="../sys/File.html"><i class="fas fa-file" style="color :#367DBB"></i> File</a> or any value converted to a <code>string</code> representing the body content of the request.
             <p class="is-size-4 mb-1 mt-6" style="color: #004080">Return value</p>
             <br>This method return a <a href="../sys/Task.html"><i class="fas fa-bolt" style="font-size:1em; color :#367DBB"></i> Task</a> instance. Once the Task has finished, it will return two values :
             <ul>

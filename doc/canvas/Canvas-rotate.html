@@ -172,9 +172,8 @@ local c = ui.Canvas(win)
 c.align = "all"
 
 local degree = 0
-local width, height = c:size()
-width = width/2
-height = height/2
+local width = c.width/2
+local height = c.height/2
 
 function c:onPaint()
   self:begin()

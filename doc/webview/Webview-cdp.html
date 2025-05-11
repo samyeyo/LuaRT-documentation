@@ -170,14 +170,18 @@
       <a id="back" class="button is-white pl-5" href="Webview.html?properties"><span class="icon has-text-grey-lighter"><i class="fas fa-circle-left"></i></span></a>
         <div class="card-content pt-0">
           <div class="content">
-            <p class="has-text-weight-light is-size-3 mb-5" style="color: #004080">Webview.cdp <span class="tag is-rounded has-background-danger-light mt-0 is-small" style="vertical-align: middle">readonly</span></p>
-            <p><br>
-			      Access a Chrome DevTools Protocol (CDP) function as a Lua <code>table</code>, calling it with a JSON <code>string</code>. 
-            <br>The CDP function will return a <a href="../sys/Task.html"><i class="fas fa-bolt" style="font-size:1em; color :#367DBB"></i> Task</a> that, once finished, will return two values :
+            <p class="has-text-weight-light is-size-3 mb-5" style="color: #004080">Webview.cdp <span class="tag is-rounded is-warning is-small" style="vertical-align: middle">read/write property</span></p>
+            <p>
+            This property acts like a Lua table with different behavior depending on how fields are accessed.
+            <p class="is-size-4 mb-1 mt-6" style="color: #004080">Calling a Chrome DevTools Protocol function</p>
+			      When getting this property, it will return a Chrome DevTools Protocol (CDP) function (that can be called with a JSON <code>string</code>).
+            The CDP function will then return a <a href="../sys/Task.html"><i class="fas fa-bolt" style="font-size:1em; color :#367DBB"></i> Task</a> that, once finished, will return two values :
             <ul>
               <li>A <code>boolean</code> value indicating if the Chrome DevTools function succeeded</li>
-              <li>A <code>string</code> value representing either an error message in case of failure, or the result as a JSON encoded string</li>
+              <li>A <code>string</code> value representing either an error message in case of failure, or the function result as a JSON string</li>
             </ul>
+            <p class="is-size-4 mb-1 mt-6" style="color: #004080">Setting a Chrome DevTools Protocol event function</p>
+			      When setting this property, a CDP event handler is defined using the provided Lua function.<br>
             <article class="message is-warning is-small mt-6 mb-6" style="margin-left: 10%; margin-right: 10%">
               <div class="message-header mb-0">
                 <p><i class="fas fa-pencil"></i> Notes</p>
@@ -185,7 +189,9 @@
               <div class="message-body mb-0 is-size-7">
                 <ul class="mt-0">
                  <li>The Chrome DevTools Protocol is a set of tools and APIs that allow developers to interact with, inspect, debug, and profile Chromium-based browsers like the Webview.</li>
-                 <li>You can access CDP functions seamlessly with this property, like <code>Webview.cdp.Log.clear()</code> to call <code>Log.clear()</code> CDP method</li>
+                 <li>You can get CDP functions and set CDP events seamlessly with this property.</li>
+                 <li>When defining an event handler function, make sure that event is spelled correctly.</li>
+                 <li>You cannot use this property if the Webview is not ready.</li>
                  <li>See <a href="https://chromedevtools.github.io/devtools-protocol/">Official documentation</a> for a full reference.</li>
                 </ul>
               </div></article>
@@ -194,31 +200,24 @@
 local ui = require "ui"
 require "webview"
 
-local win = ui.Window("Chrome Devtools Protocol example", "fixed", 320, 240)
+local win = ui.Window("Chrome Devtools Protocol event example", "fixed", 320, 240)
 local wv = ui.Webview(win, 0, 0, 320, 200)
-local button = ui.Button(win, "Send a message to console log")
-button:center()
-button.y = 206
+wv.align = "all"
 win:center()
 
-function button:onClick()
-    local success, result = await(wv.cdp.Runtime.evaluate('{"expression":"console.log(\'Hello from LuaRT !\')"}'))
-    if not success then
-      ui.error(result)
-    else
-      ui.info("Message sent !")
-    end
-end
-
 function wv:onReady()
-    self:opendevtools()
     self:loadstring([[
-    &lt;!DOCTYPE html&gt;
-    &lt;html&gt;
-    &lt;body&gt;
-        In the DevTools window, click on the Console tab to see the message.
-    &lt;/body&gt;
-    &lt;/html&gt;]])
+    <html>
+    <body><div style="display: flex; justify-content: center; align-items: center; height: 90vh;">
+        <button onclick="window.open('https://www.luart.org', '_blank', 'width=600,height=400')">Open new window</button>
+    </div></body>
+    </html>]])
+    -- enable CDP Page events
+    wv.cdp.Page.enable()
+    -- set a CDP Page.windowOpen() event
+    function wv.cdp.Page.windowOpen()
+        ui.info("New window detected")
+    end
 end
 
 ui.run(win):wait()

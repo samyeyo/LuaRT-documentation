@@ -170,18 +170,18 @@
         <a id="back" class="button is-white pl-5" href="Zip.html?methods"><span class="icon has-text-grey-lighter"><i class="fas fa-circle-left"></i></span></a>
         <div class="card-content pt-0">
           <div class="content">
-            <p class="has-text-weight-light is-size-3 mb-5" style="color: #004080; vertical-align: middle">Zip.async.extract(<span style="color:#EA6AC3">path</span>, <span style="color:lightgray">[dir]</span>, [<span style="color:#ae81ff">use_entrypath</span>]) <span class="tag is-rounded is-small has-background-info-light" style="background:#367DBB;vertical-align: middle"> method</p>
+            <p class="has-text-weight-light is-size-3 mb-5" style="color: #004080; vertical-align: middle">Zip.async.extract(<span style="color:#EA6AC3">path</span>, <span style="color:lightgray">[dir]</span>, <span style="color:#ae81ff">[use_entrypath]</span>) <span class="tag is-rounded is-small has-background-info-light" style="background:#367DBB;vertical-align: middle"> method</p>
             <p>Extract on the disk an entry with the given path/name in the Zip archive, asynchronously. The Zip archive should have been previously opened in <span style="color:#EA6AC3">"read"</span> mode.</p>
             <p class="is-size-4 mb-1 mt-6" style="color: #004080">Parameters</p>
             <p class="has-text-weight-light is-size-5 mt-2 mb-0"><span style="color:#EA6AC3">path</span></p>
             <p>A string representing the path and/or the name of the entry in the Zip archive to be extracted.</p>
-            <p class="has-text-weight-light is-size-5 mt-2 mb-0"><span style="color:lightgray">dir</span></p>
+            <p class="has-text-weight-light is-size-5 mt-2 mb-0"><span style="color:lightgray">[dir]</span></p>
             <p>An optional destination folder where the entry will be extracted on the disk, as a <span style="color:#EA6AC3">string</span> or a <a href="../sys/Directory.html"><i class="fas fa-folder" style="color :#367DBB"></i> Directory</a> value.<br>If omitted, the entry will be extracted in the current directory.</p>
-            <p class="has-text-weight-light is-size-5 mt-2 mb-0">[<span style="color:#ae81ff">use_entrypath</span>]</p>
+            <p class="has-text-weight-light is-size-5 mt-2 mb-0"><span style="color:#ae81ff">[use_entrypath]</span></p>
             <p>An optional boolean value that indicates to extract the entry conserving its path or not.</p>
 
             <p class="is-size-4 mb-1 mt-6" style="color: #004080">Return value</p>
-            This function returns a <a href="../sys/Task.html"><i class="fas fa-bolt" style="font-size:1em; color :#367DBB"></i> Task</a> executed in background.<br>
+            This function returns a <a href="../sys/Task.html"><i class="fas fa-bolt" style="font-size:1em; color :#367DBB"></i> Task</a> executed in background, or <code>false</code> in case of error.<br>
             Once the Task has terminated the entry extraction, it will return one of the following possible values :
             <ul>
                 <li><a href="../sys/File.html"><i class="fas fa-file" style="color :#367DBB"></i> File</a> representing the extracted file on the disk.</li>

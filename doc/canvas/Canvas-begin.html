@@ -6,7 +6,7 @@
   <meta content="width=device-width, initial-scale=1" name="viewport" />
   <meta name="description" content="Begin drawing operations on the Canvas" />
   <title>
-    Canvas.clear() | LuaRT free and open source Windows programming framework for Lua
+    Canvas.begin() | LuaRT free and open source Windows programming framework for Lua
   </title>
   <link href="../../css/bulma-docs.min.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
@@ -193,7 +193,7 @@ local canvas = ui.Canvas(win)
 canvas.align = "all"
 
 function canvas:onPaint()
-    -- Aternates canvas fill using a random color...
+    -- Alternates canvas fill using a random color...
     self:begin()
     self:clear(math.random(0xFFFFFFFF))
     self:flip()

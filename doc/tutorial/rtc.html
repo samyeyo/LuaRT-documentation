@@ -217,7 +217,7 @@ rtc -s hello.lua
                   <div class="message-header">
                     <p><i class="fas fa-thumbtack"></i> Sticky note</p>
                   </div>
-                  <div class="message-body">Static compilation may sound appealing, but it comes at a price: Binary Lua modules cannot be loaded at runtime.<br>Reserve this type of compilation for simple applications that do not depend on third-party binary modules.</div>
+                  <div class="message-body">Since Lua<sup>rt</sup> 2.0.0, static compilation supports binary Lua modules loading.<br>You will need a binary module compiled with the <code>lua54-static.lib</code> library, and its name must be suffixed by <code>"-static"</code></div>
                 </article>
 				<h2 class="has-text-weight-light is-size-3 mt-6">Open a Window</h2>
 				<p class="mt-4">By default, <code>rtc</code> decide to compile executables for console or desktop depending on the file extension :</p>
