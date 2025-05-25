@@ -211,7 +211,8 @@
             <ul class="mt-0">
                 <li>Console versions of the interpreter are suitable for command line tools, as they are running in a command prompt window.</li>
                 <li>Desktop versions of the interpreter are for applications based on the Windows GUI, so they include the <code>ui</code> module.</li>
-                <li>Static interpreters do not depend on <code>lua54.dll</code>, but the use of binary modules is strongly discouraged.</li>
+                <li>Static interpreters do not depend on <code>lua54.dll</code>, even with static compiled modules.</li>
+                <li>Static modules must be compiled with the provided <code>lua54-static.lib</code> and they names suffixed by <code>-static.dll</code></li>
                 <li>Since Lua<sup>rt</sup> 1.2.0, better compatibility with PUC Lua is provided by the integration of the PUC Lua <code>os</code>, <code>io</code> and <code>utf8</code> modules.</li>
             </ul>
             </div>
