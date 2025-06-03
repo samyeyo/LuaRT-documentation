@@ -277,7 +277,8 @@ rtc.exe -w hello.lua .
 				<p class="mt-4">But wait a minute, how to access our files once they are embedded in our executable ?</p>
 				<p>The <code>embed</code> module comes to the rescue. This module is only available to compiled scripts if embedded content is found inside the executable. This module contains : </p>
 				<ul><li>A <a href="../sys/File.html"><i class="fas fas fa-file"></i> File</a> object to interact with all the embedded files.</li>
-				<li>A  <a href="../compression/Zip.html"><i class="fas fas fa-archive"></i> Zip</a> object instance to access the compressed embedded content.</li></ul>
+				<li>A <a href="../sys/Directory.html"><i class="fas fas fa-folder"></i> Directory</a> object to interact with folders in the embedded content.</li>
+				<li>A <a href="../compression/Zip.html"><i class="fas fas fa-archive"></i> Zip</a> object instance to access the compressed embedded content.</li></ul>
 				<p>If you want to use a Lua file or a Lua binary module in the embedded content, just use the global <code>require()</code> function seamlessly, without the need to extract files before.</p>
 				<article class="message is-warning is-small mt-6 mb-6" style="margin-left: 20%; margin-right: 20%">
                   <div class="message-header">
