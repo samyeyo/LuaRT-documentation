@@ -179,7 +179,7 @@ local ui = require "ui"
 
 -- create a window
 local win = ui.Window("Calendar:onDrop() sample", 440, 380)
-local widget = ui.Calendar(win, "Drop it here !")
+local widget = ui.Calendar(win)
 widget.allowdrop = true
 widget:center()
 
