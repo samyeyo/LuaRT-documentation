@@ -1,0 +1,591 @@
+{
+    "samplerate": {
+        "__results": "<span style=\"color:#ae81ff\">number</span>",
+        "__access": "readonly",
+        "__kind": "property",
+        "__name": "samplerate",
+        "__description": "<br>Get the current audio device sample rate, as a <code>number</code>. The audio sample rate is measured in hertz (Hz) and it determines the sound quality",
+        "__example": "local audio = require \"audio\"\nlocal console = require \"console\"\n\nlocal function write_property(name, value)\n    -- Fancy Formatting\n    console.writecolor(\"brightwhite\", name..\" :\\t\")\n    console.writecolor(\"cyan\", value..\"\\n\")\nend\n-- Display audio properties\nwrite_property(\"Audio device\", \"\\t\"..audio.device)\nwrite_property(\"Device samplerate\", audio.samplerate)\nwrite_property(\"Device channels\", audio.channels)",
+        "__tinydesc": "Get the current device sample rate",
+        "__filename": "samplerate.html"
+    },
+    "__name": "audio",
+    "devices": {
+        "__results": "<span style=\"color:#B1D928\">table</span>",
+        "__access": "readonly",
+        "__kind": "property",
+        "__name": "devices",
+        "__description": "<br>Get the list of detected audio devices, as a <code>table</code>, that contains the following fields :<ul><li><code>\"playback\"</code>: to get a <code>table</code> that lists audio playing devices.</li><li><code>\"recording\"</code>: to get a <code>table</code> that lists audio recoding devices.</li></ul>",
+        "__example": "local audio = require \"audio\"\n\nprint(\"Audio playback devices found :\")\nfor device in each(audio.devices.playback) do\n  print(\"\\t|- \"..device)\nend\n\nprint(\"\\nAudio recording devices found :\")\nfor device in each(audio.devices.recording) do\n  print(\"\\t|- \"..device)\nend",
+        "__tinydesc": "Get the list of detected audio devices",
+        "__filename": "devices.html"
+    },
+    "Sound": {
+        "maxdistance": {
+            "__results": "<span style=\"color:#ae81ff\">number</span>",
+            "__access": "read/write",
+            "__kind": "property",
+            "__name": "maxdistance",
+            "__description": "<br>Get or set the maximum distance for attentation calculation. This property default value is set to <code>3.4028234663853e+38</code>",
+            "__example": "local audio = require \"audio\"\nlocal console = require \"console\"\n\nlocal sound = audio.Sound(\"music.mp3\")\n\nprint(sound.maxdistance)",
+            "__tinydesc": "Get/set the sound maximum distance for attenuation calculation",
+            "__filename": "Sound-maxdistance.html"
+        },
+        "playing": {
+            "__results": "<span style=\"color:#ae81ff\">number</span>",
+            "__access": "readonly",
+            "__kind": "property",
+            "__name": "playing",
+            "__description": "<br>Check if the sound is playing, a <code>boolean</code> value. If the property is <code>true</code>, the sound is currently playing.",
+            "__example": "local audio = require \"audio\"\n\nlocal sound = audio.Sound(\"music.mp3\")\nsound:play()\n-- Keep playing the music until it is finished\nwhile sound.playing do \n  sleep()\nend",
+            "__tinydesc": "Check if the sound is playing",
+            "__filename": "Sound-playing.html"
+        },
+        "doppler": {
+            "__results": "<span style=\"color:#ae81ff\">number</span>",
+            "__access": "read/write",
+            "__kind": "property",
+            "__name": "doppler",
+            "__description": "<br>Get or set the sound doppler effect. This property default value is set to <code>1.0</code>",
+            "__example": "local audio = require \"audio\"\nlocal console = require \"console\"\n\nlocal sound = audio.Sound(\"music.mp3\")\n\nprint(sound.doppler)",
+            "__tinydesc": "Get/set the sound doppler factor",
+            "__filename": "Sound-doppler.html"
+        },
+        "__kind": "object",
+        "__description": "The Sound object plays and controls audio with effects and spatial properties",
+        "mingain": {
+            "__results": "<span style=\"color:#ae81ff\">number</span>",
+            "__access": "read/write",
+            "__kind": "property",
+            "__name": "mingain",
+            "__description": "<br>Get or set the minimum gain to apply from spatialization. This property default value is set to <code>0.0</code>",
+            "__example": "local audio = require \"audio\"\nlocal console = require \"console\"\n\nlocal sound = audio.Sound(\"music.mp3\")\n\nprint(sound.mingain)",
+            "__tinydesc": "Get/set the sound minimum gain from spatialization",
+            "__filename": "Sound-mingain.html"
+        },
+        "pitch": {
+            "__results": "<span style=\"color:#ae81ff\">number</span>",
+            "__access": "read/write",
+            "__kind": "property",
+            "__name": "pitch",
+            "__description": "<br>Get or set the sound pitch, <code>number</code> that controls the playback speed of the sound. A value of <code>1.0</code> means the sound will play at original speed.",
+            "__example": "local audio = require \"audio\"\nlocal ui = require \"ui\"\nrequire \"console\"\n\nlocal win = ui.Window(\"Music player\", \"single\", 320, 200)\n\nlocal file = sys.File(\"music.mp3\")\nwin:status(\"Playing \"..file.name)\n\nlocal sound = audio.Sound(file)\nsound.pitch = 1.5 -- Change the pitch of the audio\nsound:play()\n\nwin:show()\n\nwhile win.visible do \n    ui.update()\nend",
+            "__tinydesc": "Get/set the sound pitch",
+            "__filename": "Sound-pitch.html"
+        },
+        "position": {
+            "__results": "<span style=\"color:#B1D928\">table</span>",
+            "__access": "read/write",
+            "__kind": "property",
+            "__name": "position",
+            "__description": "<br>Get or set the sound position in the world",
+            "__example": "local audio = require \"audio\"\nlocal console = require \"console\"\n\nlocal sound = audio.Sound(\"music.mp3\")\n\nlocal function printvector(v)\n  -- Fancy Formatting\n  console.writecolor(\"brightwhite\", \"Sound \"..v..(#v < 7 and \":\\t\\t\" or \" :\\t\"))\n  local value = \"{ \"\n  for axis, val in pairs(sound[v]) do\n    value = value..axis..\" = \"..val..\", \"\n  end\n  value = value:gsub(\", $\", \" }\")\n  console.writecolor(\"cyan\", value..\"\\n\")\nend\n\n-- Get default listener position, direction, veolocity, worldup and cone\nprintvector(\"position\")\nprintvector(\"direction\")\nprintvector(\"velocity\")\nprintvector(\"cone\")",
+            "__tinydesc": "Get/set the sound position in the world",
+            "__filename": "Sound-position.html"
+        },
+        "rolloff": {
+            "__results": "<span style=\"color:#ae81ff\">number</span>",
+            "__access": "read/write",
+            "__kind": "property",
+            "__name": "rolloff",
+            "__description": "<br>Get or set the sound current rolloff (speed and direction)",
+            "__example": "local audio = require \"audio\"\nlocal console = require \"console\"\n\nlocal sound = audio.Sound(\"music.mp3\")\n\nprint(sound.rolloff)",
+            "__tinydesc": "Get/set the sound rolloff",
+            "__filename": "Sound-rolloff.html"
+        },
+        "velocity": {
+            "__results": "<span style=\"color:#ae81ff\">number</span>",
+            "__access": "read/write",
+            "__kind": "property",
+            "__name": "velocity",
+            "__description": "<br>Get or set the sound current velocity (speed and direction)",
+            "__example": "local audio = require \"audio\"\nlocal console = require \"console\"\n\nlocal sound = audio.Sound(\"music.mp3\")\n\nlocal function printvector(v)\n  -- Fancy Formatting\n  console.writecolor(\"brightwhite\", \"Sound \"..v..(#v < 7 and \":\\t\\t\" or \" :\\t\"))\n  local value = \"{ \"\n  for axis, val in pairs(sound[v]) do\n    value = value..axis..\" = \"..val..\", \"\n  end\n  value = value:gsub(\", $\", \" }\")\n  console.writecolor(\"cyan\", value..\"\\n\")\nend\n\n-- Get default listener position, direction, veolocity, worldup and cone\nprintvector(\"position\")\nprintvector(\"direction\")\nprintvector(\"velocity\")\nprintvector(\"cone\")",
+            "__tinydesc": "Get/set the sound velocity",
+            "__filename": "Sound-velocity.html"
+        },
+        "pan": {
+            "__results": "<span style=\"color:#ae81ff\">number</span>",
+            "__access": "read/write",
+            "__kind": "property",
+            "__name": "pan",
+            "__description": "<br>Get or set the sound pan, <code>number</code> that controls the distribution of the sound in channels. A value of <code>-1.0</code> means the sound is on the left channel, a value of <code>-1.0</code> means the sound is on the right channel.",
+            "__example": "local audio = require \"audio\"\nlocal console = require \"console\"\n\nlocal sound = audio.Sound(\"music.mp3\")\nprint(\"Press a key to exit\")\n\nlocal p = 0\nlocal delta = -0.1\nsound.pan = p\nsound:play()\n\n-- Play the sound from left to right by changing sound.pan at each second\nwhile (not console.keyhit) and sound.playing do\n    p = p+delta\n    sound.pan = p\n    sleep(1000)\n    if p <-0.5 then\n        delta = 0.1 \n    elseif p > 0.5 then\n        delta = -0.1\n    end\nend",
+            "__tinydesc": "Get/set the sound pan",
+            "__filename": "Sound-pan.html"
+        },
+        "reverb": {
+            "__returns": "This function returns no value.",
+            "__name": "reverb",
+            "__example": "local audio = require \"audio\"\nlocal ui = require \"ui\"\n\nlocal win = ui.Window(\"Music player\", \"single\", 320, 200)\n\nlocal file = sys.File(\"music.mp3\")\nlocal ch = ui.Checkbox(win, \"Reverb effect\")\nch:center()\n\nwin:status(\"Playing \"..file.name)\n\nlocal sound = audio.Sound(file)\nsound:play()\n\nfunction ch:onClick()\n    if ch.checked then\n        sound:reverb() -- apply reverb effect with default values\n    else\n        sound:reverb(nil) -- suppress reverb effect\n    end\nend\n\nwin:show()\n\nwhile win.visible do \n    ui.update()\nend",
+            "__results": "<span>-</span>",
+            "__kind": "method",
+            "__params": [
+                {
+                    "__description": "<p>A <code>number</code> representing the virtual room size: <code>0.0</code> is like a closet, <code>1.0</code> is like a large auditorium. The default value is <code>0.5</code></p>",
+                    "__optional": true,
+                    "__color": "ae81ff",
+                    "__name": "roomsize"
+                },
+                {
+                    "__description": "<p>A <code>number</code> representing the absorption of high frequencies in the virtual room: <code>0.0</code> means no absorption, <code>1.0</code> means maximal absorption. The default value is <code>0.25</code></p>",
+                    "__optional": true,
+                    "__color": "ae81ff",
+                    "__name": "damping"
+                },
+                {
+                    "__description": "<p>A <code>number</code> representing the \"width\" of the reverb effect : high values create a more \"spacious\" effect The default value is <code>1.0</code> second.</p>",
+                    "__optional": true,
+                    "__color": "ae81ff",
+                    "__name": "width"
+                },
+                {
+                    "__description": "<p>A <code>number</code> representing the volume adjustement of the original (\"dry\") sound. The default value is <code>0.0</code></p>",
+                    "__optional": true,
+                    "__color": "ae81ff",
+                    "__name": "dry"
+                },
+                {
+                    "__description": "<p>A <code>number</code> representing the volume adjustement of the reverb (\"wet\") effect. The default value is <code>0.33333333333</code></p>",
+                    "__optional": true,
+                    "__color": "ae81ff",
+                    "__name": "wet"
+                }
+            ],
+            "__description": "<br>Apply a reverberation effect on the sound. Calling this method with an explicit <code>nil</code> will suppress the reverb effect.",
+            "__tinydesc": "Apply a reverb effect to the sound",
+            "__filename": "Sound-reverb.html"
+        },
+        "ended": {
+            "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+            "__access": "readonly",
+            "__kind": "property",
+            "__name": "ended",
+            "__description": "<br>Check if the sound has ended, a <code>boolean</code> value. When the property is <code>true</code>, the end of the sound have been reached.",
+            "__example": "local audio = require \"audio\"\n\nlocal sound = audio.Sound(\"music.mp3\")\nsound:play()\n\nrepeat\n  sleep()\nuntil sound.ended -- Repeat until the sound has ended",
+            "__tinydesc": "Check if the sound has ended",
+            "__filename": "Sound-ended.html"
+        },
+        "__results": "",
+        "seek": {
+            "__returns": "This function returns no value.",
+            "__name": "seek",
+            "__example": "local audio = require \"audio\"\nlocal console = require \"console\"\n\n-- Loads and play a music\nlocal sound = audio.Sound(\"music.mp3\")\nsound:play()\n\n-- plays the sound 2 sec...\nsleep(2000)\n\n-- ...then advance cursor position at 33.1 seconds\nsound:seek(33.1)\n\nwhile sound.playing do\n  sleep()\nend",
+            "__results": "-",
+            "__kind": "method",
+            "__params": [
+                {
+                    "__description": "<p>A <code>number</code> representing the time position on the sound, in seconds.</p>",
+                    "__optional": false,
+                    "__color": "ae81ff",
+                    "__name": "pos"
+                }
+            ],
+            "__description": "<br>Moves the sound cursor position",
+            "__tinydesc": "Seek sound to time position",
+            "__filename": "Sound-seek.html"
+        },
+        "stop": {
+            "__returns": "This function returns no value.",
+            "__name": "stop",
+            "__example": "local audio = require \"audio\"\nlocal console = require \"console\"\n\n-- Loads and play a music\nlocal sound = audio.Sound(\"music.mp3\")\nsound:play()\n\n-- will stop the sound in one minute (= 60000ms)\nsound:stop(60000)\n\nwhile sound.playing do\n  sleep()\nend",
+            "__results": "-",
+            "__kind": "method",
+            "__params": [
+                {
+                    "__description": "<p>A <code>number</code> representing an optional delay before the sound is stopped, in milliseconds (defaulting to <code>0</code>)</p>",
+                    "__optional": true,
+                    "__color": "ae81ff",
+                    "__name": "delay"
+                }
+            ],
+            "__description": "<br>Plays the sound, from its current cursor position",
+            "__tinydesc": "Stop playing the sound",
+            "__filename": "Sound-stop.html"
+        },
+        "__icon": "<span class=\"icon bd-link-icon mr-1\" style=\"font-size: 0.8em\"><i class=\"fas fa-file-audio\" style=\"color :#2187E7\"></i></span>",
+        "loop": {
+            "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+            "__access": "read/write",
+            "__kind": "property",
+            "__name": "loop",
+            "__description": "<br>Get or set the sound looping mode, a <code>boolean</code> value. If set to <code>true</code>, the sound will be played again from start once its end have been reached.",
+            "__example": "local audio = require \"audio\"\nlocal ui = require \"ui\"\n\nlocal win = ui.Window(\"Music player\", \"fixed\", 320, 200)\nlocal file = sys.File(\"music.mp3\")\nlocal ch = ui.Checkbox(win, \"Play in loop\")\nch:center()\n\nwin:status(\"Playing \"..file.name)\n\nlocal sound = audio.Sound(file)\nsound:play()\n\nfunction ch:onClick()\n    sound.loop = self.checked -- Toggle if the sound loops\nend\n\nwin:show()\n\nwhile win.visible do \n    ui.update()\nend",
+            "__tinydesc": "Get/set the sound looping mode",
+            "__filename": "Sound-loop.html"
+        },
+        "duration": {
+            "__results": "<span style=\"color:#ae81ff\">number</span>",
+            "__access": "readonly",
+            "__kind": "property",
+            "__name": "duration",
+            "__description": "<br>Get the sound is length in seconds",
+            "__example": "local audio = require \"audio\"\n\nlocal sound = audio.Sound(\"music.mp3\")\nlocal time = sys.Datetime()\n-- Calculate the length of the audio\ntime.hour = 0\ntime.minute = math.floor(sound.duration/60)\ntime.second = math.floor(sound.duration - time.minute*60)\n\nprint(\"music.mp3 length is \"..time.time)",
+            "__tinydesc": "Get the sound length in seconds",
+            "__filename": "Sound-duration.html"
+        },
+        "maxgain": {
+            "__results": "<span style=\"color:#ae81ff\">number</span>",
+            "__access": "read/write",
+            "__kind": "property",
+            "__name": "maxgain",
+            "__description": "<br>Get or set the maximum gain to apply from spatialization. This property default value is set to <code>1.0</code>",
+            "__example": "local audio = require \"audio\"\nlocal console = require \"console\"\n\nlocal sound = audio.Sound(\"music.mp3\")\n\nprint(sound.maxgain)",
+            "__tinydesc": "Get/set the sound maximum gain from spatialization",
+            "__filename": "Sound-maxgain.html"
+        },
+        "__tinydesc": "Object representation of a sound",
+        "volume": {
+            "__results": "<span style=\"color:#ae81ff\">number</span>",
+            "__access": "read/write",
+            "__kind": "property",
+            "__name": "volume",
+            "__description": "<br>Get or set the sound volume, a linear scale, with <code>0</code> results in silence and anything above <code>1</code> results in sound amplification.",
+            "__example": "local audio = require \"audio\"\nlocal console = require \"console\"\n\nprint(\"Playing some music\")\nprint(\"Press UP and DOWN arrow keys to change sound volume\")\nprint(\"Press SPACE to exit\")\n\nlocal sound = audio.Sound(\"music.mp3\")\n\nwhile true do \n    local c, special = console.readchar()\n    if special == true then\n        if c == \"H\" then        -- UP key have been pressed\n            sound.volume = sound.volume + 0.1\n            print(\"Sound volume set to \"..sound.volume)\n        elseif c == \"J\" then    -- DOWN key have been pressed\n            sound.volume = sound.volume - 0.1\n            print(\"Sound volume set to \"..sound.volume)\n        end\n    elseif c == \" \" then        -- SPACE key have been pressed\n        print(\"Stop playing...\")\n        break\n    end\nend",
+            "__tinydesc": "Get/set the sound volume",
+            "__filename": "Sound-volume.html"
+        },
+        "direction": {
+            "__results": "<span style=\"color:#B1D928\">table</span>",
+            "__access": "read/write",
+            "__kind": "property",
+            "__name": "direction",
+            "__description": "<br>Get or set the sound direction in the world",
+            "__example": "local audio = require \"audio\"\nlocal console = require \"console\"\n\nlocal sound = audio.Sound(\"music.mp3\")\n\nlocal function printvector(v)\n  -- Fancy Formatting\n  console.writecolor(\"brightwhite\", \"Sound \"..v..(#v < 7 and \":\\t\\t\" or \" :\\t\"))\n  local value = \"{ \"\n  for axis, val in pairs(sound[v]) do\n    value = value..axis..\" = \"..val..\", \"\n  end\n  value = value:gsub(\", $\", \" }\")\n  console.writecolor(\"cyan\", value..\"\\n\")\nend\n\n-- Get default listener position, direction, veolocity, worldup and cone\nprintvector(\"position\")\nprintvector(\"direction\")\nprintvector(\"velocity\")\nprintvector(\"cone\")",
+            "__tinydesc": "Get/set the sound direction in the world",
+            "__filename": "Sound-direction.html"
+        },
+        "__type": "object",
+        "fade": {
+            "__returns": "This function returns no value.",
+            "__name": "fade",
+            "__example": "local audio = require \"audio\"\n\n-- Loads and play a music\nlocal sound = audio.Sound(\"music.mp3\")\n\n-- fade out the sound volume for 3 second\nsound:fade(0, 1, 3000)\n\nsound:play()\nsleep(3000)\n\n-- fade in the sound for 2 second\nsound:fade(1, 0, 2000)\n\n-- let the sound play until fade out effect is terminated\nsleep(2000)",
+            "__results": "<span>-</span>",
+            "__kind": "method",
+            "__params": [
+                {
+                    "__description": "<p>A <code>number</code> representing the starting volume. A value of <code>0.0</code> (the default) means silence. The special value <code>-1</code> means the current volume</p>",
+                    "__optional": true,
+                    "__color": "ae81ff",
+                    "__name": "from"
+                },
+                {
+                    "__description": "<p>A <code>number</code> representing the ending volume. A value of <code>1.0</code> (the default) means maximum volume without amplification.</p>",
+                    "__optional": true,
+                    "__color": "ae81ff",
+                    "__name": "to"
+                },
+                {
+                    "__description": "<p>A <code>number</code> representing the duration of the fade effect in seconds. The default value is <code>1.0</code> second.</p>",
+                    "__optional": true,
+                    "__color": "ae81ff",
+                    "__name": "duration"
+                }
+            ],
+            "__description": "<br>Gradual increase (fade out) or decrease (fade in) the volume of the sound over a period of time",
+            "__tinydesc": "Fade the sound",
+            "__filename": "Sound-fade.html"
+        },
+        "cursor": {
+            "__results": "<span style=\"color:#ae81ff\">number</span>",
+            "__access": "read/write",
+            "__kind": "property",
+            "__name": "cursor",
+            "__description": "<br>Get or set the sound cursor position in seconds, a value of <code>0.0</code> means the start of the sound.",
+            "__example": "local audio = require \"audio\"\nlocal ui = require \"ui\"\n\nlocal win = ui.Window(\"Music player\", \"fixed\", 320, 200)\nlocal file = sys.File(\"music.mp3\")\n\nlocal label = ui.Label(win, \"sound.cursor = 0.0\")\nlabel.fontsize = 16\nlabel:center();\n\nlocal sound = audio.Sound(file)\nsound:play()\n\nwin:show()\n\nwhile win.visible do \n    label.text = \"sound.cursor : \"..string.format(\"%.1fs\",sound.cursor)\n    ui.update()\n    sleep(100)\nend",
+            "__tinydesc": "Get/set the current sound cursor position",
+            "__filename": "Sound-cursor.html"
+        },
+        "echo": {
+            "__returns": "This function returns no value.",
+            "__name": "echo",
+            "__example": "local audio = require \"audio\"\nlocal ui = require \"ui\"\n\nlocal win = ui.Window(\"Music player\", \"single\", 320, 200)\n\nlocal file = sys.File(\"music.mp3\")\nlocal ch = ui.Checkbox(win, \"Echo effect\")\nch:center()\n\nwin:status(\"Playing \"..file.name)\n\nlocal sound = audio.Sound(file)\nsound:play()\n\nfunction ch:onClick()\n    if ch.checked then\n        sound:echo(0.5, 0.4) -- apply an echo effect\n    else\n        sound:echo(nil) -- suppress the echo effect\n    end\nend\n\nwin:show()\n\nwhile win.visible do \n    ui.update()\nend",
+            "__results": "<span>-</span>",
+            "__kind": "method",
+            "__params": [
+                {
+                    "__description": "<p>A <code>number</code> representing the echo delay in seconds, the time delay between the original sound and its echo.<br>The default value is <code>0.4</code> (the default).</p>",
+                    "__optional": true,
+                    "__color": "ae81ff",
+                    "__name": "delay"
+                },
+                {
+                    "__description": "<p>A <code>number</code> representing the echo delay in seconds, the time it takes for the echo to decay to zero after the sound has stopped emitting.<br>The default value is <code>0.3</code> (the default).</p>",
+                    "__optional": true,
+                    "__color": "ae81ff",
+                    "__name": "decay"
+                },
+                {
+                    "__description": "<p>A <code>number</code> representing the volume adjustment of the original (\"dry\") sound. The default value is <code>1.0</code></p>",
+                    "__optional": true,
+                    "__color": "ae81ff",
+                    "__name": "dry"
+                },
+                {
+                    "__description": "<p>A <code>number</code> representing the volume adjustment of the echo effect (\"wet\") sound. The default value is <code>1.0</code></p>",
+                    "__optional": true,
+                    "__color": "ae81ff",
+                    "__name": "wet"
+                }
+            ],
+            "__description": "<br>Apply an echo effect on the sound. Calling this method with an explicit <code>nil</code> will suppress the echo effect.",
+            "__tinydesc": "Apply an echo effect to the sound",
+            "__filename": "Sound-echo.html"
+        },
+        "mindistance": {
+            "__results": "<span style=\"color:#ae81ff\">number</span>",
+            "__access": "read/write",
+            "__kind": "property",
+            "__name": "mindistance",
+            "__description": "<br>Get or set the minimum distance for attentation calculation. This property default value is set to <code>3.4028234663853e+38</code>",
+            "__example": "local audio = require \"audio\"\nlocal console = require \"console\"\n\nlocal sound = audio.Sound(\"music.mp3\")\n\nprint(sound.mindistance)",
+            "__tinydesc": "Get/set the sound minimum distance for attenuation calculation",
+            "__filename": "Sound-mindistance.html"
+        },
+        "__filename": "Sound.html",
+        "play": {
+            "__returns": "This function returns a <a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\"></i> Task</a>, that will end when the sound will finish to play. You can cancel the play by calling <a href=\"../sys/Task-cancel.html\">Task.cancel()</a> if needed.",
+            "__name": "play",
+            "__example": "local audio = require \"audio\"\nlocal console = require \"console\"\n\n-- loads a explosion sound\nlocal sound = audio.Sound(\"boom.wav\")\nsound:play(1000) -- Start the audio from 1000ms\nsleep((sound.duration+0.8)*1000)\nconsole.writecolor(\"red\", \"BOOOUUUM !!!\\n\")",
+            "__results": "<a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\"></i> Task</a>",
+            "__kind": "method",
+            "__params": [
+                {
+                    "__description": "<p>A <code>number</code> representing an optional delay before the sound is played, in milliseconds (defaulting to <code>0</code>)</p>",
+                    "__optional": true,
+                    "__color": "ae81ff",
+                    "__name": "delay"
+                }
+            ],
+            "__description": "<br>Plays the sound, from its current cursor position",
+            "__tinydesc": "Play the sound",
+            "__filename": "Sound-play.html"
+        },
+        "constructor": {
+            "__results": "<a href=\"Sound.html\"><i class=\"fas fa-file-audio\"></i> Sound</a>",
+            "__kind": "method",
+            "__params": [
+                {
+                    "__description": "<p>A <a href=\"../sys/File.html\"><i class=\"fas fa-file\"></i> File</a> or a filename as a <code>string</code> representing the file to load the sound from.</p>",
+                    "__optional": false,
+                    "__color": "606060",
+                    "__name": "file"
+                },
+                {
+                    "__description": "<p>A <code>boolean</code> value that prevent decoding of the binary sample when set to <code>true</code>.The sound will be decoded later (with a risk of performance hit). If set to <code>false</code> (the default value), the binary sample will be decoded during load time.</p>",
+                    "__optional": true,
+                    "__color": "ae81ff",
+                    "__name": "nodecoding"
+                },
+                {
+                    "__description": "<p>A <code>boolean</code> value that prevent using pitching/doppler effect on the sound when set to <code>true</code> (provides better optimization). If set to <code>false</code> (the default value), pitching and doppler effect will be available for this sound.</p>",
+                    "__optional": true,
+                    "__color": "ae81ff",
+                    "__name": "nopitch"
+                },
+                {
+                    "__description": "<p>A <code>boolean</code> value that prevent to use spatialization on the sound when set to <code>true</code> (provides better optimization). If set to <code>false</code> (the default value), spatialization will be available for this sound.</p><br>\n<p><article class=\"message is-warning\" style=\"margin-left: 15%; margin-right: 15%\"><div class=\"message-body\">The audio module support the following file types :<ul><li>WAV (Waveform Audio file format) <code>*.wav</code></li><li>MP3 (Moving Picture Experts Group Layer 3) <code>*.mp3</code></li><li>FLAC (Free Lossless Audio Codec) <code>*.flac</code></li><li>OGG VORBIS <code>*.ogg</code></li></ul></div></article></p>",
+                    "__optional": true,
+                    "__color": "ae81ff",
+                    "__name": "nospatial"
+                }
+            ],
+            "__name": "constructor",
+            "__description": "<br>The Sound constructor returns a Sound instance representing a binary sample data loaded from a file.",
+            "__example": "local audio = require \"audio\"\n\nlocal sound = audio.Sound(\"music.mp3\")\nsound:play()\n-- play sound for 5sec and exit\nsleep(5000)",
+            "__tinydesc": "Sound object constructor",
+            "__filename": "Sound-constructor.html"
+        },
+        "__name": "Sound",
+        "cone": {
+            "__results": "<span style=\"color:#B1D928\">table</span>",
+            "__access": "read/write",
+            "__kind": "property",
+            "__name": "cone",
+            "__description": "<br>Get or set the sound cone, that controls how sound is attenuated based on the Sound's direction",
+            "__example": "local audio = require \"audio\"\nlocal console = require \"console\"\n\nlocal sound = audio.Sound(\"music.mp3\")\n\nlocal function printvector(v)\n  -- Fancy Formatting\n  console.writecolor(\"brightwhite\", \"Sound \"..v..(#v < 7 and \":\\t\\t\" or \" :\\t\"))\n  local value = \"{ \"\n  for axis, val in pairs(sound[v]) do\n    value = value..axis..\" = \"..val..\", \"\n  end\n  value = value:gsub(\", $\", \" }\")\n  console.writecolor(\"cyan\", value..\"\\n\")\nend\n\n-- Get default listener position, direction, veolocity, worldup and cone\nprintvector(\"position\")\nprintvector(\"direction\")\nprintvector(\"velocity\") \nprintvector(\"cone\")",
+            "__tinydesc": "Get/set the sound cone",
+            "__filename": "Sound-cone.html"
+        }
+    },
+    "recdevice": {
+        "__results": "<span style=\"color:#EA6AC3\">string</span>",
+        "__access": "read/write",
+        "__kind": "property",
+        "__name": "recdevice",
+        "__description": "<br>Get or set the current audio recording device, as a <code>string</code>",
+        "__example": "local audio = require \"audio\"\nlocal console = require \"console\"\n\nlocal function write_property(name, value)\n    -- Fancy formatting\n    console.writecolor(\"yellow\", name..\":\\t\")\n    console.writecolor(\"cyan\", value..\"\\n\")\nend\n-- Display the audio properties\nwrite_property(\"Audio recording device\", audio.recdevice)",
+        "__tinydesc": "Get/set the current audio recording device",
+        "__filename": "recdevice.html"
+    },
+    "__kind": {
+        "isdesktop": true,
+        "isconsole": true,
+        "iscore": false
+    },
+    "record.stop": {
+        "__returns": "This function returns no value.",
+        "__name": "record.stop",
+        "__example": "local audio = require \"audio\"\n\nio.write(\"Recording audio for 5 sec... \")\n\n-- Start audio recording\naudio.record.stop(\"sound.wav\", \"wav\")\n\n-- Wait for 5 sec during recording\nsleep(5000)\n\n-- Stops audio recording\naudio.record.stop()\nprint(\"done !\\n\\nPlaying...\")\n\n-- Plays the recorded audio file\naudio.Sound(\"sound.wav\"):play():wait()",
+        "__results": "-",
+        "__kind": "function",
+        "__params": {},
+        "__description": "<br>Stops the current audio recording session.",
+        "__tinydesc": "Stop current audio recording session",
+        "__filename": "record-stop.html"
+    },
+    "__description": "The audio module plays and records audio using any audio device",
+    "play": {
+        "__returns": "This function returns no value.",
+        "__name": "play",
+        "__example": "local audio = require \"audio\"\nlocal console = require \"console\"\n\n-- loads a explosion sound\naudio.play(\"boom.wav\")\nconsole.writecolor(\"red\", \"BOOOUUUM !!!\\n\")",
+        "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+        "__kind": "function",
+        "__params": [
+            {
+                "__description": "<p>A <a href=\"../sys/File.html\"><i class=\"fas fa-file\"></i> File</a> or a filename as a <code>string</code> representing the file to load the sound from.</p><p><article class=\"message is-warning\" style=\"margin-left: 15%; margin-right: 15%\"><div class=\"message-body\">This function provide the simplest but least flexible way to play a sound.<br>For more flexibility and possibilities, you can use a <a href=\"Sound.html\" style=\"font-size:1em; color :#2187E7; text-decoration: none;\"><i class=\"fas fa-file-audio\"></i> Sound</a> object.</div></article></p>",
+                "__optional": false,
+                "__color": "606060",
+                "__name": "file"
+            }
+        ],
+        "__description": "<br>Plays the specified sound.",
+        "__tinydesc": "Play a sound",
+        "__filename": "play.html"
+    },
+    "position": {
+        "__results": "<span style=\"color:#B1D928\">table</span>",
+        "__access": "read/write",
+        "__kind": "property",
+        "__name": "position",
+        "__description": "<br>Get or set the listener position in the world",
+        "__example": "local audio = require \"audio\"\nlocal console = require \"console\"\n\nlocal function printvector(v)\n  -- Fancy Formatting\n  console.writecolor(\"brightwhite\", \"Listener \"..v..(#v < 7 and \":\\t\\t\" or \" :\\t\"))\n  local value = \"{ \"\n  for axis, val in pairs(audio[v]) do\n    value = value..axis..\" = \"..val..\", \"\n  end\n  value = value:gsub(\", $\", \" }\")\n  console.writecolor(\"cyan\", value..\"\\n\")\nend\n\n-- Get default listener position, direction, veolocity, worldup and cone\nprintvector(\"position\")\nprintvector(\"direction\")\nprintvector(\"velocity\")\nprintvector(\"worldup\")\nprintvector(\"cone\")",
+        "__tinydesc": "Get/set the listener position in the world",
+        "__filename": "position.html"
+    },
+    "worldup": {
+        "__results": "<span style=\"color:#B1D928\">table</span>",
+        "__access": "read/write",
+        "__kind": "property",
+        "__name": "worldup",
+        "__description": "<br>Get or set the listener worldup",
+        "__example": "local audio = require \"audio\"\nlocal console = require \"console\"\n\nlocal function printvector(v)\n  console.writecolor(\"brightwhite\", \"Listener \"..v..(#v < 7 and \":\\t\\t\" or \" :\\t\"))\n  local value = \"{ \"\n  for axis, val in pairs(audio[v]) do\n    value = value..axis..\" = \"..val..\", \"\n  end\n  value = value:gsub(\", $\", \" }\")\n  console.writecolor(\"cyan\", value..\"\\n\")\nend\n\n-- Get default listener position, direction, veolocity, worldup and cone\nprintvector(\"position\")\nprintvector(\"direction\")\nprintvector(\"velocity\")\nprintvector(\"worldup\")\nprintvector(\"cone\")",
+        "__tinydesc": "Get/set the listener worldup direction",
+        "__filename": "worldup.html"
+    },
+    "direction": {
+        "__results": "<span style=\"color:#B1D928\">table</span>",
+        "__access": "read/write",
+        "__kind": "property",
+        "__name": "direction",
+        "__description": "<br>Get or set the listener direction in the world",
+        "__example": "local audio = require \"audio\"\nlocal console = require \"console\"\n\nlocal function printvector(v)\n  -- Fancy Formatting\n  console.writecolor(\"brightwhite\", \"Listener \"..v..(#v < 7 and \":\\t\\t\" or \" :\\t\"))\n  local value = \"{ \"\n  for axis, val in pairs(audio[v]) do\n    value = value..axis..\" = \"..val..\", \"\n  end\n  value = value:gsub(\", $\", \" }\")\n  console.writecolor(\"cyan\", value..\"\\n\")\nend\n\n-- Get default listener position, direction, veolocity, worldup and cone\nprintvector(\"position\")\nprintvector(\"direction\")\nprintvector(\"velocity\")\nprintvector(\"worldup\")\nprintvector(\"cone\")",
+        "__tinydesc": "Get/set the listener direction in the world",
+        "__filename": "direction.html"
+    },
+    "channels": {
+        "__results": "<span style=\"color:#ae81ff\">number</span>",
+        "__access": "readonly",
+        "__kind": "property",
+        "__name": "channels",
+        "__description": "<br>Get the current audio device number of channels, as a <code>number</code>.<br>1 channel device will play sounds in \"mono\", while 2 channels device will play sounds in \"stereo\" and more channels will play sounds in \"surround\"",
+        "__example": "local audio = require \"audio\"\nlocal console = require \"console\"\n\nlocal function write_property(name, value)\n    -- Fancy formatting\n    console.writecolor(\"brightwhite\", name..\" :\\t\")\n    console.writecolor(\"cyan\", value..\"\\n\")\nend\n-- Display the audio properties\nwrite_property(\"Audio device\", \"\\t\"..audio.device)\nwrite_property(\"Device samplerate\", audio.samplerate)\nwrite_property(\"Device channels\", audio.channels)",
+        "__tinydesc": "Get the current device number of channels",
+        "__filename": "channels.html"
+    },
+    "playdevice": {
+        "__results": "<span style=\"color:#EA6AC3\">string</span>",
+        "__access": "read/write",
+        "__kind": "property",
+        "__name": "playdevice",
+        "__description": "<br>Get or set the current audio playing device, as a <code>string</code>",
+        "__example": "local audio = require \"audio\"\nlocal console = require \"console\"\n\nlocal function write_property(name, value)\n    -- Fancy formatting\n    console.writecolor(\"yellow\", name..\":\\t\")\n    console.writecolor(\"cyan\", value..\"\\n\")\nend\n-- Display the audio properties\nwrite_property(\"Audio playback device\", audio.playdevice)\nwrite_property(\"Device samplerate\", audio.samplerate)\nwrite_property(\"Device channels\", audio.channels)",
+        "__tinydesc": "Get/set the current audio playing device",
+        "__filename": "playdevice.html"
+    },
+    "__type": "module",
+    "gain": {
+        "__results": "<span style=\"color:#ae81ff\">number</span>",
+        "__access": "read/write",
+        "__kind": "property",
+        "__name": "gain",
+        "__description": "<br>Get or set the master gain, the global loudness of sounds in decibels. This property provides global amplification of sounds.",
+        "__example": "local audio = require \"audio\"\nlocal console = require \"console\"\n\nprint(\"Playing some music\")\nprint(\"Press UP and DOWN arrow keys to change gain\")\nprint(\"Press SPACE to exit\")\n-- Play some music\naudio.play(\"music.mp3\")\n\nwhile true do \n    local c, special = console.readchar()\n    if special == true then\n        if c == \"H\" then        -- UP key have been pressed\n            audio.gain = audio.gain + 1\n            print(\"Audio gain set to \"..audio.gain)\n        elseif c == \"J\" then    -- DOWN key have been pressed\n            audio.gain = audio.gain - 1\n            print(\"Audio gain set to \"..audio.gain)\n        end\n    elseif c == \" \" then        -- SPACE key have been pressed\n        print(\"Stop playing...\")\n        break\n    end\nend",
+        "__tinydesc": "Get/set the master gain",
+        "__filename": "gain.html"
+    },
+    "volume": {
+        "__results": "<span style=\"color:#ae81ff\">number</span>",
+        "__access": "read/write",
+        "__kind": "property",
+        "__name": "volume",
+        "__description": "<br>Get or set the global master volume, a linear scale, with <code>0</code> results in silence and anything above <code>1</code> results in amplification.",
+        "__example": "local audio = require \"audio\"\nlocal console = require \"console\"\n\nprint(\"Playing some music\")\nprint(\"Press UP and DOWN arrow keys to change volume\")\nprint(\"Press SPACE to exit\")\n\naudio.play(\"music.mp3\")\n\nwhile true do \n    local c, special = console.readchar()\n    if special == true then\n        if c == \"H\" then        -- UP key have been pressed\n            audio.volume = audio.volume + 0.5\n            print(\"Audio volume set to \"..audio.volume)\n        elseif c == \"J\" then    -- DOWN key have been pressed\n            audio.volume = audio.volume - 0.5\n            print(\"Audio volume set to \"..audio.volume)\n        end\n    elseif c == \" \" then        -- SPACE key have been pressed\n        print(\"Stop playing...\")\n        break\n    end\nend",
+        "__tinydesc": "Get/set the master volume",
+        "__filename": "volume.html"
+    },
+    "__filename": "index.html",
+    "__tinydesc": "Manages audio recording and playing",
+    "__icon": "<span class=\"icon bd-link-icon mr-1\" style=\"font-size: 0.8em\"><i class=\"fas fa-music\" style=\"color: #FF8A65\" ></i></span>",
+    "record.start": {
+        "__returns": "This function returns a <code>boolean</code> value, which indicates whether the recording session started successfully.",
+        "__name": "record.start",
+        "__example": "local audio = require \"audio\"\n\nio.write(\"Recording audio for 5 sec... \")\n\n-- Start audio recording\naudio.record.start(\"sound.wav\", \"wav\")\n\n-- Wait for 5 sec during recording\nsleep(5000)\n\n-- Stops audio recording\naudio.record.stop()\nprint(\"done !\\n\\nPlaying...\")\n\n-- Plays the recorded audio file\naudio.Sound(\"sound.wav\"):play():wait()",
+        "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+        "__kind": "function",
+        "__params": [
+            {
+                "__description": "<p>A <a href=\"../sys/File.html\"><i class=\"fas fa-file\"></i> File</a> or a filename as a <code>string</code> representing the file to save audio data to.</p>",
+                "__optional": false,
+                "__color": "606060",
+                "__name": "file"
+            },
+            {
+                "__description": "<p>An optional <code>string</code> that indicates the audio encoding format of the specified file :<ul><li><code>\"wav\"</code>: audio format known for its high-quality sound and large file size (default).</li><li><code>\"mp3\"</code>: widely-used compressed audio format that balances good sound quality and small file size.</li><li><code>\"aac\"</code>: compressed audio format offering better sound quality than MP3 at similar bit rates.</li></ul></p>",
+                "__optional": false,
+                "__color": "EA6AC3",
+                "__name": "format"
+            },
+            {
+                "__description": "<p>An optional <code>number</code> indicating the number of channels that will be recorded, defaulting to 2.</p>",
+                "__optional": true,
+                "__color": "ae81ff",
+                "__name": "channels"
+            },
+            {
+                "__description": "<p>An optional <code>number</code> indicating the number of channels that will be recorded, defaulting to 44100.</p>",
+                "__optional": true,
+                "__color": "ae81ff",
+                "__name": "samplerate"
+            },
+            {
+                "__description": "<p>An optional <code>number</code> indicating the amount of data processed per unit of time in the audio file, defaulting to :<ul><li>WAV format : 0</li><li>MP3 format : 128</li><li>AAC format : 96</li></ul></p>",
+                "__optional": true,
+                "__color": "ae81ff",
+                "__name": "bitrate"
+            }
+        ],
+        "__description": "<br>Starts a new audio recording session.",
+        "__tinydesc": "Start audio recording session",
+        "__filename": "record-start.html"
+    },
+    "velocity": {
+        "__results": "<span style=\"color:#B1D928\">table</span>",
+        "__access": "read/write",
+        "__kind": "property",
+        "__name": "velocity",
+        "__description": "<br>Get or set the listener current velocity (speed and direction)",
+        "__example": "local audio = require \"audio\"\nlocal console = require \"console\"\n\nlocal function printvector(v)\n  -- Fancy Formatting\n  console.writecolor(\"brightwhite\", \"Listener \"..v..(#v < 7 and \":\\t\\t\" or \" :\\t\"))\n  local value = \"{ \"\n  for axis, val in pairs(audio[v]) do\n    value = value..axis..\" = \"..val..\", \"\n  end\n  value = value:gsub(\", $\", \" }\")\n  console.writecolor(\"cyan\", value..\"\\n\")\nend\n\n-- Get default listener position, direction, veolocity, worldup and cone\nprintvector(\"position\")\nprintvector(\"direction\")\nprintvector(\"velocity\")\nprintvector(\"worldup\")\nprintvector(\"cone\")",
+        "__tinydesc": "Get/set the listener velocity",
+        "__filename": "velocity.html"
+    },
+    "cone": {
+        "__results": "<span style=\"color:#B1D928\">table</span>",
+        "__access": "read/write",
+        "__kind": "property",
+        "__name": "cone",
+        "__description": "<br>Get or set the listener cone, that controls how sound is attenuated based on the listener's direction",
+        "__example": "local audio = require \"audio\"\nlocal console = require \"console\"\n\nlocal function printvector(v)\n  -- Fancy formatting\n  console.writecolor(\"brightwhite\", \"Listener \"..v..(#v < 7 and \":\\t\\t\" or \" :\\t\"))\n  local value = \"{ \"\n  for axis, val in pairs(audio[v]) do\n    value = value..axis..\" = \"..val..\", \"\n  end\n  value = value:gsub(\", $\", \" }\")\n  console.writecolor(\"cyan\", value..\"\\n\")\nend\n\n-- Get default listener position, direction, veolocity, cone and cone\nprintvector(\"position\")\nprintvector(\"direction\")\nprintvector(\"velocity\")\nprintvector(\"worldup\")\nprintvector(\"cone\")",
+        "__tinydesc": "Get/set the listener cone",
+        "__filename": "cone.html"
+    }
+}

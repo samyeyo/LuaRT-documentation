@@ -134,3 +134,30 @@ div[class*="language-"] {
 	cursor: help;
 }
 
+.code-wrapper {
+	position: relative;
+	margin-bottom: 1rem;
+	padding: 0;
+  }
+
+.copy-button {
+	position: absolute;
+	top: 0.5em; 
+	right: 4em; 
+	background-color: rgb(252, 252, 252);
+	border: 0px;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	z-index: 10;
+	color: rgb(124, 125, 125);
+}
+
+.copy-button:hover {
+	color: #e0e0e0;
+}
+
+.copy-button.copied {
+	color: #155724;
+}

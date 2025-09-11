@@ -172,14 +172,14 @@
             <p class="mt-0 is-size-7 mb-6"><i>By Samir Tine, published on November 2022</i></p>
             <p>ZIP is a file format that supports lossless compression. A lossless compression algorithm allows the original data to be perfectly reconstructed from the compressed data. A ZIP file contains one or more compressed files, making it an ideal way to reduce the size of large files and keep related files together.</p>
             <h1 class="has-text-weight-light is-size-3 mt-6 mb-3">The Zip object</h1>
-            <p>The <a href="../compression/index.html"><i class="fas fa-archive" style="color :#A3967C; vertical-align: middle"></i> compression</a> module facilitates the creation of ZIP archive files. This module provides an abstraction of a ZIP file represented as a <a href="../compression/Zip.html"><i class="fas fa-archive" style="color :#367DBB"></i> Zip</a> object, with methods and properties for adding and extracting compressed files.</p>
+            <p>The <a href="../compression/index.html"><i class="fas fa-archive" style="color :#A3967C; vertical-align: middle"></i> compression</a> module facilitates the creation of ZIP archive files. This module provides an abstraction of a ZIP file represented as a <a href="../compression/Zip.html"><i class="fas fa-archive" style="color :#2187E7"></i> Zip</a> object, with methods and properties for adding and extracting compressed files.</p>
             <article class="message is-warning is-small mt-6 mb-6" style="margin-left: 20%; margin-right: 20%">
               <div class="message-header">
                 <p><i class="fas fa-thumbtack"></i> Sticky note</p>
               </div>
               <div class="message-body">Only INFLATE/DEFLATE algorithms are supported by the <code>Zip</code> object.</div>
             </article>
-            <p>To use the <a href="../compression/Zip.html"><i class="fas fa-archive" style="color :#367DBB"></i> Zip</a> object, you must first require for the <code>compression</code> module :</p>
+            <p>To use the <a href="../compression/Zip.html"><i class="fas fa-archive" style="color :#2187E7"></i> Zip</a> object, you must first require for the <code>compression</code> module :</p>
             <div class="language-lua" style="margin-left: 20%; margin-right:20%"><code>
 -- require the "compression" builtin module
 local compression = require "compression"
@@ -230,7 +230,7 @@ archive:write("C:\\addme.txt")
 archive:write("C:\\folder_to_add\\")
             </code></div>     
             <h2 class="has-text-weight-light is-size-3 mt-6 mb-3">Iterate over a ZIP archive</h2>
-            <p><a href="../compression/Zip.html"><i class="fas fa-archive" style="color :#367DBB"></i> Zip</a> object is iterable with the <a href="../base/each.html">each()</a> function, returning at every iteration the next entry name in the ZIP archive previously opened in <code>"read"</code> mode:</p>
+            <p><a href="../compression/Zip.html"><i class="fas fa-archive" style="color :#2187E7"></i> Zip</a> object is iterable with the <a href="../base/each.html">each()</a> function, returning at every iteration the next entry name in the ZIP archive previously opened in <code>"read"</code> mode:</p>
             <div class="language-lua" style="margin-left: 20%; margin-right:20%"><code>
 local compression = require "compression"
 

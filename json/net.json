@@ -1,0 +1,1001 @@
+{
+    "__icon": "<span class=\"icon bd-link-icon mr-1\" style=\"font-size: 0.8em\"><i class=\"fas fa-globe\" style=\"color :#2187E7; vertical-align: middle\" style=\"color: #D0D0D0\"></i></span>",
+    "__kind": {
+        "isdesktop": true,
+        "isconsole": true,
+        "iscore": false
+    },
+    "urlparse": {
+        "__returns": "Returns 4 strings, representing the scheme, the hostname, the path, and the parameters fields of the URL.<br>If any component is not found, returns a <span style=\"color: #606060\">nil</span> value instead of a string.<br>\n\t\t\t\tIf the string cannot be parsed, returns <span style=\"color:#ae81ff\">false</span>.",
+        "__name": "urlparse",
+        "__example": "local net = require \"net\"\nlocal console = require \"console\"\n\nlocal url = console.readln('Enter a URL : ')\nlocal scheme, hostname, path, parameters = net.urlparse(url)\n\nscheme = scheme or error(\"The URL entered is invalid\")\n\nprint(\"scheme :\", scheme)\nprint(\"hostname :\", hostname)\nprint(\"path\\t:\", path)\nprint(\"parameters :\", parameters)",
+        "__results": "<span style=\"color:#EA6AC3\">string</span> | <span style=\"color:#ae81ff\">false</span> | <span style=\"color: #606060\">nil</span>",
+        "__kind": "function",
+        "__params": [
+            {
+                "__description": "<p>A string representing a URL to parse, for example <span style=\"color:#EA6AC3\">\"https://www.luart.org/index.html\"</span>.</p>",
+                "__optional": false,
+                "__color": "EA6AC3",
+                "__name": "url"
+            }
+        ],
+        "__description": "Parse a URL into 4 components, corresponding to the structure of a URL : <code>scheme</code>://<code>hostname </code>/<code>path</code>?<code>parameters</code>",
+        "__tinydesc": "Parse an URL into components",
+        "__filename": "urlparse.html"
+    },
+    "ip": {
+        "__results": "<span style=\"color:#EA6AC3\">string</span> | <span style=\"color:#ae81ff\">boolean</span>",
+        "__access": "readonly",
+        "__kind": "property",
+        "__name": "ip",
+        "__description": "<br><br>net.ip returns a <span style=\"color:#EA6AC3\">string</span>",
+        "__example": "local net = require \"net\"\n\nlocal function GetLocalIP ()\n\treturn net.ip\nend    \n\nprint(GetLocalIP()) -- Public and local ip addresses are different. Should output \"192.168.x.x\", or \"127.0.0.x\" (if offline.)",
+        "__tinydesc": "Get current local IPv4 address",
+        "__filename": "ip.html"
+    },
+    "__description": "The net module provides networking functionalities",
+    "__tinydesc": "Supports networking operations including sockets, FTP, and HTTP requests",
+    "select": {
+        "__returns": "<ul>\n\t\t\t\t\t<li>In case of success, returns <span style=\"color:#ae81ff\">true</span>.</li>\n\t\t\t\t\t<li>In case of error, returns <span style=\"color:#ae81ff\">false</span> (you can check error message with the <a href=\"error.html\">net.error</a> property).</li>\n\t\t\t\t\t<li>If no networking event occured and the time limit expired, returns <span style=\"color: #606060\">nil</span></li>\n\t\t\t\t</ul>",
+        "__name": "select",
+        "__example": "-- Multi-connection Server example\nlocal net = require \"net\"\n\n-- create the server listening Socket\nlocal server = net.Socket(\"127.0.0.1\", 5000)\n\n-- array of clients Sockets\nlocal sockets = {server}\nserver.disconnected = false\n\nif server:bind() then\n  print(\"Server running on 127.0.0.1:5000\")\nelse\n  error(\"Network error : cannot create the server Socket\")\nend\n\nwhile true do\n  if net.select(sockets) == false then\n    error(\"Network error : \"..net.error)\n    break\n  end\n  \n  local alive_sockets = {}\n  for client in each(sockets) do\n    -- check for readability \n    if client.canread then\n      if client == server then\n        if server.canread then\n          -- check for new connection\n          local newclient = server:accept()\n          print(newclient.ip..\" has connected\")\n          sockets[#sockets+1] = newclient\n        end\n      else\n        local data = client:recv()\n        if data == false then\n          print(client.ip..\" has disconnected\")\n          client.disconnected = true\n        else\n          print(client.ip..\": \"..tostring(data))\n        end\n      end\t\t\t\n    end\n    -- check for error\n    if client.failed then\n      if client == server then\n        error(\"fatal network error with server\")\n      else\n        print(client.ip..\" has encountered a fatal network error\")\n        client.disconnected = true\n      end\n    end\n    if not client.disconnected then\n      alive_sockets[#alive_sockets+1] = client\n    end\n  end\n  -- keep only connected clients\n  sockets = alive_sockets\nend",
+        "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+        "__kind": "function",
+        "__params": [
+            {
+                "__description": "<p>A table containing an array of Sockets to check for network events.</p>\n",
+                "__optional": false,
+                "__color": "EA6AC3",
+                "__name": "socket_array"
+            },
+            {
+                "__description": "<p>An optional number to indicate the maximum time for select to wait for network events, in microseconds. If that argument is not provided, the function wait until a network event occurs.</p>",
+                "__optional": true,
+                "__color": "ae81ff",
+                "__name": "timeout"
+            }
+        ],
+        "__description": "Check for network events (readability, writability and errors) on the provided array of Sockets, by updating their corresponding properties Socket.canread, Socket.canwrite, Socket.failed.",
+        "__tinydesc": "Check for network events on Sockets",
+        "__filename": "select.html"
+    },
+    "Ftp": {
+        "port": {
+            "__results": "<span style=\"color:#ae81ff\">number</span> | <span style=\"color: #606060\">nil</span>",
+            "__access": "readonly",
+            "__kind": "property",
+            "__name": "port",
+            "__description": "<br><br>The Ftp.port property gets the current port used for connection to the FTP server or <strong style=\"color:gray\">nil</strong> if connection have been closed.",
+            "__example": "local net = require \"net\"\n\nlocal url = \"your ftp server address\"\nlocal ftpclient = net.Ftp(url, \"anonymous\", \"guest\")\n\n-- outputs ftp port\nprint(\"ftp port = \"..ftpclient.port)",
+            "__tinydesc": "Get FTP port",
+            "__filename": "Ftp-port.html"
+        },
+        "__icon": "<span class=\"icon bd-link-icon mr-1\" style=\"font-size: 0.8em\"><i class=\"fas fa-cloud-upload-alt\" style=\"color :#2187E7\"></i></span>",
+        "command": {
+            "__returns": "<br>This method return a <a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\"></i> Task</a> instance. Once the Task has finished, it will return a <code>boolean</code> value indicating if the operation was successful.",
+            "__name": "command",
+            "__example": "local net = require \"net\"\n\n-- connect to the FTP server\nlocal url = \"your ftp server\"\nlocal client = net.Ftp(url, \"username\", \"password\")\n\n-- Execute the LIST command\nif await(client:command(\"LIST /\")) then\n  print(\"LIST command result :\")\nelse\n  error(net.error)\nend",
+            "__results": "<a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\" style=\"color :#2187E7\"></i> Task</a>",
+            "__kind": "method",
+            "__params": [
+                {
+                    "__description": "<p>A <code>string</code> that contains the command to execute.</p>",
+                    "__optional": false,
+                    "__color": "EA6AC3",
+                    "__name": "cmd"
+                },
+                {
+                    "__description": "<p>An optional <code>boolean</code> value indicating if the Task should wait for a response.</p>",
+                    "__optional": true,
+                    "__color": "ae81ff",
+                    "__name": "response"
+                }
+            ],
+            "__description": "<br>Sends and executes the provided command to the FTP server.",
+            "__tinydesc": "FTP server command execution",
+            "__filename": "Ftp-command.html"
+        },
+        "__kind": "object",
+        "movefile": {
+            "__returns": "<br>This method return a <a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\"></i> Task</a> instance. Once the Task has finished, it will return a <code>boolean</code> value indicating if the operation was successful.",
+            "__name": "movefile",
+            "__example": "local net = require \"net\"\n\n-- connect to the FTP server\nlocal url = \"your ftp server\"\nlocal client = net.Ftp(url, \"username\", \"password\")\n\nif await(client:movefile(\"test.txt\", \"/archive/test.txt\")) then\n  print(\"Successfully moved FTP directory 'test.txt' to '/archive/test.txt'\")\nelse\n  error(net.error)\nend",
+            "__results": "<a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\" style=\"color :#2187E7\"></i> Task</a>",
+            "__kind": "method",
+            "__params": [
+                {
+                    "__description": "<p>A string that contains the file path (partially or fully qualified file names relative to the current FTP directory can be used).</p>\n",
+                    "__optional": false,
+                    "__color": "EA6AC3",
+                    "__name": "path"
+                },
+                {
+                    "__description": "<p>A string that contains the new file path (partially or fully qualified file names relative to the current FTP directory can be used).</p>",
+                    "__optional": false,
+                    "__color": "EA6AC3",
+                    "__name": "newpath"
+                }
+            ],
+            "__description": "<br>Moves the specified file from the FTP server.",
+            "__tinydesc": "Move a file on the server",
+            "__filename": "Ftp-movefile.html"
+        },
+        "constructor": {
+            "__results": "<a href=\"Ftp.html\"><i class=\"fas fa-cloud-upload-alt\"></i> Ftp</a>",
+            "__kind": "method",
+            "__params": [
+                {
+                    "__description": "<p>A string representing a valid hostname to connect to the FTP server. The string can contain a port, a username and password (in this case, the following parameters are not needed), with the followinf format :</p>",
+                    "__optional": false,
+                    "__color": "EA6AC3",
+                    "__name": "hostname"
+                },
+                {
+                    "__description": "<p>An optional string representing the username (use \"anonymous\" for anonymous access if supported by the server).</p>",
+                    "__optional": true,
+                    "__color": "EA6AC3",
+                    "__name": "username"
+                },
+                {
+                    "__description": "<p>An optional string representing the password (use any string for anonymous access).",
+                    "__optional": true,
+                    "__color": "EA6AC3",
+                    "__name": "password"
+                }
+            ],
+            "__name": "constructor",
+            "__description": "<br>The Ftp constructor returns a Ftp value representing a FTP client and connects it to the FTP server at the given URL, using provided authentication.",
+            "__example": "local net = require \"net\"\n\nlocal url = \"ftp://your ftp server address\"\nlocal client = net.Ftp(url, \"anonymous\", \"guest\")\nprint(\"Sucessfully connected to '\"..url..\"'\")",
+            "__tinydesc": "FTP object constructor",
+            "__filename": "Ftp-constructor.html"
+        },
+        "proxy": {
+            "__returns": "This function returns a <code>boolean</code> value indicating if the operation was successful.",
+            "__name": "proxy",
+            "__example": "local net = require \"net\"\n\nlocal client = net.Ftp(\"ftp://yourftpserver.org\")\n\n-- set a proxy connection with the server at 88.32.132.44 using port 8080\nclient:proxy(\"88.32.132.44:8080\")",
+            "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+            "__kind": "method",
+            "__params": [
+                {
+                    "__description": "<p>An optional <code>string</code> representing the proxy server address.</p>",
+                    "__optional": true,
+                    "__color": "EA6AC3",
+                    "__name": "proxy_server"
+                },
+                {
+                    "__description": "<p>An optional <code>string</code> representing the proxy user name.</p>",
+                    "__optional": true,
+                    "__color": "EA6AC3",
+                    "__name": "username"
+                },
+                {
+                    "__description": "<p>An optional <code>string</code> representing the proxy password.</p>",
+                    "__optional": true,
+                    "__color": "EA6AC3",
+                    "__name": "password"
+                }
+            ],
+            "__description": "Sets the FTP proxy server connection.",
+            "__tinydesc": "Configure a proxy connection",
+            "__filename": "Ftp-proxy.html"
+        },
+        "upload": {
+            "__returns": "<br>Returns <span style=\"color:#ae81ff\">true</span> if uploading to the FTP server was successful, or <span style=\"color:#ae81ff\">false</span> otherwise.\n            <br>This method return a <a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\"></i> Task</a> instance. Once the Task has finished, it will return a <code>boolean</code> value indicating if the operation was successful.",
+            "__name": "upload",
+            "__example": "local net = require \"net\"\n\n-- connect to the FTP server\nlocal url = \"your ftp server\"\nlocal client = net.Ftp(url, \"username\", \"password\")\n\n-- upload file \"test.txt\"\nif await(client:upload(File(\"test.txt\"))) then\n  print(\"Successfully uploaded 'test.txt' to  \"..url)\nelse\n  error(net.error)\nend",
+            "__results": "<a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\" style=\"color :#2187E7\"></i> Task</a>",
+            "__kind": "method",
+            "__params": [
+                {
+                    "__description": "<p>An optional string that contains the destination path and filename on the server.<br>If not provided, the file will be uploaded on the current FTP directory (See <a href=\"./Ftp-currentdir.html\">Ftp.currentdir</a>) using the same filename.</p>",
+                    "__optional": true,
+                    "__color": "EA6AC3",
+                    "__name": "remote_name"
+                }
+            ],
+            "__description": "<br>Upload a file to the connected FTP server.",
+            "__tinydesc": "Upload a file on the server",
+            "__filename": "Ftp-upload.html"
+        },
+        "__description": "The Ftp object connects to FTP servers to upload, download, and manage files remotely",
+        "list": {
+            "__returns": "<br>Returns two values at each iteration :\n\t\t\t\t<ul><li>A <span style=\"color:#EA6AC3\">string</span> that contains the element name</li>\n\t\t\t\t<li>A <span style=\"color:#ae81ff\">boolean</span> value set to <span style=\"color:#ae81ff\">true</span> if the current element is a directory, or <span style=\"color:#ae81ff\">false</span> if it's a file.",
+            "__name": "list",
+            "__example": "local net = require \"net\"\n\n-- connect to official ftp Ubuntu server\nlocal client = net.Ftp(\"ftp://ftp.ubuntu.com\", \"anonymous\", \"guest\")\nprint(\"Directory /\")\n\n-- Iterate over each directory element\nfor name, isdir in client:list(\"*.*\") do\n\tif isdir then\n\t\tprint(\"\\t\"..name)\n\telse\n\t\tprint(\"\\t/\"..name)\n\tend\nend",
+            "__results": "<span style=\"color:#EA6AC3\">string</span>, <span style=\"color:#ae81ff\">boolean</span>",
+            "__kind": "method",
+            "__params": [
+                {
+                    "__description": "<p>An optional string that contains a valid directory path or file name. The string can contain wildcards, but no blank spaces are allowed.<br>If not specified, iterate over all current directory contents.</p>",
+                    "__optional": true,
+                    "__color": "EA6AC3",
+                    "__name": "search_path"
+                }
+            ],
+            "__description": "<br>Iterates over directory content inside the specified search path.",
+            "__tinydesc": "FTP directory listing",
+            "__filename": "Ftp-list.html"
+        },
+        "__tinydesc": "FTP client implementation",
+        "hostname": {
+            "__results": "<span style=\"color:#EA6AC3\">string</span> | <span style=\"color: #606060\">nil</span>",
+            "__access": "readonly",
+            "__kind": "property",
+            "__name": "hostname",
+            "__description": "<br><br>The Ftp.hostname property gets the current hostname string used for connection to the FTP server or <strong style=\"color:gray\">nil</strong> if connection have been closed.",
+            "__example": "local net = require \"net\"\n\nlocal url = \"your ftp server address\"\nlocal ftpclient = net.Ftp(url, \"anonymous\", \"guest\")\n\n-- outputs ftp hostname\nprint(\"ftp hostname = \"..ftpclient.hostname)",
+            "__tinydesc": "Get server hostname",
+            "__filename": "Ftp-hostname.html"
+        },
+        "close": {
+            "__returns": "<p>This function returns no value.</p>",
+            "__name": "close",
+            "__example": "local net = require \"net\"\n\nlocal url = \"your ftp server address\"\nlocal ftpclient = net.Ftp(url, \"anonymous\", \"guest\")\n\n-- closes the connection\nclient:close()",
+            "__results": "<span>-</span>",
+            "__kind": "method",
+            "__params": {},
+            "__description": "Close the Ftp client connection.<article class=\"message is-info\" style=\"margin-left: 15%; margin-right: 15%\"><div class=\"message-body\">Remember to close the connection when no more needed. Ftp:close() is automatically called before garbage collection of the FTP object, but this behaviour cannot be predicted</div></article>",
+            "__tinydesc": "Close the current FTP connection",
+            "__filename": "Ftp-close.html"
+        },
+        "__type": "object",
+        "__filename": "Ftp.html",
+        "__results": "",
+        "makedir": {
+            "__returns": "<br>This method return a <a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\"></i> Task</a> instance. Once the Task has finished, it will return a <code>boolean</code> value indicating if the operation was successful.",
+            "__name": "makedir",
+            "__example": "local net = require \"net\"\n\n-- connect to the FTP server\nlocal url = \"your ftp server\"\nlocal client = net.Ftp(url, \"username\", \"password\")\n\n-- make directory \"/test/\"\nif await(client:makedir(\"/test/\")) then\n  print(\"Successfully created FTP directory '/test/'\")\nelse\n  error(net.error)\nend",
+            "__results": "<a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\" style=\"color :#2187E7\"></i> Task</a>",
+            "__kind": "method",
+            "__params": [
+                {
+                    "__description": "<p>A string that contains the name of the directory to be created. This can be either a fully qualified path or a name relative to the current FTP directory.</p>",
+                    "__optional": false,
+                    "__color": "EA6AC3",
+                    "__name": "path"
+                }
+            ],
+            "__description": "<br>Creates a new directory on the FTP server.",
+            "__tinydesc": "Create a directory on the server",
+            "__filename": "Ftp-makedir.html"
+        },
+        "removefile": {
+            "__returns": "<br>This method return a <a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\"></i> Task</a> instance. Once the Task has finished, it will return a <code>boolean</code> value indicating if the operation was successful.",
+            "__name": "removefile",
+            "__example": "local net = require \"net\"\n\n-- connect to the FTP server\nlocal url = \"your ftp server\"\nlocal client = net.Ftp(url, \"username\", \"password\")\n\n-- remove file \"/test.txt\"\nif await(client:removefile(\"/test.txt\")) then\n  print(\"Successfully removed FTP file '/test.txt'\")\nelse\n  error(net.error)\nend",
+            "__results": "<a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\" style=\"color :#2187E7\"></i> Task</a>",
+            "__kind": "method",
+            "__params": [
+                {
+                    "__description": "<p>A string that contains the name of the directory to be removed. This can be either a fully qualified path or a name relative to the current FTP directory.</p>",
+                    "__optional": false,
+                    "__color": "EA6AC3",
+                    "__name": "path"
+                }
+            ],
+            "__description": "<br>Removes the specified file from the FTP server.",
+            "__tinydesc": "Remove a file on the server",
+            "__filename": "Ftp-removefile.html"
+        },
+        "download": {
+            "__returns": "<br>This method return a <a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\" style=\"font-size:1em; color :#367DBB\"></i> Task</a> instance. Once the Task has finished, it will return one of the following possible values :\n\t\t\t        <ul>\n                <li><a href=\"../sys/File.html\"><i class=\"fas fa-file\" style=\"color :#367DBB\"></i> File</a> value representing the downloaded file. If the file already exists in the current directory, it will be overwritten.</li>\n                <li><code>false</code> value if the operation failed. You can get more information with the <a href=\"error.html\">net.error</a> property.</li>\n              </ul>\n            </p>",
+            "__name": "download",
+            "__example": "local net = require \"net\"\n\n-- connect to official ftp Ubuntu server\nlocal client = net.Ftp(\"ftp://ftp.ubuntu.com\", \"anonymous\", \"guest\")\n\n-- download file \"favicon.ico\" to the current directory\nif await(client:download(\"/releases/favicon.ico\")) then\n    print(\"Successfully downloaded 'favicon.ico' from ftp://ftp.ubuntu.com\")\nelse\n    print(client.log)\nend",
+            "__results": "<a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\" style=\"color :#2187E7\"></i> Task</a>",
+            "__kind": "method",
+            "__params": [
+                {
+                    "__description": "<p>A string that contains the name of the file to be retrieved from the FTP server.</p>",
+                    "__optional": false,
+                    "__color": "EA6AC3",
+                    "__name": "filename"
+                },
+                {
+                    "__description": "<p>An optional <code>string</code> that contains the name of the file in the current local directory. If not provided, the remote filename will be used.</p>",
+                    "__optional": true,
+                    "__color": "EA6AC3",
+                    "__name": "local_filename"
+                }
+            ],
+            "__description": "Download a remote file from the FTP server, to the current local directory.",
+            "__tinydesc": "Download a file from the server",
+            "__filename": "Ftp-download.html"
+        },
+        "removedir": {
+            "__returns": "<br>This method return a <a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\"></i> Task</a> instance. Once the Task has finished, it will return a <code>boolean</code> value indicating if the operation was successful.",
+            "__name": "removedir",
+            "__example": "local net = require \"net\"\n\n-- connect to the FTP server\nlocal url = \"your ftp server\"\nlocal client = net.Ftp(url, \"username\", \"password\")\n\n-- remove directory \"/test/\"\nif await(client:removedir(\"/test/\")) then\n  print(\"Successfully removed FTP directory '/test/'\")\nelse\n  error(net.error)\nend",
+            "__results": "<a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\" style=\"color :#2187E7\"></i> Task</a>",
+            "__kind": "method",
+            "__params": [
+                {
+                    "__description": "<p>A string that contains the name of the directory to be removed. This can be either a fully qualified path or a name relative to the current FTP directory.</p>",
+                    "__optional": false,
+                    "__color": "EA6AC3",
+                    "__name": "path"
+                }
+            ],
+            "__description": "<br>Removes the specified directory from the FTP server.",
+            "__tinydesc": "Remove directory from the server",
+            "__filename": "Ftp-removedir.html"
+        },
+        "__name": "Ftp",
+        "currentdir": {
+            "__results": "<span style=\"color:#EA6AC3\">string</span> | <span style=\"color: #606060\">nil</span>",
+            "__access": "read/write",
+            "__kind": "property",
+            "__name": "currentdir",
+            "__description": "<br><br>The Ftp.currentdir property gets or sets the current directory on the FTP server as a string.<br>Returns <strong style=\"color:gray\">nil</strong> if the value could not be retrieved (get more information with the <a href=\"./error.html\"> net.error</a> property).",
+            "__example": "local net = require \"net\"\n\nlocal url = \"your ftp server address\"\nlocal ftpclient = net.Ftp(url, \"anonymous\", \"guest\")\n\n-- outputs ftp port\nprint(\"ftp port = \"..ftpclient.port)",
+            "__tinydesc": "Get/set the current directory on the server",
+            "__filename": "Ftp-currentdir.html"
+        }
+    },
+    "getmime": {
+        "__returns": "Return a <span style=\"color:#EA6AC3\">string</span> representing the fully qualified MIME type, or <code>nil</code> if the MIME type cannot be found.",
+        "__name": "getmime",
+        "__example": "local console = require \"console\"\nlocal net = require \"net\"\n\nlocal mime = net.getmime(console.readln('Enter a filename : '))\n\nprint('MIME type : '..mime)",
+        "__results": "<span style=\"color:#EA6AC3\">string</span>",
+        "__kind": "function",
+        "__params": [
+            {
+                "__description": "<p>The value to retrieve the MIME type from, can be any of the following values :<ul><li>A <a href=\"../sys/File.html\"><i class=\"fas fa-file\" style=\"color :#2187E7\"></i> File</a> value.</li><li>A <span style=\"color:#EA6AC3\">string</span> representing an URI or a filename.</li></ul></p>",
+                "__optional": false,
+                "__color": "8f8f8f",
+                "__name": "value"
+            }
+        ],
+        "__description": "Returns the fully qualified domain from an IP address (reverse DNS lookup).",
+        "__tinydesc": "Retrieve a MIME type ",
+        "__filename": "getmime.html"
+    },
+    "error": {
+        "__results": "<span style=\"color:#EA6AC3\">string</span> | <span style=\"color: #606060\">nil</span>",
+        "__access": "readonly",
+        "__kind": "property",
+        "__name": "error",
+        "__description": "<br><br>The net.error property gets the last network error message or <span style=\"color: #606060\">nil</span>",
+        "__example": "local net = require \"net\"\n\nprint(\"net.error = \"..(net.error or \"none\"))\n\n-- error : calling net.select() with an empty array\nnet.select({})\n\nprint(\"net.error : \"..net.error)",
+        "__tinydesc": "Get the last network related error message",
+        "__filename": "error.html"
+    },
+    "isalive": {
+        "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+        "__access": "readonly",
+        "__kind": "property",
+        "__name": "isalive",
+        "__description": "<br><br>The net.isalive property checks if a network connection is available, returning <strong style=\"color:#ae81ff\">true</strong> or <strong style=\"color:#ae81ff\">false</strong> otherwise.",
+        "__example": "if require(\"net\").isalive then\n\tprint(\"This computer is connected to the network\")\nelse\n\tprint(\"This computer is not connected to the network\")\nend",
+        "__tinydesc": "Check if a network connection is available",
+        "__filename": "isalive.html"
+    },
+    "Socket": {
+        "port": {
+            "__results": "<span style=\"color:#ae81ff\">number</span>",
+            "__access": "readonly",
+            "__kind": "property",
+            "__name": "port",
+            "__description": "<br><br>The Socket.port property gets the port number used to create the Socket.",
+            "__example": "local net = require \"net\"\n\n-- create and connect a client TCP socket to the host \"google.com\"\nlocal socket = net.Socket(\"google.com\", 80)\n\n-- outputs 80\nprint(\"port = \"..socket.port)",
+            "__tinydesc": "Ges the Socket port number",
+            "__filename": "Socket-port.html"
+        },
+        "__name": "Socket",
+        "blocking": {
+            "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+            "__access": "read/write",
+            "__kind": "property",
+            "__name": "blocking",
+            "__description": "<br><br>The Socket.blocking property sets or checks if the Socket is in blocking mode.<ul><li>When set to <code>true</code>, all Socket operations (such as reading and sending data) will block until they have terminated.</li><li>When set to <code>false</code>, all Socket operations will return immediately a <a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\" style=\"color :#2187E7\"></i> Task</a> object that will perform asynchronously.</li></ul><article class=\"message is-info\" style=\"margin-left: 15%; margin-right: 15%\"><div class=\"message-body\">By default, all created Socket objects have the property Socket.blocking set to <span style=\"color:#ae81ff\">true</span></div></article>",
+            "__example": "local net = require \"net\"\n\n-- create and connect a client TCP socket to the host \"google.com\"\nlocal socket = net.Socket(\"google.com\", 80)\n\n-- sets the Socket in blocking mode (the default)\nsocket.blocking = true\nsocket:connect()\n\n-- socket:send() will block until all data has been sent\nsocket:send(\"GET / HTTP/1.1\\r\\nHost: www.google.fr\\r\\nConnection: Close\\r\\n\\r\\n\")\n\n-- wait until some data is available\nlocal data = socket:recv()\n\n-- prints received data (an http response)\nprint(data)",
+            "__tinydesc": "Get/set socket blocking mode",
+            "__filename": "Socket-blocking.html"
+        },
+        "starttls": {
+            "__returns": "Returns <span style=\"color:#ae81ff\">true</span> if TLS has been successfully enabled.<br>\n\t\t\tIn case of error, returns <span style=\"color:#ae81ff\">false</span>. Error message can be obtained with the <a href=\"error.html\">net.error</a> property.\n\t\t\t\t</ul>",
+            "__name": "starttls",
+            "__example": "local net = require \"net\"\n\n-- create a socket to www.google.com on port 80\nlocal socket = net.Socket(\"www.google.com\", 80)\n\nif socket:connect() then\n\tprint(\"Connected to www.google.com !\")\n\tlocal sent = socket:send(\"GET / HTTP/1.1\\r\\nHost:www.google.com\\r\\n\\r\\n\")\n\tprint(\"Bytes sent : \"..sent)\nend",
+            "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+            "__kind": "method",
+            "__params": [
+                {
+                    "__description": "<p>An optional string representing the certificate to verify the identity of the other peer. If none is provided, uses the certificate from the server. The string can be :<ul><li>A server name of a certificate already installed in the current user/Windows certificate store</li><li>A path to a .pfx file (PKCS #12), that contains cryptographic information (certificates and private keys). Its contents can be cryptographically protected with passwords.</li></ul></p>\n",
+                    "__optional": true,
+                    "__color": "EA6AC3",
+                    "__name": "certificate"
+                },
+                {
+                    "__description": "<p>An optional string representing the password that must be provided when using a .pfx file .</p>",
+                    "__optional": true,
+                    "__color": "EA6AC3",
+                    "__name": "password"
+                }
+            ],
+            "__description": "Enable transport level security (TLS -formerly known as SSL) on a Socket connection. The connection must have been initialized with a previous <a href=\"./Socket-bind.html\">Socket:bind()</a> or <a href=\"./Socket-connect.html\">Socket:connect()</a> call. Any further calls to <a href=\"./Socket-send.html\">Socket:send()</a> or <a href=\"./Socket-recv.html\">Socket:recv()</a> will be encrypted/decrypted, respectively.",
+            "__tinydesc": "Start TLS encryption",
+            "__filename": "Socket-starttls.html"
+        },
+        "__kind": "object",
+        "accept": {
+            "__returns": "Returns one of the following possible values :\n            <ul>\n              <li><a href=\"./Socket.html\"><i class=\"fas fa-plug\" style=\"color :#2187E7\"></i> Socket</a>, usable to send or recv data from the new connection.</li>\n              <li><code>false</code> if an error occured.</li>\n              <li><a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\" style=\"color :#2187E7\"></i> Task</a> object to perform the operation asynchronously if the Socket is non-blocking, returning one of the previous values once finished.</li>\n            </ul>",
+            "__name": "accept",
+            "__example": "-- Echo Server example\nlocal net = require \"net\"\n\n-- create the server listening Socket\nlocal server = net.Socket(\"127.0.0.1\", 5000)\n\n-- not needed, socket.blocking is already set to true (default)\nserver.blocking = true\nserver:listen()\n\nlocal client = server:accept()\nprint('Connected with ', client.ip)\n\n-- echo to the client the data just received\nwhile true do\n\tlocal data = client:recv()\n\tif data == false then\n\t\tbreak\n\tend\n\tclient:send(data)\nend",
+            "__results": "<a href=\"Socket.html\"><i class=\"fas fas fa-plug\"></i> Socket</a> | <span style=\"color:#ae81ff\">boolean</span> | <a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\" style=\"color :#2187E7\"></i> Task</a>",
+            "__kind": "method",
+            "__params": {},
+            "__description": "Accept a connection. The socket should have been set to listen for incoming connections with a previous <a href=\"./Socket-bind.html\">Socket:bind()</a> call.",
+            "__tinydesc": "Accept an incoming connection",
+            "__filename": "Socket-accept.html"
+        },
+        "ip": {
+            "__results": "<span style=\"color:#EA6AC3\">string</span>",
+            "__access": "readonly",
+            "__kind": "property",
+            "__name": "ip",
+            "__description": "<br><br>The Socket.ip property gets the IP address the socket is bound to as a <code>string</code>",
+            "__example": "local net = require \"net\"\n\n-- create and connect a client TCP socket to the host \"google.com\"\nlocal socket = net.Socket(\"google.com\", 80)\n\n-- outputs socket.ip\nprint(\"socket.ip = \"..socket.ip)",
+            "__tinydesc": "Get the Socket IP address",
+            "__filename": "Socket-ip.html"
+        },
+        "__description": "The Socket object sends and receives data over network connections",
+        "__tinydesc": "TCP socket implementation",
+        "nodelay": {
+            "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+            "__access": "read/write",
+            "__kind": "property",
+            "__name": "nodelay",
+            "__description": "<br><br>The Socket.nodelay property get/set the TCP_NODELAY option on the socket, to control Nagle algorithm.<ul><li>When set to <span style=\"color:#ae81ff\">false</span> Nagle algorithm is enabled, TCP will wait to send small amounts of data until the acknowledgment for the previous data is received.</li><li>When set to <span style=\"color:#ae81ff\">true</span> Nagle algorithm is disabled (the default), TCP will send small amounts of data even before the acknowledgment for previous data sent is received.</li></ul><p class=\"is-size-4 mt-6 mb-0\" style=\"color: #004080\">Example",
+            "__example": "local net = require \"net\"\n\n-- create and connect a client TCP socket to the host \"google.com\"\nlocal socket = net.Socket(\"google.com\", 80)\n\n-- outputs false (the default Socket.nodelay value)\nprint(\"TCP_NODELAY = \"..tostring(socket.nodelay))",
+            "__tinydesc": "Get/Set the TCP_NODELAY option",
+            "__filename": "Socket-nodelay.html"
+        },
+        "peek": {
+            "__returns": "Returns the <span style=\"color:#ae81ff\">number</span> of bytes available for reading.",
+            "__name": "peek",
+            "__example": "-- Echo Server example\nlocal net = require \"net\"\n\n-- create the server listening Socket\nlocal server = net.Socket(\"127.0.0.1\", 5000)\n\n-- enable server Socket to receive incomming connections\nserver:listen()\n\nlocal client = server:accept()\n\n-- echo to the client the data just received\nwhile true do\n\tlocal nbytes = client:peek()\n\tlocal data = client:recv(nbytes)\n\tif data == false then\n\t\tbreak\n\tend\n\tclient:send(data)\nend",
+            "__results": "<span style=\"color:#ae81ff\">number</span>",
+            "__kind": "method",
+            "__params": {},
+            "__description": "Get how many bytes are available for reading on the Socket connection with a single <a href=\"./Socket-recv.html\"> Socket:recv()</a> call.",
+            "__tinydesc": "Peek for available bytes",
+            "__filename": "Socket-peek.html"
+        },
+        "__type": "object",
+        "connect": {
+            "__returns": "<ul>\n                <li><code>true</code> if the operation succedded, or <code>false</code> if an error occured.</li>\n                <li><a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\" style=\"color :#2187E7\"></i> Task</a> object to perform the operation asynchronously if the Socket is non-blocking, returning one of the previous values once finished.</li>\n              </ul>",
+            "__name": "connect",
+            "__example": "local net = require \"net\"\n\n-- create a socket to www.google.com on port 80\nlocal socket = net.Socket(\"www.google.com\", 80)\n\nif socket:connect() then\n\tprint(\"Connected to www.google.com !\")\n\tsocket:send(\"GET / HTTP/1.1\\r\\nHost:www.google.com\\r\\n\\r\\n\")\n\t-- wait to be sure to receive all the header data\n\tsleep(300)\n\t\n\tlocal nbytes = socket:peek()\n\tprint(\"Length of header: \"..nbytes)\n\tprint(\"Length of data received : \"..#socket:recv())\nend",
+            "__results": "<span style=\"color:#ae81ff\">boolean</span> | <a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\" style=\"color :#2187E7\"></i> Task</a>",
+            "__kind": "method",
+            "__params": {},
+            "__description": "Connect to the remote Socket.ip address. Used in blocking mode, the methods wait until the connection is established, or returns immediately otherwise.",
+            "__tinydesc": "Connect to a server",
+            "__filename": "Socket-connect.html"
+        },
+        "close": {
+            "__returns": "Returns no value.",
+            "__name": "close",
+            "__example": "-- Echo Server example\nlocal net = require \"net\"\n\n-- create the server listening Socket\nlocal server = net.Socket(\"127.0.0.1\", 5000)\n\n-- not needed, socket.blocking is already set to true (default)\nserver.blocking = true\nserver:listen()\n\nlocal client = server:accept()\nprint('Connected with ', client.ip)\n\n-- echo to the client the data just received\nwhile true do\n\tlocal data = client:recv()\n\tif data == false then\n-- client:close() not needed, will be called upon client garbage collection\t\n\t\tbreak\n\tend\n\tclient:send(data)\nend",
+            "__results": "<span>-</span>",
+            "__kind": "method",
+            "__params": {},
+            "__description": "Closes the Socket and the bounded connection. The Socket should not be used anymore.<article class=\"message is-info\" style=\"margin-left: 15%; margin-right: 15%\"><div class=\"message-body\">When the Socket is garbage collected, the close method is called automatically</div></article>",
+            "__tinydesc": "Close the connection",
+            "__filename": "Socket-close.html"
+        },
+        "__icon": "<span class=\"icon bd-link-icon mr-1\" style=\"font-size: 0.8em\"><i class=\"fas fa-plug\" style=\"color :#2187E7\"></i></span>",
+        "canwrite": {
+            "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+            "__access": "readonly",
+            "__name": "canwrite",
+            "__description": "<br>The Socket.canwrite property gets the writability of a Socket after a <a href=\"./select.html\">net.select()</a> call.",
+            "__kind": "property",
+            "__tinydesc": "Check if Socket is writable after a net.select() call",
+            "__filename": "Socket-canwrite.html"
+        },
+        "send": {
+            "__returns": "Returns one of the following possible values :\n            <ul>\n              <li><code>true</code> if the operation succedded, or <code>false</code> if an error occured.</li>\n              <li><a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\" style=\"color :#2187E7\"></i> Task</a> object to perform the operation asynchronously if the Socket is non-blocking, returning one of the previous values once finished.</li>\n            </ul>",
+            "__name": "send",
+            "__example": "local net = require \"net\"\n\n-- create a socket to www.google.com on port 80\nlocal socket = net.Socket(\"www.google.com\", 80)\n\nif socket:connect() then\n\tprint(\"Connected to www.google.com !\")\n\tlocal sent = socket:send(\"GET / HTTP/1.1\\r\\nHost:www.google.com\\r\\n\\r\\n\")\n\tprint(\"Bytes sent : \"..sent)\nend",
+            "__results": "<span style=\"color:#ae81ff\">boolean</span> | <a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\" style=\"color :#2187E7\"></i> Task</a> | <span style=\"color: #606060\">nil</span>",
+            "__kind": "method",
+            "__params": [
+                {
+                    "__description": "<p>A <a href=\"../sys/Buffer.html\"><i class=\"fas fa-th\" style=\"color :#2187E7\"></i> Buffer</a> or a <code>string</code> containing the data to be sent. If another type of variable is used, it is internaly converted to a string before sending.</p>",
+                    "__optional": false,
+                    "__color": "606060",
+                    "__name": "data"
+                }
+            ],
+            "__description": "Send all the data to the Socket. In blocking mode, the method can block if the length of the data is larger than the maximum allowed by the transport.",
+            "__tinydesc": "Send data to the Socket",
+            "__filename": "Socket-send.html"
+        },
+        "bind": {
+            "__returns": "Returns a <span style=\"color:#ae81ff\">boolean</span> value indicating if the operation is successful.",
+            "__name": "bind",
+            "__example": "-- Echo Server example\nlocal net = require \"net\"\n\n-- create the server listening Socket\nlocal server = net.Socket(\"127.0.0.1\", 5000)\n\n-- enable server Socket to receive incomming connections\nserver:bind()\n\nlocal client = server:accept()\n\n-- echo to the client the data just received\nwhile true do\n\tlocal data = client:recv()\n\tif data == false then\n\t\tbreak\n\tend\n\tclient:send(data)\nend",
+            "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+            "__kind": "method",
+            "__params": [
+                {
+                    "__description": "<p>An optional integer representing the maximum length of the queue of pending connections (defaults to 5).</p>",
+                    "__optional": true,
+                    "__color": "ae81ff",
+                    "__name": "backlog"
+                }
+            ],
+            "__description": "Bind the Socket and listen for incoming connection.",
+            "__tinydesc": "Bind and listen for incoming connections",
+            "__filename": "Socket-bind.html"
+        },
+        "family": {
+            "__results": "<span style=\"color:#EA6AC3\">string</span>",
+            "__access": "readonly",
+            "__kind": "property",
+            "__name": "family",
+            "__description": "<br><br>The Socket.family property gets the address family <span style=\"color:#EA6AC3\">\"ipv4\"</span> or <span style=\"color:#EA6AC3\">\"ipv6\"</span>",
+            "__example": "local net = require \"net\"\n\nlocal socket = net.Socket(\"google.com\", 80)\n\n-- outputs \"ipv4\"\nprint(\"socket.family = \"..socket.family)",
+            "__tinydesc": "Get the Socket address family",
+            "__filename": "Socket-family.html"
+        },
+        "__results": "",
+        "__filename": "Socket.html",
+        "failed": {
+            "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+            "__access": "readonly",
+            "__name": "failed",
+            "__description": "<br>The Socket.failed property checks the Socket for errors after <a href=\"./select.html\">net.select()</a> call.<br>Returns <strong style=\"color:#ae81ff\">true</strong> if an error occured during last net.select() call, or <strong style=\"color:#ae81ff\">false</strong> otherwise.",
+            "__kind": "property",
+            "__tinydesc": "Check if Socket is in error state after a net.select() call",
+            "__filename": "Socket-failed.html"
+        },
+        "shutdown": {
+            "__results": "<span>-</span>",
+            "__returns": "The function returns no value.\n          </div>\n\t      </div>\n      </div>\n    </div>\n  </section>  \n  <footer class=\"footer\">\n    <div class=\"content has-text-centered\">",
+            "__params": {},
+            "__name": "shutdown",
+            "__description": "Shuts down the Socket. Further sends or reveives are disallowed, and any pending data is discarded. Call this method if you want to stop using the connection immediately, because <a href=\"./Socket-close.html\">Socket:close()</a> can take some time to effectively close the connection.",
+            "__kind": "method",
+            "__tinydesc": "Shutdowns the socket connection",
+            "__filename": "Socket-shutdown.html"
+        },
+        "constructor": {
+            "__results": "<a href=\"Socket.html\"><i class=\"fas fas fa-plug\"></i> Socket</a>",
+            "__kind": "method",
+            "__params": [
+                {
+                    "__description": "<p>A string representing an IP address (family is autodetected) or a hostname (IP is autoresolved to the given family)</p>",
+                    "__optional": false,
+                    "__color": "EA6AC3",
+                    "__name": "host"
+                },
+                {
+                    "__description": "<p>The port number the Socket will be bound to.</p>",
+                    "__optional": false,
+                    "__color": "ae81ff",
+                    "__name": "port"
+                },
+                {
+                    "__description": "<p>An optional string to specify the address family when resolving the provided hostname.<ul><li><span style=\"color:#EA6AC3\">\"ipv4\"</span> : an IPv4 address will be used when resolving the hostname (default)</li><li><span style=\"color:#EA6AC3\">\"ipv6\"</span> : an IPv6 address will be used when resolving the hostname</li></ul></p>",
+                    "__optional": true,
+                    "__color": "EA6AC3",
+                    "__name": "family"
+                }
+            ],
+            "__name": "constructor",
+            "__description": "<br>The Socket constructor returns a Socket value representing a Windows TCP socket to be bound to a specific IP address or hostname on the given port number. In case of hostname, a DNS query is sent to be resolved to a valid IP of the given family.",
+            "__example": "local net = require \"net\"\n\n-- valid \nlocal sock = net.Socket(\"www.google.com\", 80)\n\n-- valid \nsock = net.Socket(\"smtp.google.com\", 80)\n\n-- error : 'http:\\www.google.com' is an URL not a hostname\nsock = net.Socket(\"http:\\\\www.google.com\", 80)",
+            "__tinydesc": "Socket object constuctor",
+            "__filename": "Socket-constructor.html"
+        },
+        "recv": {
+            "__returns": "Returns one of the following possible values :\n            <ul>\n              <li><a href=\"../sys/Buffer.html\"><i class=\"fas fa-th\" style=\"color :#2187E7\"></i> Buffer</a> containing the received bytes.</li>\n              <li><code>false</code> if an error occured.</li>\n              <li><a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\" style=\"color :#2187E7\"></i> Task</a> object to perform the operation asynchronously if the Socket is non-blocking, returning one of the previous values once finished.</li>\n            </ul>\n            <article class=\"message is-danger\" style=\"margin-left: 10%; margin-right: 10%\"><div class=\"message-body\">If the connection has been lost, Socket:recv() returns <span style=\"color:#ae81ff\">false</span> and the <a href=\"error.html\">net.error</a> property returns nil.</div></article>",
+            "__name": "recv",
+            "__example": "local net = require \"net\"\n\n-- create a socket to www.google.com on port 80\nlocal socket = net.Socket(\"www.google.com\", 80)\n\nif socket:connect() then\n\tprint(\"Connected to www.google.com !\")\n\tsocket:send(\"GET / HTTP/1.1\\r\\nHost:www.google.com\\r\\n\\r\\n\")\n\t-- wait to be sure to receive all the data\n\tsleep(300)\n\tprint(\"Data received : \"..socket:recv())\nend",
+            "__results": "<a href=\"../sys/Buffer.html\"><i class=\"fas fa-th\" style=\"color :#2187E7\"></i> Buffer</a> | <span style=\"color:#ae81ff\">boolean</span> | <a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\" style=\"color :#2187E7\"></i> Task</a> | <span style=\"color: #606060\">nil</span>",
+            "__kind": "method",
+            "__params": [
+                {
+                    "__description": "<p>An optional integer representing the maximum number of bytes to read from the connection, defaults to 1024.</p>",
+                    "__optional": true,
+                    "__color": "ae81ff",
+                    "__name": "length"
+                }
+            ],
+            "__description": "Receive data from the Socket. In blocking mode, the method wait until some data is available for reading.",
+            "__tinydesc": "Receives data from the socket",
+            "__filename": "Socket-recv.html"
+        },
+        "canread": {
+            "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+            "__access": "readonly",
+            "__kind": "property",
+            "__name": "canread",
+            "__description": "<br><br>The Socket.canread gets the readability of a Socket after a <a href=\"./select.html\">net.select()</a> call.",
+            "__example": "local net = require \"net\"\n\n-- create the server listening Socket\nlocal server = net.Socket(\"127.0.0.1\", 5000)\n\n-- array of clients Sockets\nlocal sockets = {server}\n\nif server:bind() and server:listen() then\n\tprint(\"Server running on 127.0.0.1:5000\")\n\twhile true do\n\t\tif net.select(sockets) == false then\n\t\t\terror(\"Network error : \"..net.error)\n\t\t\tbreak\n\t\tend\n\t\t-- if a new client connects, send the \"Hello World !\" message and close the Socket\n\t\tif server.canread then\n\t\t\tlocal client = server:accept()\n\t\t\tclient:send(\"Hello World !\")\n\t\t\tclient:close()\n\t\tend\n\tend\nend",
+            "__tinydesc": "Check if Socket is readable after a net.select() call",
+            "__filename": "Socket-canread.html"
+        }
+    },
+    "publicip": {
+        "__results": "<span style=\"color:#EA6AC3\">string</span> | <span style=\"color:#ae81ff\">boolean</span>",
+        "__access": "readonly",
+        "__kind": "property",
+        "__name": "publicip",
+        "__description": "<br><br>The net.publicip property gets the current public IPv4 address as a <code>string</code>. A valid Internet connection must be available, or returns <code>false</code> otherwise.",
+        "__example": "local net = require \"net\"\n\nprint(\"Public IPv4 IP : \"..net.publicip)",
+        "__tinydesc": "Get the current public IPv4 address",
+        "__filename": "publicip.html"
+    },
+    "__filename": "index.html",
+    "resolve": {
+        "__returns": "<ul>\n\t\t\t\t\t<li>In case of success, returns the IP address associated with the DNS record, represented by a string.</li>\n\t\t\t\t\t<li>If no DNS record was found, returns <span style=\"color:white\">nil</span></li>\n\t\t\t\t\t<li>In case of error, returns <span style=\"color:#ae81ff\">false</span> (you can check error message with the <a href=\"error.html\">net.error</a> property).</li>\n\t\t\t\t</ul>",
+        "__name": "resolve",
+        "__example": "local console = require \"console\"\nlocal net = require \"net\"\n\nconsole.write('Enter hostname : ')\nlocal ip = net.resolve(console.readln()) or \"not found\";\n\nprint('IP address associated with that hostname : '..ip)",
+        "__results": "<span style=\"color:#EA6AC3\">string</span> | <span style=\"color:#ae81ff\">boolean</span>",
+        "__kind": "function",
+        "__params": [
+            {
+                "__description": "<p>The string to indicate the hostname to resolve, for example \"luart.org\".</p>\n",
+                "__optional": false,
+                "__color": "EA6AC3",
+                "__name": "hostname"
+            },
+            {
+                "__description": "<p>An optional string to indicate the IP address family to retrieve from the DNS record :<ul><li><span style=\"color:#EA6AC3\">\"ipv4\"</span> : an IPv4 address will be returned (default)</li><li><span style=\"color:#EA6AC3\">\"ipv6\"</span> : an IPv6 address will be returned</li></ul></p>",
+                "__optional": true,
+                "__color": "EA6AC3",
+                "__name": "family"
+            }
+        ],
+        "__description": "Resolves the given hostname to an IP address from the DNS record.",
+        "__tinydesc": "Resolve hostname to IP",
+        "__filename": "resolve.html"
+    },
+    "Http": {
+        "port": {
+            "__results": "<span style=\"color:#ae81ff\">number</span>",
+            "__access": "readonly",
+            "__kind": "property",
+            "__name": "port",
+            "__description": "<br><br>The Http.port property gets the port <span style=\"color:#ae81ff\">number</span> used for connection to the HTTP server or <strong style=\"color:gray\">nil</strong> if connection have been closed.",
+            "__example": "local net = require \"net\"\n\nlocal httpclient = net.Http(\"https://www.luart.org\")\n\n-- outputs 443\nprint(\"http port = \"..httpclient.port)",
+            "__tinydesc": "Get HTTP connection port",
+            "__filename": "Http-port.html"
+        },
+        "delete": {
+            "__returns": "<br>This method return a <a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\"></i> Task</a> instance. Once the Task has finished, it will return two values :\n            <ul>\n              <li>The first value is the <a href=\"Http.html\"><i class=\"fas fa-globe\"></i> Http</a> instance used for the PUT request.</li>\n              <li>The second value is <code>nil</code> in case of error or a <code>table</code> that contains the server response, with the following fields</li>\n              <ul style=\"list-style: none\">\n                <li><code>\"content\"</code> : a <code>string</code> containing the body part of the HTTP response</li>\n                <li><code>\"elapsed\"</code> : a <code>number</code> representing the elapsed time to get the response</li>\n                <li><code>\"status\"</code> : a <code>number</code> containing the HTTP response status</li>\n                <li><code>\"reason\"</code> : a <code>string</code> containing HTTP response status text</li>\n                <li><code>\"ok\"</code> : a <code>boolean</code> value indicating if the GET request succeeded</li>\n                <li><code>\"headers\"</code> : a <code>table</code> containing a pair of <code>strings</code>(header field names of the HTTP response as key and content as values)</li>\n                <li><code>\"cookies\"</code> : a <code>table</code> containing a pair of <code>strings</code>(cookies names of the HTTP response as key and content as values)</li>\n              </ul>\n            </ul>",
+            "__name": "delete",
+            "__example": "local net = require \"net\"\n\nlocal client = net.Http(\"https://httpbun.com\")\n\n-- make a DELETE request, and once its terminated, call the provided function, to process the response\nclient:delete(\"/delete\", data).after = function (self, response)\n  if not response then\n    error(net.error)\n  end\n  print(response.content)\nend\n\nwaitall()",
+            "__results": "<a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\" style=\"color :#2187E7\"></i> Task</a>",
+            "__kind": "method",
+            "__params": [
+                {
+                    "__description": "<p>A <code>string</code>representing the target resource on the server to delete.</p>",
+                    "__optional": false,
+                    "__color": "EA6AC3",
+                    "__name": "uri"
+                },
+                {
+                    "__description": "<p>A <a href=\"../sys/File.html\"><i class=\"fas fa-file\" style=\"color :#2187E7\"></i> File</a> or any value converted to a <code>string</code> representing the body content of the request.",
+                    "__optional": false,
+                    "__color": "B1D928",
+                    "__name": "content"
+                }
+            ],
+            "__description": "<br>Send an asynchronous DELETE request to the connected HTTP server to delete the specified resource on the server.",
+            "__tinydesc": "Send an HTTP DELETE request to the server",
+            "__filename": "Http-delete.html"
+        },
+        "__icon": "<span class=\"icon bd-link-icon mr-1\" style=\"font-size: 0.8em\"><i class=\"fas fa-globe\" style=\"color :#2187E7\"></i></span>",
+        "hostname": {
+            "__results": "<span style=\"color:#EA6AC3\">string</span>",
+            "__access": "readonly",
+            "__kind": "property",
+            "__name": "hostname",
+            "__description": "<br><br>The Http.hostname property gets the current hostname <span style=\"color:#EA6AC3\">string</span> used for connection to the HTTP server or <strong style=\"color:gray\">nil</strong> if connection have been closed.",
+            "__example": "local net = require \"net\"\n\nlocal httpclient = net.Http(\"https://www.luart.org\")\n\n-- outputs \"www.luart.org\"\nprint(\"http hostname = \"..httpclient.hostname)",
+            "__tinydesc": "Get HTTP server hostname",
+            "__filename": "Http-hostname.html"
+        },
+        "__kind": "object",
+        "constructor": {
+            "__results": "<a href=\"Http.html\"><i class=\"fas fa-globe\"></i> Http</a>",
+            "__kind": "method",
+            "__params": [
+                {
+                    "__description": "<p>A string representing a valid URL to connect to the HTTP server.</p>\n",
+                    "__optional": false,
+                    "__color": "EA6AC3",
+                    "__name": "url"
+                },
+                {
+                    "__description": "<p>An optional string representing a username for basic HTTP authentication.</p>\n",
+                    "__optional": true,
+                    "__color": "EA6AC3",
+                    "__name": "username"
+                },
+                {
+                    "__description": "<p>An optional string representing a password for basic HTTP authentication.</p>",
+                    "__optional": true,
+                    "__color": "EA6AC3",
+                    "__name": "password"
+                }
+            ],
+            "__name": "constructor",
+            "__description": "<br>The Http constructor returns a Http value representing a HTTP client and connect it to the HTTP server at the given URL, using optional basic authentication.",
+            "__example": "local net = require \"net\"\n\nlocal url = \"https://www.luart.org\"\nlocal client = net.Http(url)\nprint(\"Sucessfully connected to '\"..url..\"'\")",
+            "__tinydesc": "HTTP object constructor",
+            "__filename": "Http-constructor.html"
+        },
+        "content": {
+            "__results": "<span style=\"color:#EA6AC3\">string</span>",
+            "__access": "readonly",
+            "__kind": "property",
+            "__name": "content",
+            "__description": "<br><br>The Http.content property gets a <code>string</code>, representing the current content of the response server from the last HTTP request.",
+            "__example": "local net = require \"net\"\n\nlocal client = net.Http(\"http://download.thinkbroadband.com\")\nlocal task = client:download(\"/10MB.zip\")\n\nlocal last = 0\n\nwhile not task.terminated do\n    sleep()\n    local size = #client.content\n    if size > 0 then\n        print(((size-last) or size)..\" new bytes received\")\n        last = size\n    end\nend",
+            "__tinydesc": "Get the current received response from the server",
+            "__filename": "Http-content.html"
+        },
+        "proxy": {
+            "__returns": "This function returns a <code>boolean</code> value indicating if the operation was successful.",
+            "__name": "proxy",
+            "__example": "local net = require \"net\"\n\nlocal client = net.Http(\"https://www.google.com\")\n\n-- set a proxy connection with the server at 88.32.132.44 using port 8080\nclient:proxy(\"88.32.132.44:8080\")",
+            "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+            "__kind": "method",
+            "__params": [
+                {
+                    "__description": "<p>An optional <code>string</code> representing the proxy server address.</p>",
+                    "__optional": true,
+                    "__color": "EA6AC3",
+                    "__name": "proxy_server"
+                },
+                {
+                    "__description": "<p>An optional <code>string</code> representing the proxy user name.</p>",
+                    "__optional": true,
+                    "__color": "EA6AC3",
+                    "__name": "username"
+                },
+                {
+                    "__description": "<p>An optional <code>string</code> representing the proxy password.</p>",
+                    "__optional": true,
+                    "__color": "EA6AC3",
+                    "__name": "password"
+                }
+            ],
+            "__description": "Sets the proxy server connection.",
+            "__tinydesc": "Configure a proxy connection",
+            "__filename": "Http-proxy.html"
+        },
+        "__filename": "Http.html",
+        "patch": {
+            "__returns": "<br>This method return a <a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\"></i> Task</a> instance. Once the Task has finished, it will return two values :\n            <ul>\n              <li>The first value is the <a href=\"Http.html\"><i class=\"fas fa-globe\"></i> Http</a> instance used for the PUT request.</li>\n              <li>The second value is <code>nil</code> in case of error or a <code>table</code> that contains the server response, with the following fields</li>\n              <ul style=\"list-style: none\">\n                <li><code>\"content\"</code> : a <code>string</code> containing the body part of the HTTP response</li>\n                <li><code>\"elapsed\"</code> : a <code>number</code> representing the elapsed time to get the response</li>\n                <li><code>\"status\"</code> : a <code>number</code> containing the HTTP response status</li>\n                <li><code>\"reason\"</code> : a <code>string</code> containing HTTP response status text</li>\n                <li><code>\"ok\"</code> : a <code>boolean</code> value indicating if the GET request succeeded</li>\n                <li><code>\"headers\"</code> : a <code>table</code> containing a pair of <code>strings</code>(header field names of the HTTP response as key and content as values)</li>\n                <li><code>\"cookies\"</code> : a <code>table</code> containing a pair of <code>strings</code>(cookies names of the HTTP response as key and content as values)</li>\n              </ul>\n            </ul>",
+            "__name": "patch",
+            "__example": "local net = require \"net\"\n\nlocal client = net.Http(\"https://reqbin.com\")\n\nlocal data = [[\n{\n  \"User\": {\n    \"Id\": 12345,\n    \"Name\": \"John Smith\"\n  }\n}\n]]\n\n-- make a PATCH request, and once its terminated, call the provided function, to process the response\nclient:patch(\"/echo/patch/json\", data).after = function (self, response)\n  if not response then\n    error(net.error)\n  end\n  print(response.content)\nend\n\nwaitall()",
+            "__results": "<a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\" style=\"color :#2187E7\"></i> Task</a>",
+            "__kind": "method",
+            "__params": [
+                {
+                    "__description": "<p>A <code>string</code>representing the target resource on the server.</p>",
+                    "__optional": false,
+                    "__color": "EA6AC3",
+                    "__name": "uri"
+                },
+                {
+                    "__description": "<p>A <a href=\"../sys/File.html\"><i class=\"fas fa-file\" style=\"color :#2187E7\"></i> File</a> or any value converted to a <code>string</code> representing the body content of the request.",
+                    "__optional": false,
+                    "__color": "B1D928",
+                    "__name": "content"
+                }
+            ],
+            "__description": "<br>Send an asynchronous PATCH request to the connected HTTP server to apply partial modifications to the target resource.",
+            "__tinydesc": "Send an HTTP PATCH request to the server",
+            "__filename": "Http-patch.html"
+        },
+        "__tinydesc": "HTTP client implementation",
+        "close": {
+            "__returns": "This function returns no value.",
+            "__name": "close",
+            "__example": "local net = require \"net\"\n\nlocal url = \"https://www.luart.org\"\nlocal client = net.Http(url)\nprint(\"Connected to \"..url)\n\n-- closes the connection\nclient:close()",
+            "__results": "<span>-</span>",
+            "__kind": "method",
+            "__params": {},
+            "__description": "Close the HTTP client connection.",
+            "__tinydesc": "HTTP connection close",
+            "__filename": "Http-close.html"
+        },
+        "get": {
+            "__returns": "<br>This method return a <a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\"></i> Task</a> instance. Once the Task has finished, it will return two values :\n            <ul>\n              <li>The first value is the <a href=\"Http.html\"><i class=\"fas fa-globe\"></i> Http</a> instance used for the GET request.</li>\n              <li>The second value is <code>nil</code> in case of error or a <code>table</code> that contains the server response, with the following fields</li>\n              <ul style=\"list-style: none\">\n                <li><code>\"content\"</code> : a <code>string</code> containing the body part of the HTTP response</li>\n                <li><code>\"elapsed\"</code> : a <code>number</code> representing the elapsed time to get the response</li>\n                <li><code>\"status\"</code> : a <code>number</code> containing the HTTP response status</li>\n                <li><code>\"reason\"</code> : a <code>string</code> containing HTTP response status text</li>\n                <li><code>\"ok\"</code> : a <code>boolean</code> value indicating if the GET request succeeded</li>\n                <li><code>\"headers\"</code> : a <code>table</code> containing a pair of <code>strings</code>(header field names of the HTTP response as key and content as values)</li>\n                <li><code>\"cookies\"</code> : a <code>table</code> containing a pair of <code>strings</code>(cookies names of the HTTP response as key and content as values)</li>\n              </ul>\n            </ul>",
+            "__name": "get",
+            "__example": "local net = require \"net\"\n\n-- creates a Http instance and call its get() method\n-- the get() method will return a Task instance\n-- then we set the Task instance \"after\" property\n-- with a function that will be called once the Task is terminated, using the two values returned by the Task\n\nnet.Http(\"https://wttr.in\"):get(\"/Paris?format=3\").after = function (client, response)\n  console.write(response.content)\nend\n\nwaitall()",
+            "__results": "<a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\" style=\"color :#2187E7\"></i> Task</a>",
+            "__kind": "method",
+            "__params": [
+                {
+                    "__description": "<p>A string representing the resource to get on the server.</p>",
+                    "__optional": false,
+                    "__color": "EA6AC3",
+                    "__name": "uri"
+                },
+                {
+                    "__description": "<p>An optional <code>table</code> that contains parameters to be sent with the request, in the form of <code>key1=value1&key2=value2</code>...</p>",
+                    "__optional": true,
+                    "__color": "B1D928",
+                    "__name": "parameters"
+                }
+            ],
+            "__description": "<br>Send an asynchronous GET request to the connected HTTP server for a specific resource.",
+            "__tinydesc": "Send an HTTP GET request to the server",
+            "__filename": "Http-get.html"
+        },
+        "__type": "object",
+        "__name": "Http",
+        "response": {
+            "__results": "<span style=\"color:#B1D928\">table</span>",
+            "__access": "readonly",
+            "__kind": "property",
+            "__name": "response",
+            "__description": "<br><br>The Http.response property returns a <code>table</code> that contains the HTTP response of the last request.",
+            "__example": "local net = require \"net\"\n\nlocal client = net.Http(\"http://download.thinkbroadband.com\")\nawait(client:download(\"/10MB.zip\"))\n\nif client.response then\n  print(\"Successfully downloaded \"..client.response.file.name)\nend",
+            "__tinydesc": "Get the response table from the last HTTP request",
+            "__filename": "Http-response.html"
+        },
+        "headers": {
+            "__results": "<span style=\"color:#B1D928\">table</span>",
+            "__access": "readonly",
+            "__kind": "property",
+            "__name": "headers",
+            "__description": "<br><br>The Http.headers property returns a <strong style=\"color:#EA6AC3\">table</strong> that contains the headers of the requests to be sent to the server (where keys and values are <code>strings</code> representing header names and values respectively). ",
+            "__example": "local net = require \"net\"\n\nlocal client = net.Http(\"https://httpbin.org\")\n\n-- add header \"Content-Type\" with the value \"text/plain\" for next requests\nclient.headers[\"Content-Type\"] = \"text/plain\"\n\n-- the data to be posted (in text/plain format)\nlocal data = [[Hello World !]]\n\n-- make a POST request, and after its terminated, call the provided function, to process the response\nclient:post(\"/post\", data).after = function (self, response)\n  if not response then\n    error(net.error)\n  end\n  print(response.content)\nend\n\nwaitall()",
+            "__tinydesc": "Get the headers table for the next HTTP request",
+            "__filename": "Http-headers.html"
+        },
+        "__results": "",
+        "__description": "The Http object sends requests and receives responses from web servers",
+        "post": {
+            "__returns": "<br>This method return a <a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\"></i> Task</a> instance. Once the Task has finished, it will return two values :\n            <ul>\n              <li>The first value is the <a href=\"Http.html\"><i class=\"fas fa-globe\"></i> Http</a> instance used for the POST request.</li>\n              <li>The second value is <code>nil</code> in case of error or a <code>table</code> that contains the server response, with the following fields</li>\n              <ul style=\"list-style: none\">\n                <li><code>\"content\"</code> : a <code>string</code> containing the body part of the HTTP response</li>\n                <li><code>\"elapsed\"</code> : a <code>number</code> representing the elapsed time to get the response</li>\n                <li><code>\"status\"</code> : a <code>number</code> containing the HTTP response status</li>\n                <li><code>\"reason\"</code> : a <code>string</code> containing HTTP response status text</li>\n                <li><code>\"ok\"</code> : a <code>boolean</code> value indicating if the POST request succeeded</li>\n                <li><code>\"headers\"</code> : a <code>table</code> containing a pair of <code>strings</code>(header field names of the HTTP response as key and content as values)</li>\n                <li><code>\"cookies\"</code> : a <code>table</code> containing a pair of <code>strings</code>(cookies names of the HTTP response as key and content as values)</li>\n              </ul>\n            </ul>",
+            "__name": "post",
+            "__example": "local net = require \"net\"\n\nlocal client = net.Http(\"https://reqbin.com\")\n\nlocal data = [[{\n  \"Id\": 12345,\n  \"Customer\": \"John Smith\",\n  \"Quantity\": 1,\n  \"Price\": 10.00\n}]]\n\n-- make a POST request, and after its terminated, call the provided function, to process the response\nclient:post(\"/echo/post/json\", data).after = function (self, response)\n  if not response then\n    error(net.error)\n  end\n  print(response.content)\nend\n\nwaitall()",
+            "__results": "<a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\" style=\"color :#2187E7\"></i> Task</a>",
+            "__kind": "method",
+            "__params": [
+                {
+                    "__description": "<p>A <code>string</code>representing the resource on the server to POST parameters to.</p>",
+                    "__optional": false,
+                    "__color": "EA6AC3",
+                    "__name": "uri"
+                },
+                {
+                    "__description": "<p>An optional <code>table</code> (for <code>multipart/form-data</code> content) or a <code>string</code> (for raw data content) that contains parameters to be sent with the request.Each key of the provided table must be a <code>string</code> (representing the parameter name) and each value represents the value for the corresponding parameter (a <code>string</code> or a <a href=\"../sys/File.html\"><i class=\"fas fa-file\" style=\"color :#2187E7\"></i> File</a> object).</p>",
+                    "__optional": true,
+                    "__color": "B1D928",
+                    "__name": "parameters"
+                }
+            ],
+            "__description": "<br>Send an asynchronous POST request to the connected HTTP server at a specific resource.",
+            "__tinydesc": "Send an HTTP POST request to the server",
+            "__filename": "Http-post.html"
+        },
+        "download": {
+            "__returns": "<br>This method return a <a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\"></i> Task</a> instance. Once the Task has finished, it will return two values :\n            <ul>\n              <li>The first value is the <a href=\"Http.html\"><i class=\"fas fa-globe\"></i> Http</a> instance used for the PUT request.</li>\n              <li>The second value is <code>nil</code> in case of error or a <code>table</code> that contains the server response, with the following fields</li>\n              <ul style=\"list-style: none\">\n                <li><code>\"file\"</code> : a <a href=\"../sys/File.html\"><i class=\"fas fa-file\" style=\"color :#2187E7\"></i> File</a> object instance representing the downloaded file. The file is dowloaded in the current directory.</li>\n                <li><code>\"elapsed\"</code> : a <code>number</code> representing the elapsed time to get the response</li>\n                <li><code>\"status\"</code> : a <code>number</code> containing the HTTP response status</li>\n                <li><code>\"reason\"</code> : a <code>string</code> containing HTTP response status text</li>\n                <li><code>\"ok\"</code> : a <code>boolean</code> value indicating if the GET request succeeded</li>\n                <li><code>\"headers\"</code> : a <code>table</code> containing a pair of <code>strings</code>(header field names of the HTTP response as key and content as values)</li>\n                <li><code>\"cookies\"</code> : a <code>table</code> containing a pair of <code>strings</code>(cookies names of the HTTP response as key and content as values)</li>\n              </ul>\n            </ul>",
+            "__name": "download",
+            "__example": "local net = require \"net\"\n\n-- Download a server resource and waits until it's done\nlocal client, response = await(net.Http(\"http://download.thinkbroadband.com\"):download(\"/10MB.zip\"))\nprint(\"Downloaded \"..response.file.name..\", \"..response.file.size..\" bytes\")",
+            "__results": "<a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\" style=\"color :#2187E7\"></i> Task</a>",
+            "__kind": "method",
+            "__params": [
+                {
+                    "__description": "<p>A <code>string</code> representing the target resource on the server to be downloaded.</p>",
+                    "__optional": false,
+                    "__color": "EA6AC3",
+                    "__name": "uri"
+                }
+            ],
+            "__description": "<br>Send an asynchronous GET request to the connected HTTP server to download the specified resource from the server.",
+            "__tinydesc": "Download a file from the server",
+            "__filename": "Http-download.html"
+        },
+        "received": {
+            "__results": "<span style=\"color:#ae81ff\">number</span>",
+            "__access": "readonly",
+            "__kind": "property",
+            "__name": "received",
+            "__description": "<br><br>The Http.received property gets a <code>number</code>, representing the byte count of data received from the server during last HTTP request.",
+            "__example": "local net = require \"net\"\n\nlocal client = net.Http(\"http://download.thinkbroadband.com\")\nlocal task = client:download(\"/10MB.zip\")\n\nlocal last = 0\n\nwhile not task.terminated do\n    sleep()\n    last = client.received-last\n    if last > 0 then\n        print(\"Received \"..last..\" bytes\")\n    end\nend",
+            "__tinydesc": "Get the byte count of data received from the server",
+            "__filename": "Http-received.html"
+        },
+        "cookies": {
+            "__results": "<span style=\"color:#B1D928\">table</span>",
+            "__access": "read/write",
+            "__kind": "property",
+            "__name": "cookies",
+            "__description": "<br><br>The Http.cookies property returns a <strong style=\"color:#EA6AC3\">table</strong> that contains the cookies of the requests to be sent to the server (where keys and values are <code>strings</code> representing cookies names and values respectively). ",
+            "__example": "local net = require \"net\"\n\nlocal client = net.Http(\"https://httpbun.org\")\n\n-- Add a cookie \"name\" associated with the next request URI for the host \"https://httpbun.org\", with the value \"LuaRT\"\nclient.cookies = { name = \"LuaRT\" }\n\n-- make a GET request, and after its terminated, call the provided function, to process the response\nclient:get(\"/cookies\").after = function (self, response)\n  if not response then\n    error(net.error)\n  end\n  -- Should print the Cookie value\n  print(response.content)\nend\n\nwaitall()",
+            "__tinydesc": "Get or set the cookies table for the next HTTP request",
+            "__filename": "Http-cookies.html"
+        },
+        "put": {
+            "__returns": "<br>This method return a <a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\"></i> Task</a> instance. Once the Task has finished, it will return two values :\n            <ul>\n              <li>The first value is the <a href=\"Http.html\"><i class=\"fas fa-globe\"></i> Http</a> instance used for the PUT request.</li>\n              <li>The second value is <code>nil</code> in case of error or a <code>table</code> that contains the server response, with the following fields</li>\n              <ul style=\"list-style: none\">\n                <li><code>\"content\"</code> : a <code>string</code> containing the body part of the HTTP response</li>\n                <li><code>\"elapsed\"</code> : a <code>number</code> representing the elapsed time to get the response</li>\n                <li><code>\"status\"</code> : a <code>number</code> containing the HTTP response status</li>\n                <li><code>\"reason\"</code> : a <code>string</code> containing HTTP response status text</li>\n                <li><code>\"ok\"</code> : a <code>boolean</code> value indicating if the GET request succeeded</li>\n                <li><code>\"headers\"</code> : a <code>table</code> containing a pair of <code>strings</code>(header field names of the HTTP response as key and content as values)</li>\n                <li><code>\"cookies\"</code> : a <code>table</code> containing a pair of <code>strings</code>(cookies names of the HTTP response as key and content as values)</li>\n              </ul>\n            </ul>",
+            "__name": "put",
+            "__example": "local net = require \"net\"\n\nlocal client = net.Http(\"https://httpbun.com\")\n\nlocal data =\"Hello World !\"\n\n-- make a PUT request, and once its terminated, call the provided function, to process the response\nclient:put(\"/put\", data).after = function (self, response)\n  if not response then\n    error(net.error)\n  end\n  print(response.content)\nend\n\nwaitall()",
+            "__results": "<a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\" style=\"color :#2187E7\"></i> Task</a>",
+            "__kind": "method",
+            "__params": [
+                {
+                    "__description": "<p>A <code>string</code>representing the target resource on the server.</p>",
+                    "__optional": false,
+                    "__color": "EA6AC3",
+                    "__name": "uri"
+                },
+                {
+                    "__description": "<p>A <a href=\"../sys/File.html\"><i class=\"fas fa-file\" style=\"color :#2187E7\"></i> File</a> or any value converted to a <code>string</code> representing the body content of the request.",
+                    "__optional": false,
+                    "__color": "B1D928",
+                    "__name": "content"
+                }
+            ],
+            "__description": "<br>Send an asynchronous PUT request to the connected HTTP server to creates a new resource or replaces a representation of the target resource.",
+            "__tinydesc": "Send an HTTP PUT request to the server",
+            "__filename": "Http-put.html"
+        }
+    },
+    "__color": "2187E7",
+    "adapters": {
+        "__returns": "Returns an iterator <span style=\"color: #c7a170\">function</span> to be used in a <span>for</span> loop, to iterate over network adapters, returning two values at each iteration :\n<ul>\n  <li>A <span style=\"color:#EA6AC3\">string</span>, representing the name of the adapter.</li>\n  <li>A <span style=\"color: #B1D928\">table</span>, that contains the list of all the IP associated with the adapter.</li>\n</ul>",
+        "__name": "adapters",
+        "__example": "local net = require \"net\"\n\nprint(\"Available Network adapters :\")\nfor name, ip in net.adapters(\"ipv4\") do\n\tprint(ip[1]..\"\\t\"..name)\nend",
+        "__results": "<span style=\"color: #c7a170\">function</span>",
+        "__kind": "function",
+        "__params": [
+            {
+                "__description": "<p>A string representing the IP family address returned at each iteration : <span style=\"color:#EA6AC3\">\"ipv4\"</span> or <span style=\"color:#EA6AC3\">\"ipv6\"</span>.</p>",
+                "__optional": false,
+                "__color": "EA6AC3",
+                "__name": "family"
+            }
+        ],
+        "__description": "Iterator function to retrieve installed network adapters on the Windows operating system, using the IPv4 or IPv6 address family.",
+        "__tinydesc": "Iterate over installed network adapters",
+        "__filename": "adapters.html"
+    },
+    "reverse": {
+        "__returns": "Return a string representing the fully qualified hostname.",
+        "__name": "reverse",
+        "__example": "local console = require \"console\"\nlocal net = require \"net\"\n\nconsole.write('Enter IP adress : ')\nlocal host = net.reverse(console.readln()) or \"not found\";\n\nprint('hostname : '..host)",
+        "__results": "<span style=\"color:#EA6AC3\">string</span>",
+        "__kind": "function",
+        "__params": [
+            {
+                "__description": "<p>The IPv4 or IPv6 address to perform the reverse DNS lookup.</p>",
+                "__optional": false,
+                "__color": "EA6AC3",
+                "__name": "ip"
+            }
+        ],
+        "__description": "Returns the fully qualified domain from an IP address (reverse DNS lookup).",
+        "__tinydesc": "Get the fully qualified domain from an IP address",
+        "__filename": "reverse.html"
+    },
+    "urlencode": {
+        "__returns": "Return a URL-encoded string.",
+        "__name": "urlencode",
+        "__example": "local net = require \"net\"\n\nlocal s = \"Hello world!\"\nprint(\"raw:    \", s)\nprint(\"encoded:\", net.urlencode(s))",
+        "__results": "<span style=\"color:#EA6AC3\">string</span>",
+        "__kind": "function",
+        "__params": [
+            {
+                "__description": "<p>The <code>string</code> to  URL-encode.</p>",
+                "__optional": false,
+                "__color": "EA6AC3",
+                "__name": "str"
+            }
+        ],
+        "__description": "Returns an URL-encoded string, so that it can be safely transmitted over the internet",
+        "__tinydesc": "Get an URL-encoded string",
+        "__filename": "urlencode.html"
+    },
+    "__type": "module",
+    "__name": "net"
+}

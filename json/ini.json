@@ -1,0 +1,92 @@
+{
+    "load": {
+        "__returns": "Returns the corresponding Lua table or a <code>nil</code> value in case of error.",
+        "__name": "load",
+        "__example": "local ini = require \"ini\"\n\n-- Load the old but still alive Windows \"system.ini\" file\nlocal system = ini.load(sys.env.windir..\"/system.ini\")\n\n-- prints the content of the 'wave' key in the section 'drivers'\nprint(system.drivers.wave)",
+        "__results": "<span style=\"color :#B1D928\"></i>any</span> | <span style=\"color :gray\"></i>nil</span>",
+        "__kind": "function",
+        "__params": [
+            {
+                "__description": "<p>A <a href=\"../sys/File.html\"><i class=\"fas fa-file\" style=\"color :#2187E7\"></i> File</a> object or a filename <span style=\"color:#EA6AC3\">string</span>, representing the file whose content will be decoded from ini.</p>",
+                "__optional": false,
+                "__color": "606060",
+                "__name": "file"
+            }
+        ],
+        "__description": "Load and decode a file containing ini data, following those rules : ",
+        "__tinydesc": "Load and decode an ini file",
+        "__filename": "load.html"
+    },
+    "__icon": "<span class=\"icon bd-link-icon mr-1\" style=\"font-size: 0.8em\"><i class=\"fas fa-square-poll-horizontal\" style=\"color :#5DADE2; vertical-align: top\" style=\"color: #D0D0D0\"></i></span>",
+    "__type": "module",
+    "decode": {
+        "__returns": "Returns the corresponding Lua table or a <code>nil</code> value in case of error.",
+        "__name": "decode",
+        "__example": "local ini = require \"ini\"\n\n-- sample ini string, that contains two sections of key/value fields\ncontent = [[\n[John]\nage=32\ngender=male\n  \n[Lena]\nage=26\ngender=female\n]]\n\nlocal users = ini.decode(content)\n\n-- prints the age of the user John\nprint(users.John.age)",
+        "__results": "<span style=\"color :#B1D928\"></i>any</span> | <span style=\"color :gray\"></i>nil</span>",
+        "__kind": "function",
+        "__params": [
+            {
+                "__description": "<p>ini string to be decoded.</p>",
+                "__optional": false,
+                "__color": "EA6AC3",
+                "__name": "string"
+            }
+        ],
+        "__description": "Decode an ini string to a Lua table, following those rules : ",
+        "__tinydesc": "Generate a Lua table from a ini string",
+        "__filename": "decode.html"
+    },
+    "save": {
+        "__returns": "Returns <code>true</code> or <code>false</code> in case of error.",
+        "__name": "save",
+        "__example": "local ini = require \"ini\"\n\nlocal t = \t{\n\t\t\t\tuser1 = {\n\t\t\t\t\tname = \"John\",\n\t\t\t\t\tage = 38,\n\t\t\t\t\tsex = \"male\"\n\t\t\t\t},\n\t\t\t\tuser2 = {\n\t\t\t\t\tname = \"Jane\",\n\t\t\t\t\tage = 26,\n\t\t\t\t\tsex = \"female\"\n\t\t\t\t}\n\t\t\t}\n\n-- save the table content to a file in ini format\nini.save(\"test.ini\", t)",
+        "__results": "<span style=\"color :#ae81ff\"></i> boolean</span>",
+        "__kind": "function",
+        "__params": [
+            {
+                "__description": "<p>A <a href=\"../sys/File.html\"><i class=\"fas fa-file\" style=\"color :#2187E7\"></i> File</a> object or a filename <span style=\"color:#EA6AC3\">string</span>, representing the file to save the ini data.</p>",
+                "__optional": false,
+                "__color": "606060",
+                "__name": "file"
+            },
+            {
+                "__description": "The table to be encoded to ini format and saved to the file. The table must follow the following rules :<ul><li>The table must contain only string keys, each with an associated sub-table</li><li>Each sub-table must contain only pairs of string keys and string or number values</li></ul>",
+                "__optional": false,
+                "__color": "B1D928",
+                "__name": "table"
+            }
+        ],
+        "__description": "Encode a Lua <code>table</code> to ini format and save it to a file.",
+        "__tinydesc": "Encode a Lua table to a ini representation string and save it to a file",
+        "__filename": "save.html"
+    },
+    "__kind": {
+        "isdesktop": true,
+        "isconsole": true,
+        "iscore": false
+    },
+    "encode": {
+        "__returns": "Returns the encoded ini string or a <code>nil</code> value in case of error.",
+        "__name": "encode",
+        "__example": "local ini = require \"ini\"\n\nlocal t = \t{\n        user1 = {\n          name = \"John\",\n          age = 38,\n          sex = \"male\"\n        },\n        user2 = {\n          name = \"Jane\",\n          age = 26,\n          sex = \"female\"\n        }\n      }\n\n-- prints the table content encoded in ini format\nprint(ini.encode(t))",
+        "__results": "<span style=\"color:#EA6AC3\">string</span> | <span style=\"color :gray\"></i>nil</span>",
+        "__kind": "function",
+        "__params": [
+            {
+                "__description": "The table to be encoded to ini format. The table must follow the following rules :<ul><li>The table must contain only string keys, each with an associated sub-table</li><li>In each of those sub-tables, the key/pair values will be converted to string</li></ul>",
+                "__optional": false,
+                "__color": "B1D928",
+                "__name": "value"
+            }
+        ],
+        "__description": "Encode a Lua <code>table</code> in a ini representation string.",
+        "__tinydesc": "Encode a Lua table to a ini representation string",
+        "__filename": "encode.html"
+    },
+    "__color": "5DADE2",
+    "__description": "The ini module allows for the parsing and manipulation of INI files",
+    "__name": "ini",
+    "__tinydesc": "Parses and generates INI configuration files for easy settings management",
+    "__filename": "index.html"
+}

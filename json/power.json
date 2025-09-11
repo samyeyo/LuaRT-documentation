@@ -1,0 +1,149 @@
+{
+    "__name": "power",
+    "__icon": "<span class=\"icon bd-link-icon mr-1\" style=\"font-size: 0.8em\"><i class=\"fas fa-battery-half\" style=\"color :#339900; vertical-align: top\"></i></span>",
+    "__color": "339900",
+    "__description": "The power module provides access to the Windows power management",
+    "__tinydesc": "Provides an interface to the Windows power management",
+    "__filename": "index.html",
+    "__type": "module",
+    "__kind": {
+        "isdesktop": true,
+        "isconsole": true,
+        "iscore": false
+    },
+
+    "battery": {
+        "__results": "<span style=\"color:#B1D928\">table</span> | nil",
+        "__access": "readonly",
+        "__kind": "property",
+        "__name": "battery",
+        "__description": "<br>The power.battery property gets the current battery usage as a <code>table</code>. If no battery is present, the property returns <code>nil</code>. <p>The table provides the following fields : <ul> <li><code>charging</code> : indicates if the battery is charging or not.</li> <li><code>percent</code> : indicates the battery left, in percent.</li> <li><code>lifetime</code> : indicates the battery lifetime in seconds or <code>nil</code> if the system cannot calculate it.</li> <li><code>saver</code> : indicates if the battery saver is currently in use.</li> </ul> </p>",
+        "__example": "local power = require \"power\"\n\nif power.battery then\n  print(\"Battery is \"..(power.battery.charging and \"charging\" or \"not charging\"))\n  print(power.battery.percent..\"% left\")\n  print(power.battery.lifetime and math.floor(power.battery.lifetime/3600)..\"h remaining\" or \"Battery lifetime not available\")\n  print(power.battery.saver and \"Battery saver is in use\" or \"Battery saver is not in use\")\nelse\n  print(\"This computer don't have a battery\")\nend",
+        "__tinydesc": "Get current battery status",
+        "__filename": "battery.html"
+    },
+
+    "plugged": {
+        "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+        "__access": "readonly",
+        "__kind": "property",
+        "__name": "plugged",
+        "__description": "<br>The power.plugged checks if the computer is plugged to AC, returning <code>true</code> or <code>false</code> otherwise.",
+        "__example": "local power = require \"power\"\n\nprint(\"Computer is currently powered by \"..(power.isplugged and \"AC\" or \"battery\"))",
+        "__tinydesc": "Check if the computer is plugged to AC",
+        "__filename": "plugged.html"
+    },
+
+    "onPlugged": {
+        "__results": "<span>-</span>",
+        "__kind": "event",
+        "__name": "onPlugged",
+        "__description": "<br>The power.onPlugged() event is thrown each time the computer is plugged or unplugged from AC.",
+        "__tinydesc": "Event fired when the power source has changed",
+        "__filename": "onPlugged.html",
+        "__params": [
+            {
+                "__description": "<p>A <code>string</code> representing new source of power, either <code>'battery'</code> or <code>'AC'</code> otherwise.</p>",
+                "__optional":false,
+                "__color":"EA6AC3",
+                "__name":"source"
+            }
+        ],
+        "__example": "local power = require \"power\"\nfunction power.onPlugged(source)\n  print(\"Computer is now \"..source..\" powered\")\nend\nwaitall()"
+    },
+
+    "onSuspend": {
+        "__results": "<span>-</span>",
+        "__kind": "event",
+        "__name": "onSuspend",
+        "__description": "<br>The power.onSuspend() event is thrown each time the computer is going to be suspended.<p><article class=\"message is-warning is-small mt-6 mb-6\" style=\"margin-left: 20%; margin-right: 20%\">\n              <div class=\"message-header mb-0\">\n                <p><i class=\"fas fa-pencil\"></i> Notes</p>\n              </div>\n              <div class=\"message-body mb-0 is-size-7\">\n                <ul class=\"mt-0\">\n                    <li>On modern computers (using S0 power state), this event may not fire correctly.</li>\n                </ul>\n              </div></article></p>",
+        "__tinydesc": "Event fired when computer is going to be suspended",
+        "__filename": "onSuspend.html",
+        "__params": [],
+        "__example": "local power = require \"power\"\n\nfunction power.onSuspend()\n  print(\"Computer is suspending now !!!\")\nend\n\nprint(\"Waiting for the computer to suspend...\")\n\nwaitall()"
+    },
+
+    "onResume": {
+        "__results": "<span>-</span>",
+        "__kind": "event",
+        "__name": "onResume",
+        "__description": "<br>The power.onResume() event is thrown each time the computer is resumed from sleep.",
+        "__tinydesc": "Event fired when computer is resumed",
+        "__filename": "onResume.html",
+        "__params": [],
+        "__example": "local power = require \"power\"\n\nfunction power.onResume()\n  print(\"Computer just resumed from sleep state\")\nend\n\nprint(\"Waiting for the computer to resume...\")\n\nwaitall()"
+    },
+
+    "onBatteryLow": {
+        "__results": "<span>-</span>",
+        "__kind": "event",
+        "__name": "onBatteryLow",
+        "__description": "<br>The power.onBatteryLow() event is thrown when the battery is low.",
+        "__tinydesc": "Event fired when battery is low",
+        "__filename": "onBatteryLow.html",
+        "__params": [],
+        "__example": "local power = require \"power\"\n\nfunction power.onBatteryLow()\n  print(\"Battery is low, plug your computer to AC source !\")\nend\n\nwaitall()"
+    },
+
+    "hold": {
+        "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+        "__returns": "This function returns <code>true</code> on success or <code>false</code> otherwise.",
+        "__kind": "function",
+        "__name": "hold",
+        "__description": "<br>This function prevents the computer from going into sleep mode. Call <a href=\"unhold.html\">power.unhold()</a> to permit sleep mode again. <p><article class=\"message is-warning is-small mt-6 mb-6\" style=\"margin-left: 10%; margin-right: 10%\">\n<div class=\"message-header mb-0\">\n<p><i class=\"fas fa-pencil\"></i> Notes</p>\n</div>\n<div class=\"message-body mb-0 is-size-7\">\n<ul class=\"mt-0\">\n<li>This function does not block user-initiated sleep: If the user closes the lid, presses the power button, or selects Sleep manually, the system will still sleep.</li>\n<li>On newer devices (especially laptops), the request may be ignored or auto-terminated after 5 minutes on battery power.</li>\n</ul>\n</div></article></p>",
+        "__tinydesc": "Prevents the computer from going into sleep mode",
+        "__filename": "hold.html",
+        "__params": [],
+        "__example": "local power = require \"power\"\n\nprint(\"Preventing the computer to go to sleep mode for 5sec\")\nprint(power.hold())\n\nsleep(5000)\n\nprint(\"Computer can now go to sleep\")\nprint(power.unhold())"
+    },
+
+    "unhold": {
+        "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+        "__returns": "This function returns <code>true</code> on success or <code>false</code> otherwise.",
+        "__kind": "function",
+        "__name": "unhold",
+        "__description": "<br>This function permits the computer to enter sleep mode again, after a previous call to <a href=\"hold.html\">power.hold()</a>.",
+        "__tinydesc": "Permits the computer to go to sleep",
+        "__filename": "unhold.html",
+        "__params": [],
+        "__example": "local power = require \"power\"\n\nprint(\"Preventing the computer to go to sleep mode for 5sec\")\nprint(power.hold())\n\nsleep(5000)\n\nprint(\"Computer can now go to sleep\")\nprint(power.unhold())"
+    },
+    
+    "hibernate": {
+        "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+        "__returns": "This function returns <code>true</code> on success or <code>false</code> otherwise.",
+        "__kind": "function",
+        "__name": "hibernate",
+        "__description": "<br>power.hibernate() suspends the computer in hibernation mode.<p><article class=\"message is-warning is-small mt-6 mb-6\" style=\"margin-left: 10%; margin-right: 10%\">\n        <div class=\"message-header mb-0\">\n          <p><i class=\"fas fa-pencil\"></i> Notes</p>\n        </div>\n        <div class=\"message-body mb-0 is-size-7\">\n          <ul class=\"mt-0\">\n           <li>Hibernation mode must have been activated in the Windows settings for this function to work.</li>\n          </ul>\n        </div></article></p>",
+        
+        "__tinydesc": "Suspends the computer in hibernation mode",
+        "__filename": "hibernate.html",
+        "__params": [],
+        "__example": "local power = require \"power\"\n\nprint(\"Computer will hibernate in 5sec !\")\n\nsleep(5000)\n\npower.hibernate()\n"
+    },
+
+    "sleep": {
+        "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+        "__returns": "This function returns <code>true</code> on success or <code>false</code> otherwise.",
+        "__kind": "function",
+        "__name": "sleep",
+        "__description": "<br>power.hibernate() suspends the computer in sleep mode.<p><article class=\"message is-warning is-small mt-6 mb-6\" style=\"margin-left: 10%; margin-right: 10%\">\n        <div class=\"message-header mb-0\">\n          <p><i class=\"fas fa-pencil\"></i> Notes</p>\n        </div>\n        <div class=\"message-body mb-0 is-size-7\">\n          <ul class=\"mt-0\">\n           <li>On modern computers using the S0 power state, this function may fail.</li>\n          </ul>\n        </div></article></p>",
+        "__tinydesc": "Suspends the computer in sleep mode",
+        "__filename": "sleep.html",
+        "__params": [],
+        "__example": "local power = require \"power\"\n\nprint(\"Computer will sleep in 5sec !\")\n\nsleep(5000)\n\npower.sleep()\n"
+    },
+
+    "displayoff": {
+        "__results": "<span>-</span>",
+        "__kind": "function",
+        "__name": "displayoff",
+        "__description": "<br>This function turns off the monitor.",
+        "__tinydesc": "Turns off the monitor",
+        "__filename": "displayoff.html",
+        "__params": [],
+        "__example": "local power = require \"power\"\n\nprint(\"Monitor will turned off in 5sec !\")\n\nsleep(5000)\n\npower.displayoff()\n"
+    }
+}
+
+            

@@ -1,0 +1,380 @@
+{
+    "isZip": {
+        "__returns": "Returns <span style=\"color:#ae81ff\">true</span> if the given file is a valid ZIP archive, <span style=\"color:#ae81ff\">false</span> otherwise.",
+        "__name": "isZip",
+        "__example": "-- extract an entry from a zip archive\nlocal compression = require \"compression\"\n\n-- check parameters : the archive and entry specified as argument\nlocal archive = arg[1] or error(\"no archive specified\")\nlocal entry = arg[2] or error(\"no entry specified\")\n\n-- check that the file is a valid ZIP archive\nif not compression.isZip(archive) then\n    error(\"'\"..archive..\"' is not a valid ZIP archive, or may be corrupted\")\nend\n\n-- open the archive\nlocal z = compression.Zip(archive)\n\n-- extract the entry on the disk in the current directory or throws an error if false\nlocal extracted = z:extract(entry) or error(z.error)\n\nprint(extracted.name..\" has been successfully extracted to \"..extracted.path)",
+        "__results": "<span style=\"color: #ae81ff\">boolean</span>",
+        "__kind": "function",
+        "__params": [
+            {
+                "__description": "<p>A <span style=\"color:#EA6AC3\">string</span> or a <a href=\"../sys/File.html\"><i class=\"fas fa-file\"></i> File</a> object, to be checked for ZIP validity.</p>",
+                "__optional": false,
+                "__color": "606060",
+                "__name": "file"
+            }
+        ],
+        "__description": "The isZip() function checks wether a file represent a valid ZIP archive.",
+        "__tinydesc": "Check Zip archive validity",
+        "__filename": "isZip.html"
+    },
+    "__icon": "<span class=\"icon bd-link-icon mr-1\" style=\"font-size: 0.8em\"><i class=\"fas fa-archive\" style=\"color :#D2A679; vertical-align: top\" style=\"color: #D0D0D0\"></i></span>",
+    "gzip": {
+        "__returns": "Returns a temporary <a href=\"../sys/File.html\"><i class=\"fas fa-file\"></i> File</a> instance that represent the compressed file.",
+        "__name": "gzip",
+        "__example": "local compression = require \"compression\"\n\nif #arg == 0 then\n    error(\"error: no input file\")\nend\n-- open a file and compress it to a temporary file\nlocal file = sys.File(arg[1])\nlocal gzipped_file = compression.gzip(file)\n-- output the size of the uncompressed and compressed file\nprint(\"File size : \"..file.size)\nprint(\"Gzipped file : \"..gzipped_file.size)\n\n-- moves the temporary file to the current directory and rename it\ngzipped_file:move(file.name:gsub(file.extension, \".gz\"))",
+        "__results": "<span><a href=\"../sys/File.html\"><i class=\"fas fas fa-file\"></i> File</a></span>",
+        "__kind": "function",
+        "__params": [
+            {
+                "__description": "<p>A <span style=\"color:#EA6AC3\">string</span> or a <a href=\"../sys/File.html\"><i class=\"fas fa-file\"></i> File</a> instance, representing the file to be compressed.</p>",
+                "__optional": false,
+                "__color": "606060",
+                "__name": "file"
+            }
+        ],
+        "__description": "The gzip() function compress a file using the GZIP file format specification.",
+        "__tinydesc": "Compress file using GZIP file format specification",
+        "__filename": "gzip.html"
+    },
+    "gunzip": {
+        "__returns": "Returns a temporary <a href=\"../sys/File.html\"><i class=\"fas fa-file\"></i> File</a> instance that represent the decompressed file.",
+        "__name": "gunzip",
+        "__example": "local compression = require \"compression\"\n\nif #arg == 0 then\n    error(\"error: no input file\")\nend\n-- open the gzip compressed file and decompress it\nlocal file = sys.File(arg[1])\nlocal gunzipped_file = compression.gunzip(file)\n-- output the size of the original and decompressed file\nprint(\"GZipped file : \"..file.size)\nprint(\"Decompressed File size : \"..gunzipped_file.size)\n\ngunzipped_file:remove()",
+        "__results": "<span><a href=\"../sys/File.html\"><i class=\"fas fas fa-file\"></i> File</a></span>",
+        "__kind": "function",
+        "__params": [
+            {
+                "__description": "<p>A <span style=\"color:#EA6AC3\">string</span> or a <a href=\"../sys/File.html\"><i class=\"fas fa-file\"></i> File</a> instance, representing the GZIP compressed file.</p>",
+                "__optional": false,
+                "__color": "606060",
+                "__name": "file"
+            }
+        ],
+        "__description": "The gunzip() function decompress a GZIP compressed file.",
+        "__tinydesc": "Decompress file using GZIP file format specification",
+        "__filename": "gunzip.html"
+    },
+    "__type": "module",
+    "inflate": {
+        "__returns": "Returns a <a href=\"../sys/Buffer.html\"><i class=\"fas fas fa-th\"></i> Buffer</a> that holds the compressed data or <span style=\"color: #606060\">nil</span> if compression failed.",
+        "__name": "inflate",
+        "__example": "local text = [[Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus \ntortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas\nligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy \nmolestie, enim est eleifend mi, non fermentum diam nisl sit amet erat.]]\n\nlocal compressed = require(\"compression\").deflate(text)\n\nprint(\"size of text in bytes : \"..#text)\nprint(\"size of compressed buffer in bytes : \"..#compressed)\nprint(\"compression ratio : \"..tostring(math.floor(100-#compressed/#text * 100))..\"%\")",
+        "__results": "<a href=\"../sys/Buffer.html\"><i class=\"fas fas fa-th\"></i> Buffer</a>",
+        "__kind": "function",
+        "__params": [
+            {
+                "__description": "<p>A <span style=\"color:#EA6AC3\">string</span> or a <a href=\"../sys/Buffer.html\"><i class=\"fas fas fa-th\"></i> Buffer</a> object, to be decompressed.</p>",
+                "__optional": false,
+                "__color": "EA6AC3",
+                "__name": "data"
+            }
+        ],
+        "__description": "The inflate() function decompress data using the INFLATE algorithm.",
+        "__tinydesc": "Decompress data using INFLATE algorithm",
+        "__filename": "inflate.html"
+    },
+    "deflate": {
+        "__returns": "Returns a <a href=\"../sys/Buffer.html\"><i class=\"fas fas fa-th\"></i> Buffer</a> that holds the compressed data or <span style=\"color: #606060\">nil</span> if compression failed.",
+        "__name": "deflate",
+        "__example": "local text = [[Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus \ntortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas\nligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy \nmolestie, enim est eleifend mi, non fermentum diam nisl sit amet erat.]]\n\nlocal compression = require \"compression\"\n-- Compress text\nlocal compressed = compression.deflate(text)\n\n-- decompress text and check if it is what we started with\nprint(tostring(compression.inflate(compressed)) == text)",
+        "__results": "<a href=\"../sys/Buffer.html\"><i class=\"fas fas fa-th\"></i> Buffer</a>",
+        "__kind": "function",
+        "__params": [
+            {
+                "__description": "<p>A <span style=\"color:#EA6AC3\">string</span> or a <a href=\"../sys/Buffer.html\"><i class=\"fas fas fa-th\"></i> Buffer</a> object, to be compressed.</p>",
+                "__optional": false,
+                "__color": "EA6AC3",
+                "__name": "data"
+            }
+        ],
+        "__description": "The deflate() function compress data using the DEFLATE algorithm.",
+        "__tinydesc": "Compress data using the DEFLATE algorithm",
+        "__filename": "deflate.html"
+    },
+    "__kind": {
+        "isdesktop": true,
+        "isconsole": true,
+        "iscore": true
+    },
+    "Zip": {
+        "read": {
+            "__returns": "Returns a <a href=\"../sys/Buffer.html\"><i class=\"fas fa-th\" style=\"color :#2187E7\"></i> Buffer</a> value with the entry content.<br>Returns <span style=\"color:#ae81ff\">false</span> if any error occured. You can check the <a href=\"./Zip-error.html\">Zip.error</a> property to get the error message.",
+            "__name": "read",
+            "__example": "-- read an entry in a zip archive and print its content\nlocal compression = require \"compression\"\nlocal console = require \"console\"\n\nlocal archive_name = console.readln(\"Enter name of the zip archive: \")\nlocal entry_name = console.readln(\"Enter an entry to print its content: \")\nconsole.writecolor(\"cyan\", entry_name, \"from\", archive_name, \":\\n\")\n\n-- open the zip archive in \"read\" mode\nlocal z = compression.Zip(archive_name)\n\n-- read the entry content or throws an error if false\nlocal content = z:read(entry_name) or error(z.error)\n\n-- prints the content in hexadecimal\nconsole.write(content:encode(\"hex\"))",
+            "__results": "<a href=\"../sys/Buffer.html\"><i class=\"fas fas fa-th\"></i> Buffer</a> | <span style=\"color: #ae81ff\">boolean</span>",
+            "__kind": "method",
+            "__params": [
+                {
+                    "__description": "<p>A string representing the path and/or the name of the entry in the Zip archive.</p>",
+                    "__optional": false,
+                    "__color": "EA6AC3",
+                    "__name": "path"
+                }
+            ],
+            "__description": "Reads an entry in memory at the given path/name in the Zip archive. The Zip archive should have been previously opened in <span style=\"color:#EA6AC3\">\"read\"</span> mode.",
+            "__tinydesc": "Read data from Zip archive",
+            "__filename": "Zip-read.html"
+        },
+        "delete": {
+            "__returns": "Returns the number of deleted entries or <span style=\"color:#ae81ff\">false</span> in case of error. You can check the <a href=\"./Zip-error.html\">Zip.error</a> property to get the error message.",
+            "__name": "delete",
+            "__example": "-- Remove entries from a zip archive\nlocal compression = require \"compression\"\nlocal console = require \"console\"\n\n-- Open the zip archive in \"delete\" mode\nlocal zipfile = compression.Zip(\"data.zip\", \"delete\")\n\n-- Deletes two entries\nif zipfile:delete(\"results.xlsx\", \"doc/readme.txt\") then \n  print(\"Entries have been successfully removed from the data.zip archive\")\nelse \n  print(\"An error occured during entries deletion : \"..zip.error)\nend",
+            "__results": "<span style=\"color: #ae81ff\">number</span> | <span style=\"color: #ae81ff\">boolean</span>",
+            "__kind": "method",
+            "__params": {},
+            "__description": "Deletes one ore more entries from the Zip archive. The Zip archive should have been previously opened in <span style=\"color:#EA6AC3\">\"delete\"</span> mode.",
+            "__tinydesc": "Delete one or more entries from Zip archive",
+            "__filename": "Zip-delete.html"
+        },
+        "__name": "Zip",
+        "isdirectory": {
+            "__returns": "Returns <span style=\"color:#ae81ff\">true</span> if the given entry is a directory, <span style=\"color:#ae81ff\">false</span> otherwise.",
+            "__name": "isdirectory",
+            "__example": "-- checks if an entry from a zip archive is a directory\nlocal compression = require \"compression\"\n\n-- check parameters : the archive and entry specified as argument\nlocal archive = arg[1] or error(\"no archive specified\")\nlocal entry = arg[2] or error(\"no entry specified\")\n\n-- open the archive\nlocal z = compression.Zip(archive)\n\n-- check the entry \nlocal result = z:isdirectory(entry) and \" is \" or \" is not \"\n\nprint(entry..\" from \"..archive..result..\"a directory\")\n\nprint(entry..\" from \"..archive..result..\"a directory\")",
+            "__results": "<span style=\"color: #ae81ff\">boolean</span>",
+            "__kind": "method",
+            "__params": [
+                {
+                    "__description": "<p>A string representing the path and/or the name of the entry in the Zip archive.</p>",
+                    "__optional": false,
+                    "__color": "EA6AC3",
+                    "__name": "path"
+                }
+            ],
+            "__description": "Check if the entry with the given path/name in the Zip archive represents a directory. The Zip archive should have been previously opened in <span style=\"color:#EA6AC3\">\"read\"</span> mode.",
+            "__tinydesc": "Check for directory entry in Zip archive",
+            "__filename": "Zip-isdirectory.html"
+        },
+        "extractall": {
+            "__returns": "Returns the number of extracted entries.<br>Returns <span style=\"color:#ae81ff\">false</span> if any error occured. You can check the <a href=\"./Zip-error.html\">zip.error</a> property to get the error message.",
+            "__name": "extractall",
+            "__example": "-- extract an entry from a zip archive\nlocal compression = require \"compression\"\n\n-- check parameters : the archive and entry specified as argument\nlocal archive = arg[1] or error(\"no archive specified\")\n\n-- open the archive\nlocal z = compression.Zip(archive)\n\n-- extract the archive on the disk in the current directory or throws an error if false\nlocal extracted = z:extract() or error(z.error)\n\nprint(extracted.name..\" has been successfully extracted to \"..extracted.path)",
+            "__results": "<span style=\"color:#ae81ff\">number</span> | <span style=\"color: #ae81ff\">boolean</span>",
+            "__kind": "method",
+            "__params": {},
+            "__description": "Extract on the disk all the content of the Zip archive. The Zip archive should have been previously opened in <span style=\"color:#EA6AC3\">\"read\"</span> mode.",
+            "__tinydesc": "Extract all Zip archive content to disk",
+            "__filename": "Zip-extractall.html"
+        },
+        "__kind": "object",
+        "reopen": {
+            "__results": "<span>-</span>",
+            "__returns": "The function returns no value.<br>\n            </div>\n\t      </div>\n      </div>\n    </div>\n  </section>  \n  <footer class=\"footer\">\n    <div class=\"content has-text-centered\">",
+            "__params": [
+                {
+                    "__description": "<p>An optional string that indicate the open mode :<ul><li><span style=\"color:#EA6AC3\">\"read\"</span> : The zip archive is open for reading (the zip archive must exist). It's the default mode.</li><li><span style=\"color:#EA6AC3\">\"append\"</span> : The zip archive is open for appending (the zip archive must exist).</li><li><span style=\"color:#EA6AC3\">\"write\"</span> : The zip archive is open for writing (the zip archive is created and overwrites any previous existing archive).</li></ul>",
+                    "__optional": true,
+                    "__color": "EA6AC3",
+                    "__name": "mode"
+                },
+                {
+                    "__description": "An optional number that indicate the compression level, from <span style=\"color:#ae81ff\">0</span> (no compression) to <span style=\"color:#ae81ff\">10</span> (maximum compression level), defaulting to <span style=\"color:#ae81ff\">6</span>.",
+                    "__optional": true,
+                    "__color": "ae81ff",
+                    "__name": "level"
+                }
+            ],
+            "__name": "reopen",
+            "__description": "Closes the zip archive and reopens it using the specified mode and level compression.",
+            "__kind": "method",
+            "__tinydesc": "Close and reopen the Zip archive",
+            "__filename": "Zip-reopen.html"
+        },
+        "constructor": {
+            "__results": "<a href=\"Zip.html\"><i class=\"fas fas fa-archive\"></i> Zip</a>",
+            "__kind": "method",
+            "__name": "constructor",
+            "__description": "The Zip constructor opens the specified ZIP archive using the specified mode. Returns a Zip value representing the ZIP archive.",
+            "__params": [
+                {
+                    "__description": "<p>A <span style=\"color:#EA6AC3\">string</span> or a <a href=\"../sys/File.html\"><i class=\"fas fa-file\"></i> File</a> object, representing the ZIP archive to be opened.",
+                    "__optional": false,
+                    "__color": "606060",
+                    "__name": "file"
+                },
+                {
+                    "__description": "An optional string that indicate the open mode :<ul><li><span style=\"color:#EA6AC3\">\"read\"</span> : The zip archive is open for reading (the zip archive must exist). It's the default mode.</li><li><span style=\"color:#EA6AC3\">\"append\"</span> : The zip archive is open for appending (the zip archive must exist).</li><li><span style=\"color:#EA6AC3\">\"write\"</span> : The zip archive is open for writing (the zip archive is created and overwrites any previous existing archive).</li><li><span style=\"color:#EA6AC3\">\"delete\"</span> : The zip archive is open for deleting (<a href=\"Zip-delete\">Zip.delete()</a> can be used to delete entries).</li></ul>",
+                    "__optional": true,
+                    "__color": "EA6AC3",
+                    "__name": "mode"
+                },
+                {
+                    "__description": "An optional number that indicate the compression level, from <span style=\"color:#ae81ff\">0</span> (no compression) to <span style=\"color:#ae81ff\">10</span> (maximum compression level), defaulting to <span style=\"color:#ae81ff\">6</span>.</p><br></div></div></div></div></section><footer class=\"footer\"><div class=\"content has-text-centered\">",
+                    "__optional": true,
+                    "__color": "ae81ff",
+                    "__name": "level"
+                }
+            ],
+            "__tinydesc": "Zip Object constructor",
+            "__filename": "Zip-constructor.html"
+        },
+        "iszip64": {
+            "__results": "<span>-</span>",
+            "__access": "readonly",
+            "__kind": "property",
+            "__name": "iszip64",
+            "__description": "<br><br>Checks if the zip archive uses the ZIP64 extensions (for zip archives larger than 4 GiB).",
+            "__example": "-- inspect a zip archive\nlocal compression = require \"compression\"\nlocal console = require \"console\"\n\n\n-- check parameters : the archive specified as argument\nlocal archive = arg[1] or error(\"no archive specified\")\n\n-- open the archive\nlocal z = compression.Zip(archive)\n\nconsole.writeln(\"Inspecting \"..archive..\"...\")\nconsole.writecolor(\"lightgreen\", \"Total size:\\t\")\nconsole.writeln(z.size..\" bytes\")\nconsole.writecolor(\"lightgreen\", \"Total entries:\\t\")\nconsole.writeln(z.count)\nconsole.writecolor(\"lightgreen\", \"ZIP64:\\t\\t\")\nconsole.writeln(z.iszip64 and \"enabled\" or \"disabled\")",
+            "__tinydesc": "Check if the Zip archive uses ZIP64 extensions",
+            "__filename": "Zip-iszip64.html"
+        },
+        "__tinydesc": "Object representation of a ZIP archive file",
+        "__filename": "Zip.html",
+        "error": {
+            "__results": "<span>-</span>",
+            "__access": "readonly",
+            "__kind": "property",
+            "__name": "error",
+            "__description": "<br><br>Get the last error message after a zip operation failed.",
+            "__example": "-- always prints an error message (entry does not exists)\nlocal compression = require \"compression\"\n\n-- check parameters : the archive specified as argument\nlocal archive = arg[1] or error(\"no archive specified\")\n\n-- open the archive\nlocal z = compression.Zip(archive)\n\n-- always throws an error using the z.error message property\nlocal result = z:extract(\"dummy entry\") or error(z.error)",
+            "__tinydesc": "Get last error message after failed Zip operation",
+            "__filename": "Zip-error.html"
+        },
+        "write": {
+            "__returns": "Returns <span style=\"color:#ae81ff\">true</span> if entry has been successfully added to the zip archive or <span style=\"color:#ae81ff\">false</span> otherwise. You can check the <a href=\"./Zip-error.html\">Zip.error</a> property to get the error message.",
+            "__name": "write",
+            "__example": "-- zip script\nlocal compression = require \"compression\"\n\n-- check if the file specified as argument exists\nlocal f = sys.File(arg[1] or error(\"no file specified\"))\n\nif f.exists then\n\t--- create a zip archive file with the same name\n\tlocal archive = compression.Zip(f.name:gsub(f.extension, \".zip\"), \"write\")\n\t--- add the file to the archive\n\tarchive:write(f)\nelse\n\terror(f.name..\" not found\")\nend",
+            "__results": "<span style=\"color: #ae81ff\">boolean</span>",
+            "__kind": "method",
+            "__params": [
+                {
+                    "__description": "<p>An optional string representing the path and/or the name of the new entry in the Zip archive. If omitted, the new entry will be archived at the root of the Zip archive, using the name provided by the entry parameter.</p>",
+                    "__optional": true,
+                    "__color": "EA6AC3",
+                    "__name": "path"
+                }
+            ],
+            "__description": "Writes a new entry in the Zip archive. The Zip archive should have been previously opened in <span style=\"color:#EA6AC3\">\"write\"</span> or <span style=\"color:#EA6AC3\">\"append\"</span> mode.",
+            "__tinydesc": "Write data to Zip archive",
+            "__filename": "Zip-write.html"
+        },
+        "close": {
+            "__results": "<span>-</span>",
+            "__returns": "The function returns no value.\n            </div>\n\t      </div>\n      </div>\n    </div>\n  </section>  \n  <footer class=\"footer\">\n    <div class=\"content has-text-centered\">",
+            "__params": {},
+            "__name": "close",
+            "__description": "Closes the zip archive.<article class=\"message is-info\" style=\"margin-left: 15%; margin-right: 15%\"><div class=\"message-body\">Zip values that are garbage collected (for example when going out of scope) are automatically closed before destruction. In this case, it's not necessary to call the Zip:close() method.</div></article>",
+            "__kind": "method",
+            "__tinydesc": "Close Zip archive",
+            "__filename": "Zip-close.html"
+        },
+        "Zip length operator": {
+            "__title": "# Zip length operator",
+            "__kind": "operation",
+            "__results": "",
+            "__name": "Zip length operator",
+            "__description": "\n            <p>The length operator <strong>#</strong> applied on a Zip object returns the total number of entries that the Zip archive contains. The <a href=\"./Zip-count.html\">Zip.count</a> property returns the same value.</p>\n            \n            ",
+            "__example": "local compression = require \"compression\"\n\n-- check parameters : the archive specified as argument\nlocal archive = arg[1] or error(\"no archive specified\")\n\n-- open the archive\nlocal z = compression.Zip(archive)\n\n-- #z is equivalent to z.count\nprint(archive..\" has a total of \"..#z..\" entries\")",
+            "__tinydesc": "Get the number of entries in the Zip archive",
+            "__filename": "Zip-length.html"
+        },
+        "Zip archive iteration": {
+            "__title": "Zip iteration",
+            "__kind": "operation",
+            "__results": "",
+            "__name": "Zip archive iteration",
+            "__description": "\n            <p>Zip objects are iterable through the Lua<sup>rt</sup> helper function <a href=\"../base/each.html\">each()</a>, returning two values at each iteration :\n            <ul>\n              <li>An entry name as a <span style=\"color: #EA6AC3\">string</span>.</li>\n              <li>A <span style=\"color:#ae81ff\">boolean</span> value indicating wether the current entry is a Directory or not.</li>\n            </ul></p>\n            \n            ",
+            "__example": "-- lists all entries in specified archive\nlocal compression = require \"compression\"\n\n-- check parameters : the archive specified as argument\nlocal archive = arg[1] or error(\"no archive specified\")\n\n-- open the archive\nlocal z = compression.Zip(archive)\n\n-- #z is equivalent to z.count\nprint(archive..\" has a total of \"..#z..\" entries\")",
+            "__tinydesc": "Iterate over the Zip archive, entry by entry",
+            "__filename": "Zip-iteration.html"
+        },
+        "async.extractall": {
+            "__returns": "This function returns a <a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\"></i> Task</a> executed in background.<br>\n            Once the Task has terminated the entry extraction, it will return the number of extracted entries or <span style=\"color:#ae81ff\">false</span> if any error occured. You can check the <a href=\"./Zip-error.html\">zip.error</a> property to get the error message.",
+            "__name": "async.extractall",
+            "__example": "-- extract an entry from a zip archive\nlocal compression = require \"compression\"\n\n-- check parameters : the archive and entry specified as argument\nlocal archive = arg[1] or error(\"no archive specified\")\n\n-- open the archive\nlocal z = compression.Zip(archive)\n\n-- extract all the archive on the disk in the current directory, asynchronously or throws an error if false\nlocal extracted = await(z:extractall() or error(z.error))\n\nprint(extracted.name..\" has been successfully extracted to \"..extracted.path)",
+            "__results": "<a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\"></i> Task</a> | <span style=\"color: #ae81ff\">boolean</span>",
+            "__kind": "method",
+            "__params": {},
+            "__description": "Extract on the disk all the content of the Zip archive, asynchronously. The Zip archive should have been previously opened in <span style=\"color:#EA6AC3\">\"read\"</span> mode.",
+            "__tinydesc": "Extract all archive content asynchronously",
+            "__filename": "Zip-async-extractall.html"
+        },
+        "__type": "object",
+        "extract": {
+            "__returns": "Returns a <a href=\"../sys/File.html\"><i class=\"fas fa-file\" style=\"color :#2187E7\"></i> File</a> or a <a href=\"../sys/Directory.html\"><i class=\"fas fa-folder\" style=\"color :#2187E7\"></i> Directory</a> representing the extracted entry on the disk.<br>Returns <span style=\"color:#ae81ff\">false</span> if any error occured. You can check the <a href=\"./Zip-error.html\">Zip.error</a> property to get the error message.",
+            "__name": "extract",
+            "__example": "-- extract an entry from a zip archive\nlocal compression = require \"compression\"\n\n-- check parameters : the archive and entry specified as argument\nlocal archive = arg[1] or error(\"no archive specified\")\nlocal entry = arg[2] or error(\"no entry specified\")\n\n-- open the archive\nlocal z = compression.Zip(archive)\n\n-- extract the entry on the disk in the current directory or throws an error if false\nlocal extracted = z:extract(entry) or error(z.error)\n\nprint(extracted.name..\" has been successfully extracted to \"..extracted.path)",
+            "__results": "<a href=\"../sys/File.html\"><i class=\"fas fas fa-file\"></i> File</a> | <a href=\"../sys/Directory.html\"><i class=\"fas fas fa-folder\"></i> Directory</a> | <span style=\"color: #ae81ff\">boolean</span>",
+            "__kind": "method",
+            "__params": [
+                {
+                    "__description": "<p>A string representing the path and/or the name of the entry in the Zip archive to be extracted.</p>",
+                    "__optional": false,
+                    "__color": "EA6AC3",
+                    "__name": "path"
+                },
+                {
+                    "__description": "<p>An optional boolean value that indicates to extract the entry conserving its path or not.</p>",
+                    "__optional": true,
+                    "__color": "ae81ff",
+                    "__name": "use_entrypath"
+                }
+            ],
+            "__description": "Extract on the disk an entry with the given path/name in the Zip archive. The Zip archive should have been previously opened in <span style=\"color:#EA6AC3\">\"read\"</span> mode.",
+            "__tinydesc": "Extract an entry from Zip archive",
+            "__filename": "Zip-extract.html"
+        },
+        "__results": "",
+        "async.extract": {
+            "__returns": "This function returns a <a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\"></i> Task</a> executed in background, or <code>false</code> in case of error.<br>\n            Once the Task has terminated the entry extraction, it will return one of the following possible values :\n            <ul>\n                <li><a href=\"../sys/File.html\"><i class=\"fas fa-file\" style=\"color :#2187E7\"></i> File</a> representing the extracted file on the disk.</li>\n                <li><a href=\"../sys/Directory.html\"><i class=\"fas fa-folder\" style=\"color :#2187E7\"></i> Directory</a> representing the extracted directory on the disk.</li>\n                <li><span style=\"color:#ae81ff\">false</span> if any error occured. You can check the <a href=\"./Zip-error.html\">Zip.error</a> property to get the error message.</li>",
+            "__name": "async.extract",
+            "__example": "-- extract an entry from a zip archive\nlocal compression = require \"compression\"\n\n-- check parameters : the archive and entry specified as argument\nlocal archive = arg[1] or error(\"no archive specified\")\nlocal entry = arg[2] or error(\"no entry specified\")\n\n-- open the archive\nlocal z = compression.Zip(archive)\n\n-- extract the entry on the disk asynchronously or throws an error if false\nlocal extracted = await(z:extract(entry) or error(z.error))\n\nprint(extracted.name..\" has been successfully extracted to \"..extracted.path)",
+            "__results": "<a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\"></i> Task</a> | <span style=\"color: #ae81ff\">boolean</span>",
+            "__kind": "method",
+            "__params": [
+                {
+                    "__description": "<p>A string representing the path and/or the name of the entry in the Zip archive to be extracted.</p>",
+                    "__optional": false,
+                    "__color": "EA6AC3",
+                    "__name": "path"
+                },
+                {
+                    "__description": "<p>An optional boolean value that indicates to extract the entry conserving its path or not.</p>",
+                    "__optional": true,
+                    "__color": "ae81ff",
+                    "__name": "use_entrypath"
+                }
+            ],
+            "__description": "Extract on the disk an entry with the given path/name in the Zip archive, asynchronously. The Zip archive should have been previously opened in <span style=\"color:#EA6AC3\">\"read\"</span> mode.",
+            "__tinydesc": "Extract an entry asynchronously",
+            "__filename": "Zip-async-extract.html"
+        },
+        "size": {
+            "__results": "<span>-</span>",
+            "__access": "readonly",
+            "__kind": "property",
+            "__name": "size",
+            "__description": "<br><br>Get the size in bytes of the zip archive.",
+            "__example": "-- prints the size on the disk of a zip archive\nlocal compression = require \"compression\"\n\n-- check parameters : the archive and entry specified as argument\nlocal archive = arg[1] or error(\"no archive specified\")\n\n-- open the archive\nlocal z = compression.Zip(archive)\n\n-- prints the size of the zip archive in bytes\nprint(archive..\" has a size of \"..z.size)",
+            "__tinydesc": "Get total size in bytes of the Zip archive",
+            "__filename": "Zip-size.html"
+        },
+        "file": {
+            "__results": "<a href=\"../sys/File.html\"><i class=\"fas fas fa-file\"></i> File</a>",
+            "__access": "readonly",
+            "__kind": "property",
+            "__name": "file",
+            "__description": "<br>Get the <a href=\"../sys/File.html\"><i class=\"fas fa-file\"></i> File</a> object representing the current opened ZIP archive.<br>",
+            "__example": "-- prints the total number of entries from a zip archive\nlocal compresion = require \"compression\"\n\n-- check parameters : the archive specified as argument\nlocal archive = arg[1] or error(\"no archive specified\")\n\n-- open the archive\nlocal z = compression.Zip(archive)\n\n-- prints ZIP archive properties\nprint(\"Archive fullpath\\t: \"..z.file.fullpath)\nprint(\"Archive size\\t: \"..z.file.size)",
+            "__tinydesc": "Get the Zip File object",
+            "__filename": "Zip-file.html"
+        },
+        "__description": "The Zip object creates, reads, and extracts ZIP archive files",
+        "__icon": "<span class=\"icon bd-link-icon mr-1\" style=\"font-size: 0.8em\"><i class=\"fas fa-archive\" style=\"color :#2187E7\"></i></span>",
+        "count": {
+            "__results": "<span style=\"color:#ae81ff\">number</span>",
+            "__access": "readonly",
+            "__kind": "property",
+            "__name": "count",
+            "__description": "<br><br>Get the number of entries in the zip archive.",
+            "__example": "-- prints the total number of entries from a zip archive\nlocal compression = require \"compression\"\n\n-- check parameters : the archive specified as argument\nlocal archive = arg[1] or error(\"no archive specified\")\n\n-- open the archive\nlocal z = compression.Zip(archive)\n\n-- z.count property is equivalent to #z\nprint(archive..\" has a total of \"..z.count..\" entries\")",
+            "__tinydesc": "Get number of Zip entries",
+            "__filename": "Zip-count.html"
+        }
+    },
+    "__color": "D2A679",
+    "__description": "The compression module allows for use and modification of ZIP and GZIP files",
+    "__name": "compression",
+    "__tinydesc": "Allows ZIP and gzip compression/decompression",
+    "__filename": "index.html"
+}

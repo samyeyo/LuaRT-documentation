@@ -4,9 +4,9 @@
   <meta charset="utf-8" />
   <meta content="IE=edge" http-equiv="X-UA-Compatible" />
   <meta content="width=device-width, initial-scale=1" name="viewport" />
-  <meta name="description" content="JSON string decoding Lua function" />
+  <meta name="description" content="Generate a Lua value from a JSON string" />
   <title>
-    Json.decode() | LuaRT free and open source Windows programming framework for Lua
+    json.decode()
   </title>
   <link href="../../css/bulma-docs.min.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
@@ -167,12 +167,15 @@
   <section class="main-content columns is-centered is-fullheight" style="margin-top: 6%; margin-bottom: 4%">
     <div class="column is-7">
       <div class="card">
-        <a id="back" class="button is-white pl-5" href="index.html?methods"><span class="icon has-text-grey-lighter"><i class="fas fa-circle-left"></i></span></a>
+        <a class="button is-white is-rounded is-small" href="index.html?methods">
+          <span class="icon has-text-grey-lighter">
+            <i class="fas fa-circle-left is-size-5"></i>
+          </span>
+        </a>
         <div class="card-content pt-0">
-          <div class="content">
-            <p class="has-text-weight-light is-size-3 mb-5" style="color: #004080; vertical-align: middle">json.decode(<span style="color:#EA6AC3">string</span>)</p>
-            <p>Decode a JSON string to a Lua value, following those rules : </p>
-            <table class="table has-text-centered mt-6" >
+          <div class="content mt-5" style="font-size:0.95em;">
+            <p class="has-text-weight-medium is-size-5 mb-5" style="color: #004080; vertical-align: middle">json.decode(<span style="color: #EA6AC3">string</span>)<span class ="tag is-rounded has-text-weight-medium is-warning ml-2 is-size-7" style="vertical-align: middle;">function</p>
+            <p>Decode a JSON string to a Lua value, following those rules : <table class="table has-text-centered mt-6" >
               <thead>
                 <tr>
                   <th class="has-text-info">JSON</th>
@@ -205,13 +208,14 @@
                    <td><code class="has-text-grey has-background-white"><span style="color:#EA6AC3">"null"</span></td>
                  </tr>
                 </tbody>
-          </table>
-            <p class="is-size-4 mb-1 mt-6" style="color: #004080">Parameters</p>
-            <p class="has-text-weight-light is-size-5 mt-2 mb-0"><span style="color:#EA6AC3">string</span></p>
-          <p>JSON string to be decoded.</p>
-            <p class="is-size-4 mb-1 mt-6" style="color: #004080">Return value</p>
+          </table></p>
+            <p class="has-text-weight-medium is-size-6 mb-1 mt-6" style="color: #004080">Parameters</p>
+	            <p class="has-text-weight-medium is-size-6 mt-2 mb-0"><span style="color: #EA6AC3">string</span></p>
+                <p>JSON string to be decoded.</p>
+        
+            <p class="has-text-weight-medium is-size-6 mb-1 mt-5" style="color: #004080">Return value</p>
             Returns the corresponding Lua value or a <code>nil</code> value in case of error.
-            <p class="is-size-4 mt-6 mb-0" style="color: #004080">Example</p>
+            <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
 local net = require "net" 
 local json = require "json"
@@ -228,7 +232,7 @@ local data = json.decode(client.response and client.response.content or error(ne
 
 -- use the needed response fields
 print("You are located in "..data.country.." near "..data.city)
-              </code></div>
+            </code></div>
             </div>
 	      </div>
       </div>
@@ -289,6 +293,62 @@ print("You are located in "..data.country.." near "..data.city)
 <script>window.onpopstate = function() {
        document.getElementById('back').click();
     }; history.pushState({}, '');</script>
+<script>
+    window.onload = function() {
+      initCodeCopy();
+    };
+  
+    function initCodeCopy() {
+    const codeBlocks = document.querySelectorAll('code[class*="language-"]');
+
+    codeBlocks.forEach((block) => {
+        const lang = parseLanguage(block);
+        const referenceEl = block.parentElement;
+        const parent = block.parentElement.parentElement;
+
+        const wrapper = document.createElement('div');
+        wrapper.className = 'code-wrapper';
+        parent.insertBefore(wrapper, referenceEl);
+        wrapper.append(block.parentElement);
+
+        const copyBtn = document.createElement('button');
+        copyBtn.className = 'copy-button';
+        copyBtn.setAttribute('data-lang', lang);
+        copyBtn.innerHTML = `<svg viewBox="0 0 24 24" width="16" height="16"><path fill="none" d="M0 0h24v24H0z"/><path d="M7 6V3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1h-3v3c0 .552-.45 1-1.007 1H4.007A1.001 1.001 0 0 1 3 21l.003-14c0-.552.45-1 1.007-1H7zM5.003 8L5 20h10V8H5.003zM9 6h8v10h2V4H9v2z" fill="currentColor"/></svg>`;
+        wrapper.insertAdjacentElement('beforeend', copyBtn);
+       });
+
+       function parseLanguage(block) {
+        const className = block.className || '';
+        const match = className.match(/language-(\w+)/);
+        return match ? match[1] : 'Code';
+      }
+
+    function copy(e) {
+        const btn = e.currentTarget;
+        const lang = btn.dataset.lang;
+
+        const text = e.currentTarget.previousSibling.children[0].textContent;
+
+        navigator.clipboard.writeText(text).then(
+            () => {
+                btn.setAttribute('style', 'opacity: 0');
+            },
+            () => alert('failed to copy'),
+        );
+
+        setTimeout(() => {
+            btn.setAttribute('style', 'opacity: 1');
+        }, 500);
+    }
+
+    const copyButtons = document.querySelectorAll('.copy-button');
+
+    copyButtons.forEach((btn) => {
+        btn.addEventListener('click', copy);
+    }, ('initCodeCopy'));
+  }
+</script>
 </html>
 
   

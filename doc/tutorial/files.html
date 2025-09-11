@@ -170,9 +170,9 @@
           <div class="content mb-6">
             <h1 class="title is-2 mb-0" style="color: #004080">How to use files with Lua<sup>rt</sup></h1>
             <p class="mt-0 is-size-7 mb-6"><i>By Samir Tine, published on December 2021</i></p>          
-			      <p>In the Lua standard library, input / output functionalities are gathered within the <code>io</code> module.<br>In Lua<sup>rt</sup>, they are grouped together within the <a href="../sys/index.html"><i class="fas fa-cog" style="color :#D0D0D0; vertical-align: middle"></i> sys</a> module, and more particularly the <a href="../sys/File.html"><i class="fas fa-file" style="color :#367DBB"></i> File</a> object.</p>
+			      <p>In the Lua standard library, input / output functionalities are gathered within the <code>io</code> module.<br>In Lua<sup>rt</sup>, they are grouped together within the <a href="../sys/index.html"><i class="fas fa-cog" style="color :#D0D0D0; vertical-align: middle"></i> sys</a> module, and more particularly the <a href="../sys/File.html"><i class="fas fa-file" style="color :#2187E7"></i> File</a> object.</p>
             <h2 class="has-text-weight-light is-size-3 mt-6 mb-3" id="creating-a-file-value">Creating a File value</h2>
-            <p>At this point, it&#39;s important to understand that a <a href="../sys/File.html"><i class="fas fa-file" style="color :#367DBB"></i> File</a> object represents an abstraction of a file that may <i>*or may not*</i> physically exist. <br>For example, when creating a new file, only the call to the <a href="../sys/File-open.html">File:open()</a> method will physically create the file on the computer storage:</p>
+            <p>At this point, it&#39;s important to understand that a <a href="../sys/File.html"><i class="fas fa-file" style="color :#2187E7"></i> File</a> object represents an abstraction of a file that may <i>*or may not*</i> physically exist. <br>For example, when creating a new file, only the call to the <a href="../sys/File-open.html">File:open()</a> method will physically create the file on the computer storage:</p>
             <div class="language-lua" style="margin-left: 20%; margin-right:20%"><code>
 local newfile = sys.File("hello.txt") -- newfile holds a File value
 print(newfile.exists) -- outputs false
@@ -181,7 +181,7 @@ newfile:close()       -- closes the opened File
 print(newfile.exists) -- now outputs true
             </code></div>
             <h2 class="has-text-weight-light is-size-3 mt-6 mb-3" id="file-operations">File operations</h2>
-            <p>Once created, a <a href="../sys/File.html"><i class="fas fa-file" style="color :#367DBB"></i> File</a> instance can be used to perform file operations:</p>
+            <p>Once created, a <a href="../sys/File.html"><i class="fas fa-file" style="color :#2187E7"></i> File</a> instance can be used to perform file operations:</p>
             <div class="language-lua" style="margin-left: 20%; margin-right:20%"><code>
 local file = sys.File("test.txt") 
 file:copy("test_copy.txt")   -- copies file
@@ -206,7 +206,7 @@ file:open("write", "binary")
             <div class="message-body">Do not forget to close a file after the transaction on this one ended. This is done automatically when the <code>File</code> object is garbage collected, but that cannot be predicted.</div>
           </article>
           <h2 class="has-text-weight-light is-size-3 mt-6 mb-3" id="reading-and-writing-files">Reading and writing Files</h2>
-          Once the <a href="../sys/File.html"><i class="fas fa-file" style="color :#367DBB"></i> File</a> object has been created, and the <code>File:open()</code> method called, you can write and/or read on the File (depending on the open mode used). These methods return <a href="../sys/Buffer.html"><i class="fas fa-th" style="color :#367DBB"></i> Buffer</a> objects in <code>"binary"</code> mode (containing in memory binary data) or strings in <code>"utf8"</code> or <code>"unicode"</code> mode.
+          Once the <a href="../sys/File.html"><i class="fas fa-file" style="color :#2187E7"></i> File</a> object has been created, and the <code>File:open()</code> method called, you can write and/or read on the File (depending on the open mode used). These methods return <a href="../sys/Buffer.html"><i class="fas fa-th" style="color :#2187E7"></i> Buffer</a> objects in <code>"binary"</code> mode (containing in memory binary data) or strings in <code>"utf8"</code> or <code>"unicode"</code> mode.
           <h2 class="is-size-6 mt-6 mb-3 has-text-link-dark" id="reading-file-content">Reading file content</h2>
 			    There are two methods for reading the content of a file: <a href="../sys/File-read.html">File:read()</a> and <a href="../sys/File-readln.html">File:readln()</a>
 			    <div class="language-lua" style="margin-left: 20%; margin-right:20%"><code>
@@ -217,7 +217,7 @@ print(file:read())  -- reads and prints all the file content
           The <code>File:readln()</code> method reads a line, until end of line characters <span style="color:#EA6AC3">&quot;\r\n&quot;</span> or <span style="color:#EA6AC3">&quot;\n&quot;</span> are encountered. You can iterate through lines of the file with the <a href="../sys/File-lines.html">File.lines</a> iterator.
           <h2 class="is-size-6 mt-6 mb-3 has-text-link-dark" id="writing-to-files">Writing to files</h2>
           There are two methods for writing data to a file: <a href="../sys/File-write.html">File:write()</a> and <a href="../sys/File-writeln.html">File:writeln()</a>.<br>
-          Each method take one argument, converted to a string to be written to the file. In <code>"binary"</code> mode, <a href="../sys/Buffer.html"><i class="fas fa-th" style="color :#367DBB"></i> Buffer</a> objects can be used.<br>
+          Each method take one argument, converted to a string to be written to the file. In <code>"binary"</code> mode, <a href="../sys/Buffer.html"><i class="fas fa-th" style="color :#2187E7"></i> Buffer</a> objects can be used.<br>
           <code>File:writeln()</code> writes a line to the file, appending <span style="color:#EA6AC3">&quot;\r\n&quot;</span> (the End Of Line marker on Windows platform).
           <h2 class="has-text-weight-light is-size-3 mt-6 mb-3"  id="using-file-position">File position</h2>
           The <a href="../sys/File-position.html">File.position</a> property get or set the current file position, as a number. File position always starts at 1 (as for all indexed/positioned values in Lua).<br>
@@ -227,7 +227,7 @@ print(file:read())  -- reads and prints all the file content
           </ul>
           The <a href="../sys/File-position.html">File.eof</a> property checks if the end of the file have been reached.
           <h2 class="has-text-weight-light is-size-3 mt-6 mb-3"  id="using-file-timestamps">File timestamps</h2>
-          The <a href="../sys/File-accessed.html">File.accessed</a>, <a href="../sys/File-modified.html">File.modified</a> and <a href="../sys/File-created.html">File.created</a> properties permits to set or get File timestamps using a <a href="../sys/Datetime.html"><i class="fas fa-calendar-alt" style="color :#367DBB"></i> Datetime</a> object.
+          The <a href="../sys/File-accessed.html">File.accessed</a>, <a href="../sys/File-modified.html">File.modified</a> and <a href="../sys/File-created.html">File.created</a> properties permits to set or get File timestamps using a <a href="../sys/Datetime.html"><i class="fas fa-calendar-alt" style="color :#2187E7"></i> Datetime</a> object.
           <div class="language-lua" style="margin-left: 20%; margin-right:20%"><code>
 -- Create File instance representing the Windows notepad.exe executable
 local file = sys.File(sys.env.WINDIR.."/notepad.exe")
@@ -252,7 +252,7 @@ else
     print("Don't know what kind of file it is...")
 end
           </code></div>     
-          <p class="mt-5">As you can see, <a href="../sys/File.html"><i class="fas fa-file" style="color :#367DBB"></i> File</a> objects provide easy access to all of the functionality related to creating, reading, writing and manipulating files in Lua<sup>rt</sup>.<br>These features go beyond the capabilities offered by the standard Lua library on the Windows platform.</p>
+          <p class="mt-5">As you can see, <a href="../sys/File.html"><i class="fas fa-file" style="color :#2187E7"></i> File</a> objects provide easy access to all of the functionality related to creating, reading, writing and manipulating files in Lua<sup>rt</sup>.<br>These features go beyond the capabilities offered by the standard Lua library on the Windows platform.</p>
         </div>
       </div>
     </div>

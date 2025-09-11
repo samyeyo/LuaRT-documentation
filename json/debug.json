@@ -1,0 +1,44 @@
+{
+    "settaskhook": {
+        "__returns": "This function returns no value.",
+        "__name": "settaskhook",
+        "__example": "-- The hook function called for all Tasks after debug.settaskhook() call\nlocal function hook(kind, line)\n    print(\"hook : \"..kind, line or \"\")\nend\n\n-- Sets the debug hook function for all new Tasks (not those created before)\ndebug.settaskhook(hook, \"clr\")\n\n-- Launch a new Task that prints \"Hello LuaRT\"\nasync(function()\n    local count = 4\n    while count > 0 do\n        print(\"Hello LuaRT !\")\n        sleep(2000)\n        count = count-1\n        if count == 3 then\n            debug.settaskhook()\n            print(\"Task debug hook disabled !\")\n        end    \n    end\nend)\n\nwaitall()",
+        "__results": "-",
+        "__kind": "function",
+        "__params": [
+            {
+                "__description": "<p>A <code>function</code> that represents the hook function.</p>",
+                "__optional": false,
+                "__color": "c7a170",
+                "__name": "func"
+            },
+            {
+                "__description": "<p>A <code>string</code> describing in which conditions the hook will be called :</p><ul><li><code>'c'</code>: the hook function is called every time the Task calls a function.</li><li><code>'r'</code>: the hook function is called every time the Task returns from a function.</li><li><code>'l'</code>: the hook function is called every time the Task enters a new line of code.</li></ul>",
+                "__optional": false,
+                "__color": "EA6AC3",
+                "__name": "mask"
+            },
+            {
+                "__description": "<p>An optional <code>number</code> meaning that if non-zero, the hook function will also be called after each <span style=\"color: #ae81ff\">count</span> instructions.</p>",
+                "__optional": true,
+                "__color": "ae81ff",
+                "__name": "count"
+            }
+        ],
+        "__description": "Sets/unsets the given function as the debug hook for all new <a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\"></i> Task</a> instances.<br>When called without arguments, <code>debug.settaskhook()</code> turns off the hook.",
+        "__tinydesc": "Sets the given function as the debug hook for Tasks",
+        "__filename": "settaskhook.html"
+    },
+    "__icon": "<span class=\"icon bd-link-icon mr-1\" style=\"font-size: 0.8em\"><i class=\"fas fa-bug\" style=\"color :#f6da4a; vertical-align: top\" style=\"color: #D0D0D0\"></i></span>",
+    "__type": "module",
+    "__kind": {
+        "isdesktop": true,
+        "isconsole": true,
+        "iscore": true
+    },
+    "__color": "f6da4a",
+    "__description": "The debug module provides functions for debugging Lua<sup>rt</sup> scripts",
+    "__name": "debug",
+    "__tinydesc": "Supports for Lua<sup>rt</sup> Task debugging",
+    "__filename": "index.html"
+}

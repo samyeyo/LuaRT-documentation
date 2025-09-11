@@ -1,0 +1,197 @@
+{
+    "Port": {
+        "dtr": {
+            "__results": "<span style=\"color:#EA6AC3\">string</span> | <span style=\"color: #606060\">nil</span>",
+            "__access": "read/write",
+            "__name": "dtr",
+            "__description": "<br><br>Sets/gets the \"Data Terminal Ready\" control signal of the serial port, using the following possible values :<ul><li><code>\"enabled\"</code>: DTR signal is always active</li><li><code>\"disabled\"</code>: DTR signal stays inactive</li><li><code>\"handshake\"</code>: DTR signal is used for hardware handshaking</li></ul><article class=\"message is-info\" style=\"margin-left: 15%; margin-right: 15%\"><div class=\"message-body\">If the current dtr state cannot be retrieved, this property returns <code>nil</code></article>",
+            "__kind": "property",
+            "__tinydesc": "Get/set serial port DTR mode",
+            "__filename": "Port-dtr.html"
+        },
+        "__name": "Port",
+        "baudrate": {
+            "__results": "<span style=\"color:#ae81ff\">number</span> | <span style=\"color: #606060\">nil</span>",
+            "__access": "read/write",
+            "__name": "baudrate",
+            "__description": "<br><br>Sets/gets the current serial port data transmission speed, as a <code>number</code>. It represents the number of symbol changes per second in a communication channel.<br>Common baud rates include <code>9600</code>, <code>19200</code>, <code>38400</code>, <code>57600</code>, and <code>115200</code><article class=\"message is-info\" style=\"margin-left: 15%; margin-right: 15%\"><div class=\"message-body\">If the current baudrate state cannot be retrieved, this property returns <code>nil</code></article>",
+            "__kind": "property",
+            "__tinydesc": "Get/set serial port baudrate",
+            "__filename": "Port-baudrate.html"
+        },
+        "open": {
+            "__returns": "Returns <span style=\"color:#ae81ff\">true</span> if serial Port has been successfully opened.<br>\n\t\t\t      In case of error, returns <span style=\"color:#ae81ff\">false</span>. Error message can be obtained with the <a href=\"../sys/error.html\">sys.error</a> property.",
+            "__name": "open",
+            "__example": "local serial = require \"serial\"\n\nlocal COM1 = serial.Port(\"COM1\")\nif COM1:open() then\n  print(\"COM1 serial port is now open\")\nelse\n  print(\"Failed to open COM1 serial port\")\nend",
+            "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+            "__kind": "method",
+            "__params": [
+                {
+                    "__description": "<p>An optional <code>table</code> to configure the serial communication, using the following optional fields :<ul><li><code>[\"rts\"]</code> : a <code>string</code> that indicates the RTS mode, defaulting to <code>\"off\"</code> (see <a href=\"Port-rts.html\">Port-rts.html</a> for other possible values)</li><li><code>[\"dtr\"]</code> : a <code>string</code> that indicates the DTR control signal, defaulting to <code>\"disabled\"</code> (see <a href=\"Port-dtr.html\">Port-dtr.html</a> for other possible values)</li><li><code>[\"baudrate\"]</code> : a <code>number</code> that indicates the transmission speed, defaulting to <code>9600</code> (see <a href=\"Port-baudrate.html\">Port-baudrate.html</a> for other possible values)</li><li><code>[\"bytesize\"]</code> : a <code>number</code> that indicates the byte size, defaulting to <code>8</code> (see <a href=\"Port-bytesize.html\">Port-bytesize.html</a> for other possible values)</li><li><code>[\"parity\"]</code> : a <code>string</code> that indicates the parity mode, defaulting to <code>\"none\"</code> (see <a href=\"Port-parity.html\">Port-parity.html</a> for other possible values)</li><li><code>[\"stopbits\"]</code> : a <code>string</code> that indicates the stop bits mode, defaulting to <code>\"one\"</code> (see <a href=\"Port-stopbits.html\">Port-stopbits.html</a> for other possible values)</li></ul></p>",
+                    "__optional": true,
+                    "__color": "B1D928",
+                    "__name": "state"
+                }
+            ],
+            "__description": "Open the Port for serial communication with another connected device.",
+            "__tinydesc": "Open the serial port",
+            "__filename": "Port-open.html"
+        },
+        "isopen": {
+            "__results": "<span style=\"color:#AE81FF\">boolean</span>",
+            "__access": "readonly",
+            "__name": "isopen",
+            "__description": "<br><br>Checks if the serial port is open, returning <code>true</code> or <code>false</code> otherwise.</div></div></div></div></section><footer class=\"footer\"><div class=\"content has-text-centered\"><p class=\"mb-0\"><strong>Lua<sup>rt</sup> Documentation</strong> - Windows programming framework for Lua",
+            "__kind": "property",
+            "__tinydesc": "Checks if the serial port is open",
+            "__filename": "Port-isopen.html"
+        },
+        "bytesize": {
+            "__results": "<span style=\"color:#ae81ff\">number</span> | <span style=\"color: #606060\">nil</span>",
+            "__access": "read/write",
+            "__name": "bytesize",
+            "__description": "<br><br>Sets/gets the the number of data bits in each transmitted character.<br>Common values include 5, 6, 7, 8, or 9 bits, with 8-bit being the most widely used in modern applications.<article class=\"message is-info\" style=\"margin-left: 15%; margin-right: 15%\"><div class=\"message-body\">If the current bytesize state cannot be retrieved, this property returns <code>nil</code></article>",
+            "__kind": "property",
+            "__tinydesc": "Get/set serial port bytesize",
+            "__filename": "Port-bytesize.html"
+        },
+        "__kind": "object",
+        "__description": "The Port object represents a COM port for serial communications",
+        "readline": {
+            "__returns": "Returns a <a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\" style=\"color :#2187E7\"></i> Task</a> object to perform the read operation asynchronously.<br>\n            Once the Task has terminated, it will return a <a href=\"../sys/Buffer.html\"><i class=\"fas fa-th\" style=\"color :#2187E7\"></i> Buffer</a> that contains the data, or <code>false</code> in case of error.\n            </ul><p class=\"is-size-4 mt-6 mb-0\" style=\"color: #004080\">Example</p>\n            <div class=\"language-lua mr-6 ml-6\"><code>\nlocal serial = require \"serial\"\n\nlocal COM1 = serial.Port(\"COM1\")\n\nif COM1:open() then\n    repeat\n        local data = COM1:readline():wait()\n        if data then\n          print(\"Received line : \", data)\n        else\n          error(\"Error reading COM1 port\");\n        end\n    until not data\nend\n            </code></div>\n            </div>\n\t      </div>\n      </div>\n    </div>\n  </section>  \n  <footer class=\"footer\">\n    <div class=\"content has-text-centered\">",
+            "__name": "readline",
+            "__example": "local serial = require \"serial\"\n\nlocal COM1 = serial.Port(\"COM1\")\n\nif COM1:open() then\n    repeat\n        local data = COM1:readline():wait()\n        if data then\n          print(\"Received line : \", data)\n        else\n          error(\"Error reading COM1 port\");\n        end\n    until not data\nend",
+            "__results": "<a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\" style=\"color :#2187E7\"></i> Task</a>",
+            "__kind": "method",
+            "__params": [
+                {
+                    "__description": "<p>A <code>string</code> indicating the End Of Line characters sequence, defaulting to <code>\"\\n\"</code>.</p>",
+                    "__optional": true,
+                    "__color": "EA6AC3",
+                    "__name": "eol"
+                }
+            ],
+            "__description": "Reads data until a End Of Line character sequence is reached.",
+            "__tinydesc": "Reads a line from the serial port",
+            "__filename": "Port-readline.html"
+        },
+        "rts": {
+            "__results": "<span style=\"color:#EA6AC3\">string</span> | <span style=\"color: #606060\">nil</span>",
+            "__access": "read/write",
+            "__name": "rts",
+            "__description": "<br><br>Sets/gets the \"Request To Send\" mode of the serial port, using the following possible values :<ul><li><code>\"on\"</code>: RTS signal is always active</li><li><code>\"off\"</code>: RTS signal stays inactive</li><li><code>\"handshake\"</code>: RTS signal is used for hardware handshaking</li><li><code>\"toogle\"</code>: RTS signal toggles between ready and not ready states</li></ul><article class=\"message is-info\" style=\"margin-left: 15%; margin-right: 15%\"><div class=\"message-body\">If the current RTS state cannot be retrieved, this property returns <code>nil</code></article>",
+            "__kind": "property",
+            "__tinydesc": "Get/set serial port RTS mode",
+            "__filename": "Port-rts.html"
+        },
+        "__filename": "Port.html",
+        "flush": {
+            "__returns": "This method returns no value.",
+            "__name": "flush",
+            "__example": "local serial = require \"serial\"\n\nlocal COM1 = serial.Port(\"COM1\")\nif COM1:open() then\n  print(\"COM1 serial port is now open\")\n  COM1:write(\"First message\"):wait()\n  COM1:flush()\nelse\n  print(\"Failed to open COM1 serial port\")\nend",
+            "__results": "<span>-</span>",
+            "__kind": "method",
+            "__params": {},
+            "__description": "Flush the serial communication Port, causing all buffered data to be sent now.",
+            "__tinydesc": "Flush data to the serial port",
+            "__filename": "Port-flush.html"
+        },
+        "close": {
+            "__returns": "This method returns no value.",
+            "__name": "close",
+            "__example": "local serial = require \"serial\"\n\nlocal COM1 = serial.Port(\"COM1\")\nif COM1:open() then\n  print(\"COM1 serial port is now open\")\n  COM1:write(\"First message\"):wait()\n  COM1:close()\nelse\n  print(\"Failed to open COM1 serial port\")\nend",
+            "__results": "<span>-</span>",
+            "__kind": "method",
+            "__params": {},
+            "__description": "Close the serial communication Port.",
+            "__tinydesc": "Close the serial port",
+            "__filename": "Port-close.html"
+        },
+        "__type": "object",
+        "__tinydesc": "Object representation of a RS232 communication port",
+        "__results": "-",
+        "stopbits": {
+            "__results": "<span style=\"color:#EA6AC3\">string</span> | <span style=\"color: #606060\">nil</span>",
+            "__access": "read/write",
+            "__name": "stopbits",
+            "__description": "<br><br>Sets/gets the stop bits mode of the serial port. <br>Stop bits in serial communication indicate the end of a data packet. They help synchronize the sender and receiver, ensuring proper data transmission. The following values are supported:<ul><li><code>\"one\"</code>: 1 stop bit, used in most serial communications</li><li><code>\"one5\"</code>: 1.5 stop bits, rarely used, mainly in older systems</li><li><code>\"two\"</code>: 2 stop bits, provides extra timing buffer (useful for slower devices)</li></ul><article class=\"message is-info\" style=\"margin-left: 15%; margin-right: 15%\"><div class=\"message-body\">If the current stopbits state cannot be retrieved, this property returns <code>nil</code></article>",
+            "__kind": "property",
+            "__tinydesc": "Get/set serial port stop bits",
+            "__filename": "Port-stopbits.html"
+        },
+        "parity": {
+            "__results": "<span style=\"color:#EA6AC3\">string</span> | <span style=\"color: #606060\">nil</span>",
+            "__access": "read/write",
+            "__name": "parity",
+            "__description": "<br><br>Sets/gets the parity mode of the serial port, using the following possible values :<ul><li><code>\"none\"</code>: No parity bit is used</li><li><code>\"odd\"</code>: parity bit is set to ensure an odd number of <code>1</code> in the data</li><li><code>\"even\"</code>: parity bit is set to ensure an even number of <code>1</code> in the data</li><li><code>\"mark\"</code>: parity bit is always set to <code>1</code></li><li><code>\"space\"</code>: parity bit is always set to <code>0</code></li></ul><article class=\"message is-info\" style=\"margin-left: 15%; margin-right: 15%\"><div class=\"message-body\">If the current parity state cannot be retrieved, this property returns <code>nil</code></article>",
+            "__kind": "property",
+            "__tinydesc": "Get/set serial port parity mode",
+            "__filename": "Port-parity.html"
+        },
+        "constructor": {
+            "__results": "<a href=\"Port.html\"><i class=\"fas fa-arrows-left-right-to-line\"></i> Port</a>",
+            "__kind": "method",
+            "__params": [
+                {
+                    "__description": "<p>A string representing the COM port to be used : <code>\"COM1\"</code>, <code>\"COM2\"</code>...</p><article class=\"message is-warning is-small mt-6 mb-6\" style=\"margin-left: 10%; margin-right: 10%\"><div class=\"message-header mb-0\"><p><i class=\"fas fa-pencil\"></i> Notes</p></div><div class=\"message-body mb-0 is-size-7\"><ul class=\"mt-0\"><li>Once created, you must call <a href=\"Port-open.html\">Port:open()</a> to open the serial port connection.</li></ul></div></article>",
+                    "__optional": false,
+                    "__color": "EA6AC3",
+                    "__name": "port"
+                }
+            ],
+            "__name": "constructor",
+            "__description": "<br>The Port constructor returns a Port value representing a COM port.",
+            "__example": "local serial = require \"serial\"\n\nlocal COM1 = serial.Port(\"COM1\")",
+            "__tinydesc": "Port object constructor",
+            "__filename": "Port-constructor.html"
+        },
+        "write": {
+            "__returns": "Returns a <a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\" style=\"color :#2187E7\"></i> Task</a> object to perform the write operation asynchronously.<br>\n            Once the Task has terminated, it will return the number of bytes written, or <code>false</code> in case of error.\n            </ul><p class=\"is-size-4 mt-6 mb-0\" style=\"color: #004080\">Example</p>\n            <div class=\"language-lua mr-6 ml-6\"><code>\nlocal serial = require \"serial\"\n\nlocal COM1 = serial.Port(\"COM1\")\nif COM1:open() then\n  print(\"COM1 serial port is now open\")\n  if COM1:write(\"First message\"):wait() then\n    print(\"Data successfully written\")\n  else\n    print(\"Write error\")\n  end\nelse\n  print(\"Failed to open COM1 serial port\")\nend\n            </code></div>\n            </div>\n\t      </div>\n      </div>\n    </div>\n  </section>  \n  <footer class=\"footer\">\n    <div class=\"content has-text-centered\">",
+            "__name": "write",
+            "__example": "local serial = require \"serial\"\n\nlocal COM1 = serial.Port(\"COM1\")\nif COM1:open() then\n  print(\"COM1 serial port is now open\")\n  if COM1:write(\"First message\"):wait() then\n    print(\"Data successfully written\")\n  else\n    print(\"Write error\")\n  end\nelse\n  print(\"Failed to open COM1 serial port\")\nend",
+            "__results": "<a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\" style=\"color :#2187E7\"></i> Task</a>",
+            "__kind": "method",
+            "__params": [
+                {
+                    "__description": "<p>A <a href=\"../sys/Buffer.html\"><i class=\"fas fa-th\" style=\"color :#2187E7\"></i> Buffer</a> or a <code>string</code> containing the data to be written. If another type of variable is used, it is internaly converted to a string before sending.</p>",
+                    "__optional": false,
+                    "__color": "EA6AC3",
+                    "__name": "data"
+                }
+            ],
+            "__description": "Writes data to the serial communication Port.",
+            "__tinydesc": "Writes data to the serial port",
+            "__filename": "Port-write.html"
+        },
+        "__icon": "<span class=\"icon bd-link-icon mr-1\" style=\"font-size: 0.8em\"><i class=\"fas fa-arrows-left-right-to-line\" style=\"color :#2187E7\"></i></span>",
+        "read": {
+            "__returns": "Returns a <a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\" style=\"color :#2187E7\"></i> Task</a> object to perform the read operation asynchronously.<br>\n            Once the Task has terminated, it will return a <a href=\"../sys/Buffer.html\"><i class=\"fas fa-th\" style=\"color :#2187E7\"></i> Buffer</a> that contains the data, or <code>false</code> in case of error.\n            </ul><p class=\"is-size-4 mt-6 mb-0\" style=\"color: #004080\">Example</p>\n            <div class=\"language-lua mr-6 ml-6\"><code>\nlocal serial = require \"serial\"\n\nlocal COM1 = serial.Port(\"COM1\")\nif COM1:open() then\n  print(\"COM1 serial port is now open\")\n  if COM1:read(5):wait() then\n    print(\"5 bytes successfully received\")\n  else\n    print(\"Read error\")\n  end\nelse\n  print(\"Failed to open COM1 serial port\")\nend\n            </code></div>\n            </div>\n\t      </div>\n      </div>\n    </div>\n  </section>  \n  <footer class=\"footer\">\n    <div class=\"content has-text-centered\">",
+            "__name": "read",
+            "__example": "local serial = require \"serial\"\n\nlocal COM1 = serial.Port(\"COM1\")\nif COM1:open() then\n  print(\"COM1 serial port is now open\")\n  if COM1:read(5):wait() then\n    print(\"5 bytes successfully received\")\n  else\n    print(\"Read error\")\n  end\nelse\n  print(\"Failed to open COM1 serial port\")\nend",
+            "__results": "<a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\" style=\"color :#2187E7\"></i> Task</a>",
+            "__kind": "method",
+            "__params": [
+                {
+                    "__description": "<p>A <code>number</code> indicating the number of bytes to read.</p>",
+                    "__optional": false,
+                    "__color": "ae81ff",
+                    "__name": "len"
+                }
+            ],
+            "__description": "Reads data from the serial communication Port.",
+            "__tinydesc": "Reads data from the serial port",
+            "__filename": "Port-read.html"
+        }
+    },
+    "__kind": {
+        "isdesktop": true,
+        "isconsole": true,
+        "iscore": false
+    },
+    "__tinydesc": "Communicates with COM serial ports for hardware interfacing",
+    "__name": "serial",
+    "__description": "The serial module allows for communication over serial ports",
+    "__icon": "<span class=\"icon bd-link-icon mr-1\" style=\"font-size: 0.8em\"><i class=\"fas fa-network-wired\" style=\"color: #900C3F\" ></i></span>",
+    "__type": "module",
+    "__filename": "index.html"
+}

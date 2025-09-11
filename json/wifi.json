@@ -1,0 +1,149 @@
+{
+    "__name": "wifi",
+    "__icon": "<span class=\"icon bd-link-icon mr-1\" style=\"font-size: 0.8em\"><i class=\"fas fa-wifi\" style=\"color :#B3E6FF; vertical-align: top\"></i></span>",
+    "__color": "B3E6FF",
+    "__description": "The wifi module manages WIFI connections",
+    "__tinydesc": "Manages WIFI scan and connections",
+    "__filename": "index.html",
+    "__type": "module",
+    "__kind": {
+        "isdesktop": true,
+        "isconsole": true,
+        "iscore": false
+    },
+
+    "name": {
+        "__results": "<span style=\"color:#EA6AC3\">string</span> nil",
+        "__access": "readonly",
+        "__kind": "property",
+        "__name": "name",
+        "__description": "<br>The wifi.name property gets the current connected wireless network SSID, or <code>nil</code> if the computer is not connected.",
+        "__example": "local wifi = require \"wifi\"\n\nlocal ssid = wifi.name\nif not ssid then\n  print(\"You are not connected to a wireless network\") \nelse\n  print(\"You are connected to the wireless network '\"..ssid..\"'\")\nend",
+        "__tinydesc": "Gets the current connected SSID",
+        "__filename": "name.html"
+    },
+
+    "connected": {
+        "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+        "__access": "readonly",
+        "__kind": "property",
+        "__name": "connected",
+        "__description": "<br>The wifi.connected property checks if the computer is connected to a wireless network, returning a <code>boolean</code> value.",
+        "__example": "local wifi = require \"wifi\"\n\nif wifi.connected then\n  print(\"You are connected to the '\"..wifi.name..\"' wireless network\") \nelse\n  print(\"You are not connected to a wireless network\")\nend",
+        "__tinydesc": "Checks if the computer is connected to a wireless network",
+        "__filename": "connected.html"
+    },
+
+    "mac": {
+        "__results": "<span style=\"color:#EA6AC3\">string</span>",
+        "__access": "readonly",
+        "__kind": "property",
+        "__name": "mac",
+        "__description": "<br>The wifi.mac property gets the wireless access point MAC address as a <code>string</code> or <code>nil</code> if not connected.",
+        "__example": "local wifi = require \"wifi\"\n\nif wifi.connected then\n  print(\"WIFI endpoint MAC adress : \"..wifi.mac) \nelse\n  print(\"You are not connected to a wireless network\")\nend",
+        "__tinydesc": "Gets the wireless access point mac adress",
+        "__filename": "mac.html"
+    },
+
+    "quality": {
+        "__results": "<span style=\"color:#ae81ff\">number</span>",
+        "__access": "readonly",
+        "__kind": "property",
+        "__name": "quality",
+        "__description": "<br>The wifi.quality property gets the current wireless connection signal quality as a <code>number</code>, in percent.",
+        "__example": "local wifi = require \"wifi\"\n\nif wifi.connected then\n  print(\"WIFI signal quality is \"..wifi.quality..\"%\") \nelse\n  print(\"You are not connected to a wireless network\")\nend",
+        "__tinydesc": "Gets the WIFI signal quality of the current connection",
+        "__filename": "quality.html"
+    },
+
+    "channel": {
+        "__results": "<span style=\"color:#ae81ff\">number</span>",
+        "__access": "readonly",
+        "__kind": "property",
+        "__name": "channel",
+        "__description": "<br>The wifi.channel property gets the current wireless connection channel.",
+        "__example": "local wifi = require \"wifi\"\n\nif wifi.connected then\n  print(\"WIFI channel is \"..wifi.channel) \nelse\n  print(\"You are not connected to a wireless network\")\nend",
+        "__tinydesc": "Gets current wireless connection channel",
+        "__filename": "channel.html"
+    },
+
+    "connect": {
+        "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+        "__kind": "function",
+        "__name": "connect",
+        "__description": "<br>The wifi.connect() function try to connect to the specified WIFI endpoint. If the endpoint is already known by Windows, password won't be needed.<p><article class=\"message is-warning is-small mt-6 mb-6\" style=\"margin-left: 10%; margin-right: 10%\"> <div class=\"message-header mb-0\"> <p><i class=\"fas fa-pencil\"></i> Notes</p> </div> <div class=\"message-body mb-0 is-size-7\"> <ul class=\"mt-0\"> <li>The function returns immediately. A <code>true</code> result just means the connection process has successfully started.</li> <li>To check for a successful connection you can use the <a href=\"onConnected.html\">wifi.onConnected</a> event. </li> </ul> </div></article></p>",
+        "__tinydesc": "Connects to a wireless endpoint",
+        "__filename": "connect.html",
+        "__params": [
+            {
+                "__description": "<p>A <code>string</code> representing the WIFI endpoint name.</p>",
+                "__optional":false,
+                "__color":"EA6AC3",
+                "__name":"endpoint"
+            },
+            {
+                "__description": "<p>A <code>string</code> representing the password if the wireless network is not already known by Windows.",
+                "__optional":true,
+                "__color":"EA6AC3",
+                "__name":"password"
+            },
+            {
+                "__description": "<p>An optional <code>string</code> representing the authentification method to use among those values :<ul> <li><code>\"WPA\"</code> : PA-Enterprise 802.11 authentication.</li> <li><code>\"WPAPSK\"</code> : WPA-Personal 802.11 authentication.</li> <li><code>\"WPA2\"</code> : WPA2-Enterprise 802.11 authentication.</li> <li><code>\"WPA2PSK\"</code> : WPA2-Personal 802.11 authentication (the default).</li> <li><code>\"WPA3ENT192\"</code> : WPA3-Enterprise 192-bit mode authentication.</li></ul></p>",
+                "__optional":true,
+                "__color":"EA6AC3",
+                "__name":"authmethod"
+            },
+            {
+                "__description": "<p>An optional <code>string</code> representing the encryption method to use among those values :<ul><li><code>\"none\"</code> : no encryption</li><li><code>\"WEP\"</code> – WEP encryption</li><li><code>\"TKIP\"</code> : TKIP encryption</li><li><code>\"AES\"</code> : AES encryption (the default)</li><li><code>\"GCMP256\"</code> : GCMP256 encryption</li></ul></p>",
+                "__optional":true,
+                "__color":"EA6AC3",
+                "__name":"encryptmethod"
+            }
+        ],
+        "__returns": "Returns a <code>boolean</code> value indicating if the connection process has correctly started.",
+        "__example": "local wifi = require \"wifi\"\n\nfunction wifi.onConnected()\n  print(\"You are connected to \"..wifi.name)\n  sys.exit()\nend\n\nwifi.connect(\"my wifi endpoint\")\n\nwaitall()"
+    },
+    "disconnect": {
+        "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+        "__kind": "function",
+        "__name": "disconnect",
+        "__description": "<br>The wifi.disconnect() function tries to disconnect from the WIFI endpoint.<p><article class=\"message is-warning is-small mt-6 mb-6\" style=\"margin-left: 5%; margin-right: 5%\"> <div class=\"message-header mb-0\"> <p><i class=\"fas fa-pencil\"></i> Notes</p> </div> <div class=\"message-body mb-0 is-size-7\"> <ul class=\"mt-0\"> <li>The function returns immediately. A <code>true</code> result just means the disconnection process has successfully started.</li> <li>To check for a successful disconnection you can use the <a href=\"onDisconnected.html\">wifi.onDisconnected</a> event. </li> </ul> </div></article></p>",
+        "__tinydesc": "Disconnects from the wireless endpoint",
+        "__filename": "disconnect.html",
+        "__params": [],
+        "__returns": "Returns a <code>boolean</code> value indicating if the disconnection process has correctly started.",
+        "__example": "local wifi = require \"wifi\"\n\nfunction wifi.onDisconnected()\n  print(\"You are disconnected from the wireless network !\")\n  sys.exit()\nend\n\nwifi.connect(\"your wifi endpoint\")\n\n-- sleeps for 5sec then disconnect\nsleep(5000)\n\nwifi.disconnect()\n\nwaitall()"
+    },
+
+    "scan": {
+        "__results": "<span style=\"color:#B1D928\">table</span>",
+        "__kind": "function",
+        "__name": "scan",
+        "__description": "<br>The wifi.scan() function scan for available networks.<p><article class=\"message is-warning is-small mt-6 mb-6\" style=\"margin-left: 10%; margin-right: 10%\"> <div class=\"message-header mb-0\"> <p><i class=\"fas fa-pencil\"></i> Notes</p> </div> <div class=\"message-body mb-0 is-size-7\"> <ul class=\"mt-0\"> <li>The function returns immediately. A <code>true</code> result just means the disconnection process has successfully started.</li> <li>To check for a successful disconnection you can use the <a href=\"onDisconnected.html\">wifi.onDisconnected</a> event. </li> </ul> </div></article></p>",
+        "__tinydesc": "Scans for available wireless endpoints",
+        "__filename": "scan.html",
+        "__params": [],
+        "__returns": "Returns the list of found endpoints, as a <code>table</code>. Each endpoint is a <code>table</code> with the following fields: <ul><li><strong>name</strong>: WIFI endpoint SSID</li><li><strong>quality</strong>: signal quality in percent</li><li><strong>secured</strong>: endpoint uses secured authentication</li><li><strong>known</strong>: endpoint is already known by Windows (no authentication needed)</li></ul>",
+        "__example": "print(\"Scanning WIFI endpoints...\")\n\nfor endpoint in each(wifi.scan()) do\n  print(\"----- Wifi endpoint \".. endpoint.name)\n  print(\"signal :\", endpoint.signal)\n  print(\"secured :\", endpoint.secured)\n  print(\"known : \", endpoint.known)\nend"
+    }, 
+    "onConnected": {
+        "__results": "<span>-</span>",
+        "__kind": "event",
+        "__name": "onConnected",
+        "__description": "<br>The wifi.onConnected() event is thrown each time the computer has successfully connected to a WIFI endpoint.",
+        "__tinydesc": "Event fired when computer has successfully connected to WIFI endpoint",
+        "__filename": "onConnected.html",
+        "__params": [],
+        "__example": "local wifi = require \"wifi\"\nlocal ui = require \"ui\"\n\nfunction wifi.onConnected()\n  ui.info(\"You are now connected to \"..wifi.name..\" WIFI endpoint\")\nend\n\nfunction wifi.onDisconnected()\n  ui.warn(\"You are now disconnected from WIFI endpoint\")\nend\n\n-- wait 10 minutes (600,000 milliseconds), then exit\nsleep(600000)"
+    },
+    "onDisconnected": {
+        "__results": "<span>-</span>",
+        "__kind": "event",
+        "__name": "onDisconnected",
+        "__description": "<br>The wifi.onDisconnected() event is thrown each time the computer has lost its connection to WIFI endpoint.",
+        "__tinydesc": "Event fired when computer has lost its connection to WIFI endpoint",
+        "__filename": "onDisconnected.html",
+        "__params": [],
+        "__example": "local wifi = require \"wifi\"\nlocal ui = require \"ui\"\n\nfunction wifi.onConnected()\n  ui.info(\"You are now connected to \"..wifi.name..\" WIFI endpoint\")\nend\n\nfunction wifi.onDisconnected()\n  ui.warn(\"You are now disconnected from WIFI endpoint\")\nend\n\n-- wait 10 minutes (600,000 milliseconds), then exit\nsleep(600000)"
+    }
+}

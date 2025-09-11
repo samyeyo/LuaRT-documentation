@@ -1,0 +1,182 @@
+{
+    "waitall": {
+        "__returns": "This function returns no value when waiting for all tasks, or a <code>table</code> containing the results of the completed tasks. Each entry is a <code>table</code> with the returned values of the corresponding Task in order",
+        "__name": "waitall",
+        "__example": "-- Create 2 tasks that return multiple values\nlocal t1 = sys.Task(function()\n    sleep(500)\n    return \"alpha\", 1\nend)\n\nlocal t2 = sys.Task(function()\n    sleep(800)\n    return \"beta\", 2\nend)\n\n-- start tasks\nt1(); t2()\n\n-- Each entry in results is a table with the returned values of the corresponding Task\nlocal results = waitall(t1, t2)\n\n-- print using table.unpack to expand each Task's return values\nfor i, res in ipairs(results) do\n    local value1, value2 = table.unpack(res)\n    print((\"Task %d results: %s, %s\"):format(i, value1, value2))\nend",
+        "__results": "-",
+        "__kind": "function",
+        "__params": [
+            {
+                "__description": "<p>Optional <a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\"></i> Task</a></p> objects to wait for. If no Task is provided, the function will wait for all running tasks to terminate.</p>",
+                "__optional": true,
+                "__color": "B1D928",
+                "__name": "Task1, Task2, ..."
+            }
+        ],
+        "__description": "Suspend the current execution flow until all running tasks (or only the specified ones) have been terminated.",
+        "__tinydesc": "Wait for Tasks to terminate",
+        "__filename": "waitall.html"
+    },
+    "__icon": "<span class=\"icon bd-link-icon mr-1\" style=\"font-size: 0.8em\"><i class=\"fas fa-layer-group\" style=\"color :#d54d34; vertical-align: top\" style=\"color: #D0D0D0\"></i></span>",
+    "each": {
+        "__returns": "This function returns an iterator <span style=\"color: #c7a170\">function</span>, that when called (or better inside a for..do loop) will get the next value from the iterable variable.",
+        "__name": "each",
+        "__example": "list = { 3, \"apple\", \"banana\", sys.Directory(\".\") }\n\n-- outputs all values in the list\nfor item in each(list) do\n\tprint(item)\nend",
+        "__results": "<span style=\"color: #c7a170\">function</span>",
+        "__kind": "function",
+        "__params": [
+            {
+                "__description": "<p>A <span style=\"color: #B1D928\">table</span> or an Object to iterate on.</p>",
+                "__optional": false,
+                "__color": "B1D928",
+                "__name": "iterable"
+            }
+        ],
+        "__description": "Returns an iterator function that iterates over the values of a <span style=\"color: #B1D928\">table</span> or Object.",
+        "__tinydesc": "Provide a value iterator for tables/objects",
+        "__filename": "each.html"
+    },
+    "__kind": {
+        "isdesktop": true,
+        "isconsole": true,
+        "iscore": true
+    },
+    "__description": "The base module contains global functions specific to Lua<sup>rt</sup>",
+    "__tinydesc": "Contains all global functions specific to Lua<sup>rt</sup>",
+    "__filename": "index.html",
+    "is": {
+        "__returns": "This function returns <span style=\"color:#ae81ff\">true</span> if the variable inherits from the specified Object, or <span style=\"color:#ae81ff\">false</span> otherwise.",
+        "__name": "is",
+        "__example": "Polygon = Object {      -- Defines a new Object Polygon\n\tsides = 0\t\t\t-- Defines a 'sides' field in Polygon\n}\nSquare = Object (Polygon) -- Defines a new Object Square, inheriting from Polygon\n\n-- outputs true\nprint(is(Square, Polygon))\n\n-- outputs false\nprint(is('a string', Polygon))\n\n-- outputs true\nprint(is(Square(), Polygon))",
+        "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+        "__kind": "function",
+        "__params": [
+            {
+                "__description": "<p>A variable for which we want to check inheritance. That variable can be of any type.</p>\n",
+                "__optional": false,
+                "__color": "B1D928",
+                "__name": "var"
+            }
+        ],
+        "__description": "Check if the variable inherits from the specified Object.",
+        "__tinydesc": "Check for inheritance",
+        "__filename": "is.html"
+    },
+    "type": {
+        "__returns": "<p>Returns the type of its only argument, as a string. The possible results of this function are <span style=\"color:#EA6AC3\">\"nil\"</span>, <span style=\"color:#EA6AC3\">\"number\"</span>, <span style=\"color:#EA6AC3\">\"string\"</span>, <span style=\"color:#EA6AC3\">\"boolean\"</span>, <span style=\"color:#EA6AC3\">\"table\"</span>, <span style=\"color:#EA6AC3\">\"function\"</span>, <span style=\"color:#EA6AC3\">\"thread\"</span>, <span style=\"color:#EA6AC3\">\"userdata\"</span>, <span style=\"color:#EA6AC3\">\"Object\"</span> or the name of the last inherited Object.</p>\n            <p><article class=\"message is-danger\" style=\"margin-left: 15%; margin-right: 15%\"><div class=\"message-body\">When using the Lua<sup>rt</sup> compatibility interpreter, checking Objects type will return <span style=\"color:#EA6AC3\">\"table\"</span>.</div></article></p>",
+        "__name": "type",
+        "__example": "Polygon = Object {\n\tsides = 0\n}\nsquare = Polygon()\nsquare.sides = 4\n\n-- outputs \"Polygon\"\nprint(type(square))\n\n-- outputs \"Object\"\nprint(type(Polygon))",
+        "__results": "<span style=\"color:#EA6AC3\">string</span>",
+        "__kind": "function",
+        "__params": [
+            {
+                "__description": "<p>A variable to check its type.</p>",
+                "__optional": false,
+                "__color": "606060",
+                "__name": "var"
+            }
+        ],
+        "__description": "Returns the type of a variable.",
+        "__tinydesc": "Get the type of a value",
+        "__filename": "type.html"
+    },
+    "__type": "module",
+    "super": {
+        "__returns": "This function returns the ancestor object, or <code>nil</code> if no ancestor is found.\n            <article class=\"message is-danger mt-5\" style=\"margin-left: 15%; margin-right: 15%;\"><div class=\"message-body\">\n            If you want to call ancestor methods with the super() function, you will need to use the \".\" dot notation to specify the self instance explicitly<br>Method call using \":\" semicolon is not possible as super() returns an <code>Object</code>, not an instance value.\n            </div></article></p>",
+        "__name": "super",
+        "__example": "Polygon = Object {}      -- Defines a new Object Polygon\n\n-- Defines a constructor for the Polygon Object\nfunction Polygon:constructor(n)\n  -- Defines a new filed 'sides'\n  self.sides = n\nend\n\nSquare = Object (Polygon) -- Defines a new Object Square, inheriting from Polygon\n\n-- Defines a constructor for the Square Object (with 4 sides)\nfunction Square:constructor()\n    -- Don't rewrite previous code, just use super() to call the Polygon constructor\n  -- to initialize the sides field with the value of 4\n    super(self).constructor(self, 4)\nend\n\n-- Should print true\nprint(super(Square) == Polygon)\n\n-- Should print 4\nprint(Square().sides)",
+        "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+        "__kind": "function",
+        "__params": [
+            {
+                "__description": "<p>An object (as defined by the <a href=\"./Object.html\">Object()</a> function) or an instance.</p>",
+                "__optional": false,
+                "__color": "606060",
+                "__name": "object"
+            }
+        ],
+        "__description": "Get the ancestor of an object or instance.<article class=\"message is-warning\" style=\"margin-left: 15%; margin-right: 15%;\"><div class=\"message-body\">The super() function permits you to access ancestor methods, fields and properties.</div></article>",
+        "__tinydesc": "Get the ancestor of an object/instance.",
+        "__filename": "super.html"
+    },
+    "Object": {
+        "__returns": "Returns the new defined object type.",
+        "__name": "Object",
+        "__example": "Polygon = Object {\n\tsides = 0\n}\n\n-- outputs \"Object\"\nprint(type(Polygon))",
+        "__results": "<span>Object</span>",
+        "__kind": "function",
+        "__params": [
+            {
+                "__description": "<p>A <span style=\"color: #B1D928\">table</span> or an other previously declared object that serves as a prototype to define a new custom type.</p>",
+                "__optional": false,
+                "__color": "B1D928",
+                "__name": "from"
+            },
+            {
+                "__description": "<p>One or more optional <span style=\"color: #B1D928\">tables</span> that contains methods, to extend the object capabilities.</p><article class=\"message is-warning\" style=\"margin-left: 15%; margin-right: 15%\"><div class=\"message-body\">A mixin can also be viewed as an <i>interface</i> with implemented methods.</div></article>",
+                "__optional": true,
+                "__color": "B1D928",
+                "__name": "mixin1"
+            }
+        ],
+        "__description": "Declare a new Object type using the <span style=\"color: #B1D928\">from</span> prototype.<br>The Object() function implements multilevel single inheritance object oriented programming for Lua.",
+        "__tinydesc": "Define a new Object",
+        "__filename": "Object.html"
+    },
+    "__color": "d54d34",
+    "__name": "base",
+    "sleep": {
+        "__returns": "This function returns no value.",
+        "__name": "sleep",
+        "__example": "-- Suspend the program for 5 seconds\nsleep(5000)",
+        "__results": "-",
+        "__kind": "function",
+        "__params": [
+            {
+                "__description": "<p>The delay for which current execution flow will be suspended, in milliseconds. Delay is optional, with a default 1 millisecond program suspension.",
+                "__optional": true,
+                "__color": "ae81ff",
+                "__name": "delay"
+            }
+        ],
+        "__description": "Suspend the current execution flow until the delay elapse, allowing tasks to run during this time.",
+        "__tinydesc": "Suspend the current execution flow",
+        "__filename": "sleep.html"
+    },
+    "await": {
+        "__returns": "This function returns the Task return values.",
+        "__name": "await",
+        "__example": "-- Counts from 5 to 10\nprint (await (function (from, to)\n    local i = from\n    while i <= to do\n        sleep(500)\n        print(i)\n        i = i +1\n    end\n    -- The Task will return the string \"Done !\"\n    return \"Done !\"\nend, 5, 10))",
+        "__results": "...",
+        "__kind": "function",
+        "__params": [
+            {
+                "__description": "<p>A <code>function</code> or a <a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\"></i> Task</a> object instance to wait for.If a <code>function</code> is supplied, a new task instance is transparently created and started.</p><p>Other provided optional arguments are used as function arguments when the Task is started.</p>",
+                "__optional": false,
+                "__color": "B1D928",
+                "__name": "task..."
+            }
+        ],
+        "__description": "Wait for the task to terminate, suspending execution and allowing other tasks to run during this time.",
+        "__tinydesc": "Run a Task and wait until it terminates",
+        "__filename": "await.html"
+    },
+    "async": {
+        "__returns": "This function returns the <a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\"></i> Task</a> object instance.",
+        "__name": "async",
+        "__example": "-- Throws an asynchronous Task which will count from 5 to 10\nasync (function (from, to)\n    local i = from\n    while i <= to do\n        sleep(500)\n        print(i)\n        i = i +1\n    end\n    -- The Task will return the string \"Done !\"\n    return \"Done !\"\nend, 5, 10).after = function(result)\n    print(result)\nend\n\n-- wait for all task to terminate\nwaitall()",
+        "__results": "<a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\"></i> Task</a>",
+        "__kind": "function",
+        "__params": [
+            {
+                "__description": "<p>A <code>function</code> or a <a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\"></i> Task</a> object instance to wait for.If a <code>function</code> is supplied, a new task instance is transparently created and started.</p><p>Other provided optional arguments are used as function arguments when the Task is started.</p>",
+                "__optional": false,
+                "__color": "B1D928",
+                "__name": "task..."
+            }
+        ],
+        "__description": "Throws an asynchronous task.",
+        "__tinydesc": "Run a Task asynchronously",
+        "__filename": "async.html"
+    }
+}

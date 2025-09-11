@@ -1,0 +1,410 @@
+{
+    "where": {
+        "__returns": "Returns a <a href=\"../sys/File.html\"><i class=\"fas fas fa-file\"></i> File</a></span> if a file was found or <code>nil</code> otherwise.",
+        "__name": "where",
+        "__example": "local sysutils = require \"sysutils\"\n\nlocal path = sysutils.where(\"notepad.exe\")\nif path ~= nil then\n    print(\"Notepad application can be found at \"..path.fullpath)\nelse\n    print(\"Notepad application not found in current system PATH\")\nend",
+        "__results": "<a href=\"../sys/File.html\"><i class=\"fas fas fa-file\"></i> File</a></span> | <span style=\"color :gray\"></i>nil</span>",
+        "__kind": "function",
+        "__params": [
+            {
+                "__description": "The filename to be searched for, as a <code>string</code> or as a <a href=\"../sys/File.html\"><i class=\"fas fas fa-file\"></i> File</a></span>.",
+                "__optional": false,
+                "__color": "EA6AC3",
+                "__name": "file"
+            }
+        ],
+        "__description": "Find a file in the current system path",
+        "__tinydesc": "Find a file in the current system path",
+        "__filename": "where.html"
+    },
+    "folders": {
+        "__results": "<span style=\"color:#EA6AC3\">string</span>",
+        "__access": "readonly",
+        "__kind": "property",
+        "__name": "folders",
+        "__description": "Retrieves the full path of a Windows known folder as a <code>string</code><br>This property is a virtual <code>table</code> that can be indexed using the following fields :<ul><li><code>Documents</code>:the current user <code>Documents</code> folder</li><li><code>Downloads</code>:the current user <code>Downloads</code> folder</li><li><code>Videos</code>:the current user <code>Videos</code> folder</li><li><code>Pictures</code>:the current user <code>Pictures</code> folder</li><li><code>Music</code>:the current user <code>Music</code> folder</li><li><code>Contacts</code>:the current user <code>Contacts</code> folder</li><li><code>Favorites</code>:the current user <code>Favorites</code> folder</li><li><code>Links</code>:the current user <code>Links</code> folder</li><li><code>Fonts</code>:the <code>Fonts</code> Windows folder</li><li><code>Startup</code>:the current user <code>Startup</code> folder</li><li><code>StartMenu</code>:the current user <code>Start Menu</code> folder</li><li><code>Sendto</code>: the <code>Send to</code> Windows context menu</li><li><code>Recent</code>:the current user <code>Recents</code> folder</li><li><code>Windows</code>:the <code>Windows</code> folder</li><li><code>System</code>:the <code>System32</code> Windows folder</li><li><code>ProgramFiles</code>:the <code>Program Files (x86)</code> folder (for x86 LuaRT) or <code>Program Files</code> (for x64 LuaRT) folder</li><li><code>Desktop</code>:the user <code>Desktop</code> folder</li><li><code>Programs</code>:the user <code>Programs</code> Start Menu Folder (stores shortcuts to applications in the Start Menu)</li><li><code>RoamingAppData</code>:the user <code>Roaming AppData</code> folder, (stores application data on the current user profile)</li><li><code>LocalAppData</code>:the <code>Local Application Data</code> folder, (stores application data that is specific to the computer)</li></ul>",
+        "__example": "local sysutils = require \"sysutils\"\n\nprint(\"User documents folder is \"..sysutils.folders.Documents)",
+        "__tinydesc": "Get a Windows known folder location",
+        "__filename": "folders.html"
+    },
+    "__icon": "<span class=\"icon bd-link-icon mr-1\" style=\"font-size: 0.8em\"><i class=\"fas fa-wrench\" style=\"color :#606973; vertical-align: top\" style=\"color: #D0D0D0\"></i></span>",
+    "isadmin": {
+        "__results": "<span style=\"color :#ae81ff\"></i>boolean</span>",
+        "__access": "readonly",
+        "__kind": "property",
+        "__name": "isadmin",
+        "__description": "Check if the current user is an Administrator or if the current program is run using UAC.",
+        "__example": "local ui = require \"ui\"\nlocal sysutils = require \"sysutils\"\n\nui.info(\"Current user is\"..(sysutils.isadmin and \" \" or \" not \").. \"an administrator\")",
+        "__tinydesc": "Check if current user is Administrator",
+        "__filename": "isadmin.html"
+    },
+    "Process": {
+        "abort": {
+            "__returns": "This method returns a <code>boolean</code> value indicating if the operation succeeded.",
+            "__name": "abort",
+            "__example": "local sysutils = require \"sysutils\"\nlocal ui = require \"ui\"\n\n-- create a process launching Wordpad\nlocal p = sysutils.Process(\"notepad.exe\")\n\n-- start the process\np:spawn()\n\n-- wait 5sec\nsleep(5000)\n\nif p:abort() then\n    ui.info(\"Notepad process has been aborted\")\nend",
+            "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+            "__kind": "method",
+            "__params": {},
+            "__description": "Aborts the running Process immediately.",
+            "__tinydesc": "Abort the running process",
+            "__filename": "Process-abort.html"
+        },
+        "__name": "Process",
+        "terminated": {
+            "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+            "__access": "readonly",
+            "__kind": "property",
+            "__name": "terminated",
+            "__description": "<br>This property checks if the process is terminated, returning a <code>boolean</code> value.",
+            "__example": "local sysutils = require \"sysutils\"\nlocal console = require \"console\"\n\nlocal cmd\nconsole.writecolor(\"green\", \"Launching cmd.exe (type exit to quit)...\\n\")\nconsole.writecolor(\"green\", \"-------------------------------------------\\n\")\n\nlocal p = sysutils.Process('cmd.exe', true, true)\n\nfunction p:onRedirect(data)\n    if cmd then\n        data = tostring(data):gsub(\"^\"..cmd, \"\")\n    end\n    console.writecolor(\"gray\", data)\nend\n\np:spawn()\n\nwhile not p.terminated do\n    sleep(500)\n    cmd = console.readln()\n    if cmd == \"exit\" then\n        p:close()\n        break\n    end\n    p:write(cmd..\"\\n\")\nend\n\nconsole.writecolor(\"green\", \"cmd.exe exited --------------\\n\")",
+            "__tinydesc": "Check if the process has terminated its execution",
+            "__filename": "Process-terminated.html"
+        },
+        "__kind": "object",
+        "suspend": {
+            "__returns": "This method returns a <code>boolean</code> value indicating if the operation succeeded.",
+            "__name": "suspend",
+            "__example": "local sysutils = require \"sysutils\"\n\n-- create a process launching Wordpad\nlocal p = sysutils.Process([[wluart.exe -e \"require('ui').info('Process have been resumed')\"]])\n\n-- start the process and suspend it\np:spawn(true)\n\n-- wait 3sec\nsleep(3000)\n\n-- wake up the process\np:resume()\n\n-- wait before exiting the program (to see the process message box)\nsleep(1000)",
+            "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+            "__kind": "method",
+            "__params": {},
+            "__description": "Suspends current execution of the running process.",
+            "__tinydesc": "Suspend the process execution",
+            "__filename": "Process-suspend.html"
+        },
+        "constructor": {
+            "__results": "<a href=\"./Process.html\"><i class=\"fas fa-rocket\"></i> Process</a> | nil",
+            "__kind": "method",
+            "__params": [
+                {
+                    "__description": "<p>A <code>string</code> representing the command to be executed as a new process, that contains the executable and parameters separated by spaces</p>",
+                    "__optional": false,
+                    "__color": "EA6AC3",
+                    "__name": "cmd"
+                },
+                {
+                    "__description": "<p>An optional <code>boolean</code> value indicating if the application is hidden, defaulting to <code>false</code></p>",
+                    "__optional": true,
+                    "__color": "ae81ff",
+                    "__name": "hidden"
+                },
+                {
+                    "__description": "<p>An optional <code>boolean</code> value indicating if the process stdin, stdout and stderr are redirected, defaulting to <code>false</code></p>",
+                    "__optional": true,
+                    "__color": "ae81ff",
+                    "__name": "redirect"
+                }
+            ],
+            "__name": "constructor",
+            "__description": "The Process constructor creates a new Windows process.",
+            "__example": "local sysutils = require \"sysutils\"\nlocal ui = require \"ui\"\n\n-- create a process launching Notepad\nlocal p = sysutils.Process(\"notepad.exe\")\n\n-- start the process and wait for it to terminate\np:spawn():wait()\n\nui.info(\"Notepad application has been closed\")",
+            "__tinydesc": "Process object constructor",
+            "__filename": "Process-constructor.html"
+        },
+        "onRedirect": {
+            "__returns": "This event returns no value.\n            <article class=\"message is-warning is-small mt-6 mb-6\" style=\"margin-left: 10%; margin-right: 10%\">\n              <div class=\"message-header mb-0\">\n                <p><i class=\"fas fa-pencil\"></i> Notes</p>\n              </div>\n              <div class=\"message-body mb-0 is-size-7\">\n                <ul class=\"mt-0\">\n                 <li>This event is thrown only if the <a href=\"Process-constructor.html\">Process.constructor()</a> <code>redirect</code> parameter is set to <code>true</code></li>\n                </ul>\n              </div></article>",
+            "__name": "onRedirect",
+            "__example": "//------ This examples spawn a new cmd.exe process\n//------ and redirect stdin/stderr output\nlocal console = require \"console\"\nlocal sysutils = require \"sysutils\"\n\nlocal cmd\nconsole.color = \"lightcyan\"\nconsole.writecolor(\"green\", \"Launching cmd.exe (Press CTRL+C to exit)...\\n\")\nconsole.writecolor(\"green\", \"-------------------------------------------\\n\")\n\nlocal p = sysutils.Process('cmd.exe')\n\nfunction p:onRedirect(data)\n    if cmd then\n        data = tostring(data):gsub(\"^\"..cmd, \"\")\n    end\n    console.writecolor(\"white\", data)\nend\n\np:spawn()\n\nwhile not p.terminated do\n    sleep(200)\n    cmd = console.readln()\n    p:write(cmd..\"\\n\")\nend",
+            "__results": "",
+            "__kind": "event",
+            "__params": [
+                {
+                    "__description": "<p>A <a href=\"../sys/Buffer.html\"><i class=\"fas fa-th\" style=\"color :#2187E7\"></i> Buffer</a> that contains the data written by the process.</p>",
+                    "__optional": false,
+                    "__color": "EA6AC3",
+                    "__name": "data"
+                }
+            ],
+            "__description": "Event that occurs when the running process outputs data to standard output/error stream.",
+            "__tinydesc": "Event fired when the Process outputs data to stdin/stderr",
+            "__filename": "Process-onRedirect.html"
+        },
+        "__tinydesc": "Object that represent a Windows process",
+        "__filename": "Process.html",
+        "spawn": {
+            "__returns": "This method returns a <a href=\"./Task.html\"><i class=\"fas fa-bolt\"></i> Task</a> instance that will run until the process stops its execution.",
+            "__name": "spawn",
+            "__example": "local sysutils = require \"sysutils\"\nlocal ui = require \"ui\"\n\n-- create a process launching Wordpad\nlocal p = sysutils.Process(\"notepad.exe\")\n\n-- start the process\nlocal task = p:spawn()\n\n-- wait until the process is terminated\ntask:wait()\n\nui.info(\"Notepad process has terminated its execution\")",
+            "__results": "<a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\"></i> Task</a>",
+            "__kind": "method",
+            "__params": [
+                {
+                    "__description": "<p>An optional <code>boolean</code> value indicating if the process should be suspended once spawn, defaulting to <code>false</code>.</p>",
+                    "__optional": true,
+                    "__color": "ae81ff",
+                    "__name": "suspended"
+                }
+            ],
+            "__description": "Starts the process execution.",
+            "__tinydesc": "Starts the process execution",
+            "__filename": "Process-spawn.html"
+        },
+        "write": {
+            "__returns": "Returns no value.",
+            "__name": "write",
+            "__example": "local sysutils = require \"sysutils\"\n-- Spawn a cmd.exe process\nlocal p = sysutils.Process(\"cmd.exe\", false, true)\np:spawn()\n-- write to cmd process to execute the notepad.exe program\np:write(\"notepad.exe\\n\")\n-- wait for notepad.exe to start before exiting\nsleep(5000)",
+            "__results": "-",
+            "__kind": "method",
+            "__params": [
+                {
+                    "__description": "<p>A <code>string</code> that will be written to the Process standard input stream.</p>",
+                    "__optional": false,
+                    "__color": "EA6AC3",
+                    "__name": "data"
+                }
+            ],
+            "__description": "Writes data in the standard input stream of the executed process.",
+            "__tinydesc": "Writes in the process standard input stream",
+            "__filename": "Process-write.html"
+        },
+        "close": {
+            "__returns": "This method returns a <code>boolean</code> value indicating if the operation succeeded.",
+            "__name": "close",
+            "__example": "local sysutils = require \"sysutils\"\nlocal ui = require \"ui\"\n\n-- create a process launching Wordpad\nlocal p = sysutils.Process(\"notepad.exe\")\n\n-- start the process\np:spawn()\n\n-- wait 5sec\nsleep(5000)\n\nif p:close() then\n    ui.info(\"Notepad process has been aborted\")\nend",
+            "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+            "__kind": "method",
+            "__params": {},
+            "__description": "Try a gracefull process termination.",
+            "__tinydesc": "Try a gracefull process termination",
+            "__filename": "Process-close.html"
+        },
+        "__type": "object",
+        "__results": "",
+        "__description": "The Process object starts and manages external programs or commands",
+        "__icon": "<span class=\"icon bd-link-icon mr-1\" style=\"font-size: 0.8em\"><i class=\"fas fa-rocket\" style=\"color :#2187E7\"></i></span>",
+        "suspended": {
+            "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+            "__access": "readonly",
+            "__kind": "property",
+            "__name": "suspended",
+            "__description": "<br>This property checks if the process is suspended, returning a <code>boolean</code> value.",
+            "__example": "local sysutils = require \"sysutils\"\nlocal ui = require \"ui\"\n\n-- create a process launching notepad.exe\n-- on Windows 11, you will need : Settings → Apps → More settings → App execution aliases → Disable the “Notepad” alias\n-- to bring back the old notepad app\nlocal p = sysutils.Process('notepad.exe')\n\n-- start the process\np:spawn()\nsleep(1000)\nui.info(\"Process will be suspended for 5sec\")\nsleep(5000)\nif p.suspended then\n  ui.info(\"Process will now be resumed\")\nend",
+            "__tinydesc": "Check if the process is suspended",
+            "__filename": "Process-suspended.html"
+        },
+        "resume": {
+            "__returns": "This method returns a <code>boolean</code> value indicating if the operation succeeded.",
+            "__name": "resume",
+            "__example": "local sysutils = require \"sysutils\"\n\n-- create a process launching Wordpad\nlocal p = sysutils.Process([[wluart.exe -e \"require('ui').info('Process have been resumed')\"]])\n\n-- start the process and suspend it\np:spawn(true)\n\n-- wait 3sec\nsleep(3000)\n\n-- wake up the process\np:resume()\n\n-- wait before exiting the program (to see the process message box)\nsleep(1000)",
+            "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+            "__kind": "method",
+            "__params": {},
+            "__description": "Resume execution of the process, previously suspended.",
+            "__tinydesc": "Resume the process execution",
+            "__filename": "Process-resume.html"
+        }
+    },
+    "__kind": {
+        "isdesktop": true,
+        "isconsole": true,
+        "iscore": false
+    },
+    "addrecent": {
+        "__returns": "This function returns no value.",
+        "__name": "addrecent",
+        "__example": "local sysutils = require \"sysutils\"\n\n-- Add the file \"C:\\\\memo.docx\" to the Windows recent files list\nsysutils.addrecent(\"C:\\\\memo.docx\")",
+        "__results": "-",
+        "__kind": "function",
+        "__params": [
+            {
+                "__description": "The the file to be added, as a <code>string</code> representing the full path or as a <a href=\"../sys/File.html\"><i class=\"fas fas fa-file\"></i> File</a></span>.",
+                "__optional": false,
+                "__color": "EA6AC3",
+                "__name": "fname"
+            }
+        ],
+        "__description": "Adds an item to the Windows recent documents list in the Start menu, or in the File Explorer under \"Recent\".",
+        "__tinydesc": "Add an item to the Windows recent documents list",
+        "__filename": "addrecent.html"
+    },
+    "recyclebin.empty": {
+        "__returns": "Returns a <code>boolean</code> value indicating if the operation succeeded.",
+        "__name": "recyclebin.empty",
+        "__example": "local sysutils = require \"sysutils\"\n\n-- Try to empty the Recycle Bin of \"C:\\\\\" drive\nif sysutils.recyclebin.empty(\"C:\\\\\") then\n   print(\"Successfully emptied the C:\\\\ Recycle Bin\")\nelse\n   print(\"Failed to empty C:\\\\ Recycle Bin\")\nend",
+        "__results": "<span style=\"color :#ae81ff\"></i>boolean</span>",
+        "__kind": "function",
+        "__params": [
+            {
+                "__description": "A <code>string</code> that contains the path of the root drive of the Recycle Bin to empty.<article class=\"message is-warning is-small mt-6 mb-6\" style=\"margin-left: 10%; margin-right: 10%\"><div class=\"message-header mb-0\"><p><i class=\"fas fa-pencil\"></i> Notes</p></div><div class=\"message-body mb-0 is-size-7\"><ul class=\"mt-0\"><li>If the string is empty, all Recycle Bins on all drives will be emptied.</li></ul></div></article>",
+                "__optional": false,
+                "__color": "EA6AC3",
+                "__name": "drive"
+            }
+        ],
+        "__description": "Empties the Recycle Bin on the specified drive.",
+        "__tinydesc": "Empties the Recycle Bin",
+        "__filename": "recyclebin-empty.html"
+    },
+    "shellexec": {
+        "__returns": "Returns a <code>boolean</code> value indicating if the shell execution succeeded or not.",
+        "__name": "shellexec",
+        "__example": "local sysutils = require \"sysutils\"\n\n-- opens the current mail app to write a new mail to test@test.com\nprint(sysutils.shellexec(\"open\", \"mailto:test@test.com\"))",
+        "__results": "<span style=\"color :#ae81ff\"></i>boolean</span>",
+        "__kind": "function",
+        "__params": [
+            {
+                "__description": "<p>A <code>string</code> that indicates the action to perform on the provided file/directory.The following verbs are commonly used</p><ul><li><code>\"open\"</code>: opens the file/directory.</li><li><code>\"openas\"</code>: shows a dialog to select an app with which to open the file.</li><li><code>\"runas\"</code>: launches an application as Administrator, with UAC prompt if needed.</li><li><code>\"edit\"</code>: launches an editor to edit the file.</li><li><code>\"print\"</code>: prints the file.</li><li><code>\"properties\"</code>: shows the file/folder properties.</li><li><code>\"explore\"</code>: explores the specified folder.</li><li><code>\"find\"</code>: start a search starting from the specified directory.</li></ul>",
+                "__optional": false,
+                "__color": "EA6AC3",
+                "__name": "action"
+            },
+            {
+                "__description": "The file or directory on which the action will be performed on, as a <code>string</code>, as a <a href=\"../sys/File.html\"><i class=\"fas fas fa-file\"></i> File</a></span>, or as a <a href=\"../sys/Directory.html\"><i class=\"fas fas fa-folder\"></i> Directory</a>",
+                "__optional": false,
+                "__color": "EA6AC3",
+                "__name": "file"
+            },
+            {
+                "__description": "An optional <code>string</code> that contains the application parameters, separated by spaces.",
+                "__optional": true,
+                "__color": "EA6AC3",
+                "__name": "parameters"
+            },
+            {
+                "__description": "An optional <code>string</code> that contains the name of the application working directory.",
+                "__optional": true,
+                "__color": "EA6AC3",
+                "__name": "directory"
+            }
+        ],
+        "__description": "Performs an operation on a file or folder, such as opening, printing, or exploring, and returns when the operation has finished.",
+        "__tinydesc": "Perform an operation on a file or directory",
+        "__filename": "shellexec.html"
+    },
+    "__filename": "index.html",
+    "user": {
+        "__results": "<span style=\"color:#EA6AC3\">string</span>",
+        "__access": "readonly",
+        "__kind": "property",
+        "__name": "user",
+        "__description": "Retrieves the current user name as a <code>string</code>",
+        "__example": "local sysutils = require \"sysutils\"\n\nprint(\"User name is \"..sysutils.user)",
+        "__tinydesc": "Get the current user name",
+        "__filename": "user.html"
+    },
+    "sysarch": {
+        "__results": "<span style=\"color:#EA6AC3\">string</span>",
+        "__access": "readonly",
+        "__kind": "property",
+        "__name": "sysarch",
+        "__description": "Retrieves the current Windows architecture either <code>\"x64\"</code> or <code>\"x86\"</code>",
+        "__example": "local sysutils = require \"sysutils\"\n\nprint(\"Windows architecture is \"..sysutils.sysarch)",
+        "__tinydesc": "Get the current Windows architecture",
+        "__filename": "sysarch.html"
+    },
+    "isinstance": {
+        "__returns": "Returns a <code>boolean</code> value indicating if the current application is already running, using the provided identifier.",
+        "__name": "isinstance",
+        "__example": "local sysutils = require \"sysutils\"\n\n-- Try to run this script in two different console\n\n-- Check if an instance of 'my app' is already running\nif sysutils.isinstance(\"my app\") then\n    print(\"An instance of 'my app' application is already running\")\nelse\n    print(\"First instance of 'my app' application\")\nend\n\n-- wait for 10sec\nsleep(10000)",
+        "__results": "<span style=\"color :#ae81ff\"></i>boolean</span>",
+        "__kind": "function",
+        "__params": [
+            {
+                "__description": "A unique <code>string</code> that identifies the application.",
+                "__optional": false,
+                "__color": "EA6AC3",
+                "__name": "id"
+            }
+        ],
+        "__description": "Checks if an application instance is already running, using the provided identifier.",
+        "__tinydesc": "Check if the current application is already running",
+        "__filename": "isinstance.html"
+    },
+    "__description": "The sysutils module offers a collection of system utility functions",
+    "__type": "module",
+    "watch": {
+        "__returns": "Returns a <a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\"></i> Task</a> instance that will run forever in the background.",
+        "__name": "watch",
+        "__example": "local sysutils = require \"sysutils\"\n\n-- function callback for the sysutils.watch() function\nlocal function onChange(action, entry, newentry)\n    print(\"Folder change detected : \"..entry.name..\"\\t(\"..action..\")\")\nend\n\n-- Watch for changes in the current directory\nlocal task = sysutils.watch(sys.currentdir, onChange)\n\n-- creates a file \"test.txt\"\nlocal f = sys.File('test.txt')\nf:open(\"write\")\n\n-- Writes to the file\nf:write(\"it's a test\")\nf:close()\n\n-- Removes the file\nf:remove()\n\n-- sleep to run the background Task\nsleep()",
+        "__results": "<a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\"></i> Task</a>",
+        "__kind": "function",
+        "__params": [
+            {
+                "__description": "The folder to be watched, as a <code>string</code> or as a <a href=\"../sys/Directory.html\"><i class=\"fas fas fa-folder\"></i> Directory</a>",
+                "__optional": false,
+                "__color": "EA6AC3",
+                "__name": "folder"
+            },
+            {
+                "__description": "<p>A callback <code>function</code> that will be called each time a directory change has been detected. </p>This function receives the following arguments :<ul><li>The action that occured as a <code>string</code> among <code>\"new\"</code>, <code>\"removed\"</code>, <code>\"modified\"</code>, or <code>\"renamed\"</code></li><li>The concerned <a href=\"../sys/File.html\"><i class=\"fas fas fa-file\"></i> File</a> or <a href=\"../sys/Directory.html\"><i class=\"fas fas fa-folder\"></i> Directory</a></li><li>A third argument only if the action is <code>\"renamed\"</code>, which contains the renamed <a href=\"../sys/File.html\"><i class=\"fas fas fa-file\"></i> File</a> or <a href=\"../sys/Directory.html\"><i class=\"fas fas fa-folder\"></i> Directory</a></li></ul>",
+                "__optional": false,
+                "__color": "c7a170",
+                "__name": "func"
+            }
+        ],
+        "__description": "Monitors a directory for changes in the background.",
+        "__tinydesc": "Monitor a specified directory for changes",
+        "__filename": "watch.html"
+    },
+    "drives": {
+        "__results": "<span style=\"color:#B1D928\">table</span>",
+        "__access": "readonly",
+        "__kind": "property",
+        "__name": "drives",
+        "__description": "Get a list of current available disk drives. Each drive in the list is represented by a <code>table</code> that contains the following fields :<ul><li><code>root</code>: The drive root directory, for example <code>\"C:\\\\\"</code></li><li><code>name</code>: The drive name as a <code>string</code></li><li><code>filesystem</code>: The drive's filesystem, for example <code>\"FAT32\"</code> or <code>\"NTFS\"</code></li><li><code>readonly</code>: A <code>boolean</code> value indicating wether the drive is readonly.</li><li><code>compressed</code>: A <code>boolean</code> value indicating wether the drive is compressed.</li></ul>",
+        "__example": "local sysutils = require \"sysutils\"\n\nfor drive in each(sysutils.drives) do\n    print(\"Drive \"..drive.root)\n    print(\"\\ttype:\\t\\t\"..drive.type)    \n    print(\"\\tname:\\t\\t\"..drive.name)    \n    print(\"\\tfilesystem:\\t\"..drive.filesystem)    \n    print(\"\\treadonly:\\t\"..tostring(drive.readonly))    \n    print(\"\\tcompressed:\\t\"..tostring(drive.compressed))    \nend",
+        "__tinydesc": "Get a list of current available disk drives",
+        "__filename": "drives.html"
+    },
+    "shellupdate": {
+        "__returns": "This function returns no value.",
+        "__name": "shellupdate",
+        "__example": "local sysutils = require \"sysutils\"\n\n-- Register file association \".test\" with the application \"test.exe\"\nsys.registry.write(\"HKEY_CURRENT_USER\", \"Software\\\\Classes\\\\.test\", nil, \"test\");\nsys.registry.write(\"HKEY_CURRENT_USER\", \"Software\\\\Classes\\\\test\", nil, \"test file\");\nsys.registry.write(\"HKEY_CURRENT_USER\", \"Software\\\\Classes\\\\lua\\\\shell\\\\open\\\\command\", nil, '\"c:\\\\test.exe\" \"%1\"');\n\n-- Notify the Shell that a change occured (no need to logoff the current session)\nsysutils.shellupdate()",
+        "__results": "-",
+        "__kind": "function",
+        "__params": {},
+        "__description": "Informs the Windows Shell about changes in the file system, such as file creation, deletion, attribute changes or file associations.",
+        "__tinydesc": "Notify the Windows Shell about changes",
+        "__filename": "shellupdate.html"
+    },
+    "recyclebin.send": {
+        "__returns": "Returns a <code>boolean</code> value indicating if the operation succeeded.",
+        "__name": "recyclebin.send",
+        "__example": "local sysutils = require \"sysutils\"\n\n-- Delete the file \"test.txt\" by sending it to the Recycle Bin\nsysutils.recyclebin.send(\"test.txt\")",
+        "__results": "<span style=\"color :#ae81ff\"></i>boolean</span>",
+        "__kind": "function",
+        "__params": [
+            {
+                "__description": "The file or directory to be send on the Recycle Bin, as a <code>string</code>, as a <a href=\"../sys/File.html\"><i class=\"fas fas fa-file\"></i> File</a></span>, or as a <a href=\"../sys/Directory.html\"><i class=\"fas fas fa-folder\"></i> Directory</a><article class=\"message is-warning is-small mt-6 mb-6\" style=\"margin-left: 10%; margin-right: 10%\"><div class=\"message-header mb-0\"><p><i class=\"fas fa-pencil\"></i> Notes</p></div><div class=\"message-body mb-0 is-size-7\"><ul class=\"mt-0\"><li>Files or folders deleted using <a href=\"../sys/File-remove.html\">File.remove()</a> and <a href=\"../sys/Directory-remove.html\">Diretory.remove()</a> are deleted forever.</li><li>Use this function to send them to the Recycle Bin instead.</li></ul></div></article>",
+                "__optional": false,
+                "__color": "EA6AC3",
+                "__name": "item"
+            }
+        ],
+        "__description": "Sends a file or folder to the Recycle Bin.",
+        "__tinydesc": "Send a file or folder to the Recycle Bin",
+        "__filename": "recyclebin-send.html"
+    },
+    "__color": "606973",
+    "__tinydesc": "Miscellaneous system utilities like process management and Windows shell",
+    "__name": "sysutils",
+    "computer": {
+        "__results": "<span style=\"color:#EA6AC3\">string</span>",
+        "__access": "readonly",
+        "__kind": "property",
+        "__name": "computer",
+        "__description": "Retrieves the computer name as a <code>string</code>",
+        "__example": "local sysutils = require \"sysutils\"\n\nprint(\"Computer name is \"..sysutils.computer)",
+        "__tinydesc": "Get the computer's name",
+        "__filename": "computer.html"
+    },
+    "diskusage": {
+        "__returns": "If the function succeeds, the function returns two numbers:  the current free disk space in bytes, and the total disk space in bytes.\n            If the function fails it returns a <code>nil</code> value.<br>",
+        "__name": "diskusage",
+        "__example": "local sysutils = require \"sysutils\"\n\nlocal free, total = sysutils.diskusage(\"C:\")\nprint(\"Drive C: has \"..math.floor(free/1000)..\" kb left on \"..(math.floor(total/1000))..\" kb\")",
+        "__results": "<span style=\"color :#ae81ff\"></i>numbers</span> | <span style=\"color :gray\"></i>nil</span>",
+        "__kind": "function",
+        "__params": [
+            {
+                "__description": "The drive letter, as a <code>string</code>",
+                "__optional": false,
+                "__color": "EA6AC3",
+                "__name": "drive"
+            }
+        ],
+        "__description": "Returns the disk space usage for the specified drive",
+        "__tinydesc": "Gets the disk space usage for a drive",
+        "__filename": "diskusage.html"
+    }
+}

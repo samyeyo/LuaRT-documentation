@@ -1,0 +1,92 @@
+{
+    "load": {
+        "__returns": "Returns the corresponding Lua value or a <code>nil</code> value in case of error.",
+        "__name": "load",
+        "__example": "local net = require \"net\"\nlocal json = require \"json\"\n\nprint(\"Downloading dummy json file...\")\nlocal http = await(net.Http(\"https://microsoftedge.github.io\"):download(\"/Demos/json-dummy-data/64KB.json\"))\n\n-- Checks that everything went right during download\nif http.response.file.exists then\n    -- load users table from the download JSON file\n    local users = json.load(http.response.file)\n    for user in each(users) do\n        print(user.name)\n    end\nelse\n    error(\"Failed to load JSON file\")\nend",
+        "__results": "<span style=\"color :#B1D928\"></i>any</span> | <span style=\"color :gray\"></i>nil</span>",
+        "__kind": "function",
+        "__params": [
+            {
+                "__description": "<p>A <a href=\"../sys/File.html\"><i class=\"fas fa-file\" style=\"color :#2187E7\"></i> File</a> object or a filename <span style=\"color:#EA6AC3\">string</span>, representing the file whose content will be decoded from JSON.</p>",
+                "__optional": false,
+                "__color": "606060",
+                "__name": "file"
+            }
+        ],
+        "__description": "Load and decode a file containing JSON data.",
+        "__tinydesc": "Load and decode a file containing JSON data",
+        "__filename": "load.html"
+    },
+    "__icon": "<span class=\"icon bd-link-icon mr-1\" style=\"font-size: 0.8em\"><i class=\"fab fa-js-square\" style=\"color :#FFDB4D; vertical-align: top\" style=\"color: #D0D0D0\"></i></span>",
+    "__type": "module",
+    "decode": {
+        "__returns": "Returns the corresponding Lua value or a <code>nil</code> value in case of error.",
+        "__name": "decode",
+        "__example": "local net = require \"net\" \nlocal json = require \"json\"\n\n-- use the free IP-API localization web API\nlocal url = \"http://ip-api.com\"\nlocal client = net.Http(url)\n\n-- wait for a GET request to terminate\nawait(client:get(\"/json/\"))\n\n-- decode the response as a JSON string or throw an error \nlocal data = json.decode(client.response and client.response.content or error(net.error))\n\n-- use the needed response fields\nprint(\"You are located in \"..data.country..\" near \"..data.city)",
+        "__results": "<span style=\"color :#B1D928\"></i>any</span>",
+        "__kind": "function",
+        "__params": [
+            {
+                "__description": "<p>JSON string to be decoded.</p>",
+                "__optional": false,
+                "__color": "EA6AC3",
+                "__name": "string"
+            }
+        ],
+        "__description": "Decode a JSON string to a Lua value, following those rules : <table class=\"table has-text-centered mt-6\" >\r\n              <thead>\r\n                <tr>\r\n                  <th class=\"has-text-info\">JSON</th>\r\n                  <th class=\"has-text-info\">Lua value type</th>\r\n                </tr>\r\n              </thead>\r\n              <tbody>\r\n                <tr>\r\n                  <td class=\"has-text-grey\"><code>\"string\"</code></td>\r\n                  <td><code class=\"has-text-grey has-background-white\"><span style=\"color:#EA6AC3\">\"string\"</span></td>\r\n                </tr>\r\n                <tr>\r\n                  <td class=\"has-text-link-dark\"><code>number</code></td>\r\n                  <td><code class=\"has-text-grey has-background-white\"><span style=\"color:#ae81ff\">number</span></td>\r\n                 </tr>\r\n                 <tr>\r\n                   <td class=\"has-text-link-dark\"><code>\"true\" / \"false\" </code></td>\r\n                  <td><code class=\"has-text-grey has-background-white\"><span style=\"color:#ae81ff\">boolean</span></td>\r\n                 </tr>\r\n                 <tr>\r\n                   <td class=\"has-text-link-dark\"><code>object {}</code></td>\r\n                  <td><code class=\"has-text-grey has-background-white\"><span style=\"color:#B1D928\">table</span></td>\r\n                 </tr>\r\n                 <tr>\r\n                   <td class=\"has-text-link-dark\"><code>array []</code></td>\r\n                   <td><code class=\"has-text-grey has-background-white\"><span style=\"color:#B1D928\">table (integer keys)</span></td>\r\n                 </tr>\r\n                 <tr>\r\n                   <td class=\"has-text-link-dark\"><code>null</code></td>\r\n                   <td><code class=\"has-text-grey has-background-white\"><span style=\"color:#EA6AC3\">\"null\"</span></td>\r\n                 </tr>\r\n                </tbody>\r\n          </table>",
+        "__tinydesc": "Generate a Lua value from a JSON string",
+        "__filename": "decode.html"
+    },
+    "save": {
+        "__returns": "Returns <code>true</code> or <code>false</code> in case of error.",
+        "__name": "save",
+        "__example": "local json = require \"json\"\n\nlocal t = {name = \"John\", age = 30, car = \"null\"}\n\n-- save table content to a file as JSON, should be {\"name\":\"John\", \"age\":30, \"car\":null}\njson.save(\"test.json\", t)",
+        "__results": "<span style=\"color :#ae81ff\"></i> boolean</span>",
+        "__kind": "function",
+        "__params": [
+            {
+                "__description": "<p>A <a href=\"../sys/File.html\"><i class=\"fas fa-file\" style=\"color :#2187E7\"></i> File</a> object or a filename <span style=\"color:#EA6AC3\">string</span>, representing the file to save the JSON data.</p>",
+                "__optional": false,
+                "__color": "606060",
+                "__name": "file"
+            },
+            {
+                "__description": "<p>Lua value to be encoded.</p>",
+                "__optional": false,
+                "__color": "B1D928",
+                "__name": "value"
+            }
+        ],
+        "__description": "Encode a Lua value to a JSON representation string and save it to a file.",
+        "__tinydesc": "Encode a Lua value to a JSON representation string and save it to a file",
+        "__filename": "save.html"
+    },
+    "__kind": {
+        "isdesktop": true,
+        "isconsole": true,
+        "iscore": false
+    },
+    "encode": {
+        "__returns": "Returns the encoded JSON string or a <code>nil</code> value in case of error.",
+        "__name": "encode",
+        "__example": "-- use the json binary module\n-- must be in the same folder as this Lua script\n-- or in the 'modules' folder of your LuaRT installation path\nlocal json = require \"json\"\n\n-- Lua array (integer only indexed table)\nlocal array = { 1, 2, 3, \"Hello !\" }\n\n-- prints the JSON representation of the array value\n-- should output [1,2,3,\"Hello !\"]\n\nprint(json.encode(array))",
+        "__results": "<span style=\"color:#EA6AC3\">string</span>",
+        "__kind": "function",
+        "__params": [
+            {
+                "__description": "<p>Lua value to be encoded.</p>",
+                "__optional": false,
+                "__color": "B1D928",
+                "__name": "value"
+            }
+        ],
+        "__description": "Encode any Lua value in a JSON representation string, following those rules : <table class=\"table has-text-centered mt-6\">\r\n              <thead>\r\n                <tr>\r\n                  <th class=\"has-text-info\">Lua value type</th>\r\n                  <th class=\"has-text-info\">JSON</th>\r\n                </tr>\r\n              </thead>\r\n              <tbody>\r\n                <tr>\r\n                  <td><code class=\"has-text-grey has-background-white\"><span style=\"color:#EA6AC3\">\"string\"</span></td>\r\n                  <td class=\"has-text-grey\"><code>\"string\"</code></td>\r\n                </tr>\r\n                <tr>\r\n                  <td><code class=\"has-text-grey has-background-white\"><span style=\"color:#ae81ff\">number</span></td>\r\n                  <td class=\"has-text-link-dark\"><code>number</code></td>\r\n                 </tr>\r\n                 <tr>\r\n                  <td><code class=\"has-text-grey has-background-white\"><span style=\"color:#ae81ff\">boolean</span></td>\r\n                  <td class=\"has-text-link-dark\"><code>\"true\" / \"false\" </code></td>\r\n                 </tr>\r\n                 <tr>\r\n                  <td><code class=\"has-text-grey has-background-white\"><span style=\"color:#B1D928\">table</span></td>\r\n                  <td class=\"has-text-link-dark\"><code>object {}</code></td>\r\n                 </tr>\r\n                 <tr>\r\n                  <td><code class=\"has-text-grey has-background-white\"><span style=\"color:#B1D928\">table (integer keys)</span></td>\r\n                  <td class=\"has-text-link-dark\"><code>array []</code></td>\r\n                 </tr>\r\n                 <tr>\r\n                  <td><code class=\"has-text-grey has-background-white\"><span style=\"color:#EA6AC3\"><code>\"null\"</code></span></td>\r\n                  <td class=\"has-text-link-dark\"><code>null</code></td>\r\n                 </tr>\r\n                 <tr>\r\n                  <td><code class=\"has-text-grey has-background-white\"><span style=\"color:#424240\">object</span></td>\r\n                  <td class=\"has-text-link-dark\"><code>Not supported (converted to JSON object {})</code></td>\r\n                 </tr>\r\n                 <tr>\r\n                  <td><code class=\"has-text-grey has-background-white\"><span style=\"color:#424240\">thread</span></td>\r\n                  <td class=\"has-text-link-dark\"><code>Not supported (converted to \"string\")</code></td>\r\n                 </tr>\r\n                 <tr>\r\n                  <td><code class=\"has-text-grey has-background-white\"><span style=\"color:#424240\">userdata</span></td>\r\n                  <td class=\"has-text-link-dark\"><code>Not supported (converted to \"string\")</code></td>\r\n                 </tr>\r\n                </tbody>\r\n          </table>\r\n",
+        "__tinydesc": "Encode a Lua value to a JSON representation string",
+        "__filename": "encode.html"
+    },
+    "__color": "FFDB4D",
+    "__description": "The json module allows for encoding and decoding JSON data",
+    "__name": "json",
+    "__tinydesc": "Parses and generates JSON data for easy data exchange",
+    "__filename": "index.html"
+}

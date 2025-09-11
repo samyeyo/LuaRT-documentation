@@ -1,0 +1,144 @@
+{
+    "sendkeys": {
+        "__returns": "This function <code>true</code> if the key/command sequence has been successfully sended, or <code>false</code> otherwise.",
+        "__name": "sendkeys",
+        "__example": "local kb = require \"keyboard\"\n\n-- Send virtual keys to launch the Windows Run... command\n-- then types \"notepad\", presses Enter, and enters slowly the letters Hello LuaRT !\nprint(kb.sendkeys(\"{DELAY=100}@rnotepad{ENTER}{DELAY=600}H{DELAY=100}ello LuaRT !\"))",
+        "__results": "<span style=\"color :#ae81ff\"></i>boolean</span>",
+        "__kind": "function",
+        "__params": [
+            {
+                "__description": "A <code>string</code> that contains one or more key codes/commands combination.",
+                "__optional": false,
+                "__color": "EA6AC3",
+                "__name": "keys"
+            }
+        ],
+        "__description": "Sends virtual key presses to other applications.",
+        "__tinydesc": "Sends virtual key presses to other applications",
+        "__filename": "sendkeys.html"
+    },
+    "bind": {
+        "__returns": "<p>This function returns a <a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\"></i> Task</a> executed in background.<br>\n            <article class=\"message is-warning is-small mt-6 mb-6\" style=\"margin-left: 10%; margin-right: 10%\">\n              <div class=\"message-header mb-0\">\n                <p><i class=\"fas fa-pencil\"></i> Notes</p>\n              </div>\n              <div class=\"message-body mb-0 is-size-7\">\n                <ul class=\"mt-0\">\n                 <li>To cancel the key binding, use the <a href=\"../sys/Task-cancel.html\">Task:cancel()</a> method.</li>\n                </ul>\n              </div></article></p>",
+        "__name": "bind",
+        "__example": "local ui = require \"ui\"\nlocal kb = require \"keyboard\"\n\nlocal win = ui.Window(\"Press the A key !\", 320, 200)\nlocal lbl = ui.Label(win, \"\")\n\nlocal function onAPressed(isshift, iscontrol, isalt)\n    local isshift = isshift and \" + SHIFT\" or \"\"\n    local iscontrol = iscontrol and \" + CONTROL\" or \"\"\n    local isalt = isalt and \" + ALT\" or \"\"\n    lbl.text = \"A\"..isshift..iscontrol..isalt\n    lbl:center()\n    ui.update()\n    sleep(500)\n    lbl.text = \"\"\nend\n\nkb.bind(\"A\", onAPressed)\n\nui.run(win):wait()",
+        "__results": "<a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\"></i> Task</a>",
+        "__kind": "function",
+        "__params": [
+            {
+                "__description": "<p>A <code>string</code> or <code>number</code> representing the key to wait for. See <a href=\"./keys.html\">the list of supported key codes</a></p>",
+                "__optional": false,
+                "__color": "EA6AC3",
+                "__name": "key"
+            }
+        ],
+        "__description": "Binds a key to a Lua callback function, called each time the specified key is pressed.",
+        "__tinydesc": "Binds a key to a function",
+        "__filename": "bind.html"
+    },
+    "isup": {
+        "__returns": "This function <code>true</code> if the key is up or <code>false</code> otherwise.",
+        "__name": "isup",
+        "__example": "local kb = require \"keyboard\"\nlocal ui = require \"ui\"\n\nlocal win = ui.Window(\"Press the SPACE key\", 400, 280)\nlocal lbl = ui.Label(win, \"Press the SPACE key to hide this message !\")\nlbl:center()\n\nui.run(win)\n\nasync(function()\n    while win.visible do\n        sleep()\n        lbl.visible = kb.isup(\"SPACE\")\n    end\nend)\n\nwaitall()",
+        "__results": "<span style=\"color :#ae81ff\"></i>boolean</span>",
+        "__kind": "function",
+        "__params": [
+            {
+                "__description": "A <code>string</code> or a <code>number</code> that represents the key to be checked for up position. See <a href=\"./keys.html\">the list of supported key codes</a>.",
+                "__optional": false,
+                "__color": "EA6AC3",
+                "__name": "key"
+            }
+        ],
+        "__description": "Checks if a key is up.",
+        "__tinydesc": "Checks if a specified key is up",
+        "__filename": "isup.html"
+    },
+    "__icon": "<span class=\"icon bd-link-icon mr-1\" style=\"font-size: 0.8em\"><i class=\"fas fa-keyboard\" style=\"color :#B38600; vertical-align: top\" style=\"color: #D0D0D0\"></i></span>",
+    "isdown": {
+        "__returns": "This function <code>true</code> if the key is down or <code>false</code> otherwise.",
+        "__name": "isdown",
+        "__example": "local kb = require \"keyboard\"\nlocal ui = require \"ui\"\n\nlocal win = ui.Window(\"Press the SPACE key\", 400, 280)\nlocal lbl = ui.Label(win, \"Release the SPACE key to hide this message !\")\nlbl:center()\nlbl:hide()\n\nui.run(win)\n\nasync(function()\n    while win.visible do\n        sleep()\n        lbl.visible = kb.isdown(\"SPACE\")\n    end\nend)\n\nwaitall()",
+        "__results": "<span style=\"color :#ae81ff\"></i>boolean</span>",
+        "__kind": "function",
+        "__params": [
+            {
+                "__description": "A <code>string</code> or a <code>number</code> that represents the key to be checked for down position. See <a href=\"./keys.html\">the list of supported key codes</a>.",
+                "__optional": false,
+                "__color": "EA6AC3",
+                "__name": "key"
+            }
+        ],
+        "__description": "Checks if a key is down.",
+        "__tinydesc": "Checks if a specified key is down",
+        "__filename": "isdown.html"
+    },
+    "waitfor": {
+        "__returns": "This function returns only when a key have been pressed. The key name is returned as a <code>string</code>.",
+        "__name": "waitfor",
+        "__example": "local kb = require \"keyboard\"\nlocal console = require \"console\"\n\nlocal key\n\nasync(function ()\n   console.write(\"Waiting for a key\")\n   while not key do\n      console.write(\".\")\n      sleep(1000)\n   end\nend)\n\nkey = kb.waitfor()\n\nprint(\"\\nYou have pressed the [\"..key..\"] key\")",
+        "__results": "<span style=\"color :#EA6AC3\"></i>string</span>",
+        "__kind": "function",
+        "__params": [
+            {
+                "__description": "An optional <code>string</code> or <code>number</code> representing the key to wait for. See <a href=\"./keys.html\">the list of supported key codes</a>.<br>If this parameter is omitted, this function waits for any key to be pressed.",
+                "__optional": true,
+                "__color": "EA6AC3",
+                "__name": "key"
+            }
+        ],
+        "__description": "Waits for any key, or for a specific key, to be pressed asynchronously, meaning it will block only current execution flow but Tasks will still run in background.",
+        "__tinydesc": "Waits for any key to be pressed asynchronously",
+        "__filename": "waitfor.html"
+    },
+    "__type": "module",
+    "keyname": {
+        "__returns": "This function returns four values if a physical key represents the specified character :\n            <ul>\n              <li>A<code>string</code> representing the key name.</li>\n              <li>A<code>boolean</code> value that indicates if the <code>SHIFT</code> should be pressed.</li>\n              <li>A<code>boolean</code> value that indicates if the <code>CONTROL</code> should be pressed.</li>\n              <li>A<code>boolean</code> value that indicates if the <code>MENU</code> should be pressed.</li>\n            </ul>",
+        "__name": "keyname",
+        "__example": "local kb = require \"keyboard\"\n\n-- prints on french and italian keyboards : \"0\"  false  true  true\n-- prints on other keyboards : \"2\"  true  false  false\nprint(kb.keyname(\"@\"))",
+        "__results": "<span style=\"color :#EA6AC3\"></i>string</span>, <span style=\"color :#ae81ff\"></i>booleans</span>",
+        "__kind": "function",
+        "__params": [
+            {
+                "__description": "A <code>string</code> with a single character from which the corresponding key on the keyboard will be guessed.<article class=\"message is-warning is-small mt-6 mb-6\" style=\"margin-left: 10%; margin-right: 10%\"><div class=\"message-header mb-0\"><p><i class=\"fas fa-pencil\"></i> Notes</p></div><div class=\"message-body mb-0 is-size-7\"><ul class=\"mt-0\"><li>This function don't manage diacratics/accentued characters.</li><li>If the character is not represented by a key, this function will return a <code>nil</code> value.</li></ul></div></article>",
+                "__optional": false,
+                "__color": "EA6AC3",
+                "__name": "char"
+            }
+        ],
+        "__description": "Gets the key name corresponding to the provided character.",
+        "__tinydesc": "Gets the key name corresponding to the provided character",
+        "__filename": "keyname.html"
+    },
+    "ispressed": {
+        "__returns": "This function <code>true</code> if all keys have been pressed or <code>false</code> otherwise.",
+        "__name": "ispressed",
+        "__example": "local kb = require \"keyboard\"\nlocal ui = require \"ui\"\n\nlocal win = ui.Window(\"Press key A, B and C simultaneously\", 400, 280)\nlocal lbl = ui.Label(win, \"Keys A+B+C have been pressed !\")\nlbl:center()\nlbl:hide()\n\nui.run(win)\n\nasync(function()\n    while win.visible do\n        sleep()\n        if kb.ispressed(\"A\", \"B\", \"C\") then\n            lbl:show()\n            sleep(1000)\n        elseif lbl.visible then\n            lbl:hide()\n        end\n    end\nend)\n\nwaitall()",
+        "__results": "<span style=\"color :#ae81ff\"></i>numbers</span> | <span style=\"color :gray\"></i>nil</span>",
+        "__kind": "function",
+        "__params": {},
+        "__description": "Checks if one or more keys have been pressed.",
+        "__tinydesc": "Checks if one or more keys have been pressed",
+        "__filename": "ispressed.html"
+    },
+    "__kind": {
+        "isdesktop": true,
+        "isconsole": true,
+        "iscore": false
+    },
+    "tostring": {
+        "__returns": "This function returns a<code>string</code> representing the string that results of the provided keys combination.",
+        "__name": "tostring",
+        "__example": "local kb = require \"keyboard\"\nlocal sysutils = require \"sysutils\"\n\nif sys.locale == \"fr-FR\" then\n    -- outputs a \"@\" character on french and italian keyboards\n    print(kb.tostring(\"0\", \"MENU\", \"CONTROL\"))\nelse\n    -- outputs a \"@\" on non french keyboards\n    print(kb.tostring(\"2\", \"SHIFT\"))\nend",
+        "__results": "<span style=\"color :#EA6AC3\"></i>string</span>",
+        "__kind": "function",
+        "__params": {},
+        "__description": "Converts a combination of keys to the resulting string.",
+        "__tinydesc": "Converts a combination of keys to a resulting string",
+        "__filename": "tostring.html"
+    },
+    "__color": "B38600",
+    "__description": "The keyboard module provides functions for managing keyboard input",
+    "__name": "keyboard",
+    "__tinydesc": "Detects and manages keyboard input events",
+    "__filename": "index.html"
+}

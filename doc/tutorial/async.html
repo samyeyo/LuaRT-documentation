@@ -192,11 +192,11 @@ The Lua virtual machine don't support multiprocessing : a Lua program is always 
 <p>Instead of just waiting, concurrency programming model permits to change execution flow to another function (or coroutine), and so on...</p>
 <p>This programming model is very lightweight, and Lua already implements coroutines. But using Lua coroutines is not very straightforward for beginners, as it lacks any scheduling capabilities.</p>
 
-<p>Since version 1.5, Lua<sup>rt</sup> implements a thin layer around coroutines with an integrated scheduler, enabling efficient concurrency in Lua, by using the <a href="../sys/Task.html"><i class="fas fa-bolt" style="color :#367DBB"></i> Task</a> object.</p><p>Let's dive into it !</p>
+<p>Since version 1.5, Lua<sup>rt</sup> implements a thin layer around coroutines with an integrated scheduler, enabling efficient concurrency in Lua, by using the <a href="../sys/Task.html"><i class="fas fa-bolt" style="color :#2187E7"></i> Task</a> object.</p><p>Let's dive into it !</p>
 
 </code></div><h2 class="has-text-weight-light is-size-3 mt-6">The Task object</h2>
 <p class="mt-4">
-A <a href="../sys/Task.html"><i class="fas fa-bolt" style="color :#367DBB"></i> Task</a> is an object that wraps a Lua coroutine internaly. To create a Task, just use its constructor, with a <code>function</code> as argument. This function will be executed once the Task is started :
+A <a href="../sys/Task.html"><i class="fas fa-bolt" style="color :#2187E7"></i> Task</a> is an object that wraps a Lua coroutine internaly. To create a Task, just use its constructor, with a <code>function</code> as argument. This function will be executed once the Task is started :
 
 <div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%"><code>
 function hello()

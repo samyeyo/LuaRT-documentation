@@ -1,0 +1,195 @@
+{
+    "__icon": "<span class=\"icon bd-link-icon mr-1\" style=\"font-size: 0.8em\"><i class=\"fas fa-key\" style=\"color :#F0B108; vertical-align: top\" style=\"color: #D0D0D0\"></i></span>",
+    "hash": {
+        "__returns": "Returns a <a href=\"../sys/Buffer.html\"><i class=\"fas fa-th\" style=\"color :#2187E7\"></i> Buffer</a> containing the hash value as bytes.",
+        "__name": "hash",
+        "__example": "local crypto = require \"crypto\"\nlocal console = require \"console\"\n\nconsole.echo = \"*\"\nlocal sha256 = crypto.hash(\"sha256\", console.readln(\"Enter the password : \"))\n\n-- the lua script don't know the password value, only the hash value\nconsole.write(\"Password sha256 hash value : \")\nconsole.writecolor(\"cyan\", sha256:encode(\"hex\"), \"\\n\")",
+        "__results": "<a href=\"../sys/Buffer.html\"><i class=\"fas fa-th\" style=\"color :#2187E7\"></i> Buffer</a>",
+        "__kind": "function",
+        "__params": [
+            {
+                "__description": "<p>A string representing the hash algorithm to use :<ul><li><span style=\"color:#EA6AC3\">\"md5\"</span> for MD5 hash algorithm</li><li><span style=\"color:#EA6AC3\">\"sha1\"</span> for SHA1 hash algorithm</li><li><span style=\"color:#EA6AC3\">\"sha256\"</span> for SHA256 hash algorithm</li><li><span style=\"color:#EA6AC3\">\"sha384\"</span> for SHA384 hash algorithm</li><li><span style=\"color:#EA6AC3\">\"sha512\"</span> for SHA512 hash algorithm</li></ul></p>\n",
+                "__optional": false,
+                "__color": "EA6AC3",
+                "__name": "algorithm"
+            },
+            {
+                "__description": "<p>A string or a <a href=\"../sys/Buffer.html\"><i class=\"fas fa-th\" style=\"color :#2187E7\"></i> Buffer </a> that contains the data to hash.</p>",
+                "__optional": false,
+                "__color": "EA6AC3",
+                "__name": "data"
+            }
+        ],
+        "__description": "Create a hash digest of data, using the specified algorithm</a>.",
+        "__tinydesc": "Generate hash digest using various algorithms",
+        "__filename": "hash.html"
+    },
+    "__type": "module",
+    "crc32": {
+        "__returns": "Returns a <span style=\"color:#ae81ff\">number</span> containing CRC32 checksum.",
+        "__name": "crc32",
+        "__example": "local crypto = require \"crypto\"\nlocal console = require \"console\"\n\nlocal file = sys.File(console.readln(\"Enter the file to calculate CRC32 : \")):open()\nlocal crc32 = crypto.crc32(file:read())\n\nconsole.write(\"CRC32 : \")\nconsole.writecolor(\"lightgreen\",crc32,\"\\n\")",
+        "__results": "<span style=\"color:#ae81ff\">number</span>",
+        "__kind": "function",
+        "__params": [
+            {
+                "__description": "<p>A <span style=\"color:#EA6AC3\">string</span> or a <a href=\"../sys/Buffer.html\"><i class=\"fas fa-th\" style=\"color :#2187E7\"></i> Buffer</a>.</p>",
+                "__optional": false,
+                "__color": "EA6AC3",
+                "__name": "data"
+            }
+        ],
+        "__description": "Calculate the Cyclic Redundancy Check (CRC) value of the given data.</a>.",
+        "__tinydesc": "Compute the checksum for CRC32 (Cyclic Redundancy Check)",
+        "__filename": "crc32.html"
+    },
+    "generate": {
+        "__returns": "Returns a <a href=\"../sys/Buffer.html\"><i class=\"fas fa-th\" style=\"color :#2187E7\"></i> Buffer</a> containing the random bytes.",
+        "__name": "generate",
+        "__example": "local crypto = require \"crypto\"\nlocal console = require \"console\"\n\nlocal random_integer = crypto.generate(8):unpack(\"I8\")\n\nconsole.write(\"Cryptographically random integer value : \")\nconsole.writecolor(\"lightred\",random_integer, \"\\n\")",
+        "__results": "<a href=\"../sys/Buffer.html\"><i class=\"fas fa-th\" style=\"color :#2187E7\"></i> Buffer</a>",
+        "__kind": "function",
+        "__params": [
+            {
+                "__description": "<p>A number representing the length in bytes of the data to be generated.</p>",
+                "__optional": false,
+                "__color": "ae81ff",
+                "__name": "length"
+            }
+        ],
+        "__description": "Generate binary data with cryptographically random bytes</a>.",
+        "__tinydesc": "Generate a cryptographically random Buffer",
+        "__filename": "generate.html"
+    },
+    "__kind": {
+        "isdesktop": true,
+        "isconsole": true,
+        "iscore": false
+    },
+    "Cipher": {
+        "encrypted": {
+            "__results": "<a href=\"../sys/Buffer.html\"><i class=\"fas fa-th\" style=\"color :#2187E7\"></i> Buffer</a>",
+            "__access": "readonly",
+            "__kind": "property",
+            "__name": "encrypted",
+            "__description": "<br><br>The Cipher.encrypted property gets a <a href=\"../sys/Buffer.html\"><i class=\"fas fa-th\" style=\"color :#2187E7\"></i> Buffer</a> value, containing the data encrypted previously by the <a href=\"./Cipher-encrypt.html\">Cipher:encrypt()</a> method.",
+            "__example": "local crypto = require \"crypto\"\nlocal console = require \"console\"\n\n-- randomly generate a secret key (16 bytes long)\nlocal key = crypto.generate(16)\n\n-- create a cipher using AES128 algorithm and the generated key\nlocal cipher = crypto.Cipher(\"aes128\", key)\n\nconsole.echo = \"*\"\n-- encrypt the entered message\nlocal nbytes = cipher:encrypt(console.readln(\"\\nEnter a secret message : \"))\n\nconsole.write(\"Encrypted message : \")\n\n-- prints the encrypted result using base64 encoding\nconsole.writecolor(\"lightgreen\", cipher.encrypted:encode(\"base64\"), \"\\n\")",
+            "__tinydesc": "Get encrypted binary data",
+            "__filename": "Cipher-encrypted.html"
+        },
+        "__icon": "<span class=\"icon bd-link-icon mr-1\" style=\"font-size: 0.8em\"><i class=\"fas fa-lock\" style=\"color :#2187E7\"></i></span>",
+        "encrypt": {
+            "__returns": "Returns the <span style=\"color:#ae81ff\">number</span> of bytes encrypted.",
+            "__name": "encrypt",
+            "__example": "-- File encryption\nlocal crypto = require \"crypto\"\nlocal console = require \"console\"\n\nlocal cipher = crypto.Cipher(\"aes128\", \"its_a_secret_key\")\n\n-- encrypt file\nlocal file = sys.File(console.readln(\"Enter the file to encrypt: \"))\nprint(\"Successfully encrypted \"..cipher:encrypt(file:open():read())..\" bytes\")\n\n-- generate the encrypted file\nsys.File(\"encrypted.dat\"):open(\"write\"):write(cipher.encrypted)",
+            "__results": "<span style=\"color:#ae81ff\">number</span>",
+            "__kind": "method",
+            "__params": [
+                {
+                    "__description": "<p>A <a href=\"../sys/Buffer.html\"><i class=\"fas fa-th\" style=\"color :#2187E7\"></i> Buffer</a> or a <span style=\"color:#EA6AC3\">string</span> containing the data to be encrypted. The Cipher object uses an internal encryption buffer, so that sucessive calls to this method appends the encrypted data to this internal buffer. That permits to encrypt data from various streams easily.<br>Use the property <a href=\"./Cipher-encrypted.html\">Cipher.encrypted</a> to retrieve the whole encrypted data.</p>",
+                    "__optional": false,
+                    "__color": "606060",
+                    "__name": "data"
+                }
+            ],
+            "__description": "Encrypt the specified data.",
+            "__tinydesc": "Encrypt binary data",
+            "__filename": "Cipher-encrypt.html"
+        },
+        "__name": "Cipher",
+        "reset": {
+            "__results": "<span>-</span>",
+            "__returns": "This function returns no value.\n            </div>\n\t      </div>\n      </div>\n    </div>\n  </section>  \n  <footer class=\"footer\">\n    <div class=\"content has-text-centered\">",
+            "__params": {},
+            "__name": "reset",
+            "__description": "Empty and reset the Cipher internal encryption and decryption buffers, to work with new data.",
+            "__kind": "method",
+            "__tinydesc": "Clear internal encryption/decryption buffers.",
+            "__filename": "Cipher-reset.html"
+        },
+        "algorithm": {
+            "__results": "<span style=\"color:#EA6AC3\">string</span>",
+            "__access": "readonly",
+            "__kind": "property",
+            "__name": "algorithm",
+            "__description": "<br><br>The Cipher.algorithm property gets the current algorithm used for encryption/decryption.<article class=\"message is-info\" style=\"margin-left: 15%; margin-right: 15%\"><div class=\"message-body\">The algorithm is set upon Cipher object construction, see <a href=\"./Cipher-constructor.html\">Cipher.constructor()</a>.</div></article>",
+            "__example": "local crypto = require \"crypto\"\nlocal console = require \"console\"\n\n-- randomly generate a secret key (16 bytes long)\nlocal key = crypto.generate(16)\n\n-- create a cipher using AES128 algorithm and the generated key\nlocal cipher = crypto.Cipher(\"aes128\", key)\n\nconsole.write(\"Encryption/Decryption algorithm : \")\n\n-- prints the cipher algorithm\nconsole.writecolor(\"lightgreen\", cipher.algorithm, \"\\n\")",
+            "__tinydesc": "Get the algorithm used by the Cipher object",
+            "__filename": "Cipher-algorithm.html"
+        },
+        "__type": "object",
+        "__kind": "object",
+        "__results": "",
+        "decrypted": {
+            "__results": "<a href=\"../sys/Buffer.html\"><i class=\"fas fa-th\" style=\"color :#2187E7\"></i> Buffer</a>",
+            "__access": "readonly",
+            "__kind": "property",
+            "__name": "decrypted",
+            "__description": "<br><br>The Cipher.decrypted property gets <a href=\"../sys/Buffer.html\"><i class=\"fas fa-th\" style=\"color :#2187E7\"></i> Buffer</a> value, containing the data decrypted previously by the <a href=\"./Cipher-encrypt.html\">Cipher:decrypt()</a> method.",
+            "__example": "local crypto = require \"crypto\"\nlocal console = require \"console\"\n\n-- randomly generate a secret key (16 bytes long)\nlocal key = crypto.generate(16)\n\n-- create a cipher using AES128 algorithm and the generated key\nlocal cipher = crypto.Cipher(\"aes128\", key)\n\nconsole.echo = \"*\"\nlocal nbytes = cipher:encrypt(console.readln(\"\\nEnter a secret message : \"))\n\nconsole.write(\"Encrypted message : \")\n\n-- prints the encrypted result using base64 encoding\nconsole.writecolor(\"lightgreen\", cipher.encrypted:encode(\"base64\"), \"\\n\")\n\n-- decrypt the secret message\nnbytes = cipher:decrypt(cipher.encrypted)\n\nconsole.write(\"Decrypted message : \")\n\n-- prints the decrypted result\nconsole.writecolor(\"lightgreen\", cipher.decrypted, \"\\n\")",
+            "__tinydesc": "Get decrypted binary data",
+            "__filename": "Cipher-decrypted.html"
+        },
+        "decrypt": {
+            "__returns": "Returns the <span style=\"color:#ae81ff\">number</span> of bytes encrypted.",
+            "__name": "decrypt",
+            "__example": "-- File decryption\n-- see example at cipher:encrypt()\nlocal crypto = require \"crypto\"\nlocal console = require \"console\"\n\nlocal cipher = crypto.Cipher(\"aes128\", \"its_a_secret_key\")\n\n-- decrypt file\nlocal file = sys.File(\"encrypted.dat\")\nprint(\"Successfully decrypted \"..cipher:decrypt(file:open():read())..\" bytes\")\n\n-- prints the decrypted data as UTF8\nconsole.writecolor(\"green\", cipher.decrypted)",
+            "__results": "<span style=\"color:#ae81ff\">number</span>",
+            "__kind": "method",
+            "__params": [
+                {
+                    "__description": "<p>A <a href=\"../sys/Buffer.html\"><i class=\"fas fa-th\" style=\"color :#2187E7\"></i> Buffer</a> or a <span style=\"color:#EA6AC3\">string</span> containing the data to be decrypted. The Cipher object uses an internal decryption buffer, so that sucessive calls to this method appends the decrypted data to this internal buffer. That permits to decrypt data from various streams easily.<br>Use the property <a href=\"./Cipher-decrypted.html\">Cipher.decrypted</a> to retrieve the whole decrypted data.</p>",
+                    "__optional": false,
+                    "__color": "606060",
+                    "__name": "data"
+                }
+            ],
+            "__description": "Decrypt the specified data.",
+            "__tinydesc": "Decrypt binary data",
+            "__filename": "Cipher-decrypt.html"
+        },
+        "constructor": {
+            "__results": "<a href=\"Cipher.html\"><i class=\"fas fas fa-lock\"></i> Cipher</a>",
+            "__kind": "method",
+            "__params": [
+                {
+                    "__description": "<p>A string representing the algorithm to be used for encryption/decryption :<ul><li><span style=\"color:#EA6AC3\">\"aes128\"</span> :advanced encryption standard with 128 bits (16 bytes) key length (block cipher)</li><li><span style=\"color:#EA6AC3\">\"aes192\"</span> :advanced encryption standard with 192 bits (24 bytes) key length (block cipher)</li><li><span style=\"color:#EA6AC3\">\"aes256\"</span> :advanced encryption standard with 256 bits (32 bytes) key length (block cipher)</li><li><span style=\"color:#EA6AC3\">\"des\"</span> :data encryption standard with 56 bits (7 bytes) key length (block cipher)</li><li><span style=\"color:#EA6AC3\">\"2des\"</span>:double data encryption standard with 112 bits (14 bytes) key length (block cipher)</li><li><span style=\"color:#EA6AC3\">\"3des\"</span> :triple data encryption standard with 168 bits (21 bytes) key length (block cipher)</li><li><span style=\"color:#EA6AC3\">\"rc2\"</span> :Rivest cipher 2 with 40 to 128 bits (5...16 bytes) key length (block cipher)</li><li><span style=\"color:#EA6AC3\">\"rc4\"</span> :Rivest cipher 4 with 40 to 128 bits (5...16 bytes) key length (stream cipher)</li></ul></p>",
+                    "__optional": false,
+                    "__color": "EA6AC3",
+                    "__name": "algorithm"
+                },
+                {
+                    "__description": "<p>A string or a <a href=\"../sys/Buffer.html\"><i class=\"fas fa-th\" style=\"color :#2187E7\"></i> Buffer</a> value, containing the key. If the key is longer than the expected key length, only the first given bytes are used. An error occurs if the key length is too small.</p>",
+                    "__optional": false,
+                    "__color": "EA6AC3",
+                    "__name": "key"
+                },
+                {
+                    "__description": "<p>A optional string or <a href=\"../sys/Buffer.html\"><i class=\"fas fa-th\" style=\"color :#2187E7\"></i> Buffer</a> value, containing an initialization vector.</p>",
+                    "__optional": true,
+                    "__color": "EA6AC3",
+                    "__name": "iv"
+                },
+                {
+                    "__description": "<p>A string representing the algorithm to be used for encryption/decryption :<ul><li><span style=\"color:#EA6AC3\">\"cbc\"</span> :cipher block chaining mode (the default for block algorithms)</li><li><span style=\"color:#EA6AC3\">\"cfb\"</span> :cipher feedback mode</li><li><span style=\"color:#EA6AC3\">\"ecb\"</span> :electronic codebook mode</li><li><span style=\"color:#EA6AC3\">\"cts\"</span> :ciphertext stealing mode</li></ul></p>",
+                    "__optional": true,
+                    "__color": "EA6AC3",
+                    "__name": "mode"
+                }
+            ],
+            "__name": "constructor",
+            "__description": "<br>The Cipher constructor returns a Cipher instance representing a cryptographic algorithm to be used for encryption/decryption, with the provided key.",
+            "__example": "-- Command line encrypter\nlocal crypto = require \"crypto\"\nlocal console = require \"console\"\n\nconsole.clear()\nconsole.writecolor(\"cyan\", \"LuaRT console encrypter\\n\")\n\nlocal algorithm = console.readln(\"\\nEnter the encryption algorithm: \")\nconsole.echo = \"*\"\nlocal key = console.readln(\"Enter the key (or empty to autogenerate): \")\n\nif key == \"\" then\n    key = crypto.generate(32)\nend\n\nconsole.echo = true\nlocal iv\nif algorithm ~= \"rc4\" then\n    iv = console.readln(\"Enter an initialization vector (or empty if not needed): \")\n    if iv == \"\" then\n        iv = nil\n    end\nend\n\nlocal mode = console.readln(\"Enter the cipher mode (or empty to use default): \")\nif mode == \"\" then\n    mode = nil\nend\n\n-- create the cipher\nlocal cipher = crypto.Cipher(algorithm, key, iv, mode)\n\n-- encrypt the message\nlocal nbytes = cipher:encrypt(console.readln(\"Enter the message to encrypt: \"))\nconsole.write(\"\\nSuccessfully encrypted \")\nconsole.writecolor(\"red\", nbytes)\nconsole.writeln(\" bytes :\")\n\n-- prints the encrypted result\nconsole.writecolor(\"green\", cipher.encrypted:encode(\"base64\"), \"\\n\")",
+            "__tinydesc": "Cipher object constructor",
+            "__filename": "Cipher-constructor.html"
+        },
+        "__description": "The Cipher object encrypts/decrypts binary data using a chosen algorithm and key",
+        "__tinydesc": "Object represntation of a Cipher with encryption/decryption capabilities",
+        "__filename": "Cipher.html"
+    },
+    "__color": "F0B108",
+    "__description": "The crypto module provides tools for encryption and decryption",
+    "__name": "crypto",
+    "__tinydesc": "Cryptographic module with hashing and encryption/decryption",
+    "__filename": "index.html"
+}
