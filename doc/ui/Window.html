@@ -182,8 +182,8 @@
             </p> 
             <div class="tabs is-centered mt-6" id="tabs">
                 <ul aria-orientation="horizontal" role="tablist" class="ml-0">
-                
-                
+                <li id="methods" data-tab="2" class="is-active"><a><span><span class="icon mx-0"><i class="fa fa-bolt"></i></span>Methods</span></a></li>
+                <li id="properties" data-tab="3" ><a><span class="icon mx-0"><i class="fa fa-tag"></i></span>Properties</span></a></li>
                 <li id="events" data-tab="4"><a><span class="icon mx-0"><i class="fa fa-paper-plane"></i></span>Events</span></a></li>
                 
                 </ul>
@@ -285,8 +285,248 @@
         </div>            
     
                 
-                              
-                                        
+                        <div data-content="3" >
+            <table class="table">
+              <thead><tr>
+                <th draggable="false"><span class="is-relative"> Property</span></th>
+                <th draggable="false"><span class="is-relative"> Description </span></th>
+                <th draggable="false"><span class="is-relative"> Access</span></th>
+                <th draggable="false"><span class="is-relative"> Type</span></th>
+              </tr></thead>
+              <tbody>
+                                              <tr draggable="false">
+                        <td><a style="font-weight:600" href="Window-align.html">Window.align</a></td>
+                          <td><span>Align the Window relative to its parent</span></td>
+                          <td><span class="tag is-rounded has-text-weight-medium has-background-warning has-text-warning-dark" mt-0 style="vertical-align: middle; font-size: 0.65em">readwrite</span></td>
+                          <td><span><span style="color:#ae81ff">boolean</span></span></td>
+                        </tr>           
+                            <tr draggable="false">
+                        <td><a style="font-weight:600" href="Window-allowdrop.html">Window.allowdrop</a></td>
+                          <td><span>Controls whether the Window is a drag and drop target</span></td>
+                          <td><span class="tag is-rounded has-text-weight-medium has-background-warning has-text-warning-dark" mt-0 style="vertical-align: middle; font-size: 0.65em">readwrite</span></td>
+                          <td><span><span style="color:#ae81ff">boolean</span></span></td>
+                        </tr>           
+                            <tr draggable="false">
+                        <td><a style="font-weight:600" href="Window-bgcolor.html">Window.bgcolor</a></td>
+                          <td><span>Get/set the window background color</span></td>
+                          <td><span class="tag is-rounded has-text-weight-medium has-background-warning has-text-warning-dark" mt-0 style="vertical-align: middle; font-size: 0.65em">readwrite</span></td>
+                          <td><span><span style="color:#ae81ff">number</span></span></td>
+                        </tr>           
+                            <tr draggable="false">
+                        <td><a style="font-weight:600" href="Window-childs.html">Window.childs</a></td>
+                          <td><span>Get a list of the window childs widgets</span></td>
+                          <td><span class="tag is-rounded has-text-weight-medium has-background-danger-light has-text-danger mt-0" style="vertical-align: middle; font-size: 0.65em"">readonly</span></td>
+                          <td><span><span style="color:#B1D928">table</span></span></td>
+                        </tr>           
+                            <tr draggable="false">
+                        <td><a style="font-weight:600" href="Window-cursor.html">Window.cursor</a></td>
+                          <td><span>Get/set the image of the mouse cursor as it hovers over the window</span></td>
+                          <td><span class="tag is-rounded has-text-weight-medium has-background-warning has-text-warning-dark" mt-0 style="vertical-align: middle; font-size: 0.65em">readwrite</span></td>
+                          <td><span><span style="color:#EA6AC3">string</span></span></td>
+                        </tr>           
+                            <tr draggable="false">
+                        <td><a style="font-weight:600" href="Window-enabled.html">Window.enabled</a></td>
+                          <td><span>Control whether the window responds to mouse, keyboard and other events</span></td>
+                          <td><span class="tag is-rounded has-text-weight-medium has-background-warning has-text-warning-dark" mt-0 style="vertical-align: middle; font-size: 0.65em">readwrite</span></td>
+                          <td><span><span style="color:#ae81ff">boolean</span></span></td>
+                        </tr>           
+                            <tr draggable="false">
+                        <td><a style="font-weight:600" href="Window-font.html">Window.font</a></td>
+                          <td><span>Get/set the window font</span></td>
+                          <td><span class="tag is-rounded has-text-weight-medium has-background-warning has-text-warning-dark" mt-0 style="vertical-align: middle; font-size: 0.65em">readwrite</span></td>
+                          <td><span><span style="color:#EA6AC3">string</span></span></td>
+                        </tr>           
+                            <tr draggable="false">
+                        <td><a style="font-weight:600" href="Window-fontsize.html">Window.fontsize</a></td>
+                          <td><span>Get/set the window font size</span></td>
+                          <td><span class="tag is-rounded has-text-weight-medium has-background-warning has-text-warning-dark" mt-0 style="vertical-align: middle; font-size: 0.65em">readwrite</span></td>
+                          <td><span><span style="color:#ae81ff">number</span></span></td>
+                        </tr>           
+                            <tr draggable="false">
+                        <td><a style="font-weight:600" href="Window-fontstyle.html">Window.fontstyle</a></td>
+                          <td><span>Get/set the window font style</span></td>
+                          <td><span class="tag is-rounded has-text-weight-medium has-background-warning has-text-warning-dark" mt-0 style="vertical-align: middle; font-size: 0.65em">readwrite</span></td>
+                          <td><span><span style="color:#B1D928">table</span></span></td>
+                        </tr>           
+                            <tr draggable="false">
+                        <td><a style="font-weight:600" href="Window-fullscreen.html">Window.fullscreen</a></td>
+                          <td><span>Control whether the window is fullscreen or not</span></td>
+                          <td><span class="tag is-rounded has-text-weight-medium has-background-warning has-text-warning-dark" mt-0 style="vertical-align: middle; font-size: 0.65em">readwrite</span></td>
+                          <td><span><span style="color:#ae81ff">boolean</span></span></td>
+                        </tr>           
+                            <tr draggable="false">
+                        <td><a style="font-weight:600" href="Window-height.html">Window.height</a></td>
+                          <td><span>Get/set the Window's height</span></td>
+                          <td><span class="tag is-rounded has-text-weight-medium has-background-warning has-text-warning-dark" mt-0 style="vertical-align: middle; font-size: 0.65em">readwrite</span></td>
+                          <td><span><span style="color:#ae81ff">number</span></span></td>
+                        </tr>           
+                            <tr draggable="false">
+                        <td><a style="font-weight:600" href="Window-menu.html">Window.menu</a></td>
+                          <td><span>Get/set the Window's main menu bar</span></td>
+                          <td><span class="tag is-rounded has-text-weight-medium has-background-warning has-text-warning-dark" mt-0 style="vertical-align: middle; font-size: 0.65em">readwrite</span></td>
+                          <td><span><span data-tooltip="Menu" class=" has-tooltip-bottom has-tooltip-info has-tooltip-arrow has-text-info"><a href="Menu.html"><i class="fas fa-bars"></i></a></span></span></td>
+                        </tr>           
+                            <tr draggable="false">
+                        <td><a style="font-weight:600" href="Window-monitor.html">Window.monitor</a></td>
+                          <td><span>Get the monitor in which the window is located</span></td>
+                          <td><span class="tag is-rounded has-text-weight-medium has-background-danger-light has-text-danger mt-0" style="vertical-align: middle; font-size: 0.65em"">readonly</span></td>
+                          <td><span><span style="color:#B1D928">table</span></span></td>
+                        </tr>           
+                            <tr draggable="false">
+                        <td><a style="font-weight:600" href="Window-parent.html">Window.parent</a></td>
+                          <td><span>Get the parent Window</span></td>
+                          <td><span class="tag is-rounded has-text-weight-medium has-background-danger-light has-text-danger mt-0" style="vertical-align: middle; font-size: 0.65em"">readonly</span></td>
+                          <td><span><span data-tooltip="Window" class=" has-tooltip-bottom has-tooltip-info has-tooltip-arrow has-text-info"><a href="Window.html"><i class="fas far fa-window-maximize"></i></a></span></span></td>
+                        </tr>           
+                            <tr draggable="false">
+                        <td><a style="font-weight:600" href="Window-title.html">Window.title</a></td>
+                          <td><span>Get/set the Window title</span></td>
+                          <td><span class="tag is-rounded has-text-weight-medium has-background-warning has-text-warning-dark" mt-0 style="vertical-align: middle; font-size: 0.65em">readwrite</span></td>
+                          <td><span><span style="color:#EA6AC3">string</span></span></td>
+                        </tr>           
+                            <tr draggable="false">
+                        <td><a style="font-weight:600" href="Window-topmost.html">Window.topmost</a></td>
+                          <td><span>Control whether the Window will always stay above others</span></td>
+                          <td><span class="tag is-rounded has-text-weight-medium has-background-warning has-text-warning-dark" mt-0 style="vertical-align: middle; font-size: 0.65em">readwrite</span></td>
+                          <td><span><span style="color:#ae81ff">boolean</span></span></td>
+                        </tr>           
+                            <tr draggable="false">
+                        <td><a style="font-weight:600" href="Window-transparency.html">Window.transparency</a></td>
+                          <td><span>Get/set window's transparency intensity</span></td>
+                          <td><span class="tag is-rounded has-text-weight-medium has-background-warning has-text-warning-dark" mt-0 style="vertical-align: middle; font-size: 0.65em">readwrite</span></td>
+                          <td><span><span style="color:#ae81ff">boolean</span></span></td>
+                        </tr>           
+                            <tr draggable="false">
+                        <td><a style="font-weight:600" href="Window-traytooltip.html">Window.traytooltip</a></td>
+                          <td><span>Get/set the window's tray icon tooltip</span></td>
+                          <td><span class="tag is-rounded has-text-weight-medium has-background-warning has-text-warning-dark" mt-0 style="vertical-align: middle; font-size: 0.65em">readwrite</span></td>
+                          <td><span><span style="color:#EA6AC3">string</span></span></td>
+                        </tr>           
+                            <tr draggable="false">
+                        <td><a style="font-weight:600" href="Window-visible.html">Window.visible</a></td>
+                          <td><span>Control whether the window appears onscreen</span></td>
+                          <td><span class="tag is-rounded has-text-weight-medium has-background-warning has-text-warning-dark" mt-0 style="vertical-align: middle; font-size: 0.65em">readwrite</span></td>
+                          <td><span><span style="color:#ae81ff">boolean</span></span></td>
+                        </tr>           
+                            <tr draggable="false">
+                        <td><a style="font-weight:600" href="Window-width.html">Window.width</a></td>
+                          <td><span>Get/set the Window's width</span></td>
+                          <td><span class="tag is-rounded has-text-weight-medium has-background-warning has-text-warning-dark" mt-0 style="vertical-align: middle; font-size: 0.65em">readwrite</span></td>
+                          <td><span><span style="color:#ae81ff">number</span></span></td>
+                        </tr>           
+                            <tr draggable="false">
+                        <td><a style="font-weight:600" href="Window-x.html">Window.x</a></td>
+                          <td><span>Get/set the Window's horizontal position</span></td>
+                          <td><span class="tag is-rounded has-text-weight-medium has-background-warning has-text-warning-dark" mt-0 style="vertical-align: middle; font-size: 0.65em">readwrite</span></td>
+                          <td><span><span style="color:#ae81ff">number</span></span></td>
+                        </tr>           
+                            <tr draggable="false">
+                        <td><a style="font-weight:600" href="Window-y.html">Window.y</a></td>
+                          <td><span>Get/set the Window's vertical position</span></td>
+                          <td><span class="tag is-rounded has-text-weight-medium has-background-warning has-text-warning-dark" mt-0 style="vertical-align: middle; font-size: 0.65em">readwrite</span></td>
+                          <td><span><span style="color:#ae81ff">number</span></span></td>
+                        </tr>           
+                  </tbody>
+              </table>
+            </div>            
+                  
+                        <div data-content="2" class="is-active">
+          <table class="table">
+            <thead><tr>
+              <th draggable="false"><span class="is-relative"> Methods </span</th>
+              <th draggable="false"><span class="is-relative"> Description </span></th>
+              <th draggable="false"><span class="is-relative"> Return value </span></th>
+            </tr></thead>
+            <tbody>
+                                          <tr draggable="false">
+                          <td><a style="font-weight:600" href="Window-center.html">Window:center()</a></td>
+                          <td><span>Centers the Window on the parent widget</span></td>
+                          <td><span><span>-</span></span></td>
+                        </tr>           
+                            <tr draggable="false">
+                          <td><a style="font-weight:600" href="Window-constructor.html">Window:constructor()</a></td>
+                          <td><span>Window object constructor</span></td>
+                          <td><span><span data-tooltip="Window" class=" has-tooltip-bottom has-tooltip-info has-tooltip-arrow has-text-info"><a href="Window.html"><i class="far fa-window-maximize"></i></a></span></span></td>
+                        </tr>           
+                            <tr draggable="false">
+                          <td><a style="font-weight:600" href="Window-hide.html">Window:hide()</a></td>
+                          <td><span>Hide the Window</span></td>
+                          <td><span><span>-</span></span></td>
+                        </tr>           
+                            <tr draggable="false">
+                          <td><a style="font-weight:600" href="Window-loadicon.html">Window:loadicon()</a></td>
+                          <td><span>Load the window icon</span></td>
+                          <td><span><span style="color:#ae81ff">boolean</span></span></td>
+                        </tr>           
+                            <tr draggable="false">
+                          <td><a style="font-weight:600" href="Window-loadtrayicon.html">Window:loadtrayicon()</a></td>
+                          <td><span>Load the window's tray icon</span></td>
+                          <td><span><span style="color:#ae81ff">boolean</span></span></td>
+                        </tr>           
+                            <tr draggable="false">
+                          <td><a style="font-weight:600" href="Window-maximize.html">Window:maximize()</a></td>
+                          <td><span>Maximize the Window to the entire Desktop</span></td>
+                          <td><span><span>-</span></span></td>
+                        </tr>           
+                            <tr draggable="false">
+                          <td><a style="font-weight:600" href="Window-minimize.html">Window:minimize()</a></td>
+                          <td><span>Minimize the Window to the taskbar</span></td>
+                          <td><span><span>-</span></span></td>
+                        </tr>           
+                            <tr draggable="false">
+                          <td><a style="font-weight:600" href="Window-notify.html">Window:notify()</a></td>
+                          <td><span>Send a Windows notification</span></td>
+                          <td><span><span style="color:#ae81ff">boolean</span></span></td>
+                        </tr>           
+                            <tr draggable="false">
+                          <td><a style="font-weight:600" href="Window-popup.html">Window:popup()</a></td>
+                          <td><span>Shows a popup menu at the current window mouse position</span></td>
+                          <td><span><span>-</span></span></td>
+                        </tr>           
+                            <tr draggable="false">
+                          <td><a style="font-weight:600" href="Window-restore.html">Window:restore()</a></td>
+                          <td><span>Restore the Window size and position</span></td>
+                          <td><span><span>-</span></span></td>
+                        </tr>           
+                            <tr draggable="false">
+                          <td><a style="font-weight:600" href="Window-shortcut.html">Window:shortcut()</a></td>
+                          <td><span>Set a new keyboard shortcut</span></td>
+                          <td><span><span>-</span></span></td>
+                        </tr>           
+                            <tr draggable="false">
+                          <td><a style="font-weight:600" href="Window-show.html">Window:show()</a></td>
+                          <td><span>Show the Window</span></td>
+                          <td><span><span>-</span></span></td>
+                        </tr>           
+                            <tr draggable="false">
+                          <td><a style="font-weight:600" href="Window-showmodal.html">Window:showmodal()</a></td>
+                          <td><span>Show a Window as modal</span></td>
+                          <td><span><span>-</span></span></td>
+                        </tr>           
+                            <tr draggable="false">
+                          <td><a style="font-weight:600" href="Window-startmoving.html">Window:startmoving()</a></td>
+                          <td><span>Initiate a drag and move operation</span></td>
+                          <td><span><span>-</span></span></td>
+                        </tr>           
+                            <tr draggable="false">
+                          <td><a style="font-weight:600" href="Window-status.html">Window:status()</a></td>
+                          <td><span>Display messages in the window status bar</span></td>
+                          <td><span><span>-</span></span></td>
+                        </tr>           
+                            <tr draggable="false">
+                          <td><a style="font-weight:600" href="Window-toback.html">Window:toback()</a></td>
+                          <td><span>Puts the Window to the back</span></td>
+                          <td><span><span>-</span></span></td>
+                        </tr>           
+                            <tr draggable="false">
+                          <td><a style="font-weight:600" href="Window-tofront.html">Window:tofront()</a></td>
+                          <td><span>Brings the Window in front</span></td>
+                          <td><span><span>-</span></span></td>
+                        </tr>           
+              </tbody>
+          </table>
+        </div>            
+                            
               </div>
           </div>
 	      </div>

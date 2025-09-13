@@ -405,7 +405,7 @@ function object:generate()
         functions = self.isfunctions and self:list_functions(2) or '',
         events = self.isevents and self:list_events(4) or '',
         operations = self.isoperations and self:list_operations(5) or '',
-        isfunctions = self.isfunctions and '<li id="methods" data-tab="2" {{tab_func}}><a><span><span class="icon mx-0"><i class="fa fa-bolt"></i></span>Functions</span></a></li>' or '',
+        isfunctions = self.isfunctions and '<li id="methods" data-tab="2" {{tab_func}}><a><span><span class="icon mx-0"><i class="fa fa-bolt"></i></span>Methods</span></a></li>' or '',
         isproperties = self.isproperties and '<li id="properties" data-tab="3" {{tab_prop}}><a><span class="icon mx-0"><i class="fa fa-tag"></i></span>Properties</span></a></li>' or '',
         isoperations = self.isoperations and '<li id="operations" data-tab="5"><a><span class="icon mx-0"><i class="fa fa-screwdriver-wrench"></i></span>Operations</span></a></li>' or '',
         isevents = self.isevents and '<li id="events" data-tab="4"><a><span class="icon mx-0"><i class="fa fa-paper-plane"></i></span>Events</span></a></li>' or '',

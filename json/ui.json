@@ -888,341 +888,882 @@
         }
     },
     "Window": {
-        "__results": "",
-        "__icon": "<span class=\"icon bd-link-icon mr-1\" style=\"font-size: 0.8em\"><i class=\"far fa-window-maximize\" style=\"color :#2187E7\"></i></span>",
-        "__tinydesc": "Object representation of a standard Windows dialog",
+        "restore": {
+            "__description": "<br>Restore the Window size and position, after the Window has been maximized or minimized.",
+            "__results": "<span>-</span>",
+            "__name": "restore",
+            "__filename": "Window-restore.html",
+            "__params": {},
+            "__tinydesc": "Restore the Window size and position",
+            "__example": "local ui = require \"ui\"\n\n-- create a simple window\nlocal win = ui.Window(\"Window:restore() example\", \"fixed\", 320, 200)\nlocal button = ui.Button(win, \"restore me !\", 35)\nwin:center()\n\nfunction button:onClick()\n  win:restore()\n    button:center()\nend\n\n-- Maximize the Window\nwin:maximize()\nbutton:center()\n\n-- update user interface\nui.run(win):wait()",
+            "__kind": "method",
+            "__returns": "This function returns no value."
+        },
+        "x": {
+            "__access": "read/write",
+            "__description": "<br>Get or set the Window horizontal position. The horizontal position start from <span style=\"color:#ae81ff\">0</span> (left side of the Desktop) and increase to the right (right side of the Desktop).",
+            "__results": "<span style=\"color:#ae81ff\">number</span>",
+            "__kind": "property",
+            "__tinydesc": "Get/set the Window's horizontal position",
+            "__name": "x",
+            "__example": "local ui = require \"ui\"\n\n-- create a simple window\nlocal win = ui.Window(\"Window.x sample\")\n\n-- shows the Window\nwin:show()\n\n-- update user interface and increase Window horizontal position\nrepeat\n\tui.update()\n\twin.x = win.x + 1\n\t-- Sleep for 1ms to slow down the movement\n\tsleep(1)\nuntil win.x > 800",
+            "__filename": "Window-x.html"
+        },
+        "y": {
+            "__access": "read/write",
+            "__description": "<br>Get or set the Window vertical position. The vertical position start from <span style=\"color:#ae81ff\">0</span> (top side of the Desktop) and increase to the bottom side of the Desktop.",
+            "__results": "<span style=\"color:#ae81ff\">number</span>",
+            "__kind": "property",
+            "__tinydesc": "Get/set the Window's vertical position",
+            "__name": "y",
+            "__example": "local ui = require \"ui\"\n\n-- create a simple window\nlocal win = ui.Window(\"Window.y sample\")\n\n-- shows the Window\nwin:show()\n\n-- update user interface and increase Window horizontal position\nrepeat\n\tui.update()\n\twin.y = win.y + 1\n\t-- Sleep for 1ms to slow down the movement\n\tsleep(1)\nuntil win.y > 800",
+            "__filename": "Window-y.html"
+        },
+        "onMove": {
+            "__description": "<br>This event is fired when the window position has been changed by the user or by setting the <a href=\"./Window-x.html\">Window.x</a> or <a href=\"./Window-y.html\">Window.y</a> properties.",
+            "__results": "",
+            "__name": "onMove",
+            "__filename": "Window-onMove.html",
+            "__params": {},
+            "__tinydesc": "Event fired when the Window has changed its position",
+            "__example": "local ui = require \"ui\"\n\n-- create a window\nlocal win = ui.Window(\"Window:onMove() sample\", 320, 200)\nlocal label = ui.Label(win, \"Move the window !\", 110, 75)\n\n-- set a onMove() event : display a status bar with the current window position\nfunction win:onMove()\n\twin:status(\"Window.x = \"..self.x, \"Window.y = \"..self.y)\nend\n\n-- display the status bar for the first time\nwin:onMove()\n\nwin:show()\n\nwhile win.visible do\n\tui.update()\nend",
+            "__kind": "event",
+            "__returns": "The event returns no value."
+        },
+        "__type": "object",
+        "cursor": {
+            "__access": "read/write",
+            "__description": "<br>Get or set the image of the mouse cursor as it hovers over the window. Mouse cursors are represented by <span style=\"color:#EA6AC3\">strings</span> :<ul><li><span style=\"color:#EA6AC3\">\"arrow\"</span> : the default Windows mouse cursor.</li><li><span style=\"color:#EA6AC3\">\"cross\"</span> : a crosshair cursor.</li><li><span style=\"color:#EA6AC3\">\"working\"</span> : the standard arrow with a small hourglass.</li><li><span style=\"color:#EA6AC3\">\"hand\"</span> : a hand cursor.</li><li><span style=\"color:#EA6AC3\">\"help\"</span> : the standard arrow with a small question mark.</li><li><span style=\"color:#EA6AC3\">\"ibeam\"</span> : the default I-Beam text cursor.</li><li><span style=\"color:#EA6AC3\">\"forbidden\"</span> : a slashed circle cursor.</li><li><span style=\"color:#EA6AC3\">\"cardinal\"</span> : a four-pointed arrow pointing up, down, right, and left.</li><li><span style=\"color:#EA6AC3\">\"horizontal\"</span> : a double-pointed arrow pointing right and left.</li><li><span style=\"color:#EA6AC3\">\"vertical\"</span> : a double-pointed arrow pointing up and down.</li><li><span style=\"color:#EA6AC3\">\"leftdiagonal\"</span> : a double-pointed arrow pointing topright down to the left.</li><li><span style=\"color:#EA6AC3\">\"rightdiagonal\"</span> :a double-pointed arrow pointing topleft down to the right.</li><li><span style=\"color:#EA6AC3\">\"up\"</span> : an arrow pointing up.</li><li><span style=\"color:#EA6AC3\">\"wait\"</span> : a hourglass cursor.</li><li><span style=\"color:#EA6AC3\">\"none\"</span> or <code>nil</code> : no cursor is displayed.</li></ul><article class=\"message is-info\" style=\"margin-left: 10%; margin-right: 10%\"><div class=\"message-body\">The window.cursor property affects only the window client area. The title bar and borders are not affected.</div></article>",
+            "__results": "<span style=\"color:#EA6AC3\">string</span>",
+            "__kind": "property",
+            "__tinydesc": "Get/set the image of the mouse cursor as it hovers over the window",
+            "__name": "cursor",
+            "__example": "local ui = require \"ui\"\n\n-- create a simple window \nlocal win = ui.Window(\"Window.cursor sample\", 320, 200)\nwin:show()\n\nwin:status(\"Hover the window to view the 'hand' cursor !\")\n\n-- set the mouse cursor when hovering the window\nwin.cursor = \"hand\"\n\n-- update user interface\nrepeat\n\tui.update()\nuntil not win.visible",
+            "__filename": "Window-cursor.html"
+        },
         "onClick": {
-            "__returns": "The event returns no value.",
-            "__name": "onClick",
-            "__example": "local ui = require \"ui\"\n\n-- create a window\nlocal win = ui.Window(\"Window:onClick() sample\", 320, 200)\nlocal label = ui.Label(win, \"Click on the Window !\", 100, 75)\n\n-- set a onClick() event : display a status bar with the mouse position when the user has clicked\nfunction win:onClick(x, y)\n\twin:status(\"Mouse position : \"..x..\", \"..y)\nend\n\nwin:show()\n\nwhile win.visible do\n\tui.update()\nend",
-            "__results": "",
-            "__kind": "event",
-            "__params": [
-                {
-                    "__description": "<p>The horizontal position of the mouse in the window's client area.</p>",
-                    "__optional": false,
-                    "__color": "ae81ff",
-                    "__name": "x"
-                },
-                {
-                    "__description": "<p>The vertical position of the mouse in the window's client area.</p>",
-                    "__optional": false,
-                    "__color": "ae81ff",
-                    "__name": "y"
-                }
-            ],
             "__description": "<br>This event is fired when the user has clicked on the window.",
-            "__tinydesc": "Event fired when the user clicks on the Window",
-            "__filename": "Window-onClick.html"
-        },
-        "__kind": "object",
-        "onDrop": {
-            "__returns": "The event returns no value.",
-            "__name": "onDrop",
-            "__example": "local ui = require \"ui\"\n\n-- create a window\nlocal win = ui.Window(\"Window:onDrop() sample\", 640, 480)\nwin:status(\"Drop it on the Window !\")\nwin.allowdrop = true\n\n-- set a onDrop() event\nfunction win:onDrop(kind, content)\n\tui.info(\"kind: \"..kind..\"\\ncontent: \"..tostring(content), \"Content dropped on Window\")\nend\n\nui.run(win):wait()",
             "__results": "",
-            "__kind": "event",
-            "__params": [
-                {
-                    "__description": "<p>A <code>string</code> representing the kind of content dropped on the Window.</p>",
-                    "__optional": false,
-                    "__color": "EA6AC3",
-                    "__name": "kind"
-                },
-                {
-                    "__description": "<p>The content dropped on the Window, the type of which depends on the following table:<br></p><table class=\"table has-text-centered mt-3\"><thead><tr><th class=\"has-text-info\">kind</th><th class=\"has-text-info\">content</th></tr></thead><tbody><tr><td><code >\"text\"</code></td><td><code>string</code></td></tr><tr><td><code>\"files\"</code></td><td><code>table</code><br>(list of <a href=\"../sys/File.html\"><i class=\"fas fas fa-file\"></i> File</a> and <a href=\"../sys/Directory.html\"><i class=\"fas fa-folder\"></i> Directory</a>)</td></tr><tr><td><code >\"unkown\"</code></td><td><code>nil</code></td></tr></tbody></table>",
-                    "__optional": false,
-                    "__color": "B1D928",
-                    "__name": "content"
-                }
-            ],
-            "__description": "<br>This event is fired when the user has dropped the mouse over the Window.",
-            "__tinydesc": "Event fired when the Window received a drag and drop content",
-            "__filename": "Window-onDrop.html"
-        },
-        "onHover": {
-            "__returns": "The event returns no value.",
-            "__name": "onHover",
-            "__example": "local ui = require \"ui\"\n\n-- create a window\nlocal win = ui.Window(\"Window:onHover() sample\", 320, 200)\nlocal label = ui.Label(win, \"Move the mouse on this text!\", 110, 75)\n\n-- set a onHover() event : display a status bar with the mouse position when the user has clicked\nfunction win:onHover(x,y buttons)\n\twin:status(\"Mouse position : \"..x..\", \"..y)\nend\n\nwin:show()\n\nwhile win.visible do\n\tui.update()\nend",
-            "__results": "",
-            "__kind": "event",
+            "__name": "onClick",
+            "__filename": "Window-onClick.html",
             "__params": [
                 {
                     "__description": "<p>The horizontal position of the mouse in the window's client area.</p>",
+                    "__name": "x",
                     "__optional": false,
-                    "__color": "ae81ff",
-                    "__name": "x"
+                    "__color": "ae81ff"
                 },
                 {
                     "__description": "<p>The vertical position of the mouse in the window's client area.</p>",
+                    "__name": "y",
                     "__optional": false,
-                    "__color": "ae81ff",
-                    "__name": "y"
+                    "__color": "ae81ff"
+                }
+            ],
+            "__tinydesc": "Event fired when the user clicks on the Window",
+            "__example": "local ui = require \"ui\"\n\n-- create a window\nlocal win = ui.Window(\"Window:onClick() sample\", 320, 200)\nlocal label = ui.Label(win, \"Click on the Window !\", 100, 75)\n\n-- set a onClick() event : display a status bar with the mouse position when the user has clicked\nfunction win:onClick(x, y)\n\twin:status(\"Mouse position : \"..x..\", \"..y)\nend\n\nwin:show()\n\nwhile win.visible do\n\tui.update()\nend",
+            "__kind": "event",
+            "__returns": "The event returns no value."
+        },
+        "font": {
+            "__access": "read/write",
+            "__description": "<br>Get the window font, a <strong style=\"color:#EA6AC3\">string</strong> value that represent the font name.<br><br>To set the Window.font property, you can assign a <strong style=\"color:#EA6AC3\">string</strong> that represent either a font name of an installed system font, or a font file (*.ttf, *.fon...). A<a href=\"../sys/File.html\"><i class=\"fas fa-file\"></i> File</a> can also be provided, representing a font file.<br><br>Note that only the font family is changed. The font style and font size are not affected (see the <a href=\"./Window-fontstyle.html\">Window.fontstyle</a> and the <a href=\"./Window-fontsize.html\">Window.fontsize</a> properties).<article class=\"message is-warning\" style=\"margin-left: 10%; margin-right: 10%\"><div class=\"message-body\">By changing the font of the window, you also change the font of any newly created child controls.</div></article>",
+            "__results": "<span style=\"color:#EA6AC3\">string</span>",
+            "__kind": "property",
+            "__tinydesc": "Get/set the window font",
+            "__name": "font",
+            "__example": "local ui = require \"ui\"\n\n-- create a simple window \nlocal win = ui.Window(\"Window.font sample\", 320, 200)\nwin.fontsize = 18\n\nlocal label = ui.Label(win, \"Hello World in '\"..win.font..\"' font, with \"..win.fontsize..\"px\")\nwin:show()\n\n-- update the user interface until the user closes the window\nrepeat\n\tui.update()\nuntil not win.visible",
+            "__filename": "Window-font.html"
+        },
+        "loadicon": {
+            "__description": "<br>Loads the window icon, displayed at the top left corner and on the taskbar.",
+            "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+            "__name": "loadicon",
+            "__filename": "Window-loadicon.html",
+            "__params": [
+                {
+                    "__description": "<p>Represent any of the following possible icon locations :<ul><li>A <span style=\"color: #EA6AC3\">string</span> which represents the path to an \".ico\" icon file, or gets the icon associated with the provided file/directory.</li><li>A <a href=\"./index.html\">Widget object</a>, whose icon will be used by the Window.</li><li>A <a href=\"../sys/Directory.html\"><i class=\"fas fa-folder\"></i> Directory</a> or <a href=\"../sys/File.html\"><i class=\"fas fa-file\"></i> File</a> object, representing an \".ico\" file, or gets the icon associated with the provided file/directory.</li><li>A <a href=\"../sys/Buffer.html\"><i class=\"fas fa-file\"></i> Buffer</a> object, whose binary content will represent the icon.</li></ul></p>\n",
+                    "__name": "path",
+                    "__optional": true,
+                    "__color": "606060"
+                },
+                {
+                    "__description": "<p>The icon index, an optional number starting from 1, that represent the icon to select.</p>\n<article class=\"message is-info\" style=\"margin-left: 15%; margin-right: 15%\"><div class=\"message-body\">When no argument or a <code>nil</code> path value is provided, the Window icon will be removed.</div></article>",
+                    "__name": "index",
+                    "__optional": true,
+                    "__color": "ae81ff"
+                }
+            ],
+            "__tinydesc": "Load the window icon",
+            "__example": "local ui = require \"ui\"\n\n-- create a window\nlocal win = ui.Window(\"Window:loadicon() sample\", 320, 200)\n\n-- load a window icon\nwin:loadicon(\"resources\\\\ico\\\\main.ico\")\n\nwin:show()\n\nwhile win.visible do\n\tui.update()\nend",
+            "__kind": "method",
+            "__returns": "The method return a <span style=\"color:#ae81ff\">boolean</span> value, indicating wether the operation succeeded or not."
+        },
+        "showmodal": {
+            "__description": "<br>Show and activate a child Window. The parent widget is disabled and can not be used until the user closes the child Window.",
+            "__results": "<span>-</span>",
+            "__name": "showmodal",
+            "__filename": "Window-showmodal.html",
+            "__params": [
+                {
+                    "__description": "<p>The <a href=\"./Window.html\"><i class=\"far fa-window-maximize\" style=\"color :#2187E7\"></i> Window</a> object that will be shown.</p>",
+                    "__name": "child",
+                    "__optional": false,
+                    "__color": "606060"
+                }
+            ],
+            "__tinydesc": "Show a Window as modal",
+            "__example": "local ui = require \"ui\"\n\n-- create a window\nlocal win = ui.Window(\"Window:showmodal() sample\", 320, 200)\nlocal button = ui.Button(win, \"Window:showmodal(child)\", 90, 80)\n-- create a child modal window\nlocal child = ui.Window(\"Modal window\", 265, 100)\nlocal label = ui.Label(child, \"I'm a modal Window, close me now\\nto return to the parent Window\", 40, 30)\nlabel.textalign = \"center\"\n\nfunction button:onClick()\n\tchild.x, child.y = ui.mousepos()\n\twin:showmodal(child)\nend\n\nwin:show()\n\nwhile win.visible do\n\tui.update()\nend",
+            "__kind": "method",
+            "__returns": "This function returns no value."
+        },
+        "transparency": {
+            "__access": "read/write",
+            "__description": "<br>Get or set the window's transparency intensity, a <code>number</code> value from <code>0</code> (full transparency) to <code>255</code> (full opacity, the default value).<article class=\"message is-info\" style=\"margin-left: 15%; margin-right: 15%\"><div class=\"message-body\">The window.transprency might affect correct rendering of some widgets, use it wisely.</div></article>",
+            "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+            "__kind": "property",
+            "__tinydesc": "Get/set window's transparency intensity",
+            "__name": "transparency",
+            "__example": "local ui = require \"ui\"\n\nlocal win = ui.Window(\"Window.transparency example\", 420, 300)\nwin:center()\nlocal label = ui.Label(win, \"\")\nlabel.fontsize = 40\nlabel.style = { bold = true }\n\nasync(function()\n    while win.transparency > 0 do\n        label.text = math.floor(win.transparency/255*100)..\"%\"\n        label:center()\n        win.transparency = win.transparency-1\n        sleep(10)\n    end\n    win:hide()\nend)\n\nui.run(win):wait()",
+            "__filename": "Window-transparency.html"
+        },
+        "popup": {
+            "__description": "<br>Shows a popup menu at the current window mouse position.",
+            "__results": "<span>-</span>",
+            "__name": "popup",
+            "__filename": "Window-popup.html",
+            "__params": [
+                {
+                    "__description": "<p>A <a href=\"./Menu.html\"><i class=\"fas fa-bars\" style=\"color :#2187E7\"></i> Menu</a> object to be displayed.</p>",
+                    "__name": "menu",
+                    "__optional": false,
+                    "__color": "606060"
+                }
+            ],
+            "__tinydesc": "Shows a popup menu at the current window mouse position",
+            "__example": "local ui = require \"ui\"\n\n-- create a fixed Window\nlocal win = ui.Window(\"Window:popup() sample\", \"fixed\", 320, 200)\n\n-- create a label\nlocal label = ui.Label(win, \"Right-click anywhere on the window...\")\n\n-- create a menu\nlocal menu = ui.Menu()\n\n-- create a menu item \nmenu:add(\"E&xit\").onClick = function(self)\n\twin:hide()\nend\n\n-- create a window onContext event\nfunction win:onContext()\n\twin:popup(menu)\nend\n\n-- shows the Window\nwin:show()\n\nwhile win.visible do\n\tui.update()\nend",
+            "__kind": "method",
+            "__returns": "This method returns no value."
+        },
+        "onHide": {
+            "__description": "<br>This event is fired when the window is hidden by the user (when clicking on the window close button) or when calling <a href=\"./Window-show.html\">Window:hide()</a> or setting the <a href=\"./Window-visible.html\">Window.visible</a> property to <span style=\"color:#ae81ff\">false</span>.",
+            "__results": "",
+            "__name": "onHide",
+            "__filename": "Window-onHide.html",
+            "__params": {},
+            "__tinydesc": "Event fired when the Window is hidden",
+            "__example": "local ui = require \"ui\"\n\n-- create a window\nlocal win = ui.Window(\"Window:onHide() sample\", 320, 200)\nlocal label = ui.Label(win, \"This window does nothing...\", 100, 75)\n\n-- set a onHide() event : display a message once the window has been hidden\nfunction win:onHide()\n\tui.msg(\"bye bye !!\")\nend\n\nwin:show()\n\nwhile win.visible do\n\tui.update()\nend",
+            "__kind": "event",
+            "__returns": "The event returns no value."
+        },
+        "__icon": "<span class=\"icon bd-link-icon mr-1\" style=\"font-size: 0.8em\"><i class=\"far fa-window-maximize\" style=\"color :#2187E7\"></i></span>",
+        "onHover": {
+            "__description": "<br>This event is fired when the user moves the mouse pointer over the window.",
+            "__results": "",
+            "__name": "onHover",
+            "__filename": "Window-onHover.html",
+            "__params": [
+                {
+                    "__description": "<p>The horizontal position of the mouse in the window's client area.</p>",
+                    "__name": "x",
+                    "__optional": false,
+                    "__color": "ae81ff"
+                },
+                {
+                    "__description": "<p>The vertical position of the mouse in the window's client area.</p>",
+                    "__name": "y",
+                    "__optional": false,
+                    "__color": "ae81ff"
                 },
                 {
                     "__description": "<p>A <code>table</code> which fields indicates if mouse buttons or special keys have been pressed during the move :<ul><li><code>\"left\"</code>: <code>true</code> if left mouse button is pressed, <code>false</code> otherwise</li><li><code>\"right\"</code>: <code>true</code> if right mouse button is pressed, <code>false</code> otherwise</li><li><code>\"middle\"</code>: <code>true</code> if middle mouse button is pressed, <code>false</code> otherwise</li><li><code>\"control\"</code>: <code>true</code> if the CONTROL key is pressed, <code>false</code> otherwise</li><li><code>\"shift\"</code>: <code>true</code> if the SHIFT mouse button is pressed, <code>false</code> otherwise</li></ul></p>",
+                    "__name": "buttons",
                     "__optional": false,
-                    "__color": "B1D928",
-                    "__name": "buttons"
+                    "__color": "B1D928"
                 }
             ],
-            "__description": "<br>This event is fired when the user moves the mouse pointer over the window.",
             "__tinydesc": "Event fired when the user moves the mouse pointer over the Window",
-            "__filename": "Window-onHover.html"
-        },
-        "onKey": {
-            "__returns": "This event returns no value.",
-            "__name": "onKey",
-            "__example": "local ui = require \"ui\"\n\n-- create a window\nlocal win = ui.Window(\"Window:onKey() sample\", 320, 200)\nui.Entry(win, \"\", 100, 75, 100):center()\n\n-- set a onKey() event : display a status bar with the pressed key\nfunction win:onKey(key)\n\twin:status(\"Pressed Key : \"..key)\nend \n\nwin:show() \n\nwhile win.visible do \n\tui.update()\nend",
-            "__results": "",
+            "__example": "local ui = require \"ui\"\n\n-- create a window\nlocal win = ui.Window(\"Window:onHover() sample\", 320, 200)\nlocal label = ui.Label(win, \"Move the mouse on this text!\", 110, 75)\n\n-- set a onHover() event : display a status bar with the mouse position when the user has clicked\nfunction win:onHover(x,y buttons)\n\twin:status(\"Mouse position : \"..x..\", \"..y)\nend\n\nwin:show()\n\nwhile win.visible do\n\tui.update()\nend",
             "__kind": "event",
-            "__params": [
-                {
-                    "__description": "<p>A <code>string</code> that represent the key name.</p><article class=\"message is-warning\" style=\"margin-left: 15%; margin-right: 15%\"><div class=\"message-body\">Key names are defined by the following rules :<ul><li>For digit keys <code>0..9</code>, the name is the digit as a string : <code>\"0\", \"1\" ...</code></li><li>For alphabetical keys <code>A..Z</code>, the name is the character as a string : <code>\"A\", \"B\" ...</code></li><li>Any other key is represented by the Windows virtual key as a string : <code>\"VK_SPACE\", \"VK_RETURN\", \"VK_SHIFT\"...</code></li><li>The full list of Windows virtual keys is available <a href=\"https://learn.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes\">here</a></li></ul></div></article></p>",
-                    "__optional": false,
-                    "__color": "EA6AC3",
-                    "__name": "key"
-                }
-            ],
-            "__description": "<br>This event is fired when a key was pressed.<p class=\"is-size-4 mb-1 mt-6\" style=\"color: #004080\">Parameters",
-            "__tinydesc": "Event fired when the user press a key",
-            "__filename": "Window-onKey.html"
+            "__returns": "The event returns no value."
         },
-        "onTrayHover": {
-            "__returns": "The event returns no value.",
-            "__name": "onTrayHover",
-            "__example": "local ui = require \"ui\"\n\n-- create a simple Window that will stay hidden\nlocal win = ui.Window(\"Window.onTrayHover() sample\", 320, 200)\n\n-- loads a notification tray icon\nwin:loadtrayicon(sys.env.WINDIR..\"/system32/shell32.dll\", 44)\n\nlocal canexit = false\nlocal tooltips = { \"The stars are brilliant this evening\", \"The sky is clear and stars bright.\", \"Moon and stars are bright overhead\" }\n\n-- Display a random tooltip when mouse hovers the notification icon\nfunction win:onTrayHover()\n  self.traytooltip = tooltips[math.floor(math.random(1, 3))]\nend\n\n-- Click on the notification icon to exit program\nfunction win:onTrayClick()\n  canexit = true\nend\n\n-- update user interface\nrepeat\n  ui.update()\nuntil canexit",
-            "__results": "",
-            "__kind": "event",
-            "__params": {},
-            "__description": "<br>This event is fired when the mouse hovers the notification icon of the window, in the tray section of the taskbar",
-            "__tinydesc": "Event fired when the mouse hovers the notification icon of the Window",
-            "__filename": "Window-onTrayHover.html"
-        },
-        "onMaximize": {
-            "__returns": "The event returns no value.",
-            "__name": "onMaximize",
-            "__example": "local ui = require \"ui\"\n\n-- create a simple window\nlocal win = ui.Window(\"Minimize, maximize or restore me !\")\n\nfunction win:onMinimize()\n    ui.info(\"Window has been minimized !\")\nend\n\nfunction win:onMaximize()\n    ui.info(\"Window has been maximized !\")\nend\n\nfunction win:onRestore()\n    ui.info(\"Window has been restored !\")\nend\n\n-- update user interface\nui.run(win):wait()",
-            "__results": "",
-            "__kind": "event",
-            "__params": {},
-            "__description": "<br>This event is fired when the Window has been maximized, by the user or just after a <a href=\"Window-maximize.html\">Window:maximize()</a> call.<p class=\"is-size-4 mb-1 mt-6\" style=\"color: #004080\">Return value",
-            "__tinydesc": "Event fired when the Window is maximized",
-            "__filename": "Window-onMaximize.html"
-        },
-        "__description": "The Window widget provides a top-level container for displaying and managing widgets",
-        "onHide": {
-            "__returns": "The event returns no value.",
-            "__name": "onHide",
-            "__example": "local ui = require \"ui\"\n\n-- create a window\nlocal win = ui.Window(\"Window:onHide() sample\", 320, 200)\nlocal label = ui.Label(win, \"This window does nothing...\", 100, 75)\n\n-- set a onHide() event : display a message once the window has been hidden\nfunction win:onHide()\n\tui.msg(\"bye bye !!\")\nend\n\nwin:show()\n\nwhile win.visible do\n\tui.update()\nend",
-            "__results": "",
-            "__kind": "event",
-            "__params": {},
-            "__description": "<br>This event is fired when the window is hidden by the user (when clicking on the window close button) or when calling <a href=\"./Window-show.html\">Window:hide()</a> or setting the <a href=\"./Window-visible.html\">Window.visible</a> property to <span style=\"color:#ae81ff\">false</span>.",
-            "__tinydesc": "Event fired when the Window is hidden",
-            "__filename": "Window-onHide.html"
-        },
-        "onMouseDown": {
-            "__returns": "The event returns no value.",
-            "__name": "onMouseDown",
-            "__example": "local ui = require \"ui\"\n\n-- create a window\nlocal win = ui.Window(\"Window:onMouseDown() sample\", 400, 300)\nlocal label = ui.Label(win, \"Move the mouse over the Window and press a mouse button!\")\nlabel:center()\n\n-- set a onMouseDown() event : display a status bar with the pressed mouse button and its position\nfunction win:onMouseDown(b, x, y)\n  win:status(\"Mouse button : \"..b, \"Mouse position : \"..x..\", \"..y)\nend\n\nui.run(win):wait()",
-            "__results": "",
-            "__kind": "event",
-            "__params": [
-                {
-                    "__description": "<p>A string indicating the button that has been pressed : <code>\"right\"</code>, <code>\"middle\"</code> or <code>\"left\"</code>.</p>",
-                    "__optional": false,
-                    "__color": "EA6AC3",
-                    "__name": "button"
-                },
-                {
-                    "__description": "<p>The horizontal position of the mouse in the Window area (zero means the left border of the widget).</p>",
-                    "__optional": false,
-                    "__color": "ae81ff",
-                    "__name": "x"
-                },
-                {
-                    "__description": "<p>The vertical position of the mouse in the Window area (zero means the top border of the widget).</p>",
-                    "__optional": false,
-                    "__color": "ae81ff",
-                    "__name": "y"
-                }
-            ],
-            "__description": "<br>This event is fired when the user presses a mouse button while beeing over the Window.",
-            "__tinydesc": "Event fired when the user presses a mouse button over the Window",
-            "__filename": "Window-onMouseDown.html"
-        },
-        "onTrayClick": {
-            "__returns": "The event returns no value.",
-            "__name": "onTrayClick",
-            "__example": "local ui = require \"ui\"\n\n-- create a simple Window \nlocal win = ui.Window(\"Window.onTrayClick() sample\", 320, 200)\nlocal button = ui.Button(win, \"Click me to quit !\")\n\nbutton:center()\nwin:status(\"Close the Window to show the notify icon\")\n\nlocal canexit = false\n\n-- event fired when notification icon is clicked\nfunction win:onTrayClick()\n  -- removes the notification icon\n  self:loadtrayicon()\n  -- shows the window\n  win:show()\nend\n\n-- event fired when the window close button is clicked\nfunction win:onClose()\n  -- loads and display a notification icon in the tray\n  win:loadtrayicon(sys.env.WINDIR..\"/system32/shell32.dll\", 28)\n  -- then hides the window\n  self:hide()\n  -- and set the notification icon tooltip\n  win.traytooltip = \"click me to show the window again\"\n  -- dont close the window after this event\n  return false\nend\n\nwin:show()\n\n-- button:onClick() event (to quit)\nfunction button:onClick()\n  canexit = true\nend\n\n-- update user interface\nrepeat\n  ui.update()\nuntil canexit",
-            "__results": "",
-            "__kind": "event",
-            "__params": {},
-            "__description": "<br>This event is fired when the user has clicked on the notification icon of the window, in the tray section of the taskbar",
-            "__tinydesc": "Event fired when the user clicks on the notification icon of the Window",
-            "__filename": "Window-onTrayClick.html"
-        },
-        "__type": "object",
         "onThemeChange": {
-            "__returns": "The event returns no value.",
-            "__name": "onThemeChange",
-            "__example": "local ui = require \"ui\"\n\n-- create a window\nlocal win = ui.Window(\"Window:onThemeChange() sample\", 320, 200)\n\n-- set a onThemeChange() event\nfunction win:onThemeChange(isdark)\n\twin:info(\"Windows theme change detected : Theme is now \" .. (isdark and \"dark\" or \"light\"))\nend\n\nui.run(win):wait()",
+            "__description": "<br>This event is fired when Windows theme has changed.",
             "__results": "",
-            "__kind": "event",
+            "__name": "onThemeChange",
+            "__filename": "Window-onThemeChange.html",
             "__params": [
                 {
                     "__description": "<p>A <code>boolean</code> value that indicates if the new theme is <code>\"dark\"</code> or not.</p>",
+                    "__name": "isDark",
                     "__optional": false,
-                    "__color": "ae81ff",
-                    "__name": "isDark"
+                    "__color": "ae81ff"
                 }
             ],
-            "__description": "<br>This event is fired when Windows theme has changed.",
             "__tinydesc": "Event fired when the Windows theme has changed",
-            "__filename": "Window-onThemeChange.html"
-        },
-        "onMove": {
-            "__returns": "The event returns no value.",
-            "__name": "onMove",
-            "__example": "local ui = require \"ui\"\n\n-- create a window\nlocal win = ui.Window(\"Window:onMove() sample\", 320, 200)\nlocal label = ui.Label(win, \"Move the window !\", 110, 75)\n\n-- set a onMove() event : display a status bar with the current window position\nfunction win:onMove()\n\twin:status(\"Window.x = \"..self.x, \"Window.y = \"..self.y)\nend\n\n-- display the status bar for the first time\nwin:onMove()\n\nwin:show()\n\nwhile win.visible do\n\tui.update()\nend",
-            "__results": "",
+            "__example": "local ui = require \"ui\"\n\n-- create a window\nlocal win = ui.Window(\"Window:onThemeChange() sample\", 320, 200)\n\n-- set a onThemeChange() event\nfunction win:onThemeChange(isdark)\n\twin:info(\"Windows theme change detected : Theme is now \" .. (isdark and \"dark\" or \"light\"))\nend\n\nui.run(win):wait()",
             "__kind": "event",
-            "__params": {},
-            "__description": "<br>This event is fired when the window position has been changed by the user or by setting the <a href=\"./Window-x.html\">Window.x</a> or <a href=\"./Window-y.html\">Window.y</a> properties.",
-            "__tinydesc": "Event fired when the Window has changed its position",
-            "__filename": "Window-onMove.html"
+            "__returns": "The event returns no value."
         },
-        "__filename": "Window.html",
-        "onTrayContext": {
-            "__returns": "The event returns no value.",
-            "__name": "onTrayContext",
-            "__example": "local ui = require \"ui\"\n\n-- create a simple Window \n-- that will stay hidden\nlocal win = ui.Window(\"Window.onTrayHover() sample\", 320, 200)\nwin:loadtrayicon(sys.env.WINDIR..\"/system32/shell32.dll\", 44)\n\n-- create the popup menu\nlocal menu = ui.Menu(\"Exit\")\n\nlocal canexit = false\n\n-- onClick event for first item menu \"Exit\"\nmenu.items[1].onClick = function () \n  canexit = true\nend\n\n-- Shows the menu on notification icon right-click\nfunction win:onTrayContext()\n  self:popup(menu)\nend\n\n-- Click on the notification icon to exit program\nfunction win:onTrayClick()\n  canexit = true\nend\n\n-- update user interface\nrepeat\n  ui.update()\nuntil canexit",
-            "__results": "",
-            "__kind": "event",
-            "__params": {},
-            "__description": "<br>This event is fired when the user right-click on the notification icon of the window, in the tray section of the taskbar",
-            "__tinydesc": "Event fired when the user right-clicks on the notification icon of the Window",
-            "__filename": "Window-onTrayContext.html"
-        },
-        "onMouseUp": {
-            "__returns": "The event returns no value.",
-            "__name": "onMouseUp",
-            "__example": "local ui = require \"ui\"\n\n-- create a window\nlocal win = ui.Window(\"Window:onMouseUp() sample\", 400, 300)\nlocal label = ui.Label(win, \"Move the mouse over the Window, then press and release a mouse button!\")\nlabel:center()\n\n-- set a onMouseUp() event : display a status bar with the released mouse button and its position\nfunction win:onMouseUp(b, x, y)\n  win:status(\"Mouse button : \"..b, \"Mouse position : \"..x..\", \"..y)\nend\n\nui.run(win):wait()",
-            "__results": "",
-            "__kind": "event",
+        "toback": {
+            "__description": "<br>Puts the Window behind all other Windows, or behind the specified Window.",
+            "__results": "<span>-</span>",
+            "__name": "toback",
+            "__filename": "Window-toback.html",
             "__params": [
                 {
-                    "__description": "<p>A string indicating the button that has been released : <code>\"right\"</code>, <code>\"middle\"</code> or <code>\"left\"</code>.</p>",
+                    "__description": "<p>The Window below which the current Window will be.</p>",
+                    "__name": "window",
                     "__optional": false,
-                    "__color": "EA6AC3",
-                    "__name": "button"
+                    "__color": "606060"
+                }
+            ],
+            "__tinydesc": "Puts the Window to the back",
+            "__example": "local ui = require \"ui\"\n\n-- create a simple Window\nlocal win1 = ui.Window(\"Window1\", 400, 300)\n\nlocal win2 = ui.Window(\"Window2\", 400, 300)\n\nlocal button = ui.Button(win2, \"Click me to bring Window2 to back\")\nbutton:center()\n\nwin1:show()\nwin2:show()\n\n-- Button:onClick() event\nfunction button:onClick()\n\twin2:toback(win1)\nend\n\n-- update the user interface until the user closes the Window\nrepeat\n\tui.update()\nuntil not win1.visible",
+            "__kind": "method",
+            "__returns": "This function returns no value."
+        },
+        "onShow": {
+            "__description": "<br>This event is fired when the window is shown (with a call to <a href=\"./Window-show.html\">Window:show()</a> or setting the <a href=\"./Window-visible.html\">Window.visible</a> property to <span style=\"color:#ae81ff\">true</span>).",
+            "__params": {},
+            "__results": "",
+            "__returns": "The event returns no value.\n\n            </div>\n\t      </div>\n      </div>\n    </div>\n  </section>  \n  <footer class=\"footer\">\n    <div class=\"content has-text-centered\">",
+            "__tinydesc": "Event fired when the Window is shown",
+            "__name": "onShow",
+            "__kind": "event",
+            "__filename": "Window-onShow.html"
+        },
+        "childs": {
+            "__access": "readonly",
+            "__description": "<br>Get a list of the Window's widgets, as a <span style=\"color: #B1D928\">table</span>. Each items in the list is a widget who's parent is the current window.<p class=\"is-size-4 mt-6 mb-0\" style=\"color: #004080\">Example",
+            "__results": "<span style=\"color:#B1D928\">table</span>",
+            "__kind": "property",
+            "__tinydesc": "Get a list of the window childs widgets",
+            "__name": "childs",
+            "__example": "local ui = require \"ui\"\n\n--- create a centered Window\nlocal win = ui.Window(\"Window.childs example\", 320, 200)\nwin:center()\n\n-- create 5 labels on this Window\nfor i = 1, 5 do\n    ui.Label(win, \"  Label\"..i..\"  \", 140, (i+28)*i).bgcolor = 0x606060\nend\n\nasync(function()\n    while true do\n        for widget in each(win.childs) do\n            widget.bgcolor = 0xFF0000\n            sleep(800)\n            widget.bgcolor = 0x606060\n        end\n    end\nend)\n\nui.run(win):wait()",
+            "__filename": "Window-childs.html"
+        },
+        "startmoving": {
+            "__description": "<br>Initiate a drag and move operation on the Window.",
+            "__results": "<span>-</span>",
+            "__name": "startmoving",
+            "__filename": "Window-startmoving.html",
+            "__params": {},
+            "__tinydesc": "Initiate a drag and move operation",
+            "__example": "local ui = require \"ui\"\n\nlocal win = ui.Window(\"Window.startmoving() example\", \"raw\", 320, 200)\nlocal label = ui.Label(win, \"Click and drag to move the Window !\")\nlabel.align = \"all\"\nlabel.textalign = \"center\"\nwin.bgcolor = 0xfbd422\nwin:center()\n\nfunction label:onClick()\n    win:startmoving()\nend\n\nui.run(win):wait()",
+            "__kind": "method",
+            "__returns": "This function returns no value."
+        },
+        "fontsize": {
+            "__access": "read/write",
+            "__description": "<br>Get or set the window font size, a <strong style=\"color:#ae81ff\">number</strong> that represent the font size in pixels.<br><article class=\"message is-warning\" style=\"margin-right:10%; margin-left:10%\"><div class=\"message-body\">By changing the font style of the window, you also change the font style of any newly created child controls.</div></article>",
+            "__results": "<span style=\"color:#ae81ff\">number</span>",
+            "__kind": "property",
+            "__tinydesc": "Get/set the window font size",
+            "__name": "fontsize",
+            "__example": "local ui = require \"ui\"\n\n-- create a simple window \nlocal win = ui.Window(\"Window.fontsize sample\", 640, 200)\nwin.fontsize = 16\n\nlocal label = ui.Label(win, \"Hello World in '\"..win.font..\"' font, \"..win.fontsize..\"px\")\nwin:show()\n\n-- update the user interface until the user closes the window\nrepeat\n\tui.update()\nuntil not win.visible",
+            "__filename": "Window-fontsize.html"
+        },
+        "onTrayClick": {
+            "__description": "<br>This event is fired when the user has clicked on the notification icon of the window, in the tray section of the taskbar",
+            "__results": "",
+            "__name": "onTrayClick",
+            "__filename": "Window-onTrayClick.html",
+            "__params": {},
+            "__tinydesc": "Event fired when the user clicks on the notification icon of the Window",
+            "__example": "local ui = require \"ui\"\n\n-- create a simple Window \nlocal win = ui.Window(\"Window.onTrayClick() sample\", 320, 200)\nlocal button = ui.Button(win, \"Click me to quit !\")\n\nbutton:center()\nwin:status(\"Close the Window to show the notify icon\")\n\nlocal canexit = false\n\n-- event fired when notification icon is clicked\nfunction win:onTrayClick()\n  -- removes the notification icon\n  self:loadtrayicon()\n  -- shows the window\n  win:show()\nend\n\n-- event fired when the window close button is clicked\nfunction win:onClose()\n  -- loads and display a notification icon in the tray\n  win:loadtrayicon(sys.env.WINDIR..\"/system32/shell32.dll\", 28)\n  -- then hides the window\n  self:hide()\n  -- and set the notification icon tooltip\n  win.traytooltip = \"click me to show the window again\"\n  -- dont close the window after this event\n  return false\nend\n\nwin:show()\n\n-- button:onClick() event (to quit)\nfunction button:onClick()\n  canexit = true\nend\n\n-- update user interface\nrepeat\n  ui.update()\nuntil canexit",
+            "__kind": "event",
+            "__returns": "The event returns no value."
+        },
+        "onMouseDown": {
+            "__description": "<br>This event is fired when the user presses a mouse button while beeing over the Window.",
+            "__results": "",
+            "__name": "onMouseDown",
+            "__filename": "Window-onMouseDown.html",
+            "__params": [
+                {
+                    "__description": "<p>A string indicating the button that has been pressed : <code>\"right\"</code>, <code>\"middle\"</code> or <code>\"left\"</code>.</p>",
+                    "__name": "button",
+                    "__optional": false,
+                    "__color": "EA6AC3"
                 },
                 {
                     "__description": "<p>The horizontal position of the mouse in the Window area (zero means the left border of the widget).</p>",
+                    "__name": "x",
                     "__optional": false,
-                    "__color": "ae81ff",
-                    "__name": "x"
+                    "__color": "ae81ff"
                 },
                 {
                     "__description": "<p>The vertical position of the mouse in the Window area (zero means the top border of the widget).</p>",
+                    "__name": "y",
                     "__optional": false,
-                    "__color": "ae81ff",
-                    "__name": "y"
+                    "__color": "ae81ff"
                 }
             ],
-            "__description": "<br>This event is fired when the user releases a mouse button while beeing over the Window.",
-            "__tinydesc": "Event fired when the user releases a mouse button over the Window",
-            "__filename": "Window-onMouseUp.html"
-        },
-        "onCreate": {
-            "__returns": "The event returns no value.",
-            "__name": "onCreate",
-            "__example": "local ui = require \"ui\"\n\n-- create a personalized template Window Object\nlocal MyWindow = Object(ui.Window)\n\n-- define a custom constructor for MyWindow\nfunction MyWindow:constructor(title)\n\tui.Window.constructor(self, title or \"MyWindow template\", \"fixed\", 640, 480)\nend\n\n-- defines the MyWindow widgets, menus and status bar\nfunction MyWindow:onCreate()\n\tself:status(\"Welcome on MyWindow !\")\n\tself.menu = ui.Menu(\"&File\", \"&Edit\", \"&About\")\n\tself.editor = ui.Edit(self, \"\")\n\tself.editor.align = \"all\"\nend\n\n-- Align the self.editor widget when resizing MyWindow\nfunction MyWindow:onResize()\n\tself.editor.align = \"all\"\nend\n\n-- creates two templated MyWindow \nlocal win = MyWindow(\"Template 1\")\nlocal win2 = MyWindow(\"Template 2\")\n\nwin:show()\nwin2:show()\n\nwhile win.visible or win2.visible do\n\tui.update()\nend",
-            "__results": "",
+            "__tinydesc": "Event fired when the user presses a mouse button over the Window",
+            "__example": "local ui = require \"ui\"\n\n-- create a window\nlocal win = ui.Window(\"Window:onMouseDown() sample\", 400, 300)\nlocal label = ui.Label(win, \"Move the mouse over the Window and press a mouse button!\")\nlabel:center()\n\n-- set a onMouseDown() event : display a status bar with the pressed mouse button and its position\nfunction win:onMouseDown(b, x, y)\n  win:status(\"Mouse button : \"..b, \"Mouse position : \"..x..\", \"..y)\nend\n\nui.run(win):wait()",
             "__kind": "event",
-            "__params": {},
-            "__description": "<br>This event is fired when the Window object has just been created, just after the <a href=\"Window-constructor.html\">Window:constructor()</a> call.<article class=\"message is-info\" style=\"margin-left: 15%; margin-right: 15%\"><div class=\"message-body\">This event is particularly interesting when you want to initialize its properties.</div></article>",
-            "__tinydesc": "Event fired when Window has just been created",
-            "__filename": "Window-onCreate.html"
+            "__returns": "The event returns no value."
         },
-        "onTrayDoubleClick": {
-            "__returns": "The event returns no value.",
-            "__name": "onTrayDoubleClick",
-            "__example": "local ui = require \"ui\"\n\n-- create a simple Window \nlocal win = ui.Window(\"Window.onTrayDoubleClick() sample\", 320, 200)\nlocal button = ui.Button(win, \"Click me to quit !\")\n\nbutton:center()\nwin:status(\"Close the Window to show the notify icon\")\n\nlocal canexit = false\n\n-- event fired when notification icon is double-clicked\nfunction win:onTrayDoubleClick()\n  -- removes the notification icon\n  self:loadtrayicon()\n  -- shows the window\n  win:show()\nend\n\n-- event fired when the window close button is clicked\nfunction win:onClose()\n  -- loads and display a notification icon in the tray\n  win:loadtrayicon(sys.env.WINDIR..\"/system32/shell32.dll\", 28)\n  -- then hides the window\n  self:hide()\n  -- and set the notification icon tooltip\n  win.traytooltip = \"click me to show the window again\"\n  -- dont close the window after this event\n  return false\nend\n\nwin:show()\n\n-- button:onClick() event (to quit)\nfunction button:onClick()\n  canexit = true\nend\n\n-- update user interface\nrepeat\n  ui.update()\nuntil canexit",
+        "onTrayContext": {
+            "__description": "<br>This event is fired when the user right-click on the notification icon of the window, in the tray section of the taskbar",
             "__results": "",
-            "__kind": "event",
+            "__name": "onTrayContext",
+            "__filename": "Window-onTrayContext.html",
             "__params": {},
-            "__description": "<br>This event is fired when the user has double-clicked on the notification icon of the window, in the tray section of the taskbar",
-            "__tinydesc": "Event fired when the user double-clicks on the notification icon of the Window",
-            "__filename": "Window-onTrayDoubleClick.html"
+            "__tinydesc": "Event fired when the user right-clicks on the notification icon of the Window",
+            "__example": "local ui = require \"ui\"\n\n-- create a simple Window \n-- that will stay hidden\nlocal win = ui.Window(\"Window.onTrayHover() sample\", 320, 200)\nwin:loadtrayicon(sys.env.WINDIR..\"/system32/shell32.dll\", 44)\n\n-- create the popup menu\nlocal menu = ui.Menu(\"Exit\")\n\nlocal canexit = false\n\n-- onClick event for first item menu \"Exit\"\nmenu.items[1].onClick = function () \n  canexit = true\nend\n\n-- Shows the menu on notification icon right-click\nfunction win:onTrayContext()\n  self:popup(menu)\nend\n\n-- Click on the notification icon to exit program\nfunction win:onTrayClick()\n  canexit = true\nend\n\n-- update user interface\nrepeat\n  ui.update()\nuntil canexit",
+            "__kind": "event",
+            "__returns": "The event returns no value."
         },
-        "onClose": {
-            "__returns": "This event returns <span style=\"color:#ae81ff\">true</span> if the application actually wants to close the window or <span style=\"color:#ae81ff\">false</span> otherwise (and the window will remain open).",
-            "__name": "onClose",
-            "__example": "local ui = require \"ui\"\n\n-- create a window that never closes !\nlocal win = ui.Window(\"Window:onClose() sample\", 320, 200)\n\n-- set a onClose() event : returns false to prevent the window to close\nfunction win:onClose()\n\treturn false\nend\n\nwin:show()\n\nwhile win.visible do\n\tui.update()\nend",
-            "__results": "",
-            "__kind": "event",
-            "__params": {},
-            "__description": "<br>This event is fired when the window is about to be closed (when the user has clicked on the window close button).",
-            "__tinydesc": "Event fired when the Window is about to be closed by the user",
-            "__filename": "Window-onClose.html"
+        "traytooltip": {
+            "__access": "read/write",
+            "__description": "<br>Get the window tray icon tooltip, a <strong style=\"color:#EA6AC3\">string</strong> value.<br><br><article class=\"message is-warning\" style=\"margin-left: 10%; margin-right: 10%\"><div class=\"message-body\">This event is fired only if a tray icon has been previously loaded with <a href=\"Window-loadtrayicon.html\">Window.loadtrayicon()</a>.</div></article><p class=\"is-size-4 mt-6 mb-0\" style=\"color: #004080\">Example",
+            "__results": "<span style=\"color:#EA6AC3\">string</span>",
+            "__kind": "property",
+            "__tinydesc": "Get/set the window's tray icon tooltip",
+            "__name": "traytooltip",
+            "__example": "local ui = require \"ui\"\n\n-- create a simple Window that will stay hidden\nlocal win = ui.Window(\"Window.onTrayHover() sample\", 320, 200)\n\n-- loads a notification tray icon\nwin:loadtrayicon(sys.env.WINDIR..\"/system32/shell32.dll\", 44)\n\nlocal canexit = false\nlocal tooltips = { \"The stars are brilliant this evening\", \"The sky is clear and stars bright.\", \"Moon and stars are bright overhead\" }\n\n-- Display a random tooltip when mouse hovers the notification icon\nfunction win:onTrayHover()\n  self.traytooltip = tooltips[math.floor(math.random(1, 3))]\nend\n\n-- Click on the notification icon to exit program\nfunction win:onTrayClick()\n  canexit = true\nend\n\n-- update user interface\nrepeat\n  ui.update()\nuntil canexit",
+            "__filename": "Window-traytooltip.html"
         },
-        "onMinimize": {
-            "__returns": "The event returns no value.",
-            "__name": "onMinimize",
-            "__example": "local ui = require \"ui\"\n\n-- create a simple window\nlocal win = ui.Window(\"Minimize, maximize or restore me !\")\n\nfunction win:onMinimize()\n    ui.info(\"Window has been minimized !\")\nend\n\nfunction win:onMaximize()\n    ui.info(\"Window has been maximized !\")\nend\n\nfunction win:onRestore()\n    ui.info(\"Window has been restored !\")\nend\n\n-- update user interface\nui.run(win):wait()",
+        "title": {
+            "__access": "read/write",
+            "__description": "<br>Get or set the Window title as a <strong style=\"color:#EA6AC3\">string</strong>.",
+            "__results": "<span style=\"color:#EA6AC3\">string</span>",
+            "__kind": "property",
+            "__tinydesc": "Get/set the Window title",
+            "__name": "title",
+            "__example": "local ui = require \"ui\"\n\n-- create a simple window\nlocal win = ui.Window(\"Temporary title\", 150, 90)\n\n-- change Window title\nwin.title = \"Window.title property sample\"\n\n-- shows the Window\nwin:show()\n\n-- update user interface\nrepeat\n\tui.update()\nuntil not win.visible",
+            "__filename": "Window-title.html"
+        },
+        "onTrayHover": {
+            "__description": "<br>This event is fired when the mouse hovers the notification icon of the window, in the tray section of the taskbar",
             "__results": "",
-            "__kind": "event",
+            "__name": "onTrayHover",
+            "__filename": "Window-onTrayHover.html",
             "__params": {},
-            "__description": "<br>This event is fired when the Window has been minimized, by the user or just after a <a href=\"Window-minimize.html\">Window:minimize()</a> call.<p class=\"is-size-4 mb-1 mt-6\" style=\"color: #004080\">Return value",
-            "__tinydesc": "Event fired when the Window is minimized",
-            "__filename": "Window-onMinimize.html"
+            "__tinydesc": "Event fired when the mouse hovers the notification icon of the Window",
+            "__example": "local ui = require \"ui\"\n\n-- create a simple Window that will stay hidden\nlocal win = ui.Window(\"Window.onTrayHover() sample\", 320, 200)\n\n-- loads a notification tray icon\nwin:loadtrayicon(sys.env.WINDIR..\"/system32/shell32.dll\", 44)\n\nlocal canexit = false\nlocal tooltips = { \"The stars are brilliant this evening\", \"The sky is clear and stars bright.\", \"Moon and stars are bright overhead\" }\n\n-- Display a random tooltip when mouse hovers the notification icon\nfunction win:onTrayHover()\n  self.traytooltip = tooltips[math.floor(math.random(1, 3))]\nend\n\n-- Click on the notification icon to exit program\nfunction win:onTrayClick()\n  canexit = true\nend\n\n-- update user interface\nrepeat\n  ui.update()\nuntil canexit",
+            "__kind": "event",
+            "__returns": "The event returns no value."
+        },
+        "menu": {
+            "__access": "read/write",
+            "__description": "<br>Get or set the main <a href=\"./Menu.html\"><i class=\"fas fa-bars\" style=\"color :#2187E7\"></i> Menu</a> of the Window.<article class=\"message is-info\" style=\"margin-left: 15%; margin-right: 15%\"><div class=\"message-body\">Assigning the <span style=\"color: #606060\">nil</span> value to this property will remove the main menu from the window</div></article>",
+            "__results": "<a href=\"Menu.html\"><i class=\"fas fa-bars\"></i> Menu</a>",
+            "__kind": "property",
+            "__tinydesc": "Get/set the Window's main menu bar",
+            "__name": "menu",
+            "__example": "local ui = require \"ui\"\n\n-- create a simple window\nlocal win = ui.Window(\"Window.menu sample\")\nlocal button = ui.Button(win, \"Suppress the main menu\")\n\n-- create the Window main menu\nwin.menu = ui.Menu(\"&File\", \"&Edit\", \"&View\", \"&?\")\n\nfunction button:onClick()\n\t-- Remove the Window main menu\n\twin.menu = nil\nend\n\n-- shows the Window\nwin:show()\n\n-- update user interface\nrepeat\n\tui.update()\nuntil not win.visible",
+            "__filename": "Window-menu.html"
+        },
+        "constructor": {
+            "__description": "<br>The Window constructor returns a Window value representing a user interface dialog.<article class=\"message is-info\" style=\"margin-left: 15%; margin-right: 15%\"><div class=\"message-body\">Please note that a created Window will not be shown until its method <a href=\"./Window-show.html\">Window:show()</a> has been called.</div></article>",
+            "__params": [
+                {
+                    "__description": "<p>An optional <a href=\"./Window.html\"><i class=\"far fa-window-maximize\" style=\"color :#2187E7\"></i> Window</a>, that represent a parent Window or (owner Window) for the new Window, called a child Window. When this field is set, the new Window won't appear on the Windows Taskbar (only the parent Window).</p>",
+                    "__name": "parent",
+                    "__optional": true,
+                    "__color": "606060"
+                },
+                {
+                    "__description": "<p>A string representing the Window's title.</p>",
+                    "__name": "title",
+                    "__optional": false,
+                    "__color": "EA6AC3"
+                },
+                {
+                    "__description": "<p>A string that describe the Window style :<ul><li><span style=\"color:#EA6AC3\">\"dialog\"</span> : the default, a resizeable dialog. The user can maximize/minimize the window.</li><li><span style=\"color:#EA6AC3\">\"fixed\"</span> : a fixed size dialog.</li><li><span style=\"color:#EA6AC3\">\"float\"</span> : a tiny float window.</li><li><span style=\"color:#EA6AC3\">\"single\"</span> : a fixed size dialog with system menu (only minimize-able).</li><li><span style=\"color:#EA6AC3\">\"raw\"</span> : a fixed size without title bar or borders.</li></ul></p>",
+                    "__name": "style",
+                    "__optional": true,
+                    "__color": "EA6AC3"
+                },
+                {
+                    "__description": "<p>An optional number that indicates the Window width, in pixels, defaulting to 640.</p>",
+                    "__name": "width",
+                    "__optional": true,
+                    "__color": "ae81ff"
+                },
+                {
+                    "__description": "<p>An optional number that indicates the Window height, in pixels, defaulting to 480.<article class=\"message is-warning\"><div class=\"message-body\">The width and height arguments represent the size of the client area of window, excluding borders and title bar.</div></article></p>",
+                    "__name": "height",
+                    "__optional": true,
+                    "__color": "ae81ff"
+                }
+            ],
+            "__results": "<a href=\"Window.html\"><i class=\"far fa-window-maximize\"></i> Window</a>",
+            "__kind": "method",
+            "__tinydesc": "Window object constructor",
+            "__name": "constructor",
+            "__example": "local ui = require \"ui\"\n\n-- create a simple window\nlocal win = ui.Window(\"Simple Window\")\n\n-- shows the Window\nui.run(win):wait()",
+            "__filename": "Window-constructor.html"
+        },
+        "height": {
+            "__access": "read/write",
+            "__description": "<br>Get or set the Window's height. The height starts from <span style=\"color:#ae81ff\">0</span> (top side of the Window) and increase to the bottom direction.<article class=\"message is-warning\"\" style=\"margin-right:10%; margin-left:10%\"><div class=\"message-body\">The height property represent the height of the client area of the window, excluding the title bar.</div></article>",
+            "__results": "<span style=\"color:#ae81ff\">number</span>",
+            "__kind": "property",
+            "__tinydesc": "Get/set the Window's height",
+            "__name": "height",
+            "__example": "local ui = require \"ui\"\n\n-- create a simple window\nlocal win = ui.Window(\"Window.height sample\", 320, 200)\nlocal label = ui.Label(win, \"\")\nlocal start_btn = ui.Button(win, \"Grows it !\", 70, 50)\nlocal stop_btn = ui.Button(win, \"Stop\", start_btn.x+100, start_btn.y)\nlocal growing = true\n\nlocal function onClick()\n  growing = not growing\n  stop_btn.enabled = growing == true\n  start_btn.enabled = growing == false\nend\n\nfunction win:onResize()\n  win:status(\"Window height : \"..win.height)\nend\n\nstart_btn.onClick = onClick\nstop_btn.onClick = onClick\n\n-- update status bar\nwin:onResize()\n\n-- update buttons\nonClick()\n\n-- Keep increasing Window with\nasync(function()\n  while(true) do\n        if growing then\n      win.height = win.height + 1\n      end\n      sleep(10)\n    end\nend)\n\nui.run(win):wait()",
+            "__filename": "Window-height.html"
         },
         "onResize": {
-            "__returns": "The event returns no value.",
-            "__name": "onResize",
-            "__example": "local ui = require \"ui\"\n\n-- create a window\nlocal win = ui.Window(\"Window:onResize() sample\", 320, 200)\nlocal label = ui.Label(win, \"Resize the window !\", 110, 75)\n\n-- set a onResize() event : display a status bar with the current window position\nfunction win:onResize()\n\tself:status(\"Window.width = \"..self.width, \"Window.height = \"..self.height)\nend\n\n-- display the status bar for the first time\nwin:onResize()\n\nwin:show()\n\nwhile win.visible do\n\tui.update()\nend",
-            "__results": "",
-            "__kind": "event",
-            "__params": {},
             "__description": "<br>This event is fired when the window has been resized by the user or by setting the <a href=\"./Window-width.html\">Window.width</a> or <a href=\"./Window-height.html\">Window.height</a> properties.",
+            "__results": "",
+            "__name": "onResize",
+            "__filename": "Window-onResize.html",
+            "__params": {},
             "__tinydesc": "Event fired when the Window is resized",
-            "__filename": "Window-onResize.html"
-        },
-        "onShow": {
-            "__results": "",
-            "__returns": "The event returns no value.\n\n            </div>\n\t      </div>\n      </div>\n    </div>\n  </section>  \n  <footer class=\"footer\">\n    <div class=\"content has-text-centered\">",
-            "__params": {},
-            "__name": "onShow",
-            "__description": "<br>This event is fired when the window is shown (with a call to <a href=\"./Window-show.html\">Window:show()</a> or setting the <a href=\"./Window-visible.html\">Window.visible</a> property to <span style=\"color:#ae81ff\">true</span>).",
+            "__example": "local ui = require \"ui\"\n\n-- create a window\nlocal win = ui.Window(\"Window:onResize() sample\", 320, 200)\nlocal label = ui.Label(win, \"Resize the window !\", 110, 75)\n\n-- set a onResize() event : display a status bar with the current window position\nfunction win:onResize()\n\tself:status(\"Window.width = \"..self.width, \"Window.height = \"..self.height)\nend\n\n-- display the status bar for the first time\nwin:onResize()\n\nwin:show()\n\nwhile win.visible do\n\tui.update()\nend",
             "__kind": "event",
-            "__tinydesc": "Event fired when the Window is shown",
-            "__filename": "Window-onShow.html"
+            "__returns": "The event returns no value."
         },
-        "onRestore": {
-            "__returns": "The event returns no value.",
-            "__name": "onRestore",
+        "onMinimize": {
+            "__description": "<br>This event is fired when the Window has been minimized, by the user or just after a <a href=\"Window-minimize.html\">Window:minimize()</a> call.<p class=\"is-size-4 mb-1 mt-6\" style=\"color: #004080\">Return value",
+            "__results": "",
+            "__name": "onMinimize",
+            "__filename": "Window-onMinimize.html",
+            "__params": {},
+            "__tinydesc": "Event fired when the Window is minimized",
             "__example": "local ui = require \"ui\"\n\n-- create a simple window\nlocal win = ui.Window(\"Minimize, maximize or restore me !\")\n\nfunction win:onMinimize()\n    ui.info(\"Window has been minimized !\")\nend\n\nfunction win:onMaximize()\n    ui.info(\"Window has been maximized !\")\nend\n\nfunction win:onRestore()\n    ui.info(\"Window has been restored !\")\nend\n\n-- update user interface\nui.run(win):wait()",
-            "__results": "",
             "__kind": "event",
+            "__returns": "The event returns no value."
+        },
+        "show": {
+            "__description": "<br>Show and activate the Window (events can now be fired).",
+            "__results": "<span>-</span>",
+            "__name": "show",
+            "__filename": "Window-show.html",
             "__params": {},
+            "__tinydesc": "Show the Window",
+            "__example": "local ui = require \"ui\"\n\n-- create a simple window\nlocal win = ui.Window(\"Simple Window\")\n\n-- shows the Window\nwin:show()\n\n-- wait for 2sec before quitting\nsleep(2000)",
+            "__kind": "method",
+            "__returns": "This function returns no value."
+        },
+        "enabled": {
+            "__access": "read/write",
+            "__description": "<br>Get or set the window ability to respond to mouse, keyboard and any other events. When set to <strong style=\"color:#ae81ff\">false</strong>, disable the Window (the user will not be able to interact with it), and window's events won't be fired anymore.",
+            "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+            "__kind": "property",
+            "__tinydesc": "Control whether the window responds to mouse, keyboard and other events",
+            "__name": "enabled",
+            "__example": "local ui = require \"ui\"\n\n-- create a simple window \nlocal win = ui.Window(\"Window.enabled sample\", 320, 200)\nwin:show()\n\n-- disable the window\nwin.enabled = false\n\nwin:status(\"Window is disabled !\")\n\n-- Quit after 3 seconds\nasync(function()\n  sleep(3000)\n  sys.exit()\nend)\n\nui.run(win):wait()",
+            "__filename": "Window-enabled.html"
+        },
+        "onMaximize": {
+            "__description": "<br>This event is fired when the Window has been maximized, by the user or just after a <a href=\"Window-maximize.html\">Window:maximize()</a> call.<p class=\"is-size-4 mb-1 mt-6\" style=\"color: #004080\">Return value",
+            "__results": "",
+            "__name": "onMaximize",
+            "__filename": "Window-onMaximize.html",
+            "__params": {},
+            "__tinydesc": "Event fired when the Window is maximized",
+            "__example": "local ui = require \"ui\"\n\n-- create a simple window\nlocal win = ui.Window(\"Minimize, maximize or restore me !\")\n\nfunction win:onMinimize()\n    ui.info(\"Window has been minimized !\")\nend\n\nfunction win:onMaximize()\n    ui.info(\"Window has been maximized !\")\nend\n\nfunction win:onRestore()\n    ui.info(\"Window has been restored !\")\nend\n\n-- update user interface\nui.run(win):wait()",
+            "__kind": "event",
+            "__returns": "The event returns no value."
+        },
+        "parent": {
+            "__access": "readonly",
+            "__results": "<a href=\"Window.html\"><i class=\"fas far fa-window-maximize\"></i> Window</a> | <span style=\"color: #606060\">nil</span>",
+            "__description": "<br>Get the parent <a href=\"Window.html\"><i class=\"fas far fa-window-maximize\"></i> Window</a> if it exists, or <code>nil</code> otherwise.",
+            "__tinydesc": "Get the parent Window",
+            "__name": "parent",
+            "__kind": "property",
+            "__filename": "Window-parent.html"
+        },
+        "center": {
+            "__description": "<br>Centers the Window on the parent widget.",
+            "__results": "<span>-</span>",
+            "__name": "center",
+            "__filename": "Window-center.html",
+            "__params": {},
+            "__tinydesc": "Centers the Window on the parent widget",
+            "__example": "local ui = require \"ui\"\n\n-- create a simple Window\nlocal win = ui.Window(\"Window:center() sample\", 320, 200)\nui.Button(win, \"Center Window\", 110, 90).onClick = function (self)\n\t\t\t\t\t\t\t\t\t\t\t\t\t\twin:center()\n\t\t\t\t\t\t\t\t\t\t\t\t\tend\nwin:show()\n\n-- update the user interface until the user closes the Window\nrepeat\n\tui.update()\nuntil not win.visible",
+            "__kind": "method",
+            "__returns": "This function returns no value."
+        },
+        "__name": "Window",
+        "topmost": {
+            "__access": "read/write",
+            "__description": "<br>Get or set the Window capability to always stay over other windows, a <strong style=\"color:#ae81ff\">true</strong> value means that the window will always stay at the top position.<p class=\"is-size-4 mt-6 mb-0\" style=\"color: #004080\">Example",
+            "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+            "__kind": "property",
+            "__tinydesc": "Control whether the Window will always stay above others",
+            "__name": "topmost",
+            "__example": "local ui = require \"ui\"\n\n-- create a simple window\nlocal win1 = ui.Window(\"Topmost Window\", \"fixed\", 320, 200)\nlocal win2 = ui.Window(\"Normal Window\", \"fixed\", 320, 200)\n\nfunction win1:onShow()\n    win1:center()\n    win2.x = win1.x + 100\n    win2.y = win1.y + 50\n    win1.topmost = true\n    win2:show()    \nend\n\n-- update user interface\nui.run(win1):wait()",
+            "__filename": "Window-topmost.html"
+        },
+        "onClose": {
+            "__description": "<br>This event is fired when the window is about to be closed (when the user has clicked on the window close button).",
+            "__results": "",
+            "__name": "onClose",
+            "__filename": "Window-onClose.html",
+            "__params": {},
+            "__tinydesc": "Event fired when the Window is about to be closed by the user",
+            "__example": "local ui = require \"ui\"\n\n-- create a window that never closes !\nlocal win = ui.Window(\"Window:onClose() sample\", 320, 200)\n\n-- set a onClose() event : returns false to prevent the window to close\nfunction win:onClose()\n\treturn false\nend\n\nwin:show()\n\nwhile win.visible do\n\tui.update()\nend",
+            "__kind": "event",
+            "__returns": "This event returns <span style=\"color:#ae81ff\">true</span> if the application actually wants to close the window or <span style=\"color:#ae81ff\">false</span> otherwise (and the window will remain open)."
+        },
+        "allowdrop": {
+            "__access": "read/write",
+            "__description": "<br>Get or set the Window's ability to be used as the target of a drag-and-drop operation",
+            "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+            "__kind": "property",
+            "__tinydesc": "Controls whether the Window is a drag and drop target",
+            "__name": "allowdrop",
+            "__example": "local ui = require \"ui\"\n\n-- create a window\nlocal win = ui.Window(\"Window:onDrop() sample\", 440, 380)\nlocal widget = ui.Window(win, \"Drop it here !\")\nwidget.allowdrop = true\nwidget:center()\n\n-- set a onDrop() event\nfunction widget:onDrop(kind, content)\n  ui.info(\"kind: '\"..kind..\"'\\ncontent: \"..tostring(content), \"Content dropped on Window\")\nend\n\nui.run(win):wait()",
+            "__filename": "Window-allowdrop.html"
+        },
+        "tofront": {
+            "__description": "<br>Brings the current Window in front of all other windows, or in front of the specified window.",
+            "__results": "<span>-</span>",
+            "__name": "tofront",
+            "__filename": "Window-tofront.html",
+            "__params": [
+                {
+                    "__description": "<p>The window above which the current Window will be.</p>",
+                    "__name": "window",
+                    "__optional": false,
+                    "__color": "606060"
+                }
+            ],
+            "__tinydesc": "Brings the Window in front",
+            "__example": "local ui = require \"ui\"\n\n-- create a simple Window\nlocal win1 = ui.Window(\"Window1\", 400, 300)\n\nlocal win2 = ui.Window(\"Window2\", 400, 300)\n\nlocal button = ui.Button(win2, \"Click me to bring Window1 to front\")\nbutton:center()\n\nwin1:show()\nwin2:show()\n\n-- Button:onClick() event\nfunction button:onClick()\n\twin1:tofront()\nend\n\n-- update the user interface until the user closes the Window\nrepeat\n\tui.update()\nuntil not win1.visible",
+            "__kind": "method",
+            "__returns": "This function returns no value."
+        },
+        "width": {
+            "__access": "read/write",
+            "__description": "<br>Get or set the Window's width. The width starts from <span style=\"color:#ae81ff\">0</span> (left side of the Window) and increase to the right direction.<article class=\"message is-warning\" style=\"margin-right:10%; margin-left:10%\"><div class=\"message-body\">The width property represent the width of the client area of the window, excluding the left and right borders</div></article>",
+            "__results": "<span style=\"color:#ae81ff\">number</span>",
+            "__kind": "property",
+            "__tinydesc": "Get/set the Window's width",
+            "__name": "width",
+            "__example": "local ui = require \"ui\"\n\n-- create a simple window\nlocal win = ui.Window(\"Window.height sample\", 320, 200)\nlocal label = ui.Label(win, \"\")\nlocal start_btn = ui.Button(win, \"Grows it !\", 70, 50)\nlocal stop_btn = ui.Button(win, \"Stop\", start_btn.x+100, start_btn.y)\nlocal growing = true\n\nlocal function onClick()\n  growing = not growing\n  stop_btn.enabled = growing == true\n  start_btn.enabled = growing == false\nend\n\nfunction win:onResize()\n  win:status(\"Window height : \"..win.height)\nend\n\nstart_btn.onClick = onClick\nstop_btn.onClick = onClick\n\n-- update status bar\nwin:onResize()\n\n-- update buttons\nonClick()\n\n-- Keep increasing Window with\nasync(function()\n  while(true) do\n        if growing then\n      win.width = win.width + 1\n      end\n      sleep(10)\n    end\nend)\n\nui.run(win):wait()",
+            "__filename": "Window-width.html"
+        },
+        "__results": "",
+        "__filename": "Window.html",
+        "notify": {
+            "__description": "<br>Send a Windows notification.",
+            "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+            "__name": "notify",
+            "__filename": "Window-notify.html",
+            "__params": [
+                {
+                    "__description": "<p>A <code>string</code> representing the title of the notification</p>",
+                    "__name": "title",
+                    "__optional": false,
+                    "__color": "EA6AC3"
+                },
+                {
+                    "__description": "<p>A <code>string</code> representing the notification message (its length should not exceed 128 characters).</p>",
+                    "__name": "msg",
+                    "__optional": false,
+                    "__color": "EA6AC3"
+                },
+                {
+                    "__description": "<p>A <code>string</code> representing the kind of icon that should be used : </p><ul><li><code>\"window\"</code> :The notification will use the current Window icon (the default).</li><li><code>\"none\"</code> :No icon will be displayed.</li><li><code>\"info\"</code> :The notification will display an information icon.</li><li><code>\"warning\"</code> :The notification will display a warning icon.</li><li><code>\"error\"</code> :The notification will display an error icon.</li></ul>",
+                    "__name": "iconstyle",
+                    "__optional": true,
+                    "__color": "EA6AC3"
+                }
+            ],
+            "__tinydesc": "Send a Windows notification",
+            "__example": "local ui = require \"ui\"\n\nlocal win = ui.Window(\"Window.notify() sample\", \"fixed\", 320, 200)\nlocal btn = ui.Button(win, \"Notify !\")\nbtn:center()\nlocal cb = ui.Combobox(win, false, {\"window\", \"none\", \"info\", \"warning\", \"error\"})\ncb:center()\ncb.y = btn.y + btn.height + 6\ncb.selected = cb.items[1]\n\nfunction btn:onClick()\n  win:notify(win.title, \"You have successfully sent a notification !\\nClick me now !\", cb.text)\nend\n\nfunction win:onNotificationClick()\n  ui.info(\"You have clicked the notification !\")\nend\n\nui.run(win):wait()",
+            "__kind": "method",
+            "__returns": "The method return a <span style=\"color:#ae81ff\">boolean</span> value, indicating wether the notification sending succeeded or not."
+        },
+        "shortcut": {
+            "__description": "<br>Sets a new keyboard shortcut for the window.",
+            "__results": "<span>-</span>",
+            "__name": "shortcut",
+            "__filename": "Window-shortcut.html",
+            "__params": [
+                {
+                    "__description": "<p>A one character <span style=\"color:#EA6AC3\">string</span>, which represents the key that will throw the shortcut's provided function.</p>\n",
+                    "__name": "key",
+                    "__optional": false,
+                    "__color": "EA6AC3"
+                },
+                {
+                    "__description": "<p>An optional <span style=\"color:#ae81ff\">boolean</span> value, indicating if the CONTROL key must be pressed to fire the shortcut.</p>\n",
+                    "__name": "ctrl",
+                    "__optional": true,
+                    "__color": "ae81ff"
+                },
+                {
+                    "__description": "<p>An optional <span style=\"color:#ae81ff\">boolean</span> value, indicating if the SHIFT key must be pressed to fire the shortcut.</p>\n",
+                    "__name": "shift",
+                    "__optional": true,
+                    "__color": "ae81ff"
+                },
+                {
+                    "__description": "<p>An optional <span style=\"color:#ae81ff\">boolean</span> value, indicating if the ALT key must be pressed to fire the shortcut.</p>",
+                    "__name": "alt",
+                    "__optional": true,
+                    "__color": "ae81ff"
+                }
+            ],
+            "__tinydesc": "Set a new keyboard shortcut",
+            "__example": "local ui = require \"ui\"\n\n-- create a window\nlocal win = ui.Window(\"Window:shortcut() sample\", 320, 200)\n\n-- create a label\nlocal label = ui.Label(win, \"Press CTRL-X to exit...\")\n\n-- prevent the window to close when pressing the window close button\nfunction win:onClose()\n\treturn false\nend\n\n-- the CTRL-X shortcut function\nfunction close_window()\n\twin:hide()\nend\n\n-- set the CTRL-X shortcut\nwin:shortcut(\"x\", close_window, true)\n\nwin:show()\n\nwhile win.visible do\n\tui.update()\nend",
+            "__kind": "method",
+            "__returns": "The method returns no value."
+        },
+        "loadtrayicon": {
+            "__description": "<br>Loads the window's tray icon, displayed in the notification area section of the taskbar.",
+            "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+            "__name": "loadtrayicon",
+            "__filename": "Window-loadtrayicon.html",
+            "__params": [
+                {
+                    "__description": "<p>Represent any of the following possible icon locations :<ul><li>A <span style=\"color: #EA6AC3\">string</span> which represents the path to an \".ico\" icon file, or gets the icon associated with the provided file/directory.</li><li>A <a href=\"./index.html\">Widget object</a>, whose icon will be used by the Window.</li><li>A <a href=\"../sys/Directory.html\"><i class=\"fas fa-folder\"></i> Directory</a> or <a href=\"../sys/File.html\"><i class=\"fas fa-file\"></i> File</a> object, representing an \".ico\" file, or gets the icon associated with the provided file/directory.</li><li>A <a href=\"../sys/Buffer.html\"><i class=\"fas fa-file\"></i> Buffer</a> object, whose binary content will represent the icon.</li></ul></p><article class=\"message is-info\" style=\"margin-left: 15%; margin-right: 15%\"><div class=\"message-body\">When no argument or a <code>nil</code> path value is provided, the tray icon will be removed.</div></article></p>\n",
+                    "__name": "path",
+                    "__optional": true,
+                    "__color": "606060"
+                },
+                {
+                    "__description": "<p>The icon index, an optional number starting from 1, that represent the icon to select.</p>",
+                    "__name": "index",
+                    "__optional": true,
+                    "__color": "ae81ff"
+                }
+            ],
+            "__tinydesc": "Load the window's tray icon",
+            "__example": "local ui = require \"ui\"\n\n-- create a window\nlocal win = ui.Window(\"Window:loadtrayicon() sample\", 320, 200)\n\n-- load a tray icon, displayed in the notification area of the taskbar\nwin:loadtrayicon(\"resources\\\\ico\\\\main.ico\")\n\nwin:show()\n\nwhile win.visible do\n\tui.update()\nend",
+            "__kind": "method",
+            "__returns": "The method return a <span style=\"color:#ae81ff\">boolean</span> value, indicating wether the operation succeeded or not."
+        },
+        "hide": {
+            "__description": "<br>Hide and deactivate the Window (events can no longer be fired).",
+            "__results": "<span>-</span>",
+            "__name": "hide",
+            "__filename": "Window-hide.html",
+            "__params": {},
+            "__tinydesc": "Hide the Window",
+            "__example": "local ui = require \"ui\"\n\n-- create a simple window\nlocal win = ui.Window(\"Window:Hide() example\", \"fixed\", 150, 90)\nlocal button = ui.Button(win, \"Hide me !\", 35)\n\nfunction button:onClick()\n\twin:hide()\n\tui.update()\n\tsleep(1500)\n\twin:show()\nend\n\n-- Show the window and update user interface asynchronously\nui.run(win):wait()",
+            "__kind": "method",
+            "__returns": "This function returns no value."
+        },
+        "__tinydesc": "Object representation of a standard Windows dialog",
+        "onRestore": {
             "__description": "<br>This event is fired when the Window has been restored, by the user or just after a <a href=\"Window-restore.html\">Window:restore()</a> call.<article class=\"message is-info\" style=\"margin-left: 15%; margin-right: 15%\"><div class=\"message-body\">This event is particularly interesting when you want to initialize its properties.</div></article>",
+            "__results": "",
+            "__name": "onRestore",
+            "__filename": "Window-onRestore.html",
+            "__params": {},
             "__tinydesc": "Event fired when the Window has restored its size and position",
-            "__filename": "Window-onRestore.html"
+            "__example": "local ui = require \"ui\"\n\n-- create a simple window\nlocal win = ui.Window(\"Minimize, maximize or restore me !\")\n\nfunction win:onMinimize()\n    ui.info(\"Window has been minimized !\")\nend\n\nfunction win:onMaximize()\n    ui.info(\"Window has been maximized !\")\nend\n\nfunction win:onRestore()\n    ui.info(\"Window has been restored !\")\nend\n\n-- update user interface\nui.run(win):wait()",
+            "__kind": "event",
+            "__returns": "The event returns no value."
         },
         "onContext": {
-            "__returns": "The event returns no value.",
-            "__name": "onContext",
-            "__example": "local ui = require \"ui\"\n\n-- create a window\nlocal win = ui.Window(\"Window:onContext() sample\", 320, 200)\nlocal label = ui.Label(win, \"Right-click on the Window !\", 100, 75)\n\n-- set a onContext() event : display a popup menu at the current mouse location\nfunction win:onContext()\n\twin:popup(ui.Menu(\"Item 1\", \"Item 2\", \"Item 3\"))\nend\n\nwin:show()\n\nwhile win.visible do\n\tui.update()\nend",
-            "__results": "",
-            "__kind": "event",
-            "__params": {},
             "__description": "<br>This event is fired when the user has clicked on the window with the right mouse button.",
+            "__results": "",
+            "__name": "onContext",
+            "__filename": "Window-onContext.html",
+            "__params": {},
             "__tinydesc": "Event fired when the user right click on the Window",
-            "__filename": "Window-onContext.html"
+            "__example": "local ui = require \"ui\"\n\n-- create a window\nlocal win = ui.Window(\"Window:onContext() sample\", 320, 200)\nlocal label = ui.Label(win, \"Right-click on the Window !\", 100, 75)\n\n-- set a onContext() event : display a popup menu at the current mouse location\nfunction win:onContext()\n\twin:popup(ui.Menu(\"Item 1\", \"Item 2\", \"Item 3\"))\nend\n\nwin:show()\n\nwhile win.visible do\n\tui.update()\nend",
+            "__kind": "event",
+            "__returns": "The event returns no value."
         },
-        "__name": "Window"
+        "onDrop": {
+            "__description": "<br>This event is fired when the user has dropped the mouse over the Window.",
+            "__results": "",
+            "__name": "onDrop",
+            "__filename": "Window-onDrop.html",
+            "__params": [
+                {
+                    "__description": "<p>A <code>string</code> representing the kind of content dropped on the Window.</p>",
+                    "__name": "kind",
+                    "__optional": false,
+                    "__color": "EA6AC3"
+                },
+                {
+                    "__description": "<p>The content dropped on the Window, the type of which depends on the following table:<br></p><table class=\"table has-text-centered mt-3\"><thead><tr><th class=\"has-text-info\">kind</th><th class=\"has-text-info\">content</th></tr></thead><tbody><tr><td><code >\"text\"</code></td><td><code>string</code></td></tr><tr><td><code>\"files\"</code></td><td><code>table</code><br>(list of <a href=\"../sys/File.html\"><i class=\"fas fas fa-file\"></i> File</a> and <a href=\"../sys/Directory.html\"><i class=\"fas fa-folder\"></i> Directory</a>)</td></tr><tr><td><code >\"unkown\"</code></td><td><code>nil</code></td></tr></tbody></table>",
+                    "__name": "content",
+                    "__optional": false,
+                    "__color": "B1D928"
+                }
+            ],
+            "__tinydesc": "Event fired when the Window received a drag and drop content",
+            "__example": "local ui = require \"ui\"\n\n-- create a window\nlocal win = ui.Window(\"Window:onDrop() sample\", 640, 480)\nwin:status(\"Drop it on the Window !\")\nwin.allowdrop = true\n\n-- set a onDrop() event\nfunction win:onDrop(kind, content)\n\tui.info(\"kind: \"..kind..\"\\ncontent: \"..tostring(content), \"Content dropped on Window\")\nend\n\nui.run(win):wait()",
+            "__kind": "event",
+            "__returns": "The event returns no value."
+        },
+        "__description": "The Window widget provides a top-level container for displaying and managing widgets",
+        "__kind": "object",
+        "bgcolor": {
+            "__access": "read/write",
+            "__description": "<br>Get or set the Window background color.",
+            "__results": "<span style=\"color:#ae81ff\">number</span>",
+            "__kind": "property",
+            "__tinydesc": "Get/set the window background color",
+            "__name": "bgcolor",
+            "__example": "local ui = require \"ui\"\n\n-- create a simple Window \nlocal win = ui.Window(\"Window.bgcolor sample\")\nwin.bgcolor = 0 -- black background\n\nwin:show()\n\n-- update user interface\nrepeat\n  win.bgcolor = win.bgcolor + 0x010101\n  ui.update()\nuntil not win.visible or win.bgcolor >= 0xFFFFFF",
+            "__filename": "Window-bgcolor.html"
+        },
+        "onTrayDoubleClick": {
+            "__description": "<br>This event is fired when the user has double-clicked on the notification icon of the window, in the tray section of the taskbar",
+            "__results": "",
+            "__name": "onTrayDoubleClick",
+            "__filename": "Window-onTrayDoubleClick.html",
+            "__params": {},
+            "__tinydesc": "Event fired when the user double-clicks on the notification icon of the Window",
+            "__example": "local ui = require \"ui\"\n\n-- create a simple Window \nlocal win = ui.Window(\"Window.onTrayDoubleClick() sample\", 320, 200)\nlocal button = ui.Button(win, \"Click me to quit !\")\n\nbutton:center()\nwin:status(\"Close the Window to show the notify icon\")\n\nlocal canexit = false\n\n-- event fired when notification icon is double-clicked\nfunction win:onTrayDoubleClick()\n  -- removes the notification icon\n  self:loadtrayicon()\n  -- shows the window\n  win:show()\nend\n\n-- event fired when the window close button is clicked\nfunction win:onClose()\n  -- loads and display a notification icon in the tray\n  win:loadtrayicon(sys.env.WINDIR..\"/system32/shell32.dll\", 28)\n  -- then hides the window\n  self:hide()\n  -- and set the notification icon tooltip\n  win.traytooltip = \"click me to show the window again\"\n  -- dont close the window after this event\n  return false\nend\n\nwin:show()\n\n-- button:onClick() event (to quit)\nfunction button:onClick()\n  canexit = true\nend\n\n-- update user interface\nrepeat\n  ui.update()\nuntil canexit",
+            "__kind": "event",
+            "__returns": "The event returns no value."
+        },
+        "onCreate": {
+            "__description": "<br>This event is fired when the Window object has just been created, just after the <a href=\"Window-constructor.html\">Window:constructor()</a> call.<article class=\"message is-info\" style=\"margin-left: 15%; margin-right: 15%\"><div class=\"message-body\">This event is particularly interesting when you want to initialize its properties.</div></article>",
+            "__results": "",
+            "__name": "onCreate",
+            "__filename": "Window-onCreate.html",
+            "__params": {},
+            "__tinydesc": "Event fired when Window has just been created",
+            "__example": "local ui = require \"ui\"\n\n-- create a personalized template Window Object\nlocal MyWindow = Object(ui.Window)\n\n-- define a custom constructor for MyWindow\nfunction MyWindow:constructor(title)\n\tui.Window.constructor(self, title or \"MyWindow template\", \"fixed\", 640, 480)\nend\n\n-- defines the MyWindow widgets, menus and status bar\nfunction MyWindow:onCreate()\n\tself:status(\"Welcome on MyWindow !\")\n\tself.menu = ui.Menu(\"&File\", \"&Edit\", \"&About\")\n\tself.editor = ui.Edit(self, \"\")\n\tself.editor.align = \"all\"\nend\n\n-- Align the self.editor widget when resizing MyWindow\nfunction MyWindow:onResize()\n\tself.editor.align = \"all\"\nend\n\n-- creates two templated MyWindow \nlocal win = MyWindow(\"Template 1\")\nlocal win2 = MyWindow(\"Template 2\")\n\nwin:show()\nwin2:show()\n\nwhile win.visible or win2.visible do\n\tui.update()\nend",
+            "__kind": "event",
+            "__returns": "The event returns no value."
+        },
+        "align": {
+            "__access": "read/write",
+            "__description": "<br>Get or set the Window alignment, which position and size will be aligned relative to its parent (alignment persists even if the size of the parent changes).</p><p>This property uses a <code>string</code> to specify the Window alignment :<ul><li><span style=\"color:#EA6AC3\">\"all\"</span> : the Window will be aligned along all the parent borders (and will cover the entire parent client area).</li><li><span style=\"color:#EA6AC3\">\"bottom\"</span> : the Window will be aligned along the bottom border of the parent, preserving its height.</li><li><span style=\"color:#EA6AC3\">\"top\"</span> : the Window will be aligned along the the top border of the parent, preserving its height.</li><li><span style=\"color:#EA6AC3\">\"right\"</span> : the Window will be aligned along the right border of the parent, preserving its width.</li><li><span style=\"color:#EA6AC3\">\"left\"</span> : the Window will be aligned along the left border of the parent, preserving its width.</li></ul>",
+            "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+            "__kind": "property",
+            "__tinydesc": "Align the Window relative to its parent",
+            "__name": "align",
+            "__example": "local ui = require \"ui\"\n\n-- create a fixed Window\nlocal win = ui.Window(\"Window:align() sample\", \"fixed\", 320, 200)\n\n-- create a Window\nlocal widget = ui.Window(\"I'm a bottom aligned Window :)\", 25, 25)\n\n-- align the Window to the bottom of its parent \nwidget.align = \"bottom\"\n\n-- shows the Window\nwin:show()\n\nwhile win.visible do\n\tui.update()\nend",
+            "__filename": "Window-align.html"
+        },
+        "onKey": {
+            "__description": "<br>This event is fired when a key was pressed.<p class=\"is-size-4 mb-1 mt-6\" style=\"color: #004080\">Parameters",
+            "__results": "",
+            "__name": "onKey",
+            "__filename": "Window-onKey.html",
+            "__params": [
+                {
+                    "__description": "<p>A <code>string</code> that represent the key name.</p><article class=\"message is-warning\" style=\"margin-left: 15%; margin-right: 15%\"><div class=\"message-body\">Key names are defined by the following rules :<ul><li>For digit keys <code>0..9</code>, the name is the digit as a string : <code>\"0\", \"1\" ...</code></li><li>For alphabetical keys <code>A..Z</code>, the name is the character as a string : <code>\"A\", \"B\" ...</code></li><li>Any other key is represented by the Windows virtual key as a string : <code>\"VK_SPACE\", \"VK_RETURN\", \"VK_SHIFT\"...</code></li><li>The full list of Windows virtual keys is available <a href=\"https://learn.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes\">here</a></li></ul></div></article></p>",
+                    "__name": "key",
+                    "__optional": false,
+                    "__color": "EA6AC3"
+                }
+            ],
+            "__tinydesc": "Event fired when the user press a key",
+            "__example": "local ui = require \"ui\"\n\n-- create a window\nlocal win = ui.Window(\"Window:onKey() sample\", 320, 200)\nui.Entry(win, \"\", 100, 75, 100):center()\n\n-- set a onKey() event : display a status bar with the pressed key\nfunction win:onKey(key)\n\twin:status(\"Pressed Key : \"..key)\nend \n\nwin:show() \n\nwhile win.visible do \n\tui.update()\nend",
+            "__kind": "event",
+            "__returns": "This event returns no value."
+        },
+        "fullscreen": {
+            "__access": "read/write",
+            "__description": "<br>Get or set the Window fullscreen mode. When set to <code>true</code>, the Window is resized to fill the entire screen, and the title bar is hidden.",
+            "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+            "__kind": "property",
+            "__tinydesc": "Control whether the window is fullscreen or not",
+            "__name": "fullscreen",
+            "__example": "local ui = require \"ui\"\n\n-- create a simple window \nlocal win = ui.Window(\"Window.fullscreen sample\", 320, 200)\nlocal button = ui.Button(win, \"Switch to fullscreen\")\nbutton:center()\n\nfunction button:onClick()\n\twin.fullscreen = not win.fullscreen\t\n\tbutton.text = win.fullscreen and \"Disable fullscreen\" or \"Switch to fullscreen\"\n\tbutton:center()\nend\n\nwin:show()\n\nrepeat\n\tui.update()\nuntil not win.visible",
+            "__filename": "Window-fullscreen.html"
+        },
+        "status": {
+            "__description": "<br>Hide or show the window status bar to display one or more messages.",
+            "__results": "<span>-</span>",
+            "__name": "status",
+            "__filename": "Window-status.html",
+            "__params": [
+                {
+                    "__description": "<p>One ore more optional <span style=\"color:#EA6AC3\"> strings</span>, which represents messages to be displayed in the status bar. Each message is displayed in a part of the status bar.<br>When called without arguments, the Window status bar is hidden.</p><article class=\"message is-warning\" style=\"margin-left: 15%; margin-right: 15%\"><div class=\"message-body pt-2\">Each argument is converted to a <code>string</code> if needed, following the same rules as the standard Lua <code>tostring()</code> function.</div></article>",
+                    "__name": "msg, ...",
+                    "__optional": true,
+                    "__color": "EA6AC3"
+                }
+            ],
+            "__tinydesc": "Display messages in the window status bar",
+            "__example": "local ui = require \"ui\"\n\n-- create a window\nlocal win = ui.Window(\"Window:status() sample\", 500, 200)\n\n\n-- create a label\nlocal label = ui.Label(win, \"Status bar text :\", 50, 60)\nlocal entry = ui.Entry(win, \"Type any message to be displayed in the status bar\", label.x + label.width + 10, label.y - 4)\n\nfunction entry:onChange()\n\twin:status(entry.text)\nend\n\n-- set the window status bar for the first time\nentry:onChange()\n\nwin:show()\n\nwhile win.visible do\n\tui.update()\nend",
+            "__kind": "method",
+            "__returns": "The method returns no value."
+        },
+        "maximize": {
+            "__description": "<br>Maximize and activate the Window to the entire desktop.<article class=\"message is-info\" style=\"margin-left: 15%; margin-right: 15%\"><div class=\"message-body\">Fixed Windows cannot be resized, minimized or maximized by the user. However it can still be done programmatically</div></article>",
+            "__results": "<span>-</span>",
+            "__name": "maximize",
+            "__filename": "Window-maximize.html",
+            "__params": {},
+            "__tinydesc": "Maximize the Window to the entire Desktop",
+            "__example": "local ui = require \"ui\"\n\n-- create a simple window\nlocal win = ui.Window(\"Window:maximize() example\", \"fixed\", 150, 90)\nlocal button = ui.Button(win, \"Maximize me !\", 35)\n\nfunction button:onClick()\n\twin:maximize()\nend\n\n-- shows the Window\nwin:show()\n\n-- update user interface\nrepeat\n\tui.update()\nuntil not win.visible",
+            "__kind": "method",
+            "__returns": "This function returns no value."
+        },
+        "visible": {
+            "__access": "read/write",
+            "__description": "<br>Get or set the window visibility on screen, a <strong style=\"color:#ae81ff\">true</strong> value means that the window is shown, a <strong style=\"color:#ae81ff\">false</strong> value means that the window is hidden.<article class=\"message is-info\" style=\"margin-left: 15%; margin-right: 15%\"><div class=\"message-body\">The window.visible property is also affected by the <a href=\"./Window-show.html\">Window:show()</a> and <a href=\"./Window-hide.html\">Window:hide()</a> methods.</div></article>",
+            "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+            "__kind": "property",
+            "__tinydesc": "Control whether the window appears onscreen",
+            "__name": "visible",
+            "__example": "local ui = require \"ui\"\n\n-- create a simple window \nlocal win = ui.Window(\"Window.visible sample\", 320, 200)\nlocal button = ui.Button(win, \"Click to hide window\")\n\nlocal can_exit = false\n\n-- hides the window and shows it again after 1 sec\nfunction button:onClick()\n\twin.visible = false\n\tsleep(1000)\n\twin.visible = true\nend\n\nui.run(win):wait()",
+            "__filename": "Window-visible.html"
+        },
+        "monitor": {
+            "__access": "readonly",
+            "__description": "<br>Retrieves the characteristics of the monitor on which the window is located, as a <span style=\"color: #B1D928\">table</span> containing the following fields :<ul><li><code>\"name\"</code> : a <code>string</code> representing the display name</li><li><code>\"width\"</code> : the monitor physical width as a <code>number</code></li><li><code>\"height\"</code> : the monitor physical height as a <code>number</code></li><li><code>\"primary\"</code> : a <code>boolean</code> indicating if the monitor is the primary display</li></ul><p class=\"is-size-4 mt-6 mb-0\" style=\"color: #004080\">Example",
+            "__results": "<span style=\"color:#B1D928\">table</span>",
+            "__kind": "property",
+            "__tinydesc": "Get the monitor in which the window is located",
+            "__name": "monitor",
+            "__example": "local ui = require \"ui\"\n\n--- create a centered Window\nlocal win = ui.Window(\"Window.childs example\", 320, 200)\nwin:center()\n\n-- create 5 labels on this Window\nfor i = 1, 5 do\n    ui.Label(win, \"  Label\"..i..\"  \", 140, (i+28)*i).bgcolor = 0x606060\nend\n\nasync(function()\n    while true do\n        for widget in each(win.childs) do\n            widget.bgcolor = 0xFF0000\n            sleep(800)\n            widget.bgcolor = 0x606060\n        end\n    end\nend)\n\nui.run(win):wait()",
+            "__filename": "Window-monitor.html"
+        },
+        "minimize": {
+            "__description": "<br>Minimize the Window to the taskbar(events can no longer be fired).",
+            "__results": "<span>-</span>",
+            "__name": "minimize",
+            "__filename": "Window-minimize.html",
+            "__params": {},
+            "__tinydesc": "Minimize the Window to the taskbar",
+            "__example": "local ui = require \"ui\"\n\n-- create a simple window\nlocal win = ui.Window(\"Window:minimize() example\", \"fixed\", 150, 90)\nlocal button = ui.Button(win, \"Minimize me !\", 35)\n\nfunction button:onClick()\n\twin:minimize()\nend\n\n-- shows the Window\nwin:show()\n\n-- update user interface\nrepeat\n\tui.update()\nuntil not win.visible",
+            "__kind": "method",
+            "__returns": "This function returns no value."
+        },
+        "onMouseUp": {
+            "__description": "<br>This event is fired when the user releases a mouse button while beeing over the Window.",
+            "__results": "",
+            "__name": "onMouseUp",
+            "__filename": "Window-onMouseUp.html",
+            "__params": [
+                {
+                    "__description": "<p>A string indicating the button that has been released : <code>\"right\"</code>, <code>\"middle\"</code> or <code>\"left\"</code>.</p>",
+                    "__name": "button",
+                    "__optional": false,
+                    "__color": "EA6AC3"
+                },
+                {
+                    "__description": "<p>The horizontal position of the mouse in the Window area (zero means the left border of the widget).</p>",
+                    "__name": "x",
+                    "__optional": false,
+                    "__color": "ae81ff"
+                },
+                {
+                    "__description": "<p>The vertical position of the mouse in the Window area (zero means the top border of the widget).</p>",
+                    "__name": "y",
+                    "__optional": false,
+                    "__color": "ae81ff"
+                }
+            ],
+            "__tinydesc": "Event fired when the user releases a mouse button over the Window",
+            "__example": "local ui = require \"ui\"\n\n-- create a window\nlocal win = ui.Window(\"Window:onMouseUp() sample\", 400, 300)\nlocal label = ui.Label(win, \"Move the mouse over the Window, then press and release a mouse button!\")\nlabel:center()\n\n-- set a onMouseUp() event : display a status bar with the released mouse button and its position\nfunction win:onMouseUp(b, x, y)\n  win:status(\"Mouse button : \"..b, \"Mouse position : \"..x..\", \"..y)\nend\n\nui.run(win):wait()",
+            "__kind": "event",
+            "__returns": "The event returns no value."
+        },
+        "fontstyle": {
+            "__access": "read/write",
+            "__description": "<br>Get or set the window font style, a <span style=\"color: #B1D928\">table</span> value that contains the following keys/values :<ul><li><span style=\"color:#EA6AC3\">\"italic\"</span> : set to <span style=\"color:#ae81ff\">true</span> if the font is in <i>italic</i>.</li><li><span style=\"color:#EA6AC3\">\"underline\"</span> : set to <span style=\"color:#ae81ff\">true</span> if the font is <u>underlined</u>.</li><li><span style=\"color:#EA6AC3\">\"strike\"</span> : set to <span style=\"color:#ae81ff\">true</span> if the font is <strike>striked</strike>.</li><li><span style=\"color:#EA6AC3\">\"thin\"</span> : set to <span style=\"color:#ae81ff\">true</span> if the font is <span style=\"font-weight:light\">thin</span>.</li><li><span style=\"color:#EA6AC3\">\"bold\"</span> : set to <span style=\"color:#ae81ff\">true</span> if the font is <b style=\"font-weight:600\">bold</b>.</li><li><span style=\"color:#EA6AC3\">\"heavy\"</span> : set to <span style=\"color:#ae81ff\">true</span> if the font is <span style=\"font-family: Sans-serif;font-weight:999\">heavy</span>.</li></ul><article class=\"message is-warning\" style=\"margin-right:10%; margin-left:10%\"><div class=\"message-body\">By changing the font style of the window, you also change the font style of any newly created child controls.</div></article>",
+            "__results": "<span style=\"color:#B1D928\">table</span>",
+            "__kind": "property",
+            "__tinydesc": "Get/set the window font style",
+            "__name": "fontstyle",
+            "__example": "local ui = require \"ui\"\n\n-- create a simple window \nlocal win = ui.Window(\"Window.fontstyle sample\", 320, 200)\nwin.font = \"Times New Roman\"\nwin.fontstyle = { bold = true, italic = true }\n\nlocal label = ui.Label(win, \"Hello World in '\"..win.font..\"' font\")\nwin:show()\n\n-- update the user interface until the user closes the window\nrepeat\n\tui.update()\nuntil not win.visible",
+            "__filename": "Window-fontstyle.html"
+        }
     },
     "__kind": {
         "isdesktop": true,
