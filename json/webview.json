@@ -526,7 +526,7 @@
             "__filename": "Webview-constructor.html"
         },
         "enabled": {
-            "__results": "<span style=\"color:#ae81ff\">boolean</span",
+            "__results": "<span style=\"color:#ae81ff\">boolean</span>",
             "__access": "read/write",
             "__kind": "property",
             "__name": "enabled",
