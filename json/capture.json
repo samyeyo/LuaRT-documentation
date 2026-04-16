@@ -1,0 +1,524 @@
+{
+  "__name": "capture",
+  "__type": "module",
+  "__description": "The capture module provides camera live preview, snapshot, and video recording capabilities",
+  "__tinydesc": "Camera capture, live preview, snapshot and video recording",
+  "__color": "63f883",
+  "__kind": "module",
+  "__icon": "<span class=\"icon bd-link-icon mr-1\" style=\"font-size: 0.8em\"><i class=\"fas fa-video\" style=\"color:#1a6ea8; vertical-align: top\"></i></span>",
+
+  "devices": {
+    "__kind": "property",
+    "__name": "devices",
+    "__access": "readonly",
+    "__tinydesc": "Get the list of available video and audio capture devices",
+    "__description": "Returns a <code>table</code> listing all available capture devices on the system. The table contains two fields:<ul><li><code>video</code>: an array of <code>string</code> values, each being the name of an available video capture device (e.g. a webcam)</li><li><code>audio</code>: an array of <code>string</code> values, each being the name of an available audio capture device (e.g. a microphone)</li></ul>The device names returned here can be passed directly to the <a href=\"./Camera-constructor.html\"><i class=\"fas fa-camera\"></i> Camera</a> constructor to select a specific device.",
+    "__results": "<span style=\"color:#B1D928\">table</span>",
+    "__example": "--! luart-extensions\n\nimport capture\n\nprint(\"Available video devices:\")\nfor name in each(capture.devices.video) do\n    print(\"\\t${name}\")\nend\n\nprint(\"Available audio devices:\")\nfor name in each(capture.devices.audio) do\n    print(\"\\t${name}\")\nend",
+    "__filename": "devices.html"
+  },
+
+  "Camera": {
+    "__kind": "object",
+    "__type": "object",
+    "__name": "Camera",
+    "__filename": "Camera.html",
+    "__icon": "<span class=\"icon bd-link-icon mr-1\" style=\"font-size: 0.8em\"><i class=\"fas fa-camera\" style=\"font-size:1em; color :#2187E7\" style=\"color: #D0D0D0\"></i></span>",
+    "__description": "The Camera object manages a video capture device",
+    "__tinydesc": "Object for using video capture devices",
+    "constructor": {
+      "__kind": "method",
+      "__name": "constructor",
+      "__tinydesc": "Camera object constructor",
+      "__description": "The Camera constructor initializes a new camera capture session using the specified devices.<br>The constructor blocks until the first camera frame has been received, ensuring the Camera is ready to use immediately after construction.<article class=\"message is-warning is-small mt-6 mb-6\" style=\"margin-left: 10%; margin-right: 10%\"><div class=\"message-header mb-0\"><p><i class=\"fas fa-exclamation-triangle\"></i> Widget vs Object mode</p></div><div class=\"message-body mb-0 is-size-7\"><ul class=\"mt-0\"><li>Camera behaves differently depending on whether the <code>ui</code> module has been loaded <b>before</b> <code>capture</code>.</li><li>When <code>ui</code> is loaded first, Camera is a <b>widget</b> (available in the <code>ui</code> module), that renders a live preview inside a child window. It requires a parent widget and accepts position and size arguments.</li><li>When <code>ui</code> is <b>not</b> loaded, Camera is a plain <b>object</b> used for headless capture only (snapshot and recording). No preview window is created and no positional arguments are accepted.</li></ul></div></article><article class=\"message is-info is-small mt-6 mb-6\" style=\"margin-left: 10%; margin-right: 10%\"><div class=\"message-header mb-0\"><p><i class=\"fas fa-pencil\"></i> Notes</p></div><div class=\"message-body mb-0 is-size-7\"><ul class=\"mt-0\"><li>If no <code>devices</code> table is provided, the system default video and audio devices are used.</li><li>Raises an error if no video or audio device is found on the system.</li></ul></div></article>",
+      "__results": "<a href=\"./Camera.html\"><i class=\"fas fa-camera\"></i> Camera</a> | nil",
+      "__returns": "Returns a new <a href=\"./Camera.html\"><i class=\"fas fa-camera\"></i> Camera</a> instance, or raises an error if initialization fails.",
+      "__params": [
+        {
+          "__name": "devices",
+          "__description": "An optional <code>table</code> specifying which capture devices to use. It may contain:<ul><li><code>video</code>: the name of the video capture device as a <code>string</code> (from <code>capture.devices.video</code>)</li><li><code>audio</code>: the name of the audio capture device as a <code>string</code> (from <code>capture.devices.audio</code>)</li></ul>If omitted, the system default devices are used.",
+          "__optional": true,
+          "__color": "B1D928"
+        },
+        {
+          "__name": "parent",
+          "__description": "The parent widget. Required when using Camera as a widget (i.e. when the <code>ui</code> module is loaded first).",
+          "__optional": true,
+          "__color": "EA6AC3"
+        },
+        {
+          "__name": "x",
+          "__description": "Horizontal position of the Camera widget in pixels, relative to its parent. Defaults to <code>0</code>. Only used in widget mode.",
+          "__optional": true,
+          "__color": "ae81ff"
+        },
+        {
+          "__name": "y",
+          "__description": "Vertical position of the Camera widget in pixels, relative to its parent. Defaults to <code>0</code>. Only used in widget mode.",
+          "__optional": true,
+          "__color": "ae81ff"
+        },
+        {
+          "__name": "width",
+          "__description": "Width of the Camera widget in pixels. Defaults to <code>320</code>. Only used in widget mode.",
+          "__optional": true,
+          "__color": "ae81ff"
+        },
+        {
+          "__name": "height",
+          "__description": "Height of the Camera widget in pixels. Defaults to <code>240</code>. Only used in  widget mode.",
+          "__optional": true,
+          "__color": "ae81ff"
+        }
+      ],
+      "__example": "--! luart-extensions\n\nimport ui, capture\n\n-- Camera as a widget using the default devices\nlocal win = ui.Window(\"Camera Preview\", 640, 520)\nlocal cam = ui.Camera(win, 10, 10, 620, 460)\ncam.align = \"all\"\ncam.aspect = \"16x9\"\n\nawait win:showasync()",
+      "__filename": "Camera-constructor.html"
+    },
+
+    "snapshot": {
+      "__kind": "method",
+      "__name": "snapshot",
+      "__tinydesc": "Save a snapshot of the current camera frame to a file",
+      "__description": "Captures the most recently received camera frame and saves it to the specified file.<br>The output format is determined by the file extension. Supported formats are <code>.png</code>, <code>.jpg</code> / <code>.jpeg</code>, and <code>.bmp</code>.<article class=\"message is-warning is-small mt-6 mb-6\" style=\"margin-left: 10%; margin-right: 10%\"><div class=\"message-header mb-0\"><p><i class=\"fas fa-pencil\"></i> Notes</p></div><div class=\"message-body mb-0 is-size-7\"><ul class=\"mt-0\"><li>Returns <code>false</code> if no frame has been received yet or if the file cannot be written.</li><li>The Camera constructor already waits for the first frame, so a snapshot taken immediately after construction will succeed.</li></ul></div></article>",
+      "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+      "__returns": "Returns <code>true</code> if the snapshot was saved successfully, or <code>false</code> if an error occurred.",
+      "__params": [
+        {
+          "__name": "file",
+          "__description": "The destination file path as a <code>string</code> or a <a href=\"../sys/File.html\"><i class=\"fas fas fa-file\"></i> File</a>. The file extension determines the image format (<code>.png</code>, <code>.jpg</code>, <code>.bmp</code>).",
+          "__optional": false,
+          "__color": "EA6AC3"
+        }
+      ],
+      "__example": "--! luart-extensions\nimport capture\n\nlocal cam = capture.Camera()\n\nif cam:snapshot(\"photo.png\") then\n    print(\"Snapshot saved to photo.png\")\nelse\n    print(\"Failed to save snapshot\")\nend",
+      "__filename": "Camera-snapshot.html"
+    },
+
+    "aspect": {
+      "__kind": "property",
+      "__name": "aspect",
+      "__tinydesc": "Get or set the preview aspect ratio mode",
+      "__description": "Controls how the live camera preview is scaled inside the Camera widget. Accepted values are:<ul><li><code>\"stretch\"</code>: the camera image is stretched to fill the entire widget area, ignoring the original aspect ratio</li><li><code>\"4x3\"</code>: the image is letterboxed horizontally to preserve a 4:3 aspect ratio</li><li><code>\"16x9\"</code>: the image is letterboxed vertically to preserve a 16:9 aspect ratio</li></ul>",
+      "__results": "<span style=\"color:#EA6AC3\">string</span>",
+      "__example": "--! luart-extensions\nimport ui, capture\n\nlocal win = ui.Window(\"Camera\", \"fixed\", 640, 520)\nlocal cam = ui.Camera(win, 10, 10, 620, 460)\n\n-- Switch to 16:9 letterbox mode\ncam.aspect = \"16x9\"\nprint(\"Current aspect mode: \"..cam.aspect)\n\nawait win:showasync()",
+      "__filename": "Camera-aspect.html"
+    },
+
+    "recording": {
+      "__kind": "property",
+      "__name": "recording",
+      "__access": "readonly",
+      "__tinydesc": "Check whether the camera is currently recording",
+      "__description": "Returns <code>true</code> if a recording session is currently active, or <code>false</code> otherwise.<br>Use the <a href=\"./Camera-record.html\"><i class=\"fas fa-circle\"></i> record</a> property to start and stop recording.",
+      "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+      "__example": "--! luart-extensions\nimport capture\n\nlocal cam = capture.Camera()\n\nprint(\"Recording: \"..tostring(cam.recording))\n\ncam.record.start { file = \"output.mp4\" }\nprint(\"Recording: \"..tostring(cam.recording))\n\nsleep(5000)\n\ncam.record.stop()\nprint(\"Recording: \"..tostring(cam.recording))",
+      "__filename": "Camera-recording.html"
+    },
+
+    "record": {
+      "__kind": "property",
+      "__name": "record",
+      "__access": "readonly",
+      "__tinydesc": "Access recording controls (start and stop)",
+      "__description": "Returns a <code>table</code> containing two functions to control video recording:<ul><li><code>record.start(options)</code>: starts recording to a file. The <code>options</code> argument is a <code>table</code> with the following fields:<ul><li><code>file</code> (<b>required</b>): the destination file path as a <code>string</code>. The extension determines the container format: <code>.mp4</code>, <code>.wmv</code>, or <code>.avi</code></li><li><code>format</code> (<i>optional</i>): the video encoding quality as a <code>string</code>, one of <code>\"Auto\"</code>, <code>\"VGA\"</code>, <code>\"HD720p\"</code> (default), <code>\"HD1080p\"</code>, <code>\"UHD2k\"</code>, <code>\"UHD4k\"</code></li><li><code>video</code> (<i>optional</i>): the video bitrate preset as a <code>string</code>, one of <code>\"low\"</code> (1 Mbps), <code>\"medium\"</code> (2 Mbps), <code>\"high\"</code> (5 Mbps, default), <code>\"ultra\"</code> (10 Mbps)</li><li><code>audio</code> (<i>optional</i>): the audio bitrate preset as a <code>string</code>, one of <code>\"low\"</code> (64 kbps), <code>\"medium\"</code> (128 kbps, default), <code>\"high\"</code> (192 kbps), <code>\"ultra\"</code> (256 kbps)</li></ul></li><li><code>record.stop()</code>: stops the current recording session. Has no effect if no recording is active.</li></ul><article class=\"message is-warning is-small mt-6 mb-6\" style=\"margin-left: 10%; margin-right: 10%\"><div class=\"message-header mb-0\"><p><i class=\"fas fa-pencil\"></i> Notes</p></div><div class=\"message-body mb-0 is-size-7\"><ul class=\"mt-0\"><li>Calling <code>record.start()</code> while already recording will automatically stop the previous session before starting a new one.</li><li>Audio is always recorded in stereo at 44100 Hz sample rate.</li><li>Raises an error if the <code>file</code> field is missing or the file extension is not supported.</li></ul></div></article>",
+      "__results": "<span style=\"color:#B1D928\">table</span>",
+      "__example": "--! luart-extensions\nimport capture\n\nlocal cam = capture.Camera()\n\n-- Start recording an MP4 at 1080p with high video bitrate\ncam.record.start {\n    file   = \"output.mp4\",\n    format = \"HD1080p\",\n    video  = \"high\",\n    audio  = \"medium\"\n}\n\nprint(\"Recording 5sec...\")\nsleep(5000)\n\ncam.record.stop()\nprint(\"Recording stopped\")",
+      "__filename": "Camera-record.html"
+    },
+
+    "border": {
+      "__kind": "property",
+      "__name": "border",
+      "__tinydesc": "Get or set the Camera widget border visibility (widget only)",
+      "__description": "<article class=\"message is-warning is-small mt-0 mb-6\" style=\"margin-left: 10%; margin-right: 10%\"><div class=\"message-header mb-0\"><p><i class=\"fas fa-exclamation-triangle\"></i> widget only</p></div><div class=\"message-body mb-0 is-size-7\">This property is only available when the <code>ui</code> module is loaded <b>before</b> <code>capture</code> and Camera is used as a widget. Accessing it in object mode will raise an error.</div></article>Controls whether the Camera widget displays a border.<br>Returns <code>true</code> if the widget border is visible, <code>false</code> otherwise. Set to <code>true</code> to show the border or <code>false</code> to hide it.",
+      "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+      "__example": "--! luart-extensions\nimport ui, capture\n\nlocal win = ui.Window(\"Camera\", \"fixed\", 640, 520)\nlocal cam = ui.Camera(win, 10, 10, 620, 460)\n\n-- Hide the widget border\ncam.border = false\n\nawait win:showasync()",
+      "__filename": "Camera-border.html"
+    },
+
+    "x": {
+      "__kind": "property",
+      "__name": "x",
+      "__access": "read/write",
+      "__tinydesc": "Get or set the Camera widget horizontal position (widget only)",
+      "__description": "<article class=\"message is-warning is-small mt-0 mb-6\" style=\"margin-left: 10%; margin-right: 10%\"><div class=\"message-header mb-0\"><p><i class=\"fas fa-exclamation-triangle\"></i> widget only</p></div><div class=\"message-body mb-0 is-size-7\">This property is only available when the <code>ui</code> module is loaded <b>before</b> <code>capture</code> and Camera is used as a widget. Accessing it in object mode will raise an error.</div></article>Get or set the Camera widget horizontal position. The horizontal position starts from <span style=\"color:#ae81ff\">0</span> (left side of the parent widget) and increases to the right.",
+      "__results": "<span style=\"color:#ae81ff\">number</span>",
+      "__example": "--! luart-extensions\nimport ui, capture\n\nlocal win = ui.Window(\"Camera.x sample\", \"fixed\", 640, 520)\nlocal cam = ui.Camera(win, 10, 10, 300, 240)\n\n-- Move Camera to the right\ncam.x = 200\n\nawait win:showasync()",
+      "__filename": "Camera-x.html"
+    },
+
+    "y": {
+      "__kind": "property",
+      "__name": "y",
+      "__access": "read/write",
+      "__tinydesc": "Get or set the Camera widget vertical position (widget only)",
+      "__description": "<article class=\"message is-warning is-small mt-0 mb-6\" style=\"margin-left: 10%; margin-right: 10%\"><div class=\"message-header mb-0\"><p><i class=\"fas fa-exclamation-triangle\"></i> widget only</p></div><div class=\"message-body mb-0 is-size-7\">This property is only available when the <code>ui</code> module is loaded <b>before</b> <code>capture</code> and Camera is used as a widget. Accessing it in object mode will raise an error.</div></article>Get or set the Camera widget vertical position. The vertical position starts from <span style=\"color:#ae81ff\">0</span> (top side of the parent widget) and increases downward.",
+      "__results": "<span style=\"color:#ae81ff\">number</span>",
+      "__example": "--! luart-extensions\nimport ui, capture\n\nlocal win = ui.Window(\"Camera.y sample\", \"fixed\", 640, 520)\nlocal cam = ui.Camera(win, 10, 10, 300, 240)\n\n-- Move Camera down\ncam.y = 100\n\nawait win:showasync()",
+      "__filename": "Camera-y.html"
+    },
+
+    "width": {
+      "__kind": "property",
+      "__name": "width",
+      "__access": "read/write",
+      "__tinydesc": "Get or set the Camera widget width (widget only)",
+      "__description": "<article class=\"message is-warning is-small mt-0 mb-6\" style=\"margin-left: 10%; margin-right: 10%\"><div class=\"message-header mb-0\"><p><i class=\"fas fa-exclamation-triangle\"></i> widget only</p></div><div class=\"message-body mb-0 is-size-7\">This property is only available when the <code>ui</code> module is loaded <b>before</b> <code>capture</code> and Camera is used as a widget. Accessing it in object mode will raise an error.</div></article>Get or set the Camera widget width. The width starts from <span style=\"color:#ae81ff\">0</span> (left side of the Camera) and increases to the right.",
+      "__results": "<span style=\"color:#ae81ff\">number</span>",
+      "__example": "--! luart-extensions\nimport ui, capture\n\nlocal win = ui.Window(\"Camera.width sample\", \"fixed\", 640, 520)\nlocal cam = ui.Camera(win, 10, 10, 300, 240)\n\nprint(\"Camera width: \"..cam.width)\n\nawait win:showasync()",
+      "__filename": "Camera-width.html"
+    },
+
+    "height": {
+      "__kind": "property",
+      "__name": "height",
+      "__access": "read/write",
+      "__tinydesc": "Get or set the Camera widget height (widget only)",
+      "__description": "<article class=\"message is-warning is-small mt-0 mb-6\" style=\"margin-left: 10%; margin-right: 10%\"><div class=\"message-header mb-0\"><p><i class=\"fas fa-exclamation-triangle\"></i> widget only</p></div><div class=\"message-body mb-0 is-size-7\">This property is only available when the <code>ui</code> module is loaded <b>before</b> <code>capture</code> and Camera is used as a widget. Accessing it in object mode will raise an error.</div></article>Get or set the Camera widget height. The height starts from <span style=\"color:#ae81ff\">0</span> (top side of the Camera) and increases downward.",
+      "__results": "<span style=\"color:#ae81ff\">number</span>",
+      "__example": "--! luart-extensions\nimport ui, capture\n\nlocal win = ui.Window(\"Camera.height sample\", \"fixed\", 640, 520)\nlocal cam = ui.Camera(win, 10, 10, 300, 240)\n\nprint(\"Camera height: \"..cam.height)\n\nawait win:showasync()",
+      "__filename": "Camera-height.html"
+    },
+
+    "parent": {
+      "__kind": "property",
+      "__name": "parent",
+      "__access": "readonly",
+      "__tinydesc": "Get the Camera widget's parent widget (widget only)",
+      "__description": "<article class=\"message is-warning is-small mt-0 mb-6\" style=\"margin-left: 10%; margin-right: 10%\"><div class=\"message-header mb-0\"><p><i class=\"fas fa-exclamation-triangle\"></i> widget only</p></div><div class=\"message-body mb-0 is-size-7\">This property is only available when the <code>ui</code> module is loaded <b>before</b> <code>capture</code> and Camera is used as a widget. Accessing it in object mode will raise an error.</div></article>Get the parent widget that owns the Camera widget.",
+      "__results": "<a href=\"./Window.html\"><i class=\"far fa-window-maximize\" style=\"color:#2187E7\"></i> Window</a> | <a href=\"./Panel.html\"><i class=\"fas fa-expand\" style=\"color:#2187E7\"></i> Panel</a> | <a href=\"./Groupbox.html\"><i class=\"far fa-square\" style=\"color:#2187E7\"></i> Groupbox</a>",
+      "__example": "--! luart-extensions\nimport ui, capture\n\nlocal win = ui.Window(\"Camera.parent sample\", \"fixed\", 640, 520)\nlocal cam = ui.Camera(win, 10, 10, 620, 460)\n\nprint(\"Camera parent is a \"..type(cam.parent))\n\nawait win:showasync()",
+      "__filename": "Camera-parent.html"
+    },
+
+    "visible": {
+      "__kind": "property",
+      "__name": "visible",
+      "__access": "read/write",
+      "__tinydesc": "Controls whether the Camera widget appears on screen (widget only)",
+      "__description": "<article class=\"message is-warning is-small mt-0 mb-6\" style=\"margin-left: 10%; margin-right: 10%\"><div class=\"message-header mb-0\"><p><i class=\"fas fa-exclamation-triangle\"></i> widget only</p></div><div class=\"message-body mb-0 is-size-7\">This property is only available when the <code>ui</code> module is loaded <b>before</b> <code>capture</code> and Camera is used as a widget. Accessing it in object mode will raise an error.</div></article>Get or set the Camera widget visibility. A <code>true</code> value means the Camera is shown; <code>false</code> means it is hidden.<br>This property is also affected by the <a href=\"./Camera-show.html\">Camera:show()</a> and <a href=\"./Camera-hide.html\">Camera:hide()</a> methods.",
+      "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+      "__example": "--! luart-extensions\nimport ui, capture\n\nlocal win = ui.Window(\"Camera.visible sample\", \"fixed\", 640, 520)\nlocal cam = ui.Camera(win, 10, 10, 620, 460)\n\n-- Toggle Camera visibility\ncam.visible = false\nsleep(2000)\ncam.visible = true\n\nawait win:showasync()",
+      "__filename": "Camera-visible.html"
+    },
+
+    "enabled": {
+      "__kind": "property",
+      "__name": "enabled",
+      "__access": "read/write",
+      "__tinydesc": "Controls whether the Camera widget responds to events (widget only)",
+      "__description": "<article class=\"message is-warning is-small mt-0 mb-6\" style=\"margin-left: 10%; margin-right: 10%\"><div class=\"message-header mb-0\"><p><i class=\"fas fa-exclamation-triangle\"></i> widget only</p></div><div class=\"message-body mb-0 is-size-7\">This property is only available when the <code>ui</code> module is loaded <b>before</b> <code>capture</code> and Camera is used as a widget. Accessing it in object mode will raise an error.</div></article>Get or set the Camera widget's ability to respond to mouse and other events. When set to <code>false</code>, the Camera is disabled and its events will no longer be fired.",
+      "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+      "__example": "--! luart-extensions\nimport ui, capture\n\nlocal win = ui.Window(\"Camera.enabled sample\", \"fixed\", 640, 520)\nlocal cam = ui.Camera(win, 10, 10, 620, 460)\n\nwin:showasync()\n\n-- Disable Camera\ncam.enabled = false\n\nsleep(3000)\n\n-- Enable Camera\ncam.enabled = true\n\nwaitall()",
+      "__filename": "Camera-enabled.html"
+    },
+
+    "align": {
+      "__kind": "property",
+      "__name": "align",
+      "__access": "read/write",
+      "__tinydesc": "Align the Camera widget relative to its parent (widget only)",
+      "__description": "<article class=\"message is-warning is-small mt-0 mb-6\" style=\"margin-left: 10%; margin-right: 10%\"><div class=\"message-header mb-0\"><p><i class=\"fas fa-exclamation-triangle\"></i> widget only</p></div><div class=\"message-body mb-0 is-size-7\">This property is only available when the <code>ui</code> module is loaded <b>before</b> <code>capture</code> and Camera is used as a widget. Accessing it in object mode will raise an error.</div></article>Get or set the Camera widget alignment relative to its parent. The alignment persists even if the parent is resized.<br>Accepted values are:<ul><li><code>\"all\"</code>: covers the entire parent client area</li><li><code>\"bottom\"</code>: aligned along the bottom border, preserving height</li><li><code>\"top\"</code>: aligned along the top border, preserving height</li><li><code>\"right\"</code>: aligned along the right border, preserving width</li><li><code>\"left\"</code>: aligned along the left border, preserving width</li></ul>",
+      "__results": "<span style=\"color:#EA6AC3\">string</span>",
+      "__example": "--! luart-extensions\nimport ui, capture\n\nlocal win = ui.Window(\"Camera.align sample\", \"fixed\", 640, 520)\nlocal cam = ui.Camera(win, 0, 0, 640, 460)\n\n-- Fill the entire parent window\ncam.align = \"all\"\n\nawait win:showasync()",
+      "__filename": "Camera-align.html"
+    },
+
+    "cursor": {
+      "__kind": "property",
+      "__name": "cursor",
+      "__access": "read/write",
+      "__tinydesc": "Get or set the mouse cursor when hovering the Camera widget (widget only)",
+      "__description": "<article class=\"message is-warning is-small mt-0 mb-6\" style=\"margin-left: 10%; margin-right: 10%\"><div class=\"message-header mb-0\"><p><i class=\"fas fa-exclamation-triangle\"></i> widget only</p></div><div class=\"message-body mb-0 is-size-7\">This property is only available when the <code>ui</code> module is loaded <b>before</b> <code>capture</code> and Camera is used as a widget. Accessing it in object mode will raise an error.</div></article>Get or set the mouse cursor image as it hovers over the Camera widget. Accepted values are: <code>\"arrow\"</code>, <code>\"cross\"</code>, <code>\"working\"</code>, <code>\"hand\"</code>, <code>\"help\"</code>, <code>\"ibeam\"</code>, <code>\"forbidden\"</code>, <code>\"cardinal\"</code>, <code>\"horizontal\"</code>, <code>\"vertical\"</code>, <code>\"leftdiagonal\"</code>, <code>\"rightdiagonal\"</code>, <code>\"up\"</code>, <code>\"wait\"</code>, <code>\"none\"</code> or <code>nil</code>.",
+      "__results": "<span style=\"color:#EA6AC3\">string</span>",
+      "__example": "--! luart-extensions\nimport ui, capture\n\nlocal win = ui.Window(\"Camera.cursor sample\", \"fixed\", 640, 520)\nlocal cam = ui.Camera(win, 10, 10, 620, 460)\n\n-- Show a crosshair cursor over the Camera preview\ncam.cursor = \"cross\"\n\nawait win:showasync()",
+      "__filename": "Camera-cursor.html"
+    },
+
+    "tooltip": {
+      "__kind": "property",
+      "__name": "tooltip",
+      "__access": "read/write",
+      "__tinydesc": "Get or set the Camera widget tooltip text (widget only)",
+      "__description": "<article class=\"message is-warning is-small mt-0 mb-6\" style=\"margin-left: 10%; margin-right: 10%\"><div class=\"message-header mb-0\"><p><i class=\"fas fa-exclamation-triangle\"></i> widget only</p></div><div class=\"message-body mb-0 is-size-7\">This property is only available when the <code>ui</code> module is loaded <b>before</b> <code>capture</code> and Camera is used as a widget. Accessing it in object mode will raise an error.</div></article>Get or set the tooltip text that appears when the user moves the mouse over the Camera widget, as a <code>string</code>.<br>Set to an empty string to remove the tooltip.",
+      "__results": "<span style=\"color:#EA6AC3\">string</span>",
+      "__example": "--! luart-extensions\nimport ui, capture\n\nlocal win = ui.Window(\"Camera.tooltip sample\", \"fixed\", 640, 520)\nlocal cam = ui.Camera(win, 10, 10, 620, 460)\n\ncam.tooltip = \"Live camera preview\"\n\nawait win:showasync()",
+      "__filename": "Camera-tooltip.html"
+    },
+
+    "allowdrop": {
+      "__kind": "property",
+      "__name": "allowdrop",
+      "__access": "read/write",
+      "__tinydesc": "Controls whether the Camera widget is a drag and drop target (widget only)",
+      "__description": "<article class=\"message is-warning is-small mt-0 mb-6\" style=\"margin-left: 10%; margin-right: 10%\"><div class=\"message-header mb-0\"><p><i class=\"fas fa-exclamation-triangle\"></i> widget only</p></div><div class=\"message-body mb-0 is-size-7\">This property is only available when the <code>ui</code> module is loaded <b>before</b> <code>capture</code> and Camera is used as a widget. Accessing it in object mode will raise an error.</div></article>Get or set the Camera widget's ability to be used as the target of a drag-and-drop operation. When set to <code>true</code>, the <a href=\"./Camera-onDrop.html\">Camera:onDrop()</a> event will be fired when content is dropped on the widget.",
+      "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+      "__example": "--! luart-extensions\nimport ui, capture\n\nlocal win = ui.Window(\"Camera.allowdrop sample\", \"fixed\", 640, 520)\nlocal cam = ui.Camera(win, 10, 10, 620, 460)\n\ncam.allowdrop = true\n\nfunction cam:onDrop(kind, content)\n    ui.info(\"Dropped: \"..kind)\nend\n\nawait win:showasync()",
+      "__filename": "Camera-allowdrop.html"
+    },
+
+    "show": {
+      "__kind": "method",
+      "__name": "show",
+      "__tinydesc": "Show and activate the Camera widget (widget only)",
+      "__description": "<article class=\"message is-warning is-small mt-0 mb-6\" style=\"margin-left: 10%; margin-right: 10%\"><div class=\"message-header mb-0\"><p><i class=\"fas fa-exclamation-triangle\"></i> widget only</p></div><div class=\"message-body mb-0 is-size-7\">This method is only available when the <code>ui</code> module is loaded <b>before</b> <code>capture</code> and Camera is used as a widget. Accessing it in object mode will raise an error.</div></article>Show and activate the Camera widget. Events can be fired once the widget is shown.",
+      "__returns": "This method returns no value.",
+      "__results": "<span>-</span>",
+      "__params": {},
+      "__example": "--! luart-extensions\nimport ui, capture\n\nlocal win = ui.Window(\"Camera:show() sample\", \"fixed\", 640, 520)\nlocal cam = ui.Camera(win, 10, 10, 620, 460)\n\ncam:hide()\nsleep(2000)\ncam:show()\n\nawait win:showasync()",
+      "__filename": "Camera-show.html"
+    },
+
+    "hide": {
+      "__kind": "method",
+      "__name": "hide",
+      "__tinydesc": "Hide and deactivate the Camera widget (widget only)",
+      "__description": "<article class=\"message is-warning is-small mt-0 mb-6\" style=\"margin-left: 10%; margin-right: 10%\"><div class=\"message-header mb-0\"><p><i class=\"fas fa-exclamation-triangle\"></i> widget only</p></div><div class=\"message-body mb-0 is-size-7\">This method is only available when the <code>ui</code> module is loaded <b>before</b> <code>capture</code> and Camera is used as a widget. Accessing it in object mode will raise an error.</div></article>Hide and deactivate the Camera widget. Events can no longer be fired while the widget is hidden.",
+      "__returns": "This method returns no value.",
+      "__results": "<span>-</span>",
+      "__params": {},
+      "__example": "--! luart-extensions\n\nimport ui, capture\n\nlocal win = ui.Window(\"Camera:hide() sample\", \"fixed\", 640, 520)\nlocal cam = ui.Camera(win, 10, 10, 620, 460)\n\nwin:showasync()\n\nsleep(3000)\ncam:hide()\n\nwaitall()",
+      "__filename": "Camera-hide.html"
+    },
+
+    "center": {
+      "__kind": "method",
+      "__name": "center",
+      "__tinydesc": "Center the Camera widget on its parent (widget only)",
+      "__description": "<article class=\"message is-warning is-small mt-0 mb-6\" style=\"margin-left: 10%; margin-right: 10%\"><div class=\"message-header mb-0\"><p><i class=\"fas fa-exclamation-triangle\"></i> widget only</p></div><div class=\"message-body mb-0 is-size-7\">This method is only available when the <code>ui</code> module is loaded <b>before</b> <code>capture</code> and Camera is used as a widget. Accessing it in object mode will raise an error.</div></article>Centers the Camera widget on its parent widget.",
+      "__returns": "This method returns no value.",
+      "__results": "<span>-</span>",
+      "__params": {},
+      "__example": "--! luart-extensions\nimport ui, capture\n\nlocal win = ui.Window(\"Camera:center() sample\", \"fixed\", 640, 520)\nlocal cam = ui.Camera(win, 0, 0, 320, 240)\n\ncam:center()\n\nawait win:showasync()",
+      "__filename": "Camera-center.html"
+    },
+
+    "tofront": {
+      "__kind": "method",
+      "__name": "tofront",
+      "__tinydesc": "Bring the Camera widget in front of other widgets (widget only)",
+      "__description": "<article class=\"message is-warning is-small mt-0 mb-6\" style=\"margin-left: 10%; margin-right: 10%\"><div class=\"message-header mb-0\"><p><i class=\"fas fa-exclamation-triangle\"></i> widget only</p></div><div class=\"message-body mb-0 is-size-7\">This method is only available when the <code>ui</code> module is loaded <b>before</b> <code>capture</code> and Camera is used as a widget. Accessing it in object mode will raise an error.</div></article>Brings the Camera widget in front of all other widgets, or in front of the specified widget.",
+      "__returns": "This method returns no value.",
+      "__results": "<span>-</span>",
+      "__params": [
+        {
+          "__name": "widget",
+          "__description": "<p>An optional widget above which the Camera will be placed.</p>",
+          "__optional": true,
+          "__color": "606060"
+        }
+      ],
+      "__example": "--! luart-extensions\nimport ui, capture\n\nlocal win = ui.Window(\"Camera:toback() sample\", \"fixed\", 640, 520)\nlocal cam = ui.Camera(win, 10, 20, 620, 460)\nlocal lbl = ui.Label(win, capture.devices.video[1] or error(\"No Webcam detected\"))\n\ncam:tofront()\n\nawait win:showasync()",
+      "__filename": "Camera-tofront.html"
+    },
+
+    "toback": {
+      "__kind": "method",
+      "__name": "toback",
+      "__tinydesc": "Put the Camera widget behind other widgets (widget only)",
+      "__description": "<article class=\"message is-warning is-small mt-0 mb-6\" style=\"margin-left: 10%; margin-right: 10%\"><div class=\"message-header mb-0\"><p><i class=\"fas fa-exclamation-triangle\"></i> widget only</p></div><div class=\"message-body mb-0 is-size-7\">This method is only available when the <code>ui</code> module is loaded <b>before</b> <code>capture</code> and Camera is used as a widget. Accessing it in object mode will raise an error.</div></article>Puts the Camera widget behind all other widgets, or behind the specified widget.",
+      "__returns": "This method returns no value.",
+      "__results": "<span>-</span>",
+      "__params": [
+        {
+          "__name": "widget",
+          "__description": "<p>An optional widget below which the Camera will be placed.</p>",
+          "__optional": true,
+          "__color": "606060"
+        }
+      ],
+      "__example": "--! luart-extensions\nimport ui, capture\n\nlocal win = ui.Window(\"Camera:toback() sample\", \"fixed\", 640, 520)\nlocal cam = ui.Camera(win, 10, 34, 620, 460)\nlocal lbl = ui.Label(win, capture.devices.video[1] or \"No Webcam detected\")\n\nwin:showasync()\n\nlbl.fontsize = 18\nlbl.y = cam.y\ncam:toback()\n\nwaitall()",
+      "__filename": "Camera-toback.html"
+    },
+
+    "onCreate": {
+      "__kind": "event",
+      "__name": "onCreate",
+      "__tinydesc": "Event fired when the Camera widget has just been created (widget only)",
+      "__description": "<article class=\"message is-warning is-small mt-0 mb-6\" style=\"margin-left: 10%; margin-right: 10%\"><div class=\"message-header mb-0\"><p><i class=\"fas fa-exclamation-triangle\"></i> widget only</p></div><div class=\"message-body mb-0 is-size-7\">This event is only available when the <code>ui</code> module is loaded <b>before</b> <code>capture</code> and Camera is used as a widget.</div></article>This event is fired when the Camera widget has just been created, right after the constructor returns. It is a good place to initialize widget properties.",
+      "__returns": "The event returns no value.",
+      "__results": "",
+      "__params": {},
+      "__example": "--! luart-extensions\nimport ui, capture\n\nlocal win = ui.Window(\"Camera:onCreate() sample\", \"fixed\", 640, 520)\nlocal cam = ui.Camera(win, 10, 10, 620, 460)\n\nfunction cam:onCreate()\n    self.tooltip = \"Camera ready\"\n    self.cursor = \"cross\"\nend\n\nawait win:showasync()",
+      "__filename": "Camera-onCreate.html"
+    },
+
+    "onShow": {
+      "__kind": "event",
+      "__name": "onShow",
+      "__tinydesc": "Event fired when the Camera widget is shown (widget only)",
+      "__description": "<article class=\"message is-warning is-small mt-0 mb-6\" style=\"margin-left: 10%; margin-right: 10%\"><div class=\"message-header mb-0\"><p><i class=\"fas fa-exclamation-triangle\"></i> widget only</p></div><div class=\"message-body mb-0 is-size-7\">This event is only available when the <code>ui</code> module is loaded <b>before</b> <code>capture</code> and Camera is used as a widget.</div></article>This event is fired when the Camera widget is shown, either via <a href=\"./Camera-show.html\">Camera:show()</a> or by setting the <a href=\"./Camera-visible.html\">Camera.visible</a> property to <code>true</code>.",
+      "__returns": "The event returns no value.",
+      "__results": "",
+      "__params": {},
+      "__example": "--! luart-extensions\nimport ui, capture\n\nlocal win = ui.Window(\"Camera:onShow() sample\", \"fixed\", 640, 520)\nlocal cam = ui.Camera(win, 10, 10, 620, 460)\n\nfunction cam:onShow()\n    print(\"Camera widget is now visible\")\nend\n\nawait win:showasync()",
+      "__filename": "Camera-onShow.html"
+    },
+
+    "onHide": {
+      "__kind": "event",
+      "__name": "onHide",
+      "__tinydesc": "Event fired when the Camera widget is hidden (widget only)",
+      "__description": "<article class=\"message is-warning is-small mt-0 mb-6\" style=\"margin-left: 10%; margin-right: 10%\"><div class=\"message-header mb-0\"><p><i class=\"fas fa-exclamation-triangle\"></i> widget only</p></div><div class=\"message-body mb-0 is-size-7\">This event is only available when the <code>ui</code> module is loaded <b>before</b> <code>capture</code> and Camera is used as a widget.</div></article>This event is fired when the Camera widget is hidden, either via <a href=\"./Camera-hide.html\">Camera:hide()</a> or by setting the <a href=\"./Camera-visible.html\">Camera.visible</a> property to <code>false</code>.",
+      "__returns": "The event returns no value.",
+      "__results": "",
+      "__params": {},
+      "__example": "--! luart-extensions\nimport ui, capture\n\nlocal win = ui.Window(\"Camera:onHide() sample\", \"fixed\", 640, 520)\nlocal cam = ui.Camera(win, 10, 10, 620, 460)\n\nfunction cam:onHide()\n    print(\"Camera widget is now hidden\")\nend\n\nawait win:showasync()",
+      "__filename": "Camera-onHide.html"
+    },
+
+    "onClick": {
+      "__kind": "event",
+      "__name": "onClick",
+      "__tinydesc": "Event fired when the user left-clicks on the Camera widget (widget only)",
+      "__description": "<article class=\"message is-warning is-small mt-0 mb-6\" style=\"margin-left: 10%; margin-right: 10%\"><div class=\"message-header mb-0\"><p><i class=\"fas fa-exclamation-triangle\"></i> widget only</p></div><div class=\"message-body mb-0 is-size-7\">This event is only available when the <code>ui</code> module is loaded <b>before</b> <code>capture</code> and Camera is used as a widget.</div></article>This event is fired when the user left-clicks on the Camera widget.",
+      "__returns": "The event returns no value.",
+      "__results": "",
+      "__params": {},
+      "__example": "--! luart-extensions\nimport ui, capture\n\nlocal win = ui.Window(\"Camera:onClick() sample\", \"fixed\", 640, 520)\nlocal cam = ui.Camera(win, 10, 10, 620, 460)\n\nfunction cam:onClick()\n    -- Take a snapshot on click\n    cam:snapshot(\"click_snapshot.png\")\n    print(\"Snapshot taken!\")\nend\n\nawait win:showasync()",
+      "__filename": "Camera-onClick.html"
+    },
+
+    "onContext": {
+      "__kind": "event",
+      "__name": "onContext",
+      "__tinydesc": "Event fired when the user right-clicks on the Camera widget (widget only)",
+      "__description": "<article class=\"message is-warning is-small mt-0 mb-6\" style=\"margin-left: 10%; margin-right: 10%\"><div class=\"message-header mb-0\"><p><i class=\"fas fa-exclamation-triangle\"></i> widget only</p></div><div class=\"message-body mb-0 is-size-7\">This event is only available when the <code>ui</code> module is loaded <b>before</b> <code>capture</code> and Camera is used as a widget.</div></article>This event is fired when the user right-clicks on the Camera widget.",
+      "__returns": "The event returns no value.",
+      "__results": "",
+      "__params": {},
+      "__example": "--! luart-extensions\nimport ui, capture\n\nlocal win = ui.Window(\"Camera:onContext() sample\", \"fixed\", 640, 520)\nlocal cam = ui.Camera(win, 10, 10, 620, 460)\n\nfunction cam:onContext()\n    print(\"Right-clicked on Camera\")\nend\n\nawait win:showasync()",
+      "__filename": "Camera-onContext.html"
+    },
+
+    "onHover": {
+      "__kind": "event",
+      "__name": "onHover",
+      "__tinydesc": "Event fired when the mouse moves over the Camera widget (widget only)",
+      "__description": "<article class=\"message is-warning is-small mt-0 mb-6\" style=\"margin-left: 10%; margin-right: 10%\"><div class=\"message-header mb-0\"><p><i class=\"fas fa-exclamation-triangle\"></i> widget only</p></div><div class=\"message-body mb-0 is-size-7\">This event is only available when the <code>ui</code> module is loaded <b>before</b> <code>capture</code> and Camera is used as a widget.</div></article>This event is fired when the user moves the mouse pointer over the Camera widget.",
+      "__returns": "The event returns no value.",
+      "__results": "",
+      "__params": [
+        {
+          "__name": "x",
+          "__description": "<p>The horizontal position of the mouse in the Camera widget area (zero means the left border).</p>",
+          "__optional": false,
+          "__color": "ae81ff"
+        },
+        {
+          "__name": "y",
+          "__description": "<p>The vertical position of the mouse in the Camera widget area (zero means the top border).</p>",
+          "__optional": false,
+          "__color": "ae81ff"
+        },
+        {
+          "__name": "buttons",
+          "__description": "<p>A <code>table</code> indicating which mouse buttons or special keys are pressed:<ul><li><code>\"left\"</code>: <code>true</code> if the left mouse button is pressed</li><li><code>\"right\"</code>: <code>true</code> if the right mouse button is pressed</li><li><code>\"middle\"</code>: <code>true</code> if the middle mouse button is pressed</li><li><code>\"control\"</code>: <code>true</code> if the CONTROL key is pressed</li><li><code>\"shift\"</code>: <code>true</code> if the SHIFT key is pressed</li></ul></p>",
+          "__optional": false,
+          "__color": "B1D928"
+        }
+      ],
+      "__example": "--! luart-extensions\nimport ui, capture\n\nlocal win = ui.Window(\"Camera:onHover() sample\", \"fixed\", 640, 520)\nlocal cam = ui.Camera(win, 10, 10, 620, 460)\n\nfunction cam:onHover(x, y, buttons)\n    win:status(\"Mouse at \"..x..\", \"..y)\nend\n\nawait win:showasync()",
+      "__filename": "Camera-onHover.html"
+    },
+
+    "onLeave": {
+      "__kind": "event",
+      "__name": "onLeave",
+      "__tinydesc": "Event fired when the mouse cursor leaves the Camera widget (widget only)",
+      "__description": "<article class=\"message is-warning is-small mt-0 mb-6\" style=\"margin-left: 10%; margin-right: 10%\"><div class=\"message-header mb-0\"><p><i class=\"fas fa-exclamation-triangle\"></i> widget only</p></div><div class=\"message-body mb-0 is-size-7\">This event is only available when the <code>ui</code> module is loaded <b>before</b> <code>capture</code> and Camera is used as a widget.</div></article>This event is fired when the mouse cursor leaves the Camera widget area.",
+      "__returns": "The event returns no value.",
+      "__results": "",
+      "__params": {},
+      "__example": "--! luart-extensions\nimport ui, capture\n\nlocal win = ui.Window(\"Camera:onLeave() sample\", \"fixed\", 640, 520)\nlocal cam = ui.Camera(win, 10, 10, 620, 460)\n\nfunction cam:onLeave()\n    print(\"Mouse left the Camera preview area\")\nend\n\nawait win:showasync()",
+      "__filename": "Camera-onLeave.html"
+    },
+
+    "onMouseDown": {
+      "__kind": "event",
+      "__name": "onMouseDown",
+      "__tinydesc": "Event fired when the user presses a mouse button over the Camera widget (widget only)",
+      "__description": "<article class=\"message is-warning is-small mt-0 mb-6\" style=\"margin-left: 10%; margin-right: 10%\"><div class=\"message-header mb-0\"><p><i class=\"fas fa-exclamation-triangle\"></i> widget only</p></div><div class=\"message-body mb-0 is-size-7\">This event is only available when the <code>ui</code> module is loaded <b>before</b> <code>capture</code> and Camera is used as a widget.</div></article>This event is fired when the user presses a mouse button while over the Camera widget.",
+      "__returns": "The event returns no value.",
+      "__results": "",
+      "__params": [
+        {
+          "__name": "button",
+          "__description": "<p>A <code>string</code> indicating which button was pressed: <code>\"left\"</code>, <code>\"right\"</code>, or <code>\"middle\"</code>.</p>",
+          "__optional": false,
+          "__color": "EA6AC3"
+        },
+        {
+          "__name": "x",
+          "__description": "<p>The horizontal position of the mouse in the Camera widget area (zero means the left border).</p>",
+          "__optional": false,
+          "__color": "ae81ff"
+        },
+        {
+          "__name": "y",
+          "__description": "<p>The vertical position of the mouse in the Camera widget area (zero means the top border).</p>",
+          "__optional": false,
+          "__color": "ae81ff"
+        }
+      ],
+      "__example": "--! luart-extensions\nimport ui, capture\n\nlocal win = ui.Window(\"Camera:onMouseDown() sample\", \"fixed\", 640, 520)\nlocal cam = ui.Camera(win, 10, 10, 620, 460)\n\nfunction cam:onMouseDown(button, x, y)\n    win:status(button..\" button pressed at \"..x..\", \"..y)\nend\n\nawait win:showasync()",
+      "__filename": "Camera-onMouseDown.html"
+    },
+
+    "onMouseUp": {
+      "__kind": "event",
+      "__name": "onMouseUp",
+      "__tinydesc": "Event fired when the user releases a mouse button over the Camera widget (widget only)",
+      "__description": "<article class=\"message is-warning is-small mt-0 mb-6\" style=\"margin-left: 10%; margin-right: 10%\"><div class=\"message-header mb-0\"><p><i class=\"fas fa-exclamation-triangle\"></i> widget only</p></div><div class=\"message-body mb-0 is-size-7\">This event is only available when the <code>ui</code> module is loaded <b>before</b> <code>capture</code> and Camera is used as a widget.</div></article>This event is fired when the user releases a mouse button while over the Camera widget.",
+      "__returns": "The event returns no value.",
+      "__results": "",
+      "__params": [
+        {
+          "__name": "button",
+          "__description": "<p>A <code>string</code> indicating which button was released: <code>\"left\"</code>, <code>\"right\"</code>, or <code>\"middle\"</code>.</p>",
+          "__optional": false,
+          "__color": "EA6AC3"
+        },
+        {
+          "__name": "x",
+          "__description": "<p>The horizontal position of the mouse in the Camera widget area (zero means the left border).</p>",
+          "__optional": false,
+          "__color": "ae81ff"
+        },
+        {
+          "__name": "y",
+          "__description": "<p>The vertical position of the mouse in the Camera widget area (zero means the top border).</p>",
+          "__optional": false,
+          "__color": "ae81ff"
+        }
+      ],
+      "__example": "--! luart-extensions\nimport ui, capture\n\nlocal win = ui.Window(\"Camera:onMouseUp() sample\", \"fixed\", 640, 520)\nlocal cam = ui.Camera(win, 10, 10, 620, 460)\n\nfunction cam:onMouseUp(button, x, y)\n    win:status(button..\" button released at \"..x..\", \"..y)\nend\n\nawait win:showasync()",
+      "__filename": "Camera-onMouseUp.html"
+    },
+
+    "onDrop": {
+      "__kind": "event",
+      "__name": "onDrop",
+      "__tinydesc": "Event fired when content is dropped on the Camera widget (widget only)",
+      "__description": "<article class=\"message is-warning is-small mt-0 mb-6\" style=\"margin-left: 10%; margin-right: 10%\"><div class=\"message-header mb-0\"><p><i class=\"fas fa-exclamation-triangle\"></i> widget only</p></div><div class=\"message-body mb-0 is-size-7\">This event is only available when the <code>ui</code> module is loaded <b>before</b> <code>capture</code> and Camera is used as a widget.</div></article>This event is fired when the user drops content onto the Camera widget. The <a href=\"./Camera-allowdrop.html\">Camera.allowdrop</a> property must be set to <code>true</code> for this event to fire.",
+      "__returns": "The event returns no value.",
+      "__results": "",
+      "__params": [
+        {
+          "__name": "kind",
+          "__description": "<p>A <code>string</code> representing the kind of content dropped: <code>\"text\"</code>, <code>\"files\"</code>, or <code>\"unknown\"</code>.</p>",
+          "__optional": false,
+          "__color": "EA6AC3"
+        },
+        {
+          "__name": "content",
+          "__description": "<p>The dropped content. Type depends on <code>kind</code>:<br></p><table class=\"table has-text-centered mt-3\"><thead><tr><th class=\"has-text-info\">kind</th><th class=\"has-text-info\">content</th></tr></thead><tbody><tr><td><code>\"text\"</code></td><td><code>string</code></td></tr><tr><td><code>\"files\"</code></td><td><code>table</code> (list of <a href=\"../sys/File.html\"><i class=\"fas fas fa-file\"></i> File</a> and <a href=\"../sys/Directory.html\"><i class=\"fas fa-folder\"></i> Directory</a>)</td></tr><tr><td><code>\"unknown\"</code></td><td><code>nil</code></td></tr></tbody></table>",
+          "__optional": false,
+          "__color": "B1D928"
+        }
+      ],
+      "__example": "--! luart-extensions\nimport ui, capture\n\nlocal win = ui.Window(\"Camera:onDrop() sample\", \"fixed\", 640, 520)\nlocal cam = ui.Camera(win, 10, 10, 620, 460)\n\ncam.allowdrop = true\n\nfunction cam:onDrop(kind, content)\n    ui.info(\"Dropped \"..kind..\" on Camera\")\nend\n\nawait win:showasync()",
+      "__filename": "Camera-onDrop.html"
+    }
+  }
+}
