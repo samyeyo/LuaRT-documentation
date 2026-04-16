@@ -1,623 +1,634 @@
 {
-    "__icon": "<span class=\"icon bd-link-icon mr-1\" style=\"font-size: 0.8em\"><i class=\"fab fa-edge\" style=\"color :#71e6b5\" ></i></span>",
-    "__type": "module",
-    "Webview": {
-        "opendevtools": {
-            "__returns": "This function returns no value.",
-            "__name": "opendevtools",
-            "__example": "local ui = require \"ui\"\nrequire \"webview\"\n\n-- create a simple window\nlocal win = ui.Window(\"Webview.opendevtools() sample\", 600, 300)\nlocal Webview = ui.Webview(win, { url = \"https://www.google.com\" })\nWebview.align = \"all\"\n\nfunction Webview:onReady()\n    -- Opens the Devtools window\n    Webview:opendevtools()\nend\n\n-- shows the window\nwin:show()\n\nwhile win.visible do\n    ui.update()\nend",
-            "__results": "<span>-</span>",
-            "__kind": "method",
-            "__params": {},
-            "__description": "<br>Show the Devtools window, a set of web development tools that appears next to the rendered webpage in the Webview. The DevTools window provides a powerful way to inspect and debug webpages and web apps.",
-            "__tinydesc": "Opens the Devtools window",
-            "__filename": "Webview-opendevtools.html"
+  "__icon": "<span class=\"icon bd-link-icon mr-1\" style=\"font-size: 0.8em\"><i class=\"fab fa-edge\" style=\"color :#71e6b5\" ></i></span>",
+  "__type": "module",
+  "Webview": {
+    "opendevtools": {
+      "__returns": "This function returns no value.",
+      "__name": "opendevtools",
+      "__example": "--! luart-extensions\nimport ui\nrequire \"webview\"\n\n-- create a simple window\nlocal win = ui.Window(\"Webview.opendevtools() sample\", 600, 300)\nlocal Webview = ui.Webview(win, { url = \"https://www.google.com\" })\nWebview.align = \"all\"\n\nfunction Webview:onReady()\n    -- Opens the Devtools window\n    Webview:opendevtools()\nend\n\n-- shows the window\nwin:show()\n\nwhile win.visible do\n    ui.update()\nend",
+      "__results": "<span>-</span>",
+      "__kind": "method",
+      "__params": {},
+      "__description": "<br>Show the Devtools window, a set of web development tools that appears next to the rendered webpage in the Webview. The DevTools window provides a powerful way to inspect and debug webpages and web apps.",
+      "__tinydesc": "Opens the Devtools window",
+      "__filename": "Webview-opendevtools.html"
+    },
+    "acceleratorkeys": {
+      "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+      "__access": "read/write",
+      "__kind": "property",
+      "__name": "acceleratorkeys",
+      "__description": "<br>Determines whether Webview-specific accelerator keys are enabled :</p><ul><li><code>Ctrl-F</code> and <code>F3</code> for Find on Page</li><li><code>Ctrl-P</code> for Print</li><li><code>Ctrl-R</code> and <code>F5</code> for Reload</li><li><code>Ctrl-Plus</code> and <code>Ctrl-Minus</code> for zooming</li><li><code>Ctrl-Shift-C</code> and <code>F12</code> for DevTools</li><li>Special keys for browser functions, such as Back, Forward, and Search</li></ul>Please note that accelerator keys related to movement and text editing are not disabled :<ul><li><code>Home</code>, <code>End</code>,<code>Page Up</code>, and <code>Page Down</code></li><li>Clipboard functions <code>Ctrl-X</code>, <code>Ctrl-C</code>, <code>Ctrl-V</code></li><li><code>Ctrl-A</code> for Select All</li><li><code>Ctrl-Z</code> for Undo</li></ul>",
+      "__example": "--! luart-extensions\nimport ui\nrequire \"webview\"\n\n-- create a simple window\nlocal win = ui.Window(\"Webview.acceleratorkeys sample\", 600, 300)\nlocal Webview = ui.Webview(win, { url = \"https://www.google.com\" })\nWebview.align = \"all\"\n\nfunction Webview:onReady()\n    -- Disable Webview accelerator-keys\n    Webview.acceleratorkeys = false\nend\n\nawait win:showasync()",
+      "__tinydesc": "Enable/disable the Webview-specific accelerator keys",
+      "__filename": "Webview-acceleratorkeys.html"
+    },
+    "goback": {
+      "__returns": "This function returns no value.",
+      "__name": "goback",
+      "__example": "--! luart-extensions\nimport ui\nrequire \"webview\"\n\n-- create a simple Webview \nlocal win = ui.Window(\"Webview:goback() sample\", 640, 480)\nlocal addressbar = ui.Entry(win, \"\", 24, 5, 592, 24)\nlocal prevBtn = ui.Button(win, \"\\xe2\\x87\\xa6\", 0, 3, 16, 16)\nprevBtn.font=\"Lucida Console\"\nprevBtn.fontsize = 12\nprevBtn.fontstyle = { bold = true }\nlocal nextBtn = ui.Button(win, \"\\xe2\\x87\\xa8\", 616, 3, 16, 16)\nnextBtn.font=\"Lucida Console\"\nnextBtn.fontsize = 12\nnextBtn.fontstyle = { bold = true }\nlocal Webview = ui.Webview(win, 0, 30, 640, 430)\n\nfunction prevBtn:onClick()\n    if Webview.cangoback then\n        Webview:goback()\n    end\nend\n\nfunction nextBtn:onClick()\n    if Webview.cangoforward then\n        Webview:goforward()\n    end\nend\n\nfunction addressbar:onSelect()\n    Webview.url = addressbar.text\nend\n\n-- Set current window title with the page title, once loaded\nfunction Webview:onLoaded()\n    win.title = Webview.title\n    addressbar.text = Webview.url\nend\n\nwin:show()\n\n-- update the user interface until the user closes the Webview\nrepeat\n    ui.update()\nuntil not win.visible",
+      "__results": "<span>-</span>",
+      "__kind": "method",
+      "__params": {},
+      "__description": "<br>Navigates to the previous web page.",
+      "__tinydesc": "Go to the previous web page",
+      "__filename": "Webview-goback.html"
+    },
+    "show": {
+      "__returns": "This function returns no value.",
+      "__name": "show",
+      "__example": "--! luart-extensions\nimport ui\nimport webview\n\n-- create a simple Webview \nlocal win = ui.Window(\"Webview.visible sample\", 640, 480)\nlocal Webview = ui.Webview(win, { url = \"https://www.google.com\" }, 0, 50, 640, 430)\n\nlocal button = ui.Button(win, \"Show the Webview widget\")\nbutton:center()\nbutton.y = 10\n\nawait win:showasync()\n\nfunction button:onClick()\n  Webview:show()\nend\n\nfunction Webview:onReady()\n  self:hide()\nend",
+      "__results": "<span>-</span>",
+      "__kind": "method",
+      "__params": {},
+      "__description": "<br>Show and activate the Webview (events can now be fired).",
+      "__tinydesc": "Shows the Webview",
+      "__filename": "Webview-show.html"
+    },
+    "hide": {
+      "__returns": "This function returns no value.",
+      "__name": "hide",
+      "__example": "--! luart-extensions\nimport ui\nimport webview\n\n-- create a simple Webview \nlocal win = ui.Window(\"Webview.hide() sample\", 640, 480)\nlocal Webview = ui.Webview(win, { url = \"https://www.google.com\" }, 0, 50, 640, 430)\n\nlocal button = ui.Button(win, \"Hide the Webview\")\nbutton:center()\nbutton.y = 10\n\nawait win:showasync()\n\nfunction button:onClick()\n  Webview:hide()\nend",
+      "__results": "<span>-</span>",
+      "__kind": "method",
+      "__params": {},
+      "__description": "<br>Hide the Webview (events are no longer fired).",
+      "__tinydesc": "Hides the Webview",
+      "__filename": "Webview-hide.html"
+    },
+    "hostfromfolder": {
+      "__returns": "This function returns <code>true</code> if the operation was successful or <code>false</code> otherwise.",
+      "__name": "hostfromfolder",
+      "__example": "local html = [[\n&lt!DOCTYPE html>\n&lthtml>\n\t&ltbody>\n\t\t&ltcenter style=\"margin-top:35%\">&lta href=\"https://www.myfolder.com/]]..sys.File(arg[0]).name..[[\">Local source code&lt/a>&lt/center>\n\t&lt/body>\n&lt/html>]]\n\nimport ui\nrequire \"webview\"\n\n-- create a simple Webview \nlocal win = ui.Window(\"Webview:hostfromfolder() sample\", 640, 480)\nlocal Webview = ui.Webview(win)\nWebview.align = \"all\"\n\n-- once ready, map a virtual hostname with the current local folder\n-- and load the html content from string\nfunction Webview:onReady()\n\tWebview:hostfromfolder(\"www.myfolder.com\", sys.currentdir)\n\tWebview:loadstring(html)\nend\n\n-- update the user interface until the user closes the Window\nawait win:showasync()",
+      "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+      "__kind": "method",
+      "__params": [
+        {
+          "__description": "<p>A string representing the virtual host name.</p>",
+          "__optional": false,
+          "__color": "EA6AC3",
+          "__name": "hostname"
         },
-        "acceleratorkeys": {
-            "__results": "<span style=\"color:#ae81ff\">boolean</span>",
-            "__access": "read/write",
-            "__kind": "property",
-            "__name": "acceleratorkeys",
-            "__description": "<br>Determines whether Webview-specific accelerator keys are enabled :</p><ul><li><code>Ctrl-F</code> and <code>F3</code> for Find on Page</li><li><code>Ctrl-P</code> for Print</li><li><code>Ctrl-R</code> and <code>F5</code> for Reload</li><li><code>Ctrl-Plus</code> and <code>Ctrl-Minus</code> for zooming</li><li><code>Ctrl-Shift-C</code> and <code>F12</code> for DevTools</li><li>Special keys for browser functions, such as Back, Forward, and Search</li></ul>Please note that accelerator keys related to movement and text editing are not disabled :<ul><li><code>Home</code>, <code>End</code>,<code>Page Up</code>, and <code>Page Down</code></li><li>Clipboard functions <code>Ctrl-X</code>, <code>Ctrl-C</code>, <code>Ctrl-V</code></li><li><code>Ctrl-A</code> for Select All</li><li><code>Ctrl-Z</code> for Undo</li></ul>",
-            "__example": "local ui = require \"ui\"\nrequire \"webview\"\n\n-- create a simple window\nlocal win = ui.Window(\"Webview.acceleratorkeys sample\", 600, 300)\nlocal Webview = ui.Webview(win, { url = \"https://www.google.com\" })\nWebview.align = \"all\"\n\nfunction Webview:onReady()\n    -- Disable Webview accelerator-keys\n    Webview.acceleratorkeys = false\nend\n\nui.run(win):wait()",
-            "__tinydesc": "Enable/disable the Webview-specific accelerator keys",
-            "__filename": "Webview-acceleratorkeys.html"
-        },
-        "goback": {
-            "__returns": "This function returns no value.",
-            "__name": "goback",
-            "__example": "local ui = require \"ui\"\nrequire \"webview\"\n\n-- create a simple Webview \nlocal win = ui.Window(\"Webview:goback() sample\", 640, 480)\nlocal addressbar = ui.Entry(win, \"\", 24, 5, 592, 24)\nlocal prevBtn = ui.Button(win, \"\\xe2\\x87\\xa6\", 0, 3, 16, 16)\nprevBtn.font=\"Lucida Console\"\nprevBtn.fontsize = 12\nprevBtn.fontstyle = { bold = true }\nlocal nextBtn = ui.Button(win, \"\\xe2\\x87\\xa8\", 616, 3, 16, 16)\nnextBtn.font=\"Lucida Console\"\nnextBtn.fontsize = 12\nnextBtn.fontstyle = { bold = true }\nlocal Webview = ui.Webview(win, 0, 30, 640, 430)\n\nfunction prevBtn:onClick()\n    if Webview.cangoback then\n        Webview:goback()\n    end\nend\n\nfunction nextBtn:onClick()\n    if Webview.cangoforward then\n        Webview:goforward()\n    end\nend\n\nfunction addressbar:onSelect()\n    Webview.url = addressbar.text\nend\n\n-- Set current window title with the page title, once loaded\nfunction Webview:onLoaded()\n    win.title = Webview.title\n    addressbar.text = Webview.url\nend\n\nwin:show()\n\n-- update the user interface until the user closes the Webview\nrepeat\n    ui.update()\nuntil not win.visible",
-            "__results": "<span>-</span>",
-            "__kind": "method",
-            "__params": {},
-            "__description": "<br>Navigates to the previous web page.",
-            "__tinydesc": "Go to the previous web page",
-            "__filename": "Webview-goback.html"
-        },
-        "show": {
-            "__returns": "This function returns no value.",
-            "__name": "show",
-            "__example": "local ui = require \"ui\"\nrequire \"webview\"\n\n-- create a simple Webview \nlocal win = ui.Window(\"Webview.visible sample\", 640, 480)\nlocal Webview = ui.Webview(win, { url = \"https://www.google.com\" }, 0, 50, 640, 430)\n\nlocal button = ui.Button(win, \"Show the Webview widget\")\nbutton:center()\nbutton.y = 10\n\nwin:show()\n\nfunction button:onClick()\n  Webview:show()\nend\n\nfunction Webview:onReady()\n  self:hide()\nend\n\nwhile win.visible do\n  ui.update()\nend",
-            "__results": "<span>-</span>",
-            "__kind": "method",
-            "__params": {},
-            "__description": "<br>Show and activate the Webview (events can now be fired).",
-            "__tinydesc": "Shows the Webview",
-            "__filename": "Webview-show.html"
-        },
-        "hostfromfolder": {
-            "__returns": "This function returns <code>true</code> if the operation was successful or <code>false</code> otherwise.",
-            "__name": "hostfromfolder",
-            "__example": "local html = [[\n&lt!DOCTYPE html>\n&lthtml>\n\t&ltbody>\n\t\t&ltcenter style=\"margin-top:35%\">&lta href=\"https://www.myfolder.com/]]..sys.File(arg[0]).name..[[\">Local source code&lt/a>&lt/center>\n\t&lt/body>\n&lt/html>]]\n\nlocal ui = require \"ui\"\nrequire \"webview\"\n\n-- create a simple Webview \nlocal win = ui.Window(\"Webview:hostfromfolder() sample\", 640, 480)\nlocal Webview = ui.Webview(win)\nWebview.align = \"all\"\n\n-- once ready, map a virtual hostname with the current local folder\n-- and load the html content from string\nfunction Webview:onReady()\n\tWebview:hostfromfolder(\"www.myfolder.com\", sys.currentdir)\n\tWebview:loadstring(html)\nend\n\n-- update the user interface until the user closes the Window\nui.run(win):wait()",
-            "__results": "<span style=\"color:#ae81ff\">boolean</span>",
-            "__kind": "method",
-            "__params": [
-                {
-                    "__description": "<p>A string representing the virtual host name.</p>",
-                    "__optional": false,
-                    "__color": "EA6AC3",
-                    "__name": "hostname"
-                },
-                {
-                    "__description": "<p>A string representing the path to the local folder to be mapped to.</p>",
-                    "__optional": false,
-                    "__color": "EA6AC3",
-                    "__name": "folder"
-                }
-            ],
-            "__description": "<br>Maps a virtual host name to a folder path. Any resource using this host name will be loaded from that local folder.",
-            "__tinydesc": "Maps a virtual hostname to a local folder",
-            "__filename": "Webview-hostfromfolder.html"
-        },
-        "parent": {
-            "__results": " <a href=\"../ui/Window.html\"><i class=\"far fa-window-maximize\" style=\"color :#2187E7\"></i> Window</a> | <a href=\"../ui/Groupbox.html\"><i class=\"far fa-square\" style=\"color :#2187E7\"></i> Groupbox</a> | <a href=\"../ui/TabItem.html\"><i class=\"fas fa-bookmark\" style=\"color :#2187E7\"></i><sup><i class=\"fas fa-tag\" style=\"margin-left: -0.3em; margin-top: 0.4em\"></i></sup>TabItem</a>",
-            "__access": "readonly",
-            "__kind": "property",
-            "__name": "parent",
-            "__description": "<br>Get the parent object that owns the Webview.",
-            "__example": "local ui = require \"ui\"\nrequire \"webview\"\n\n-- create a simple Webview \nlocal win = ui.Window(\"Webview.parent sample\", 640, 480)\nlocal Webview = ui.Webview(win, { url = \"https://luart.org\" }, 0, 50, 640, 500)\n\nlocal button = ui.Button(win, \"Click to show Webview.parent\")\nbutton:center()\nbutton.y = 10\n\nfunction button:onClick()\n  ui.info(\"Webview's parent is \"..tostring(Webview.parent))\nend\n\nwin:show()\n\n-- update the user interface until the user closes the Window\nrepeat\n  ui.update()\nuntil not win.visible",
-            "__tinydesc": "Get the Webview's parent widget",
-            "__filename": "Webview-parent.html"
-        },
-        "__description": "The Webview widget displays and interacts with web content using Webview2",
-        "height": {
-            "__results": "<span style=\"color:#ae81ff\">number</span>",
-            "__access": "read/write",
-            "__kind": "property",
-            "__name": "height",
-            "__description": "<br>Get or set the height of the Webview area. The height starts from <span style=\"color:#ae81ff\">0</span> (top side of the Webview) and increase to the bottom direction.",
-            "__example": "local ui = require \"ui\"\nrequire \"webview\"\n\n-- create a simple window\nlocal win = ui.Window(\"Webview.x sample\", 600, 400)\nlocal Webview = ui.Webview(win, { url = \"https://www.google.com/?mobile\" })\nWebview.align = \"all\"\n\n-- shows the window\nwin:show()\n\n-- update user interface and increase Webview horizontal position\nrepeat\n  ui.update()\n  Webview.height = Webview.height - 1\nuntil not win.visible or (Webview.height &lt; 100)",
-            "__tinydesc": "Get/set the Webview's height",
-            "__filename": "Webview-height.html"
-        },
-        "__filename": "Webview.html",
-        "cangoforward": {
-            "__results": "<span style=\"color:#ae81ff\">boolean</span>",
-            "__access": "readonly",
-            "__kind": "property",
-            "__name": "cangoforward",
-            "__description": "<br>Checks if the Webview can go to the next web page, returning <code>true</code> or <code>false</code> otherwise.<p class=\"is-size-4 mt-6 mb-0\" style=\"color: #004080\">Example",
-            "__example": "local ui = require \"ui\"\nrequire \"webview\"\n\n-- create a simple Webview \nlocal win = ui.Window(\"Webview.cangoforward sample\", 640, 480)\nlocal addressbar = ui.Entry(win, \"\", 24, 5, 592, 24)\nlocal prevBtn = ui.Button(win, \"\\xe2\\x87\\xa6\", 0, 3, 16, 16)\nprevBtn.font=\"Lucida Console\"\nprevBtn.fontsize = 12\nprevBtn.fontstyle = { bold = true }\nlocal nextBtn = ui.Button(win, \"\\xe2\\x87\\xa8\", 616, 3, 16, 16)\nnextBtn.font=\"Lucida Console\"\nnextBtn.fontsize = 12\nnextBtn.fontstyle = { bold = true }\nlocal Webview = ui.Webview(win, 0, 30, 640, 430)\n\nfunction prevBtn:onClick()\n    if Webview.cangoback then\n        Webview:goback()\n    end\nend\n\nfunction nextBtn:onClick()\n    if Webview.cangoforward then\n        Webview:goforward()\n    end\nend\n\nfunction addressbar:onSelect()\n    Webview.url = addressbar.text\nend\n\n-- Set current window title with the page title, once loaded\nfunction Webview:onLoaded()\n    win.title = Webview.title\n    addressbar.text = Webview.url\nend\n\nwin:show()\n\n-- update the user interface until the user closes the Webview\nrepeat\n    ui.update()\nuntil not win.visible",
-            "__tinydesc": "Check if the Webview can go to the next page",
-            "__filename": "Webview-cangoforward.html"
-        },
-        "zoom": {
-            "__results": "<span style=\"color:#ae81ff\">number</span>",
-            "__access": "read/write",
-            "__kind": "property",
-            "__name": "zoom",
-            "__description": "<br>Get or set the Webview horizontal position. The horizontal position start from <span style=\"color:#ae81ff\">0</span> (left side of the parent widget) and increase to the right (right side of the parent widget).",
-            "__example": "local ui = require \"ui\"\nrequire \"webview\"\n\n-- create a simple window\nlocal win = ui.Window(\"Webview.zoom sample\", 600, 300)\nlocal Webview = ui.Webview(win, { url = \"https://www.google.com\" })\nWebview.align = \"all\"\n\n-- shows the window\nwin:show()\n\n-- Zoom in once page is loaded\nfunction Webview:onLoaded()\n    for i=1, 2, 0.01 do\n    Webview.zoom = i\n    ui.update()\n    end\nend\n\nwhile win.visible do\n    ui.update()\nend",
-            "__tinydesc": "Get/set the current Webview zoom level",
-            "__filename": "Webview-zoom.html"
-        },
-        "print": {
-            "__returns": "<i>If the function is called without settings argument :</i>\n            <p>This function returns a <code>boolean</code> value (the call will block current execution, with the print settings dialog).</p>\n\n            <i>If the function is called with settings argument :</i>\n            <p>This function will return a <a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\"></i> Task</a> instance.\n            Once finished, this Task will return :\n            <ul>\n              <li>A <code>boolean</code> indicating if the operation succeeded</li>\n              <li>In case of error, a <code>string</code> representing the error message is returned as a second return value</li>\n            </ul></p>",
-            "__name": "print",
-            "__example": "local ui = require \"ui\"\nrequire \"webview\"\n\nlocal win = ui.Window(\"Chrome Devtools Protocol example\", \"fixed\", 640, 480)\nlocal wv = ui.Webview(win, 0, 0, 640, 440)\nlocal button = ui.Button(win, \"Print the web page !\")\nbutton:center()\nbutton.y = 446\nwin:center()\n\nfunction button:onClick()\n    wv:print()\nend\n\nfunction wv:onReady()\n    self:loadstring([[\n    &lt;!DOCTYPE html&gt;\n    &lt;html&gt;\n    &lt;body&gt;\n    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper\n    &lt;/body&gt;\n    &lt;/html&gt;]])\nend\n\nui.run(win):wait()",
-            "__results": "<a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\"></i> Task</a>|<span style=\"color:#ae81ff\">boolean</span>",
-            "__kind": "method",
-            "__params": [
-                {
-                    "__description": "An optional <code>table</code> that may contain any of the following keys :<ul><li><code>\"orientation\"</code>: contains a <code>string</code> value to indicate page orientation among <code>\"landscape\"</code> and <code>\"portrait\"</code> (the default).</li><li><code>\"pageHeight\"</code>: contains a <code>number</code> value to indicate page height in inches.</li><li><code>\"pageWidth\"</code>: contains a <code>number</code> value to indicate page width in inches.</li><li><code>\"header\"</code>: contains a <code>boolean</code> value to indicate if the header is printed (defaulting to <code>true</code>).</li><li><code>\"background\"</code>: contains a <code>boolean</code> value to indicate if the the background is printed (defaulting to <code>false</code>).</li><li><code>\"colorMode\"</code>: contains a <code>string</code> value to indicate color mode, <code>\"grayscale\"</code> or <code>\"color\"</code> (the default).</li><li><code>\"copies\"</code>: contains a <code>number</code> value to indicate the number of copies to be printed (defaulting to <code>1</code>).</li><li><code>\"scaleFactor\"</code>: contains a <code>number</code> value to indicate the scale factor (defaulting to <code>1</code>).</li></ul>If this parameter is not provided, a dialog will show for the user to configure the print settings.",
-                    "__optional": true,
-                    "__color": "B1D928",
-                    "__name": "settings"
-                }
-            ],
-            "__description": "<br>Prints the current top-level document in the WebView using optional programmatically specified print settings to a printer.<p class=\"is-size-4 mb-1 mt-6\" style=\"color: #004080\">Parameters",
-            "__tinydesc": "Prints the current web page",
-            "__filename": "Webview-print.html"
-        },
-        "onFullScreenChange": {
-            "__results": "",
-            "__returns": "The event returns no value.\n            </div>\n\t      </div>\n      </div>\n    </div>\n  </section>  \n  <footer class=\"footer\">\n    <div class=\"content has-text-centered\">",
-            "__params": [
-                {
-                    "__description": "<p>A <code>boolean</code> value that indicates whether the application should enable fullscreen mode or not.</p>",
-                    "__optional": false,
-                    "__color": "ae81ff",
-                    "__name": "isfullscreen"
-                }
-            ],
-            "__name": "onFullScreenChange",
-            "__description": "<br>This event is fired when the current web page asks to enable or disable fullscreen mode.<br>",
-            "__kind": "event",
-            "__tinydesc": "Event fired when the web page ask for a fullscreen switch.",
-            "__filename": "Webview-onFullScreenChange.html"
-        },
-        "title": {
-            "__results": "<span style=\"color:#EA6AC3\">string</span>",
-            "__access": "readonly",
-            "__kind": "property",
-            "__name": "title",
-            "__description": "<br>Get the current web page title, represented as a <strong style=\"color:#EA6AC3\">string</strong>.<br><p class=\"is-size-4 mt-6 mb-0\" style=\"color: #004080\">Example",
-            "__example": "local ui = require \"ui\"\nrequire \"webview\"\n\n-- create a simple Webview \nlocal win = ui.Window(\"Webview.title sample\", 640, 480)\nlocal addressbar = ui.Entry(win, \"\", 0, 6, 640, 24)\nlocal Webview = ui.Webview(win, 0, 30, 640, 430)\n\nfunction addressbar:onSelect()\n  Webview.url = addressbar.text\nend\n\n-- Set current window title with the page title, once loaded\nfunction Webview:onLoaded()\n  win.title = Webview.title\nend\n\nwin:show()\n\n-- update the user interface until the user closes the Window\nrepeat\n  ui.update()\nuntil not win.visible",
-            "__tinydesc": "Get the title of the current web page",
-            "__filename": "Webview-title.html"
-        },
-        "__results": "",
-        "onThemeChange": {
-            "__returns": "The event returns no value.",
-            "__name": "onThemeChange",
-            "__example": "local ui = require \"ui\"\nrequire \"webview\"\n\n-- create a simple Webview \nlocal win = ui.Window(\"Webview.onThemeChange sample\", 640, 480)\nlocal webview = ui.Webview(win, { url = \"https://www.google.com\" })\nwebview.align = \"all\"\n\nfunction webview:onThemeChange(isDark)\n    self:reload()\nend\n\nui.run(win):wait()",
-            "__results": "",
-            "__kind": "event",
-            "__params": [
-                {
-                    "__description": "<p>A <code>boolean</code> value that indicates if the new theme is <code>\"dark\"</code> or not.</p>",
-                    "__optional": false,
-                    "__color": "ae81ff",
-                    "__name": "isDark"
-                }
-            ],
-            "__description": "<br>This event is fired when Windows theme has changed.",
-            "__tinydesc": "Event fired when the Windows theme has changed",
-            "__filename": "Webview-onThemeChange.html"
-        },
-        "onShow": {
-            "__results": "",
-            "__returns": "The event returns no value.\n            </div>\n\t      </div>\n      </div>\n    </div>\n  </section>  \n  <footer class=\"footer\">\n    <div class=\"content has-text-centered\">",
-            "__params": {},
-            "__name": "onShow",
-            "__description": "<br>This event is fired when the Webview is shown (with a call to <a href=\"./Webview-show.html\">Webview:show()</a> or setting the <a href=\"./Webview-visible.html\">Webview.visible</a> property to <span style=\"color:#ae81ff\">true</span>).",
-            "__kind": "event",
-            "__tinydesc": "Event fired when Webview is shown",
-            "__filename": "Webview-onShow.html"
-        },
-        "__tinydesc": "Object representation of the Microsoft Edge Webview2 component",
-        "__kind": "object",
-        "__type": "object",
-        "onLoaded": {
-            "__returns": "The event returns no value.",
-            "__name": "onLoaded",
-            "__example": "local ui = require \"ui\"\nrequire \"webview\"\n\n-- creates a simple window\nlocal win = ui.Window(\"Webview:onLoaded() event sample\", 320, 200)\nlocal Webview = ui.Webview(win, { url = \"https://www.luart.org\" }, 150, 70)\n\n-- Use the Webview:onLoaded() event to set the window title\nfunction wv:onLoaded(success, status) \n    win.title = wv.title\nend\n\nwin:show()\n\n-- update the ui\nwhile win.visible do\n\tui.update()\nend",
-            "__results": "",
-            "__kind": "event",
-            "__params": [
-                {
-                    "__description": "<p>A <code>boolean</code> value that indicates whether page loading was successful or not.</p>",
-                    "__optional": false,
-                    "__color": "ae81ff",
-                    "__name": "success"
-                },
-                {
-                    "__description": "<p>An <code>integer</code> value indicating the HTTP status code.</p>",
-                    "__optional": false,
-                    "__color": "ae81ff",
-                    "__name": "httpstatus"
-                }
-            ],
-            "__description": "<br>This event is fired when the Webview widget has just finished to load the current web page.<br><p class=\"is-size-4 mb-1 mt-6\" style=\"color: #004080\">Parameters",
-            "__tinydesc": "Event fired when Webview widget has loaded the web page.",
-            "__filename": "Webview-onLoaded.html"
-        },
-        "reload": {
-            "__returns": "This function returns no value.",
-            "__name": "reload",
-            "__example": "local ui = require \"ui\"\nrequire \"webview\"\n\n-- Uses the weatherwidget.org free widget\n\nlocal win = ui.Window(\"Webview:reload() sample\", \"fixed\", 436, 276)\nwin.bgcolor = 0xFFFFFF\nlocal Webview = ui.Webview(win, { url = \"https://www.google.com\" }, 0, 50, 436, 246)\n\nlocal button = ui.Button(win, \"Reload the page\")\nbutton:center()\nbutton.y = 10\n\nfunction button:onClick()\n  Webview:reload()              \nend\n\nfunction Webview:onReady()\n  self:loadstring([[&lt;div id=\"ww_71ccc3feed2c8\" v='1.3' loc='id' a='{\"t\":\"horizontal\",\"lang\":\"en\",\"sl_lpl\":1,\"ids\":[],\"font\":\"Arial\",\"sl_ics\":\"one_a\",\"sl_sot\":\"celsius\",\"cl_bkg\":\"image\",\"cl_font\":\"#FFFFFF\",\"cl_cloud\":\"#FFFFFF\",\"cl_persp\":\"#81D4FA\",\"cl_sun\":\"#FFC107\",\"cl_moon\":\"#FFC107\",\"cl_thund\":\"#FF5722\"}'&gt;Weather Data Source: &lt;a href=\"https://wetterlang.de/paris_wetter_30_tage/\" id=\"ww_71ccc3feed2c8_u\" target=\"_blank\"&gt;Paris 30 tage wetter&lt;/a&gt;&lt;/div&gt;&lt;script async src=\"https://app1.weatherwidget.org/js/?id=ww_71ccc3feed2c8\"&gt;&lt;/script&gt;]])\nend\n\nwin:show()\n\n-- update the user interface until the user closes the Window\nrepeat\n    ui.update()\nuntil not win.visible",
-            "__results": "<span>-</span>",
-            "__kind": "method",
-            "__params": {},
-            "__description": "<br>Reload the current web page.",
-            "__tinydesc": "Reloads the current page",
-            "__filename": "Webview-reload.html"
-        },
-        "stop": {
-            "__results": "<span>-</span>",
-            "__returns": "This function returns no value.           \n            </div>\n\t      </div>\n      </div>\n    </div>\n  </section>  \n  <footer class=\"footer\">\n    <div class=\"content has-text-centered\">",
-            "__params": {},
-            "__name": "stop",
-            "__description": "<br>Stop the current web page loading.",
-            "__kind": "method",
-            "__tinydesc": "Stops web page loading",
-            "__filename": "Webview-stop.html"
-        },
-        "useragent": {
-            "__results": "<span style=\"color:#EA6AC3\">string</span>",
-            "__access": "read/write",
-            "__kind": "property",
-            "__name": "useragent",
-            "__description": "<br>Get or set the current Webview User agent string.",
-            "__example": "local ui = require \"ui\"\nrequire \"webview\"\n\nlocal win = ui.Window(\"Webview.useragent property example\", \"fixed\", 320, 200)\nlocal wv = ui.Webview(win, 0, 0, 320, 160)\n\nlocal btn = ui.Button(win, \"Click to change Webview.useragent\")\nbtn:center()\nbtn.y = 166\n\nfunction btn:onClick()\n    wv.useragent = \"Mozilla/5.0 (Macintosh; Intel Mac OS X x.y; rv:42.0) Gecko/20100101 Firefox/42.0\"\n    wv:reload()\nend\n\nfunction wv:onReady()\n    wv.statusbar = false\n    wv.devtools = false\n    wv.contextmenu = false\n    wv.acceleratorkeys = false\n    -- load an HTML page that will display the current userAgent\n    wv:loadstring([[\n    &lth1&gtYour User Agent&lt/h1&gt\n    &ltp id=\"userAgent\"&gt&lt/p&gt\n    &ltscript&gt\n        document.geElementById(\"userAgent\").textContent = navigator.userAgent;\n        &lt/script&gt\n    ]])\nend\n\nui.run(win):wait()",
-            "__tinydesc": "Get/set the current User Agent string",
-            "__filename": "Webview-useragent.html"
-        },
-        "__name": "Webview",
-        "restorehost": {
-            "__returns": "This function returns <code>true</code> if the operation was successful or <code>false</code> otherwise.",
-            "__name": "restorehost",
-            "__example": "local html = [[\n&lt!DOCTYPE html>\n&lthtml>\n\t&ltbody>\n\t\t&ltcenter style=\"margin-top:35%\">&lta href=\"https://www.google.com/]]..sys.File(arg[0]).name..[[\">https://www.google.com/]]..sys.File(arg[1]).name..[[&lt/a>&lt/center>&lt/a>&lt/center>\n\t&lt/body>\n&lt/html>]]\n\nlocal ui = require \"ui\"\nrequire \"webview\"\n\n-- create a simple Webview \nlocal win = ui.Window(\"Webview:restorehost() sample\", 640, 480)\nlocal Webview = ui.Webview(win, 0, 50, 640, 412)\n\nlocal button = ui.Button(win, \"Map virtual host 'www.google.com' to '\"..sys.File(arg[0]).path..\"'\")\nbutton:center()\nbutton.y = 10\nlocal mapped = false\nwin:status(\"Using real 'www.google.com' real hostname\")\n\nfunction button:onClick()\n\tbutton.text = mapped and \"Restore virtual host 'www.google.com'\" or \"Map virtual host 'www.google.com' to '\"..sys.File(arg[0]).path..\"'\"\n\tbutton:center()\n\tbutton.y = 10\n\tif mapped then\n\t\twin:status(\"Host name 'www.google.com' have been restored\")\n\t\tWebview:restorehost(\"www.google.com\")\n\telse\n\t\tWebview:hostfromfolder(\"www.google.com\", sys.File(arg[0]).path)\n\t\twin:status(\"Host name 'www.google.com' mapped to local '\"..sys.File(arg[0]).path..\"' folder\")\n\t\tWebview:loadstring(html)\t\t\n\tend\n\tmapped = not mapped\nend\n\n-- once ready, map www.google.com to the current local folder\n-- and load the html content from string\nfunction Webview:onReady()\n\tWebview:loadstring(html)\nend\n\n-- update the user interface until the user closes the Window\nui.run(win):wait()",
-            "__results": "<span style=\"color:#ae81ff\">boolean</span>",
-            "__kind": "method",
-            "__params": [
-                {
-                    "__description": "<p>A string representing the virtual host name that have been previously mapped with a call to <a href=\"Webview-hostfromfolder.html\">Webview:hostfromfolder()</a>.</p>",
-                    "__optional": false,
-                    "__color": "EA6AC3",
-                    "__name": "hostname"
-                }
-            ],
-            "__description": "<br>Restore a previously mapped virtual host name (the previously mapped local folder won't be used anymore).",
-            "__tinydesc": "Restores a previously mapped virtual hostname",
-            "__filename": "Webview-restorehost.html"
-        },
-        "onMessage": {
-            "__returns": "The event returns no value.",
-            "__name": "onMessage",
-            "__example": "local ui = require \"ui\"\nrequire \"webview\"\n\n-- creates a simple window\nlocal win = ui.Window(\"Webview:onResult() event sample\", 320, 200)\nlocal Webview = ui.Webview(win, 150, 70)\n\n-- Don't show the Webview widget\nWebview:hide()\n\n-- Webview:onResult() event to center the Webview widget\nfunction Webview:onResult(result)\n\tui.info(result, \"Result of Math.PI in Javascript\")\n  win:hide()\nend\n\nfunction Webview:onReady()\n   self:eval(\"Math.PI\")\nend\n\nwin:show()\n\n-- update the ui\nwhile win.visible do\n\tui.update()\nend",
-            "__results": "",
-            "__kind": "event",
-            "__params": [
-                {
-                    "__description": "<p>A <code>string</code> value representing the message received, encoded in JSON format.</p>",
-                    "__optional": false,
-                    "__color": "EA6AC3",
-                    "__name": "msg"
-                }
-            ],
-            "__description": "This event is fired when the Webview widget has received a message from the web page.",
-            "__tinydesc": "Event fired when Webview widget has received a JSON message from the web page.",
-            "__filename": "Webview-onMessage.html"
-        },
-        "devtools": {
-            "__results": "<span style=\"color:#ae81ff\">boolean</span>",
-            "__access": "readonly",
-            "__kind": "property",
-            "__name": "devtools",
-            "__description": "<br>Enable/disable the Webview developper tools, by setting this property to <code>true</code> or <code>false</code> respectively.This property permits or prevents the user to open the Devtools window with the context menu or with the <code>Ctrl+Shift+I</code> shortcut.<article class=\"message is-warning\" style=\"margin-left: 15%; margin-right: 15%\"><div class=\"message-body\">Even if this property is set to <code>false</code>, it is still possible to show the Devtools window by calling the <a href=\"Webview-opendevtools.html\">Webview.opendevtools()</a> method.</div></article><p class=\"is-size-4 mt-6 mb-0\" style=\"color: #004080\">Example",
-            "__example": "local ui = require \"ui\"\nrequire \"webview\"\n\n-- create a simple window\nlocal win = ui.Window(\"Webview.devtools property sample\", 600, 300)\nlocal Webview = ui.Webview(win, { url = \"https://www.google.com\" })\nWebview.align = \"all\"\n\nfunction Webview:onReady()\n\t-- Disable the Devtools\n\tWebview.devtools = false\nend\n\n-- shows the window\nwin:show()\n\nwhile win.visible do\n\tui.update()\nend",
-            "__tinydesc": "Enable/disable the Webview developper tools",
-            "__filename": "Webview-devtools.html"
-        },
-        "cangoback": {
-            "__results": "<span style=\"color:#ae81ff\">boolean</span>",
-            "__access": "readonly",
-            "__kind": "property",
-            "__name": "cangoback",
-            "__description": "<br>Checks if the Webview can go to the previous web page, returning <code>true</code> or <code>false</code> otherwise.<p class=\"is-size-4 mt-6 mb-0\" style=\"color: #004080\">Example",
-            "__example": "local ui = require \"ui\"\nrequire \"webview\"\n\n-- create a simple Webview \nlocal win = ui.Window(\"Webview.cangoback sample\", 640, 480)\nlocal addressbar = ui.Entry(win, \"\", 24, 5, 592, 24)\nlocal prevBtn = ui.Button(win, \"\\xe2\\x87\\xa6\", 0, 3, 16, 16)\nprevBtn.font=\"Lucida Console\"\nprevBtn.fontsize = 12\nprevBtn.fontstyle = { bold = true }\nlocal nextBtn = ui.Button(win, \"\\xe2\\x87\\xa8\", 616, 3, 16, 16)\nnextBtn.font=\"Lucida Console\"\nnextBtn.fontsize = 12\nnextBtn.fontstyle = { bold = true }\nlocal Webview = ui.Webview(win, 0, 30, 640, 430)\n\nfunction prevBtn:onClick()\n    if Webview.cangoback then\n        Webview:goback()\n    end\nend\n\nfunction nextBtn:onClick()\n    if Webview.cangoforward then\n        Webview:goforward()\n    end\nend\n\nfunction addressbar:onSelect()\n    Webview.url = addressbar.text\nend\n\n-- Set current window title with the page title, once loaded\nfunction Webview:onLoaded()\n    win.title = Webview.title\n    addressbar.text = Webview.url\nend\n\nwin:show()\n\n-- update the user interface until the user closes the Webview\nrepeat\n    ui.update()\nuntil not win.visible",
-            "__tinydesc": "Check if the Webview can go to the previous page",
-            "__filename": "Webview-cangoback.html"
-        },
-        "onReady": {
-            "__returns": "The event returns no value.\n            </div>\n\t      </div>\n      </div>\n    </div>\n  </section>  \n  <footer class=\"footer\">\n    <div class=\"content has-text-centered\">",
-            "__name": "onReady",
-            "__example": "local ui = require \"ui\"\nrequire \"webview\"\n\n-- create a fixed Window\nlocal win = ui.Window(\"Webview:align() sample\", \"fixed\", 320, 200)\n\n-- create a Webview without an URL\nlocal wv = ui.Webview(win, 25, 25)\n\n-- align the Webview in all of its parent area \nwv.align = \"all\"\n\n-- Once the webview widget is ready, navigate to the specified URL\nfunction wv:onReady()\n    wv.url = \"https://wwww.luart.org\"\nend\n\n-- shows the Window\nwin:show()\n\nwhile win.visible do\n  ui.update()\nend",
-            "__results": "",
-            "__kind": "event",
-            "__params": {},
-            "__description": "<br>This event is fired when the Webview have been initialized and is ready to load a web page.<br>This event allows in particular to make adjustments before the first web page is displayed (for example, deactivating the status bar, deactivating developer tools, adding JavaScript scripts, etc.)",
-            "__tinydesc": "Event fired when Webview is initialized and ready to be used",
-            "__filename": "Webview-onReady.html"
-        },
-        "contextmenu": {
-            "__results": "<span style=\"color:#ae81ff\">boolean</span>",
-            "__access": "readonly",
-            "__kind": "property",
-            "__name": "contextmenu",
-            "__description": "<br>Enable/disable the Webview status bar, by setting this property to <code>true</code> or <code>false</code> respectively.When enabled, the user can click anywhere in the Webview widget to show the default context menu.",
-            "__example": "local ui = require \"ui\"\nrequire \"webview\"\n\n-- create a simple window\nlocal win = ui.Window(\"Webview.contextmenu property sample\", 600, 300)\nlocal Webview = ui.Webview(win, { url = \"https://www.google.com\" })\nWebview.align = \"all\"\n\nfunction Webview:onReady()\n\t-- Disable the contextmenu window\n\tWebview.contextmenu = false\nend\n\n-- shows the window\nwin:show()\n\nwhile win.visible do\n\tui.update()\nend",
-            "__tinydesc": "Enable/disable the Webview context menu",
-            "__filename": "Webview-contextmenu.html"
-        },
-        "statusbar": {
-            "__results": "<span style=\"color:#ae81ff\">boolean</span>",
-            "__access": "readonly",
-            "__kind": "property",
-            "__name": "statusbar",
-            "__description": "<br>Enable/disable the Webview status bar, by setting this property to <code>true</code> or <code>false</code> respectively.If enabled, this property displays a status bar in the left bottom corner of the Webview widget.",
-            "__example": "local ui = require \"ui\"\nrequire \"webview\"\n\n-- create a simple window\nlocal win = ui.Window(\"Webview.statusbar property sample\", 600, 300)\nlocal Webview = ui.Webview(win, { url = \"https://www.google.com\" })\nWebview.align = \"all\"\n\nfunction Webview:onReady()\n\t-- Hides the statusbar window\n\tWebview.statusbar = false\nend\n\n-- shows the window\nwin:show()\n\nwhile win.visible do\n\tui.update()\nend",
-            "__tinydesc": "Enable/disable the Webview status bar",
-            "__filename": "Webview-statusbar.html"
-        },
-        "goforward": {
-            "__returns": "This function returns no value.",
-            "__name": "goforward",
-            "__example": "local ui = require \"ui\"\nrequire \"webview\"\n\n-- create a simple Webview \nlocal win = ui.Window(\"Webview:goforward() sample\", 640, 480)\nlocal addressbar = ui.Entry(win, \"\", 24, 5, 592, 24)\nlocal prevBtn = ui.Button(win, \"\\xe2\\x87\\xa6\", 0, 3, 16, 16)\nprevBtn.font=\"Lucida Console\"\nprevBtn.fontsize = 12\nprevBtn.fontstyle = { bold = true }\nlocal nextBtn = ui.Button(win, \"\\xe2\\x87\\xa8\", 616, 3, 16, 16)\nnextBtn.font=\"Lucida Console\"\nnextBtn.fontsize = 12\nnextBtn.fontstyle = { bold = true }\nlocal Webview = ui.Webview(win, 0, 30, 640, 430)\n\nfunction prevBtn:onClick()\n    if Webview.cangoback then\n        Webview:goback()\n    end\nend\n\nfunction nextBtn:onClick()\n    if Webview.cangoforward then\n        Webview:goforward()\n    end\nend\n\nfunction addressbar:onSelect()\n    Webview.url = addressbar.text\nend\n\n-- Set current window title with the page title, once loaded\nfunction Webview:onLoaded()\n    win.title = Webview.title\n    addressbar.text = Webview.url\nend\n\nwin:show()\n\n-- update the user interface until the user closes the Webview\nrepeat\n    ui.update()\nuntil not win.visible",
-            "__results": "<span>-</span>",
-            "__kind": "method",
-            "__params": {},
-            "__description": "<br>Navigates to the next web page.",
-            "__tinydesc": "Go to the next page",
-            "__filename": "Webview-goforward.html"
-        },
-        "onHide": {
-            "__results": "",
-            "__returns": "The event returns no value.\n\n            </div>\n\t      </div>\n      </div>\n    </div>\n  </section>  \n  <footer class=\"footer\">\n    <div class=\"content has-text-centered\">",
-            "__params": {},
-            "__name": "onHide",
-            "__description": "<br>This event is fired when the Webview is hidden (with a call to <a href=\"./Webview-hide.html\">Webview:hide()</a> or setting the <a href=\"./Webview-visible.html\">Webview.visible</a> property to <span style=\"color:#ae81ff\">false</span>).",
-            "__kind": "event",
-            "__tinydesc": "Event fired when Webview is hidden",
-            "__filename": "Webview-onHide.html"
-        },
-        "x": {
-            "__results": "<span style=\"color:#ae81ff\">number</span>",
-            "__access": "read/write",
-            "__kind": "property",
-            "__name": "x",
-            "__description": "<br>Get or set the Webview horizontal position. The horizontal position start from <span style=\"color:#ae81ff\">0</span> (left side of the parent widget) and increase to the right (right side of the parent widget).",
-            "__example": "local ui = require \"ui\"\nrequire \"webview\"\n\n-- create a simple window\nlocal win = ui.Window(\"Webview.x sample\", 600, 300)\nlocal Webview = ui.Webview(win, { url = \"https://www.google.com\" })\n\n-- shows the window\nwin:show()\n\n-- update user interface and increase Webview horizontal position\nrepeat\n\tui.update()\n\tWebview.x = Webview.x + 1\nuntil not win.visible or (Webview.x > 600)",
-            "__tinydesc": "Get/set the Webview's horizontal position",
-            "__filename": "Webview-x.html"
-        },
-        "y": {
-            "__results": "<span style=\"color:#ae81ff\">number</span>",
-            "__access": "read/write",
-            "__kind": "property",
-            "__name": "y",
-            "__description": "<br>Get or set the Webview vertical position. The vertical position start from <span style=\"color:#ae81ff\">0</span> (top side of the parent widget) and increase to the bottom side of the parent widget.",
-            "__example": "local ui = require \"ui\"\nrequire \"webview\"\n\n-- create a simple window\nlocal win = ui.Window(\"Webview.x sample\", 500, 400)\nlocal Webview = ui.Webview(win, { url = \"https://www.google.com/?mobile\" }, 25, 0, 450, 300)\n\n-- shows the window\nwin:show()\n\n-- update user interface and increase Webview horizontal position\nrepeat\n  ui.update()\n  Webview.y = Webview.y + 1\nuntil not win.visible or (Webview.y > 400)",
-            "__tinydesc": "Get/set the Webview's vertical position",
-            "__filename": "Webview-y.html"
-        },
-        "loadstring": {
-            "__returns": "This function returns <code>true</code> if the operation was successful or <code>false</code> otherwise.",
-            "__name": "loadstring",
-            "__example": "local html = [[\n&lt!DOCTYPE html>\n&lthtml>\n  &ltbody>\n    &ltcenter>&lth1 id=\"text\" style=\"margin-top:30%\">Hello from &ltfont color=\"#283593\">Lua&lt/font>&ltfont color=\"#FF9800\">&ltsup>rt&lt/sup>&lt/font>&lt/h1>&lt/center>\n  &lt/body>\n&lt/html>]]\n\nlocal ui = require \"ui\"\nrequire \"webview\"\n\n-- create a simple Webview \nlocal win = ui.Window(\"Webview:postmessage() sample\", 640, 480)\nlocal Webview = ui.Webview(win, 0, 50, 640, 430)\nWebview.align = \"all\"\n\n-- once ready, load the html content from string\nfunction Webview:onReady()\n  Webview:loadstring(html)\nend\n\n-- update the user interface until the user closes the Window\nui.run(win):wait()",
-            "__results": "<span style=\"color:#ae81ff\">boolean</span>",
-            "__kind": "method",
-            "__params": [
-                {
-                    "__description": "<p>A string that contains the HTML content to be loaded.</p>",
-                    "__optional": false,
-                    "__color": "EA6AC3",
-                    "__name": "html"
-                }
-            ],
-            "__description": "<br>Load the specified HTML content as a new document.",
-            "__tinydesc": "Load the specified HTML content as a new document",
-            "__filename": "Webview-loadstring.html"
-        },
-        "eval": {
-            "__returns": "This function returns a <a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\"></i> Task</a> instance.\n            Once finished, the Task will return two values :\n            <ul>\n              <li>A <code>boolean</code> indicating if the operation succeeded</li>\n              <li>A <code>string</code> representing either an error message in case of failure, or the result as a JSON encoded string</li>\n            </ul>",
-            "__name": "eval",
-            "__example": "local ui = require \"ui\"\nrequire \"webview\"\n\n-- create a simple Webview \nlocal win = ui.Window(\"Webview:eval() sample\", 640, 480)\nlocal Webview = ui.Webview(win, { url = \"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/PI\" }, 0, 50, 640, 500)\n\nlocal button = ui.Button(win, \"Evaluate Javascript Math.PI\")\nbutton:center()\nbutton.y = 10\n\nfunction button:onClick()\n    Webview:eval(\"Math.PI\").after = function(success, result)\n        if success then\n            ui.info(result, \"Math.PI value from Javascript\")\n        else\n            ui.error(result)\n        end\n    end\nend\n              \n-- update user interface\nui.run(win):wait()",
-            "__results": "<a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\"></i> Task</a>",
-            "__kind": "method",
-            "__params": [
-                {
-                    "__description": "<p>A string representing a valid Javascript expression to be evaluated.</p>",
-                    "__optional": false,
-                    "__color": "EA6AC3",
-                    "__name": "expr"
-                }
-            ],
-            "__description": "<br>Execute JavaScript code in the current top level document rendered in the WebView.",
-            "__tinydesc": "Evaluates a Javascript expression",
-            "__filename": "Webview-eval.html"
-        },
-        "url": {
-            "__results": "<span style=\"color:#EA6AC3\">string</span>",
-            "__access": "read/write",
-            "__kind": "property",
-            "__name": "url",
-            "__description": "<br>Get the current Webview URL, a <strong style=\"color:#EA6AC3\">string</strong>.<br>Setting this property will cause navigation to the provided URL.<article class=\"message is-warning\" style=\"margin-left: 10%; margin-right: 10%\"><div class=\"message-body\">When setting this property while running in an embedded executable compiled with <code>rtc</code>, and if the URL starts with <code>file:///</code>, any resource not found locally will be searched inside the embedded content too.</div></article><p class=\"is-size-4 mt-6 mb-0\" style=\"color: #004080\">Example",
-            "__example": "local ui = require \"ui\"\nrequire \"webview\"\n\n-- create a simple Webview \nlocal win = ui.Window(\"Webview.url sample\", 640, 480)\nlocal addressbar = ui.Entry(win, \"\", 0, 6, 640, 24)\nlocal Webview = ui.Webview(win, 0, 30, 640, 430)\n\nfunction addressbar:onSelect()\n    Webview.url = addressbar.text\nend\n\nwin:show()\n\n-- update the user interface until the user closes the Window\nrepeat\n    ui.update()\nuntil not win.visible",
-            "__tinydesc": "Get/set the Webview actual URL",
-            "__filename": "Webview-url.html"
-        },
-        "cdp": {
-            "__results": "<span style=\"color:#EA6AC3\">string</span>",
-            "__access": "read/write",
-            "__kind": "property",
-            "__name": "cdp",
-            "__description": "This property acts like a Lua table with different behavior depending on how fields are accessed.<p class=\"is-size-4 mb-1 mt-6\" style=\"color: #004080\">Calling a Chrome DevTools Protocol function",
-            "__example": "local ui = require \"ui\"\nrequire \"webview\"\n\nlocal win = ui.Window(\"Chrome Devtools Protocol event example\", \"fixed\", 320, 240)\nlocal wv = ui.Webview(win, 0, 0, 320, 200)\nwv.align = \"all\"\nwin:center()\n\nfunction wv:onReady()\n    self:loadstring([[\n    <html>\n    <body><div style=\"display: flex; justify-content: center; align-items: center; height: 90vh;\">\n        <button onclick=\"window.open('https://www.luart.org', '_blank', 'width=600,height=400')\">Open new window</button>\n    </div></body>\n    </html>]])\n    -- enable CDP Page events\n    wv.cdp.Page.enable()\n    -- set a CDP Page.windowOpen() event\n    function wv.cdp.Page.windowOpen()\n        ui.info(\"New window detected\")\n    end\nend\n\nui.run(win):wait()",
-            "__tinydesc": "Chrome DevTools Protocol access",
-            "__filename": "Webview-cdp.html"
-        },
-        "center": {
-            "__returns": "This function returns no value.",
-            "__name": "center",
-            "__example": "local ui = require \"ui\"\nrequire \"webview\"\n\n-- create a simple Window\nlocal win = ui.Window(\"Webview:center() sample\", 640, 480)\nui.Webview(win, { url = \"https://www.luart.org\" }, 0, 0, 600, 400):center()\n\nwin:show()\n\n-- update the user interface until the user closes the Window\nrepeat\n    ui.update()\nuntil not win.visible",
-            "__results": "<span>-</span>",
-            "__kind": "method",
-            "__params": {},
-            "__description": "<br>Centers the Webview on the parent widget.",
-            "__tinydesc": "Centers the Webview on the parent widget",
-            "__filename": "Webview-center.html"
-        },
-        "printPDF": {
-            "__returns": "<p>This function will return a <a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\"></i> Task</a> instance.\n            Once finished, this Task will return :\n            <ul>\n              <li>A <code>boolean</code> indicating if the operation succeeded</li>\n              <li>In case of error, a <code>string</code> representing the error message is returned as a second return value</li>\n            </ul></p>",
-            "__name": "printPDF",
-            "__example": "local ui = require \"ui\"\nrequire \"webview\"\nlocal sysutils = require \"sysutils\"\n\nlocal win = ui.Window(\"Chrome Devtools Protocol example\", \"fixed\", 640, 480)\nlocal wv = ui.Webview(win, 0, 0, 640, 440)\nlocal button = ui.Button(win, \"Print to PDF !\")\nbutton:center()\nbutton.y = 446\nwin:center()\n\nfunction button:onClick()\n    local success, result = await(wv:printPDF {file = \"test.pdf\" })\n    if not success then\n      ui.error(result)\n    else\n      sysutils.shellexec(\"open\", \"test.pdf\")\n    end\nend\n\nfunction wv:onReady()\n    self:loadstring([[\n    &lt;!DOCTYPE html&gt;\n    &lt;html&gt;\n    &lt;body&gt;\n    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper\n    &lt;/body&gt;\n    &lt;/html&gt;]])\nend\n\nui.run(win):wait()",
-            "__results": "<a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\"></i> Task</a>",
-            "__kind": "method",
-            "__params": [
-                {
-                    "__description": "A <code>table</code> that may contain any of the following keys :<ul><li><code>\"file\"</code>: a filename as a <code>string</code> or <a href=\"../sys/File.html\"><i class=\"fas fas fa-file\"></i> File</a> (this field is required).</li><li><code>\"orientation\"</code>: contains a <code>string</code> value to indicate page orientation among <code>\"landscape\"</code> and <code>\"portrait\"</code> (the default).</li><li><code>\"pageHeight\"</code>: contains a <code>number</code> value to indicate page height in inches.</li><li><code>\"pageWidth\"</code>: contains a <code>number</code> value to indicate page width in inches.</li><li><code>\"header\"</code>: contains a <code>boolean</code> value to indicate if the header is printed (defaulting to <code>true</code>).</li><li><code>\"background\"</code>: contains a <code>boolean</code> value to indicate if the the background is printed (defaulting to <code>false</code>).</li><li><code>\"colorMode\"</code>: contains a <code>string</code> value to indicate color mode, <code>\"grayscale\"</code> or <code>\"color\"</code> (the default).</li><li><code>\"copies\"</code>: contains a <code>number</code> value to indicate the number of copies to be printed (defaulting to <code>1</code>).</li><li><code>\"scaleFactor\"</code>: contains a <code>number</code> value to indicate the scale factor (defaulting to <code>1</code>).</li></ul>",
-                    "__optional": false,
-                    "__color": "B1D928",
-                    "__name": "settings"
-                }
-            ],
-            "__description": "<br>Generate a PDF file from the current top-level document in the WebView using optional programmatically specified print settings.<p class=\"is-size-4 mb-1 mt-6\" style=\"color: #004080\">Parameters",
-            "__tinydesc": "Generates a PDF file from the current web page",
-            "__filename": "Webview-printPDF.html"
-        },
-        "onCreate": {
-            "__returns": "The event returns no value.",
-            "__name": "onCreate",
-            "__example": "local ui = require \"ui\"\nrequire \"webview\"\n\n-- creates a simple window\nlocal win = ui.Window(\"Webview:onCreate() event sample\", 320, 200)\nlocal Webview = ui.Webview(win, { url = \"https://www.luart.org\" }, 150, 70)\n\n-- Webview:onCreate() event to center the Webview widget\nfunction Webview:onCreate()\n\tWebview:center()\nend\n\nwin:show()\n\n-- update the ui\nwhile win.visible do\n\tui.update()\nend",
-            "__results": "",
-            "__kind": "event",
-            "__params": {},
-            "__description": "<br>This event is fired when the Webview object has just been created (just after the <a href=\"Webview-constructor.html\">Webview:constructor()</a> call).<article class=\"message is-info\" style=\"margin-left: 15%; margin-right: 15%\"><div class=\"message-body\">This event is particularly interesting when you want to initialize its properties. </div></article>",
-            "__tinydesc": "Event fired when Webview has just been created (but not initialized)",
-            "__filename": "Webview-onCreate.html"
-        },
-        "align": {
-            "__results": "<span style=\"color:#ae81ff\">boolean</span>",
-            "__access": "read/write",
-            "__kind": "property",
-            "__name": "align",
-            "__description": "<br>Get or set the Webview alignment, which position and size will be aligned relative to its parent (alignment persists even if the size of the parent changes).</p><p>This property uses a <code>string</code> to specify the Webview alignment :<ul><li><span style=\"color:#EA6AC3\">\"all\"</span> : the Webview will be aligned along all the parent borders (and will cover the entire parent client area).</li><li><span style=\"color:#EA6AC3\">\"bottom\"</span> : the Webview will be aligned along the bottom border of the parent, preserving its height.</li><li><span style=\"color:#EA6AC3\">\"top\"</span> : the Webview will be aligned along the the top border of the parent, preserving its height.</li><li><span style=\"color:#EA6AC3\">\"right\"</span> : the Webview will be aligned along the right border of the parent, preserving its width.</li><li><span style=\"color:#EA6AC3\">\"left\"</span> : the Webview will be aligned along the left border of the parent, preserving its width.</li></ul>",
-            "__example": "local ui = require \"ui\"\nrequire \"webview\"\n\n-- create a fixed Window\nlocal win = ui.Window(\"Webview:align() sample\", \"fixed\", 320, 200)\n\n-- create a Webview without an URL\nlocal wv = ui.Webview(win, 25, 25)\n\n-- align the Webview in all of its parent area \nwv.align = \"all\"\n\n-- Once the webview widget is ready, navigate to the provided URL\nfunction wv:onReady()\n   wv.url = \"https://www.luart.org\"\nend\n\n-- shows the Window\nwin:show()\n\nwhile win.visible do\n\tui.update()\nend",
-            "__tinydesc": "Align the Webview relative to its parent",
-            "__filename": "Webview-align.html"
-        },
-        "constructor": {
-            "__results": "<a href=\"Webview.html\"><i class=\"fab fa-edge\"></i> Webview</a>",
-            "__kind": "method",
-            "__params": [
-                {
-                    "__description": "<p>An object that will own the Webview. Parent objects can be any of <a href=\"../ui/Window.html\"><i class=\"far fa-window-maximize\" style=\"color :#2187E7\"></i> Window</a>, <a href=\"../ui/Groupbox.html\"><i class=\"far fa-square\" style=\"color :#2187E7\"></i> Groupbox</a>, <a href=\"../ui/TabItem.html\"><i class=\"fas fas fa-bookmark\"style=\"color :#2187E7\"></i><sup><i class=\"fas fa-tag\" style=\"margin-left: -0.3em\"></i></sup></span> TabItem</a> and <a href=\"../ui/Panel.html\"><i class=\"fas fa-expand\" style=\"color :#2187E7\"></i> Panel</a></p>",
-                    "__optional": false,
-                    "__color": "606060",
-                    "__name": "parent"
-                },
-                {
-                    "__description": "<p>An optional <code>table</code>that accepts the following optional fields as keys :<ul><li><code>\"url\"</code>: string representing the URL that the Webview widget will navigate to once initialized.</li><li><code>\"options\"</code>: string representing some custom Chromium command-line arguments (see <a href=\"https://peter.sh/experiments/chromium-command-line-switches/\">Chromium commandline options</a>).</li></ul>.<article class=\"message is-success\" style=\"margin-left: 5%; margin-right: 15%\"><div class=\"message-body\">When running in an embedded executable compiled with <code>rtc</code>, and if the URL starts with <code>file:///</code>, any resource not found locally will be searched inside the embedded content too.</div></article></p>",
-                    "__optional": true,
-                    "__color": "B1D928",
-                    "__name": "props"
-                },
-                {
-                    "__description": "<p>An optional number that indicates the Webview horizontal position, in pixels. Zero means the left border of the parent.</p>",
-                    "__optional": true,
-                    "__color": "ae81ff",
-                    "__name": "x"
-                },
-                {
-                    "__description": "<p>An optional number that indicates the Webview vertical position, in pixels. Zero means the top border of the parent.</p>",
-                    "__optional": true,
-                    "__color": "ae81ff",
-                    "__name": "y"
-                },
-                {
-                    "__description": "<p>An optional number that indicates the Webview width in pixels, autosized to fit text content if omitted.</p>",
-                    "__optional": true,
-                    "__color": "ae81ff",
-                    "__name": "width"
-                },
-                {
-                    "__description": "<p>An optional number that indicates the Webview height in pixels, autosized to fit text content if omitted.</p>",
-                    "__optional": true,
-                    "__color": "ae81ff",
-                    "__name": "height"
-                }
-            ],
-            "__name": "constructor",
-            "__description": "<br>The Webview constructor returns a Webview instance representing a Microsoft Edge Webview2 component.<br><article class=\"message is-warning\" style=\"margin-left: 5%; margin-right: 15%\"><div class=\"message-body\">A just constructed Webview widget does not mean it is ready to be used.<br>In particular, during the widget construction process, it can be displayed while it is still initializing.<br>Once initialized, the Webview widget will throw a <a href=\"Webview-onReady\">Webview.onReady()</a> event, particularly useful to start using the Webview widget.</div></article>",
-            "__example": "local ui = require \"ui\"\nrequire \"webview\"\n\n-- create a simple Window\nlocal win = ui.Window(\"Webview.constructor() sample\", 320, 200)\n\n-- create a Webview on this window\nlocal Webview = ui.Webview(win, { url = \"https://www.luart.org\" })\nWebview.align = \"all\"\n\nui.run(win):wait()",
-            "__tinydesc": "Webview object constructor",
-            "__filename": "Webview-constructor.html"
-        },
-        "enabled": {
-            "__results": "<span style=\"color:#ae81ff\">boolean</span",
-            "__access": "read/write",
-            "__kind": "property",
-            "__name": "enabled",
-            "__description": "<br>Get or set the Webview ability to respond to mouse, and any other events. When set to <strong style=\"color:#ae81ff\">false</strong>, disable the Webview (the user will not be able to interact with it), and Webview's events won't be fired anymore.",
-            "__example": "local ui = require \"ui\"\nrequire \"webview\"\n\n-- create a simple Window \nlocal win = ui.Window(\"Webview.enabled sample\", 320, 200)\nlocal Webview = ui.Webview(win, { url = \"https://www.google.com\" }, 130, 80)\n\n-- disable the Webview\nWebview.enabled = false\n\nwin:show()\n\n-- update user interface\nrepeat\n\tui.update()\nuntil not win.visible",
-            "__tinydesc": "Enable/disable the Webview widget",
-            "__filename": "Webview-enabled.html"
-        },
-        "__icon": "<span class=\"icon bd-link-icon mr-1\" style=\"font-size: 0.8em\"><i class=\"fab fa-edge\" style=\"color :#71e6b5\" style=\"color: #D0D0D0\"></i></span>",
-        "addinitscript": {
-            "__returns": "This function returns no value.",
-            "__name": "addinitscript",
-            "__example": "local ui = require \"ui\"\nrequire \"webview\"\n\n-- create a simple Webview \nlocal win = ui.Window(\"Webview:addinitscript() sample\", 640, 480)\nlocal Webview = ui.Webview(win)\nWebview.align = \"all\"\n\nfunction Webview:onReady()\n    Webview:addinitscript(\"alert('Hello world !')\")\n    Webview.url = \"https://google.com\"\nend\n\nwin:show()\n\n-- update the user interface until the user closes the Window\nrepeat\n    ui.update()\nuntil not win.visible",
-            "__results": "<span>-</span>",
-            "__kind": "method",
-            "__params": [
-                {
-                    "__description": "<p>A string representing a valid Javascript expression to be evaluated.</p>",
-                    "__optional": false,
-                    "__color": "EA6AC3",
-                    "__name": "expr"
-                }
-            ],
-            "__description": "<br>Add the provided JavaScript to a list of scripts that should be executed before the HTML document has been loaded and before any other script included by the HTML document is executed.<article class=\"message is-warning\" style=\"margin-left: 10%; margin-right: 10%\"><div class=\"message-body\">To take effect, this function must be called once the Webview widget is initialized, before loading any document. It means that the provided scripts won't be executed if you provide an URL when calling the Webview widget constructor.</div></article>",
-            "__tinydesc": "Add a script to be executed before page loading",
-            "__filename": "Webview-addinitscript.html"
-        },
-        "postmessage": {
-            "__returns": "This function returns <code>true</code> if the operation was successful or <code>false</code> otherwise.",
-            "__name": "postmessage",
-            "__example": "local html = [[\n&lt!DOCTYPE html>\n&lthtml>\n&lthead>\n    &ltscript>\n        \"use strict\";\n        window.chrome.webview.addEventListener('message', arg => {\n            if (\"text\" in arg.data)\n                document.getElementById(\"text\").innerHTML = arg.data.text;\n        });\n    &lt/script>\n&lt/head>\n&ltbody>\n   &ltcenter>&lth1 id=\"text\" style=\"margin-top:30%\">&lt/h1>&lt/center>\n&lt/body>\n&lt/html>]]\n\nlocal ui = require \"ui\"\nrequire \"webview\"\n\n-- create a simple Webview \nlocal win = ui.Window(\"Webview:postmessage() sample\", 640, 480)\nlocal Webview = ui.Webview(win, 0, 50, 640, 430)\n\nlocal button = ui.Button(win, \"Post message to Webview\")\nbutton:center()\nbutton.y = 10\n\n-- once ready, load the html content from string\nfunction Webview:onReady()\n\tWebview:loadstring(html)\nend\n\nfunction button:onClick()\n\t-- post a JSON message to the Webview\n    Webview:postmessage('{ \"text\" : \"Hello from <font color=\\\\\"#283593\\\\\">Lua</font><font color=\\\\\"#FF9800\\\\\"><sup>rt</sup></font>\" }', true)\nend\n\n-- update the user interface until the user closes the Window\nui.run(win):wait()",
-            "__results": "<span style=\"color:#ae81ff\">boolean</span>",
-            "__kind": "method",
-            "__params": [
-                {
-                    "__description": "<p>A valid string to be posted to the toplevel document of the Webview.</p>",
-                    "__optional": false,
-                    "__color": "EA6AC3",
-                    "__name": "msg"
-                },
-                {
-                    "__description": "<p>A boolean value indicating if the provided string is encoded as JSON, defaulting to <code>false</code></p>",
-                    "__optional": true,
-                    "__color": "ae81ff",
-                    "__name": "isjson"
-                }
-            ],
-            "__description": "<br>Post a message to the current top level document rendered in the Webview.<br>To retrieve the message in the document, you must subscribe to the <code>\"message\"</code> event of the <code>window.chrome.webview</code> object from the top level document.",
-            "__tinydesc": "Post a message to the toplevel document",
-            "__filename": "Webview-postmessage.html"
-        },
-        "width": {
-            "__results": "<span style=\"color:#ae81ff\">number</span>",
-            "__access": "read/write",
-            "__kind": "property",
-            "__name": "width",
-            "__description": "<br>Get or set the Webview area width. The width starts from <span style=\"color:#ae81ff\">0</span> (left side of the Webview) and increases to the right direction.",
-            "__example": "local ui = require \"ui\"\nrequire \"webview\"\n\n-- create a simple window\nlocal win = ui.Window(\"Webview.x sample\", 600, 400)\nlocal Webview = ui.Webview(win, { url = \"https://www.google.com/?mobile\" })\nWebview.align = \"all\"\n\n-- shows the window\nwin:show()\n\n-- update user interface and increase Webview horizontal position\nrepeat\n  ui.update()\n  Webview.width = Webview.width - 1\nuntil not win.visible or (Webview.width &lt; 200)",
-            "__tinydesc": "Get/set the Webview's width",
-            "__filename": "Webview-width.html"
-        },
-        "visible": {
-            "__results": "<span style=\"color:#ae81ff\">boolean</span>",
-            "__access": "read/write",
-            "__kind": "property",
-            "__name": "visible",
-            "__description": "<br>Get or set the Webview visibility on screen, a <strong style=\"color:#ae81ff\">true</strong> value means that the Webview is shown, a <strong style=\"color:#ae81ff\">false</strong> value means that the Webview is hidden.<article class=\"message is-info\" style=\"margin-left: 15%; margin-right: 15%\"><div class=\"message-body\">The Webview.visible property is also affected by the <a href=\"./Webview-show.html\">Webview:show()</a> and <a href=\"./Webview-hide.html\">Webview:hide()</a> methods.</div></article>",
-            "__example": "local ui = require \"ui\"\nrequire \"webview\"\n\n-- create a simple Webview \nlocal win = ui.Window(\"Webview.visible sample\", 640, 480)\nlocal Webview = ui.Webview(win, { url = \"https://www.google.com\" }, 0, 50, 640, 430)\n\nlocal button = ui.Button(win, \"Click to hide Webview for 2sec\")\nbutton:center()\nbutton.y = 10\n\n-- hides the Webview and shows it again after 2 sec\nfunction button:onClick()\n  Webview.visible = false\n  button.enabled = false\n  sleep(2000)\n  button.enabled = true\n  Webview.visible = true\nend\n\nui.run(win):wait()",
-            "__tinydesc": "Controls whether the Webview appears on screen",
-            "__filename": "Webview-visible.html"
-        },
-        "hide": {
-            "__returns": "This function returns no value.",
-            "__name": "hide",
-            "__example": "local ui = require \"ui\"\nrequire \"webview\"\n\n-- create a simple Webview \nlocal win = ui.Window(\"Webview.visible sample\", 640, 480)\nlocal Webview = ui.Webview(win, { url = \"https://www.google.com\" }, 0, 50, 640, 430)\n\nlocal button = ui.Button(win, \"Hide the Webview widget\")\nbutton:center()\nbutton.y = 10\n\nwin:show()\n\nfunction button:onClick()\n  Webview:hide()\nend\n\nwhile win.visible do\n  ui.update()\nend",
-            "__results": "<span>-</span>",
-            "__kind": "method",
-            "__params": {},
-            "__description": "<br>Hide the Webview widget.",
-            "__tinydesc": "Hides the Webview",
-            "__filename": "Webview-hide.html"
+        {
+          "__description": "<p>A string representing the path to the local folder to be mapped to.</p>",
+          "__optional": false,
+          "__color": "EA6AC3",
+          "__name": "folder"
         }
+      ],
+      "__description": "<br>Maps a virtual host name to a folder path. Any resource using this host name will be loaded from that local folder.",
+      "__tinydesc": "Maps a virtual hostname to a local folder",
+      "__filename": "Webview-hostfromfolder.html"
     },
-    "__kind": {
-        "isdesktop": true,
-        "isconsole": false,
-        "iscore": false
+    "parent": {
+      "__results": " <a href=\"../ui/Window.html\"><i class=\"far fa-window-maximize\" style=\"color :#2187E7\"></i> Window</a> | <a href=\"../ui/Groupbox.html\"><i class=\"far fa-square\" style=\"color :#2187E7\"></i> Groupbox</a> | <a href=\"../ui/TabItem.html\"><i class=\"fas fa-bookmark\" style=\"color :#2187E7\"></i><sup><i class=\"fas fa-tag\" style=\"margin-left: -0.3em; margin-top: 0.4em\"></i></sup>TabItem</a>",
+      "__access": "readonly",
+      "__kind": "property",
+      "__name": "parent",
+      "__description": "<br>Get the parent object that owns the Webview.",
+      "__example": "--! luart-extensions\nimport ui\nrequire \"webview\"\n\n-- create a simple Webview \nlocal win = ui.Window(\"Webview.parent sample\", 640, 480)\nlocal Webview = ui.Webview(win, { url = \"https://luart.org\" }, 0, 50, 640, 500)\n\nlocal button = ui.Button(win, \"Click to show Webview.parent\")\nbutton:center()\nbutton.y = 10\n\nfunction button:onClick()\n  ui.info(\"Webview's parent is \"..tostring(Webview.parent))\nend\n\nwin:show()\n\n-- update the user interface until the user closes the Window\nrepeat\n  ui.update()\nuntil not win.visible",
+      "__tinydesc": "Get the Webview's parent widget",
+      "__filename": "Webview-parent.html"
     },
-    "__color": "71e6b5",
-    "__description": "This module provides the Microsoft Webview2 browser as a Webview widget in the <a href=\"../ui/index.html\"><i class=\"fas fa-clone\" style=\"color: #0099FF\"></i> ui</a> namespace",
-    "__name": "webview",
-    "__tinydesc": "Widget to render HTML, CSS, and JavaScript content using Webview2 ",
-    "__filename": "index.html"
+    "__description": "The Webview widget displays and interacts with web content using Webview2",
+    "height": {
+      "__results": "<span style=\"color:#ae81ff\">number</span>",
+      "__access": "read/write",
+      "__kind": "property",
+      "__name": "height",
+      "__description": "<br>Get or set the height of the Webview area. The height starts from <span style=\"color:#ae81ff\">0</span> (top side of the Webview) and increase to the bottom direction.",
+      "__example": "--! luart-extensions\nimport ui\nrequire \"webview\"\n\n-- create a simple window\nlocal win = ui.Window(\"Webview.x sample\", 600, 400)\nlocal Webview = ui.Webview(win, { url = \"https://www.google.com/?mobile\" })\nWebview.align = \"all\"\n\n-- shows the window\nwin:show()\n\n-- update user interface and increase Webview horizontal position\nrepeat\n  ui.update()\n  Webview.height = Webview.height - 1\nuntil not win.visible or (Webview.height &lt; 100)",
+      "__tinydesc": "Get/set the Webview's height",
+      "__filename": "Webview-height.html"
+    },
+    "__filename": "Webview.html",
+    "cangoforward": {
+      "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+      "__access": "readonly",
+      "__kind": "property",
+      "__name": "cangoforward",
+      "__description": "<br>Checks if the Webview can go to the next web page, returning <code>true</code> or <code>false</code> otherwise.<p class=\"is-size-4 mt-6 mb-0\" style=\"color: #004080\">Example",
+      "__example": "--! luart-extensions\nimport ui\nrequire \"webview\"\n\n-- create a simple Webview \nlocal win = ui.Window(\"Webview.cangoforward sample\", 640, 480)\nlocal addressbar = ui.Entry(win, \"\", 24, 5, 592, 24)\nlocal prevBtn = ui.Button(win, \"\\xe2\\x87\\xa6\", 0, 3, 16, 16)\nprevBtn.font=\"Lucida Console\"\nprevBtn.fontsize = 12\nprevBtn.fontstyle = { bold = true }\nlocal nextBtn = ui.Button(win, \"\\xe2\\x87\\xa8\", 616, 3, 16, 16)\nnextBtn.font=\"Lucida Console\"\nnextBtn.fontsize = 12\nnextBtn.fontstyle = { bold = true }\nlocal Webview = ui.Webview(win, 0, 30, 640, 430)\n\nfunction prevBtn:onClick()\n    if Webview.cangoback then\n        Webview:goback()\n    end\nend\n\nfunction nextBtn:onClick()\n    if Webview.cangoforward then\n        Webview:goforward()\n    end\nend\n\nfunction addressbar:onSelect()\n    Webview.url = addressbar.text\nend\n\n-- Set current window title with the page title, once loaded\nfunction Webview:onLoaded()\n    win.title = Webview.title\n    addressbar.text = Webview.url\nend\n\nwin:show()\n\n-- update the user interface until the user closes the Webview\nrepeat\n    ui.update()\nuntil not win.visible",
+      "__tinydesc": "Check if the Webview can go to the next page",
+      "__filename": "Webview-cangoforward.html"
+    },
+    "zoom": {
+      "__results": "<span style=\"color:#ae81ff\">number</span>",
+      "__access": "read/write",
+      "__kind": "property",
+      "__name": "zoom",
+      "__description": "<br>Get or set the Webview zoom level. The default zoom level is <span style=\"color:#ae81ff\">1.0</span> (100%). Values greater than 1.0 zoom in, and values less than 1.0 zoom out.",
+      "__example": "--! luart-extensions\nimport ui\nrequire \"webview\"\n\n-- create a simple window\nlocal win = ui.Window(\"Webview.zoom sample\", 600, 300)\nlocal Webview = ui.Webview(win, { url = \"https://www.google.com\" })\nWebview.align = \"all\"\n\n-- shows the window\nwin:show()\n\n-- Zoom in once page is loaded\nfunction Webview:onLoaded()\n    for i=1, 2, 0.01 do\n    Webview.zoom = i\n    ui.update()\n    end\nend\n\nwhile win.visible do\n    ui.update()\nend",
+      "__tinydesc": "Get/set the current Webview zoom level",
+      "__filename": "Webview-zoom.html"
+    },
+    "print": {
+      "__returns": "<i>If the function is called without settings argument :</i>\n            <p>This function returns a <code>boolean</code> value (the call will block current execution, with the print settings dialog).</p>\n\n            <i>If the function is called with settings argument :</i>\n            <p>This function will return a <a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\"></i> Task</a> instance.\n            Once finished, this Task will return :\n            <ul>\n              <li>A <code>boolean</code> indicating if the operation succeeded</li>\n              <li>In case of error, a <code>string</code> representing the error message is returned as a second return value</li>\n            </ul></p>",
+      "__name": "print",
+      "__example": "--! luart-extensions\nimport ui\nrequire \"webview\"\n\nlocal win = ui.Window(\"Chrome Devtools Protocol example\", \"fixed\", 640, 480)\nlocal wv = ui.Webview(win, 0, 0, 640, 440)\nlocal button = ui.Button(win, \"Print the web page !\")\nbutton:center()\nbutton.y = 446\nwin:center()\n\nfunction button:onClick()\n    wv:print()\nend\n\nfunction wv:onReady()\n    self:loadstring([[\n    &lt;!DOCTYPE html&gt;\n    &lt;html&gt;\n    &lt;body&gt;\n    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper\n    &lt;/body&gt;\n    &lt;/html&gt;]])\nend\n\nawait win:showasync()",
+      "__results": "<a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\"></i> Task</a>|<span style=\"color:#ae81ff\">boolean</span>",
+      "__kind": "method",
+      "__params": [
+        {
+          "__description": "An optional <code>table</code> that may contain any of the following keys :<ul><li><code>\"orientation\"</code>: contains a <code>string</code> value to indicate page orientation among <code>\"landscape\"</code> and <code>\"portrait\"</code> (the default).</li><li><code>\"pageHeight\"</code>: contains a <code>number</code> value to indicate page height in inches.</li><li><code>\"pageWidth\"</code>: contains a <code>number</code> value to indicate page width in inches.</li><li><code>\"header\"</code>: contains a <code>boolean</code> value to indicate if the header is printed (defaulting to <code>true</code>).</li><li><code>\"background\"</code>: contains a <code>boolean</code> value to indicate if the the background is printed (defaulting to <code>false</code>).</li><li><code>\"colorMode\"</code>: contains a <code>string</code> value to indicate color mode, <code>\"grayscale\"</code> or <code>\"color\"</code> (the default).</li><li><code>\"copies\"</code>: contains a <code>number</code> value to indicate the number of copies to be printed (defaulting to <code>1</code>).</li><li><code>\"scaleFactor\"</code>: contains a <code>number</code> value to indicate the scale factor (defaulting to <code>1</code>).</li></ul>If this parameter is not provided, a dialog will show for the user to configure the print settings.",
+          "__optional": true,
+          "__color": "B1D928",
+          "__name": "settings"
+        }
+      ],
+      "__description": "<br>Prints the current top-level document in the WebView using optional programmatically specified print settings to a printer.<p class=\"is-size-4 mb-1 mt-6\" style=\"color: #004080\">Parameters",
+      "__tinydesc": "Prints the current web page",
+      "__filename": "Webview-print.html"
+    },
+    "onFullScreenChange": {
+      "__results": "",
+      "__returns": "The event returns no value.\n            </div>\n\t      </div>\n      </div>\n    </div>\n  </section>  \n  <footer class=\"footer\">\n    <div class=\"content has-text-centered\">",
+      "__params": [
+        {
+          "__description": "<p>A <code>boolean</code> value that indicates whether the application should enable fullscreen mode or not.</p>",
+          "__optional": false,
+          "__color": "ae81ff",
+          "__name": "isfullscreen"
+        }
+      ],
+      "__name": "onFullScreenChange",
+      "__description": "<br>This event is fired when the current web page asks to enable or disable fullscreen mode.<br>",
+      "__kind": "event",
+      "__tinydesc": "Event fired when the web page ask for a fullscreen switch.",
+      "__filename": "Webview-onFullScreenChange.html"
+    },
+    "title": {
+      "__results": "<span style=\"color:#EA6AC3\">string</span>",
+      "__access": "readonly",
+      "__kind": "property",
+      "__name": "title",
+      "__description": "<br>Get the current web page title, represented as a <strong style=\"color:#EA6AC3\">string</strong>.<br><p class=\"is-size-4 mt-6 mb-0\" style=\"color: #004080\">Example",
+      "__example": "--! luart-extensions\nimport ui\nrequire \"webview\"\n\n-- create a simple Webview \nlocal win = ui.Window(\"Webview.title sample\", 640, 480)\nlocal addressbar = ui.Entry(win, \"\", 0, 6, 640, 24)\nlocal Webview = ui.Webview(win, 0, 30, 640, 430)\n\nfunction addressbar:onSelect()\n  Webview.url = addressbar.text\nend\n\n-- Set current window title with the page title, once loaded\nfunction Webview:onLoaded()\n  win.title = Webview.title\nend\n\nwin:show()\n\n-- update the user interface until the user closes the Window\nrepeat\n  ui.update()\nuntil not win.visible",
+      "__tinydesc": "Get the title of the current web page",
+      "__filename": "Webview-title.html"
+    },
+    "__results": "",
+    "onThemeChange": {
+      "__returns": "The event returns no value.",
+      "__name": "onThemeChange",
+      "__example": "--! luart-extensions\nimport ui\nrequire \"webview\"\n\n-- create a simple Webview \nlocal win = ui.Window(\"Webview.onThemeChange sample\", 640, 480)\nlocal webview = ui.Webview(win, { url = \"https://www.google.com\" })\nwebview.align = \"all\"\n\nfunction webview:onThemeChange(isDark)\n    self:reload()\nend\n\nawait win:showasync()",
+      "__results": "",
+      "__kind": "event",
+      "__params": [
+        {
+          "__description": "<p>A <code>boolean</code> value that indicates if the new theme is <code>\"dark\"</code> or not.</p>",
+          "__optional": false,
+          "__color": "ae81ff",
+          "__name": "isDark"
+        }
+      ],
+      "__description": "<br>This event is fired when Windows theme has changed.",
+      "__tinydesc": "Event fired when the Windows theme has changed",
+      "__filename": "Webview-onThemeChange.html"
+    },
+    "onShow": {
+      "__results": "",
+      "__returns": "The event returns no value.\n            </div>\n\t      </div>\n      </div>\n    </div>\n  </section>  \n  <footer class=\"footer\">\n    <div class=\"content has-text-centered\">",
+      "__params": {},
+      "__name": "onShow",
+      "__description": "<br>This event is fired when the Webview is shown (with a call to <a href=\"./Webview-show.html\">Webview:show()</a> or setting the <a href=\"./Webview-visible.html\">Webview.visible</a> property to <span style=\"color:#ae81ff\">true</span>).",
+      "__kind": "event",
+      "__tinydesc": "Event fired when Webview is shown",
+      "__filename": "Webview-onShow.html"
+    },
+    "__tinydesc": "Object representation of the Microsoft Edge Webview2 component",
+    "__kind": "object",
+    "__type": "object",
+    "onLoaded": {
+      "__returns": "The event returns no value.",
+      "__name": "onLoaded",
+      "__example": "--! luart-extensions\nimport ui\nrequire \"webview\"\n\n-- creates a simple window\nlocal win = ui.Window(\"Webview:onLoaded() event sample\", 320, 200)\nlocal Webview = ui.Webview(win, { url = \"https://www.luart.org\" }, 150, 70)\n\n-- Use the Webview:onLoaded() event to set the window title\nfunction wv:onLoaded(success, status) \n    win.title = wv.title\nend\n\nwin:show()\n\n-- update the ui\nwhile win.visible do\n\tui.update()\nend",
+      "__results": "",
+      "__kind": "event",
+      "__params": [
+        {
+          "__description": "<p>A <code>boolean</code> value that indicates whether page loading was successful or not.</p>",
+          "__optional": false,
+          "__color": "ae81ff",
+          "__name": "success"
+        },
+        {
+          "__description": "<p>An <code>integer</code> value indicating the HTTP status code.</p>",
+          "__optional": false,
+          "__color": "ae81ff",
+          "__name": "httpstatus"
+        }
+      ],
+      "__description": "<br>This event is fired when the Webview widget has just finished to load the current web page.<br><p class=\"is-size-4 mb-1 mt-6\" style=\"color: #004080\">Parameters",
+      "__tinydesc": "Event fired when Webview widget has loaded the web page.",
+      "__filename": "Webview-onLoaded.html"
+    },
+    "reload": {
+      "__returns": "This function returns no value.",
+      "__name": "reload",
+      "__example": "--! luart-extensions\nimport ui\nrequire \"webview\"\n\n-- Uses the weatherwidget.org free widget\n\nlocal win = ui.Window(\"Webview:reload() sample\", \"fixed\", 436, 276)\nwin.bgcolor = 0xFFFFFF\nlocal Webview = ui.Webview(win, { url = \"https://www.google.com\" }, 0, 50, 436, 246)\n\nlocal button = ui.Button(win, \"Reload the page\")\nbutton:center()\nbutton.y = 10\n\nfunction button:onClick()\n  Webview:reload()              \nend\n\nfunction Webview:onReady()\n  self:loadstring([[&lt;div id=\"ww_71ccc3feed2c8\" v='1.3' loc='id' a='{\"t\":\"horizontal\",\"lang\":\"en\",\"sl_lpl\":1,\"ids\":[],\"font\":\"Arial\",\"sl_ics\":\"one_a\",\"sl_sot\":\"celsius\",\"cl_bkg\":\"image\",\"cl_font\":\"#FFFFFF\",\"cl_cloud\":\"#FFFFFF\",\"cl_persp\":\"#81D4FA\",\"cl_sun\":\"#FFC107\",\"cl_moon\":\"#FFC107\",\"cl_thund\":\"#FF5722\"}'&gt;Weather Data Source: &lt;a href=\"https://wetterlang.de/paris_wetter_30_tage/\" id=\"ww_71ccc3feed2c8_u\" target=\"_blank\"&gt;Paris 30 tage wetter&lt;/a&gt;&lt;/div&gt;&lt;script async src=\"https://app1.weatherwidget.org/js/?id=ww_71ccc3feed2c8\"&gt;&lt;/script&gt;]])\nend\n\nwin:show()\n\n-- update the user interface until the user closes the Window\nrepeat\n    ui.update()\nuntil not win.visible",
+      "__results": "<span>-</span>",
+      "__kind": "method",
+      "__params": {},
+      "__description": "<br>Reload the current web page.",
+      "__tinydesc": "Reloads the current page",
+      "__filename": "Webview-reload.html"
+    },
+    "stop": {
+      "__results": "<span>-</span>",
+      "__returns": "This function returns no value.           \n            </div>\n\t      </div>\n      </div>\n    </div>\n  </section>  \n  <footer class=\"footer\">\n    <div class=\"content has-text-centered\">",
+      "__params": {},
+      "__name": "stop",
+      "__description": "<br>Stop the current web page loading.",
+      "__kind": "method",
+      "__tinydesc": "Stops web page loading",
+      "__filename": "Webview-stop.html"
+    },
+    "useragent": {
+      "__results": "<span style=\"color:#EA6AC3\">string</span>",
+      "__access": "read/write",
+      "__kind": "property",
+      "__name": "useragent",
+      "__description": "<br>Get or set the current Webview User agent string.",
+      "__example": "--! luart-extensions\nimport ui\nrequire \"webview\"\n\nlocal win = ui.Window(\"Webview.useragent property example\", \"fixed\", 320, 200)\nlocal wv = ui.Webview(win, 0, 0, 320, 160)\n\nlocal btn = ui.Button(win, \"Click to change Webview.useragent\")\nbtn:center()\nbtn.y = 166\n\nfunction btn:onClick()\n    wv.useragent = \"Mozilla/5.0 (Macintosh; Intel Mac OS X x.y; rv:42.0) Gecko/20100101 Firefox/42.0\"\n    wv:reload()\nend\n\nfunction wv:onReady()\n    wv.statusbar = false\n    wv.devtools = false\n    wv.contextmenu = false\n    wv.acceleratorkeys = false\n    -- load an HTML page that will display the current userAgent\n    wv:loadstring([[\n    &lth1&gtYour User Agent&lt/h1&gt\n    &ltp id=\"userAgent\"&gt&lt/p&gt\n    &ltscript&gt\n        document.geElementById(\"userAgent\").textContent = navigator.userAgent;\n        &lt/script&gt\n    ]])\nend\n\nawait win:showasync()",
+      "__tinydesc": "Get/set the current User Agent string",
+      "__filename": "Webview-useragent.html"
+    },
+    "__name": "Webview",
+    "restorehost": {
+      "__returns": "This function returns <code>true</code> if the operation was successful or <code>false</code> otherwise.",
+      "__name": "restorehost",
+      "__example": "local html = [[\n&lt!DOCTYPE html>\n&lthtml>\n\t&ltbody>\n\t\t&ltcenter style=\"margin-top:35%\">&lta href=\"https://www.google.com/]]..sys.File(arg[0]).name..[[\">https://www.google.com/]]..sys.File(arg[1]).name..[[&lt/a>&lt/center>&lt/a>&lt/center>\n\t&lt/body>\n&lt/html>]]\n\nimport ui\nrequire \"webview\"\n\n-- create a simple Webview \nlocal win = ui.Window(\"Webview:restorehost() sample\", 640, 480)\nlocal Webview = ui.Webview(win, 0, 50, 640, 412)\n\nlocal button = ui.Button(win, \"Map virtual host 'www.google.com' to '\"..sys.File(arg[0]).path..\"'\")\nbutton:center()\nbutton.y = 10\nlocal mapped = false\nwin:status(\"Using real 'www.google.com' real hostname\")\n\nfunction button:onClick()\n\tbutton.text = mapped and \"Restore virtual host 'www.google.com'\" or \"Map virtual host 'www.google.com' to '\"..sys.File(arg[0]).path..\"'\"\n\tbutton:center()\n\tbutton.y = 10\n\tif mapped then\n\t\twin:status(\"Host name 'www.google.com' have been restored\")\n\t\tWebview:restorehost(\"www.google.com\")\n\telse\n\t\tWebview:hostfromfolder(\"www.google.com\", sys.File(arg[0]).path)\n\t\twin:status(\"Host name 'www.google.com' mapped to local '\"..sys.File(arg[0]).path..\"' folder\")\n\t\tWebview:loadstring(html)\t\t\n\tend\n\tmapped = not mapped\nend\n\n-- once ready, map www.google.com to the current local folder\n-- and load the html content from string\nfunction Webview:onReady()\n\tWebview:loadstring(html)\nend\n\n-- update the user interface until the user closes the Window\nawait win:showasync()",
+      "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+      "__kind": "method",
+      "__params": [
+        {
+          "__description": "<p>A string representing the virtual host name that have been previously mapped with a call to <a href=\"Webview-hostfromfolder.html\">Webview:hostfromfolder()</a>.</p>",
+          "__optional": false,
+          "__color": "EA6AC3",
+          "__name": "hostname"
+        }
+      ],
+      "__description": "<br>Restore a previously mapped virtual host name (the previously mapped local folder won't be used anymore).",
+      "__tinydesc": "Restores a previously mapped virtual hostname",
+      "__filename": "Webview-restorehost.html"
+    },
+    "onMessage": {
+      "__returns": "The event returns no value.",
+      "__name": "onMessage",
+      "__example": "--! luart-extensions\nimport ui\nrequire \"webview\"\n\n-- creates a simple window\nlocal win = ui.Window(\"Webview:onResult() event sample\", 320, 200)\nlocal Webview = ui.Webview(win, 150, 70)\n\n-- Don't show the Webview widget\nWebview:hide()\n\n-- Webview:onResult() event to center the Webview widget\nfunction Webview:onResult(result)\n\tui.info(result, \"Result of Math.PI in Javascript\")\n  win:hide()\nend\n\nfunction Webview:onReady()\n   self:eval(\"Math.PI\")\nend\n\nwin:show()\n\n-- update the ui\nwhile win.visible do\n\tui.update()\nend",
+      "__results": "",
+      "__kind": "event",
+      "__params": [
+        {
+          "__description": "<p>A <code>string</code> value representing the message received, encoded in JSON format.</p>",
+          "__optional": false,
+          "__color": "EA6AC3",
+          "__name": "msg"
+        }
+      ],
+      "__description": "This event is fired when the Webview widget has received a message from the web page.",
+      "__tinydesc": "Event fired when Webview widget has received a JSON message from the web page.",
+      "__filename": "Webview-onMessage.html"
+    },
+    "devtools": {
+      "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+      "__access": "read/write",
+      "__kind": "property",
+      "__name": "devtools",
+      "__description": "<br>Enable/disable the Webview developer tools, by setting this property to <code>true</code> or <code>false</code> respectively. This property permits or prevents the user to open the Devtools window with the context menu or with the <code>Ctrl+Shift+I</code> shortcut.<article class=\"message is-warning\" style=\"margin-left: 15%; margin-right: 15%\"><div class=\"message-body\">Even if this property is set to <code>false</code>, it is still possible to show the Devtools window by calling the <a href=\"Webview-opendevtools.html\">Webview:opendevtools()</a> method.</div></article>",
+      "__example": "--! luart-extensions\nimport ui\nrequire \"webview\"\n\n-- create a simple window\nlocal win = ui.Window(\"Webview.devtools property sample\", 600, 300)\nlocal Webview = ui.Webview(win, { url = \"https://www.google.com\" })\nWebview.align = \"all\"\n\nfunction Webview:onReady()\n\t-- Disable the Devtools\n\tWebview.devtools = false\nend\n\n-- shows the window\nwin:show()\n\nwhile win.visible do\n\tui.update()\nend",
+      "__tinydesc": "Enable/disable the Webview developper tools",
+      "__filename": "Webview-devtools.html"
+    },
+    "cangoback": {
+      "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+      "__access": "readonly",
+      "__kind": "property",
+      "__name": "cangoback",
+      "__description": "<br>Checks if the Webview can go to the previous web page, returning <code>true</code> or <code>false</code> otherwise.<p class=\"is-size-4 mt-6 mb-0\" style=\"color: #004080\">Example",
+      "__example": "--! luart-extensions\nimport ui\nrequire \"webview\"\n\n-- create a simple Webview \nlocal win = ui.Window(\"Webview.cangoback sample\", 640, 480)\nlocal addressbar = ui.Entry(win, \"\", 24, 5, 592, 24)\nlocal prevBtn = ui.Button(win, \"\\xe2\\x87\\xa6\", 0, 3, 16, 16)\nprevBtn.font=\"Lucida Console\"\nprevBtn.fontsize = 12\nprevBtn.fontstyle = { bold = true }\nlocal nextBtn = ui.Button(win, \"\\xe2\\x87\\xa8\", 616, 3, 16, 16)\nnextBtn.font=\"Lucida Console\"\nnextBtn.fontsize = 12\nnextBtn.fontstyle = { bold = true }\nlocal Webview = ui.Webview(win, 0, 30, 640, 430)\n\nfunction prevBtn:onClick()\n    if Webview.cangoback then\n        Webview:goback()\n    end\nend\n\nfunction nextBtn:onClick()\n    if Webview.cangoforward then\n        Webview:goforward()\n    end\nend\n\nfunction addressbar:onSelect()\n    Webview.url = addressbar.text\nend\n\n-- Set current window title with the page title, once loaded\nfunction Webview:onLoaded()\n    win.title = Webview.title\n    addressbar.text = Webview.url\nend\n\nwin:show()\n\n-- update the user interface until the user closes the Webview\nrepeat\n    ui.update()\nuntil not win.visible",
+      "__tinydesc": "Check if the Webview can go to the previous page",
+      "__filename": "Webview-cangoback.html"
+    },
+    "onReady": {
+      "__returns": "The event returns no value.",
+      "__name": "onReady",
+      "__example": "--! luart-extensions\nimport ui\nrequire \"webview\"\n\n-- create a fixed Window\nlocal win = ui.Window(\"Webview:align() sample\", \"fixed\", 320, 200)\n\n-- create a Webview without an URL\nlocal wv = ui.Webview(win, 25, 25)\n\n-- align the Webview in all of its parent area \nwv.align = \"all\"\n\n-- Once the webview widget is ready, navigate to the specified URL\nfunction wv:onReady()\n    wv.url = \"https://wwww.luart.org\"\nend\n\n-- shows the Window\nwin:show()\n\nwhile win.visible do\n  ui.update()\nend",
+      "__results": "",
+      "__kind": "event",
+      "__params": {},
+      "__description": "<br>This event is fired when the Webview have been initialized and is ready to load a web page.<br>This event allows in particular to make adjustments before the first web page is displayed (for example, deactivating the status bar, deactivating developer tools, adding JavaScript scripts, etc.)",
+      "__tinydesc": "Event fired when Webview is initialized and ready to be used",
+      "__filename": "Webview-onReady.html"
+    },
+    "contextmenu": {
+      "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+      "__access": "read/write",
+      "__kind": "property",
+      "__name": "contextmenu",
+      "__description": "<br>Enable/disable the Webview context menu, by setting this property to <code>true</code> or <code>false</code> respectively. When enabled, the user can right-click anywhere in the Webview widget to show the default context menu.",
+      "__example": "--! luart-extensions\nimport ui\nrequire \"webview\"\n\n-- create a simple window\nlocal win = ui.Window(\"Webview.contextmenu property sample\", 600, 300)\nlocal Webview = ui.Webview(win, { url = \"https://www.google.com\" })\nWebview.align = \"all\"\n\nfunction Webview:onReady()\n\t-- Disable the contextmenu window\n\tWebview.contextmenu = false\nend\n\n-- shows the window\nwin:show()\n\nwhile win.visible do\n\tui.update()\nend",
+      "__tinydesc": "Enable/disable the Webview context menu",
+      "__filename": "Webview-contextmenu.html"
+    },
+    "statusbar": {
+      "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+      "__access": "read/write",
+      "__kind": "property",
+      "__name": "statusbar",
+      "__description": "<br>Enable/disable the Webview status bar, by setting this property to <code>true</code> or <code>false</code> respectively. If enabled, this property displays a status bar in the left bottom corner of the Webview widget.",
+      "__example": "--! luart-extensions\nimport ui\nrequire \"webview\"\n\n-- create a simple window\nlocal win = ui.Window(\"Webview.statusbar property sample\", 600, 300)\nlocal Webview = ui.Webview(win, { url = \"https://www.google.com\" })\nWebview.align = \"all\"\n\nfunction Webview:onReady()\n\t-- Hides the statusbar window\n\tWebview.statusbar = false\nend\n\n-- shows the window\nwin:show()\n\nwhile win.visible do\n\tui.update()\nend",
+      "__tinydesc": "Enable/disable the Webview status bar",
+      "__filename": "Webview-statusbar.html"
+    },
+    "goforward": {
+      "__returns": "This function returns no value.",
+      "__name": "goforward",
+      "__example": "--! luart-extensions\nimport ui\nrequire \"webview\"\n\n-- create a simple Webview \nlocal win = ui.Window(\"Webview:goforward() sample\", 640, 480)\nlocal addressbar = ui.Entry(win, \"\", 24, 5, 592, 24)\nlocal prevBtn = ui.Button(win, \"\\xe2\\x87\\xa6\", 0, 3, 16, 16)\nprevBtn.font=\"Lucida Console\"\nprevBtn.fontsize = 12\nprevBtn.fontstyle = { bold = true }\nlocal nextBtn = ui.Button(win, \"\\xe2\\x87\\xa8\", 616, 3, 16, 16)\nnextBtn.font=\"Lucida Console\"\nnextBtn.fontsize = 12\nnextBtn.fontstyle = { bold = true }\nlocal Webview = ui.Webview(win, 0, 30, 640, 430)\n\nfunction prevBtn:onClick()\n    if Webview.cangoback then\n        Webview:goback()\n    end\nend\n\nfunction nextBtn:onClick()\n    if Webview.cangoforward then\n        Webview:goforward()\n    end\nend\n\nfunction addressbar:onSelect()\n    Webview.url = addressbar.text\nend\n\n-- Set current window title with the page title, once loaded\nfunction Webview:onLoaded()\n    win.title = Webview.title\n    addressbar.text = Webview.url\nend\n\nwin:show()\n\n-- update the user interface until the user closes the Webview\nrepeat\n    ui.update()\nuntil not win.visible",
+      "__results": "<span>-</span>",
+      "__kind": "method",
+      "__params": {},
+      "__description": "<br>Navigates to the next web page.",
+      "__tinydesc": "Go to the next page",
+      "__filename": "Webview-goforward.html"
+    },
+    "onHide": {
+      "__results": "",
+      "__returns": "The event returns no value.\n\n            </div>\n\t      </div>\n      </div>\n    </div>\n  </section>  \n  <footer class=\"footer\">\n    <div class=\"content has-text-centered\">",
+      "__params": {},
+      "__name": "onHide",
+      "__description": "<br>This event is fired when the Webview is hidden (with a call to <a href=\"./Webview-hide.html\">Webview:hide()</a> or setting the <a href=\"./Webview-visible.html\">Webview.visible</a> property to <span style=\"color:#ae81ff\">false</span>).",
+      "__kind": "event",
+      "__tinydesc": "Event fired when Webview is hidden",
+      "__filename": "Webview-onHide.html"
+    },
+    "x": {
+      "__results": "<span style=\"color:#ae81ff\">number</span>",
+      "__access": "read/write",
+      "__kind": "property",
+      "__name": "x",
+      "__description": "<br>Get or set the Webview horizontal position. The horizontal position start from <span style=\"color:#ae81ff\">0</span> (left side of the parent widget) and increase to the right (right side of the parent widget).",
+      "__example": "--! luart-extensions\nimport ui\nrequire \"webview\"\n\n-- create a simple window\nlocal win = ui.Window(\"Webview.x sample\", 600, 300)\nlocal Webview = ui.Webview(win, { url = \"https://www.google.com\" })\n\n-- shows the window\nwin:show()\n\n-- update user interface and increase Webview horizontal position\nrepeat\n\tui.update()\n\tWebview.x = Webview.x + 1\nuntil not win.visible or (Webview.x > 600)",
+      "__tinydesc": "Get/set the Webview's horizontal position",
+      "__filename": "Webview-x.html"
+    },
+    "y": {
+      "__results": "<span style=\"color:#ae81ff\">number</span>",
+      "__access": "read/write",
+      "__kind": "property",
+      "__name": "y",
+      "__description": "<br>Get or set the Webview vertical position. The vertical position start from <span style=\"color:#ae81ff\">0</span> (top side of the parent widget) and increase to the bottom side of the parent widget.",
+      "__example": "--! luart-extensions\nimport ui\nrequire \"webview\"\n\n-- create a simple window\nlocal win = ui.Window(\"Webview.x sample\", 500, 400)\nlocal Webview = ui.Webview(win, { url = \"https://www.google.com/?mobile\" }, 25, 0, 450, 300)\n\n-- shows the window\nwin:show()\n\n-- update user interface and increase Webview horizontal position\nrepeat\n  ui.update()\n  Webview.y = Webview.y + 1\nuntil not win.visible or (Webview.y > 400)",
+      "__tinydesc": "Get/set the Webview's vertical position",
+      "__filename": "Webview-y.html"
+    },
+    "loadstring": {
+      "__returns": "This function returns <code>true</code> if the operation was successful or <code>false</code> otherwise.",
+      "__name": "loadstring",
+      "__example": "local html = [[\n&lt!DOCTYPE html>\n&lthtml>\n  &ltbody>\n    &ltcenter>&lth1 id=\"text\" style=\"margin-top:30%\">Hello from &ltfont color=\"#283593\">Lua&lt/font>&ltfont color=\"#FF9800\">&ltsup>rt&lt/sup>&lt/font>&lt/h1>&lt/center>\n  &lt/body>\n&lt/html>]]\n\nimport ui\nrequire \"webview\"\n\n-- create a simple Webview \nlocal win = ui.Window(\"Webview:postmessage() sample\", 640, 480)\nlocal Webview = ui.Webview(win, 0, 50, 640, 430)\nWebview.align = \"all\"\n\n-- once ready, load the html content from string\nfunction Webview:onReady()\n  Webview:loadstring(html)\nend\n\n-- update the user interface until the user closes the Window\nawait win:showasync()",
+      "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+      "__kind": "method",
+      "__params": [
+        {
+          "__description": "<p>A string that contains the HTML content to be loaded.</p>",
+          "__optional": false,
+          "__color": "EA6AC3",
+          "__name": "html"
+        }
+      ],
+      "__description": "<br>Load the specified HTML content as a new document.",
+      "__tinydesc": "Load the specified HTML content as a new document",
+      "__filename": "Webview-loadstring.html"
+    },
+    "eval": {
+      "__returns": "This function returns a <a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\"></i> Task</a> instance.\n            Once finished, the Task will return two values :\n            <ul>\n              <li>A <code>boolean</code> indicating if the operation succeeded</li>\n              <li>A <code>string</code> representing either an error message in case of failure, or the result as a JSON encoded string</li>\n            </ul>",
+      "__name": "eval",
+      "__example": "--! luart-extensions\nimport ui\nrequire \"webview\"\n\n-- create a simple Webview \nlocal win = ui.Window(\"Webview:eval() sample\", 640, 480)\nlocal Webview = ui.Webview(win, { url = \"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/PI\" }, 0, 50, 640, 500)\n\nlocal button = ui.Button(win, \"Evaluate Javascript Math.PI\")\nbutton:center()\nbutton.y = 10\n\nfunction button:onClick()\n    Webview:eval(\"Math.PI\").after = function(success, result)\n        if success then\n            ui.info(result, \"Math.PI value from Javascript\")\n        else\n            ui.error(result)\n        end\n    end\nend\n              \n-- update user interface\nawait win:showasync()",
+      "__results": "<a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\"></i> Task</a>",
+      "__kind": "method",
+      "__params": [
+        {
+          "__description": "<p>A string representing a valid Javascript expression to be evaluated.</p>",
+          "__optional": false,
+          "__color": "EA6AC3",
+          "__name": "expr"
+        }
+      ],
+      "__description": "<br>Execute JavaScript code in the current top level document rendered in the WebView.",
+      "__tinydesc": "Evaluates a Javascript expression",
+      "__filename": "Webview-eval.html"
+    },
+    "url": {
+      "__results": "<span style=\"color:#EA6AC3\">string</span>",
+      "__access": "read/write",
+      "__kind": "property",
+      "__name": "url",
+      "__description": "<br>Get the current Webview URL, a <strong style=\"color:#EA6AC3\">string</strong>.<br>Setting this property will cause navigation to the provided URL.<article class=\"message is-warning\" style=\"margin-left: 10%; margin-right: 10%\"><div class=\"message-body\">When setting this property while running in an embedded executable compiled with <code>rtc</code>, and if the URL starts with <code>file:///</code>, any resource not found locally will be searched inside the embedded content too.</div></article><p class=\"is-size-4 mt-6 mb-0\" style=\"color: #004080\">Example",
+      "__example": "--! luart-extensions\nimport ui\nrequire \"webview\"\n\n-- create a simple Webview \nlocal win = ui.Window(\"Webview.url sample\", 640, 480)\nlocal addressbar = ui.Entry(win, \"\", 0, 6, 640, 24)\nlocal Webview = ui.Webview(win, 0, 30, 640, 430)\n\nfunction addressbar:onSelect()\n    Webview.url = addressbar.text\nend\n\nwin:show()\n\n-- update the user interface until the user closes the Window\nrepeat\n    ui.update()\nuntil not win.visible",
+      "__tinydesc": "Get/set the Webview actual URL",
+      "__filename": "Webview-url.html"
+    },
+    "cdp": {
+      "__results": "<span style=\"color:#EA6AC3\">string</span>",
+      "__access": "read/write",
+      "__kind": "property",
+      "__name": "cdp",
+      "__description": "This property acts like a Lua table with different behavior depending on how fields are accessed.<p class=\"is-size-4 mb-1 mt-6\" style=\"color: #004080\">Calling a Chrome DevTools Protocol function",
+      "__example": "--! luart-extensions\nimport ui\nrequire \"webview\"\n\nlocal win = ui.Window(\"Chrome Devtools Protocol event example\", \"fixed\", 320, 240)\nlocal wv = ui.Webview(win, 0, 0, 320, 200)\nwv.align = \"all\"\nwin:center()\n\nfunction wv:onReady()\n    self:loadstring([[\n    <html>\n    <body><div style=\"display: flex; justify-content: center; align-items: center; height: 90vh;\">\n        <button onclick=\"window.open('https://www.luart.org', '_blank', 'width=600,height=400')\">Open new window</button>\n    </div></body>\n    </html>]])\n    -- enable CDP Page events\n    wv.cdp.Page.enable()\n    -- set a CDP Page.windowOpen() event\n    function wv.cdp.Page.windowOpen()\n        ui.info(\"New window detected\")\n    end\nend\n\nawait win:showasync()",
+      "__tinydesc": "Chrome DevTools Protocol access",
+      "__filename": "Webview-cdp.html"
+    },
+    "center": {
+      "__returns": "This function returns no value.",
+      "__name": "center",
+      "__example": "--! luart-extensions\nimport ui\nrequire \"webview\"\n\n-- create a simple Window\nlocal win = ui.Window(\"Webview:center() sample\", 640, 480)\nui.Webview(win, { url = \"https://www.luart.org\" }, 0, 0, 600, 400):center()\n\nwin:show()\n\n-- update the user interface until the user closes the Window\nrepeat\n    ui.update()\nuntil not win.visible",
+      "__results": "<span>-</span>",
+      "__kind": "method",
+      "__params": {},
+      "__description": "<br>Centers the Webview on the parent widget.",
+      "__tinydesc": "Centers the Webview on the parent widget",
+      "__filename": "Webview-center.html"
+    },
+    "printPDF": {
+      "__returns": "<p>This function will return a <a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\"></i> Task</a> instance.\n            Once finished, this Task will return :\n            <ul>\n              <li>A <code>boolean</code> indicating if the operation succeeded</li>\n              <li>In case of error, a <code>string</code> representing the error message is returned as a second return value</li>\n            </ul></p>",
+      "__name": "printPDF",
+      "__example": "--! luart-extensions\nimport ui\nrequire \"webview\"\nlocal sysutils = require \"sysutils\"\n\nlocal win = ui.Window(\"Chrome Devtools Protocol example\", \"fixed\", 640, 480)\nlocal wv = ui.Webview(win, 0, 0, 640, 440)\nlocal button = ui.Button(win, \"Print to PDF !\")\nbutton:center()\nbutton.y = 446\nwin:center()\n\nfunction button:onClick()\n    local success, result = await(wv:printPDF {file = \"test.pdf\" })\n    if not success then\n      ui.error(result)\n    else\n      sysutils.shellexec(\"open\", \"test.pdf\")\n    end\nend\n\nfunction wv:onReady()\n    self:loadstring([[\n    &lt;!DOCTYPE html&gt;\n    &lt;html&gt;\n    &lt;body&gt;\n    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper\n    &lt;/body&gt;\n    &lt;/html&gt;]])\nend\n\nawait win:showasync()",
+      "__results": "<a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\"></i> Task</a>",
+      "__kind": "method",
+      "__params": [
+        {
+          "__description": "A <code>table</code> that may contain any of the following keys :<ul><li><code>\"file\"</code>: a filename as a <code>string</code> or <a href=\"../sys/File.html\"><i class=\"fas fas fa-file\"></i> File</a> (this field is required).</li><li><code>\"orientation\"</code>: contains a <code>string</code> value to indicate page orientation among <code>\"landscape\"</code> and <code>\"portrait\"</code> (the default).</li><li><code>\"pageHeight\"</code>: contains a <code>number</code> value to indicate page height in inches.</li><li><code>\"pageWidth\"</code>: contains a <code>number</code> value to indicate page width in inches.</li><li><code>\"header\"</code>: contains a <code>boolean</code> value to indicate if the header is printed (defaulting to <code>true</code>).</li><li><code>\"background\"</code>: contains a <code>boolean</code> value to indicate if the the background is printed (defaulting to <code>false</code>).</li><li><code>\"colorMode\"</code>: contains a <code>string</code> value to indicate color mode, <code>\"grayscale\"</code> or <code>\"color\"</code> (the default).</li><li><code>\"copies\"</code>: contains a <code>number</code> value to indicate the number of copies to be printed (defaulting to <code>1</code>).</li><li><code>\"scaleFactor\"</code>: contains a <code>number</code> value to indicate the scale factor (defaulting to <code>1</code>).</li></ul>",
+          "__optional": false,
+          "__color": "B1D928",
+          "__name": "settings"
+        }
+      ],
+      "__description": "<br>Generate a PDF file from the current top-level document in the WebView using optional programmatically specified print settings.<p class=\"is-size-4 mb-1 mt-6\" style=\"color: #004080\">Parameters",
+      "__tinydesc": "Generates a PDF file from the current web page",
+      "__filename": "Webview-printPDF.html"
+    },
+    "onCreate": {
+      "__returns": "The event returns no value.",
+      "__name": "onCreate",
+      "__example": "--! luart-extensions\nimport ui\nrequire \"webview\"\n\n-- creates a simple window\nlocal win = ui.Window(\"Webview:onCreate() event sample\", 320, 200)\nlocal Webview = ui.Webview(win, { url = \"https://www.luart.org\" }, 150, 70)\n\n-- Webview:onCreate() event to center the Webview widget\nfunction Webview:onCreate()\n\tWebview:center()\nend\n\nwin:show()\n\n-- update the ui\nwhile win.visible do\n\tui.update()\nend",
+      "__results": "",
+      "__kind": "event",
+      "__params": {},
+      "__description": "<br>This event is fired when the Webview object has just been created (just after the <a href=\"Webview-constructor.html\">Webview:constructor()</a> call).<article class=\"message is-info\" style=\"margin-left: 15%; margin-right: 15%\"><div class=\"message-body\">This event is particularly interesting when you want to initialize its properties. </div></article>",
+      "__tinydesc": "Event fired when Webview has just been created (but not initialized)",
+      "__filename": "Webview-onCreate.html"
+    },
+    "align": {
+      "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+      "__access": "read/write",
+      "__kind": "property",
+      "__name": "align",
+      "__description": "<br>Get or set the Webview alignment, which position and size will be aligned relative to its parent (alignment persists even if the size of the parent changes).</p><p>This property uses a <code>string</code> to specify the Webview alignment :<ul><li><span style=\"color:#EA6AC3\">\"all\"</span> : the Webview will be aligned along all the parent borders (and will cover the entire parent client area).</li><li><span style=\"color:#EA6AC3\">\"bottom\"</span> : the Webview will be aligned along the bottom border of the parent, preserving its height.</li><li><span style=\"color:#EA6AC3\">\"top\"</span> : the Webview will be aligned along the the top border of the parent, preserving its height.</li><li><span style=\"color:#EA6AC3\">\"right\"</span> : the Webview will be aligned along the right border of the parent, preserving its width.</li><li><span style=\"color:#EA6AC3\">\"left\"</span> : the Webview will be aligned along the left border of the parent, preserving its width.</li></ul>",
+      "__example": "--! luart-extensions\nimport ui\nrequire \"webview\"\n\n-- create a fixed Window\nlocal win = ui.Window(\"Webview:align() sample\", \"fixed\", 320, 200)\n\n-- create a Webview without an URL\nlocal wv = ui.Webview(win, 25, 25)\n\n-- align the Webview in all of its parent area \nwv.align = \"all\"\n\n-- Once the webview widget is ready, navigate to the provided URL\nfunction wv:onReady()\n   wv.url = \"https://www.luart.org\"\nend\n\n-- shows the Window\nwin:show()\n\nwhile win.visible do\n\tui.update()\nend",
+      "__tinydesc": "Align the Webview relative to its parent",
+      "__filename": "Webview-align.html"
+    },
+    "constructor": {
+      "__results": "<a href=\"Webview.html\"><i class=\"fab fa-edge\"></i> Webview</a>",
+      "__kind": "method",
+      "__params": [
+        {
+          "__description": "<p>An object that will own the Webview. Parent objects can be any of <a href=\"../ui/Window.html\"><i class=\"far fa-window-maximize\" style=\"color :#2187E7\"></i> Window</a>, <a href=\"../ui/Groupbox.html\"><i class=\"far fa-square\" style=\"color :#2187E7\"></i> Groupbox</a>, <a href=\"../ui/TabItem.html\"><i class=\"fas fas fa-bookmark\"style=\"color :#2187E7\"></i><sup><i class=\"fas fa-tag\" style=\"margin-left: -0.3em\"></i></sup></span> TabItem</a> and <a href=\"../ui/Panel.html\"><i class=\"fas fa-expand\" style=\"color :#2187E7\"></i> Panel</a></p>",
+          "__optional": false,
+          "__color": "606060",
+          "__name": "parent"
+        },
+        {
+          "__description": "<p>An optional <code>table</code>that accepts the following optional fields as keys :<ul><li><code>\"url\"</code>: string representing the URL that the Webview widget will navigate to once initialized.</li><li><code>\"options\"</code>: string representing some custom Chromium command-line arguments (see <a href=\"https://peter.sh/experiments/chromium-command-line-switches/\">Chromium commandline options</a>).</li></ul>.<article class=\"message is-success\" style=\"margin-left: 5%; margin-right: 15%\"><div class=\"message-body\">When running in an embedded executable compiled with <code>rtc</code>, and if the URL starts with <code>file:///</code>, any resource not found locally will be searched inside the embedded content too.</div></article></p>",
+          "__optional": true,
+          "__color": "B1D928",
+          "__name": "props"
+        },
+        {
+          "__description": "<p>An optional number that indicates the Webview horizontal position, in pixels. Zero means the left border of the parent.</p>",
+          "__optional": true,
+          "__color": "ae81ff",
+          "__name": "x"
+        },
+        {
+          "__description": "<p>An optional number that indicates the Webview vertical position, in pixels. Zero means the top border of the parent.</p>",
+          "__optional": true,
+          "__color": "ae81ff",
+          "__name": "y"
+        },
+        {
+          "__description": "<p>An optional number that indicates the Webview width in pixels, autosized to fit text content if omitted.</p>",
+          "__optional": true,
+          "__color": "ae81ff",
+          "__name": "width"
+        },
+        {
+          "__description": "<p>An optional number that indicates the Webview height in pixels, autosized to fit text content if omitted.</p>",
+          "__optional": true,
+          "__color": "ae81ff",
+          "__name": "height"
+        }
+      ],
+      "__name": "constructor",
+      "__description": "<br>The Webview constructor returns a Webview instance representing a Microsoft Edge Webview2 component.<br><article class=\"message is-warning\" style=\"margin-left: 5%; margin-right: 15%\"><div class=\"message-body\">A just constructed Webview widget does not mean it is ready to be used.<br>In particular, during the widget construction process, it can be displayed while it is still initializing.<br>Once initialized, the Webview widget will throw a <a href=\"Webview-onReady\">Webview.onReady()</a> event, particularly useful to start using the Webview widget.</div></article>",
+      "__example": "--! luart-extensions\nimport ui\nrequire \"webview\"\n\n-- create a simple Window\nlocal win = ui.Window(\"Webview.constructor() sample\", 320, 200)\n\n-- create a Webview on this window\nlocal Webview = ui.Webview(win, { url = \"https://www.luart.org\" })\nWebview.align = \"all\"\n\nawait win:showasync()",
+      "__tinydesc": "Webview object constructor",
+      "__filename": "Webview-constructor.html"
+    },
+    "enabled": {
+      "__results": "<span style=\"color:#ae81ff\">boolean</span",
+      "__access": "read/write",
+      "__kind": "property",
+      "__name": "enabled",
+      "__description": "<br>Get or set the Webview ability to respond to mouse, and any other events. When set to <strong style=\"color:#ae81ff\">false</strong>, disable the Webview (the user will not be able to interact with it), and Webview's events won't be fired anymore.",
+      "__example": "--! luart-extensions\nimport ui\nrequire \"webview\"\n\n-- create a simple Window \nlocal win = ui.Window(\"Webview.enabled sample\", 320, 200)\nlocal Webview = ui.Webview(win, { url = \"https://www.google.com\" }, 130, 80)\n\n-- disable the Webview\nWebview.enabled = false\n\nwin:show()\n\n-- update user interface\nrepeat\n\tui.update()\nuntil not win.visible",
+      "__tinydesc": "Enable/disable the Webview widget",
+      "__filename": "Webview-enabled.html"
+    },
+    "__icon": "<span class=\"icon bd-link-icon mr-1\" style=\"font-size: 0.8em\"><i class=\"fab fa-edge\" style=\"color :#71e6b5\" style=\"color: #D0D0D0\"></i></span>",
+    "addinitscript": {
+      "__returns": "This function returns no value.",
+      "__name": "addinitscript",
+      "__example": "--! luart-extensions\nimport ui\nrequire \"webview\"\n\n-- create a simple Webview \nlocal win = ui.Window(\"Webview:addinitscript() sample\", 640, 480)\nlocal Webview = ui.Webview(win)\nWebview.align = \"all\"\n\nfunction Webview:onReady()\n    Webview:addinitscript(\"alert('Hello world !')\")\n    Webview.url = \"https://google.com\"\nend\n\nwin:show()\n\n-- update the user interface until the user closes the Window\nrepeat\n    ui.update()\nuntil not win.visible",
+      "__results": "<span>-</span>",
+      "__kind": "method",
+      "__params": [
+        {
+          "__description": "<p>A string representing a valid Javascript expression to be evaluated.</p>",
+          "__optional": false,
+          "__color": "EA6AC3",
+          "__name": "expr"
+        }
+      ],
+      "__description": "<br>Add the provided JavaScript to a list of scripts that should be executed before the HTML document has been loaded and before any other script included by the HTML document is executed.<article class=\"message is-warning\" style=\"margin-left: 10%; margin-right: 10%\"><div class=\"message-body\">To take effect, this function must be called once the Webview widget is initialized, before loading any document. It means that the provided scripts won't be executed if you provide an URL when calling the Webview widget constructor.</div></article>",
+      "__tinydesc": "Add a script to be executed before page loading",
+      "__filename": "Webview-addinitscript.html"
+    },
+    "postmessage": {
+      "__returns": "This function returns <code>true</code> if the operation was successful or <code>false</code> otherwise.",
+      "__name": "postmessage",
+      "__example": "local html = [[\n&lt!DOCTYPE html>\n&lthtml>\n&lthead>\n    &ltscript>\n        \"use strict\";\n        window.chrome.webview.addEventListener('message', arg => {\n            if (\"text\" in arg.data)\n                document.getElementById(\"text\").innerHTML = arg.data.text;\n        });\n    &lt/script>\n&lt/head>\n&ltbody>\n   &ltcenter>&lth1 id=\"text\" style=\"margin-top:30%\">&lt/h1>&lt/center>\n&lt/body>\n&lt/html>]]\n\nimport ui\nrequire \"webview\"\n\n-- create a simple Webview \nlocal win = ui.Window(\"Webview:postmessage() sample\", 640, 480)\nlocal Webview = ui.Webview(win, 0, 50, 640, 430)\n\nlocal button = ui.Button(win, \"Post message to Webview\")\nbutton:center()\nbutton.y = 10\n\n-- once ready, load the html content from string\nfunction Webview:onReady()\n\tWebview:loadstring(html)\nend\n\nfunction button:onClick()\n\t-- post a JSON message to the Webview\n    Webview:postmessage('{ \"text\" : \"Hello from <font color=\\\\\"#283593\\\\\">Lua</font><font color=\\\\\"#FF9800\\\\\"><sup>rt</sup></font>\" }', true)\nend\n\n-- update the user interface until the user closes the Window\nawait win:showasync()",
+      "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+      "__kind": "method",
+      "__params": [
+        {
+          "__description": "<p>A valid string to be posted to the toplevel document of the Webview.</p>",
+          "__optional": false,
+          "__color": "EA6AC3",
+          "__name": "msg"
+        },
+        {
+          "__description": "<p>A boolean value indicating if the provided string is encoded as JSON, defaulting to <code>false</code></p>",
+          "__optional": true,
+          "__color": "ae81ff",
+          "__name": "isjson"
+        }
+      ],
+      "__description": "<br>Post a message to the current top level document rendered in the Webview.<br>To retrieve the message in the document, you must subscribe to the <code>\"message\"</code> event of the <code>window.chrome.webview</code> object from the top level document.",
+      "__tinydesc": "Post a message to the toplevel document",
+      "__filename": "Webview-postmessage.html"
+    },
+    "width": {
+      "__results": "<span style=\"color:#ae81ff\">number</span>",
+      "__access": "read/write",
+      "__kind": "property",
+      "__name": "width",
+      "__description": "<br>Get or set the Webview area width. The width starts from <span style=\"color:#ae81ff\">0</span> (left side of the Webview) and increases to the right direction.",
+      "__example": "--! luart-extensions\nimport ui\nrequire \"webview\"\n\n-- create a simple window\nlocal win = ui.Window(\"Webview.x sample\", 600, 400)\nlocal Webview = ui.Webview(win, { url = \"https://www.google.com/?mobile\" })\nWebview.align = \"all\"\n\n-- shows the window\nwin:show()\n\n-- update user interface and increase Webview horizontal position\nrepeat\n  ui.update()\n  Webview.width = Webview.width - 1\nuntil not win.visible or (Webview.width &lt; 200)",
+      "__tinydesc": "Get/set the Webview's width",
+      "__filename": "Webview-width.html"
+    },
+    "visible": {
+      "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+      "__access": "read/write",
+      "__kind": "property",
+      "__name": "visible",
+      "__description": "<br>Get or set the Webview visibility on screen, a <strong style=\"color:#ae81ff\">true</strong> value means that the Webview is shown, a <strong style=\"color:#ae81ff\">false</strong> value means that the Webview is hidden.<article class=\"message is-info\" style=\"margin-left: 15%; margin-right: 15%\"><div class=\"message-body\">The Webview.visible property is also affected by the <a href=\"./Webview-show.html\">Webview:show()</a> and <a href=\"./Webview-hide.html\">Webview:hide()</a> methods.</div></article>",
+      "__example": "--! luart-extensions\nimport ui\nrequire \"webview\"\n\n-- create a simple Webview \nlocal win = ui.Window(\"Webview.visible sample\", 640, 480)\nlocal Webview = ui.Webview(win, { url = \"https://www.google.com\" }, 0, 50, 640, 430)\n\nlocal button = ui.Button(win, \"Click to hide Webview for 2sec\")\nbutton:center()\nbutton.y = 10\n\n-- hides the Webview and shows it again after 2 sec\nfunction button:onClick()\n  Webview.visible = false\n  button.enabled = false\n  sleep(2000)\n  button.enabled = true\n  Webview.visible = true\nend\n\nawait win:showasync()",
+      "__tinydesc": "Controls whether the Webview appears on screen",
+      "__filename": "Webview-visible.html"
+    },
+    "hide": {
+      "__returns": "This function returns no value.",
+      "__name": "hide",
+      "__example": "--! luart-extensions\nimport ui\nrequire \"webview\"\n\n-- create a simple Webview \nlocal win = ui.Window(\"Webview.visible sample\", 640, 480)\nlocal Webview = ui.Webview(win, { url = \"https://www.google.com\" }, 0, 50, 640, 430)\n\nlocal button = ui.Button(win, \"Hide the Webview widget\")\nbutton:center()\nbutton.y = 10\n\nwin:show()\n\nfunction button:onClick()\n  Webview:hide()\nend\n\nwhile win.visible do\n  ui.update()\nend",
+      "__results": "<span>-</span>",
+      "__kind": "method",
+      "__params": {},
+      "__description": "<br>Hide the Webview widget.",
+      "__tinydesc": "Hides the Webview",
+      "__filename": "Webview-hide.html"
+    }
+  },
+  "__kind": {
+    "isdesktop": true,
+    "isconsole": false,
+    "iscore": false
+  },
+  "__color": "71e6b5",
+  "__description": "This module provides the Microsoft Webview2 browser as a Webview widget in the <a href=\"../ui/index.html\"><i class=\"fas fa-clone\" style=\"color: #0099FF\"></i> ui</a> namespace",
+  "__name": "webview",
+  "__tinydesc": "Widget to render HTML, CSS, and JavaScript content using Webview2 ",
+  "__filename": "index.html"
 }

@@ -10,24 +10,24 @@
     "isconsole": true,
     "iscore": false
   },
-    "encode": {
-    "__name": "encode",
+  "decode": {
+    "__name": "decode",
     "__kind": "function",
     "__tinydesc": "Parses an XML string and returns a Node object",
     "__description": "Parses a <code>string</code> containing XML content and returns the root <a href=\"Node.html\"><i class=\"fas fa-code\" style=\"color :#2187E7\"></i> Node</a> object representing the XML structure.",
     "__params": [
-        {
+      {
         "__name": "str",
         "__description": "<p>A <code>string</code> containing valid XML data to be parsed.</p>",
         "__optional": false,
         "__color": "EA6AC3"
-        }
+      }
     ],
     "__returns": "Returns a <a href=\"Node.html\"><i class=\"fas fa-code\" style=\"color :#2187E7\"></i> Node</a> object if parsing succeeds, or <code>nil</code> if the XML is invalid.",
-    "__results": "<a href=\"Node.html\"><i class=\"fas fa-code\" style=\"color :#2187E7\"></i> Node</a> nil",
-    "__example": "local xml = require \"xml\"\n\n-- Parse XML string\nlocal root = xml.encode(\"<root><greeting>Hello</greeting></root>\")\n\n-- Access child node\nprint(root[1].name) -- greeting",
-    "__filename": "encode.html"
-    },
+    "__results": "<a href=\"Node.html\"><i class=\"fas fa-code\" style=\"color :#2187E7\"></i> Node</a> | <span style=\"color:lightgray\">nil</span>",
+    "__example": "--! luart-extensions\nimport xml\n\n-- Parse XML string\nlocal root = xml.decode(\"<root><greeting>Hello</greeting></root>\")\n\n-- Access child node\nprint(root[1].name) -- greeting",
+    "__filename": "decode.html"
+  },
   "error": {
     "__name": "error",
     "__kind": "property",
@@ -51,7 +51,7 @@
     ],
     "__returns": "Returns a <a href=\"Node.html\"><i class=\"fas fa-code\" style=\"color :#2187E7\"></i> Node</a> object representing the root of the XML tree, or <code>nil</code> in case of error.",
     "__results": "<a href=\"Node.html\"><i class=\"fas fa-code\" style=\"color :#2187E7\"></i> Node</a> nil",
-    "__example": "local xml = require \"xml\"\n\n-- Load an XML file\nlocal root = xml.load(\"example.xml\")\n\n-- Print the root node name\nprint(root.name)",
+    "__example": "--! luart-extensions\nimport xml\n\n-- Load an XML file\nlocal root = xml.load(\"example.xml\")\n\n-- Print the root node name\nprint(root.name)",
     "__filename": "load.html"
   },
   "save": {
@@ -75,7 +75,7 @@
     ],
     "__returns": "Returns <code>true</code> on success or <code>false</code> in case of error.",
     "__results": "<span style=\"color:#ae81ff\">boolean</span>",
-    "__example": "local xml = require \"xml\"\n\n-- Create a new Node\nlocal root = xml.Node(\"greeting\")\nroot.text = \"Hello, world!\"\n\n-- Save to file\nxml.save(\"greeting.xml\", root)",
+    "__example": "--! luart-extensions\nimport xml\n\n-- Create a new Node\nlocal root = xml.Node(\"greeting\")\nroot.text = \"Hello, world!\"\n\n-- Save to file\nxml.save(\"greeting.xml\", root)",
     "__filename": "save.html"
   },
   "Node": {
@@ -84,13 +84,13 @@
     "__tinydesc": "Represents an XML element with hierarchical structure",
     "__description": "The Node object represents an XML element.",
     "__filename": "Node.html",
-    "__icon":"<span><i class=\"fas fa-code\" style=\"color :#2187E7\"></i></span>",
+    "__icon": "<span><i class=\"fas fa-code\" style=\"color :#2187E7\"></i></span>",
     "__constructor": {
-        "__filename": "add.html",
-        "__name": "constructor",
-        "__kind": "method",
-        "__tinydesc": "Creates a new Node object instance",
-        "__description": "Creates a new Node object instance to represent an XML element with child nodes, attributes and text content.",
+      "__filename": "add.html",
+      "__name": "constructor",
+      "__kind": "method",
+      "__tinydesc": "Creates a new Node object instance",
+      "__description": "Creates a new Node object instance to represent an XML element with child nodes, attributes and text content.",
       "__params": [
         {
           "__name": "name",
@@ -107,7 +107,7 @@
       ],
       "__returns": "Returns a new <a href=\"Node.html\"><i class=\"fas fa-code\" style=\"color :#2187E7\"></i> Node</a> object instance.",
       "__results": "<a href=\"Node.html\"><i class=\"fas fa-code\" style=\"color :#2187E7\"></i> Node</a>",
-      "__example": "local xml = require \"xml\"\n\nlocal root = xml.Node(\"greeting\", \"Hello\")\nprint(root.text) -- Hello"
+      "__example": "--! luart-extensions\nimport xml\n\nlocal root = xml.Node(\"greeting\", \"Hello\")\nprint(root.text) -- Hello"
     },
     "add": {
       "__name": "add",
@@ -148,20 +148,20 @@
       "__kind": "property",
       "__access": "read/write",
       "__tinydesc": "Get/set the name of the node",
-      "__description": "Gets or sets the text content of the node, as a <code>string</code>",
-      "__example": "local xml = require(\"xml\")\n\nlocal root = xml.encode(\"<book><title>WhiteSnow</title></book>\")\nlocal node = root[1] -- First node\n\nprint(\"Node name:\", node.name)         --> \"title\"\nprint(\"Node text:\", node.text)         --> \"WhiteSnow\"",
+      "__description": "Gets or sets the name of the node, as a <code>string</code>",
+      "__example": "local xml = require(\"xml\")\n\nlocal root = xml.decode(\"<book><title>WhiteSnow</title></book>\")\nlocal node = root[1] -- First node\n\nprint(\"Node name:\", node.name)         --> \"title\"\nprint(\"Node text:\", node.text)         --> \"WhiteSnow\"",
       "__results": "<span style=\"color:#EA6AC3\">string</span>",
-      "__filename": "Node-text.html"
+      "__filename": "Node-name.html"
     },
     "parent": {
-        "__name": "parent",
-        "__kind": "property",
-        "__access": "read/write",
-        "__tinydesc": "Get/set the parent node",
-        "__description": "Gets or sets the parent node of the current node. A <code>nil</code> value means the Node has no parent.",
-        "__results": "<a href=\"Node.html\"><i class=\"fas fa-code\" style=\"color :#2187E7\"></i> Node</a> nil",
-        "__example": "local xml = require \"xml\"\n\n-- Create a root node\nlocal root = xml.Node(\"root\")\n\n-- Add a child node\nlocal child = root:add(\"greeting\", \"Hello\")\n\n-- Access the parent of the child\nprint(child.parent.name)  -- Output: root\n\n-- Reassign the parent (move child under a new node)\nlocal newParent = xml.Node(\"newroot\")\nchild.parent = newParent\nprint(child.parent.name)  -- Output: newroot",
-        "__filename": "Node-parent.html"
+      "__name": "parent",
+      "__kind": "property",
+      "__access": "read/write",
+      "__tinydesc": "Get/set the parent node",
+      "__description": "Gets or sets the parent node of the current node. A <code>nil</code> value means the Node has no parent.",
+      "__results": "<a href=\"Node.html\"><i class=\"fas fa-code\" style=\"color :#2187E7\"></i> Node</a> nil",
+      "__example": "--! luart-extensions\nimport xml\n\n-- Create a root node\nlocal root = xml.Node(\"root\")\n\n-- Add a child node\nlocal child = root:add(\"greeting\", \"Hello\")\n\n-- Access the parent of the child\nprint(child.parent.name)  -- Output: root\n\n-- Reassign the parent (move child under a new node)\nlocal newParent = xml.Node(\"newroot\")\nchild.parent = newParent\nprint(child.parent.name)  -- Output: newroot",
+      "__filename": "Node-parent.html"
     },
     "attributes": {
       "__name": "attributes",
@@ -171,7 +171,7 @@
       "__results": "<span style=\"color:#B1D928\">table</span>",
       "__example": "local xml = require 'xml'\n\nlocal root = xml.Node(\"user\")\nroot.attributes.id = \"123\"\nprint(root.attributes.id) -- 123",
       "__filename": "Node-attributes.html"
-    },        
+    },
     "Node length": {
       "__name": "#Node length operator",
       "__title": "#Node length operator",
@@ -197,68 +197,68 @@
       "__kind": "operation",
       "__tinydesc": "Iterator over child nodes",
       "__description": "Node object is iterable through the Lua<sup>rt</sup> helper function <a href=\"../base/each.html\">each()</a>, returning the next Node's child with each loop iteration.",
-      "__example": "local xml = require \"xml\"\n\nxml = require(\"xml\")\n\nlocal root = Node(\"root\")\nroot:add(\"child1\", \"Hello\")\nroot:add(\"child2\", \"World\")\nfor child in each(root) do\n    print(child.name, child.content)\nend",
+      "__example": "--! luart-extensions\nimport xml\n\nxml = require(\"xml\")\n\nlocal root = Node(\"root\")\nroot:add(\"child1\", \"Hello\")\nroot:add(\"child2\", \"World\")\nfor child in each(root) do\n    print(child.name, child.content)\nend",
       "__filename": "Node-iteration.html"
     },
     "remove": {
-    "__name": "remove",
-    "__kind": "method",
-    "__tinydesc": "Remove the current node from its parent",
-    "__description": "Detaches the current <a href=\"Node.html\"><i class=\"fas fa-code\" style=\"color :#2187E7\"></i> Node</a> from its parent node. If the node has no parent, the operation does nothing.",
-    "__params": [],
-    "__returns": "Returns <code>true</code> if the node was removed, or <code>false</code> if it had no parent.",
-    "__results": "<span style=\"color:#ae81ff\">boolean</span>",
-    "__example": "local xml = require \"xml\"\n\nxml = require(\"xml\")\n\nlocal root = xml.Node(\"root\")\nlocal title = root:add(\"title\", \"Hello\")\nprint(#root)              -- 1\nprint(title:remove())     -- true\nprint(#root)              -- 0",
-    "__filename": "Node-remove.html"
+      "__name": "remove",
+      "__kind": "method",
+      "__tinydesc": "Remove the current node from its parent",
+      "__description": "Detaches the current <a href=\"Node.html\"><i class=\"fas fa-code\" style=\"color :#2187E7\"></i> Node</a> from its parent node. If the node has no parent, the operation does nothing.",
+      "__params": [],
+      "__returns": "Returns <code>true</code> if the node was removed, or <code>false</code> if it had no parent.",
+      "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+      "__example": "--! luart-extensions\nimport xml\n\nxml = require(\"xml\")\n\nlocal root = xml.Node(\"root\")\nlocal title = root:add(\"title\", \"Hello\")\nprint(#root)              -- 1\nprint(title:remove())     -- true\nprint(#root)              -- 0",
+      "__filename": "Node-remove.html"
     },
     "clone": {
-    "__name": "clone",
-    "__kind": "method",
-    "__tinydesc": "Create a deep copy of the node to a new one.",
-    "__description": "Creates a deep copy of the current node, including its attributes and all descendant nodes.",
-    "__params": [],
-    "__returns": "Returns a new <a href=\"Node.html\"><i class=\"fas fa-code\" style=\"color :#2187E7\"></i> Node</a> identical to the original.",
-    "__results": "<a href=\"Node.html\"><i class=\"fas fa-code\" style=\"color :#2187E7\"></i> Node</a>",
-    "__example": "local xml = require \"xml\"\n\nlocal book = xml.Node(\"book\")\nbook:add(\"title\", \"Lua\")\nlocal copy = book:clone()\ncopy.name = \"bookCopy\"\nprint(copy[1].name)  -- title",
-    "__filename": "Node-clone.html"
+      "__name": "clone",
+      "__kind": "method",
+      "__tinydesc": "Create a deep copy of the node to a new one.",
+      "__description": "Creates a deep copy of the current node, including its attributes and all descendant nodes.",
+      "__params": [],
+      "__returns": "Returns a new <a href=\"Node.html\"><i class=\"fas fa-code\" style=\"color :#2187E7\"></i> Node</a> identical to the original.",
+      "__results": "<a href=\"Node.html\"><i class=\"fas fa-code\" style=\"color :#2187E7\"></i> Node</a>",
+      "__example": "--! luart-extensions\nimport xml\n\nlocal book = xml.Node(\"book\")\nbook:add(\"title\", \"Lua\")\nlocal copy = book:clone()\ncopy.name = \"bookCopy\"\nprint(copy[1].name)  -- title",
+      "__filename": "Node-clone.html"
     },
     "query": {
-    "__name": "query",
-    "__kind": "method",
-    "__tinydesc": "Find a node using a Path expression",
-    "__description": "Executes a path expression (XPath 1.0 and XSLT 1.0 standards) relative to this node and returns the results as a <code>table</code> of <a href=\"Node.html\"><i class=\"fas fa-code\" style=\"color :#2187E7\"></i> Node</a>, or <code>nil</code> if no match is found.",
-    "__params": [
+      "__name": "query",
+      "__kind": "method",
+      "__tinydesc": "Find a node using a Path expression",
+      "__description": "Executes a path expression (XPath 1.0 and XSLT 1.0 standards) relative to this node and returns the results as a <code>table</code> of <a href=\"Node.html\"><i class=\"fas fa-code\" style=\"color :#2187E7\"></i> Node</a>, or <code>nil</code> if no match is found.",
+      "__params": [
         {
-        "__name": "path",
-        "__description": "<p>A <code>string</code> path expression to evaluate.</p>",
-        "__optional": false,
-        "__color": "EA6AC3"
+          "__name": "path",
+          "__description": "<p>A <code>string</code> path expression to evaluate.</p>",
+          "__optional": false,
+          "__color": "EA6AC3"
         }
-    ],
-    "__returns": "Returns the first matching <a href=\"Node.html\"><i class=\"fas fa-code\" style=\"color :#2187E7\"></i> Node</a>, or <code>nil</code> if no match is found.",
-    "__results": "<span style=\"color:#B1D928\">table</span> nil",
-    "__example": "local xml = require(\"xml\")\n\nlocal root = xml.encode([[\n<library>\n  <book id=\"1\"><title>WhiteSnow</title><author>Grimm brothers</author></book>\n  <book id=\"2\"><title>Cinderella</title><author>Charles Perrault</author></book>\n</library>\n]])\n\nlocal function query_and_print(xpath)\n    local nodes = root:query(xpath)\n    print('XPath query : \"'..xpath..'\"')\n    if nodes == nil then\n        print(\"\\tNo node found\")\n    else\n        for node in each(nodes) do\n            print(\"\", node)\n        end\n    end\nend\n\n-- should print 2 nodes <book>\nquery_and_print(\"//book\")\n\n--- selects all <title> nodes inside <book>\n--> should print 2 nodes (WhiteSnow and Cinderella)\nquery_and_print(\"//book/title\")\n\n--- selects all <author> nodes\n--> should print 2 nodes(Grimm brothers and Charles Perrault)\nquery_and_print(\"//author\")\n\n--- selects all <book> nodes with attribute id=\"1\"\n--> should print 1 node (the first book)\nquery_and_print(\"//book[@id='1']\")\n\n--- selects <title> with the title text \"Cinderella\"\n--> should print 1 node (the second book)\nquery_and_print(\"//book/title[text()='Cinderella']\")\n\n--- selects <book> whose author is \"Grimm brothers\"\n--> should print 1 node (the second book)\nquery_and_print(\"//book[author='Grimm brothers']\")",
-    "__filename": "Node-query.html"
+      ],
+      "__returns": "Returns the first matching <a href=\"Node.html\"><i class=\"fas fa-code\" style=\"color :#2187E7\"></i> Node</a>, or <code>nil</code> if no match is found.",
+      "__results": "<span style=\"color:#B1D928\">table</span> nil",
+      "__example": "local xml = require(\"xml\")\n\nlocal root = xml.encode([[\n<library>\n  <book id=\"1\"><title>WhiteSnow</title><author>Grimm brothers</author></book>\n  <book id=\"2\"><title>Cinderella</title><author>Charles Perrault</author></book>\n</library>\n]])\n\nlocal function query_and_print(xpath)\n    local nodes = root:query(xpath)\n    print('XPath query : \"'..xpath..'\"')\n    if nodes == nil then\n        print(\"\\tNo node found\")\n    else\n        for node in each(nodes) do\n            print(\"\", node)\n        end\n    end\nend\n\n-- should print 2 nodes <book>\nquery_and_print(\"//book\")\n\n--- selects all <title> nodes inside <book>\n--> should print 2 nodes (WhiteSnow and Cinderella)\nquery_and_print(\"//book/title\")\n\n--- selects all <author> nodes\n--> should print 2 nodes(Grimm brothers and Charles Perrault)\nquery_and_print(\"//author\")\n\n--- selects all <book> nodes with attribute id=\"1\"\n--> should print 1 node (the first book)\nquery_and_print(\"//book[@id='1']\")\n\n--- selects <title> with the title text \"Cinderella\"\n--> should print 1 node (the second book)\nquery_and_print(\"//book/title[text()='Cinderella']\")\n\n--- selects <book> whose author is \"Grimm brothers\"\n--> should print 1 node (the second book)\nquery_and_print(\"//book[author='Grimm brothers']\")",
+      "__filename": "Node-query.html"
     },
     "isleaf": {
-    "__name": "isleaf",
-    "__kind": "property",
-    "__access": "readonly",
-    "__tinydesc": "Checks if the node has no children",
-    "__description": "A read-only <span style=\"color:#ae81ff\">boolean</span> property indicating whether this node has no child nodes.",
-    "__results": "<span style=\"color:#ae81ff\">boolean</span>",
-    "__example": "local xml = require \"xml\"\n\nxml = require(\"xml\")\n\nlocal n = xml.Node(\"item\")\nprint(n.isleaf)  -- true\nn:add(\"child\")\nprint(n.isleaf)  -- false",
-    "__filename": "Node-isleaf.html"
+      "__name": "isleaf",
+      "__kind": "property",
+      "__access": "readonly",
+      "__tinydesc": "Checks if the node has no children",
+      "__description": "A read-only <span style=\"color:#ae81ff\">boolean</span> property indicating whether this node has no child nodes.",
+      "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+      "__example": "--! luart-extensions\nimport xml\n\nxml = require(\"xml\")\n\nlocal n = xml.Node(\"item\")\nprint(n.isleaf)  -- true\nn:add(\"child\")\nprint(n.isleaf)  -- false",
+      "__filename": "Node-isleaf.html"
     },
     "Node[]": {
-    "__name": "node[index]",
-    "__title": "node[index]",
-    "__kind": "operation",
-    "__tinydesc": "Get a child node by its index",
-    "__description": "Allows to get a child node using table indexation using a <code>number</code> (the position of the node inside its parent). Returns the matching child <a href=\"Node.html\"><i class=\"fas fa-code\" style=\"color :#2187E7\"></i> Node</a> or <code>nil</code>.",
-    "__example": "local xml = require \"xml\"\n\nxml = require(\"xml\")\n\nlocal root = xml.Node(\"root\")\nroot:add(\"title\", \"The Wonderful Wizard of Oz\")\nroot:add(\"author\", \"Lyman Frank Baum\")\nprint(root[1].content)         -- 'The Wonderful Wizard of Oz'",
-    "__results": "<a href=\"Node.html\"><i class=\"fas fa-code\" style=\"color :#2187E7\"></i> Node</a> nil",
-    "__filename": "Node-indexing.html"
+      "__name": "node[index]",
+      "__title": "node[index]",
+      "__kind": "operation",
+      "__tinydesc": "Get a child node by its index",
+      "__description": "Allows to get a child node using table indexation using a <code>number</code> (the position of the node inside its parent). Returns the matching child <a href=\"Node.html\"><i class=\"fas fa-code\" style=\"color :#2187E7\"></i> Node</a> or <code>nil</code>.",
+      "__example": "--! luart-extensions\nimport xml\n\nxml = require(\"xml\")\n\nlocal root = xml.Node(\"root\")\nroot:add(\"title\", \"The Wonderful Wizard of Oz\")\nroot:add(\"author\", \"Lyman Frank Baum\")\nprint(root[1].content)         -- 'The Wonderful Wizard of Oz'",
+      "__results": "<a href=\"Node.html\"><i class=\"fas fa-code\" style=\"color :#2187E7\"></i> Node</a> nil",
+      "__filename": "Node-indexing.html"
     }
   }
 }

@@ -26,10 +26,10 @@
         "__kind": "function",
         "__params": [
             {
-                "__description": "<p>A <span style=\"color: #B1D928\">table</span> or an Object to iterate on.</p>",
-                "__optional": false,
-                "__color": "B1D928",
-                "__name": "iterable"
+        "__description": "<p>A <span style=\"color: #B1D928\">table</span>, an Object, or a <span style=\"color: #c7a170\">function</span> to iterate on.</p>",
+        "__optional": false,
+        "__color": "B1D928",
+        "__name": "iterable"
             }
         ],
         "__description": "Returns an iterator function that iterates over the values of a <span style=\"color: #B1D928\">table</span> or Object.",
@@ -54,8 +54,14 @@
             {
                 "__description": "<p>A variable for which we want to check inheritance. That variable can be of any type.</p>\n",
                 "__optional": false,
-                "__color": "B1D928",
+                "__color": "606060",
                 "__name": "var"
+            },
+            {
+                "__description": "<p>An Object or table to check inheritance against.</p>",
+                "__optional": false,
+                "__color": "B1D928",
+                "__name": "type"
             }
         ],
         "__description": "Check if the variable inherits from the specified Object.",
@@ -85,7 +91,7 @@
         "__returns": "This function returns the ancestor object, or <code>nil</code> if no ancestor is found.\n            <article class=\"message is-danger mt-5\" style=\"margin-left: 15%; margin-right: 15%;\"><div class=\"message-body\">\n            If you want to call ancestor methods with the super() function, you will need to use the \".\" dot notation to specify the self instance explicitly<br>Method call using \":\" semicolon is not possible as super() returns an <code>Object</code>, not an instance value.\n            </div></article></p>",
         "__name": "super",
         "__example": "Polygon = Object {}      -- Defines a new Object Polygon\n\n-- Defines a constructor for the Polygon Object\nfunction Polygon:constructor(n)\n  -- Defines a new filed 'sides'\n  self.sides = n\nend\n\nSquare = Object (Polygon) -- Defines a new Object Square, inheriting from Polygon\n\n-- Defines a constructor for the Square Object (with 4 sides)\nfunction Square:constructor()\n    -- Don't rewrite previous code, just use super() to call the Polygon constructor\n  -- to initialize the sides field with the value of 4\n    super(self).constructor(self, 4)\nend\n\n-- Should print true\nprint(super(Square) == Polygon)\n\n-- Should print 4\nprint(Square().sides)",
-        "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+        "__results": "<span>Object</span> | nil",
         "__kind": "function",
         "__params": [
             {

@@ -1,114 +1,114 @@
 {
-    "__name": "yaml",
-    "__type": "module",
-    "__icon": "<span class=\"icon bd-link-icon mr-1\" style=\"font-size: 0.8em\"><i class=\"fas fa-y\" style=\"color :#F87C63; vertical-align: top\"></i></span>",
-    "__color": "#F87C63",
-    "__tinydesc": "Parse and generate YAML data format",
-    "__description": "The yaml module provides YAML data format reading/writing capabilities",
-    "__filename": "index.html",
-    "__kind": {
-        "isdesktop": true,
-        "isconsole": true,
-        "iscore": false
-    },
-    "null": {
-        "__name": "null",
-        "__kind": "property",
-        "__access": "readonly",
-        "__tinydesc": "Represents a YAML null value",
-        "__description": "<p>Read-only property representing a YAML <code>null</code> value. When encoded, produces a YAML null literal, and when decoding a YAML null, results in this value.</p>",
-        "__results": "<span style=\"color:#ae81ff\">string</span>",
-        "__example": "local yaml = require \"yaml\"\n\nprint(yaml.null)  -- null",
-        "__filename": "null.html"
-    },
-    "decode": {
-        "__name": "decode",
-        "__kind": "function",
-        "__tinydesc": "Parse a YAML string",
-        "__description": "<p>Parses the given YAML <code>string</code> and returns the resulting Lua value. This function supports multiple documents, placeholder substitution, anchors, and type conversion.</p><p>Placeholders in the form <code>{{ var }}</code> can be replaced with values from the provided table, from local variables, upvalues, or globals. Unresolved placeholders become <code>yaml.null</code>.</p><p>Conversion to Lua values follows this rules: <table class=\"table has-text-centered mt-6\" >\r\n              <thead>\r\n                <tr>\r\n                  <th class=\"has-text-info\">YAML</th>\r\n                  <th class=\"has-text-info\">Lua value type</th>\r\n                </tr>\r\n              </thead>\r\n              <tbody>\r\n                <tr>\r\n                  <td class=\"has-text-grey\"><code>\"string\"</code></td>\r\n                  <td><code class=\"has-text-grey has-background-white\"><span style=\"color:#EA6AC3\">\"string\"</span></td>\r\n                </tr>\r\n                <tr>\r\n                  <td class=\"has-text-link-dark\"><code>number</code></td>\r\n                  <td><code class=\"has-text-grey has-background-white\"><span style=\"color:#ae81ff\">number</span></td>\r\n                 </tr>\r\n                 <tr>\r\n                   <td class=\"has-text-link-dark\"><code>boolean</code></td>\r\n                  <td><code class=\"has-text-grey has-background-white\"><span style=\"color:#ae81ff\">boolean</span></td>\r\n                 </tr>\r\n                 <tr>\r\n                   <td class=\"has-text-link-dark\"><code>YAML mapping {}</code></td>\r\n                  <td><code class=\"has-text-grey has-background-white\"><span style=\"color:#B1D928\">table</span></td>\r\n                 </tr>\r\n                 <tr>\r\n                   <td class=\"has-text-link-dark\"><code>YAML sequence []</code></td>\r\n                   <td><code class=\"has-text-grey has-background-white\"><span style=\"color:#B1D928\">table (integer keys)</span></td>\r\n                 </tr>\r\n                 <tr>\r\n                   <td class=\"has-text-link-dark\"><code>null</code></td>\r\n                   <td><code class=\"has-text-grey has-background-white\"><span style=\"color:#EA6AC3\">yaml.null</span></td>\r\n                 </tr>\r\n                </tbody>\r\n          </table></p>",
-        "__params": [
-            {
-                "__name": "src",
-                "__description": "<p>The YAML <code>string</code> to parse.</p>",
-                "__optional": false,
-                "__color": "EA6AC3"
-            },
-            {
-                "__name": "vars",
-                "__description": "<p>An optional <code>table</code> of placeholder names to values. If omited, local variables, upvalues and globals will be used for resolution.</p>",
-                "__optional": true,
-                "__color": "B1D928"
-            }
-        ],
-        "__returns": "<p>Returns the decoded Lua value (<code>table</code>, <code>string</code>, <code>number</code>, <code>boolean</code>, or <a href=\"null.html\">yaml.null</a>).</p><p>A <code>table</code> of documents is returned if multiple documents were found.</p><p>On error, returns <code>nil</code> and an error message <code>string</code></p>",
-        "__results": "any|(nil, <span style=\"color:#ae81ff\">string</span>)",
-        "__example": "local yaml = require \"yaml\"\n\nlocal data = yaml.decode(\"name: Alice\")\nprint(data.name)  -- Alice\n\nlocal template = \"foo: {{ var }}\"\nlocal vars = { var = \"hello\" }\nlocal filled = yaml.decode(template, vars)\nprint(filled.foo) -- hello",
-        "__filename": "decode.html"
-    },
-    "encode": {
-        "__name": "encode",
-        "__kind": "function",
-        "__tinydesc": "Convert a Lua table to YAML string representation",
-        "__description": "<p>Encodes the given Lua <code>table</code> into a YAML string.</p><p>This function supports sequences (table with integer keys), mappings (tables with string keys), multiple documents (when given an array of tables), and preserves types following this rules : <table class=\"table has-text-centered mt-6\">\r\n              <thead>\r\n                <tr>\r\n                  <th class=\"has-text-info\">Lua value type</th>\r\n                  <th class=\"has-text-info\">YAML</th>\r\n                </tr>\r\n              </thead>\r\n              <tbody>\r\n                <tr>\r\n                  <td><code class=\"has-text-grey has-background-white\"><span style=\"color:#EA6AC3\">\"string\"</span></td>\r\n                  <td class=\"has-text-grey\"><code>\"string\"</code></td>\r\n                </tr>\r\n                <tr>\r\n                  <td><code class=\"has-text-grey has-background-white\"><span style=\"color:#ae81ff\">number</span></td>\r\n                  <td class=\"has-text-link-dark\"><code>number</code></td>\r\n                 </tr>\r\n                 <tr>\r\n                  <td><code class=\"has-text-grey has-background-white\"><span style=\"color:#ae81ff\">boolean</span></td>\r\n                  <td class=\"has-text-link-dark\"><code>boolean</code></td>\r\n                 </tr>\r\n                 <tr>\r\n                  <td><code class=\"has-text-grey has-background-white\"><span style=\"color:#B1D928\">table (non array)</span></td>\r\n                  <td class=\"has-text-link-dark\"><code>YAML mapping {}</code></td>\r\n                 </tr>\r\n                 <tr>\r\n                  <td><code class=\"has-text-grey has-background-white\"><span style=\"color:#B1D928\">table (integer keys)</span></td>\r\n                  <td class=\"has-text-link-dark\"><code>YAML sequence []</code></td>\r\n                 </tr>\r\n                 <tr>\r\n                  <td><code class=\"has-text-grey has-background-white\"><span style=\"color:#EA6AC3\"><code>yaml.null</code></span></td>\r\n                  <td class=\"has-text-link-dark\"><code>null</code></td>\r\n                 </tr>\r\n                 <tr>\r\n                  <td><code class=\"has-text-grey has-background-white\"><span style=\"color:#424240\">object</span></td>\r\n                  <td class=\"has-text-link-dark\"><code>Not supported (raises an error)</code></td>\r\n                 </tr>\r\n                 <tr>\r\n                  <td><code class=\"has-text-grey has-background-white\"><span style=\"color:#424240\">thread</span></td>\r\n                  <td class=\"has-text-link-dark\"><code>Not supported (raises an error)</code></td>\r\n                 </tr>\r\n                 <tr>\r\n                  <td><code class=\"has-text-grey has-background-white\"><span style=\"color:#424240\">userdata</span></td>\r\n                  <td class=\"has-text-link-dark\"><code>Not supported (raises an error)</code></td>\r\n                 </tr>\r\n                </tbody>\r\n          </table></p>",
-        "__params": [
-            {
-                "__name": "value",
-                "__description": "<p>The Lua <code>table</code> to encode to YAML string.</p>",
-                "__optional": false,
-                "__color": "B1D928"
-            }
-        ],
-        "__returns": "Returns the YAML representation as a <code>string</code>.",
-        "__results": "<span style=\"color:#ae81ff\">string</span>",
-        "__example": "local yaml = require \"yaml\"\n\nlocal t = {name = \"Alice\", age = 30}\nlocal ystr = yaml.encode(t)\nprint(ystr)",
-        "__filename": "encode.html"
-    },
-    "load": {
-        "__name": "load",
-        "__kind": "function",
-        "__tinydesc": "Load and decode YAML data from a file",
-        "__description": "<p>Loads and decodes YAML content from a file. See the <a href=\"decode.html\">yaml.decode()</a> for more information on YAML decoding.</p>",
-        "__params": [
-            {
-                "__name": "filename",
-                "__description": "<p>A <a href=\"../sys/File.html\"><i class=\"fas fa-file\" style=\"color :#2187E7\"></i> File</a> object or a filename <code>string</code>, representing the YAML file.</p>",
-                "__optional": false,
-                "__color": "E6DB74"
-            },
-            {
-                "__name": "vars",
-               "__description": "<p>An optional <code>table</code> of placeholder names to values. If omited, local variables, upvalues and globals will be used for resolution.</p>",
-                "__optional": true,
-                "__color": "B1D928"
-            }
-        ],
-        "__returns": "Returns the parsed Lua value or table of documents. On error, returns <code>nil</code> and an error message string.",
-        "__results": "any (nil, <span style=\"color:#ae81ff\">string</span>)",
-        "__example": "local yaml = require \"yaml\"\n\nlocal data, err = yaml.load(\"config.yaml\")\nif data then\n  print(data.setting)\nelse\n  print(\"Error:\", err)\nend",
-        "__filename": "load.html"
-    },
-    "save": {
-        "__name": "save",
-        "__kind": "function",
-        "__tinydesc": "Encode and save a lua table in YAML format to a file",
-        "__description": "<p>Encodes a Lua table into YAML and writes it to a file. Returns <code>true</code> and nil on success, or <code>false</code> and an error message on failure.</p>",
-        "__params": [
-            {
-                "__name": "filename",
-                "__description": "<p>A <a href=\"../sys/File.html\"><i class=\"fas fa-file\" style=\"color :#2187E7\"></i> File</a> object or a filename <code>string</code>, representing the YAML file.</p>",
-                "__optional": false,
-                "__color": "E6DB74"
-            },
-            {
-                "__name": "table",
-                "__description": "<p>The Lua <code>table</code> to encode and save.</p>",
-                "__optional": false,
-                "__color": "B1D928"
-            }
-        ],
-        "__returns": "On success, returns <code>true</code>. On failure, returns <code>false</code> and an error message <code>string</code>",
-        "__results": "<span style=\"color:#ae81ff\">boolean</span>, <span style=\"color:#ae81ff\">string</span>|nil",
-        "__example": "local yaml = require \"yaml\"\n\nlocal t = {name = \"Bob\", age = 42}\nlocal ok, err = yaml.save(\"person.yaml\", t)\nif not ok then print(\"Save failed:\", err) end",
-        "__filename": "save.html"
-    }
+  "__name": "yaml",
+  "__type": "module",
+  "__icon": "<span class=\"icon bd-link-icon mr-1\" style=\"font-size: 0.8em\"><i class=\"fas fa-y\" style=\"color :#F87C63; vertical-align: top\"></i></span>",
+  "__color": "#F87C63",
+  "__tinydesc": "Parse and generate YAML data format",
+  "__description": "The yaml module provides YAML data format reading/writing capabilities",
+  "__filename": "index.html",
+  "__kind": {
+    "isdesktop": true,
+    "isconsole": true,
+    "iscore": false
+  },
+  "null": {
+    "__name": "null",
+    "__kind": "property",
+    "__access": "readonly",
+    "__tinydesc": "Represents a YAML null value",
+    "__description": "<p>Read-only property representing a YAML <code>null</code> value. When encoded, produces a YAML null literal, and when decoding a YAML null, results in this value.</p>",
+    "__results": "<span style=\"color:#ae81ff\">string</span>",
+    "__example": "--! luart-extensions\nimport yaml\n\nprint(yaml.null)  -- null",
+    "__filename": "null.html"
+  },
+  "decode": {
+    "__name": "decode",
+    "__kind": "function",
+    "__tinydesc": "Parse a YAML string",
+    "__description": "<p>Parses the given YAML <code>string</code> and returns the resulting Lua value. This function supports multiple documents, placeholder substitution, anchors, and type conversion.</p><p>Placeholders in the form <code>{{ var }}</code> can be replaced with values from the provided table, from local variables, upvalues, or globals. Unresolved placeholders become <code>yaml.null</code>.</p><p>Conversion to Lua values follows this rules: <table class=\"table has-text-centered mt-6\" >\r\n              <thead>\r\n                <tr>\r\n                  <th class=\"has-text-info\">YAML</th>\r\n                  <th class=\"has-text-info\">Lua value type</th>\r\n                </tr>\r\n              </thead>\r\n              <tbody>\r\n                <tr>\r\n                  <td class=\"has-text-grey\"><code>\"string\"</code></td>\r\n                  <td><code class=\"has-text-grey has-background-white\"><span style=\"color:#EA6AC3\">\"string\"</span></td>\r\n                </tr>\r\n                <tr>\r\n                  <td class=\"has-text-link-dark\"><code>number</code></td>\r\n                  <td><code class=\"has-text-grey has-background-white\"><span style=\"color:#ae81ff\">number</span></td>\r\n                 </tr>\r\n                 <tr>\r\n                   <td class=\"has-text-link-dark\"><code>boolean</code></td>\r\n                  <td><code class=\"has-text-grey has-background-white\"><span style=\"color:#ae81ff\">boolean</span></td>\r\n                 </tr>\r\n                 <tr>\r\n                   <td class=\"has-text-link-dark\"><code>YAML mapping {}</code></td>\r\n                  <td><code class=\"has-text-grey has-background-white\"><span style=\"color:#B1D928\">table</span></td>\r\n                 </tr>\r\n                 <tr>\r\n                   <td class=\"has-text-link-dark\"><code>YAML sequence []</code></td>\r\n                   <td><code class=\"has-text-grey has-background-white\"><span style=\"color:#B1D928\">table (integer keys)</span></td>\r\n                 </tr>\r\n                 <tr>\r\n                   <td class=\"has-text-link-dark\"><code>null</code></td>\r\n                   <td><code class=\"has-text-grey has-background-white\"><span style=\"color:#EA6AC3\">yaml.null</span></td>\r\n                 </tr>\r\n                </tbody>\r\n          </table></p>",
+    "__params": [
+      {
+        "__name": "src",
+        "__description": "<p>The YAML <code>string</code> to parse.</p>",
+        "__optional": false,
+        "__color": "EA6AC3"
+      },
+      {
+        "__name": "vars",
+        "__description": "<p>An optional <code>table</code> of placeholder names to values. If omited, local variables, upvalues and globals will be used for resolution.</p>",
+        "__optional": true,
+        "__color": "B1D928"
+      }
+    ],
+    "__returns": "<p>Returns the decoded Lua value (<code>table</code>, <code>string</code>, <code>number</code>, <code>boolean</code>, or <a href=\"null.html\">yaml.null</a>).</p><p>A <code>table</code> of documents is returned if multiple documents were found.</p><p>On error, returns <code>nil</code> and an error message <code>string</code></p>",
+    "__results": "any|(nil, <span style=\"color:#ae81ff\">string</span>)",
+    "__example": "--! luart-extensions\nimport yaml\n\nlocal data = yaml.decode(\"name: Alice\")\nprint(data.name)  -- Alice\n\nlocal template = \"foo: {{ var }}\"\nlocal vars = { var = \"hello\" }\nlocal filled = yaml.decode(template, vars)\nprint(filled.foo) -- hello",
+    "__filename": "decode.html"
+  },
+  "encode": {
+    "__name": "encode",
+    "__kind": "function",
+    "__tinydesc": "Convert a Lua table to YAML string representation",
+    "__description": "<p>Encodes the given Lua <code>table</code> into a YAML string.</p><p>This function supports sequences (table with integer keys), mappings (tables with string keys), multiple documents (when given an array of tables), and preserves types following this rules : <table class=\"table has-text-centered mt-6\">\r\n              <thead>\r\n                <tr>\r\n                  <th class=\"has-text-info\">Lua value type</th>\r\n                  <th class=\"has-text-info\">YAML</th>\r\n                </tr>\r\n              </thead>\r\n              <tbody>\r\n                <tr>\r\n                  <td><code class=\"has-text-grey has-background-white\"><span style=\"color:#EA6AC3\">\"string\"</span></td>\r\n                  <td class=\"has-text-grey\"><code>\"string\"</code></td>\r\n                </tr>\r\n                <tr>\r\n                  <td><code class=\"has-text-grey has-background-white\"><span style=\"color:#ae81ff\">number</span></td>\r\n                  <td class=\"has-text-link-dark\"><code>number</code></td>\r\n                 </tr>\r\n                 <tr>\r\n                  <td><code class=\"has-text-grey has-background-white\"><span style=\"color:#ae81ff\">boolean</span></td>\r\n                  <td class=\"has-text-link-dark\"><code>boolean</code></td>\r\n                 </tr>\r\n                 <tr>\r\n                  <td><code class=\"has-text-grey has-background-white\"><span style=\"color:#B1D928\">table (non array)</span></td>\r\n                  <td class=\"has-text-link-dark\"><code>YAML mapping {}</code></td>\r\n                 </tr>\r\n                 <tr>\r\n                  <td><code class=\"has-text-grey has-background-white\"><span style=\"color:#B1D928\">table (integer keys)</span></td>\r\n                  <td class=\"has-text-link-dark\"><code>YAML sequence []</code></td>\r\n                 </tr>\r\n                 <tr>\r\n                  <td><code class=\"has-text-grey has-background-white\"><span style=\"color:#EA6AC3\"><code>yaml.null</code></span></td>\r\n                  <td class=\"has-text-link-dark\"><code>null</code></td>\r\n                 </tr>\r\n                 <tr>\r\n                  <td><code class=\"has-text-grey has-background-white\"><span style=\"color:#424240\">object</span></td>\r\n                  <td class=\"has-text-link-dark\"><code>Not supported (raises an error)</code></td>\r\n                 </tr>\r\n                 <tr>\r\n                  <td><code class=\"has-text-grey has-background-white\"><span style=\"color:#424240\">thread</span></td>\r\n                  <td class=\"has-text-link-dark\"><code>Not supported (raises an error)</code></td>\r\n                 </tr>\r\n                 <tr>\r\n                  <td><code class=\"has-text-grey has-background-white\"><span style=\"color:#424240\">userdata</span></td>\r\n                  <td class=\"has-text-link-dark\"><code>Not supported (raises an error)</code></td>\r\n                 </tr>\r\n                </tbody>\r\n          </table></p>",
+    "__params": [
+      {
+        "__name": "value",
+        "__description": "<p>The Lua <code>table</code> to encode to YAML string.</p>",
+        "__optional": false,
+        "__color": "B1D928"
+      }
+    ],
+    "__returns": "Returns the YAML representation as a <code>string</code>.",
+    "__results": "<span style=\"color:#ae81ff\">string</span>",
+    "__example": "--! luart-extensions\nimport yaml\n\nlocal t = {name = \"Alice\", age = 30}\nlocal ystr = yaml.encode(t)\nprint(ystr)",
+    "__filename": "encode.html"
+  },
+  "load": {
+    "__name": "load",
+    "__kind": "function",
+    "__tinydesc": "Load and decode YAML data from a file",
+    "__description": "<p>Loads and decodes YAML content from a file. See the <a href=\"decode.html\">yaml.decode()</a> for more information on YAML decoding.</p>",
+    "__params": [
+      {
+        "__name": "filename",
+        "__description": "<p>A <a href=\"../sys/File.html\"><i class=\"fas fa-file\" style=\"color :#2187E7\"></i> File</a> object or a filename <code>string</code>, representing the YAML file.</p>",
+        "__optional": false,
+        "__color": "E6DB74"
+      },
+      {
+        "__name": "vars",
+        "__description": "<p>An optional <code>table</code> of placeholder names to values. If omited, local variables, upvalues and globals will be used for resolution.</p>",
+        "__optional": true,
+        "__color": "B1D928"
+      }
+    ],
+    "__returns": "Returns the parsed Lua value or table of documents. On error, returns <code>nil</code> and an error message string.",
+    "__results": "any (nil, <span style=\"color:#ae81ff\">string</span>)",
+    "__example": "--! luart-extensions\nimport yaml\n\nlocal data, err = yaml.load(\"config.yaml\")\nif data then\n  print(data.setting)\nelse\n  print(\"Error:\", err)\nend",
+    "__filename": "load.html"
+  },
+  "save": {
+    "__name": "save",
+    "__kind": "function",
+    "__tinydesc": "Encode and save a lua table in YAML format to a file",
+    "__description": "<p>Encodes a Lua table into YAML and writes it to a file. Returns <code>true</code> and nil on success, or <code>false</code> and an error message on failure.</p>",
+    "__params": [
+      {
+        "__name": "filename",
+        "__description": "<p>A <a href=\"../sys/File.html\"><i class=\"fas fa-file\" style=\"color :#2187E7\"></i> File</a> object or a filename <code>string</code>, representing the YAML file.</p>",
+        "__optional": false,
+        "__color": "E6DB74"
+      },
+      {
+        "__name": "table",
+        "__description": "<p>The Lua <code>table</code> to encode and save.</p>",
+        "__optional": false,
+        "__color": "B1D928"
+      }
+    ],
+    "__returns": "On success, returns <code>true</code>. On failure, returns <code>false</code> and an error message <code>string</code>",
+    "__results": "<span style=\"color:#ae81ff\">boolean</span>, <span style=\"color:#ae81ff\">string</span>|nil",
+    "__example": "--! luart-extensions\nimport yaml\n\nlocal t = {name = \"Bob\", age = 42}\nlocal ok, err = yaml.save(\"person.yaml\", t)\nif not ok then print(\"Save failed:\", err) end",
+    "__filename": "save.html"
+  }
 }

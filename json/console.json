@@ -1,374 +1,387 @@
 {
-    "width": {
-        "__results": "<span style=\"color:#ae81ff\">number</span>",
-        "__access": "readonly",
-        "__kind": "property",
-        "__name": "width",
-        "__description": "The console.width property gets the current console width in character. That value depends on the current console window size.",
-        "__example": "local console = require \"console\"\n\nlocal colors = { \"black\", \"blue\", \"green\", \"cyan\", \"red\", \"purple\", \"yellow\", \"white\", \"gray\", \"lightblue\", \"lightgreen\", \"lightcyan\", \"lightred\", \"lightpurple\", \"lightyellow\", \"brightwhite\" }\n\nconsole.clear()\nfor color in each(colors) do\n\tconsole.bgcolor = color\n\tconsole.write(string.rep(\" \", console.width))\n\tconsole.write(string.rep(\" \", console.width))\nend\nconsole.readchar()",
-        "__tinydesc": "Get console width",
-        "__filename": "width.html"
-    },
-    "show": {
-        "__returns": "The function returns no value.",
-        "__name": "show",
-        "__example": "local console = require \"console\"\n\nprint(\"Press a key to hide console for 2sec...\")\nconsole.read()\nconsole:hide()\nsleep(2000)\nconsole:show()\nprint(\"Press a key to exit\")\nconsole.read()",
-        "__results": "<span>-</span>",
-        "__kind": "function",
-        "__params": {},
-        "__description": "Shows the console window.",
-        "__tinydesc": "Show the console window",
-        "__filename": "show.html"
-    },
-    "__kind": {
-        "isdesktop": true,
-        "isconsole": true,
-        "iscore": true
-    },
-    "__description": "The console module allows for management and control of the console window",
-    "height": {
-        "__results": "<span style=\"color:#ae81ff\">number</span>",
-        "__access": "readonly",
-        "__kind": "property",
-        "__name": "height",
-        "__description": "The console.height property gets the current console height in character. That value depends on the current console window size.",
-        "__example": "local console = require \"console\"\n\nconsole.color = \"lightmagenta\"\n\n-- get the line in the middle of the console\nlocal ypos = math.floor(console.height/2)\n\n-- scroll \"Hello World !\" on that line\nfor i=1,console.width-13 do\n\tif i>1 then\n\t\tconsole.locate(i-1, ypos)\n\t\tconsole.write(\" \")\n\tend\n\tconsole.locate(i, ypos)\n\tconsole.write(\"Hello World !\")\n\tsleep(1)\nend",
-        "__tinydesc": "Get console height",
-        "__filename": "height.html"
-    },
-    "__filename": "index.html",
-    "title": {
-        "__results": "<span style=\"color:#EA6AC3\">string</span>",
-        "__access": "read/write",
-        "__kind": "property",
-        "__name": "title",
-        "__description": "The console.title gets/sets the console window title.",
-        "__example": "local console = require \"console\"\n\n-- sets console window title\nconsole.title = \"Luart example\"",
-        "__tinydesc": "Get/set console window title",
-        "__filename": "title.html"
-    },
-    "writecolor": {
-        "__returns": "The function returns no value.",
-        "__name": "writecolor",
-        "__example": "local console = require \"console\"\n\n-- writes in gray\nconsole.writeln(\"gray\", \"I'm in gray\")\n\n-- writes in red\nconsole.writecolor(\"red\", \"Now I'm red !\\n\")\n\n-- writes in white (back to the default text color)\nconsole.writeln(\"white\", \"back to the (boring) white\")",
-        "__results": "<span>-</span>",
-        "__kind": "function",
-        "__params": [
-            {
-                "__description": "<p>A string that represents the color of the printed text. Possible values are :<ul><li><span style=\"color:#EA6AC3\">\"black\"</span></li><li><span style=\"color:#EA6AC3\">\"blue\"</span></li><li><span style=\"color:#EA6AC3\">\"green\"</span></li><li><span style=\"color:#EA6AC3\">\"cyan\"</span></li><li><span style=\"color:#EA6AC3\">\"red\"</span></li><li><span style=\"color:#EA6AC3\">\"purple\"</span></li><li><span style=\"color:#EA6AC3\">\"yellow\"</span></li><li><span style=\"color:#EA6AC3\">\"white\"</span></li><li><span style=\"color:#EA6AC3\">\"gray\"</span></li><li><span style=\"color:#EA6AC3\">\"lightblue\"</span></li><li><span style=\"color:#EA6AC3\">\"lightgreen\"</span></li><li><span style=\"color:#EA6AC3\">\"lightcyan\"</span></li><li><span style=\"color:#EA6AC3\">\"lightred\"</span></li><li><span style=\"color:#EA6AC3\">\"lightpurple\"</span></li><li><span style=\"color:#EA6AC3\">\"lightyellow\"</span></li><li><span style=\"color:#EA6AC3\">\"brightwhite\"</span></li></ul></p>\n",
-                "__optional": false,
-                "__color": "EA6AC3",
-                "__name": "color"
-            }
-        ],
-        "__description": "Writes colored output to the console using console.stdout. The function change the color of the text (not its background). Then the function set back the text color to the previous one. Console.write() can write more than one string, each string is separated with a space character.",
-        "__tinydesc": "Write colored characters to console.stdout",
-        "__filename": "writecolor.html"
-    },
-    "keyhit": {
-        "__results": "<span><span style=\"color:#ae81ff\">boolean</span></span>",
-        "__access": "readonly",
-        "__kind": "property",
-        "__name": "keyhit",
-        "__description": "The console.keyhit property checks if a key has been pressed, returning <code>true</code> or <code>false</code> otherwise.",
-        "__example": "local console = require \"console\"\n\nprint(\"Waiting for a key press...\")\nwhile not console.keyhit do\n    sleep()\nend",
-        "__tinydesc": "Checks if a key has been pressed",
-        "__filename": "keyhit.html"
-    },
-    "stderr": {
-        "__results": "<span><a href=\"../sys/File.html\"><i class=\"fas fas fa-file\"></i> File</a></span>",
-        "__access": "read/write",
-        "__kind": "property",
-        "__name": "stderr",
-        "__description": "The console.stderr property gets the current standard console error output<a href=\"../sys/File.html\"><i class=\"fas fa-file\" style=\"color :#2187E7\"></i> File</a>.<br>",
-        "__example": "local console = require \"console\"\n\nconsole.stderror:write(\"Error : internet connection lost\")\nsys.exit(-1)",
-        "__tinydesc": "Get/set console stderr standard file",
-        "__filename": "stderr.html"
-    },
-    "read": {
-        "__returns": "Returns the characters in a <span style=\"color:#EA6AC3\">string</span>",
-        "__name": "read",
-        "__example": "local console = require \"console\"\n\nconsole.writecolor(\"cyan\", \"Do you want to quit (y/n) ? \")\nif console.read():lower() == \"y\" then\n\tsys.exit()\nend",
-        "__results": "<span style=\"color:#EA6AC3\">string</span>",
-        "__kind": "function",
-        "__params": [
-            {
-                "__description": "<p>An optional <code>number</code> representing how much characters must be read from the console, defaulting to <code>1</code></p>",
-                "__optional": true,
-                "__color": "ae81ff",
-                "__name": "length"
-            }
-        ],
-        "__description": "Reads from the console using console.stdin. The same result can be obtained using <a href=\"./stdin.html\">console.stdin:read()</a>",
-        "__tinydesc": "Read input from console.stdin",
-        "__filename": "read.html"
-    },
-    "__name": "console",
-    "clear": {
-        "__returns": "The function returns nothing.",
-        "__name": "clear",
-        "__example": "local console = require \"console\"\nconsole.writeln(\"This will disappear!\")\n-- clear the console screen with current background color\nconsole.clear()\nconsole.writeln(\"Great, a nice black board to write on !\")",
-        "__results": "<span>-</span>",
-        "__kind": "function",
-        "__params": [
-            {
-                "__description": "<p>An optional string indicating the color to clear the console screen with. See <a href=\"./bgcolor.html\">console.bgcolor</a> property to list the possible colors. If the color is not provided, use the current background color.<br>Once the console is cleared, the function revert back to the previous background color.</p>",
-                "__optional": true,
-                "__color": "ae81ff",
-                "__name": "color"
-            }
-        ],
-        "__description": "Clears the console screen (equivalent of the famous DOS command <code>cls</code>).",
-        "__tinydesc": "Clear console screen",
-        "__filename": "clear.html"
-    },
-    "stdout": {
-        "__results": "<span><a href=\"../sys/File.html\"><i class=\"fas fas fa-file\"></i> File</a></span>",
-        "__access": "read/write",
-        "__kind": "property",
-        "__name": "stdout",
-        "__description": "The console.stdout property gets the current standard console output <a href=\"../sys/File.html\"><i class=\"fas fa-file\" style=\"color :#2187E7\"></i> File</a>.<br>",
-        "__example": "local console = require \"console\"\n\n-- write \"Hello World\" to the console.stdout : 2 methods\n\n-- method 1 : console.write() => indirect call to console.stdout:write()\nconsole.write(\"Hello World\")\n\n-- method 1 : console.stdout:write() => direct call console.stdout's method write()\nconsole.stdout:write(\"Hello World\")",
-        "__tinydesc": "Get/set console stdout standard file",
-        "__filename": "stdout.html"
-    },
-    "stdin": {
-        "__results": "<span><a href=\"../sys/File.html\"><i class=\"fas fas fa-file\"></i> File</a></span>",
-        "__access": "read/write",
-        "__kind": "property",
-        "__name": "stdin",
-        "__description": "The console.stdin property gets the current standard console input<a href=\"../sys/File.html\"><i class=\"fas fa-file\" style=\"color :#2187E7\"></i> File</a>.<br>",
-        "__example": "local console = require \"console\"\n\n-- create a file containing the unicode string \"Hello World !\"\nlocal f = sys.File(\"hello.txt\"):open(\"write\", \"unicode\")\nf:writeln(\"Hello World\")\nf:close()\n\nconsole.stdin = f:open()\n\nconsole.writeln(\"Hey, do you have anything to say ?\")\nlocal msg = console.readln()\n\n--outputs \"Ok, you said 'Hello World' !!!\" without using your keyboard :)\nconsole.writecolor(\"brown\", \"Ok, you said '\"..msg..\"' !!!\\n\")\n\n-- closes \"hello.txt\" and revert back to standard console.stdin\nconsole.stdin:close()",
-        "__tinydesc": "Get/set console stdin standard file",
-        "__filename": "stdin.html"
-    },
-    "fullscreen": {
-        "__results": "<span>-</span>",
-        "__access": "read/write",
-        "__kind": "property",
-        "__name": "fullscreen",
-        "__description": "Gets/sets the console fullscreen mode.<ul><li>To go fullscreen, set the property to <span style=\"color: #ae81ff\">true</span></li><li>To revert back to normal mode (original size with window frame and title bar) set the property to <span style=\"color: #ae81ff\"> false</span>.</li></ul><article class=\"message is-info\" style=\"margin-left: 15%; margin-right: 15%\"><div class=\"message-body\">The user can revert back to normal mode by pressing ALT+RETURN.</div></article><p class=\"is-size-4 mt-6 mb-0\" style=\"color: #004080\">Example",
-        "__example": "local console = require \"console\"\n\nconsole.write(\"Do you want to go fullscreen (y/n) ?\")\nconsole.fullscreen = console.read(1):lower() == \"y\"",
-        "__tinydesc": "Get/set console fullscreen mode",
-        "__filename": "fullscreen.html"
-    },
-    "fontsize": {
-        "__results": "<span style=\"color:#ae81ff\">number</span>",
-        "__access": "read/write",
-        "__kind": "property",
-        "__name": "fontsize",
-        "__description": "Get or set the console font size, a <strong style=\"color:#ae81ff\">number</strong> that represent the font size in pixels.<br><article class=\"message is-warning\"><div class=\"message-body\">If you use Windows Terminal as console, please note that it does not permit to change console font size programmatically, so setting this property will have no effect.</div></article>",
-        "__example": "-- old DOS like console\nlocal console = require \"console\"\n\nconsole.fullscreen = true\nconsole.clear()\nconsole.font = \"Lucida Console\"\nconsole.fontsize = 16\nconsole.write(\"Starting MS-DOS...\\n\\nHIMEM is testing extending memory...done.\\n\")\nconsole.writeln(\"\\nMODE prepare codepage function completed\")\nconsole.writeln(\"\\nMODE select codepage function completed\")\nconsole.writeln(\"\\n\\nC:\\\\ \\n\\n\\n\")",
-        "__tinydesc": "Get/set current console font size",
-        "__filename": "fontsize.html"
-    },
-    "font": {
-        "__results": "<span style=\"color:#EA6AC3\">string</span>",
-        "__access": "read/write",
-        "__kind": "property",
-        "__name": "font",
-        "__description": "Get the current console font, a <span style=\"color:#EA6AC3\">string</span> value that represent the font name.<p><p>To set the console.font property, you can assign :<ul><li>A <span style=\"color:#EA6AC3\">string</span> that represent either a font name from the system fonts.</li><li>A <span style=\"color:#EA6AC3\">string</span> or a <a href=\"../sys/File.html\"><i class=\"fas fa-file\"></i> File</a> that represent a font file (*.ttf, *.fon...)</li></ul><p class=\"is-size-4 mt-6 mb-0\" style=\"color: #004080\">Example",
-        "__example": "local console = require \"console\"\n\nconsole.clear()\n\nlocal message = \"Hello World !\"\nconsole.font = \"Consolas\"\nconsole.fontsize = 48\nconsole.fullscreen = true\nconsole.x = math.floor((console.width-message:len())/2)\nconsole.y = math.floor(console.height/2)\nconsole.writecolor(\"purple\", message)\n\nconsole.cursor = false\nconsole.readchar()\nconsole.clear()",
-        "__tinydesc": "Get/set current console font",
-        "__filename": "font.html"
-    },
-    "echo": {
-        "__results": "<span>-</span>",
-        "__access": "read/write",
-        "__kind": "property",
-        "__name": "echo",
-        "__description": "The console.echo property sets/gets the current console ECHO mode.",
-        "__example": "local console = require \"console\"\n\nconsole.write(\"Username : \")\nlocal username = console.readln()\n\n-- disable echo mode and use the \"*\" character instead for each key pressed\nconsole.echo = \"*\"\nconsole.write(\"Password : \")\nlocal password = console.readln()",
-        "__tinydesc": "Get/set ECHO mode for console stdout",
-        "__filename": "echo.html"
-    },
-    "__tinydesc": "Windows console input/ouput and text formatting ",
-    "y": {
-        "__results": "<span style=\"color:#ae81ff\">number</span>",
-        "__access": "read/write",
-        "__kind": "property",
-        "__name": "y",
-        "__description": "The console.y property gets or sets the current cursor line position.",
-        "__example": "local console = require \"console\"\n-- Create a title for the console\nfunction title(msg, linepos)\n\tlocal length = math.floor((console.width-string.len(msg))/2)\n\tconsole.clear(\"black\")\n\tconsole.y = linepos or 1\n\tconsole.bgcolor = \"lightblue\"\n\tconsole.writecolor(\"blue\", string.rep(string.char(0xE2, 0x96, 0x80), console.width))\n\tconsole.writecolor(\"brightwhite\", string.rep(' ', length)..msg)\n\tconsole.write(string.rep(' ', console.width-length-string.len(msg)))\n\tconsole.bgcolor = \"blue\"\n\tconsole.writecolor(\"lightblue\", string.rep(string.char(0xE2, 0x96, 0x80), console.width))\n\tconsole.bgcolor = \"black\"\n\tconsole.writeln(\"\\n\\n\\n\")\nend\n\n-- The title text and the line to start drawing the title\ntitle(\"Hello World !\", 1)",
-        "__tinydesc": "Get/set cursor y position",
-        "__filename": "y.html"
-    },
-    "bgcolor": {
-        "__results": "<span style=\"color:#EA6AC3\">string</span>",
-        "__access": "read/write",
-        "__kind": "property",
-        "__name": "bgcolor",
-        "__description": "The console.bgcolor property sets or gets the current console background color. The color is represented by a <strong style=\"color:#EA6AC3\">string</strong>. Possible values are :<ul><li><span style=\"color:#EA6AC3\">\"black\"</span></li><li><span style=\"color:#EA6AC3\">\"blue\"</span></li><li><span style=\"color:#EA6AC3\">\"green\"</span></li><li><span style=\"color:#EA6AC3\">\"cyan\"</span></li><li><span style=\"color:#EA6AC3\">\"red\"</span></li><li><span style=\"color:#EA6AC3\">\"purple\"</span></li><li><span style=\"color:#EA6AC3\">\"yellow\"</span></li><li><span style=\"color:#EA6AC3\">\"white\"</span></li><li><span style=\"color:#EA6AC3\">\"gray\"</span></li><li><span style=\"color:#EA6AC3\">\"lightblue\"</span></li><li><span style=\"color:#EA6AC3\">\"lightgreen\"</span></li><li><span style=\"color:#EA6AC3\">\"lightcyan\"</span></li><li><span style=\"color:#EA6AC3\">\"lightred\"</span></li><li><span style=\"color:#EA6AC3\">\"lightpurple\"</span></li><li><span style=\"color:#EA6AC3\">\"lightyellow\"</span></li><li><span style=\"color:#EA6AC3\">\"brightwhite\"</span></li></ul>",
-        "__example": "local console = require \"console\"\n\nlocal colors = { \"black\", \"blue\", \"green\", \"cyan\", \"red\", \"purple\", \"yellow\",\n \"white\", \"gray\", \"lightblue\", \"lightgreen\", \"lightcyan\", \"lightred\", \n \"lightmagenta\", \"lightyellow\", \"brightwhite\" }\n\n-- prints a rainbow\nfor color in each(colors) do\n\tconsole.bgcolor = color\n\tconsole.write(string.rep(\" \", console.width))\nend",
-        "__tinydesc": "Get/set console background color",
-        "__filename": "bgcolor.html"
-    },
-    "write": {
-        "__returns": "The function returns no value.",
-        "__name": "write",
-        "__example": "local console = require \"console\"\n\n-- prints to the console without returning to line,\n-- so that the next characters entered will be printed just after\nconsole.write(\"What's your name ? \")\nlocal name = console.readln()\nconsole.write(\"\\nHi \"..name..\" !\")",
-        "__results": "<span>-</span>",
-        "__kind": "function",
-        "__params": [
-            {
-                "__description": "<p>The strings to write to the console, separated by commas. If the argument is not a string, the function converts it internally using the <span style=\"color:#e69900\">tostring</span> function.<article class=\"message is-info\" style=\"margin-left: 15%; margin-right: 15%\"><div class=\"message-body\">The function does not return to next line after printing the characters. If you want to add a newline character, use <a href=\"writeln.html\">console.writeln()</a> instead.</div></article></p>",
-                "__optional": false,
-                "__color": "EA6AC3",
-                "__name": "str1"
-            }
-        ],
-        "__description": "Writes to the console using console.stdout. Contrary to <a href=\"./stdout.html\">console.stdout:write()</a>, console.write() can write more than one string, each string is separated with a space character.",
-        "__tinydesc": "Write to console.stdout",
-        "__filename": "write.html"
-    },
-    "x": {
-        "__results": "<span style=\"color:#ae81ff\">number</span>",
-        "__access": "read/write",
-        "__kind": "property",
-        "__name": "x",
-        "__description": "The console.x property gets or sets the current cursor column position.",
-        "__example": "local console = require \"console\"\n\nconsole.clear()\n\nlocal message = \"Hello World !\"\nconsole.color = \"lightyellow\"\nconsole.y = math.floor(console.height/2)\n\nfor x = 1,console.width-message:len() do\n\tconsole.x = x-1\n\tconsole.write(string.rep(\" \", message:len()))\n\tconsole.x = x\n\tconsole.write(message)\n\tsleep(1)\nend",
-        "__tinydesc": "Get/set cursor x position",
-        "__filename": "x.html"
-    },
-    "readln": {
-        "__returns": "Returns a <span style=\"color:#EA6AC3\">string</span>. Please note that the string does not contains the last \"\\n\" character.",
-        "__name": "readln",
-        "__example": "local console = require \"console\"\n\nconsole.writecolor(\"cyan\", \"Enter your name :\")\nlocal name = console.readln()\n\nprint(\"Hello \"..name:capitalize()..\" !\")",
-        "__results": "<span style=\"color:#EA6AC3\">string</span>",
-        "__kind": "function",
-        "__params": {},
-        "__description": "Reads a line from the console (until the ENTER/ RETURN is pressed). The same result can be obtained using <a href=\"./stdin.html\">console.stdin:readln()</a>",
-        "__tinydesc": "Read a line from console.stdin",
-        "__filename": "readln.html"
-    },
-    "readchar": {
-        "__returns": "Returns two values :\n\t\t\t<ul>\n\t\t\t<li>A <span style=\"color:#EA6AC3\">string</span> corresponding to the pressed character (for example <span style=\"color:#EA6AC3\">\"A\"</span> if SHIFT+A have been pressed).</li>\n\t\t    <li>A boolean value that indicates if the key pressed is special (for example, UP arrow key returns the string <span style=\"color:#EA6AC3\">\"H\"</span> and <span style=\"color:#ae81ff\">true</span>).",
-        "__name": "readchar",
-        "__example": "local console = require \"console\"\n\nconsole.writecolor(\"cyan\", \"Press a key\\n\")\nlocal char, isspecial = console.readchar()\n\nif isspecial == true then\n\tprint(\"You have pressed special key [\"..char..\"]\")\nelse\n\tprint(\"You have pressed key [\"..char..\"]\")\nend",
-        "__results": "<span style=\"color:#EA6AC3\">string</span>",
-        "__kind": "function",
-        "__params": {},
-        "__description": "Reads a key from the console and returns a corresponding character if possible. That function can read special keys (Function keys, arrows...).",
-        "__tinydesc": "Read a key from console",
-        "__filename": "readchar.html"
-    },
-    "__icon": "<span class=\"icon bd-link-icon mr-1\" style=\"font-size: 0.8em\"><i class=\"fas fa-terminal\" style=\"color:#d54d34; vertical-align: middle\" style=\"color: #D0D0D0\"></i></span>",
-    "__type": "module",
-    "writeln": {
-        "__returns": "The function returns no value.",
-        "__name": "writeln",
-        "__example": "local console = require \"console\"\n\n-- equivalent to print(\"Hello World\")\nconsole.writeln(\"Hello World !\")",
-        "__results": "<span>-</span>",
-        "__kind": "function",
-        "__params": [
-            {
-                "__description": "<p>Optional strings to write to the console, separated by commas. If the argument is not a string, the function converts it internally using the <code>tostring</code> function.<br>Calling the function without any argument writes <span style=\"color:#EA6AC3\">\"\\n\"</span></p>",
-                "__optional": false,
-                "__color": "EA6AC3",
-                "__name": "str1"
-            }
-        ],
-        "__description": "Writes to the console using console.stdout, adding a last newline character. Contrary to <a href=\"stdout.html\">console.stdout:writeln()</a>, console.writeln() can write more than one string, each string is separated with a space character.",
-        "__tinydesc": "Write to console.stdout with newline",
-        "__filename": "writeln.html"
-    },
-    "cursor": {
-        "__results": "<span style=\"color:#ae81ff\">boolean</span>",
-        "__access": "read/write",
-        "__kind": "property",
-        "__name": "cursor",
-        "__description": "The console.cursor property is a readwrite property that indicate if the console cursor is visible or not.",
-        "__example": "local console = require \"console\"\n\nconsole.clear()\nconsole.fullscreen = true\nconsole.fontsize = 26\nconsole.cursor = false\n\nlocal y = console.height/2\nlocal max = console.width - string.len(\"Hello LuaRT\")\n\n-- make Hello LuaRT move across the console window\nfor x = 1,max do\n    console.clear()\n    console.locate(x, y)\n    console.write(\"Hello Lua\")\n    console.writecolor(\"yellow\", \"RT\")\n    sleep(1)\nend\n\nconsole.cursor = true",
-        "__tinydesc": "Get/set cursor visibility",
-        "__filename": "cursor.html"
-    },
-    "reset": {
-        "__returns": "The function returns no value.",
-        "__name": "reset",
-        "__example": "local console = require \"console\"\n\n-- set console text color to red\nconsole.color = \"red\"\nprint(\"Hello World in red!\")\n\n-- revert back to the console default\nconsole.reset()",
-        "__results": "<span>-</span>",
-        "__kind": "function",
-        "__params": {},
-        "__description": "Resets the console to the default text and background colors. That function is always called before the program terminates.",
-        "__tinydesc": "Reset console colors to default",
-        "__filename": "reset.html"
-    },
-    "color": {
-        "__results": "<span style=\"color:#EA6AC3\">string</span>",
-        "__access": "read/write",
-        "__kind": "property",
-        "__name": "color",
-        "__description": "The console.color property sets or gets the current console text color. The color is represented by a <strong style=\"color:#EA6AC3\">string</strong> Possible values are :<ul><li><span style=\"color:#EA6AC3\">\"black\"</span></li><li><span style=\"color:#EA6AC3\">\"blue\"</span></li><li><span style=\"color:#EA6AC3\">\"green\"</span></li><li><span style=\"color:#EA6AC3\">\"cyan\"</span></li><li><span style=\"color:#EA6AC3\">\"red\"</span></li><li><span style=\"color:#EA6AC3\">\"purple\"</span></li><li><span style=\"color:#EA6AC3\">\"yellow\"</span></li><li><span style=\"color:#EA6AC3\">\"white\"</span></li><li><span style=\"color:#EA6AC3\">\"gray\"</span></li><li><span style=\"color:#EA6AC3\">\"lightblue\"</span></li><li><span style=\"color:#EA6AC3\">\"lightgreen\"</span></li><li><span style=\"color:#EA6AC3\">\"lightcyan\"</span></li><li><span style=\"color:#EA6AC3\">\"lightred\"</span></li><li><span style=\"color:#EA6AC3\">\"lightpurple\"</span></li><li><span style=\"color:#EA6AC3\">\"lightyellow\"</span></li><li><span style=\"color:#EA6AC3\">\"brightwhite\"</span></li></ul>",
-        "__example": "local console = require \"console\"\n\n-- writes in white (default text color)\nconsole.writeln(console.color)\n\n-- writes in red\nconsole.color = \"red\"\nconsole.writeln(console.color)\n\n-- writes in white (back to the default text color)\nconsole.color = \"white\"\nconsole.writeln(console.color)",
-        "__tinydesc": "Get/set console foreground color",
-        "__filename": "color.html"
-    },
-    "locate": {
-        "__returns": "The function returns no value.",
-        "__name": "locate",
-        "__example": "local console = require \"console\"\n\nlocal colors = { \"black\", \"blue\", \"green\", \"cyan\", \"red\", \"purple\", \"yellow\",\n\"white\", \"gray\", \"lightblue\", \"lightgreen\", \"lightcyan\", \"lightred\", \n\"lightpurple\", \"lightyellow\", \"brightwhite\" }\n\n-- random starfield in luaRT\n\nmath.randomseed(sys.clock())\nfor i=1,console.height*console.width/3 do\n\tconsole.locate(math.random(console.width), math.random(console.height))\n\tconsole.writecolor(colors[math.random(#colors)], \"+\")\nend\nconsole.readchar()\nconsole.clear()",
-        "__results": "<span>-</span>",
-        "__kind": "function",
-        "__params": [
-            {
-                "__description": "<p>A number representing the horizontal position of the cursor from 1 to <a href=\"width.html\">console.width</a></p>\n",
-                "__optional": false,
-                "__color": "ae81ff",
-                "__name": "column"
-            },
-            {
-                "__description": "<p>A number representing the vertical position of the cursor from 1 to <a href=\"height.html\">console.height</a></p>",
-                "__optional": false,
-                "__color": "ae81ff",
-                "__name": "line"
-            }
-        ],
-        "__description": "Position the console cursor to the specified location on the console. The position 1,1 represent the upper left corner in the console.",
-        "__tinydesc": "Set console cursor position",
-        "__filename": "locate.html"
-    },
-    "inverse": {
-        "__returns": "The function returns no value.",
-        "__name": "inverse",
-        "__example": "local console = require \"console\"\n\nconsole.inverse()\nprint(\"Hello World (inversed !)\")",
-        "__results": "<span>-</span>",
-        "__kind": "function",
-        "__params": {},
-        "__description": "Swaps the text color and the background color of the console until another call to this function.",
-        "__tinydesc": "Swap foreground with background console color",
-        "__filename": "inverse.html"
-    },
-    "readmouse": {
-        "__returns": "Returns three values :\n\t\t\t<ul>\n\t\t\t<li>A <span style=\"color:#ae81ff\">number</span> corresponding to the column position in the console when the mouse event occured.</li>\n\t\t\t<li>A <span style=\"color:#ae81ff\">number</span> corresponding to the line position in the console when the mouse event occured.</li>\n\t\t    <li>A <span style=\"color:#EA6AC3\">string</span> value that indicates the mouse button that was pressed or <span style=\"color:lightgray\">nil</span> if the mouse only moved (without a click). Possibles values are <span style=\"color:#EA6AC3\">\"left\"</span>, <span style=\"color:#EA6AC3\">\"middle\"</span> or <span style=\"color:#EA6AC3\">\"right\"</span>",
-        "__name": "readmouse",
-        "__example": "local console = require \"console\"\n\nconsole.color = \"cyan\"\nconsole.writeln(\"Please click anywhere in the console...\")\n\nlocal x, y, button = console.readmouse()\n\nconsole.write(\"You pressed \")\nconsole.writecolor(\"lightgreen\", button)\nconsole.write(\" at position\",x,':',y)",
-        "__results": "<span style=\"color:#ae81ff\">number</span> | <span style=\"color:#EA6AC3\">string</span> | <span style=\"color:lightgray\">nil</span>",
-        "__kind": "function",
-        "__params": {},
-        "__description": "Wait for the mouse to move or click inside the console.",
-        "__tinydesc": "Read console mouse events",
-        "__filename": "readmouse.html"
-    },
-    "visible": {
-        "__results": "<span><span style=\"color:#ae81ff\">boolean</span></span>",
-        "__access": "read/write",
-        "__kind": "property",
-        "__name": "visible",
-        "__description": "Checks if the console window is visible./p><p class=\"is-size-4 mt-6 mb-0\" style=\"color: #004080\">Example",
-        "__example": "local console = require \"console\"\n\nprint(\"Press a key to hide console for 2sec...\")\nconsole.read()\nconsole.visible = false\nsleep(2000)\nconsole.visible = true\nprint(\"Press a key to exit\")\nconsole.read()",
-        "__tinydesc": "Checks if the console window is visible",
-        "__filename": "visible.html"
-    },
-    "hide": {
-        "__returns": "The function returns no value.",
-        "__name": "hide",
-        "__example": "local console = require \"console\"\n\nprint(\"Press a key to hide console for 2sec...\")\nconsole.read()\nconsole:hide()\nsleep(2000)\nconsole:show()\nprint(\"Press a key to exit\")\nconsole.read()",
-        "__results": "<span>-</span>",
-        "__kind": "function",
-        "__params": {},
-        "__description": "Hides the console window.",
-        "__tinydesc": "Hide the console window",
-        "__filename": "hide.html"
-    }
+  "width": {
+    "__results": "<span style=\"color:#ae81ff\">number</span>",
+    "__access": "readonly",
+    "__kind": "property",
+    "__name": "width",
+    "__description": "The console.width property gets the current console width in character. That value depends on the current console window size.",
+    "__example": "--! luart-extensions\nimport console\n\nlocal colors = { \"black\", \"blue\", \"green\", \"cyan\", \"red\", \"purple\", \"yellow\", \"white\", \"gray\", \"lightblue\", \"lightgreen\", \"lightcyan\", \"lightred\", \"lightpurple\", \"lightyellow\", \"brightwhite\" }\n\nconsole.clear()\nfor color in each(colors) do\n\tconsole.bgcolor = color\n\tconsole.write(string.rep(\" \", console.width))\n\tconsole.write(string.rep(\" \", console.width))\nend\nconsole.readchar()",
+    "__tinydesc": "Get console width",
+    "__filename": "width.html"
+  },
+  "show": {
+    "__returns": "The function returns no value.",
+    "__name": "show",
+    "__example": "--! luart-extensions\nimport console\n\nprint(\"Press a key to hide console for 2sec...\")\nconsole.read()\nconsole.hide()\nsleep(2000)\nconsole.show()\nprint(\"Press a key to exit\")\nconsole.read()",
+    "__results": "<span>-</span>",
+    "__kind": "function",
+    "__params": [],
+    "__description": "Shows the console window.",
+    "__tinydesc": "Show the console window",
+    "__filename": "show.html"
+  },
+  "__kind": {
+    "isdesktop": true,
+    "isconsole": true,
+    "iscore": true
+  },
+  "__description": "The console module allows for management and control of the console window",
+  "height": {
+    "__results": "<span style=\"color:#ae81ff\">number</span>",
+    "__access": "readonly",
+    "__kind": "property",
+    "__name": "height",
+    "__description": "The console.height property gets the current console height in character. That value depends on the current console window size.",
+    "__example": "--! luart-extensions\nimport console\n\nconsole.color = \"lightmagenta\"\n\n-- get the line in the middle of the console\nlocal ypos = math.floor(console.height/2)\n\n-- scroll \"Hello World !\" on that line\nfor i=1,console.width-13 do\n\tif i>1 then\n\t\tconsole.locate(i-1, ypos)\n\t\tconsole.write(\" \")\n\tend\n\tconsole.locate(i, ypos)\n\tconsole.write(\"Hello World !\")\n\tsleep(1)\nend",
+    "__tinydesc": "Get console height",
+    "__filename": "height.html"
+  },
+  "__filename": "index.html",
+  "title": {
+    "__results": "<span style=\"color:#EA6AC3\">string</span>",
+    "__access": "read/write",
+    "__kind": "property",
+    "__name": "title",
+    "__description": "The console.title gets/sets the console window title.",
+    "__example": "--! luart-extensions\nimport console\n\n-- sets console window title\nconsole.title = \"Luart example\"",
+    "__tinydesc": "Get/set console window title",
+    "__filename": "title.html"
+  },
+  "writecolor": {
+    "__returns": "The function returns no value.",
+    "__name": "writecolor",
+    "__example": "--! luart-extensions\nimport console\n\n-- writes in gray\nconsole.writeln(\"gray\", \"I'm in gray\")\n\n-- writes in red\nconsole.writecolor(\"red\", \"Now I'm red !\\n\")\n\n-- writes in white (back to the default text color)\nconsole.writeln(\"white\", \"back to the (boring) white\")",
+    "__results": "<span>-</span>",
+    "__kind": "function",
+    "__params": [
+      {
+        "__description": "<p>A string that represents the color of the printed text. See <a href=\"./color.html\">console.color</a> for possible values.</p>",
+        "__optional": false,
+        "__color": "EA6AC3",
+        "__name": "color"
+      },
+      {
+        "__description": "<p>Optional strings to write to the console, separated by commas. If the argument is not a string, the function converts it internally using the <code>tostring</code> function.</p>",
+        "__optional": true,
+        "__color": "EA6AC3",
+        "__name": "..."
+      }
+    ],
+    "__description": "Writes colored output to the console using console.stdout. The function change the color of the text (not its background). Then the function set back the text color to the previous one. Console.write() can write more than one string, each string is separated with a space character.",
+    "__tinydesc": "Write colored characters to console.stdout",
+    "__filename": "writecolor.html"
+  },
+  "keyhit": {
+    "__results": "<span><span style=\"color:#ae81ff\">boolean</span></span>",
+    "__access": "readonly",
+    "__kind": "property",
+    "__name": "keyhit",
+    "__description": "The console.keyhit property checks if a key has been pressed, returning <code>true</code> or <code>false</code> otherwise.",
+    "__example": "--! luart-extensions\nimport console\n\nprint(\"Waiting for a key press...\")\nwhile not console.keyhit do\n    sleep()\nend",
+    "__tinydesc": "Checks if a key has been pressed",
+    "__filename": "keyhit.html"
+  },
+  "stderr": {
+    "__results": "<span><a href=\"../sys/File.html\"><i class=\"fas fas fa-file\"></i> File</a></span>",
+    "__access": "read/write",
+    "__kind": "property",
+    "__name": "stderr",
+    "__description": "The console.stderr property gets the current standard console error output<a href=\"../sys/File.html\"><i class=\"fas fa-file\" style=\"color :#2187E7\"></i> File</a>.<br>",
+    "__example": "--! luart-extensions\nimport console\n\nconsole.stderr:write(\"Error : internet connection lost\")\nsys.exit(-1)",
+    "__tinydesc": "Get/set console stderr standard file",
+    "__filename": "stderr.html"
+  },
+  "read": {
+    "__returns": "Returns the characters in a <span style=\"color:#EA6AC3\">string</span>",
+    "__name": "read",
+    "__example": "--! luart-extensions\nimport console\n\nconsole.writecolor(\"cyan\", \"Do you want to quit (y/n) ? \")\nif console.read():lower() == \"y\" then\n\tsys.exit()\nend",
+    "__results": "<span style=\"color:#EA6AC3\">string</span>",
+    "__kind": "function",
+    "__params": [
+      {
+        "__description": "<p>An optional <code>number</code> representing how much characters must be read from the console, defaulting to <code>1</code></p>",
+        "__optional": true,
+        "__color": "ae81ff",
+        "__name": "length"
+      }
+    ],
+    "__description": "Reads from the console using console.stdin. The same result can be obtained using <a href=\"./stdin.html\">console.stdin:read()</a>",
+    "__tinydesc": "Read input from console.stdin",
+    "__filename": "read.html"
+  },
+  "__name": "console",
+  "clear": {
+    "__returns": "The function returns nothing.",
+    "__name": "clear",
+    "__example": "--! luart-extensions\nimport console\nconsole.writeln(\"This will disappear!\")\n-- clear the console screen with current background color\nconsole.clear()\nconsole.writeln(\"Great, a nice black board to write on !\")",
+    "__results": "<span>-</span>",
+    "__kind": "function",
+    "__params": [
+      {
+        "__description": "<p>An optional string indicating the color to clear the console screen with. See <a href=\"./bgcolor.html\">console.bgcolor</a> property to list the possible colors. If the color is not provided, use the current background color.<br>Once the console is cleared, the function revert back to the previous background color.</p>",
+        "__optional": true,
+        "__color": "ae81ff",
+        "__name": "color"
+      }
+    ],
+    "__description": "Clears the console screen (equivalent of the famous DOS command <code>cls</code>).",
+    "__tinydesc": "Clear console screen",
+    "__filename": "clear.html"
+  },
+  "stdout": {
+    "__results": "<span><a href=\"../sys/File.html\"><i class=\"fas fas fa-file\"></i> File</a></span>",
+    "__access": "read/write",
+    "__kind": "property",
+    "__name": "stdout",
+    "__description": "The console.stdout property gets the current standard console output <a href=\"../sys/File.html\"><i class=\"fas fa-file\" style=\"color :#2187E7\"></i> File</a>.<br>",
+    "__example": "--! luart-extensions\nimport console\n\n-- write \"Hello World\" to the console.stdout : 2 methods\n\n-- method 1 : console.write() => indirect call to console.stdout:write()\nconsole.write(\"Hello World\")\n\n-- method 1 : console.stdout:write() => direct call console.stdout's method write()\nconsole.stdout:write(\"Hello World\")",
+    "__tinydesc": "Get/set console stdout standard file",
+    "__filename": "stdout.html"
+  },
+  "stdin": {
+    "__results": "<span><a href=\"../sys/File.html\"><i class=\"fas fas fa-file\"></i> File</a></span>",
+    "__access": "read/write",
+    "__kind": "property",
+    "__name": "stdin",
+    "__description": "The console.stdin property gets the current standard console input<a href=\"../sys/File.html\"><i class=\"fas fa-file\" style=\"color :#2187E7\"></i> File</a>.<br>",
+    "__example": "--! luart-extensions\nimport console\n\n-- create a file containing the unicode string \"Hello World !\"\nlocal f = sys.File(\"hello.txt\"):open(\"write\", \"unicode\")\nf:writeln(\"Hello World\")\nf:close()\n\nconsole.stdin = f:open()\n\nconsole.writeln(\"Hey, do you have anything to say ?\")\nlocal msg = console.readln()\n\n--outputs \"Ok, you said 'Hello World' !!!\" without using your keyboard :)\nconsole.writecolor(\"brown\", \"Ok, you said '\"..msg..\"' !!!\\n\")\n\n-- closes \"hello.txt\" and revert back to standard console.stdin\nconsole.stdin:close()",
+    "__tinydesc": "Get/set console stdin standard file",
+    "__filename": "stdin.html"
+  },
+  "fullscreen": {
+    "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+    "__access": "read/write",
+    "__kind": "property",
+    "__name": "fullscreen",
+    "__description": "Gets/sets the console fullscreen mode.<ul><li>To go fullscreen, set the property to <span style=\"color: #ae81ff\">true</span></li><li>To revert back to normal mode (original size with window frame and title bar) set the property to <span style=\"color: #ae81ff\"> false</span>.</li></ul><article class=\"message is-info\" style=\"margin-left: 15%; margin-right: 15%\"><div class=\"message-body\">The user can revert back to normal mode by pressing ALT+RETURN.</div></article>",
+    "__example": "--! luart-extensions\nimport console\n\nconsole.write(\"Do you want to go fullscreen (y/n) ?\")\nconsole.fullscreen = console.read(1):lower() == \"y\"",
+    "__tinydesc": "Get/set console fullscreen mode",
+    "__filename": "fullscreen.html"
+  },
+  "fontsize": {
+    "__results": "<span style=\"color:#ae81ff\">number</span>",
+    "__access": "read/write",
+    "__kind": "property",
+    "__name": "fontsize",
+    "__description": "Get or set the console font size, a <strong style=\"color:#ae81ff\">number</strong> that represent the font size in pixels.<br><article class=\"message is-warning\"><div class=\"message-body\">If you use Windows Terminal as console, please note that it does not permit to change console font size programmatically, so setting this property will have no effect.</div></article>",
+    "__example": "-- old DOS like console\nimport console\n\nconsole.fullscreen = true\nconsole.clear()\nconsole.font = \"Lucida Console\"\nconsole.fontsize = 16\nconsole.write(\"Starting MS-DOS...\\n\\nHIMEM is testing extending memory...done.\\n\")\nconsole.writeln(\"\\nMODE prepare codepage function completed\")\nconsole.writeln(\"\\nMODE select codepage function completed\")\nconsole.writeln(\"\\n\\nC:\\\\ \\n\\n\\n\")",
+    "__tinydesc": "Get/set current console font size",
+    "__filename": "fontsize.html"
+  },
+  "font": {
+    "__results": "<span style=\"color:#EA6AC3\">string</span>",
+    "__access": "read/write",
+    "__kind": "property",
+    "__name": "font",
+    "__description": "Get the current console font, a <span style=\"color:#EA6AC3\">string</span> value that represent the font name.<p>To set the console.font property, you can assign :<ul><li>A <span style=\"color:#EA6AC3\">string</span> that represent either a font name from the system fonts.</li><li>A <span style=\"color:#EA6AC3\">string</span> or a <a href=\"../sys/File.html\"><i class=\"fas fa-file\"></i> File</a> that represent a font file (*.ttf, *.fon...)</li></ul>",
+    "__example": "--! luart-extensions\nimport console\n\nconsole.clear()\n\nlocal message = \"Hello World !\"\nconsole.font = \"Consolas\"\nconsole.fontsize = 48\nconsole.fullscreen = true\nconsole.x = math.floor((console.width-message:len())/2)\nconsole.y = math.floor(console.height/2)\nconsole.writecolor(\"purple\", message)\n\nconsole.cursor = false\nconsole.readchar()\nconsole.clear()",
+    "__tinydesc": "Get/set current console font",
+    "__filename": "font.html"
+  },
+  "echo": {
+    "__results": "<span style=\"color:#ae81ff\">boolean</span> | <span style=\"color:#EA6AC3\">string</span>",
+    "__access": "read/write",
+    "__kind": "property",
+    "__name": "echo",
+    "__description": "The console.echo property sets/gets the current console ECHO mode.",
+    "__example": "--! luart-extensions\nimport console\n\nconsole.write(\"Username : \")\nlocal username = console.readln()\n\n-- disable echo mode and use the \"*\" character instead for each key pressed\nconsole.echo = \"*\"\nconsole.write(\"Password : \")\nlocal password = console.readln()",
+    "__tinydesc": "Get/set ECHO mode for console stdout",
+    "__filename": "echo.html"
+  },
+  "__tinydesc": "Windows console input/ouput and text formatting ",
+  "y": {
+    "__results": "<span style=\"color:#ae81ff\">number</span>",
+    "__access": "read/write",
+    "__kind": "property",
+    "__name": "y",
+    "__description": "The console.y property gets or sets the current cursor line position.",
+    "__example": "--! luart-extensions\nimport console\n-- Create a title for the console\nfunction title(msg, linepos)\n\tlocal length = math.floor((console.width-string.len(msg))/2)\n\tconsole.clear(\"black\")\n\tconsole.y = linepos or 1\n\tconsole.bgcolor = \"lightblue\"\n\tconsole.writecolor(\"blue\", string.rep(string.char(0xE2, 0x96, 0x80), console.width))\n\tconsole.writecolor(\"brightwhite\", string.rep(' ', length)..msg)\n\tconsole.write(string.rep(' ', console.width-length-string.len(msg)))\n\tconsole.bgcolor = \"blue\"\n\tconsole.writecolor(\"lightblue\", string.rep(string.char(0xE2, 0x96, 0x80), console.width))\n\tconsole.bgcolor = \"black\"\n\tconsole.writeln(\"\\n\\n\\n\")\nend\n\n-- The title text and the line to start drawing the title\ntitle(\"Hello World !\", 1)",
+    "__tinydesc": "Get/set cursor y position",
+    "__filename": "y.html"
+  },
+  "bgcolor": {
+    "__results": "<span style=\"color:#EA6AC3\">string</span>",
+    "__access": "read/write",
+    "__kind": "property",
+    "__name": "bgcolor",
+    "__description": "The console.bgcolor property sets or gets the current console background color. The color is represented by a <strong style=\"color:#EA6AC3\">string</strong>. Possible values are :<ul><li><span style=\"color:#EA6AC3\">\"black\"</span></li><li><span style=\"color:#EA6AC3\">\"blue\"</span></li><li><span style=\"color:#EA6AC3\">\"green\"</span></li><li><span style=\"color:#EA6AC3\">\"cyan\"</span></li><li><span style=\"color:#EA6AC3\">\"red\"</span></li><li><span style=\"color:#EA6AC3\">\"purple\"</span></li><li><span style=\"color:#EA6AC3\">\"yellow\"</span></li><li><span style=\"color:#EA6AC3\">\"white\"</span></li><li><span style=\"color:#EA6AC3\">\"gray\"</span></li><li><span style=\"color:#EA6AC3\">\"lightblue\"</span></li><li><span style=\"color:#EA6AC3\">\"lightgreen\"</span></li><li><span style=\"color:#EA6AC3\">\"lightcyan\"</span></li><li><span style=\"color:#EA6AC3\">\"lightred\"</span></li><li><span style=\"color:#EA6AC3\">\"lightpurple\"</span></li><li><span style=\"color:#EA6AC3\">\"lightyellow\"</span></li><li><span style=\"color:#EA6AC3\">\"brightwhite\"</span></li></ul>",
+    "__example": "--! luart-extensions\nimport console\n\nlocal colors = { \"black\", \"blue\", \"green\", \"cyan\", \"red\", \"purple\", \"yellow\",\n \"white\", \"gray\", \"lightblue\", \"lightgreen\", \"lightcyan\", \"lightred\", \n \"lightmagenta\", \"lightyellow\", \"brightwhite\" }\n\n-- prints a rainbow\nfor color in each(colors) do\n\tconsole.bgcolor = color\n\tconsole.write(string.rep(\" \", console.width))\nend",
+    "__tinydesc": "Get/set console background color",
+    "__filename": "bgcolor.html"
+  },
+  "write": {
+    "__returns": "The function returns no value.",
+    "__name": "write",
+    "__example": "--! luart-extensions\nimport console\n\n-- prints to the console without returning to line,\n-- so that the next characters entered will be printed just after\nconsole.write(\"What's your name ? \")\nlocal name = console.readln()\nconsole.write(\"\\nHi \"..name..\" !\")",
+    "__results": "<span>-</span>",
+    "__kind": "function",
+    "__params": [
+      {
+        "__description": "<p>Strings to write to the console, separated by commas. If the argument is not a string, the function converts it internally using the <span style=\"color:#e69900\">tostring</span> function.<article class=\"message is-info\" style=\"margin-left: 15%; margin-right: 15%\"><div class=\"message-body\">The function does not return to next line after printing the characters. If you want to add a newline character, use <a href=\"writeln.html\">console.writeln()</a> instead.</div></article></p>",
+        "__optional": false,
+        "__color": "EA6AC3",
+        "__name": "..."
+      }
+    ],
+    "__description": "Writes to the console using console.stdout. Contrary to <a href=\"./stdout.html\">console.stdout:write()</a>, console.write() can write more than one string, each string is separated with a space character.",
+    "__tinydesc": "Write to console.stdout",
+    "__filename": "write.html"
+  },
+  "x": {
+    "__results": "<span style=\"color:#ae81ff\">number</span>",
+    "__access": "read/write",
+    "__kind": "property",
+    "__name": "x",
+    "__description": "The console.x property gets or sets the current cursor column position.",
+    "__example": "--! luart-extensions\nimport console\n\nconsole.clear()\n\nlocal message = \"Hello World !\"\nconsole.color = \"lightyellow\"\nconsole.y = math.floor(console.height/2)\n\nfor x = 1,console.width-message:len() do\n\tconsole.x = x-1\n\tconsole.write(string.rep(\" \", message:len()))\n\tconsole.x = x\n\tconsole.write(message)\n\tsleep(1)\nend",
+    "__tinydesc": "Get/set cursor x position",
+    "__filename": "x.html"
+  },
+  "readln": {
+    "__returns": "Returns a <span style=\"color:#EA6AC3\">string</span>. Please note that the string does not contains the last \"\\n\" character.",
+    "__name": "readln",
+    "__example": "--! luart-extensions\nimport console\n\nconsole.writecolor(\"cyan\", \"Enter your name :\")\nlocal name = console.readln()\n\nprint(\"Hello \"..name:capitalize()..\" !\")",
+    "__results": "<span style=\"color:#EA6AC3\">string</span>",
+    "__kind": "function",
+    "__params": [
+      {
+        "__description": "<p>Optional strings to write to the console before reading, separated by commas. If the argument is not a string, the function converts it internally using the <code>tostring</code> function.</p>",
+        "__optional": true,
+        "__color": "EA6AC3",
+        "__name": "..."
+      }
+    ],
+    "__description": "Reads a line from the console (until the ENTER/ RETURN is pressed). The same result can be obtained using <a href=\"./stdin.html\">console.stdin:readln()</a>",
+    "__tinydesc": "Read a line from console.stdin",
+    "__filename": "readln.html"
+  },
+  "readchar": {
+    "__returns": "Returns two values :\n\t\t\t<ul>\n\t\t\t<li>A <span style=\"color:#EA6AC3\">string</span> corresponding to the pressed character (for example <span style=\"color:#EA6AC3\">\"A\"</span> if SHIFT+A have been pressed).</li>\n\t\t    <li>A <span style=\"color:#ae81ff\">boolean</span> value that indicates if the key pressed is special (for example, UP arrow key returns the string <span style=\"color:#EA6AC3\">\"H\"</span> and <span style=\"color:#ae81ff\">true</span>).",
+    "__name": "readchar",
+    "__example": "--! luart-extensions\nimport console\n\nconsole.writecolor(\"cyan\", \"Press a key\\n\")\nlocal char, isspecial = console.readchar()\n\nif isspecial == true then\n\tprint(\"You have pressed special key [\"..char..\"]\")\nelse\n\tprint(\"You have pressed key [\"..char..\"]\")\nend",
+    "__results": "<span style=\"color:#EA6AC3\">string</span> | <span style=\"color:#ae81ff\">boolean</span>",
+    "__kind": "function",
+    "__params": {},
+    "__description": "Reads a key from the console and returns a corresponding character if possible. That function can read special keys (Function keys, arrows...).",
+    "__tinydesc": "Read a key from console",
+    "__filename": "readchar.html"
+  },
+  "__icon": "<span class=\"icon bd-link-icon mr-1\" style=\"font-size: 0.8em\"><i class=\"fas fa-terminal\" style=\"color:#d54d34; vertical-align: middle\" style=\"color: #D0D0D0\"></i></span>",
+  "__type": "module",
+  "writeln": {
+    "__returns": "The function returns no value.",
+    "__name": "writeln",
+    "__example": "--! luart-extensions\nimport console\n\n-- equivalent to print(\"Hello World\")\nconsole.writeln(\"Hello World !\")",
+    "__results": "<span>-</span>",
+    "__kind": "function",
+    "__params": [
+      {
+        "__description": "<p>Optional strings to write to the console, separated by commas. If the argument is not a string, the function converts it internally using the <code>tostring</code> function.<br>Calling the function without any argument writes <span style=\"color:#EA6AC3\">\"\\n\"</span></p>",
+        "__optional": true,
+        "__color": "EA6AC3",
+        "__name": "..."
+      }
+    ],
+    "__description": "Writes to the console using console.stdout, adding a last newline character. Contrary to <a href=\"stdout.html\">console.stdout:writeln()</a>, console.writeln() can write more than one string, each string is separated with a space character.",
+    "__tinydesc": "Write to console.stdout with newline",
+    "__filename": "writeln.html"
+  },
+  "cursor": {
+    "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+    "__access": "read/write",
+    "__kind": "property",
+    "__name": "cursor",
+    "__description": "The console.cursor property is a readwrite property that indicate if the console cursor is visible or not.",
+    "__example": "--! luart-extensions\nimport console\n\nconsole.clear()\nconsole.fullscreen = true\nconsole.fontsize = 26\nconsole.cursor = false\n\nlocal y = console.height/2\nlocal max = console.width - string.len(\"Hello LuaRT\")\n\n-- make Hello LuaRT move across the console window\nfor x = 1,max do\n    console.clear()\n    console.locate(x, y)\n    console.write(\"Hello Lua\")\n    console.writecolor(\"yellow\", \"RT\")\n    sleep(1)\nend\n\nconsole.cursor = true",
+    "__tinydesc": "Get/set cursor visibility",
+    "__filename": "cursor.html"
+  },
+  "reset": {
+    "__returns": "The function returns no value.",
+    "__name": "reset",
+    "__example": "--! luart-extensions\nimport console\n\n-- set console text color to red\nconsole.color = \"red\"\nprint(\"Hello World in red!\")\n\n-- revert back to the console default\nconsole.reset()",
+    "__results": "<span>-</span>",
+    "__kind": "function",
+    "__params": {},
+    "__description": "Resets the console to the default text and background colors. That function is always called before the program terminates.",
+    "__tinydesc": "Reset console colors to default",
+    "__filename": "reset.html"
+  },
+  "color": {
+    "__results": "<span style=\"color:#EA6AC3\">string</span>",
+    "__access": "read/write",
+    "__kind": "property",
+    "__name": "color",
+    "__description": "The console.color property sets or gets the current console text color. The color is represented by a <strong style=\"color:#EA6AC3\">string</strong> Possible values are :<ul><li><span style=\"color:#EA6AC3\">\"black\"</span></li><li><span style=\"color:#EA6AC3\">\"blue\"</span></li><li><span style=\"color:#EA6AC3\">\"green\"</span></li><li><span style=\"color:#EA6AC3\">\"cyan\"</span></li><li><span style=\"color:#EA6AC3\">\"red\"</span></li><li><span style=\"color:#EA6AC3\">\"purple\"</span></li><li><span style=\"color:#EA6AC3\">\"yellow\"</span></li><li><span style=\"color:#EA6AC3\">\"white\"</span></li><li><span style=\"color:#EA6AC3\">\"gray\"</span></li><li><span style=\"color:#EA6AC3\">\"lightblue\"</span></li><li><span style=\"color:#EA6AC3\">\"lightgreen\"</span></li><li><span style=\"color:#EA6AC3\">\"lightcyan\"</span></li><li><span style=\"color:#EA6AC3\">\"lightred\"</span></li><li><span style=\"color:#EA6AC3\">\"lightpurple\"</span></li><li><span style=\"color:#EA6AC3\">\"lightyellow\"</span></li><li><span style=\"color:#EA6AC3\">\"brightwhite\"</span></li></ul>",
+    "__example": "--! luart-extensions\nimport console\n\n-- writes in white (default text color)\nconsole.writeln(console.color)\n\n-- writes in red\nconsole.color = \"red\"\nconsole.writeln(console.color)\n\n-- writes in white (back to the default text color)\nconsole.color = \"white\"\nconsole.writeln(console.color)",
+    "__tinydesc": "Get/set console foreground color",
+    "__filename": "color.html"
+  },
+  "locate": {
+    "__returns": "The function returns no value.",
+    "__name": "locate",
+    "__example": "--! luart-extensions\nimport console\n\nlocal colors = { \"black\", \"blue\", \"green\", \"cyan\", \"red\", \"purple\", \"yellow\",\n\"white\", \"gray\", \"lightblue\", \"lightgreen\", \"lightcyan\", \"lightred\", \n\"lightpurple\", \"lightyellow\", \"brightwhite\" }\n\n-- random starfield in luaRT\n\nmath.randomseed(sys.clock())\nfor i=1,console.height*console.width/3 do\n\tconsole.locate(math.random(console.width), math.random(console.height))\n\tconsole.writecolor(colors[math.random(#colors)], \"+\")\nend\nconsole.readchar()\nconsole.clear()",
+    "__results": "<span>-</span>",
+    "__kind": "function",
+    "__params": [
+      {
+        "__description": "<p>A number representing the horizontal position of the cursor from 1 to <a href=\"width.html\">console.width</a></p>\n",
+        "__optional": false,
+        "__color": "ae81ff",
+        "__name": "column"
+      },
+      {
+        "__description": "<p>A number representing the vertical position of the cursor from 1 to <a href=\"height.html\">console.height</a></p>",
+        "__optional": false,
+        "__color": "ae81ff",
+        "__name": "line"
+      }
+    ],
+    "__description": "Position the console cursor to the specified location on the console. The position 1,1 represent the upper left corner in the console.",
+    "__tinydesc": "Set console cursor position",
+    "__filename": "locate.html"
+  },
+  "inverse": {
+    "__returns": "The function returns no value.",
+    "__name": "inverse",
+    "__example": "--! luart-extensions\nimport console\n\nconsole.inverse()\nprint(\"Hello World (inversed !)\")",
+    "__results": "<span>-</span>",
+    "__kind": "function",
+    "__params": {},
+    "__description": "Swaps the text color and the background color of the console until another call to this function.",
+    "__tinydesc": "Swap foreground with background console color",
+    "__filename": "inverse.html"
+  },
+  "readmouse": {
+    "__returns": "Returns three values :\n\t\t\t<ul>\n\t\t\t<li>A <span style=\"color:#ae81ff\">number</span> corresponding to the column position in the console when the mouse event occured.</li>\n\t\t\t<li>A <span style=\"color:#ae81ff\">number</span> corresponding to the line position in the console when the mouse event occured.</li>\n\t\t    <li>A <span style=\"color:#EA6AC3\">string</span> value that indicates the mouse button that was pressed or <span style=\"color:lightgray\">nil</span> if the mouse only moved (without a click). Possibles values are <span style=\"color:#EA6AC3\">\"left\"</span>, <span style=\"color:#EA6AC3\">\"middle\"</span> or <span style=\"color:#EA6AC3\">\"right\"</span>",
+    "__name": "readmouse",
+    "__example": "--! luart-extensions\nimport console\n\nconsole.color = \"cyan\"\nconsole.writeln(\"Please click anywhere in the console...\")\n\nlocal x, y, button = console.readmouse()\n\nconsole.write(\"You pressed \")\nconsole.writecolor(\"lightgreen\", button)\nconsole.write(\" at position\",x,':',y)",
+    "__results": "<span style=\"color:#ae81ff\">number</span> | <span style=\"color:#ae81ff\">number</span> | <span style=\"color:#EA6AC3\">string</span> | <span style=\"color:lightgray\">nil</span>",
+    "__kind": "function",
+    "__params": {},
+    "__description": "Wait for the mouse to move or click inside the console.",
+    "__tinydesc": "Read console mouse events",
+    "__filename": "readmouse.html"
+  },
+  "visible": {
+    "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+    "__access": "read/write",
+    "__kind": "property",
+    "__name": "visible",
+    "__description": "Checks if the console window is visible.",
+    "__example": "--! luart-extensions\nimport console\n\nprint(\"Press a key to hide console for 2sec...\")\nconsole.read()\nconsole.visible = false\nsleep(2000)\nconsole.visible = true\nprint(\"Press a key to exit\")\nconsole.read()",
+    "__tinydesc": "Checks if the console window is visible",
+    "__filename": "visible.html"
+  },
+  "hide": {
+    "__returns": "The function returns no value.",
+    "__name": "hide",
+    "__example": "--! luart-extensions\nimport console\n\nprint(\"Press a key to hide console for 2sec...\")\nconsole.read()\nconsole.hide()\nsleep(2000)\nconsole.show()\nprint(\"Press a key to exit\")\nconsole.read()",
+    "__results": "<span>-</span>",
+    "__kind": "function",
+    "__params": {},
+    "__description": "Hides the console window.",
+    "__tinydesc": "Hide the console window",
+    "__filename": "hide.html"
+  }
 }

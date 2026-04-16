@@ -1,363 +1,363 @@
 {
-    "__color": "B1D928",
-    "__icon": "<span class=\"icon bd-link-icon mr-1\" style=\"font-size: 0.8em\"><i class=\"fas fa-quote-right\" style=\"color :#B1D928; vertical-align: middle\" style=\"color: #D0D0D0\"></i></span>",
-    "reverse": {
-        "__tinydesc": "Get a new reversed string",
-        "__kind": "function",
-        "__results": "<span style=\"color: #EA6AC3\">string</span>",
-        "__name": "reverse",
-        "__filename": "https://www.lua.org/manual/5.4/manual.html#pdf-string.reverse"
-    },
-    "gusub": {
-        "__tinydesc": "Get a new UTF8 string after a global pattern substitution",
-        "__kind": "function",
-        "__results": "<span style=\"color:#EA6AC3\">string</span>",
-        "__name": "gusub",
-        "__filename": "https://www.lua.org/manual/5.4/manual.html#pdf-string.gsub"
-    },
-    "ufind": {
-        "__tinydesc": "Search for the first pattern in an UFT8 string",
-        "__kind": "function",
-        "__results": "<span style=\"color: #ae81ff\">number</span>",
-        "__name": "ufind",
-        "__filename": "https://www.lua.org/manual/5.4/manual.html#pdf-string.find"
-    },
-    "split": {
-        "__description": "Splits a string into substrings by a separator.",
-        "__kind": "function",
-        "__results": "<span style=\"color:#EA6AC3\">table</span>",
-        "__example": "-- Lua string.split example\nlocal console = require \"console\"\n\nlocal str = \"Hello[space]World[space]by[space]LuaRT[space]!\"\n\nfor word in each(str:split(\"[space]\")) do\n    console.write(word..\" \")\nend",
-        "__params": [
-            {
-                "__optional": false,
-                "__description": "<p>The <code>string</code> that will be divided into substrings.</p>",
-                "__name": "str",
-                "__color": "EA6AC3"
-            },
-            {
-                "__optional": false,
-                "__description": "<p>A <code>string</code> that will be used as a separator to divide the string into substrings.</p><article class=\"message is-warning\" style=\"margin-left: 20%; margin-right: 20%\"><div class=\"message-body\">This function can split ASCII or UTF8 encoded strings.</div></article>",
-                "__name": "separator",
-                "__color": "EA6AC3"
-            }
-        ],
-        "__tinydesc": "Split an UTF8 string into substrings",
-        "__returns": "Returns a list of substrings as a <code>table</code>.",
-        "__name": "split",
-        "__filename": "split.html"
-    },
-    "dump": {
-        "__tinydesc": "Get the bytecode of a function",
-        "__kind": "function",
-        "__results": "<span style=\"color: #EA6AC3\">string</span>",
-        "__name": "dump",
-        "__filename": "https://www.lua.org/manual/5.4/manual.html#pdf-string.dump"
-    },
-    "upper": {
-        "__description": "Converts all lowercase characters in a string into uppercase characters.",
-        "__kind": "function",
-        "__results": "<span style=\"color:#EA6AC3\">string</span>",
-        "__example": "local console = require \"console\"\n\nprint('Enter your name : ')\nlocal name = console.readln();\n\nif name == name:upper() then\n\tprint(\"Please don't shout !\")\nelse\n\tprint('Hi '..name..' !')\nend",
-        "__params": [
-            {
-                "__optional": false,
-                "__description": "<p>The <span style=\"color:#EA6AC3\">string</span> to be used to produce a string with uppercase characters.</p>",
-                "__name": "str",
-                "__color": "EA6AC3"
-            }
-        ],
-        "__tinydesc": "Convert an UTF8 string to uppercase",
-        "__returns": "Returns a new <span style=\"color:#EA6AC3\">string</span> with the same content but uppercase characters.",
-        "__name": "upper",
-        "__filename": "upper.html"
-    },
-    "capitalize": {
-        "__description": "Capitalize the string : All letters are lowered except the first character of the string.",
-        "__kind": "function",
-        "__results": "<span style=\"color:#EA6AC3\">string</span>",
-        "__example": "local console = require \"console\"\n\nconsole.write('Enter your name : ')\nlocal name = string.capitalize(console.readln())\nprint('Hi '..name..' !')",
-        "__params": [
-            {
-                "__optional": false,
-                "__description": "<p>A <span style=\"color:#EA6AC3\">string</span> that will be capitalized.</p>\n<article class=\"message is-warning\" style=\"margin-left: 15%; margin-right: 15%\"><div class=\"message-body\">This function will try to capitalize the string, even for UTF8 characters.</div></article>",
-                "__name": "str",
-                "__color": "EA6AC3"
-            }
-        ],
-        "__tinydesc": "Capitalize an UTF8 string",
-        "__returns": "Returns a new <span style=\"color:#EA6AC3\">string</span> with the same content but capizalized.",
-        "__name": "capitalize",
-        "__filename": "capitalize.html"
-    },
-    "gsub": {
-        "__tinydesc": "Get a new string after a global pattern substitution",
-        "__kind": "function",
-        "__results": "<span style=\"color:#EA6AC3\">string</span>",
-        "__name": "gsub",
-        "__filename": "https://www.lua.org/manual/5.4/manual.html#pdf-string.gsub"
-    },
-    "umatch": {
-        "__tinydesc": "Get an UTF8 string match from a pattern",
-        "__kind": "function",
-        "__results": "<span style=\"color:#EA6AC3\">string</span> | <span style=\"color:#8f8f8f\">nil</span>",
-        "__name": "umatch",
-        "__filename": "https://www.lua.org/manual/5.4/manual.html#pdf-string.match"
-    },
-    "usub": {
-        "__tinydesc": "Get a substring in a UTF8 string",
-        "__kind": "function",
-        "__results": "<span style=\"color: #EA6AC3\">string</span>",
-        "__name": "usub",
-        "__filename": "https://www.lua.org/manual/5.4/manual.html#pdf-string.sub"
-    },
-    "__name": "string",
-    "ureverse": {
-        "__tinydesc": "Get a new reversed UTF8 string",
-        "__kind": "function",
-        "__results": "<span style=\"color: #EA6AC3\">string</span>",
-        "__name": "ureverse",
-        "__filename": "https://www.lua.org/manual/5.4/manual.html#pdf-string.reverse"
-    },
-    "gumatch": {
-        "__tinydesc": "Get an UTF8 pattern matching iterator",
-        "__kind": "function",
-        "__results": "<span style=\"color:#c7a170\">function</span>",
-        "__name": "gumatch",
-        "__filename": "https://www.lua.org/manual/5.4/manual.html#pdf-string.gmatch"
-    },
-    "__description": "The string module provides powerful functions for string manipulation",
-    "__kind": {
-        "isdesktop": true,
-        "isconsole": true,
-        "iscore": true
-    },
-    "similarity": {
-        "__description": "Calculate the similarity between two strings, using Levenshtein distance algorithm.",
-        "__kind": "function",
-        "__results": "<span style=\"color: #ae81ff\">number</span>",
-        "__example": "local word = \"bird\"\n\n-- outputs 60\nprint(\"Similarity between 'bird' and 'bread' : \"..word:similarity('bread'))",
-        "__params": [
-            {
-                "__optional": false,
-                "__description": "<p>The first <code>string</code> to be evaluated for similiarity.</p>",
-                "__name": "str1",
-                "__color": "EA6AC3"
-            },
-            {
-                "__optional": false,
-                "__description": "<p>The second <code>string</code> to be evaluated for similiarity with the previous one.</p>",
-                "__name": "str2",
-                "__color": "EA6AC3"
-            }
-        ],
-        "__tinydesc": "Compute UTF8 string similarity using Levenshtein distance algorithm",
-        "__returns": "Returns a <span style=\"color: #ae81ff\">number</span> between 0 (no similarity at all) and 100 (strings are the same)",
-        "__name": "similarity",
-        "__filename": "similarity.html"
-    },
-    "sub": {
-        "__tinydesc": "Get a substring",
-        "__kind": "function",
-        "__results": "<span style=\"color: #EA6AC3\">string</span>",
-        "__name": "sub",
-        "__filename": "https://www.lua.org/manual/5.4/manual.html#pdf-string.sub"
-    },
-    "__tinydesc": "Enhances Lua’s string manipulation with additional utilities and UTF8 support",
-    "gmatch": {
-        "__tinydesc": "Get a pattern matching iterator",
-        "__kind": "function",
-        "__results": "<span style=\"color:#c7a170\">function</span>",
-        "__name": "gmatch",
-        "__filename": "https://www.lua.org/manual/5.4/manual.html#pdf-string.gmatch"
-    },
-    "normalize": {
-        "__description": "Normalize the string : All accentued characters are replaced by non accentued ones.",
-        "__kind": "function",
-        "__results": "<span style=\"color:#EA6AC3\">string</span>",
-        "__example": "local summer_in_french = \"été\"\n\n-- prints the string, but normalized\n-- should output \"ete\"\nprint(summer_in_french:normalize())",
-        "__params": [
-            {
-                "__optional": false,
-                "__description": "<p>A <span style=\"color:#EA6AC3\">string</span> that will be normalized.</p>",
-                "__name": "str",
-                "__color": "EA6AC3"
-            }
-        ],
-        "__tinydesc": "Removes diacratics from a string",
-        "__returns": "Returns a new <span style=\"color:#EA6AC3\">string</span> with the same content but normalized.",
-        "__name": "normalize",
-        "__filename": "normalize.html"
-    },
-    "string length operator": {
-        "__name": "string length operator",
-        "__description": "\n            <p><br>As stated in the Lua 5.4 programming manual (see <a href=\"https://www.lua.org/manual/5.4/manual.html#3.4.7\">The Length Operator</a>), the returned length of a string is its number of bytes.\n\t\t\tThis behaviour is respected in Lua<sup>rt</sup> to preserve compatibility with standard Lua with ASCII characters.</p>\n            <article class=\"message is-danger\" style=\"margin-left: 10%; margin-right: 10%\">\n              <div class=\"message-body\">To get the length in characters for UTF8 strings, do not use the # operator, use <a href=\"ulen.html\">string.ulen()</a> instead.</div>\n            </article>\n            \n            ",
-        "__tinydesc": "Get the size of the string in bytes",
-        "__example": "-- declare an UTF8 string\nlocal summer_in_french = \"�t�\"\n\n-- outputs 5 (in bytes)\nprint( #summer_in_french )\n\n-- outputs 3 (in characters) \nprint( summer_in_french:ulen() )",
-        "__kind": "operation",
-        "__results": "",
-        "__title": "# string length operator",
-        "__filename": "length.html"
-    },
-    "string iteration": {
-        "__name": "string iteration",
-        "__description": "\n            <p>UTF8 strings in Lua<sup>rt</sup> are iterable through the Lua<sup>rt</sup> helper function <a href=\"../base/each.html\">each()</a>, returning the next character in the string with each loop iteration.\n            Each iteration returns the character as a <span style=\"color:#EA6AC3\">string</span>.</p>\n            \n            ",
-        "__tinydesc": "Iterate over an UTF8 string, character by character",
-        "__example": "local console = require \"console\"\n\nconsole.write(\"\\nEnter your name : \")\nlocal name = console.readln()\nconsole.write(\"\\nLet me spell it... \")\n\nfor char in each(name) do\n\tconsole.write(\"[\"..char..\"] \")\nend\nconsole.write(\"\\n\")",
-        "__kind": "operation",
-        "__results": "",
-        "__title": "string iteration ",
-        "__filename": "iteration.html"
-    },
-    "lower": {
-        "__description": "Converts all uppercase characters in a string into lowercase characters.",
-        "__kind": "function",
-        "__results": "<span style=\"color:#EA6AC3\">string</span>",
-        "__example": "local console = require \"console\"\n\nconsole.write('Enter a word : ')\nlocal word = console.readln():lower()\n\nprint('Here the word in lower characters : '..word)",
-        "__params": [
-            {
-                "__optional": false,
-                "__description": "<p>The <span style=\"color:#EA6AC3\">string</span> to be used to produce a string with lowercase characters.</p><article class=\"message is-warning\" style=\"margin-left: 15%; margin-right: 15%\"><div class=\"message-body\">This function will try to convert the string, even for UTF8 characters.</div></article>",
-                "__name": "str",
-                "__color": "EA6AC3"
-            }
-        ],
-        "__tinydesc": "Convert an UTF8 string to lowercase",
-        "__returns": "Returns a new <span style=\"color:#EA6AC3\">string</span> with the same content but lowercase characters.",
-        "__name": "lower",
-        "__filename": "lower.html"
-    },
-    "byte": {
-        "__tinydesc": "Gets the bytes of a string",
-        "__kind": "function",
-        "__results": "<span style=\"color:#ae81ff\">numbers</span>",
-        "__name": "byte",
-        "__filename": "https://www.lua.org/manual/5.4/manual.html#pdf-string.byte"
-    },
-    "usearch": {
-        "__description": "Search an UTF8 string for the first occurence of a substring, using plain text (no patterns). Faster than <code>string.ufind()</code>",
-        "__kind": "function",
-        "__results": "<span style=\"color: #ae81ff\">number</span>",
-        "__example": "local text = \"The sun will shine again !\"\n\n-- outputs 9 and 12\nprint(text:usearch(\"will\"))",
-        "__params": [
-            {
-                "__optional": false,
-                "__description": "<p>The <span style=\"color:#EA6AC3\">string</span> to search.</p>",
-                "__name": "str",
-                "__color": "EA6AC3"
-            },
-            {
-                "__optional": false,
-                "__description": "<p>The sub-string to to search for.</p>",
-                "__name": "substring",
-                "__color": "EA6AC3"
-            },
-            {
-                "__optional": true,
-                "__description": "<p>An optional number indicating where to start the search. Its default value is 1 and canbe negative.</p>",
-                "__name": "start",
-                "__color": "ae81ff"
-            }
-        ],
-        "__tinydesc": "Fast UTF8 string search without patterns",
-        "__returns": "<p>If the function finds a match, it returns two <span style=\"color: #ae81ff\">number</span> : the character position where this occurrence starts and ends. If the sub-string has not been found, it returns <span style=\"color: #606060\">nil</span>.</p>",
-        "__name": "usearch",
-        "__filename": "usearch.html"
-    },
-    "unpack": {
-        "__tinydesc": "Get values from a serialized string",
-        "__kind": "function",
-        "__results": "<span style=\"color: #8f8f8f\">...</span>",
-        "__name": "unpack",
-        "__filename": "https://www.lua.org/manual/5.4/manual.html#pdf-string.unpack"
-    },
-    "len": {
-        "__tinydesc": "Get the string length in bytes",
-        "__kind": "function",
-        "__results": "<span style=\"color:#ae81ff\">number</span>",
-        "__name": "len",
-        "__filename": "https://www.lua.org/manual/5.4/manual.html#pdf-string.len"
-    },
-    "packsize": {
-        "__tinydesc": "Get the size of a serialized string",
-        "__kind": "function",
-        "__results": "<span style=\"color: #ae81ff\">number</span>",
-        "__name": "packsize",
-        "__filename": "https://www.lua.org/manual/5.4/manual.html#pdf-string.packsize"
-    },
-    "find": {
-        "__tinydesc": "Search for the first pattern in a string",
-        "__kind": "function",
-        "__results": "<span style=\"color: #ae81ff\">number</span>",
-        "__name": "find",
-        "__filename": "https://www.lua.org/manual/5.4/manual.html#pdf-string.find"
-    },
-    "ulen": {
-        "__description": "Gets the length in characters of the provided UTF8 string.",
-        "__kind": "function",
-        "__results": "<span style=\"color:#ae81ff\">number</span>",
-        "__example": "-- declare an UTF8 string (file must be saved with UTF8 encoding)\nlocal summer_in_french = \"été\"\n\n-- outputs 5 (in bytes)\nprint( #summer_in_french )\n\n-- outputs 5 (in bytes)\nprint( string.len(summer_in_french) )\n\n-- outputs 3 (in characters) \nprint( summer_in_french:ulen() )",
-        "__params": [
-            {
-                "__optional": false,
-                "__description": "<p>The UTF8 <span style=\"color:#EA6AC3\">string</span> whose length will be returned</p>",
-                "__name": "str",
-                "__color": "EA6AC3"
-            }
-        ],
-        "__tinydesc": "Get an UTF8 string length in characters",
-        "__returns": "Returns the <span style=\"color:#ae81ff\">number</span> of characters.",
-        "__name": "ulen",
-        "__filename": "ulen.html"
-    },
-    "__type": "module",
-    "char": {
-        "__tinydesc": "Get a string from successive bytes",
-        "__kind": "function",
-        "__results": "<span style=\"color:#EA6AC3\">string</span>",
-        "__name": "char",
-        "__filename": "https://www.lua.org/manual/5.4/manual.html#pdf-string.char"
-    },
-    "rep": {
-        "__tinydesc": "Concatenate an UTF8 string multiple times",
-        "__kind": "function",
-        "__results": "<span style=\"color: #EA6AC3\">string</span>",
-        "__name": "rep",
-        "__filename": "https://www.lua.org/manual/5.4/manual.html#pdf-string.rep"
-    },
-    "pack": {
-        "__tinydesc": "Serialize values to a string",
-        "__kind": "function",
-        "__results": "<span style=\"color: #EA6AC3\">string</span>",
-        "__name": "pack",
-        "__filename": "https://www.lua.org/manual/5.4/manual.html#pdf-string.pack"
-    },
-    "match": {
-        "__tinydesc": "Get a match from a pattern",
-        "__kind": "function",
-        "__results": "<span style=\"color:#EA6AC3\">string</span> | <span style=\"color:#8f8f8f\">nil</span>",
-        "__name": "match",
-        "__filename": "https://www.lua.org/manual/5.4/manual.html#pdf-string.match"
-    },
-    "uchar": {
-        "__tinydesc": "Get an UTF8 string from successive bytes",
-        "__kind": "function",
-        "__results": "<span style=\"color:#EA6AC3\">string</span>",
-        "__name": "uchar",
-        "__filename": "https://www.lua.org/manual/5.4/manual.html#pdf-string.char"
-    },
-    "ubyte": {
-        "__tinydesc": "Gets the bytes of an UTF8 string",
-        "__kind": "function",
-        "__results": "<span style=\"color:#ae81ff\">numbers</span>",
-        "__name": "ubyte",
-        "__filename": "https://www.lua.org/manual/5.4/manual.html#pdf-string.byte"
-    },
-    "format": {
-        "__tinydesc": "Format an UTF8 string with multiple values",
-        "__kind": "function",
-        "__results": "<span style=\"color: #EA6AC3\">string</span>",
-        "__name": "format",
-        "__filename": "https://www.lua.org/manual/5.4/manual.html#pdf-string.format"
-    },
-    "__filename": "index.html"
+  "__color": "B1D928",
+  "__icon": "<span class=\"icon bd-link-icon mr-1\" style=\"font-size: 0.8em\"><i class=\"fas fa-quote-right\" style=\"color :#B1D928; vertical-align: middle\" style=\"color: #D0D0D0\"></i></span>",
+  "reverse": {
+    "__tinydesc": "Get a new reversed string",
+    "__kind": "function",
+    "__results": "<span style=\"color: #EA6AC3\">string</span>",
+    "__name": "reverse",
+    "__filename": "https://www.lua.org/manual/5.5/manual.html#pdf-string.reverse"
+  },
+  "gusub": {
+    "__tinydesc": "Get a new UTF8 string after a global pattern substitution",
+    "__kind": "function",
+    "__results": "<span style=\"color:#EA6AC3\">string</span>",
+    "__name": "gusub",
+    "__filename": "https://www.lua.org/manual/5.5/manual.html#pdf-string.gsub"
+  },
+  "ufind": {
+    "__tinydesc": "Search for the first pattern in an UFT8 string",
+    "__kind": "function",
+    "__results": "<span style=\"color: #ae81ff\">number</span>",
+    "__name": "ufind",
+    "__filename": "https://www.lua.org/manual/5.5/manual.html#pdf-string.find"
+  },
+  "split": {
+    "__description": "Splits a string into substrings by a separator.",
+    "__kind": "function",
+    "__results": "<span style=\"color:#EA6AC3\">table</span>",
+    "__example": "-- Lua string.split example\nimport console\n\nlocal str = \"Hello[space]World[space]by[space]LuaRT[space]!\"\n\nfor word in each(str:split(\"[space]\")) do\n    console.write(word..\" \")\nend",
+    "__params": [
+      {
+        "__optional": false,
+        "__description": "<p>The <code>string</code> that will be divided into substrings.</p>",
+        "__name": "str",
+        "__color": "EA6AC3"
+      },
+      {
+        "__optional": false,
+        "__description": "<p>A <code>string</code> that will be used as a separator to divide the string into substrings.</p><article class=\"message is-warning\" style=\"margin-left: 20%; margin-right: 20%\"><div class=\"message-body\">This function can split ASCII or UTF8 encoded strings.</div></article>",
+        "__name": "separator",
+        "__color": "EA6AC3"
+      }
+    ],
+    "__tinydesc": "Split an UTF8 string into substrings",
+    "__returns": "Returns a list of substrings as a <code>table</code>.",
+    "__name": "split",
+    "__filename": "split.html"
+  },
+  "dump": {
+    "__tinydesc": "Get the bytecode of a function",
+    "__kind": "function",
+    "__results": "<span style=\"color: #EA6AC3\">string</span>",
+    "__name": "dump",
+    "__filename": "https://www.lua.org/manual/5.5/manual.html#pdf-string.dump"
+  },
+  "upper": {
+    "__description": "Converts all lowercase characters in a string into uppercase characters.",
+    "__kind": "function",
+    "__results": "<span style=\"color:#EA6AC3\">string</span>",
+    "__example": "--! luart-extensions\nimport console\n\nprint('Enter your name : ')\nlocal name = console.readln();\n\nif name == name:upper() then\n\tprint(\"Please don't shout !\")\nelse\n\tprint('Hi '..name..' !')\nend",
+    "__params": [
+      {
+        "__optional": false,
+        "__description": "<p>The <span style=\"color:#EA6AC3\">string</span> to be used to produce a string with uppercase characters.</p>",
+        "__name": "str",
+        "__color": "EA6AC3"
+      }
+    ],
+    "__tinydesc": "Convert an UTF8 string to uppercase",
+    "__returns": "Returns a new <span style=\"color:#EA6AC3\">string</span> with the same content but uppercase characters.",
+    "__name": "upper",
+    "__filename": "upper.html"
+  },
+  "capitalize": {
+    "__description": "Capitalize the string : All letters are lowered except the first character of the string.",
+    "__kind": "function",
+    "__results": "<span style=\"color:#EA6AC3\">string</span>",
+    "__example": "--! luart-extensions\nimport console\n\nconsole.write('Enter your name : ')\nlocal name = string.capitalize(console.readln())\nprint('Hi '..name..' !')",
+    "__params": [
+      {
+        "__optional": false,
+        "__description": "<p>A <span style=\"color:#EA6AC3\">string</span> that will be capitalized.</p>\n<article class=\"message is-warning\" style=\"margin-left: 15%; margin-right: 15%\"><div class=\"message-body\">This function will try to capitalize the string, even for UTF8 characters.</div></article>",
+        "__name": "str",
+        "__color": "EA6AC3"
+      }
+    ],
+    "__tinydesc": "Capitalize an UTF8 string",
+    "__returns": "Returns a new <span style=\"color:#EA6AC3\">string</span> with the same content but capizalized.",
+    "__name": "capitalize",
+    "__filename": "capitalize.html"
+  },
+  "gsub": {
+    "__tinydesc": "Get a new string after a global pattern substitution",
+    "__kind": "function",
+    "__results": "<span style=\"color:#EA6AC3\">string</span>",
+    "__name": "gsub",
+    "__filename": "https://www.lua.org/manual/5.5/manual.html#pdf-string.gsub"
+  },
+  "umatch": {
+    "__tinydesc": "Get an UTF8 string match from a pattern",
+    "__kind": "function",
+    "__results": "<span style=\"color:#EA6AC3\">string</span> | <span style=\"color:#8f8f8f\">nil</span>",
+    "__name": "umatch",
+    "__filename": "https://www.lua.org/manual/5.5/manual.html#pdf-string.match"
+  },
+  "usub": {
+    "__tinydesc": "Get a substring in a UTF8 string",
+    "__kind": "function",
+    "__results": "<span style=\"color: #EA6AC3\">string</span>",
+    "__name": "usub",
+    "__filename": "https://www.lua.org/manual/5.5/manual.html#pdf-string.sub"
+  },
+  "__name": "string",
+  "ureverse": {
+    "__tinydesc": "Get a new reversed UTF8 string",
+    "__kind": "function",
+    "__results": "<span style=\"color: #EA6AC3\">string</span>",
+    "__name": "ureverse",
+    "__filename": "https://www.lua.org/manual/5.5/manual.html#pdf-string.reverse"
+  },
+  "gumatch": {
+    "__tinydesc": "Get an UTF8 pattern matching iterator",
+    "__kind": "function",
+    "__results": "<span style=\"color:#c7a170\">function</span>",
+    "__name": "gumatch",
+    "__filename": "https://www.lua.org/manual/5.5/manual.html#pdf-string.gmatch"
+  },
+  "__description": "The string module provides powerful functions for string manipulation",
+  "__kind": {
+    "isdesktop": true,
+    "isconsole": true,
+    "iscore": true
+  },
+  "similarity": {
+    "__description": "Calculate the similarity between two strings, using Levenshtein distance algorithm.",
+    "__kind": "function",
+    "__results": "<span style=\"color: #ae81ff\">number</span>",
+    "__example": "local word = \"bird\"\n\n-- outputs 60\nprint(\"Similarity between 'bird' and 'bread' : \"..word:similarity('bread'))",
+    "__params": [
+      {
+        "__optional": false,
+        "__description": "<p>The first <code>string</code> to be evaluated for similiarity.</p>",
+        "__name": "str1",
+        "__color": "EA6AC3"
+      },
+      {
+        "__optional": false,
+        "__description": "<p>The second <code>string</code> to be evaluated for similiarity with the previous one.</p>",
+        "__name": "str2",
+        "__color": "EA6AC3"
+      }
+    ],
+    "__tinydesc": "Compute UTF8 string similarity using Levenshtein distance algorithm",
+    "__returns": "Returns a <span style=\"color: #ae81ff\">number</span> between 0 (no similarity at all) and 100 (strings are the same)",
+    "__name": "similarity",
+    "__filename": "similarity.html"
+  },
+  "sub": {
+    "__tinydesc": "Get a substring",
+    "__kind": "function",
+    "__results": "<span style=\"color: #EA6AC3\">string</span>",
+    "__name": "sub",
+    "__filename": "https://www.lua.org/manual/5.5/manual.html#pdf-string.sub"
+  },
+  "__tinydesc": "Enhances Lua’s string manipulation with additional utilities and UTF8 support",
+  "gmatch": {
+    "__tinydesc": "Get a pattern matching iterator",
+    "__kind": "function",
+    "__results": "<span style=\"color:#c7a170\">function</span>",
+    "__name": "gmatch",
+    "__filename": "https://www.lua.org/manual/5.5/manual.html#pdf-string.gmatch"
+  },
+  "normalize": {
+    "__description": "Normalize the string : All accentued characters are replaced by non accentued ones.",
+    "__kind": "function",
+    "__results": "<span style=\"color:#EA6AC3\">string</span>",
+    "__example": "local summer_in_french = \"été\"\n\n-- prints the string, but normalized\n-- should output \"ete\"\nprint(summer_in_french:normalize())",
+    "__params": [
+      {
+        "__optional": false,
+        "__description": "<p>A <span style=\"color:#EA6AC3\">string</span> that will be normalized.</p>",
+        "__name": "str",
+        "__color": "EA6AC3"
+      }
+    ],
+    "__tinydesc": "Removes diacratics from a string",
+    "__returns": "Returns a new <span style=\"color:#EA6AC3\">string</span> with the same content but normalized.",
+    "__name": "normalize",
+    "__filename": "normalize.html"
+  },
+  "string length operator": {
+    "__name": "string length operator",
+    "__description": "\n            <p><br>As stated in the Lua 5.5 programming manual (see <a href=\"https://www.lua.org/manual/5.5/manual.html#3.4.7\">The Length Operator</a>), the returned length of a string is its number of bytes.\n\t\t\tThis behaviour is respected in Lua<sup>rt</sup> to preserve compatibility with standard Lua with ASCII characters.</p>\n            <article class=\"message is-danger\" style=\"margin-left: 10%; margin-right: 10%\">\n              <div class=\"message-body\">To get the length in characters for UTF8 strings, do not use the # operator, use <a href=\"ulen.html\">string.ulen()</a> instead.</div>\n            </article>\n            \n            ",
+    "__tinydesc": "Get the size of the string in bytes",
+    "__example": "-- declare an UTF8 string\nlocal summer_in_french = \"�t�\"\n\n-- outputs 5 (in bytes)\nprint( #summer_in_french )\n\n-- outputs 3 (in characters) \nprint( summer_in_french:ulen() )",
+    "__kind": "operation",
+    "__results": "",
+    "__title": "# string length operator",
+    "__filename": "length.html"
+  },
+  "string iteration": {
+    "__name": "string iteration",
+    "__description": "\n            <p>UTF8 strings in Lua<sup>rt</sup> are iterable through the Lua<sup>rt</sup> helper function <a href=\"../base/each.html\">each()</a>, returning the next character in the string with each loop iteration.\n            Each iteration returns the character as a <span style=\"color:#EA6AC3\">string</span>.</p>\n            \n            ",
+    "__tinydesc": "Iterate over an UTF8 string, character by character",
+    "__example": "--! luart-extensions\nimport console\n\nconsole.write(\"\\nEnter your name : \")\nlocal name = console.readln()\nconsole.write(\"\\nLet me spell it... \")\n\nfor char in each(name) do\n\tconsole.write(\"[\"..char..\"] \")\nend\nconsole.write(\"\\n\")",
+    "__kind": "operation",
+    "__results": "",
+    "__title": "string iteration ",
+    "__filename": "iteration.html"
+  },
+  "lower": {
+    "__description": "Converts all uppercase characters in a string into lowercase characters.",
+    "__kind": "function",
+    "__results": "<span style=\"color:#EA6AC3\">string</span>",
+    "__example": "--! luart-extensions\nimport console\n\nconsole.write('Enter a word : ')\nlocal word = console.readln():lower()\n\nprint('Here the word in lower characters : '..word)",
+    "__params": [
+      {
+        "__optional": false,
+        "__description": "<p>The <span style=\"color:#EA6AC3\">string</span> to be used to produce a string with lowercase characters.</p><article class=\"message is-warning\" style=\"margin-left: 15%; margin-right: 15%\"><div class=\"message-body\">This function will try to convert the string, even for UTF8 characters.</div></article>",
+        "__name": "str",
+        "__color": "EA6AC3"
+      }
+    ],
+    "__tinydesc": "Convert an UTF8 string to lowercase",
+    "__returns": "Returns a new <span style=\"color:#EA6AC3\">string</span> with the same content but lowercase characters.",
+    "__name": "lower",
+    "__filename": "lower.html"
+  },
+  "byte": {
+    "__tinydesc": "Gets the bytes of a string",
+    "__kind": "function",
+    "__results": "<span style=\"color:#ae81ff\">numbers</span>",
+    "__name": "byte",
+    "__filename": "https://www.lua.org/manual/5.5/manual.html#pdf-string.byte"
+  },
+  "usearch": {
+    "__description": "Search an UTF8 string for the first occurence of a substring, using plain text (no patterns). Faster than <code>string.ufind()</code>",
+    "__kind": "function",
+    "__results": "<span style=\"color: #ae81ff\">number</span>",
+    "__example": "local text = \"The sun will shine again !\"\n\n-- outputs 9 and 12\nprint(text:usearch(\"will\"))",
+    "__params": [
+      {
+        "__optional": false,
+        "__description": "<p>The <span style=\"color:#EA6AC3\">string</span> to search.</p>",
+        "__name": "str",
+        "__color": "EA6AC3"
+      },
+      {
+        "__optional": false,
+        "__description": "<p>The sub-string to to search for.</p>",
+        "__name": "substring",
+        "__color": "EA6AC3"
+      },
+      {
+        "__optional": true,
+        "__description": "<p>An optional number indicating where to start the search. Its default value is 1 and canbe negative.</p>",
+        "__name": "start",
+        "__color": "ae81ff"
+      }
+    ],
+    "__tinydesc": "Fast UTF8 string search without patterns",
+    "__returns": "<p>If the function finds a match, it returns two <span style=\"color: #ae81ff\">number</span> : the character position where this occurrence starts and ends. If the sub-string has not been found, it returns <span style=\"color: #606060\">nil</span>.</p>",
+    "__name": "usearch",
+    "__filename": "usearch.html"
+  },
+  "unpack": {
+    "__tinydesc": "Get values from a serialized string",
+    "__kind": "function",
+    "__results": "<span style=\"color: #8f8f8f\">...</span>",
+    "__name": "unpack",
+    "__filename": "https://www.lua.org/manual/5.5/manual.html#pdf-string.unpack"
+  },
+  "len": {
+    "__tinydesc": "Get the string length in bytes",
+    "__kind": "function",
+    "__results": "<span style=\"color:#ae81ff\">number</span>",
+    "__name": "len",
+    "__filename": "https://www.lua.org/manual/5.5/manual.html#pdf-string.len"
+  },
+  "packsize": {
+    "__tinydesc": "Get the size of a serialized string",
+    "__kind": "function",
+    "__results": "<span style=\"color: #ae81ff\">number</span>",
+    "__name": "packsize",
+    "__filename": "https://www.lua.org/manual/5.5/manual.html#pdf-string.packsize"
+  },
+  "find": {
+    "__tinydesc": "Search for the first pattern in a string",
+    "__kind": "function",
+    "__results": "<span style=\"color: #ae81ff\">number</span>",
+    "__name": "find",
+    "__filename": "https://www.lua.org/manual/5.5/manual.html#pdf-string.find"
+  },
+  "ulen": {
+    "__description": "Gets the length in characters of the provided UTF8 string.",
+    "__kind": "function",
+    "__results": "<span style=\"color:#ae81ff\">number</span>",
+    "__example": "-- declare an UTF8 string (file must be saved with UTF8 encoding)\nlocal summer_in_french = \"été\"\n\n-- outputs 5 (in bytes)\nprint( #summer_in_french )\n\n-- outputs 5 (in bytes)\nprint( string.len(summer_in_french) )\n\n-- outputs 3 (in characters) \nprint( summer_in_french:ulen() )",
+    "__params": [
+      {
+        "__optional": false,
+        "__description": "<p>The UTF8 <span style=\"color:#EA6AC3\">string</span> whose length will be returned</p>",
+        "__name": "str",
+        "__color": "EA6AC3"
+      }
+    ],
+    "__tinydesc": "Get an UTF8 string length in characters",
+    "__returns": "Returns the <span style=\"color:#ae81ff\">number</span> of characters.",
+    "__name": "ulen",
+    "__filename": "ulen.html"
+  },
+  "__type": "module",
+  "char": {
+    "__tinydesc": "Get a string from successive bytes",
+    "__kind": "function",
+    "__results": "<span style=\"color:#EA6AC3\">string</span>",
+    "__name": "char",
+    "__filename": "https://www.lua.org/manual/5.5/manual.html#pdf-string.char"
+  },
+  "rep": {
+    "__tinydesc": "Concatenate an UTF8 string multiple times",
+    "__kind": "function",
+    "__results": "<span style=\"color: #EA6AC3\">string</span>",
+    "__name": "rep",
+    "__filename": "https://www.lua.org/manual/5.5/manual.html#pdf-string.rep"
+  },
+  "pack": {
+    "__tinydesc": "Serialize values to a string",
+    "__kind": "function",
+    "__results": "<span style=\"color: #EA6AC3\">string</span>",
+    "__name": "pack",
+    "__filename": "https://www.lua.org/manual/5.5/manual.html#pdf-string.pack"
+  },
+  "match": {
+    "__tinydesc": "Get a match from a pattern",
+    "__kind": "function",
+    "__results": "<span style=\"color:#EA6AC3\">string</span> | <span style=\"color:#8f8f8f\">nil</span>",
+    "__name": "match",
+    "__filename": "https://www.lua.org/manual/5.5/manual.html#pdf-string.match"
+  },
+  "uchar": {
+    "__tinydesc": "Get an UTF8 string from successive bytes",
+    "__kind": "function",
+    "__results": "<span style=\"color:#EA6AC3\">string</span>",
+    "__name": "uchar",
+    "__filename": "https://www.lua.org/manual/5.5/manual.html#pdf-string.char"
+  },
+  "ubyte": {
+    "__tinydesc": "Gets the bytes of an UTF8 string",
+    "__kind": "function",
+    "__results": "<span style=\"color:#ae81ff\">numbers</span>",
+    "__name": "ubyte",
+    "__filename": "https://www.lua.org/manual/5.5/manual.html#pdf-string.byte"
+  },
+  "format": {
+    "__tinydesc": "Format an UTF8 string with multiple values",
+    "__kind": "function",
+    "__results": "<span style=\"color: #EA6AC3\">string</span>",
+    "__name": "format",
+    "__filename": "https://www.lua.org/manual/5.5/manual.html#pdf-string.format"
+  },
+  "__filename": "index.html"
 }

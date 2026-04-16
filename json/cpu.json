@@ -1,124 +1,114 @@
 {
-    "__name": "cpu",
-    "__icon": "<span class=\"icon bd-link-icon mr-1\" style=\"font-size: 0.8em\"><i class=\"fas fa-microchip\" style=\"color :#858DAD; vertical-align: top\"></i></span>",
-    "__color": "85ADAD",
-    "__description": "The cpu module gets infos on the current CPU",
-    "__tinydesc": "Gets CPU informations and capabilities",
-    "__filename": "index.html",
-    "__type": "module",
-    "__kind": {
-        "isdesktop": true,
-        "isconsole": true,
-        "iscore": false
-    },
-
-    "usage": {
-        "__results": "<span style=\"color:#ae81ff\">number</span>",
-        "__access": "readonly",
-        "__kind": "property",
-        "__name": "usage",
-        "__description": "<br>The cpu.usage property gets the current CPU usage in percent.",
-        "__example": "local cpu = require \"cpu\"\n\nprint(\"CPU usage : \"..cpu.usage..\"%\")",
-        "__tinydesc": "Get cpu usage",
-        "__filename": "usage.html"
-    },
-
-    "threads": {
-        "__results": "<span style=\"color:#ae81ff\">number</span>",
-        "__access": "readonly",
-        "__kind": "property",
-        "__name": "threads",
-        "__description": "<br>The cpu.threads property gets the number hardware threads.",
-        "__example": "local cpu = require \"cpu\"\n\nprint(\"CPU hardware threads : \"..cpu.threads\")",
-        "__tinydesc": "Get cpu hardware threads",
-        "__filename": "threads.html"
-    },
-
-    "cores": {
-        "__results": "<span style=\"color:#ae81ff\">number</span>",
-        "__access": "readonly",
-        "__kind": "property",
-        "__name": "cores",
-        "__description": "<br>The cpu.cores property gets the number of physical CPU cores.",
-        "__example": "local cpu = require \"cpu\"\n\nprint(\"CPU cores : \"..cpu.cores\")",
-        "__tinydesc": "Get cpu physical cpu core count",
-        "__filename": "cores.html"
-    },
-
-    "name": {
-        "__results": "<span style=\"color:#EA6AC3\">string</span>",
-        "__access": "readonly",
-        "__kind": "property",
-        "__name": "name",
-        "__description": "<br>The cpu.name property gets the human-readable name of the CPU.",
-        "__example": "local cpu = require \"cpu\"\n\nprint(\"CPU name : \"..cpu.name\")",
-        "__tinydesc": "Get cpu brand name",
-        "__filename": "name.html"
-    },
-
-    "clock": {
-        "__results": "<span style=\"color:#ae81ff\">number</span>",
-        "__access": "readonly",
-        "__kind": "property",
-        "__name": "clock",
-        "__description": "<br>The cpu.clock property gets the theorical frequency in Mhz.",
-        "__example": "local cpu = require \"cpu\"\n\nprint(\"CPU clock : \"..cpu.clock\")",
-        "__tinydesc": "Get cpu fequency",
-        "__filename": "clock.html"
-    },
-
-    "currentclock": {
-        "__results": "<span style=\"color:#ae81ff\">number</span>",
-        "__access": "readonly",
-        "__kind": "property",
-        "__name": "currentclock",
-        "__description": "<br>The cpu.currentclock property gets the current cpu frequency in Mhz.",
-        "__example": "local cpu = require \"cpu\"\n\nprint(\"CPU live frequency : \"..cpu.currentclock..\"Mhz\")",
-        "__tinydesc": "Get cpu current fequency",
-        "__filename": "currentclock.html"
-    },
-
-    "vendor": {
-        "__results": "<span style=\"color:#EA6AC3\">string</span>",
-        "__access": "readonly",
-        "__kind": "property",
-        "__name": "vendor",
-        "__description": "<br>The cpu.currentclock property gets the cpu manufacturer identifier.",
-        "__example": "local cpu = require \"cpu\"\n\nprint(\"CPU Manufacturer : \"..cpu.vendor..\"Mhz\")",
-        "__tinydesc": "Get cpu mmanufacturer identifier",
-        "__filename": "vendor.html"
-    },
-    
-    "features": {
-        "__results": "<span style=\"color:#B1D928\">table</span>",
-        "__access": "readonly",
-        "__kind": "property",
-        "__name": "features",
-        "__description": "<br>This property gets instruction sets supported by the CPU, as a <code>table</code> with the following fields: <ul> <li><code>MMX</code>: <code>true</code> if the CPU supports MMX instruction set, or <code>false</code> otherwise.</li> <li><code>SSE</code>: <code>true</code> if the CPU supports SSE instruction set, or <code>false</code> otherwise.</li> <li><code>SSE2</code>: <code>true</code> if the CPU supports SSE2 instruction set, or <code>false</code> otherwise.</li> <li><code>SSE3</code>: <code>true</code> if the CPU supports SSE3 instruction set, or <code>false</code> otherwise.</li> <li><code>SSE4.1</code>: <code>true</code> if the CPU supports SSE4.1 instruction set, or <code>false</code> otherwise.</li> <li><code>SSE4.2</code>: <code>true</code> if the CPU supports SSE4.2 instruction set, or <code>false</code> otherwise.</li> <li><code>AVX</code>: <code>true</code> if the CPU supports AVX instruction set, or <code>false</code> otherwise.</li> <li><code>AVX2</code>: <code>true</code> if the CPU supports AVX2 instruction set, or <code>false</code> otherwise.</li> </ul>",
-        "__example": "local cpu = require \"cpu\"\n\nfor feature, supported in pairs(cpu.features) do\n  print(feature..\":\\t\", supported and \"supported\" or \"not supported\")\nend",
-        "__tinydesc": "Get supported cpu instruction sets",
-        "__filename": "features.html"
-    },
-    
-    "priority": {
-        "__results": "<span style=\"color:#EA6AC3\">string</span>",
-        "__access": "read/write",
-        "__kind": "property",
-        "__name": "priority",
-        "__description": "<br>The cpu.priority property get or set the current process and thread (the one executing Lua<sup>rt</sup>) scheduling priority.</p><p>Here are the possible <code>string</code> values: <ul><li><code>\"idle\"</code> </li>\n<li><code>\"low\"</code> </li>\n<li><code>\"normal\"</code> </li>\n<li><code>\"high\"</code></li>\n<li><code>\"highest\"</code> </li>\n</ul></p>",
-        "__example": "local cpu = require \"cpu\"\n\nprint(\"Current process priority : \"..cpu.priority)",
-        "__tinydesc": "Get cpu scheduling priority of current process",
-        "__filename": "priority.html"
-    },
-    
-    "cache": {
-        "__results": "<span style=\"color:#B1D928\">table</span>",
-        "__access": "readonly",
-        "__kind": "property",
-        "__name": "cache",
-        "__description": "<br>This property gets different cache levels and their size (in kb). The returned <code>table</code> with the cache identifier as a key, and its size as value.",
-        "__example": "local cpu = require \"cpu\"\nfor cache, size in pairs(cpu.cache) do\n  print(cache..\": \", size..\"kb\")\nend",
-        "__tinydesc": "Get cpu caches and their size",
-        "__filename": "cache.html"
-    }   
+  "__name": "cpu",
+  "__icon": "<span class=\"icon bd-link-icon mr-1\" style=\"font-size: 0.8em\"><i class=\"fas fa-microchip\" style=\"color :#858DAD; vertical-align: top\"></i></span>",
+  "__color": "85ADAD",
+  "__description": "The cpu module gets infos on the current CPU",
+  "__tinydesc": "Gets CPU informations and capabilities",
+  "__filename": "index.html",
+  "__type": "module",
+  "__kind": {
+    "isdesktop": true,
+    "isconsole": true,
+    "iscore": false
+  },
+  "usage": {
+    "__results": "<span style=\"color:#ae81ff\">number</span>",
+    "__access": "readonly",
+    "__kind": "property",
+    "__name": "usage",
+    "__description": "<br>The cpu.usage property gets the current CPU usage in percent.",
+    "__example": "--! luart-extensions\nimport cpu\n\nprint(\"CPU usage : \"..cpu.usage..\"%\")",
+    "__tinydesc": "Get cpu usage",
+    "__filename": "usage.html"
+  },
+  "threads": {
+    "__results": "<span style=\"color:#ae81ff\">number</span>",
+    "__access": "readonly",
+    "__kind": "property",
+    "__name": "threads",
+    "__description": "<br>The cpu.threads property gets the number hardware threads.",
+    "__example": "--! luart-extensions\nimport cpu\n\nprint(\"CPU hardware threads : \"..cpu.threads)",
+    "__tinydesc": "Get cpu hardware threads",
+    "__filename": "threads.html"
+  },
+  "cores": {
+    "__results": "<span style=\"color:#ae81ff\">number</span>",
+    "__access": "readonly",
+    "__kind": "property",
+    "__name": "cores",
+    "__description": "<br>The cpu.cores property gets the number of physical CPU cores.",
+    "__example": "--! luart-extensions\nimport cpu\n\nprint(\"CPU cores : \"..cpu.cores)",
+    "__tinydesc": "Get cpu physical cpu core count",
+    "__filename": "cores.html"
+  },
+  "name": {
+    "__results": "<span style=\"color:#EA6AC3\">string</span>",
+    "__access": "readonly",
+    "__kind": "property",
+    "__name": "name",
+    "__description": "<br>The cpu.name property gets the human-readable name of the CPU.",
+    "__example": "--! luart-extensions\nimport cpu\n\nprint(\"CPU name : \"..cpu.name)",
+    "__tinydesc": "Get cpu brand name",
+    "__filename": "name.html"
+  },
+  "clock": {
+    "__results": "<span style=\"color:#ae81ff\">number</span>",
+    "__access": "readonly",
+    "__kind": "property",
+    "__name": "clock",
+    "__description": "<br>The cpu.clock property gets the theorical frequency in Mhz.",
+    "__example": "--! luart-extensions\nimport cpu\n\nprint(\"CPU clock : \"..cpu.clock)",
+    "__tinydesc": "Get cpu frequency",
+    "__filename": "clock.html"
+  },
+  "currentclock": {
+    "__results": "<span style=\"color:#ae81ff\">number</span>",
+    "__access": "readonly",
+    "__kind": "property",
+    "__name": "currentclock",
+    "__description": "<br>The cpu.currentclock property gets the current cpu frequency in Mhz.",
+    "__example": "--! luart-extensions\nimport cpu\n\nprint(\"CPU live frequency : \"..cpu.currentclock..\"Mhz\")",
+    "__tinydesc": "Get cpu current frequency",
+    "__filename": "currentclock.html"
+  },
+  "vendor": {
+    "__results": "<span style=\"color:#EA6AC3\">string</span>",
+    "__access": "readonly",
+    "__kind": "property",
+    "__name": "vendor",
+    "__description": "<br>The cpu.vendor property gets the cpu manufacturer identifier.",
+    "__example": "--! luart-extensions\nimport cpu\n\nprint(\"CPU Manufacturer : \"..cpu.vendor)",
+    "__tinydesc": "Get cpu manufacturer identifier",
+    "__filename": "vendor.html"
+  },
+  "features": {
+    "__results": "<span style=\"color:#B1D928\">table</span>",
+    "__access": "readonly",
+    "__kind": "property",
+    "__name": "features",
+    "__description": "<br>This property gets instruction sets supported by the CPU, as a <code>table</code> with the following fields: <ul> <li><code>MMX</code>: <code>true</code> if the CPU supports MMX instruction set, or <code>false</code> otherwise.</li> <li><code>SSE</code>: <code>true</code> if the CPU supports SSE instruction set, or <code>false</code> otherwise.</li> <li><code>SSE2</code>: <code>true</code> if the CPU supports SSE2 instruction set, or <code>false</code> otherwise.</li> <li><code>SSE3</code>: <code>true</code> if the CPU supports SSE3 instruction set, or <code>false</code> otherwise.</li> <li><code>SSSE3</code>: <code>true</code> if the CPU supports SSSE3 instruction set, or <code>false</code> otherwise.</li> <li><code>SSE4_1</code>: <code>true</code> if the CPU supports SSE4.1 instruction set, or <code>false</code> otherwise.</li> <li><code>SSE4_2</code>: <code>true</code> if the CPU supports SSE4.2 instruction set, or <code>false</code> otherwise.</li> <li><code>AVX</code>: <code>true</code> if the CPU supports AVX instruction set, or <code>false</code> otherwise.</li> <li><code>AVX2</code>: <code>true</code> if the CPU supports AVX2 instruction set, or <code>false</code> otherwise.</li> </ul>",
+    "__example": "--! luart-extensions\nimport cpu\n\nfor feature, supported in pairs(cpu.features) do\n  print(feature..\":\\t\", supported and \"supported\" or \"not supported\")\nend",
+    "__tinydesc": "Get supported cpu instruction sets",
+    "__filename": "features.html"
+  },
+  "priority": {
+    "__results": "<span style=\"color:#EA6AC3\">string</span>",
+    "__access": "read/write",
+    "__kind": "property",
+    "__name": "priority",
+    "__description": "<br>The cpu.priority property get or set the current process and thread (the one executing Lua<sup>rt</sup>) scheduling priority.</p><p>Here are the possible <code>string</code> values: <ul><li><code>\"idle\"</code> </li>\n<li><code>\"below_normal\"</code> </li>\n<li><code>\"normal\"</code> </li>\n<li><code>\"above_normal\"</code> </li>\n<li><code>\"high\"</code></li>\n</ul></p>",
+    "__example": "--! luart-extensions\nimport cpu\n\nprint(\"Current process priority : \"..cpu.priority)",
+    "__tinydesc": "Get cpu scheduling priority of current process",
+    "__filename": "priority.html"
+  },
+  "cache": {
+    "__results": "<span style=\"color:#B1D928\">table</span>",
+    "__access": "readonly",
+    "__kind": "property",
+    "__name": "cache",
+    "__description": "<br>This property gets different cache levels and their size (in kb). The returned <code>table</code> with the cache identifier as a key, and its size as value.",
+    "__example": "--! luart-extensions\nimport cpu\nfor cache, size in pairs(cpu.cache) do\n  print(cache..\": \", size..\"kb\")\nend",
+    "__tinydesc": "Get cpu caches and their size",
+    "__filename": "cache.html"
+  }
 }

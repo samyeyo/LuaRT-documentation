@@ -1,114 +1,114 @@
 {
-    "Database": {
-        "exec": {
-            "__returns": "Returns the result of the SQL statement as rows (each row is represented as a Lua <code>table</code> with column names as keys) or <code>nil</code> if there is no result.",
-            "__name": "exec",
-            "__example": "local sqlite = require \"sqlite\"\n\n-- Create an in-:memory: database\nlocal db = sqlite.Database(\":memory:\")\n\n-- Create a new table \"users\"\ndb:exec([[CREATE TABLE users (\n            id integer PRIMARY KEY,\n            name text NOT NULL,\n            age  integer)]])\n\n-- Insert a new row\ndb:exec(\"INSERT INTO users (name, age) VALUES(?, ?)\", \"John\", 32)\n\n-- Get a row from the SELECT statement\nlocal row = db:exec(\"SELECT * FROM users WHERE(name == 'John')\")\nprint(row.name, row.age)",
-            "__results": "<span style=\"color:#B1D928\">table...</span>",
-            "__kind": "method",
-            "__params": [
-                {
-                    "__description": "<p>A <code>string</code> that contains a SQL query.</p>",
-                    "__optional": false,
-                    "__color": "EA6AC3",
-                    "__name": "sql"
-                },
-                {
-                    "__description": "<p>One or more optional <code>string</code> that contains parameters for the query. Each <code>'?'</code> characters in the query will be replaced by the corresponding argument in order. </p>",
-                    "__optional": true,
-                    "__color": "EA6AC3",
-                    "__name": "params..."
-                }
-            ],
-            "__description": "Executes a SQL query with support for parameters to bind values dynamically",
-            "__tinydesc": "Execute a SQL query",
-            "__filename": "Database-exec.html"
+  "Database": {
+    "exec": {
+      "__returns": "Returns the result of the SQL statement as rows (each row is represented as a Lua <code>table</code> with column names as keys), the number of rows affected for non-SELECT statements, or <code>nil</code> if there is no result.",
+      "__name": "exec",
+      "__example": "--! luart-extensions\nimport sqlite\n\n-- Create an in-:memory: database\nlocal db = sqlite.Database(\":memory:\")\n\n-- Create a new table \"users\"\ndb:exec([[CREATE TABLE users (\n            id integer PRIMARY KEY,\n            name text NOT NULL,\n            age  integer)]])\n\n-- Insert a new row\ndb:exec(\"INSERT INTO users (name, age) VALUES(?, ?)\", \"John\", 32)\n\n-- Get a row from the SELECT statement\nlocal row = db:exec(\"SELECT * FROM users WHERE(name == 'John')\")\nprint(row.name, row.age)",
+      "__results": "<span style=\"color:#B1D928\">table</span> | <span style=\"color:#ae81ff\">number</span> | <span style=\"color:lightgray\">nil</span>",
+      "__kind": "method",
+      "__params": [
+        {
+          "__description": "<p>A <code>string</code> that contains a SQL query.</p>",
+          "__optional": false,
+          "__color": "EA6AC3",
+          "__name": "sql"
         },
-        "query": {
-            "__returns": "Returns the result of the SQL statement as an iterator function to iterate over each row (represented as a Lua <code>table</code> with column names as keys).",
-            "__name": "query",
-            "__example": "local sqlite = require \"sqlite\"\n\n-- Create an in-:memory: database\nlocal db = sqlite.Database(\":memory:\")\n\n-- Create a new table \"users\"\ndb:exec([[CREATE TABLE users (\n            id integer PRIMARY KEY,\n            name text NOT NULL,\n            age  integer)]])\n\n-- Insert new rows\ndb:exec(\"INSERT INTO users (name, age) VALUES('John', 32)\")\ndb:exec(\"INSERT INTO users (name, age) VALUES('Jane', 36)\")\ndb:exec(\"INSERT INTO users (name, age) VALUES('Marc', 25)\")\n\n-- print all the users, row by row\nfor user in db:query(\"SELECT * FROM users\") do\n    print(user.name, user.age)\nend",
-            "__results": "<span style=\"color:#c7a170\">function</span>",
-            "__kind": "method",
-            "__params": [
-                {
-                    "__description": "<p>A <code>string</code> that contains a SQL statement.</p>",
-                    "__optional": false,
-                    "__color": "EA6AC3",
-                    "__name": "sql"
-                }
-            ],
-            "__description": "A <code>string</code> that contains a SQL statement.",
-            "__tinydesc": "Execute a SQL query and returns an iterator",
-            "__filename": "Database-query.html"
-        },
-        "__name": "Database",
-        "file": {
-            "__results": "<a href=\"../sys/File.html\"><i class=\"fas fas fa-file\"></i> File</a>",
-            "__access": "readonly",
-            "__kind": "property",
-            "__name": "file",
-            "__description": "Get the file where the Database is stored on disk as a <a href=\"../sys/File.html\"><i class=\"fas fas fa-file\"></i> File</a>, or the string <code>\":memory:\"</code> in case of an in-memory Database.",
-            "__example": "local sqlite = require \"sqlite\"\n\n-- Create an in-:memory: database\nlocal db = sqlite.Database(\":memory:\")\n  \n-- Prints \":memory:\"\nprint(db.file)",
-            "__tinydesc": "Get the Database file on disk",
-            "__filename": "Database-file.html"
-        },
-        "__type": "object",
-        "__icon": "<span class=\"icon bd-link-icon mr-1\" style=\"font-size: 0.8em\"><i class=\"fas fa-database\" style=\"color :#2187E7\"></i></span>",
-        "__results": "-",
-        "__kind": "object",
-        "close": {
-            "__returns": "The function returns no value.\n            </div>\n            <div class=\"language-lua mr-6 ml-6\"><code>\nlocal sqlite = require \"sqlite\"\n              \n-- Create an in-:memory: database\nlocal db = sqlite.Database(\":memory:\")\ndb:close()\n              </code></div>\n\t      </div>\n      </div>\n    </div>\n  </section>  \n  <footer class=\"footer\">\n    <div class=\"content has-text-centered\">",
-            "__name": "close",
-            "__example": "local sqlite = require \"sqlite\"\n              \n-- Create an in-:memory: database\nlocal db = sqlite.Database(\":memory:\")\ndb:close()",
-            "__results": "-",
-            "__kind": "method",
-            "__params": {},
-            "__description": "Closes the Database.<article class=\"message is-info\" style=\"margin-left: 15%; margin-right: 15%\"><div class=\"message-body\">When garbage collected (for example when going out of scope), Database are automatically closed before destruction. In this case, it's not necessary to call the Database:close() method.</div></article>",
-            "__tinydesc": "Close the Database",
-            "__filename": "Database-close.html"
-        },
-        "constructor": {
-            "__results": "<a href=\"Database.html\"><i class=\"fas fas fa-database\"></i> Database</a>",
-            "__kind": "method",
-            "__params": [
-                {
-                    "__description": "<p>A <code>string</code> or a <a href=\"../sys/File.html\"><i class=\"fas fas fa-file\"></i> File</a> representing an SQLite database.</p><article class=\"message is-warning\" style=\"margin-left: 10%; margin-right: 10%\"><div class=\"message-body\">You can use in-:memory: Database by using the string <code>\":memory:\"</code></div></article>",
-                    "__optional": false,
-                    "__color": "606060",
-                    "__name": "file"
-                }
-            ],
-            "__name": "constructor",
-            "__description": "<br>The Database constructor returns a Database value representing a SQLite database.",
-            "__example": "local sqlite = require \"sqlite\"\n\n-- Create an in-:memory: database\nlocal db = sqlite.Database(\":memory:\")",
-            "__tinydesc": "Database object constuctor",
-            "__filename": "Database-constructor.html"
-        },
-        "__description": "The Database object represents a SQLite database",
-        "__tinydesc": "SQLite Database implementation",
-        "__filename": "Database.html"
+        {
+          "__description": "<p>One or more optional <code>string</code> that contains parameters for the query. Each <code>'?'</code> characters in the query will be replaced by the corresponding argument in order. </p>",
+          "__optional": true,
+          "__color": "EA6AC3",
+          "__name": "params..."
+        }
+      ],
+      "__description": "Executes a SQL query with support for parameters to bind values dynamically",
+      "__tinydesc": "Execute a SQL query",
+      "__filename": "Database-exec.html"
     },
-    "__icon": "<span class=\"icon bd-link-icon mr-1\" style=\"font-size: 0.8em\"><i class=\"fas fa-database\" style=\"color :#C39BD3; vertical-align: top\" style=\"color: #D0D0D0\"></i></span>",
-    "__type": "module",
-    "__kind": {
-        "isdesktop": true,
-        "isconsole": true,
-        "iscore": false
+    "query": {
+      "__returns": "Returns the result of the SQL statement as an iterator function to iterate over each row (represented as a Lua <code>table</code> with column names as keys).",
+      "__name": "query",
+      "__example": "--! luart-extensions\nimport sqlite\n\n-- Create an in-:memory: database\nlocal db = sqlite.Database(\":memory:\")\n\n-- Create a new table \"users\"\ndb:exec([[CREATE TABLE users (\n            id integer PRIMARY KEY,\n            name text NOT NULL,\n            age  integer)]])\n\n-- Insert new rows\ndb:exec(\"INSERT INTO users (name, age) VALUES('John', 32)\")\ndb:exec(\"INSERT INTO users (name, age) VALUES('Jane', 36)\")\ndb:exec(\"INSERT INTO users (name, age) VALUES('Marc', 25)\")\n\n-- print all the users, row by row\nfor user in db:query(\"SELECT * FROM users\") do\n    print(user.name, user.age)\nend",
+      "__results": "<span style=\"color:#c7a170\">function</span>",
+      "__kind": "method",
+      "__params": [
+        {
+          "__description": "<p>A <code>string</code> that contains a SQL statement.</p>",
+          "__optional": false,
+          "__color": "EA6AC3",
+          "__name": "sql"
+        }
+      ],
+      "__description": "Executes a SQL statement and returns an iterator function to iterate over each row (represented as a Lua <code>table</code> with column names as keys).",
+      "__tinydesc": "Execute a SQL query and returns an iterator",
+      "__filename": "Database-query.html"
     },
-    "sqlite.version|": {
-        "__results": "<span style=\"color:#EA6AC3\">string</span>",
-        "__access": "readonly",
-        "__kind": "property",
-        "__name": "sqlite.version|",
-        "__description": "Get the Sqlite library version, as a <code>string</code>",
-        "__example": "local sqlite = require \"sqlite\"\n\n-- Prints the sqlite library version\nprint(sqlite.version)",
-        "__tinydesc": "Get the SQLite version",
-        "__filename": "version.html"
+    "__name": "Database",
+    "file": {
+      "__results": "<a href=\"../sys/File.html\"><i class=\"fas fas fa-file\"></i> File</a>",
+      "__access": "readonly",
+      "__kind": "property",
+      "__name": "file",
+      "__description": "Get the file where the Database is stored on disk as a <a href=\"../sys/File.html\"><i class=\"fas fas fa-file\"></i> File</a>, or the string <code>\":memory:\"</code> in case of an in-memory Database.",
+      "__example": "--! luart-extensions\nimport sqlite\n\n-- Create an in-:memory: database\nlocal db = sqlite.Database(\":memory:\")\n  \n-- Prints \":memory:\"\nprint(db.file)",
+      "__tinydesc": "Get the Database file on disk",
+      "__filename": "Database-file.html"
     },
-    "__color": "C39BD3",
-    "__description": "The sqlite module provides a lightweight, serverless SQL database engine",
-    "__name": "sqlite",
-    "__tinydesc": "Interfaces with SQLite databases for local or in-memory data storage",
-    "__filename": "index.html"
+    "__type": "object",
+    "__icon": "<span class=\"icon bd-link-icon mr-1\" style=\"font-size: 0.8em\"><i class=\"fas fa-database\" style=\"color :#2187E7\"></i></span>",
+    "__results": "-",
+    "__kind": "object",
+    "close": {
+      "__returns": "The function returns no value.\n            </div>\n            <div class=\"language-lua mr-6 ml-6\"><code>\nlocal sqlite = require \"sqlite\"\n              \n-- Create an in-:memory: database\nlocal db = sqlite.Database(\":memory:\")\ndb:close()\n              </code></div>\n\t      </div>\n      </div>\n    </div>\n  </section>  \n  <footer class=\"footer\">\n    <div class=\"content has-text-centered\">",
+      "__name": "close",
+      "__example": "--! luart-extensions\nimport sqlite\n              \n-- Create an in-:memory: database\nlocal db = sqlite.Database(\":memory:\")\ndb:close()",
+      "__results": "-",
+      "__kind": "method",
+      "__params": {},
+      "__description": "Closes the Database.<article class=\"message is-info\" style=\"margin-left: 15%; margin-right: 15%\"><div class=\"message-body\">When garbage collected (for example when going out of scope), Database are automatically closed before destruction. In this case, it's not necessary to call the Database:close() method.</div></article>",
+      "__tinydesc": "Close the Database",
+      "__filename": "Database-close.html"
+    },
+    "constructor": {
+      "__results": "<a href=\"Database.html\"><i class=\"fas fas fa-database\"></i> Database</a>",
+      "__kind": "method",
+      "__params": [
+        {
+          "__description": "<p>A <code>string</code> or a <a href=\"../sys/File.html\"><i class=\"fas fas fa-file\"></i> File</a> representing an SQLite database.</p><article class=\"message is-warning\" style=\"margin-left: 10%; margin-right: 10%\"><div class=\"message-body\">You can use in-:memory: Database by using the string <code>\":memory:\"</code></div></article>",
+          "__optional": false,
+          "__color": "606060",
+          "__name": "file"
+        }
+      ],
+      "__name": "constructor",
+      "__description": "<br>The Database constructor returns a Database value representing a SQLite database.",
+      "__example": "--! luart-extensions\nimport sqlite\n\n-- Create an in-:memory: database\nlocal db = sqlite.Database(\":memory:\")",
+      "__tinydesc": "Database object constuctor",
+      "__filename": "Database-constructor.html"
+    },
+    "__description": "The Database object represents a SQLite database",
+    "__tinydesc": "SQLite Database implementation",
+    "__filename": "Database.html"
+  },
+  "__icon": "<span class=\"icon bd-link-icon mr-1\" style=\"font-size: 0.8em\"><i class=\"fas fa-database\" style=\"color :#C39BD3; vertical-align: top\" style=\"color: #D0D0D0\"></i></span>",
+  "__type": "module",
+  "__kind": {
+    "isdesktop": true,
+    "isconsole": true,
+    "iscore": false
+  },
+  "sqlite.version|": {
+    "__results": "<span style=\"color:#EA6AC3\">string</span>",
+    "__access": "readonly",
+    "__kind": "property",
+    "__name": "sqlite.version|",
+    "__description": "Get the Sqlite library version, as a <code>string</code>",
+    "__example": "--! luart-extensions\nimport sqlite\n\n-- Prints the sqlite library version\nprint(sqlite.version)",
+    "__tinydesc": "Get the SQLite version",
+    "__filename": "version.html"
+  },
+  "__color": "C39BD3",
+  "__description": "The sqlite module provides a lightweight, serverless SQL database engine",
+  "__name": "sqlite",
+  "__tinydesc": "Interfaces with SQLite databases for local or in-memory data storage",
+  "__filename": "index.html"
 }
