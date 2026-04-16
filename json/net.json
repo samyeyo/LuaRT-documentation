@@ -654,6 +654,66 @@
         "__filename": "resolve.html"
     },
     "Http": {
+        "useragent": {
+            "__results": "<span style=\"color:#EA6AC3\">string</span>",
+            "__access": "read/write",
+            "__kind": "property",
+            "__name": "useragent",
+            "__description": "<br><br>The Http.useragent property gets or sets the User-Agent header string sent with requests.",
+            "__example": "local net = require \"net\"\nlocal client = net.Http(\"https://api.example.com\")\nclient.useragent = \"MyLuaRTApp/1.0\"",
+            "__tinydesc": "Get/Set User-Agent",
+            "__filename": "Http-useragent.html"
+        },
+        "timeout": {
+            "__results": "<span style=\"color:#ae81ff\">number</span>",
+            "__access": "read/write",
+            "__kind": "property",
+            "__name": "timeout",
+            "__description": "<br><br>The Http.timeout property gets or sets the request timeout in milliseconds. Set to 0 to disable timeout (the default).",
+            "__example": "client.timeout = 5000 -- 5 seconds timeout to get a response from the server",
+            "__tinydesc": "Get/Set request timeout",
+            "__filename": "Http-timeout.html"
+        },
+        "verifyssl": {
+            "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+            "__access": "read/write",
+            "__kind": "property",
+            "__name": "verifyssl",
+            "__description": "<br><br>The Http.verifyssl property gets or sets the SSL certificate verification. Set to <code>false</code> to ignore invalid or self-signed certificates.",
+            "__example": "local net = require \"net\"\nlocal client = net.Http(\"https://self-signed.local\")\nclient.verifyssl = false",
+            "__tinydesc": "Get/Set SSL verification",
+            "__filename": "Http-verifyssl.html"
+        },
+        "redirect": {
+            "__results": "<span style=\"color:#ae81ff\">boolean</span>",
+            "__access": "read/write",
+            "__kind": "property",
+            "__name": "redirect",
+            "__description": "<br><br>The Http.redirect property enables or disables automatic following of HTTP 3xx redirects.",
+            "__example": "client.redirect = false",
+            "__tinydesc": "Enable/Disable redirects",
+            "__filename": "Http-redirect.html"
+        },
+        "protocol": {
+            "__results": "<span style=\"color:#ae81ff\">number</span>",
+            "__access": "read/write",
+            "__kind": "property",
+            "__name": "protocol",
+            "__description": "<br><br>The Http.protocol property gets or sets the HTTP version (<code>1</code> for HTTP/1.1, <code>2</code> for HTTP/2).",
+            "__example": "client.protocol = 2 -- use HTTP/2 protocol",
+            "__tinydesc": "Get/Set HTTP version",
+            "__filename": "Http-protocol.html"
+        },
+        "interface": {
+            "__results": "<span style=\"color:#EA6AC3\">string</span>",
+            "__access": "read/write",
+            "__kind": "property",
+            "__name": "interface",
+            "__description": "<br><br>The Http.interface property gets or sets the network interface (IP address as a <code>string</code>) used for the connection.",
+            "__example": "client.interface = \"192.168.1.100\" -- use this specific network interface",
+            "__tinydesc": "Get/Set network interface",
+            "__filename": "Http-interface.html"
+        },
         "port": {
             "__results": "<span style=\"color:#ae81ff\">number</span>",
             "__access": "readonly",
@@ -738,6 +798,48 @@
             "__example": "local net = require \"net\"\n\nlocal client = net.Http(\"http://download.thinkbroadband.com\")\nlocal task = client:download(\"/10MB.zip\")\n\nlocal last = 0\n\nwhile not task.terminated do\n    sleep()\n    local size = #client.content\n    if size > 0 then\n        print(((size-last) or size)..\" new bytes received\")\n        last = size\n    end\nend",
             "__tinydesc": "Get the current received response from the server",
             "__filename": "Http-content.html"
+        },
+        "setratelimit": {
+            "__returns": "This function returns no value.",
+            "__name": "setratelimit",
+            "__example": "client:setratelimit(1024 * 1024) -- set maximum download rate to 1MB/s",
+            "__results": "<span>-</span>",
+            "__kind": "method",
+            "__params": [
+                    {
+                    "__description": "<p>The maximum download speed in bytes per second.</p>",
+                    "__optional": false,
+                    "__color": "ae81ff",
+                    "__name": "down_limit"
+                },
+                {
+                    "__description": "<p>An optional maximum upload speed in bytes per second.</p>",
+                    "__optional": true,
+                    "__color": "ae81ff",
+                    "__name": "up_limit"
+                }
+            ],
+            "__description": "Sets the maximum bandwidth rate for data transfer",
+            "__tinydesc": "Set transfer rate limit",
+            "__filename": "Http-setratelimit.html"
+        },
+        "setbearer": {
+            "__returns": "This function returns no value.",
+            "__name": "setbearer",
+            "__example": "client:setbearer(\"your_oauth2_token\")",
+            "__results": "<span>-</span>",
+            "__kind": "method",
+            "__params": [
+                    {
+                    "__description": "<p>A <code>string</code> representing the bearer authentication token.</p>",
+                    "__optional": false,
+                    "__color": "EA6AC3",
+                    "__name": "token"
+                }
+            ],
+            "__description": "Sets the Bearer Authentication token for the session (OAuth2).",
+            "__tinydesc": "Set Bearer token",
+            "__filename": "Http-setbearer.html"
         },
         "proxy": {
             "__returns": "This function returns a <code>boolean</code> value indicating if the operation was successful.",
@@ -874,7 +976,7 @@
                     "__name": "parameters"
                 }
             ],
-            "__description": "<br>Send an asynchronous POST request to the connected HTTP server at a specific resource.",
+            "__description": "<br>Send an asynchronous POST request to the connected HTTP server. <br>If the parameters table contains a <a href=\"../sys/File.html\"><i class=\"fas fa-file\" style=\"color :#2187E7\"></i> File</a> object, the request is sent as <code>multipart/form-data</code>. Otherwise, it is sent as <code>application/x-www-form-urlencoded</code>.",
             "__tinydesc": "Send an HTTP POST request to the server",
             "__filename": "Http-post.html"
         },
