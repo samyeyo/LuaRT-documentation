@@ -184,7 +184,8 @@
             Returns the characters in a <span style="color:#EA6AC3">string</span>
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local console = require "console"
+--! luart-extensions
+import console
 
 console.writecolor("cyan", "Do you want to quit (y/n) ? ")
 if console.read():lower() == "y" then

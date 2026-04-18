@@ -199,7 +199,8 @@
             The constructor returns a new <a href="Edit.html"><i class="fas fas fa-edit"></i> Edit</a> instance.
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 -- create a simple Window
 local win = ui.Window("Edit.constructor() sample", 270, 220)

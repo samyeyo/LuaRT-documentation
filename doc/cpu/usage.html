@@ -178,7 +178,8 @@
             <p><br>The cpu.usage property gets the current CPU usage in percent.</p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local cpu = require "cpu"
+--! luart-extensions
+import cpu
 
 print("CPU usage : "..cpu.usage.."%")
             </code></div>

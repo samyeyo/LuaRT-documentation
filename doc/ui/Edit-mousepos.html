@@ -178,7 +178,8 @@
             <p><br>Get the nearest character position from the current mouse screen coordinates, or <code>0</code> if the mouse cursor is outside the Edit widget.</p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 -- create a simple window 
 local win = ui.Window("Edit.line sample", "fixed", 520, 270)

@@ -178,7 +178,8 @@
             <p><br>Get or set the radiobutton visibility on screen, a <strong style="color:#ae81ff">true</strong> value means that the Radiobutton is shown, a <strong style="color:#ae81ff">false</strong> value means that the Radiobutton is hidden.<article class="message is-info" style="margin-left: 15%; margin-right: 15%"><div class="message-body">The radiobutton.visible property is also affected by the <a href="./Radiobutton-show.html">Radiobutton:show()</a> and <a href="./Radiobutton-hide.html">Radiobutton:hide()</a> methods.</div></article></p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 -- create a simple Window
 local win = ui.Window("Radiobutton.visible sample", 320, 200)
@@ -199,7 +200,7 @@ function radiobutton:onClick()
 	ui.msg("Great job !!")
 end
 
-ui.run(win):wait()
+await win:showasync()
             </code></div>
             </div>
 	      </div>

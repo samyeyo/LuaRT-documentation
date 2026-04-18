@@ -178,7 +178,8 @@
             <p><br>Get or set a <strong style="color:#ae81ff">number</strong> value, indicating the maximum length of the text entered.<br>Setting the property with avalue of <strong style="color:#ae81ff">0</strong>, permits a maximum of <span style="color:#ae81ff">64000</span> characters.</p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 -- create a simple Window 
 local win = ui.Window("Entry.textlimit sample", 320, 200)

@@ -178,7 +178,8 @@
             <p><br>Get or set the Edit current caret position. The caret position starts from 1 (before the first character) and ends after the last character.<br>Set the caret position to 0 to set it at the last character (without the need to get the Edit's content size).<article class="message is-info" style="margin-left: 15%; margin-right: 15%"><div class="message-body"><ul><li>Caret position is expressed in characters : the caret in position 1 is just before the first character.</li><li>Use caret position 0 to reach end of the Edit's content.</li></ul></div></article></p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 -- create a simple window 
 local win = ui.Window("Edit.caret sample", "fixed", 340, 230)

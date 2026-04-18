@@ -178,7 +178,8 @@
             <p><br><br>The net.publicip property gets the current public IPv4 address as a <code>string</code>. A valid Internet connection must be available, or returns <code>false</code> otherwise.</p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local net = require "net"
+--! luart-extensions
+import net
 
 print("Public IPv4 IP : "..net.publicip)
             </code></div>

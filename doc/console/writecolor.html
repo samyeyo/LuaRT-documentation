@@ -174,18 +174,20 @@
         </a>
         <div class="card-content pt-0">
           <div class="content mt-5" style="font-size:0.95em;">
-            <p class="has-text-weight-medium is-size-5 mb-5" style="color: #004080; vertical-align: middle">console.writecolor(<span style="color: #EA6AC3">color</span>)<span class ="tag is-rounded has-text-weight-medium is-warning ml-2 is-size-7" style="vertical-align: middle;">function</p>
+            <p class="has-text-weight-medium is-size-5 mb-5" style="color: #004080; vertical-align: middle">console.writecolor(<span style="color: #EA6AC3">color</span>, <span style="color: #EA6AC3">[...]</span>)<span class ="tag is-rounded has-text-weight-medium is-warning ml-2 is-size-7" style="vertical-align: middle;">function</p>
             <p>Writes colored output to the console using console.stdout. The function change the color of the text (not its background). Then the function set back the text color to the previous one. Console.write() can write more than one string, each string is separated with a space character.</p>
             <p class="has-text-weight-medium is-size-6 mb-1 mt-6" style="color: #004080">Parameters</p>
 	            <p class="has-text-weight-medium is-size-6 mt-2 mb-0"><span style="color: #EA6AC3">color</span></p>
-                <p>A string that represents the color of the printed text. Possible values are :<ul><li><span style="color:#EA6AC3">"black"</span></li><li><span style="color:#EA6AC3">"blue"</span></li><li><span style="color:#EA6AC3">"green"</span></li><li><span style="color:#EA6AC3">"cyan"</span></li><li><span style="color:#EA6AC3">"red"</span></li><li><span style="color:#EA6AC3">"purple"</span></li><li><span style="color:#EA6AC3">"yellow"</span></li><li><span style="color:#EA6AC3">"white"</span></li><li><span style="color:#EA6AC3">"gray"</span></li><li><span style="color:#EA6AC3">"lightblue"</span></li><li><span style="color:#EA6AC3">"lightgreen"</span></li><li><span style="color:#EA6AC3">"lightcyan"</span></li><li><span style="color:#EA6AC3">"lightred"</span></li><li><span style="color:#EA6AC3">"lightpurple"</span></li><li><span style="color:#EA6AC3">"lightyellow"</span></li><li><span style="color:#EA6AC3">"brightwhite"</span></li></ul></p>
-
+                <p>A string that represents the color of the printed text. See <a href="./color.html">console.color</a> for possible values.</p>
+                    <p class="has-text-weight-medium is-size-6 mt-2 mb-0"><span style="color: #EA6AC3">[...]</span></p>
+                <p>Optional strings to write to the console, separated by commas. If the argument is not a string, the function converts it internally using the <code>tostring</code> function.</p>
         
             <p class="has-text-weight-medium is-size-6 mb-1 mt-5" style="color: #004080">Return value</p>
             The function returns no value.
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local console = require "console"
+--! luart-extensions
+import console
 
 -- writes in gray
 console.writeln("gray", "I'm in gray")

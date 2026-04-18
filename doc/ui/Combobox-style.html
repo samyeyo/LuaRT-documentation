@@ -178,7 +178,8 @@
             <p><br>Get or set the current style, a <span style="color:#EA6AC3">string</span> value, that specifies the Combobox appearance :<br><ul><li><span style="color:#EA6AC3">"text"</span> : Combobox will display only text items (default).</li><li><span style="color:#EA6AC3">"icons"</span> : Combobox will display text items with their icons, using <i class="far fa-list-alt" style="color :#2187E7"></i><sup><i class="fas fa-tag" style="margin-left: -0.4em; margin-top: 0.3em"></i></sup><a href="ComboItem-loadicon.html"> ComboItem:loadicon()</a>.</li></ul><article class="message is-info" style="margin-left: 15%; margin-right: 15%"><div class="message-body">When setting the style property from "icons" to "text" all previously loaded icons are preserved.</div></article></p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 -- create a simple Window 
 local win = ui.Window("Combobox.style sample", "fixed", 400, 240)

@@ -184,7 +184,8 @@
             Returns a <a href="Node.html"><i class="fas fa-code" style="color :#2187E7"></i> Node</a> object representing the root of the XML tree, or <code>nil</code> in case of error.
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local xml = require "xml"
+--! luart-extensions
+import xml
 
 -- Load an XML file
 local root = xml.load("example.xml")

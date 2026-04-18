@@ -178,7 +178,8 @@
             <p><br>The wifi.name property gets the current connected wireless network SSID, or <code>nil</code> if the computer is not connected.</p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local wifi = require "wifi"
+--! luart-extensions
+import wifi
 
 local ssid = wifi.name
 if not ssid then

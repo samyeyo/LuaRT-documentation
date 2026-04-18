@@ -176,14 +176,15 @@
           <div class="content mt-5" style="font-size: 0.95em">
             <p class="has-text-weight-medium is-size-5 mb-5" style="color: #004080">cpu.priority <td><span class="tag is-rounded has-text-weight-medium has-background-warning has-text-warning-dark" mt-0 style="vertical-align: middle; font-size: 0.65em">readwrite</span></td></p>
             <p><br>The cpu.priority property get or set the current process and thread (the one executing Lua<sup>rt</sup>) scheduling priority.</p><p>Here are the possible <code>string</code> values: <ul><li><code>"idle"</code> </li>
-<li><code>"low"</code> </li>
+<li><code>"below_normal"</code> </li>
 <li><code>"normal"</code> </li>
+<li><code>"above_normal"</code> </li>
 <li><code>"high"</code></li>
-<li><code>"highest"</code> </li>
 </ul></p></p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local cpu = require "cpu"
+--! luart-extensions
+import cpu
 
 print("Current process priority : "..cpu.priority)
             </code></div>

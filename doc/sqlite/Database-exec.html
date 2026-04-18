@@ -183,10 +183,11 @@
                 <p>One or more optional <code>string</code> that contains parameters for the query. Each <code>'?'</code> characters in the query will be replaced by the corresponding argument in order. </p>
         
             <p class="has-text-weight-medium is-size-6 mb-1 mt-5" style="color: #004080">Return value</p>
-            Returns the result of the SQL statement as rows (each row is represented as a Lua <code>table</code> with column names as keys) or <code>nil</code> if there is no result.
+            Returns the result of the SQL statement as rows (each row is represented as a Lua <code>table</code> with column names as keys), the number of rows affected for non-SELECT statements, or <code>nil</code> if there is no result.
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local sqlite = require "sqlite"
+--! luart-extensions
+import sqlite
 
 -- Create an in-:memory: database
 local db = sqlite.Database(":memory:")

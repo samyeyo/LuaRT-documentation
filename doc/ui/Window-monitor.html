@@ -178,7 +178,8 @@
             <p><br>Retrieves the characteristics of the monitor on which the window is located, as a <span style="color: #B1D928">table</span> containing the following fields :<ul><li><code>"name"</code> : a <code>string</code> representing the display name</li><li><code>"width"</code> : the monitor physical width as a <code>number</code></li><li><code>"height"</code> : the monitor physical height as a <code>number</code></li><li><code>"primary"</code> : a <code>boolean</code> indicating if the monitor is the primary display</li></ul><p class="is-size-4 mt-6 mb-0" style="color: #004080">Example</p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 --- create a centered Window
 local win = ui.Window("Window.childs example", 320, 200)
@@ -199,7 +200,7 @@ async(function()
     end
 end)
 
-ui.run(win):wait()
+await win:showasync()
             </code></div>
             </div>
 	      </div>

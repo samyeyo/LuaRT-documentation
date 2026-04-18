@@ -178,7 +178,8 @@
             <p><br>Get or set the Groupbox font size, a <strong style="color:#ae81ff">number</strong> that represent the font size in pixels.<br><article class="message is-info" style="margin-left: 15%; margin-right: 15%"><div class="message-body">Any change in the <a href="./Groupbox-font.html">Groupbox.font</a>, <a href="./Groupbox-fontstyle.html">Groupbox.fontstyle</a> and <a href="./Groupbox-fontsize.html">Groupbox.fontsize</a> properties results in an automatic resizing of the Groupbox so that the content is displayed correctly</div></article></p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 -- create a simple groupbox 
 local win = ui.Window("Groupbox.fontsize sample", 250, 260)

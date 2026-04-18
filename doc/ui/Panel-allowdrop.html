@@ -178,7 +178,8 @@
             <p><br>Get or set the Panel's ability to be used as the target of a drag-and-drop operation</p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 -- create a window
 local win = ui.Window("Panel:onDrop() sample", 440, 380)
@@ -191,7 +192,7 @@ function widget:onDrop(kind, content)
   ui.info("kind: '"..kind.."'\ncontent: "..tostring(content), "Content dropped on Panel")
 end
 
-ui.run(win):wait()
+await win:showasync()
             </code></div>
             </div>
 	      </div>

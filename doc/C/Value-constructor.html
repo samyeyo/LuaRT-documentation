@@ -186,7 +186,8 @@
             The constructor returns a new <a href="Value.html"><i class="fas fa-hashtag"></i> Value</a> instance.
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local c = require "c"
+--! luart-extensions
+import c
 
 -- Create a Value that contains a C String (char *) initialized to "Hello World !"
 local c_string = c.Value("string", "Hello World !")

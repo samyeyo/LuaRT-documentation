@@ -175,7 +175,7 @@
         <div class="card-content pt-0">
           <div class="content mt-5" style="font-size:0.95em;">
             <p class="has-text-weight-medium is-size-5 mb-5" style="color: #004080; vertical-align: middle">Canvas:circle(<span style="color: #ae81ff">x</span>, <span style="color: #ae81ff">y</span>, <span style="color: #ae81ff">radius</span>, <span style="color: #606060">[brush]</span>, <span style="color: #ae81ff">[width]</span>)<span class ="tag is-rounded has-text-weight-medium is-primary ml-2 is-size-7" style="vertical-align: middle;">method</p>
-            <p><br>Draws a rectangle on the Canvas</p>
+            <p><br>Draws an ellipse on the Canvas</p>
             <p class="has-text-weight-medium is-size-6 mb-1 mt-6" style="color: #004080">Parameters</p>
 	            <p class="has-text-weight-medium is-size-6 mt-2 mb-0"><span style="color: #ae81ff">x</span></p>
                 <p>A number representing the x coordinate of the upper left corner (zero means the left side of the Canvas)</p>
@@ -184,15 +184,16 @@
                     <p class="has-text-weight-medium is-size-6 mt-2 mb-0"><span style="color: #ae81ff">radius</span></p>
                 <p>A number representing the radius of the circle</p>
                     <p class="has-text-weight-medium is-size-6 mt-2 mb-0"><span style="color: #606060">[brush]</span></p>
-                <p>An optional value that can represent any of the following values :<ul><li>A RGBA color, as an integer value</li><li><a href="LinearGradient.html"><i class="fas fa-right-left"></i> LinearGradient</a> : The line will be drawn with a colored linear gradient</li><li><a href="RadialGradient.html"><i class="fas fa-arrow-rotate-right"></i> RadialGradient</a> : The line will be drawn with a colored radial gradient</li><li><a href="Image.html"><i class="far fa-image"></i> Image</a> : The line will be drawn with a picture pattern.</li></ul>When this parameter is omitted, the rectangle is drawn using the current <a href="Canvas-color.html">Canvas.color</a></p>
+                <p>An optional value that can represent any of the following values :<ul><li>A RGBA color, as an integer value</li><li><a href="LinearGradient.html"><i class="fas fa-right-left"></i> LinearGradient</a> : The line will be drawn with a colored linear gradient</li><li><a href="RadialGradient.html"><i class="fas fa-arrow-rotate-right"></i> RadialGradient</a> : The line will be drawn with a colored radial gradient</li><li><a href="Image.html"><i class="far fa-image"></i> Image</a> : The line will be drawn with a picture pattern.</li></ul>When this parameter is omitted, the ellipse is drawn using the current <a href="Canvas-color.html">Canvas.color</a></p>
                     <p class="has-text-weight-medium is-size-6 mt-2 mb-0"><span style="color: #ae81ff">[width]</span></p>
-                <p>An optional number value representing the circle border thickness, defaulting to 1</p>
+                <p>An optional number value representing the ellipse border thickness, defaulting to 1</p>
         
             <p class="has-text-weight-medium is-size-6 mb-1 mt-5" style="color: #004080">Return value</p>
             This function returns no value.
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 require "canvas"
 
 -- create a simple Window
@@ -212,7 +213,7 @@ function canvas:onPaint()
     self:flip()
 end
 
-ui.run(win):wait()
+await win:showasync()
             </code></div>
             </div>
 	      </div>

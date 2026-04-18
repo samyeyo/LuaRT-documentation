@@ -178,7 +178,8 @@
             <p>The console.y property gets or sets the current cursor line position.</p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local console = require "console"
+--! luart-extensions
+import console
 -- Create a title for the console
 function title(msg, linepos)
 	local length = math.floor((console.width-string.len(msg))/2)

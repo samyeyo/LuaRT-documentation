@@ -178,7 +178,8 @@
             <p><br>Get or set the right to left application layout, as a <code>boolean</code> value.<br>This setting must be applied before any window or widget creation, as RTL layout won't be applied for the Windows created before.</p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 -- must be set first to use right to left layout
 ui.rtl = true
@@ -193,7 +194,7 @@ function button:onClick()
     ui.msg("I am a RTL message box")
 end
 
-ui.run(win):wait()
+await win:showasync()
             </code></div>
             </div>
 	      </div>

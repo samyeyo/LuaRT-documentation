@@ -175,7 +175,7 @@
         <div class="card-content pt-0">
           <div class="content mt-5" style="font-size:0.95em;">
             <p class="has-text-weight-medium is-size-5 mb-5" style="color: #004080; vertical-align: middle">crypto.hash(<span style="color: #EA6AC3">algorithm</span>, <span style="color: #EA6AC3">data</span>)<span class ="tag is-rounded has-text-weight-medium is-warning ml-2 is-size-7" style="vertical-align: middle;">function</p>
-            <p>Create a hash digest of data, using the specified algorithm</a>.</p>
+            <p>Create a hash digest of data, using the specified algorithm.</p>
             <p class="has-text-weight-medium is-size-6 mb-1 mt-6" style="color: #004080">Parameters</p>
 	            <p class="has-text-weight-medium is-size-6 mt-2 mb-0"><span style="color: #EA6AC3">algorithm</span></p>
                 <p>A string representing the hash algorithm to use :<ul><li><span style="color:#EA6AC3">"md5"</span> for MD5 hash algorithm</li><li><span style="color:#EA6AC3">"sha1"</span> for SHA1 hash algorithm</li><li><span style="color:#EA6AC3">"sha256"</span> for SHA256 hash algorithm</li><li><span style="color:#EA6AC3">"sha384"</span> for SHA384 hash algorithm</li><li><span style="color:#EA6AC3">"sha512"</span> for SHA512 hash algorithm</li></ul></p>
@@ -187,7 +187,8 @@
             Returns a <a href="../sys/Buffer.html"><i class="fas fa-th" style="color :#2187E7"></i> Buffer</a> containing the hash value as bytes.
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local crypto = require "crypto"
+--! luart-extensions
+import crypto
 local console = require "console"
 
 console.echo = "*"

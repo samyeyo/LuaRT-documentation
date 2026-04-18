@@ -178,7 +178,8 @@
             <p><br>Determines if the Edit control uses plain text (the default) or RTF formatted text, a <strong style="color:#ae81ff">true</strong> value meaning that the Edit uses Rich Text Format.</p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 -- create a simple window
 
@@ -202,7 +203,7 @@ end
 update_status()
 
 -- update user interface
-ui.run(win):wait()
+await win:showasync()
             </code></div>
             </div>
 	      </div>

@@ -181,7 +181,8 @@
             Returns a <code>number</code> representation of the C Value.
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local c = require "c"
+--! luart-extensions
+import c
 
 -- Create a Value that contains a C integer value initialized to 125
 local c_int = c.int(125)

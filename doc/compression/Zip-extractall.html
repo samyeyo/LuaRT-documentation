@@ -174,15 +174,18 @@
         </a>
         <div class="card-content pt-0">
           <div class="content mt-5" style="font-size:0.95em;">
-            <p class="has-text-weight-medium is-size-5 mb-5" style="color: #004080; vertical-align: middle">Zip:extractall()<span class ="tag is-rounded has-text-weight-medium is-primary ml-2 is-size-7" style="vertical-align: middle;">method</p>
+            <p class="has-text-weight-medium is-size-5 mb-5" style="color: #004080; vertical-align: middle">Zip:extractall(<span style="color: #EA6AC3">[destdir]</span>)<span class ="tag is-rounded has-text-weight-medium is-primary ml-2 is-size-7" style="vertical-align: middle;">method</p>
             <p>Extract on the disk all the content of the Zip archive. The Zip archive should have been previously opened in <span style="color:#EA6AC3">"read"</span> mode.</p>
-            
+            <p class="has-text-weight-medium is-size-6 mb-1 mt-6" style="color: #004080">Parameters</p>
+	            <p class="has-text-weight-medium is-size-6 mt-2 mb-0"><span style="color: #EA6AC3">[destdir]</span></p>
+                <p>An optional string representing the destination directory path where entries will be extracted. If omitted, entries will be extracted in the current directory.</p>
+        
             <p class="has-text-weight-medium is-size-6 mb-1 mt-5" style="color: #004080">Return value</p>
             Returns the number of extracted entries.<br>Returns <span style="color:#ae81ff">false</span> if any error occured. You can check the <a href="./Zip-error.html">zip.error</a> property to get the error message.
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
 -- extract an entry from a zip archive
-local compression = require "compression"
+import compression
 
 -- check parameters : the archive and entry specified as argument
 local archive = arg[1] or error("no archive specified")

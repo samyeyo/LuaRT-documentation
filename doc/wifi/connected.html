@@ -178,7 +178,8 @@
             <p><br>The wifi.connected property checks if the computer is connected to a wireless network, returning a <code>boolean</code> value.</p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local wifi = require "wifi"
+--! luart-extensions
+import wifi
 
 if wifi.connected then
   print("You are connected to the '"..wifi.name.."' wireless network") 

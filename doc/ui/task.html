@@ -178,7 +178,8 @@
             <p><br>Get the current ui Task, that process ui events in the background. The ui Task is terminated once the ui.mainWindow is closed, or when using <a href="../sys/Task-cancel.html">Task:cancel()</a> programmaticaly</p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 --- create a centered Window
 local win = ui.Window("TabItem.childs example", 460, 320)
@@ -200,7 +201,7 @@ async(function()
     end
 end)
 
-ui.run(win):wait()
+await win:showasync()
             </code></div>
             </div>
 	      </div>

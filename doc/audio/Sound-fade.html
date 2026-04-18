@@ -182,13 +182,14 @@
                     <p class="has-text-weight-medium is-size-6 mt-2 mb-0"><span style="color: #ae81ff">[to]</span></p>
                 <p>A <code>number</code> representing the ending volume. A value of <code>1.0</code> (the default) means maximum volume without amplification.</p>
                     <p class="has-text-weight-medium is-size-6 mt-2 mb-0"><span style="color: #ae81ff">[duration]</span></p>
-                <p>A <code>number</code> representing the duration of the fade effect in seconds. The default value is <code>1.0</code> second.</p>
+                <p>A <code>number</code> representing the duration of the fade effect in milliseconds. The default value is <code>1000</code> (1 second).</p>
         
             <p class="has-text-weight-medium is-size-6 mb-1 mt-5" style="color: #004080">Return value</p>
             This function returns no value.
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local audio = require "audio"
+--! luart-extensions
+import audio
 
 -- Loads and play a music
 local sound = audio.Sound("music.mp3")

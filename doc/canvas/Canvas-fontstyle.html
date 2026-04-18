@@ -175,10 +175,11 @@
         <div class="card-content pt-0">
           <div class="content mt-5" style="font-size: 0.95em">
             <p class="has-text-weight-medium is-size-5 mb-5" style="color: #004080">Canvas.fontstyle <td><span class="tag is-rounded has-text-weight-medium has-background-warning has-text-warning-dark" mt-0 style="vertical-align: middle; font-size: 0.65em">readwrite</span></td></p>
-            <p><br>Get or set the current Canvas font style, a <code>string</code> value, which may be one of the following values :<ul><li><code>"normal"</code> : The characters in a normal, or roman, font are upright.</li><li><code>"italic"</code> : The characters in an italic font are truly slanted and appear as they were designed.</li><li><code>"oblique"</code> : The characters in an oblique font are artificially slanted.</li></ul></p>
+            <p><br>Get or set the current Canvas font style, a <code>table</code> value with the following optional boolean keys :<ul><li><code>bold</code> : <code>true</code> for bold font style</li><li><code>italic</code> : <code>true</code> for italic font style</li><li><code>underline</code> : <code>true</code> for underlined font style</li><li><code>strikeout</code> : <code>true</code> for strikeout font style</li></ul></p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 require "canvas"
 
 -- create a fixed Window
@@ -195,7 +196,7 @@ canvas.fontstyle = "italic"
 -- don't use onPaint() event, draw only once
 canvas:print(canvas.font, 16, 70)
 
-ui.run(win):wait()
+await win:showasync()
             </code></div>
             </div>
 	      </div>

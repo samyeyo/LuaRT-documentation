@@ -178,7 +178,8 @@
             <p><br><br>The Ftp.hostname property gets the current hostname string used for connection to the FTP server or <strong style="color:gray">nil</strong> if connection have been closed.</p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local net = require "net"
+--! luart-extensions
+import net
 
 local url = "your ftp server address"
 local ftpclient = net.Ftp(url, "anonymous", "guest")

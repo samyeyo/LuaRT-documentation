@@ -185,7 +185,8 @@
 		    <li>A <span style="color:#EA6AC3">string</span> value that indicates the mouse button that was pressed or <span style="color:lightgray">nil</span> if the mouse only moved (without a click). Possibles values are <span style="color:#EA6AC3">"left"</span>, <span style="color:#EA6AC3">"middle"</span> or <span style="color:#EA6AC3">"right"</span>
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local console = require "console"
+--! luart-extensions
+import console
 
 console.color = "cyan"
 console.writeln("Please click anywhere in the console...")

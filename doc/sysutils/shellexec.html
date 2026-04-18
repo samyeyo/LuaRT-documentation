@@ -190,7 +190,8 @@
             Returns a <code>boolean</code> value indicating if the shell execution succeeded or not.
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local sysutils = require "sysutils"
+--! luart-extensions
+import sysutils
 
 -- opens the current mail app to write a new mail to test@test.com
 print(sysutils.shellexec("open", "mailto:test@test.com"))

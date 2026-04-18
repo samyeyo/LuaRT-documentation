@@ -178,7 +178,8 @@
             <p><br>Get the Combobox font, a <strong style="color:#EA6AC3">string</strong> value that represent the font name.<br>To set the Combobox.font property, you can assign a <strong style="color:#EA6AC3">string</strong> that represent either a font name of an installed system font, or a font file (*.ttf, *.fon...). A<a href="../sys/File.html"><i class="fas fa-file"></i> File</a> can also be provided, representing a font file.<br>Note that only the font family is changed. The font style and font size are not affected (see the <a href="./Combobox-fontstyle.html">Combobox.fontstyle</a> and the <a href="./Combobox-fontsize.html">Combobox.fontsize</a> properties).<article class="message is-info" style="margin-left: 15%; margin-right: 15%"><div class="message-body"><ul><li>By default, an Combobox uses the same font as its parent widget</li><li>Any change in the <a href="./Combobox-font.html">Combobox.font</a>, <a href="./Combobox-fontstyle.html">Combobox.fontstyle</a> and <a href="./Combobox-fontsize.html">Combobox.fontsize</a> properties results in an automatic resizing of the Combobox so that the content is displayed correctly</li></ul></div></article></p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 -- create a simple window 
 local win = ui.Window("Combobox.font sample", 320, 200)

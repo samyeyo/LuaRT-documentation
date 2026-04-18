@@ -190,11 +190,12 @@
             </ul>
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local kb = require "keyboard"
+--! luart-extensions
+import keyboard
 
 -- prints on french and italian keyboards : "0"  false  true  true
 -- prints on other keyboards : "2"  true  false  false
-print(kb.keyname("@"))
+print(keyboard.keyname("@"))
             </code></div>
             </div>
 	      </div>

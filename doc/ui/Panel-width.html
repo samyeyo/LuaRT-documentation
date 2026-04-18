@@ -178,7 +178,8 @@
             <p><br>Get or set the Panel's width. The width starts from <span style="color:#ae81ff">0</span> (left side of the Panel) and increase to the right direction.<p class="is-size-4 mt-6 mb-0" style="color: #004080">Example</p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 -- create a fixed Panel
 local win = ui.Window("Panel.height sample", "fixed", 320, 200)
@@ -197,7 +198,7 @@ async(function()
     end
 end)
 
-ui.run(win):wait()
+await win:showasync()
             </code></div>
             </div>
 	      </div>

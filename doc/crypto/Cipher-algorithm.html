@@ -178,7 +178,8 @@
             <p><br><br>The Cipher.algorithm property gets the current algorithm used for encryption/decryption.<article class="message is-info" style="margin-left: 15%; margin-right: 15%"><div class="message-body">The algorithm is set upon Cipher object construction, see <a href="./Cipher-constructor.html">Cipher.constructor()</a>.</div></article></p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local crypto = require "crypto"
+--! luart-extensions
+import crypto
 local console = require "console"
 
 -- randomly generate a secret key (16 bytes long)

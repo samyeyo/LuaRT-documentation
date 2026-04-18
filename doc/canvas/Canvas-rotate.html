@@ -174,21 +174,22 @@
         </a>
         <div class="card-content pt-0">
           <div class="content mt-5" style="font-size:0.95em;">
-            <p class="has-text-weight-medium is-size-5 mb-5" style="color: #004080; vertical-align: middle">Canvas:rotate(<span style="color: #ae81ff">angle</span>, <span style="color: #ae81ff">[x]</span>, <span style="color: #ae81ff">[y]</span>)<span class ="tag is-rounded has-text-weight-medium is-primary ml-2 is-size-7" style="vertical-align: middle;">method</p>
+            <p class="has-text-weight-medium is-size-5 mb-5" style="color: #004080; vertical-align: middle">Canvas:rotate(<span style="color: #ae81ff">angle</span>, <span style="color: #ae81ff">[centerx]</span>, <span style="color: #ae81ff">[centery]</span>)<span class ="tag is-rounded has-text-weight-medium is-primary ml-2 is-size-7" style="vertical-align: middle;">method</p>
             <p><br>Applyies a rotation transformation on the Canvas</p>
             <p class="has-text-weight-medium is-size-6 mb-1 mt-6" style="color: #004080">Parameters</p>
 	            <p class="has-text-weight-medium is-size-6 mt-2 mb-0"><span style="color: #ae81ff">angle</span></p>
                 <p>A number representing the rotation angle in degrees. A positive angle creates a clockwise rotation, and a negative angle creates a counterclockwise rotation.</p>
-                    <p class="has-text-weight-medium is-size-6 mt-2 mb-0"><span style="color: #ae81ff">[x]</span></p>
-                <p>The horizonal coordinate for the rotation center point, defaulting to the center of the Canvas.</p>
-                    <p class="has-text-weight-medium is-size-6 mt-2 mb-0"><span style="color: #ae81ff">[y]</span></p>
+                    <p class="has-text-weight-medium is-size-6 mt-2 mb-0"><span style="color: #ae81ff">[centerx]</span></p>
+                <p>The horizontal coordinate for the rotation center point, defaulting to the center of the Canvas.</p>
+                    <p class="has-text-weight-medium is-size-6 mt-2 mb-0"><span style="color: #ae81ff">[centery]</span></p>
                 <p>The vertical coordinate for the rotation center point, defaulting to the center of the Canvas.</p>
         
             <p class="has-text-weight-medium is-size-6 mb-1 mt-5" style="color: #004080">Return value</p>
             This function returns no value.
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 require "canvas"
 
 local win = ui.Window("Canvas - Rotation example", "fixed", 320, 240)
@@ -210,7 +211,7 @@ function c:onPaint()
   self:flip()
 end
 
-ui.run(win):wait()
+await win:showasync()
             </code></div>
             </div>
 	      </div>

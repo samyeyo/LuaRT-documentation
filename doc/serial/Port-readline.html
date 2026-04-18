@@ -174,48 +174,26 @@
         </a>
         <div class="card-content pt-0">
           <div class="content mt-5" style="font-size:0.95em;">
-            <p class="has-text-weight-medium is-size-5 mb-5" style="color: #004080; vertical-align: middle">Port:readline(<span style="color: #EA6AC3">[eol]</span>)<span class ="tag is-rounded has-text-weight-medium is-primary ml-2 is-size-7" style="vertical-align: middle;">method</p>
+            <p class="has-text-weight-medium is-size-5 mb-5" style="color: #004080; vertical-align: middle">Port:readline(<span style="color: #EA6AC3">[eol]</span>, <span style="color: #ae81ff">[capacity]</span>)<span class ="tag is-rounded has-text-weight-medium is-primary ml-2 is-size-7" style="vertical-align: middle;">method</p>
             <p>Reads data until a End Of Line character sequence is reached.</p>
             <p class="has-text-weight-medium is-size-6 mb-1 mt-6" style="color: #004080">Parameters</p>
 	            <p class="has-text-weight-medium is-size-6 mt-2 mb-0"><span style="color: #EA6AC3">[eol]</span></p>
                 <p>A <code>string</code> indicating the End Of Line characters sequence, defaulting to <code>"\n"</code>.</p>
+                    <p class="has-text-weight-medium is-size-6 mt-2 mb-0"><span style="color: #ae81ff">[capacity]</span></p>
+                <p>An optional <code>number</code> indicating the capacity of the internal read buffer, defaulting to <code>1024</code>.</p>
         
             <p class="has-text-weight-medium is-size-6 mb-1 mt-5" style="color: #004080">Return value</p>
-            Returns a <a href="../sys/Task.html"><i class="fas fa-bolt" style="color :#2187E7"></i> Task</a> object to perform the read operation asynchronously.<br>
-            Once the Task has terminated, it will return a <a href="../sys/Buffer.html"><i class="fas fa-th" style="color :#2187E7"></i> Buffer</a> that contains the data, or <code>false</code> in case of error.
-            </ul><p class="is-size-4 mt-6 mb-0" style="color: #004080">Example</p>
-            <div class="language-lua mr-6 ml-6"><code>
-local serial = require "serial"
-
-local COM1 = serial.Port("COM1")
-
-if COM1:open() then
-    repeat
-        local data = COM1:readline():wait()
-        if data then
-          print("Received line : ", data)
-        else
-          error("Error reading COM1 port");
-        end
-    until not data
-end
-            </code></div>
-            </div>
-	      </div>
-      </div>
-    </div>
-  </section>  
-  <footer class="footer">
-    <div class="content has-text-centered">
+            Returns a <a href="../sys/Task.html"><i class="fas fa-bolt" style="color :#2187E7"></i> Task</a> object to perform the read operation asynchronously.<br>Once the Task has terminated, it will return a <a href="../sys/Buffer.html"><i class="fas fa-th" style="color :#2187E7"></i> Buffer</a> that contains the data, or <code>false</code> in case of error.
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local serial = require "serial"
+--! luart-extensions
+import serial
 
 local COM1 = serial.Port("COM1")
 
 if COM1:open() then
     repeat
-        local data = COM1:readline():wait()
+        local data = await COM1:readline()
         if data then
           print("Received line : ", data)
         else

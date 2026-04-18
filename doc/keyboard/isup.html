@@ -184,19 +184,20 @@
             This function <code>true</code> if the key is up or <code>false</code> otherwise.
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local kb = require "keyboard"
+--! luart-extensions
+import keyboard
 local ui = require "ui"
 
 local win = ui.Window("Press the SPACE key", 400, 280)
 local lbl = ui.Label(win, "Press the SPACE key to hide this message !")
 lbl:center()
 
-ui.run(win)
+await win:showasync()
 
 async(function()
     while win.visible do
         sleep()
-        lbl.visible = kb.isup("SPACE")
+        lbl.visible = keyboard.isup("SPACE")
     end
 end)
 

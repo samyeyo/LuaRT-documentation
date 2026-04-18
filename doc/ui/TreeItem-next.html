@@ -178,7 +178,8 @@
             <p><br>Retrieves the next sibling item after the TreeItem</p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 -- create a fixed Window
 local win = ui.Window("TreeItem.next sample", 320, 220)
@@ -201,7 +202,7 @@ ui.Button(win, "Previous", 156, 10).onClick = function (self)
   end
 end
 
-ui.run(win):wait()
+await win:showasync()
             </code></div>
             </div>
 	      </div>

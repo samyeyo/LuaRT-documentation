@@ -187,7 +187,8 @@
             <br>This method return a <a href="../sys/Task.html"><i class="fas fa-bolt"></i> Task</a> instance. Once the Task has finished, it will return a <code>boolean</code> value indicating if the operation was successful.
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local net = require "net"
+--! luart-extensions
+import net
 
 -- connect to the FTP server
 local url = "your ftp server"

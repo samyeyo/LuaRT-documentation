@@ -1,14 +1,4 @@
 {
-  "task": {
-    "__results": "<a href=\"../sys/Task.html\"><i class=\"fas fa-bolt\"></i> Task</a>",
-    "__access": "readonly",
-    "__kind": "property",
-    "__name": "task",
-    "__description": "<br>Get the UI message loop task, which runs the Windows message queue processing. This task is created when the first UI window is shown and manages all UI events.",
-    "__example": "--! luart-extensions\nimport ui\n\nlocal win = ui.Window(\"ui.task example\", 320, 200)\n\n-- Check if UI task is running\nprint(\"UI task running:\", ui.task ~= nil)\n\nawait win:showasync()",
-    "__tinydesc": "Get the UI message loop task",
-    "__filename": "task.html"
-  },
   "systheme": {
     "__results": "<span style=\"color:#EA6AC3\">string</span>",
     "__access": "readonly",
@@ -108,31 +98,25 @@
     "onDropItem": {
       "__returns": "The event returns no value.",
       "__name": "onDropItem",
-      "__example": "--! luart-extensions\nimport ui\n\n-- create a window\nlocal win = ui.Window(\"Tree:onDropItem() sample\", 640, 480)\nlocal tree = ui.Tree(win, {\"Item 1\", \"Item 2\", \"Item 3\"})\ntree.allowdrop = true\ntree:center()\n\n-- set a onDropItem() event\nfunction tree:onDropItem(item, kind, content)\n    ui.info(\"Item: \"..item.text..\"\\nkind: \"..kind..\"\\ncontent: \"..tostring(content), \"Content dropped on TreeItem\")\nend\n\nawait win:showasync()",
+      "__example": "--! luart-extensions\nimport ui\n\n-- create a window\nlocal win = ui.Window(\"Tree:onDropItem() sample\", 640, 480)\nlocal tree = ui.Tree(win, {\"Item 1\", \"Item 2\", \"Item 3\"})\ntree:center()\n\n-- set a onDropItem() event\nfunction tree:onDropItem(item, to)\n    ui.info(\"Item: \"..item.text..\"\\ndropped at  index: \"..tostring(to), \"item dropped on the Tree\")\nend\n\nawait win:showasync()",
       "__results": "",
       "__kind": "event",
       "__params": [
         {
-          "__description": "<p>The <i class=\"fa-solid fa-diagram-project\" style=\"color :#2187E7\"></i><sup><i class=\"fas fa-tag\" style=\"margin-left: -0.4em; margin-top: 0.3em\"></i></sup><a href=\"TreeItem.html\"> TreeItem</a> that received the dropped content.</p>",
+          "__description": "<p>The <i class=\"fas fa-list-ul\" style=\"color :#2187E7\"></i><sup><i class=\"fas fa-tag\" style=\"margin-left: -0.3em; margin-top: 0.4em\"></i></sup><a href=\"ListItem.html\"> ListItem</a> or <i class=\"fa-solid fa-diagram-project\" style=\"color :#2187E7\"></i><sup><i class=\"fas fa-tag\" style=\"margin-left: -0.4em; margin-top: 0.3em\"></i></sup><a href=\"TreeItem.html\"> TreeItem</a> dropped on the Tree.</p>",
           "__optional": false,
           "__color": "B1D928",
           "__name": "item"
         },
         {
-          "__description": "<p>A <code>string</code> representing the kind of content dropped.</p>",
+          "__description": "<p>A <code>number</code> representing the index position in the Tree where the item was dropped.</p>",
           "__optional": false,
           "__color": "EA6AC3",
-          "__name": "kind"
-        },
-        {
-          "__description": "<p>The content dropped, depending on kind: <code>\"text\"</code> is a string, <code>\"files\"</code> is a table of File/Directory objects.</p>",
-          "__optional": false,
-          "__color": "B1D928",
-          "__name": "content"
+          "__name": "to"
         }
       ],
-      "__description": "<br>This event is fired when the user drops content directly on a TreeItem.",
-      "__tinydesc": "Event fired when content is dropped on a TreeItem",
+      "__description": "<br>This event is fired when the user drops a <i class=\"fas fa-list-ul\" style=\"color :#2187E7\"></i><sup><i class=\"fas fa-tag\" style=\"margin-left: -0.3em; margin-top: 0.4em\"></i></sup><a href=\"ListItem.html\"> ListItem</a> or <i class=\"fa-solid fa-diagram-project\" style=\"color :#2187E7\"></i><sup><i class=\"fas fa-tag\" style=\"margin-left: -0.4em; margin-top: 0.3em\"></i></sup><a href=\"TreeItem.html\"> TreeItem</a> or directly on the Tree.",
+      "__tinydesc": "Event fired when an item is dropped on a Tree",
       "__filename": "Tree-onDropItem.html"
     },
     "__kind": "object",
@@ -4504,16 +4488,6 @@
       "__tinydesc": "Get/set maximum character limit",
       "__filename": "Edit-textlimit.html"
     },
-    "textlength": {
-      "__results": "<span style=\"color:#ae81ff\">number</span>",
-      "__access": "readonly",
-      "__kind": "property",
-      "__name": "textlength",
-      "__description": "<br>Get the current number of characters in the Edit control content.",
-      "__example": "--! luart-extensions\nimport ui\n\nlocal win = ui.Window(\"Edit.textlength sample\", 320, 200)\nlocal edit = ui.Edit(win, \"Hello LuaRT!\")\n\nfunction edit:onChange()\n    win:status(\"Text length: \"..edit.textlength)\nend\n\nawait win:showasync()",
-      "__tinydesc": "Get current text length",
-      "__filename": "Edit-textlength.html"
-    },
     "__name": "Edit",
     "modified": {
       "__results": "<span style=\"color:#ae81ff\">boolean</span>",
@@ -7316,31 +7290,25 @@
     "onDropItem": {
       "__returns": "The event returns no value.",
       "__name": "onDropItem",
-      "__example": "--! luart-extensions\nimport ui\n\n-- create a window\nlocal win = ui.Window(\"List:onDropItem() sample\", 640, 480)\nlocal list = ui.List(win, {\"Item 1\", \"Item 2\", \"Item 3\"})\nlist.allowdrop = true\nlist:center()\n\n-- set a onDropItem() event\nfunction list:onDropItem(item, kind, content)\n    ui.info(\"Item: \"..item.text..\"\\nkind: \"..kind..\"\\ncontent: \"..tostring(content), \"Content dropped on ListItem\")\nend\n\nawait win:showasync()",
+      "__example": "--! luart-extensions\nimport ui\n\n-- create a window\nlocal win = ui.Window(\"List:onDropItem() sample\", 640, 480)\nlocal list = ui.List(win, {\"Item 1\", \"Item 2\", \"Item 3\"})\nlist:center()\n\n-- set a onDropItem() event\nfunction list:onDropItem(item, to)\n    ui.info(\"Item: \"..item.text..\"\\nat index: \"..tostring(to), \"Item dropped on List\")\nend\n\nawait win:showasync()",
       "__results": "",
       "__kind": "event",
       "__params": [
         {
-          "__description": "<p>The <i class=\"fas fa-list-ul\" style=\"color :#2187E7\"></i><sup><i class=\"fas fa-tag\" style=\"margin-left: -0.3em; margin-top: 0.4em\"></i></sup><a href=\"ListItem.html\"> ListItem</a> that received the dropped content.</p>",
+          "__description": "<p>The <i class=\"fas fa-list-ul\" style=\"color :#2187E7\"></i><sup><i class=\"fas fa-tag\" style=\"margin-left: -0.3em; margin-top: 0.4em\"></i></sup><a href=\"ListItem.html\"> ListItem</a> or <i class=\"fa-solid fa-diagram-project\" style=\"color :#2187E7\"></i><sup><i class=\"fas fa-tag\" style=\"margin-left: -0.4em; margin-top: 0.3em\"></i></sup><a href=\"TreeItem.html\"> TreeItem</a> dropped on the List.</p>",
           "__optional": false,
           "__color": "B1D928",
           "__name": "item"
         },
         {
-          "__description": "<p>A <code>string</code> representing the kind of content dropped.</p>",
+          "__description": "<p>A <code>number</code> representing the index position in the List where the item was dropped.</p>",
           "__optional": false,
           "__color": "EA6AC3",
-          "__name": "kind"
-        },
-        {
-          "__description": "<p>The content dropped, depending on kind: <code>\"text\"</code> is a string, <code>\"files\"</code> is a table of File/Directory objects.</p>",
-          "__optional": false,
-          "__color": "B1D928",
-          "__name": "content"
+          "__name": "to"
         }
       ],
-      "__description": "<br>This event is fired when the user drops content directly on a ListItem.",
-      "__tinydesc": "Event fired when content is dropped on a ListItem",
+      "__description": "<br>This event is fired when the user drops a <i class=\"fas fa-list-ul\" style=\"color :#2187E7\"></i><sup><i class=\"fas fa-tag\" style=\"margin-left: -0.3em; margin-top: 0.4em\"></i></sup><a href=\"ListItem.html\"> ListItem</a> or <i class=\"fa-solid fa-diagram-project\" style=\"color :#2187E7\"></i><sup><i class=\"fas fa-tag\" style=\"margin-left: -0.4em; margin-top: 0.3em\"></i></sup><a href=\"TreeItem.html\"> TreeItem</a> directly on the List.",
+      "__tinydesc": "Event fired when an item is dropped on the List",
       "__filename": "List-onDropItem.html"
     },
     "onChange": {
@@ -7485,7 +7453,7 @@
       "__tinydesc": "Centers the List on the parent widget",
       "__filename": "List-center.html"
     },
-    "__type": "object",
+    "__kind": "object",
     "onMouseDown": {
       "__returns": "The event returns no value.",
       "__name": "onMouseDown",

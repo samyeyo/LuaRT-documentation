@@ -178,7 +178,8 @@
             <p><br><br>The Http.cookies property returns a <strong style="color:#EA6AC3">table</strong> that contains the cookies of the requests to be sent to the server (where keys and values are <code>strings</code> representing cookies names and values respectively). </p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local net = require "net"
+--! luart-extensions
+import net
 
 local client = net.Http("https://httpbun.org")
 

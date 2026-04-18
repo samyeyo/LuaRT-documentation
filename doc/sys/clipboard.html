@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta content="IE=edge" http-equiv="X-UA-Compatible" />
   <meta content="width=device-width, initial-scale=1" name="viewport" />
-  <meta name="description" content="Get/set the clipboad text content" />
+  <meta name="description" content="Get/set the clipboard content" />
   <title>
     sys.clipboard
   </title>
@@ -175,7 +175,7 @@
         <div class="card-content pt-0">
           <div class="content mt-5" style="font-size: 0.95em">
             <p class="has-text-weight-medium is-size-5 mb-5" style="color: #004080">sys.clipboard <td><span class="tag is-rounded has-text-weight-medium has-background-warning has-text-warning-dark" mt-0 style="vertical-align: middle; font-size: 0.65em">readwrite</span></td></p>
-            <p><br><br>Get or set data from/to the Windows clipboard.<article class="message is-warning is-small mt-6 mb-6" style="margin-left: 10%; margin-right: 10%"><div class="message-header mb-0"><p><i class="fas fa-pencil"></i> Notes</p>
+            <p><br><br>Get or set data from/to the Windows clipboard. When reading, returns a <span style="color:#B1D928">table</span> with <code>kind</code> and <code>content</code> fields, or <code>nil</code> if the clipboard is empty. The <code>kind</code> field can be <span style="color:#EA6AC3">"text"</span>, <span style="color:#EA6AC3">"files"</span>, or <span style="color:#EA6AC3">"image"</span>.<article class="message is-warning is-small mt-6 mb-6" style="margin-left: 10%; margin-right: 10%"><div class="message-header mb-0"><p><i class="fas fa-pencil"></i> Notes</p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
 local clipboard = sys.clipboard

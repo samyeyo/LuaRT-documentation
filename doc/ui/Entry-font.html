@@ -178,7 +178,8 @@
             <p><br>Get the Entry font, a <strong style="color:#EA6AC3">string</strong> value that represent the font name.<br><br>To set the Entry.font property, you can assign a <strong style="color:#EA6AC3">string</strong> that represent either a font name of an installed system font, or a font file (*.ttf, *.fon...).<br>A<a href="../sys/File.html"><i class="fas fa-file"></i> File</a> can also be provided, representing a font file.<br><br>Note that only the font family is changed. The font style and font size are not affected (see the <a href="./Entry-fontstyle.html">Entry.fontstyle</a> and the <a href="./Entry-fontsize.html">Entry.fontsize</a> properties).</p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 -- create a simple window 
 local win = ui.Window("Entry.font sample", 320, 200)

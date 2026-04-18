@@ -181,7 +181,8 @@
             This event returns <span style="color:#ae81ff">true</span> if the application actually wants to close the window or <span style="color:#ae81ff">false</span> otherwise (and the window will remain open).
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 -- create a window that never closes !
 local win = ui.Window("Window:onClose() sample", 320, 200)

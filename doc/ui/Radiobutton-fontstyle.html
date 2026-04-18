@@ -178,7 +178,8 @@
             <p><br>Get or set the Radiobutton font style, a <span style="color: #B1D928">table</span> value that contains the following keys/values :<ul><li><span style="color:#EA6AC3">"italic"</span> : set to <span style="color:#ae81ff">true</span> if the font is in <i>italic</i>.</li><li><span style="color:#EA6AC3">"underline"</span> : set to <span style="color:#ae81ff">true</span> if the font is <u>underlined</u>.</li><li><span style="color:#EA6AC3">"strike"</span> : set to <span style="color:#ae81ff">true</span> if the font is <strike>striked</strike>.</li><li><span style="color:#EA6AC3">"thin"</span> : set to <span style="color:#ae81ff">true</span> if the font is <span style="font-weight:light">thin</span>.</li><li><span style="color:#EA6AC3">"bold"</span> : set to <span style="color:#ae81ff">true</span> if the font is <b style="font-weight:600">bold</b>.</li><li><span style="color:#EA6AC3">"heavy"</span> : set to <span style="color:#ae81ff">true</span> if the font is <span style="font-family: Sans-serif;font-weight:999">heavy</span>.</li></ul><article class="message is-info" style="margin-left: 15%; margin-right: 15%"><div class="message-body">Any change in the <a href="./Radiobutton-font.html">Radiobutton.font</a>, <a href="./Radiobutton-fontstyle.html">Radiobutton.fontstyle</a> and <a href="./Radiobutton-fontsize.html">Radiobutton.fontsize</a> properties results in an automatic resizing of the Radiobutton so that the content is displayed correctly</div></article></p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 -- create a simple Window 
 local win = ui.Window("Radiobutton.fontstyle sample", 320, 200)

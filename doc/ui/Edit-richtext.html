@@ -178,7 +178,8 @@
             <p><br>Get or set the Edit text content as a <strong style="color:#EA6AC3">string</strong>, with Rich Text Formatting.<br>To get the text without formatting, use the <a href="Edit-text.html">Edit.text</a> property instead.<article class="message is-warning"><div class="message-body">Changing this property may erase the current text if the provided string don't contains Rich Text Formatted text.</div></article></p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 -- create a simple window
 
@@ -202,7 +203,7 @@ end
 update_status()
 
 -- update user interface
-ui.run(win):wait()
+await win:showasync()
             </code></div>
             </div>
 	      </div>

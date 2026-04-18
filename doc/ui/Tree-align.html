@@ -178,7 +178,8 @@
             <p><br>Get or set the Tree alignment, which position and size will be aligned relative to its parent (alignment persists even if the size of the parent changes).</p><p>This property uses a <code>string</code> to specify the Tree alignment :<ul><li><span style="color:#EA6AC3">"all"</span> : the Tree will be aligned along all the parent borders (and will cover the entire parent client area).</li><li><span style="color:#EA6AC3">"bottom"</span> : the Tree will be aligned along the bottom border of the parent, preserving its height.</li><li><span style="color:#EA6AC3">"top"</span> : the Tree will be aligned along the the top border of the parent, preserving its height.</li><li><span style="color:#EA6AC3">"right"</span> : the Tree will be aligned along the right border of the parent, preserving its width.</li><li><span style="color:#EA6AC3">"left"</span> : the Tree will be aligned along the left border of the parent, preserving its width.</li></ul></p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 -- create a fixed Window
 local win = ui.Window("Tree:align() sample", "fixed", 320, 200)

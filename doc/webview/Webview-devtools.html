@@ -174,11 +174,12 @@
       </a>
         <div class="card-content pt-0">
           <div class="content mt-5" style="font-size: 0.95em">
-            <p class="has-text-weight-medium is-size-5 mb-5" style="color: #004080">Webview.devtools <td><span class="tag is-rounded has-text-weight-medium has-background-danger-light has-text-danger mt-0" style="vertical-align: middle; font-size: 0.65em"">readonly</span></td></p>
-            <p><br>Enable/disable the Webview developper tools, by setting this property to <code>true</code> or <code>false</code> respectively.This property permits or prevents the user to open the Devtools window with the context menu or with the <code>Ctrl+Shift+I</code> shortcut.<article class="message is-warning" style="margin-left: 15%; margin-right: 15%"><div class="message-body">Even if this property is set to <code>false</code>, it is still possible to show the Devtools window by calling the <a href="Webview-opendevtools.html">Webview.opendevtools()</a> method.</div></article><p class="is-size-4 mt-6 mb-0" style="color: #004080">Example</p>
+            <p class="has-text-weight-medium is-size-5 mb-5" style="color: #004080">Webview.devtools <td><span class="tag is-rounded has-text-weight-medium has-background-warning has-text-warning-dark" mt-0 style="vertical-align: middle; font-size: 0.65em">readwrite</span></td></p>
+            <p><br>Enable/disable the Webview developer tools, by setting this property to <code>true</code> or <code>false</code> respectively. This property permits or prevents the user to open the Devtools window with the context menu or with the <code>Ctrl+Shift+I</code> shortcut.<article class="message is-warning" style="margin-left: 15%; margin-right: 15%"><div class="message-body">Even if this property is set to <code>false</code>, it is still possible to show the Devtools window by calling the <a href="Webview-opendevtools.html">Webview:opendevtools()</a> method.</div></article></p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 require "webview"
 
 -- create a simple window

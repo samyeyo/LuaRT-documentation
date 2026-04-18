@@ -181,7 +181,8 @@
             This method returns the value stored in the Array at the given position.
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local c = require "c"
+--! luart-extensions
+import c
 
 -- Creates a 2 dimensions C array with 3 rows of 4 chars
 local CharArray = c.Array("c", 3, 4)

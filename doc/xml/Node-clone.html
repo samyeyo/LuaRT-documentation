@@ -181,7 +181,8 @@
             Returns a new <a href="Node.html"><i class="fas fa-code" style="color :#2187E7"></i> Node</a> identical to the original.
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local xml = require "xml"
+--! luart-extensions
+import xml
 
 local book = xml.Node("book")
 book:add("title", "Lua")

@@ -178,7 +178,8 @@
             <p><br>Get or set the degree of opacity of the radial gradient, a <code>number</code> starting from <code>0.0</code>(full transparency) to <code>1.0</code>(full opacity)</p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 require "canvas"
 
 -- create a simple Window
@@ -201,7 +202,7 @@ function canvas:onPaint()
   gradient.opacity = gradient.opacity+0.005
 end
 
-ui.run(win):wait()
+await win:showasync()
             </code></div>
             </div>
 	      </div>

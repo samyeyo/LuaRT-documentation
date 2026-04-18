@@ -178,7 +178,8 @@
             <p><br>Set or check wether the Radiobutton item is selected.<article class="message is-warning"><div class="message-body"><ul><li>A Radiobutton is always used in groups, grouped by their parent object.</li><li>Radiobuttons are exclusive in the same group : selecting one deselects the others.</li></ul></div></article></p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 -- create a Choice object from Radiobutton
 local Choice = Object(ui.Radiobutton)

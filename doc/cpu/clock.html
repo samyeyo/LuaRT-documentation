@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta content="IE=edge" http-equiv="X-UA-Compatible" />
   <meta content="width=device-width, initial-scale=1" name="viewport" />
-  <meta name="description" content="Get cpu fequency" />
+  <meta name="description" content="Get cpu frequency" />
   <title>
     cpu.clock
   </title>
@@ -178,9 +178,10 @@
             <p><br>The cpu.clock property gets the theorical frequency in Mhz.</p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local cpu = require "cpu"
+--! luart-extensions
+import cpu
 
-print("CPU clock : "..cpu.clock")
+print("CPU clock : "..cpu.clock)
             </code></div>
             </div>
 	      </div>

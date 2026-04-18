@@ -178,7 +178,8 @@
             <p><br>Get or set the Entry text alignment, a <strong style="color:#EA6AC3">string</strong> value that represent how the text will be displayed.<br><ul><li><strong style="color:#EA6AC3">"left"</strong> : the text is aligned to the left edge of the Entry (the default).</li><li><strong style="color:#EA6AC3">"right"</strong> : the text is aligned to the right edge of the Entry.</li><li><strong style="color:#EA6AC3">"center"</strong> : the text is aligned in the center of the Entry area.</li></ul></p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 -- create a simple Window 
 local win = ui.Window("Button.textalign sample", 320, 200)
@@ -197,7 +198,7 @@ function cb:onSelect(item)
 end
 
 -- update the user interface until the user closes the Window
-ui.run(win):wait()
+await win:showasync()
             </code></div>
             </div>
 	      </div>

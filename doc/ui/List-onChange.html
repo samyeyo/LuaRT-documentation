@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta content="IE=edge" http-equiv="X-UA-Compatible" />
   <meta content="width=device-width, initial-scale=1" name="viewport" />
-  <meta name="description" content="Event fired when items in the List have been modified" />
+  <meta name="description" content="Event fired when List items have been modified" />
   <title>
     List:onChange()
   </title>
@@ -181,7 +181,8 @@
             The event returns no value.
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 -- create a simple Window 
 local win = ui.Window("List:onChange() sample", 320, 200)
@@ -197,12 +198,8 @@ function list:onSelect(item)
 end
 
 win:status("Choose a number to increment it")
-win:show()
 
--- update user interface
-repeat
-	ui.update()
-until not win.visible
+await win:showasync()
             </code></div>
             </div>
 	      </div>

@@ -186,7 +186,8 @@
             Returns a <a href="./Task.html"><i class="fas fa-bolt"></i> Task</a> that will return a <code>boolean</code> value indicating if the operation succeeded.
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local console = require "console"
+--! luart-extensions
+import console
 
 local file = sys.File("big_video.mkv")
 file.step = 0
@@ -200,7 +201,7 @@ local function progress(total, done)
 end
 
 console.write("Copying file... ")
-file:copy("big_video_copy.mkv", progress):wait()
+await file:copy("big_video_copy.mkv", progress)
             </code></div>
             </div>
 	      </div>

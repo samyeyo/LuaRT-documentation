@@ -178,7 +178,8 @@
             <p><br>Get or set the current Canvas font size, an integer value between 1 and 999. A smaller value indicates a lighter weight, a larger value indicates a heavier weight.</p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 require "canvas"
 
 -- create a fixed Window
@@ -195,7 +196,7 @@ canvas.fontweight = 900
 -- don't use onPaint() event, draw only once
 canvas:print(canvas.font, 6, 70)
 
-ui.run(win):wait()
+await win:showasync()
             </code></div>
             </div>
 	      </div>

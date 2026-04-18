@@ -178,7 +178,8 @@
             <p><br>This property checks if the process is suspended, returning a <code>boolean</code> value.</p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local sysutils = require "sysutils"
+--! luart-extensions
+import sysutils
 local ui = require "ui"
 
 -- create a process launching notepad.exe

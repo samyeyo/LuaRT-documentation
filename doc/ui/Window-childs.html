@@ -178,7 +178,8 @@
             <p><br>Get a list of the Window's widgets, as a <span style="color: #B1D928">table</span>. Each items in the list is a widget who's parent is the current window.<p class="is-size-4 mt-6 mb-0" style="color: #004080">Example</p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 --- create a centered Window
 local win = ui.Window("Window.childs example", 320, 200)
@@ -199,7 +200,7 @@ async(function()
     end
 end)
 
-ui.run(win):wait()
+await win:showasync()
             </code></div>
             </div>
 	      </div>

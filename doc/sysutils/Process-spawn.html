@@ -184,7 +184,8 @@
             This method returns a <a href="./Task.html"><i class="fas fa-bolt"></i> Task</a> instance that will run until the process stops its execution.
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local sysutils = require "sysutils"
+--! luart-extensions
+import sysutils
 local ui = require "ui"
 
 -- create a process launching Wordpad
@@ -193,8 +194,7 @@ local p = sysutils.Process("notepad.exe")
 -- start the process
 local task = p:spawn()
 
--- wait until the process is terminated
-task:wait()
+-- wait until the process is terminatedawait ntask
 
 ui.info("Notepad process has terminated its execution")
             </code></div>

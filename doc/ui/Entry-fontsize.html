@@ -178,7 +178,8 @@
             <p><br>Get or set the Entry font size, a <strong style="color:#ae81ff">number</strong> that represent the font size in pixels.<br><article class="message is-info" style="margin-left: 15%; margin-right: 15%"><div class="message-body">Any change in the <a href="./Entry-font.html">Entry.font</a>, <a href="./Entry-fontstyle.html">Entry.fontstyle</a> and <a href="./Entry-fontsize.html">Entry.fontsize</a> properties results in an automatic resizing of the Entry so that the content is displayed correctly</div></article></p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 -- create a simple entry 
 local win = ui.Window("Entry.fontsize sample", 640, 200)

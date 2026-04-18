@@ -181,13 +181,14 @@
             The function returns no value.
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local console = require "console"
+--! luart-extensions
+import console
 
 print("Press a key to hide console for 2sec...")
 console.read()
-console:hide()
+console.hide()
 sleep(2000)
-console:show()
+console.show()
 print("Press a key to exit")
 console.read()
             </code></div>

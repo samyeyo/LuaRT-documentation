@@ -178,9 +178,10 @@
             <p>The console.stderr property gets the current standard console error output<a href="../sys/File.html"><i class="fas fa-file" style="color :#2187E7"></i> File</a>.<br></p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local console = require "console"
+--! luart-extensions
+import console
 
-console.stderror:write("Error : internet connection lost")
+console.stderr:write("Error : internet connection lost")
 sys.exit(-1)
             </code></div>
             </div>

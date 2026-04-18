@@ -184,7 +184,8 @@
             Returns a <a href="File.html"><i class="fas fas fa-file"></i> File</a></span> or <span><a href="Directory.html"><i class="fas fas fa-folder"></i> Directory</a></span> instance that represents the filesystem entry. If the entry doesn't exists, it returns <code>nil</code>.
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local console = require "console"
+--! luart-extensions
+import console
 
 local name = console.readln("Enter an entry name : ")
 local entry = sys.fsentry(name)

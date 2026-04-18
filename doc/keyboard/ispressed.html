@@ -174,14 +174,18 @@
         </a>
         <div class="card-content pt-0">
           <div class="content mt-5" style="font-size:0.95em;">
-            <p class="has-text-weight-medium is-size-5 mb-5" style="color: #004080; vertical-align: middle">keyboard.ispressed()<span class ="tag is-rounded has-text-weight-medium is-warning ml-2 is-size-7" style="vertical-align: middle;">function</p>
+            <p class="has-text-weight-medium is-size-5 mb-5" style="color: #004080; vertical-align: middle">keyboard.ispressed(<span style="color: #EA6AC3">key...</span>)<span class ="tag is-rounded has-text-weight-medium is-warning ml-2 is-size-7" style="vertical-align: middle;">function</p>
             <p>Checks if one or more keys have been pressed.</p>
-            
+            <p class="has-text-weight-medium is-size-6 mb-1 mt-6" style="color: #004080">Parameters</p>
+	            <p class="has-text-weight-medium is-size-6 mt-2 mb-0"><span style="color: #EA6AC3">key...</span></p>
+                One or more <code>string</code> or <code>number</code> values that represents the keys to be checked. See <a href="./keys.html">the list of supported key codes</a>.
+        
             <p class="has-text-weight-medium is-size-6 mb-1 mt-5" style="color: #004080">Return value</p>
             This function <code>true</code> if all keys have been pressed or <code>false</code> otherwise.
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local kb = require "keyboard"
+--! luart-extensions
+import keyboard
 local ui = require "ui"
 
 local win = ui.Window("Press key A, B and C simultaneously", 400, 280)
@@ -189,12 +193,12 @@ local lbl = ui.Label(win, "Keys A+B+C have been pressed !")
 lbl:center()
 lbl:hide()
 
-ui.run(win)
+await win:showasync()
 
 async(function()
     while win.visible do
         sleep()
-        if kb.ispressed("A", "B", "C") then
+        if keyboard.ispressed("A", "B", "C") then
             lbl:show()
             sleep(1000)
         elseif lbl.visible then

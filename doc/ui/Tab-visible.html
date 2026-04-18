@@ -178,7 +178,8 @@
             <p><br>Get or set the Tab visibility on screen, a <strong style="color:#ae81ff">true</strong> value means that the Tab is shown, a <strong style="color:#ae81ff">false</strong> value means that the Tab is hidden.<article class="message is-info" style="margin-left: 15%; margin-right: 15%"><div class="message-body">The tab.visible property is also affected by the <a href="./Tab-show.html">Tab:show()</a> and <a href="./Tab-hide.html">Tab:hide()</a> methods.</div></article></p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 -- create a simple tab 
 local win = ui.Window("Tab.visible sample", 320, 250)
@@ -197,7 +198,7 @@ function button:onClick()
 	tab.visible = true
 end
 
-ui.run(win):show()
+await win:showasync():show()
             </code></div>
             </div>
 	      </div>

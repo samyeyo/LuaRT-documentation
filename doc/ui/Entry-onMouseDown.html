@@ -188,7 +188,8 @@
             The event returns no value.
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 -- create a window
 local win = ui.Window("Edit:onMouseDown() sample", 420, 200)
@@ -200,7 +201,7 @@ function entry:onMouseDown(b, x, y)
   win:status("Mouse button : "..b, "Mouse position : "..x..", "..y)
 end
 
-ui.run(win):wait()
+await win:showasync()
             </code></div>
             </div>
 	      </div>

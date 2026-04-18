@@ -181,7 +181,8 @@
             Returns a <code>boolean</code> value indicating if the disconnection process has correctly started.
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local wifi = require "wifi"
+--! luart-extensions
+import wifi
 
 function wifi.onDisconnected()
   print("You are disconnected from the wireless network !")

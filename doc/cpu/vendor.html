@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta content="IE=edge" http-equiv="X-UA-Compatible" />
   <meta content="width=device-width, initial-scale=1" name="viewport" />
-  <meta name="description" content="Get cpu mmanufacturer identifier" />
+  <meta name="description" content="Get cpu manufacturer identifier" />
   <title>
     cpu.vendor
   </title>
@@ -175,12 +175,13 @@
         <div class="card-content pt-0">
           <div class="content mt-5" style="font-size: 0.95em">
             <p class="has-text-weight-medium is-size-5 mb-5" style="color: #004080">cpu.vendor <td><span class="tag is-rounded has-text-weight-medium has-background-danger-light has-text-danger mt-0" style="vertical-align: middle; font-size: 0.65em"">readonly</span></td></p>
-            <p><br>The cpu.currentclock property gets the cpu manufacturer identifier.</p>
+            <p><br>The cpu.vendor property gets the cpu manufacturer identifier.</p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local cpu = require "cpu"
+--! luart-extensions
+import cpu
 
-print("CPU Manufacturer : "..cpu.vendor.."Mhz")
+print("CPU Manufacturer : "..cpu.vendor)
             </code></div>
             </div>
 	      </div>

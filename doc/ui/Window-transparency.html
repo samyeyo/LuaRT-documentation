@@ -178,7 +178,8 @@
             <p><br>Get or set the window's transparency intensity, a <code>number</code> value from <code>0</code> (full transparency) to <code>255</code> (full opacity, the default value).<article class="message is-info" style="margin-left: 15%; margin-right: 15%"><div class="message-body">The window.transprency might affect correct rendering of some widgets, use it wisely.</div></article></p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 local win = ui.Window("Window.transparency example", 420, 300)
 win:center()
@@ -196,7 +197,7 @@ async(function()
     win:hide()
 end)
 
-ui.run(win):wait()
+await win:showasync()
             </code></div>
             </div>
 	      </div>

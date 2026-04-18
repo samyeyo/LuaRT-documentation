@@ -192,7 +192,8 @@
             This function returns a <code>boolean</code> value, which indicates whether the recording session started successfully.
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local audio = require "audio"
+--! luart-extensions
+import audio
 
 io.write("Recording audio for 5 sec... ")
 
@@ -207,7 +208,7 @@ audio.record.stop()
 print("done !\n\nPlaying...")
 
 -- Plays the recorded audio file
-audio.Sound("sound.wav"):play():wait()
+await audio.Sound("sound.wav"):play()
             </code></div>
             </div>
 	      </div>

@@ -178,7 +178,8 @@
             <p><br>This property gets different cache levels and their size (in kb). The returned <code>table</code> with the cache identifier as a key, and its size as value.</p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local cpu = require "cpu"
+--! luart-extensions
+import cpu
 for cache, size in pairs(cpu.cache) do
   print(cache..": ", size.."kb")
 end

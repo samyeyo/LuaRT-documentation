@@ -178,7 +178,8 @@
             <p>This property acts like a Lua table with different behavior depending on how fields are accessed.<p class="is-size-4 mb-1 mt-6" style="color: #004080">Calling a Chrome DevTools Protocol function</p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 require "webview"
 
 local win = ui.Window("Chrome Devtools Protocol event example", "fixed", 320, 240)
@@ -201,7 +202,7 @@ function wv:onReady()
     end
 end
 
-ui.run(win):wait()
+await win:showasync()
             </code></div>
             </div>
 	      </div>

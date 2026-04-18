@@ -175,10 +175,11 @@
         <div class="card-content pt-0">
           <div class="content mt-5" style="font-size: 0.95em">
             <p class="has-text-weight-medium is-size-5 mb-5" style="color: #004080">console.fullscreen <td><span class="tag is-rounded has-text-weight-medium has-background-warning has-text-warning-dark" mt-0 style="vertical-align: middle; font-size: 0.65em">readwrite</span></td></p>
-            <p>Gets/sets the console fullscreen mode.<ul><li>To go fullscreen, set the property to <span style="color: #ae81ff">true</span></li><li>To revert back to normal mode (original size with window frame and title bar) set the property to <span style="color: #ae81ff"> false</span>.</li></ul><article class="message is-info" style="margin-left: 15%; margin-right: 15%"><div class="message-body">The user can revert back to normal mode by pressing ALT+RETURN.</div></article><p class="is-size-4 mt-6 mb-0" style="color: #004080">Example</p>
+            <p>Gets/sets the console fullscreen mode.<ul><li>To go fullscreen, set the property to <span style="color: #ae81ff">true</span></li><li>To revert back to normal mode (original size with window frame and title bar) set the property to <span style="color: #ae81ff"> false</span>.</li></ul><article class="message is-info" style="margin-left: 15%; margin-right: 15%"><div class="message-body">The user can revert back to normal mode by pressing ALT+RETURN.</div></article></p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local console = require "console"
+--! luart-extensions
+import console
 
 console.write("Do you want to go fullscreen (y/n) ?")
 console.fullscreen = console.read(1):lower() == "y"

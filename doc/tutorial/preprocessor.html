@@ -176,11 +176,11 @@ target="_blank">
         <div class="card-content">
           <div class="content mb-6">
             <h1 class="title is-2 mb-2 has-text-weight-light" style="color: #004080">Using the Lua<sup>rt</sup> syntax extensions</h1>
-            <p class="mt-0 is-size-7 mb-6"><i>By Samir Tine, published on March 2026</i></p>
+            <p class="mt-0 is-size-7 mb-6"><i>By Samir Tine, published on April 2026</i></p>
             
             <h2 class="has-text-weight-light is-size-3 mt-6">Introduction</h2>
             <p class="mt-4">
-            Lua<sup>rt</sup> now includes a powerful built-in preprocessor that extends the standard Lua syntax with modern features. To enable the preprocessor in a script, you must add the following directive to the <b>very first line</b> of your Lua script:
+            Since version 2.2.0, Lua<sup>rt</sup> includes a powerful built-in preprocessor that extends the standard Lua syntax with modern features. To enable the preprocessor in a script, you must add the following directive to the <b>very first line</b> of your Lua script:
             </p>
 <div class="language-lua mb-4" style="margin-left: 15%; margin-right:15%"><code>
     --! luart-extensions
@@ -250,6 +250,7 @@ target="_blank">
     catch err
         print("Failed to open file: " .. err)
     end  
+
 </code></div>
 
             <h2 class="has-text-weight-light is-size-3 mt-6">async & await</h2>
@@ -270,6 +271,7 @@ target="_blank">
     local task2 = fetch_data()
 
     waitall()
+
 </code></div>
             <p class="mt-4">
                  The <code>await</code> syntax extensions is used to pause current execution until the followed task (or function wrapped as a launched Task) completes :
@@ -303,7 +305,7 @@ target="_blank">
     print(await fetch_data())
 
 </code></div>
-            <p class="mt-6">As you can see, Lua<sup>rt</sup> preprocessor is a simple way to extend Lua syntax while still providing full compability with standard Lua scripts. You are now ready to write cleaner, more modern Lua code !</p>
+            <p class="mt-6">As you can see, Lua<sup>rt</sup> preprocessor is a simple way to extend Lua syntax while still providing full compability with standard Lua scripts (if not used). You are now ready to write cleaner, more modern Lua code !</p>
           </div>
         </div>
       </div>

@@ -178,7 +178,8 @@
             <p>Get or set the MenuItem enabled state, a <span style="color:#ae81ff">boolean</span> value.<br>When set to <span style="color:#ae81ff">false</span>, the MenuItem is disabled and cannot receive events anymore.</p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 -- create a simple Window
 local win = ui.Window("MenuItem.enabled sample", 316, 246)

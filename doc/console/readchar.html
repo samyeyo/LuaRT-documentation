@@ -181,10 +181,11 @@
             Returns two values :
 			<ul>
 			<li>A <span style="color:#EA6AC3">string</span> corresponding to the pressed character (for example <span style="color:#EA6AC3">"A"</span> if SHIFT+A have been pressed).</li>
-		    <li>A boolean value that indicates if the key pressed is special (for example, UP arrow key returns the string <span style="color:#EA6AC3">"H"</span> and <span style="color:#ae81ff">true</span>).
+		    <li>A <span style="color:#ae81ff">boolean</span> value that indicates if the key pressed is special (for example, UP arrow key returns the string <span style="color:#EA6AC3">"H"</span> and <span style="color:#ae81ff">true</span>).
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local console = require "console"
+--! luart-extensions
+import console
 
 console.writecolor("cyan", "Press a key\n")
 local char, isspecial = console.readchar()

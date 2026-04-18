@@ -184,7 +184,8 @@
             Returns the <a href="Value.html"><i class="fas fa-hashtag"></i> Value</a> casted to the new C type.
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local c = require "c"
+--! luart-extensions
+import c
 
 -- Create a Value that contains an unsigned char (a byte) initialized with the number 72
 local uchar = c.Value("uchar", 72)

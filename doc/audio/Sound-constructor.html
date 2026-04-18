@@ -191,7 +191,8 @@
             The constructor returns a new <a href="Sound.html"><i class="fas fa-file-audio"></i> Sound</a> instance.
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local audio = require "audio"
+--! luart-extensions
+import audio
 
 local sound = audio.Sound("music.mp3")
 sound:play()

@@ -178,7 +178,8 @@
             <p><br>Get or set the button visibility on screen, a <strong style="color:#ae81ff">true</strong> value means that the Button is shown, a <strong style="color:#ae81ff">false</strong> value means that the Button is hidden.<article class="message is-info" style="margin-left: 15%; margin-right: 15%"><div class="message-body">The button.visible property is also affected by the <a href="./Button-show.html">Button:show()</a> and <a href="./Button-hide.html">Button:hide()</a> methods.</div></article></p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 -- create a simple button 
 local win = ui.Window("Button.visible sample", 320, 200)
@@ -189,7 +190,7 @@ function button:onHover()
 	self:hide()
 end
 
-ui.run(win):wait()
+await win:showasync()
             </code></div>
             </div>
 	      </div>

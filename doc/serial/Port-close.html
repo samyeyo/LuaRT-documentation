@@ -181,12 +181,13 @@
             This method returns no value.
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local serial = require "serial"
+--! luart-extensions
+import serial
 
 local COM1 = serial.Port("COM1")
 if COM1:open() then
   print("COM1 serial port is now open")
-  COM1:write("First message"):wait()
+  await COM1:write("First message")
   COM1:close()
 else
   print("Failed to open COM1 serial port")

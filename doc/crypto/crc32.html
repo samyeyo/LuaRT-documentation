@@ -175,7 +175,7 @@
         <div class="card-content pt-0">
           <div class="content mt-5" style="font-size:0.95em;">
             <p class="has-text-weight-medium is-size-5 mb-5" style="color: #004080; vertical-align: middle">crypto.crc32(<span style="color: #EA6AC3">data</span>)<span class ="tag is-rounded has-text-weight-medium is-warning ml-2 is-size-7" style="vertical-align: middle;">function</p>
-            <p>Calculate the Cyclic Redundancy Check (CRC) value of the given data.</a>.</p>
+            <p>Calculate the Cyclic Redundancy Check (CRC) value of the given data.</p>
             <p class="has-text-weight-medium is-size-6 mb-1 mt-6" style="color: #004080">Parameters</p>
 	            <p class="has-text-weight-medium is-size-6 mt-2 mb-0"><span style="color: #EA6AC3">data</span></p>
                 <p>A <span style="color:#EA6AC3">string</span> or a <a href="../sys/Buffer.html"><i class="fas fa-th" style="color :#2187E7"></i> Buffer</a>.</p>
@@ -184,7 +184,8 @@
             Returns a <span style="color:#ae81ff">number</span> containing CRC32 checksum.
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local crypto = require "crypto"
+--! luart-extensions
+import crypto
 local console = require "console"
 
 local file = sys.File(console.readln("Enter the file to calculate CRC32 : ")):open()

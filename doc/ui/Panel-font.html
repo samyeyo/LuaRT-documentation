@@ -178,7 +178,8 @@
             <p><br>Get the Panel font, a <strong style="color:#EA6AC3">string</strong> value that represent the font name.<br><br>To set the Panel.font property, you can assign a <strong style="color:#EA6AC3">string</strong> that represent either a font name of an installed system font, or a font file (*.ttf, *.fon...). A<a href="../sys/File.html"><i class="fas fa-file"></i> File</a> can also be provided, representing a font file.<br><br>Note that only the font family is changed. The font style and font size are not affected (see the <a href="./Panel-fontstyle.html">Panel.fontstyle</a> and the <a href="./Panel-fontsize.html">Panel.fontsize</a> properties).<article class="message is-warning" style="margin-left: 10%; margin-right: 10%"><div class="message-body">By changing the font of the Panel, you also change the font of any newly created child controls.</div></article></p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 -- create a fixed Panel
 local win = ui.Window("Panel.font sample", "fixed", 320, 200)
@@ -194,7 +195,7 @@ panel.font = "Segoe Print"
 -- add a child Label
 ui.Label(panel, "Label"):center()
 
-ui.run(win):wait()
+await win:showasync()
             </code></div>
             </div>
 	      </div>

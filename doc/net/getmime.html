@@ -175,7 +175,7 @@
         <div class="card-content pt-0">
           <div class="content mt-5" style="font-size:0.95em;">
             <p class="has-text-weight-medium is-size-5 mb-5" style="color: #004080; vertical-align: middle">net.getmime(<span style="color: #8f8f8f">value</span>)<span class ="tag is-rounded has-text-weight-medium is-warning ml-2 is-size-7" style="vertical-align: middle;">function</p>
-            <p>Returns the fully qualified domain from an IP address (reverse DNS lookup).</p>
+            <p>Returns the fully qualified MIME type for the given file or filename extension.</p>
             <p class="has-text-weight-medium is-size-6 mb-1 mt-6" style="color: #004080">Parameters</p>
 	            <p class="has-text-weight-medium is-size-6 mt-2 mb-0"><span style="color: #8f8f8f">value</span></p>
                 <p>The value to retrieve the MIME type from, can be any of the following values :<ul><li>A <a href="../sys/File.html"><i class="fas fa-file" style="color :#2187E7"></i> File</a> value.</li><li>A <span style="color:#EA6AC3">string</span> representing an URI or a filename.</li></ul></p>
@@ -184,7 +184,8 @@
             Return a <span style="color:#EA6AC3">string</span> representing the fully qualified MIME type, or <code>nil</code> if the MIME type cannot be found.
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local console = require "console"
+--! luart-extensions
+import console
 local net = require "net"
 
 local mime = net.getmime(console.readln('Enter a filename : '))

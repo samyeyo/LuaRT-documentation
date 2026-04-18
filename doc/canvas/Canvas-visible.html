@@ -178,7 +178,8 @@
             <p><br>Get or set the Canvas visibility on screen, a <strong style="color:#ae81ff">true</strong> value means that the Canvas is shown, a <strong style="color:#ae81ff">false</strong> value means that the Canvas is hidden.<article class="message is-info" style="margin-left: 15%; margin-right: 15%"><div class="message-body">The Canvas.visible property is also affected by the <a href="./Canvas-show.html">Canvas:show()</a> and <a href="./Canvas-hide.html">Canvas:hide()</a> methods.</div></article></p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 require "canvas"
 
 -- create a simple Canvas 
@@ -202,7 +203,7 @@ function button:onClick()
   button.text = (Canvas.visible and "Hide" or "Show").. " the Canvas widget"
 end
 
-ui.run(win):wait()
+await win:showasync()
             </code></div>
             </div>
 	      </div>

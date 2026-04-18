@@ -189,8 +189,7 @@ t.timeout = 1000
 
 -- start and wait
 t()
-
-t:wait()
+await nt
 
 print("task.status:", t.status)     -- "terminated" expected
 print("task.expired:", t.expired)   -- true if terminated due to timeout

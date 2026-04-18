@@ -185,7 +185,8 @@
 				A RGB color can be represented as an hexadecimal number : 0xRRGGBB, RR meaning a 8bit hexadecimal red value and so on.
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 -- open a dialog to choose a color
 local color = ui.colordialog()

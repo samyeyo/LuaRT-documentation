@@ -188,7 +188,8 @@
             The function returns the selected file(s) as <a href="../sys/File.html"><i class="fas fa-file"></i> File</a> object(s) or <span style="color: #606060">nil</span> if no files have been choosen.
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 -- open a dialog to choose an existing file
 local file = ui.opendialog()

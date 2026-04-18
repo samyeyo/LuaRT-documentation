@@ -197,7 +197,8 @@
             </ul>
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local net = require "net"
+--! luart-extensions
+import net
 
 -- Download a server resource and waits until it's done
 local client, response = await(net.Http("http://download.thinkbroadband.com"):download("/10MB.zip"))

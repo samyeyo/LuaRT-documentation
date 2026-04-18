@@ -176,7 +176,7 @@
           <div class="content mt-5" style="font-size: 0.85em">
            <p class="has-text-weight-medium is-size-5 mb-5" style="color: #004080; vertical-align: middle">C Pointer string conversion</p>
             
-            <p>Pointer objects supports conversion to Lua string using the standard Lua function <a href="https://www.lua.org/manual/5.4/manual.html#pdf-tostring">tostring()</a><br>
+            <p>Pointer objects supports conversion to Lua string using the standard Lua function <a href="https://www.lua.org/manual/5.5/manual.html#pdf-tostring">tostring()</a><br>
               <article class="message is-warning is-small mt-6 mb-6" style="margin-left: 10%; margin-right: 10%">
                 <div class="message-header mb-0">
                   <p><i class="fas fa-pencil"></i> Notes</p>
@@ -191,7 +191,8 @@
             
                         <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
                             <div class="language-lua mr-6 ml-6"><code>
-local c = require "c"
+--! luart-extensions
+import c
 
 -- Creates a Pointer to a Buffer in memory (a void* pointer)
 local c_ptr = c.Pointer(sys.Buffer("\x48\x65\x6C\x6C\x6F\x20\x4C\x75\x61\x52\x54\x20\x21\x00"))

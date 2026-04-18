@@ -178,7 +178,8 @@
             <p><br>Get or set the tooltip text that appears when the user moves the mouse over the control, represented as a <strong style="color:#EA6AC3">string</strong> value.<br>Set the property to an empty string to remove the tooltip message.</p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 -- create a simple window 
 local win = ui.Window("Picture.tooltip sample", 340, 180)

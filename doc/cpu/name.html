@@ -178,9 +178,10 @@
             <p><br>The cpu.name property gets the human-readable name of the CPU.</p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local cpu = require "cpu"
+--! luart-extensions
+import cpu
 
-print("CPU name : "..cpu.name")
+print("CPU name : "..cpu.name)
             </code></div>
             </div>
 	      </div>

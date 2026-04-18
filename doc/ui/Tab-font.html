@@ -178,7 +178,8 @@
             <p><br>Get the Tab font, a <strong style="color:#EA6AC3">string</strong> value that represent the font name.<br>To set the Tab.font property, you can assign a <strong style="color:#EA6AC3">string</strong> that represent either a font name of an installed system font, or a font file (*.ttf, *.fon...). A<a href="../sys/File.html"><i class="fas fa-file"></i> File</a> can also be provided, representing a font file.<br>Note that only the font family is changed. The font style and font size are not affected (see the <a href="./Tab-fontstyle.html">Tab.fontstyle</a> and the <a href="./Tab-fontsize.html">Tab.fontsize</a> properties).<article class="message is-info" style="margin-left: 15%; margin-right: 15%"><div class="message-body">By default, an Tab uses the same font as its parent widget</div></article></p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 -- create a simple window 
 local win = ui.Window("Tab.font sample", 274, 220)

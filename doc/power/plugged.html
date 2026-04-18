@@ -178,9 +178,10 @@
             <p><br>The power.plugged checks if the computer is plugged to AC, returning <code>true</code> or <code>false</code> otherwise.</p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local power = require "power"
+--! luart-extensions
+import power
 
-print("Computer is currently powered by "..(power.isplugged and "AC" or "battery"))
+print("Computer is currently powered by "..(power.plugged and "AC" or "battery"))
             </code></div>
             </div>
 	      </div>

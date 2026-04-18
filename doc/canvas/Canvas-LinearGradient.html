@@ -184,7 +184,8 @@
             This function returns an <a href="LinearGradient.html?properties"><i class="fas fa-right-left"></i> LinearGradient</a> instance.
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 require "canvas"
 
 -- create a simple Window
@@ -213,7 +214,7 @@ function canvas:onPaint()
 end
 
 -- update user interface
-ui.run(win):wait()
+await win:showasync()
             </code></div>
             </div>
 	      </div>

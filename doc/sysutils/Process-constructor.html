@@ -188,14 +188,15 @@
             The constructor returns a new <a href="./Process.html"><i class="fas fa-rocket"></i> Process</a> | nil instance.
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local sysutils = require "sysutils"
+--! luart-extensions
+import sysutils
 local ui = require "ui"
 
 -- create a process launching Notepad
 local p = sysutils.Process("notepad.exe")
 
 -- start the process and wait for it to terminate
-p:spawn():wait()
+await p:spawn()
 
 ui.info("Notepad application has been closed")
             </code></div>

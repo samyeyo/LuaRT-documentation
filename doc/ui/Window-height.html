@@ -178,7 +178,8 @@
             <p><br>Get or set the Window's height. The height starts from <span style="color:#ae81ff">0</span> (top side of the Window) and increase to the bottom direction.<article class="message is-warning"" style="margin-right:10%; margin-left:10%"><div class="message-body">The height property represent the height of the client area of the window, excluding the title bar.</div></article></p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 -- create a simple window
 local win = ui.Window("Window.height sample", 320, 200)
@@ -216,7 +217,7 @@ async(function()
     end
 end)
 
-ui.run(win):wait()
+await win:showasync()
             </code></div>
             </div>
 	      </div>

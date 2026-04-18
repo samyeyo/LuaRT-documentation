@@ -219,7 +219,8 @@
             <p>Returns the decoded Lua value (<code>table</code>, <code>string</code>, <code>number</code>, <code>boolean</code>, or <a href="null.html">yaml.null</a>).</p><p>A <code>table</code> of documents is returned if multiple documents were found.</p><p>On error, returns <code>nil</code> and an error message <code>string</code></p>
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local yaml = require "yaml"
+--! luart-extensions
+import yaml
 
 local data = yaml.decode("name: Alice")
 print(data.name)  -- Alice

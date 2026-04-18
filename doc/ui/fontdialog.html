@@ -193,7 +193,8 @@
 				If the user clicked on the Cancel button, this function returns <span style="color: #606060">nil</span>.<br>
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 -- open a dialog to choose a font
 local name, size, style, color = ui.fontdialog()

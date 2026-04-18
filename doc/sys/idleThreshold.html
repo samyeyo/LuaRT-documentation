@@ -175,7 +175,7 @@
         <div class="card-content pt-0">
           <div class="content mt-5" style="font-size: 0.95em">
             <p class="has-text-weight-medium is-size-5 mb-5" style="color: #004080">sys.idleThreshold <td><span class="tag is-rounded has-text-weight-medium has-background-warning has-text-warning-dark" mt-0 style="vertical-align: middle; font-size: 0.65em">readwrite</span></td></p>
-            <p>Controls how frequently the scheduler pauses to release CPU resources, defaulting to <code>2</code>. A higher idleThreshold value reduces how often the scheduler pauses, prioritizing responsiveness for tasks at the cost of slightly higher CPU usage.<br>A lower value increases pausing frequency, reducing CPU usage but may introduce minor delays in task execution.</p>
+            <p>Controls how frequently the scheduler pauses to release CPU resources, defaulting to <code>1</code>. A higher idleThreshold value reduces how often the scheduler pauses, prioritizing responsiveness for tasks at the cost of slightly higher CPU usage.<br>A lower value increases pausing frequency, reducing CPU usage but may introduce minor delays in task execution.</p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
 {{example}}

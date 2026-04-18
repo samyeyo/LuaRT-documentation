@@ -186,7 +186,8 @@
 				<li>A <span style="color:#ae81ff">boolean</span> value set to <span style="color:#ae81ff">true</span> if the current element is a directory, or <span style="color:#ae81ff">false</span> if it's a file.
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local net = require "net"
+--! luart-extensions
+import net
 
 -- connect to official ftp Ubuntu server
 local client = net.Ftp("ftp://ftp.ubuntu.com", "anonymous", "guest")

@@ -178,9 +178,10 @@
             <p><br>The cpu.threads property gets the number hardware threads.</p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local cpu = require "cpu"
+--! luart-extensions
+import cpu
 
-print("CPU hardware threads : "..cpu.threads")
+print("CPU hardware threads : "..cpu.threads)
             </code></div>
             </div>
 	      </div>

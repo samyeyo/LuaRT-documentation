@@ -178,7 +178,8 @@
             <p><br>The power.battery property gets the current battery usage as a <code>table</code>. If no battery is present, the property returns <code>nil</code>. <p>The table provides the following fields : <ul> <li><code>charging</code> : indicates if the battery is charging or not.</li> <li><code>percent</code> : indicates the battery left, in percent.</li> <li><code>lifetime</code> : indicates the battery lifetime in seconds or <code>nil</code> if the system cannot calculate it.</li> <li><code>saver</code> : indicates if the battery saver is currently in use.</li> </ul> </p></p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local power = require "power"
+--! luart-extensions
+import power
 
 if power.battery then
   print("Battery is "..(power.battery.charging and "charging" or "not charging"))

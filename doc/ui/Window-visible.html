@@ -178,7 +178,8 @@
             <p><br>Get or set the window visibility on screen, a <strong style="color:#ae81ff">true</strong> value means that the window is shown, a <strong style="color:#ae81ff">false</strong> value means that the window is hidden.<article class="message is-info" style="margin-left: 15%; margin-right: 15%"><div class="message-body">The window.visible property is also affected by the <a href="./Window-show.html">Window:show()</a> and <a href="./Window-hide.html">Window:hide()</a> methods.</div></article></p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 -- create a simple window 
 local win = ui.Window("Window.visible sample", 320, 200)
@@ -193,7 +194,7 @@ function button:onClick()
 	win.visible = true
 end
 
-ui.run(win):wait()
+await win:showasync()
             </code></div>
             </div>
 	      </div>

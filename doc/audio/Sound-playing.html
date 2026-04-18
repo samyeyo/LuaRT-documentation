@@ -178,7 +178,8 @@
             <p><br>Check if the sound is playing, a <code>boolean</code> value. If the property is <code>true</code>, the sound is currently playing.</p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local audio = require "audio"
+--! luart-extensions
+import audio
 
 local sound = audio.Sound("music.mp3")
 sound:play()

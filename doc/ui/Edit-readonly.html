@@ -178,7 +178,8 @@
             <p><br>Get or set the the readonly mode of the Edit. A <strong style="color:#ae81ff">true</strong> value, indicate that the user cannot enter any new text content.</p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 -- create a console like window
 local win = ui.Window("Edit.readonly sample", "fixed", 580, 360)
@@ -215,7 +216,7 @@ function entry:onSelect()
   self.text = ""
 end
 
-ui.run(win):wait()
+await win:showasync()
             </code></div>
             </div>
 	      </div>

@@ -178,7 +178,8 @@
             <p><br>Get or set the List visibility on screen, a <strong style="color:#ae81ff">true</strong> value means that the List is shown, a <strong style="color:#ae81ff">false</strong> value means that the List is hidden.<article class="message is-info" style="margin-left: 15%; margin-right: 15%"><div class="message-body">The list.visible property is also affected by the <a href="./List-show.html">List:show()</a> and <a href="./List-hide.html">List:hide()</a> methods.</div></article></p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 -- create a simple list 
 local win = ui.Window("List.visible sample", 320, 200)

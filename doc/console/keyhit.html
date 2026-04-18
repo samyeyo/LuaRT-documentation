@@ -178,7 +178,8 @@
             <p>The console.keyhit property checks if a key has been pressed, returning <code>true</code> or <code>false</code> otherwise.</p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local console = require "console"
+--! luart-extensions
+import console
 
 print("Waiting for a key press...")
 while not console.keyhit do

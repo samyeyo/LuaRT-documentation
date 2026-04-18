@@ -184,7 +184,8 @@
             The function returns the selected folder as a <a href="../sys/Directory.html"><i class="fas fa-folder"></i> Directory</a> object or <span style="color: #606060">nil</span> if the user selected none.
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 -- open a dialog to choose an existing folder
 local dir = ui.selectdir("Please select a folder to count its entries : ")

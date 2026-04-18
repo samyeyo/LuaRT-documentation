@@ -178,7 +178,8 @@
             <p><br>Get or set the Canvas drawing color.<br><article class="message is-warning" style="margin-left: 15%; margin-right: 15%"><div class="message-body"><ul><li>The color is represented by a <code>number</code>, an RGBA value (one byte per primary color and one byte for alpha channel).</li><li>A RGBA color can be represented as an hexadecimal number :<code> 0xRRGGBBAA</code> , RR meaning a 8bit hexadecimal red value, and so on.</li></ul></div></article></p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-require "canvas"
+--! luart-extensions
+import "canvas"
 
 -- create a simple window
 local win = ui.Window("canvas.color sample", "fixed", 500, 400)

@@ -199,8 +199,7 @@ sleep(2000)        -- task remains paused during this time
 
 print("main: resuming task")
 t:resume()         -- resume the task
-
-t:wait()           -- wait for completion
+await nt           -- wait for completion
 print("main: task.status =", t.status)
             </code></div>
             </div>

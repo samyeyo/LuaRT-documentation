@@ -178,7 +178,8 @@
             <p><br>Get or set the label visibility on screen, a <strong style="color:#ae81ff">true</strong> value means that the Label is shown, a <strong style="color:#ae81ff">false</strong> value means that the Label is hidden.<article class="message is-info" style="margin-left: 15%; margin-right: 15%"><div class="message-body">The label.visible property is also affected by the <a href="./Label-show.html">Label:show()</a> and <a href="./Label-hide.html">Label:hide()</a> methods.</div></article></p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 -- create a simple label 
 local win = ui.Window("Label.visible sample", 320, 200)

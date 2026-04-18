@@ -178,7 +178,8 @@
             <p>Get a list of current available disk drives. Each drive in the list is represented by a <code>table</code> that contains the following fields :<ul><li><code>root</code>: The drive root directory, for example <code>"C:\\"</code></li><li><code>name</code>: The drive name as a <code>string</code></li><li><code>filesystem</code>: The drive's filesystem, for example <code>"FAT32"</code> or <code>"NTFS"</code></li><li><code>readonly</code>: A <code>boolean</code> value indicating wether the drive is readonly.</li><li><code>compressed</code>: A <code>boolean</code> value indicating wether the drive is compressed.</li></ul></p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local sysutils = require "sysutils"
+--! luart-extensions
+import sysutils
 
 for drive in each(sysutils.drives) do
     print("Drive "..drive.root)

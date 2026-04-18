@@ -178,7 +178,8 @@
             <p><br>Retrieves the characteristics of all the active display monitors, as an integer indexed <code>table</code>.<br>Each entry value is a <code>table</code> containing the following fields :<br><ul><li><code>"name"</code> : a <code>string</code> representing the display name</li><li><code>"width"</code> : the monitor physical width as a <code>number</code></li><li><code>"height"</code> : the monitor physical height as a <code>number</code></li><li><code>"primary"</code> : a <code>boolean</code> indicating if the monitor is the primary display</li></ul></p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 local win = ui.Window("ui.monitors example", 320, 200)
 local tree = ui.Tree(win, {})
@@ -194,7 +195,7 @@ for monitor in each(ui.monitors) do
     item:add("primary : "..tostring(monitor.primary))
 end
 
-ui.run(win):wait()
+await win:showasync()
             </code></div>
             </div>
 	      </div>

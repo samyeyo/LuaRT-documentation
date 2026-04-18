@@ -178,7 +178,8 @@
             <p><br>Provides access to the list of Tree items.<br></p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 local win = ui.Window("Tree.items sample", "fixed", 320, 240)
 local button = ui.Button(win, "Iterate over Tree.items", 104, 10)

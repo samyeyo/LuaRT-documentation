@@ -178,7 +178,8 @@
             <p><br><br>The Socket.nodelay property get/set the TCP_NODELAY option on the socket, to control Nagle algorithm.<ul><li>When set to <span style="color:#ae81ff">false</span> Nagle algorithm is enabled, TCP will wait to send small amounts of data until the acknowledgment for the previous data is received.</li><li>When set to <span style="color:#ae81ff">true</span> Nagle algorithm is disabled (the default), TCP will send small amounts of data even before the acknowledgment for previous data sent is received.</li></ul><p class="is-size-4 mt-6 mb-0" style="color: #004080">Example</p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local net = require "net"
+--! luart-extensions
+import net
 
 -- create and connect a client TCP socket to the host "google.com"
 local socket = net.Socket("google.com", 80)

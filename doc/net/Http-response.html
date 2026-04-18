@@ -178,7 +178,8 @@
             <p><br><br>The Http.response property returns a <code>table</code> that contains the HTTP response of the last request.</p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local net = require "net"
+--! luart-extensions
+import net
 
 local client = net.Http("http://download.thinkbroadband.com")
 await(client:download("/10MB.zip"))

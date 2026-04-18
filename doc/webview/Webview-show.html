@@ -181,8 +181,9 @@
             This function returns no value.
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
-require "webview"
+--! luart-extensions
+import ui
+import webview
 
 -- create a simple Webview 
 local win = ui.Window("Webview.visible sample", 640, 480)
@@ -192,7 +193,7 @@ local button = ui.Button(win, "Show the Webview widget")
 button:center()
 button.y = 10
 
-win:show()
+await win:showasync()
 
 function button:onClick()
   Webview:show()
@@ -200,10 +201,6 @@ end
 
 function Webview:onReady()
   self:hide()
-end
-
-while win.visible do
-  ui.update()
 end
             </code></div>
             </div>

@@ -178,7 +178,8 @@
             <p><br>Get or set the main Window, a <a href="./Window.html"><i class="far fa-window-maximize" style="color :#2187E7"></i> Window</a> object.<br>The main Window, when closed by the user, will stop the ui Task (event won't be processed anymore).<article class="message is-warning is-small mt-6 mb-6" style="margin-left: 10%; margin-right: 10%"><div class="message-header mb-0"><p><i class="fas fa-pen-clip"></i> Notes</p></div><div class="message-body mb-0 is-size-7"><ul class="mt-0"><li>The first created main Window is the main Window by default.</li></ul></div></article></p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 local win = ui.Window("main Window", 320, 200)
 local other = ui.Window("other window", 320, 200)

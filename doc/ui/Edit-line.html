@@ -178,7 +178,8 @@
             <p><br>Get or set the Edit current line position. The line position starts from 1 and grows until the last line of Edit content.<br>Setting this property will move the caret position at the start of the line.<p><article class="message is-danger" style="margin-left: 15%; margin-right: 15%"><div class="message-body">If this property is set with a line number higher than the last line, the caret stays at the current position.</div></article></p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 -- create a simple window 
 local win = ui.Window("Edit.line sample", "fixed", 520, 270)

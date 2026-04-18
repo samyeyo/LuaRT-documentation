@@ -190,7 +190,8 @@
             The constructor returns a new <a href="Http.html"><i class="fas fa-globe"></i> Http</a> instance.
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local net = require "net"
+--! luart-extensions
+import net
 
 local url = "https://www.luart.org"
 local client = net.Http(url)

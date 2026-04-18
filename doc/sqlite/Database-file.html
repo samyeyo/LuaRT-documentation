@@ -178,7 +178,8 @@
             <p>Get the file where the Database is stored on disk as a <a href="../sys/File.html"><i class="fas fas fa-file"></i> File</a>, or the string <code>":memory:"</code> in case of an in-memory Database.</p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local sqlite = require "sqlite"
+--! luart-extensions
+import sqlite
 
 -- Create an in-:memory: database
 local db = sqlite.Database(":memory:")

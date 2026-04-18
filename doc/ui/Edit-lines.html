@@ -178,7 +178,8 @@
             <p><br>Returns a proxy table to get/set the lines of text in the Edit.<br>You can use this proxy table this way :<ul><li><span class="has-text-weight-light" style="font-size: 1.1em; color: #004080">Edit.lines[<span style="color: #ae81ff">line_number</span>]</span> : gets or sets the line at index line_number. The line index start from 1 and grows until the last line of text.</li><li><span class="has-text-weight-light" style="font-size: 1.1em; color: #004080">#Edit.lines</span> : gets the line count of the Edit.</li><li>You can use <span class="has-text-weight-light" style="font-size: 1.1em; color: #004080">each(Edit.lines)</span> or <span class="has-text-weight-light" style="font-size: 1.1em; color: #004080">ipairs(Edit.lines)</span> to iterate through each line of the Edit text.</li></ul><article class="message is-warning" style="margin-right:15%; margin-left:15%"><div class="message-body">Edit.lines is a proxy table and should not be used for anything other than setting/getting lines.</div></article></p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 -- create a simple window 
 local win = ui.Window("Edit.lines sample", "fixed", 520, 206)

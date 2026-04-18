@@ -175,10 +175,11 @@
         <div class="card-content pt-0">
           <div class="content mt-5" style="font-size: 0.95em">
             <p class="has-text-weight-medium is-size-5 mb-5" style="color: #004080">console.font <td><span class="tag is-rounded has-text-weight-medium has-background-warning has-text-warning-dark" mt-0 style="vertical-align: middle; font-size: 0.65em">readwrite</span></td></p>
-            <p>Get the current console font, a <span style="color:#EA6AC3">string</span> value that represent the font name.<p><p>To set the console.font property, you can assign :<ul><li>A <span style="color:#EA6AC3">string</span> that represent either a font name from the system fonts.</li><li>A <span style="color:#EA6AC3">string</span> or a <a href="../sys/File.html"><i class="fas fa-file"></i> File</a> that represent a font file (*.ttf, *.fon...)</li></ul><p class="is-size-4 mt-6 mb-0" style="color: #004080">Example</p>
+            <p>Get the current console font, a <span style="color:#EA6AC3">string</span> value that represent the font name.<p>To set the console.font property, you can assign :<ul><li>A <span style="color:#EA6AC3">string</span> that represent either a font name from the system fonts.</li><li>A <span style="color:#EA6AC3">string</span> or a <a href="../sys/File.html"><i class="fas fa-file"></i> File</a> that represent a font file (*.ttf, *.fon...)</li></ul></p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local console = require "console"
+--! luart-extensions
+import console
 
 console.clear()
 

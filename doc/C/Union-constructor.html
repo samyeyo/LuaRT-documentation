@@ -186,7 +186,8 @@
             The constructor returns a new <a href="Union.html"><i class="fas fa-link"></i> Union</a> instance.
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local c = require "c"
+--! luart-extensions
+import c
 
 -- Creates a LARGE_INTEGER C union definition from Windows API, with a struct field
 local LARGE_INTEGER = c.Union(".l", { Part = c.Struct("Ii", "Low", "High") }, "QuadPart")

@@ -178,7 +178,8 @@
             <p><br>Get or set the sound cursor position in seconds, a value of <code>0.0</code> means the start of the sound.</p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local audio = require "audio"
+--! luart-extensions
+import audio
 local ui = require "ui"
 
 local win = ui.Window("Music player", "fixed", 320, 200)

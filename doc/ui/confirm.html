@@ -192,7 +192,8 @@
 				</ul>
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 -- create a new Pipe to capture output of the "WMIC ui Win32_Battery Get EstimatedChargeRemaining" command
 if ui.confirm("Do you want to hear a sound ?") == "yes" then

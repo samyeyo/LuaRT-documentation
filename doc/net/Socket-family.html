@@ -178,7 +178,8 @@
             <p><br><br>The Socket.family property gets the address family <span style="color:#EA6AC3">"ipv4"</span> or <span style="color:#EA6AC3">"ipv6"</span></p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local net = require "net"
+--! luart-extensions
+import net
 
 local socket = net.Socket("google.com", 80)
 

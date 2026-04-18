@@ -191,7 +191,8 @@
 				          <article class="message is-info" style="margin-left: 15%; margin-right: 15%"><div class="message-body">Byte Order Mark (BOM) is written to the file when "utf8" or "unicode" encoding is used.</div></article>
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 -- create a simple window 
 local win = ui.Window("Edit.save sample", "fixed", 520, 460)

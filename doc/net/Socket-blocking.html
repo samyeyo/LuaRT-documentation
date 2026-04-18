@@ -178,7 +178,8 @@
             <p><br><br>The Socket.blocking property sets or checks if the Socket is in blocking mode.<ul><li>When set to <code>true</code>, all Socket operations (such as reading and sending data) will block until they have terminated.</li><li>When set to <code>false</code>, all Socket operations will return immediately a <a href="../sys/Task.html"><i class="fas fa-bolt" style="color :#2187E7"></i> Task</a> object that will perform asynchronously.</li></ul><article class="message is-info" style="margin-left: 15%; margin-right: 15%"><div class="message-body">By default, all created Socket objects have the property Socket.blocking set to <span style="color:#ae81ff">true</span></div></article></p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local net = require "net"
+--! luart-extensions
+import net
 
 -- create and connect a client TCP socket to the host "google.com"
 local socket = net.Socket("google.com", 80)

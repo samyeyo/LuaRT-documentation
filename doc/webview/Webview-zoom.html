@@ -175,10 +175,11 @@
         <div class="card-content pt-0">
           <div class="content mt-5" style="font-size: 0.95em">
             <p class="has-text-weight-medium is-size-5 mb-5" style="color: #004080">Webview.zoom <td><span class="tag is-rounded has-text-weight-medium has-background-warning has-text-warning-dark" mt-0 style="vertical-align: middle; font-size: 0.65em">readwrite</span></td></p>
-            <p><br>Get or set the Webview horizontal position. The horizontal position start from <span style="color:#ae81ff">0</span> (left side of the parent widget) and increase to the right (right side of the parent widget).</p>
+            <p><br>Get or set the Webview zoom level. The default zoom level is <span style="color:#ae81ff">1.0</span> (100%). Values greater than 1.0 zoom in, and values less than 1.0 zoom out.</p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 require "webview"
 
 -- create a simple window

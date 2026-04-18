@@ -178,7 +178,8 @@
             <p>Retrieves the current Windows architecture either <code>"x64"</code> or <code>"x86"</code></p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local sysutils = require "sysutils"
+--! luart-extensions
+import sysutils
 
 print("Windows architecture is "..sysutils.sysarch)
             </code></div>

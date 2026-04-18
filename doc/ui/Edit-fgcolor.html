@@ -178,7 +178,8 @@
             <p><br>Get or set the current Edit text color, that apply to all text content.<br><p><article class="message is-warning" style="margin-left: 15%; margin-right: 15%"><div class="message-body"><ul><li>The color is represented by a <span style="color:#ae81ff">number</span>, an RGB value (one byte per primary color).</li><li>A RGB color can be represented as an hexadecimal number :<span style="color:#ae81ff"> 0xRRGGBB</span> , RR meaning a 8bit hexadecimal red value, and so on.</li></ul></div></article></p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 -- create a fixed Window to hold the buttons
 local win = ui.Window("Edit.fgcolor sample", "fixed", 320, 240)

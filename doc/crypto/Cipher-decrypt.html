@@ -181,12 +181,12 @@
                 <p>A <a href="../sys/Buffer.html"><i class="fas fa-th" style="color :#2187E7"></i> Buffer</a> or a <span style="color:#EA6AC3">string</span> containing the data to be decrypted. The Cipher object uses an internal decryption buffer, so that sucessive calls to this method appends the decrypted data to this internal buffer. That permits to decrypt data from various streams easily.<br>Use the property <a href="./Cipher-decrypted.html">Cipher.decrypted</a> to retrieve the whole decrypted data.</p>
         
             <p class="has-text-weight-medium is-size-6 mb-1 mt-5" style="color: #004080">Return value</p>
-            Returns the <span style="color:#ae81ff">number</span> of bytes encrypted.
+            Returns the <span style="color:#ae81ff">number</span> of bytes decrypted.
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
 -- File decryption
 -- see example at cipher:encrypt()
-local crypto = require "crypto"
+import crypto
 local console = require "console"
 
 local cipher = crypto.Cipher("aes128", "its_a_secret_key")

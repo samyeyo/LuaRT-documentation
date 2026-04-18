@@ -178,7 +178,8 @@
             <p><br>Get a list of the Groupbox's widgets, as a <span style="color: #B1D928">table</span>.<br>Each items in the list is a widget who's parent is the current Groupbox.<p class="is-size-4 mt-6 mb-0" style="color: #004080">Example</p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 --- create a centered Window
 local win = ui.Window("Groupbox.childs example", 460, 320)
@@ -201,7 +202,7 @@ async(function()
     end
 end)
 
-ui.run(win):wait()
+await win:showasync()
             </code></div>
             </div>
 	      </div>

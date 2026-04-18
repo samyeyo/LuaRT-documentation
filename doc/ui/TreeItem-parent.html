@@ -178,7 +178,8 @@
             <p>Get the object that owns the TreeItem, either a :<ul><li><a href="Tree.html"><i class="fas fa-diagram-project"></i> Tree</a>, when the TreeItem is a root item in the Tree.</li><li><a href="TreeItem.html"><i class="fas fa-diagram-project" style="color :#2187E7"></i><sup><i class="fas fa-tag" style="margin-left: -0.4em; margin-top: 0.3em"></i></sup> TreeItem</a> Tree</a>, when the Treeitem is a subitem of another TreeItem.</li></ul></p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 -- create a simple Window 
 local win = ui.Window("TreeItem.parent sample", "fixed", 320, 250)

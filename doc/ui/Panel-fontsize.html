@@ -178,7 +178,8 @@
             <p><br>Get or set the Panel font size, a <strong style="color:#ae81ff">number</strong> that represent the font size in pixels.<br><article class="message is-warning" style="margin-right:10%; margin-left:10%"><div class="message-body">By changing the font style of the Panel, you also change the font style of any newly created child controls.</div></article></p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 -- create a fixed Panel
 local win = ui.Window("Panel.fontsize sample", "fixed", 320, 200)
@@ -195,7 +196,7 @@ panel.fontsize = 12
 -- add a child Label
 ui.Label(panel, "Label"):center()
 
-ui.run(win):wait()
+await win:showasync()
             </code></div>
             </div>
 	      </div>

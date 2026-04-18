@@ -178,7 +178,8 @@
             <p><br>Get the list of detected audio devices, as a <code>table</code>, that contains the following fields :<ul><li><code>"playback"</code>: to get a <code>table</code> that lists audio playing devices.</li><li><code>"recording"</code>: to get a <code>table</code> that lists audio recoding devices.</li></ul></p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local audio = require "audio"
+--! luart-extensions
+import audio
 
 print("Audio playback devices found :")
 for device in each(audio.devices.playback) do

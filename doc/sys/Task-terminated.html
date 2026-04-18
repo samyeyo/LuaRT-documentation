@@ -178,7 +178,8 @@
             <p>Checks if the Task has terminated its execution, returning <code>true</code> or <code>false</code> otherwise.<ul><li><span style="color:#EA6AC3">"created"</span> : the Task has just been created, and has not started.</li><li><span style="color:#EA6AC3">"running"</span> : the Task is currently running.</li><li><span style="color:#EA6AC3">"sleeping"</span> : the Task is sleeping (ie has called the global <a href="../base/sleep.html">sleep()</a> function).</li><li><span style="color:#EA6AC3">"waiting"</span> : the Task is waiting for another Task to terminate.</li><li><span style="color:#EA6AC3">"terminated"</span> : the Task has terminated its execution.</li></ul></p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 local win = ui.Window("Task.terminated sample", 320, 200)
 
@@ -192,7 +193,7 @@ local task = async(function()
     end
 end)
 
-local uitask = ui.run(win)
+local uitask = await win:showasync()
 
 while not task.terminated do
     win:status("Position = "..pb.position)

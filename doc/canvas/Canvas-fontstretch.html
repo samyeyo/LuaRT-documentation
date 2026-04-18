@@ -178,7 +178,8 @@
             <p><br>Get or set the current Canvas font stretch. A font's stretch factor refers to how much the font has been stretched when compared to its normal aspect ratio.</p><p>This property uses an integer value from 1 to 9 to specify the font stretch. Lower values indicate narrower widths, while higher values indicate wider widths.</p><p><article class="message is-warning" style="margin-left: 15%; margin-right: 15%"><div class="message-body">Stretch values are not directly related to visual appearance, but rather to metadata that the current font may or may not provide.</div></article></p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 require "canvas"
 
 -- create a fixed Window
@@ -197,7 +198,7 @@ for i=1, 9 do
   canvas:print(canvas.font, 6, i*17)
 end
 
-ui.run(win):wait()
+await win:showasync()
             </code></div>
             </div>
 	      </div>

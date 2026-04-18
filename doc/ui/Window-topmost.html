@@ -178,7 +178,8 @@
             <p><br>Get or set the Window capability to always stay over other windows, a <strong style="color:#ae81ff">true</strong> value means that the window will always stay at the top position.<p class="is-size-4 mt-6 mb-0" style="color: #004080">Example</p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 -- create a simple window
 local win1 = ui.Window("Topmost Window", "fixed", 320, 200)
@@ -193,7 +194,7 @@ function win1:onShow()
 end
 
 -- update user interface
-ui.run(win1):wait()
+await win1:showasync()
             </code></div>
             </div>
 	      </div>

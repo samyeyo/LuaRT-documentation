@@ -3,9 +3,9 @@
   "__type": "module",
   "__description": "The capture module provides camera live preview, snapshot, and video recording capabilities",
   "__tinydesc": "Camera capture, live preview, snapshot and video recording",
-  "__color": "63f883",
+  "__color": "09C833",
   "__kind": "module",
-  "__icon": "<span class=\"icon bd-link-icon mr-1\" style=\"font-size: 0.8em\"><i class=\"fas fa-video\" style=\"color:#1a6ea8; vertical-align: top\"></i></span>",
+  "__icon": "<span class=\"icon bd-link-icon mr-1\" style=\"font-size: 0.8em\"><i class=\"fas fa-video\" style=\"color:#09C833; vertical-align: top\"></i></span>",
 
   "devices": {
     "__kind": "property",

@@ -185,7 +185,8 @@
 			      In case of error, returns <span style="color:#ae81ff">false</span>. Error message can be obtained with the <a href="../sys/error.html">sys.error</a> property.
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local serial = require "serial"
+--! luart-extensions
+import serial
 
 local COM1 = serial.Port("COM1")
 if COM1:open() then

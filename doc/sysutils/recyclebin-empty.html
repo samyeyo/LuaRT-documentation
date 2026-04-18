@@ -184,7 +184,8 @@
             Returns a <code>boolean</code> value indicating if the operation succeeded.
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local sysutils = require "sysutils"
+--! luart-extensions
+import sysutils
 
 -- Try to empty the Recycle Bin of "C:\\" drive
 if sysutils.recyclebin.empty("C:\\") then

@@ -175,7 +175,7 @@
         <div class="card-content pt-0">
           <div class="content mt-5" style="font-size:0.95em;">
             <p class="has-text-weight-medium is-size-5 mb-5" style="color: #004080; vertical-align: middle">Database:query(<span style="color: #EA6AC3">sql</span>)<span class ="tag is-rounded has-text-weight-medium is-primary ml-2 is-size-7" style="vertical-align: middle;">method</p>
-            <p>A <code>string</code> that contains a SQL statement.</p>
+            <p>Executes a SQL statement and returns an iterator function to iterate over each row (represented as a Lua <code>table</code> with column names as keys).</p>
             <p class="has-text-weight-medium is-size-6 mb-1 mt-6" style="color: #004080">Parameters</p>
 	            <p class="has-text-weight-medium is-size-6 mt-2 mb-0"><span style="color: #EA6AC3">sql</span></p>
                 <p>A <code>string</code> that contains a SQL statement.</p>
@@ -184,7 +184,8 @@
             Returns the result of the SQL statement as an iterator function to iterate over each row (represented as a Lua <code>table</code> with column names as keys).
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local sqlite = require "sqlite"
+--! luart-extensions
+import sqlite
 
 -- Create an in-:memory: database
 local db = sqlite.Database(":memory:")

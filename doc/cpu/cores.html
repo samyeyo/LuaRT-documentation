@@ -178,9 +178,10 @@
             <p><br>The cpu.cores property gets the number of physical CPU cores.</p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local cpu = require "cpu"
+--! luart-extensions
+import cpu
 
-print("CPU cores : "..cpu.cores")
+print("CPU cores : "..cpu.cores)
             </code></div>
             </div>
 	      </div>

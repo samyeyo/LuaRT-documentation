@@ -178,13 +178,14 @@
             <p><br><br>The Ftp.currentdir property gets or sets the current directory on the FTP server as a string.<br>Returns <strong style="color:gray">nil</strong> if the value could not be retrieved (get more information with the <a href="./error.html"> net.error</a> property).</p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local net = require "net"
+--! luart-extensions
+import net
 
 local url = "your ftp server address"
 local ftpclient = net.Ftp(url, "anonymous", "guest")
 
--- outputs ftp port
-print("ftp port = "..ftpclient.port)
+-- outputs current directory
+print("current directory = "..ftpclient.currentdir)
             </code></div>
             </div>
 	      </div>

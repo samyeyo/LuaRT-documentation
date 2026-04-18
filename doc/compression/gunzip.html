@@ -184,7 +184,8 @@
             Returns a temporary <a href="../sys/File.html"><i class="fas fa-file"></i> File</a> instance that represent the decompressed file.
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local compression = require "compression"
+--! luart-extensions
+import compression
 
 if #arg == 0 then
     error("error: no input file")

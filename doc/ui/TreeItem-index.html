@@ -178,7 +178,8 @@
             <p>Get the index of the TreeItem. The index is an integer value representing the numerical position of the TreeItem among all others in the Tree, starting from <code>1</code>.</p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 -- create a simple Window 
 local win = ui.Window("TreeItem.index sample", "fixed", 320, 250)
@@ -191,7 +192,7 @@ function tree:onSelect(item)
 end
 
 -- Launch Task to update user interface
-ui.run(win):wait()
+await win:showasync()
             </code></div>
             </div>
 	      </div>

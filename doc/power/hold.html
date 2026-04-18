@@ -190,7 +190,8 @@
             This function returns <code>true</code> on success or <code>false</code> otherwise.
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local power = require "power"
+--! luart-extensions
+import power
 
 print("Preventing the computer to go to sleep mode for 5sec")
 print(power.hold())

@@ -184,7 +184,8 @@
             This function returns a <a href="../sys/Task.html"><i class="fas fa-bolt"></i> Task</a>, that will end when the sound will finish to play. You can cancel the play by calling <a href="../sys/Task-cancel.html">Task.cancel()</a> if needed.
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local audio = require "audio"
+--! luart-extensions
+import audio
 local console = require "console"
 
 -- loads a explosion sound

@@ -178,7 +178,8 @@
             <p>Get or set the MenuItem submenu, a <a href="Menu.html"><i class="fas far fa-bars"></i> Menu</a> object.<br>A <span style="color: #606060">nil</span> value indicate that the MenuItem has no submenu.</p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 -- create a simple Window 
 local win = ui.Window("MenuItem.submenu sample", "fixed", 320, 250)

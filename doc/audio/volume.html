@@ -178,7 +178,8 @@
             <p><br>Get or set the global master volume, a linear scale, with <code>0</code> results in silence and anything above <code>1</code> results in amplification.</p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local audio = require "audio"
+--! luart-extensions
+import audio
 local console = require "console"
 
 print("Playing some music")

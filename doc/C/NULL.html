@@ -178,7 +178,8 @@
             <p><br><br>The C.NULL property returns a new <code>NULL</code> pointer.<article class="message is-warning is-small mt-6 mb-6" style="margin-left: 10%; margin-right: 10%"><div class="message-header mb-0"><p><i class="fas fa-pencil"></i> Notes</p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local c = require "c"
+--! luart-extensions
+import c
 
 -- Creates a new NULL C Pointer
 local null_ptr = c.Pointer()

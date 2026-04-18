@@ -178,7 +178,8 @@
             <p><br><br>This property is used to define the function to be called once the Task is terminated.<article class="message is-warning" style="margin-left: 10%; margin-right: 10%"><div class="message-body">When set, this function is called with the Task return values as arguments.</div></article></p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local net = require "net"
+--! luart-extensions
+import net
 
 -- The Http:get() method returns a Task value
 local client = net.Http("https://wttr.in"):get("/Paris?format=3")

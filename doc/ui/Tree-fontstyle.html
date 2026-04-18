@@ -178,7 +178,8 @@
             <p><br>Get or set the Tree font style, a <strong style="color: #B1D928">table</strong> value that contains the following keys/values :<ul><li><strong style="color:#EA6AC3">"italic"</strong> : set to <strong style="color:#ae81ff">true</strong> if the font is in <i>italic</i>.</li><li><strong style="color:#EA6AC3">"underline"</strong> : set to <strong style="color:#ae81ff">true</strong> if the font is <u>underlined</u>.</li><li><strong style="color:#EA6AC3">"strike"</strong> : set to <strong style="color:#ae81ff">true</strong> if the font is <strike>striked</strike>.</li><li><strong style="color:#EA6AC3">"thin"</strong> : set to <strong style="color:#ae81ff">true</strong> if the font is <span style="font-weight:light">thin</span>.</li><li><strong style="color:#EA6AC3">"bold"</strong> : set to <strong style="color:#ae81ff">true</strong> if the font is <b style="font-weight:600">bold</b>.</li><li><strong style="color:#EA6AC3">"heavy"</strong> : set to <strong style="color:#ae81ff">true</strong> if the font is <span style="font-family: Sans-serif;font-weight:999">heavy</span>.</li></ul></p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 -- create a simple Window 
 local win = ui.Window("Tree.fontstyle sample", 320, 240)

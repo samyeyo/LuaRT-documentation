@@ -178,7 +178,8 @@
             <p><br>Get or set the button's text visibility on screen, a <strong style="color:#ae81ff">true</strong> value means that the text is shown, a <strong style="color:#ae81ff">false</strong> value means that the text is hidden.<article class="message is-warning" style="margin-left: 15%; margin-right: 15%"><div class="message-body">When setting the value to <code>false</code>, the button's text value is lost.</div></article></p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 -- create a simple button 
 local win = ui.Window("Button.hastext sample", 320, 200)

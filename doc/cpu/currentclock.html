@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta content="IE=edge" http-equiv="X-UA-Compatible" />
   <meta content="width=device-width, initial-scale=1" name="viewport" />
-  <meta name="description" content="Get cpu current fequency" />
+  <meta name="description" content="Get cpu current frequency" />
   <title>
     cpu.currentclock
   </title>
@@ -178,7 +178,8 @@
             <p><br>The cpu.currentclock property gets the current cpu frequency in Mhz.</p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local cpu = require "cpu"
+--! luart-extensions
+import cpu
 
 print("CPU live frequency : "..cpu.currentclock.."Mhz")
             </code></div>

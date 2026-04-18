@@ -186,7 +186,8 @@
             On success, returns <code>true</code>. On failure, returns <code>false</code> and an error message <code>string</code>
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local yaml = require "yaml"
+--! luart-extensions
+import yaml
 
 local t = {name = "Bob", age = 42}
 local ok, err = yaml.save("person.yaml", t)

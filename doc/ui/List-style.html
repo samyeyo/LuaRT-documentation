@@ -178,7 +178,8 @@
             <p><br>Get or set the current style, a <strong style="color:#EA6AC3">string</strong> value, that specifies the List appearance :<br><ul><li><strong style="color:#EA6AC3">"text"</strong> : List will display only text items (default).</li><li><strong style="color:#EA6AC3">"icons"</strong> : List will display text items with their icons, using <i class="fas fa-list-ul" style="color :#2187E7"></i><sup><i class="fas fa-tag" style="margin-left: -0.4em; margin-top: 0.3em"></i></sup><a href="ListItem-loadicon.html"> ListItem:loadicon()</a>.</li></ul><article class="message is-info" style="margin-left: 15%; margin-right: 15%"><div class="message-body">When setting the style property from "icons" to "text" all previously loaded icons are preserved.</div></article></p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 
 -- create a simple Window 
 local win = ui.Window("List.style sample", "fixed", 400, 240)

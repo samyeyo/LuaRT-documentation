@@ -174,14 +174,18 @@
         </a>
         <div class="card-content pt-0">
           <div class="content mt-5" style="font-size:0.95em;">
-            <p class="has-text-weight-medium is-size-5 mb-5" style="color: #004080; vertical-align: middle">console.readln()<span class ="tag is-rounded has-text-weight-medium is-warning ml-2 is-size-7" style="vertical-align: middle;">function</p>
+            <p class="has-text-weight-medium is-size-5 mb-5" style="color: #004080; vertical-align: middle">console.readln(<span style="color: #EA6AC3">[...]</span>)<span class ="tag is-rounded has-text-weight-medium is-warning ml-2 is-size-7" style="vertical-align: middle;">function</p>
             <p>Reads a line from the console (until the ENTER/ RETURN is pressed). The same result can be obtained using <a href="./stdin.html">console.stdin:readln()</a></p>
-            
+            <p class="has-text-weight-medium is-size-6 mb-1 mt-6" style="color: #004080">Parameters</p>
+	            <p class="has-text-weight-medium is-size-6 mt-2 mb-0"><span style="color: #EA6AC3">[...]</span></p>
+                <p>Optional strings to write to the console before reading, separated by commas. If the argument is not a string, the function converts it internally using the <code>tostring</code> function.</p>
+        
             <p class="has-text-weight-medium is-size-6 mb-1 mt-5" style="color: #004080">Return value</p>
             Returns a <span style="color:#EA6AC3">string</span>. Please note that the string does not contains the last "\n" character.
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local console = require "console"
+--! luart-extensions
+import console
 
 console.writecolor("cyan", "Enter your name :")
 local name = console.readln()

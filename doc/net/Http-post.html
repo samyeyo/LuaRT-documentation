@@ -175,7 +175,7 @@
         <div class="card-content pt-0">
           <div class="content mt-5" style="font-size:0.95em;">
             <p class="has-text-weight-medium is-size-5 mb-5" style="color: #004080; vertical-align: middle">Http:post(<span style="color: #EA6AC3">uri</span>, <span style="color: #B1D928">[parameters]</span>)<span class ="tag is-rounded has-text-weight-medium is-primary ml-2 is-size-7" style="vertical-align: middle;">method</p>
-            <p><br>Send an asynchronous POST request to the connected HTTP server at a specific resource.</p>
+            <p><br>Send an asynchronous POST request to the connected HTTP server. <br>If the parameters table contains a <a href="../sys/File.html"><i class="fas fa-file" style="color :#2187E7"></i> File</a> object, the request is sent as <code>multipart/form-data</code>. Otherwise, it is sent as <code>application/x-www-form-urlencoded</code>.</p>
             <p class="has-text-weight-medium is-size-6 mb-1 mt-6" style="color: #004080">Parameters</p>
 	            <p class="has-text-weight-medium is-size-6 mt-2 mb-0"><span style="color: #EA6AC3">uri</span></p>
                 <p>A <code>string</code>representing the resource on the server to POST parameters to.</p>
@@ -199,7 +199,8 @@
             </ul>
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local net = require "net"
+--! luart-extensions
+import net
 
 local client = net.Http("https://reqbin.com")
 

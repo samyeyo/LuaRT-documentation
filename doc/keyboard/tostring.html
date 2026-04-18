@@ -174,22 +174,28 @@
         </a>
         <div class="card-content pt-0">
           <div class="content mt-5" style="font-size:0.95em;">
-            <p class="has-text-weight-medium is-size-5 mb-5" style="color: #004080; vertical-align: middle">keyboard.tostring()<span class ="tag is-rounded has-text-weight-medium is-warning ml-2 is-size-7" style="vertical-align: middle;">function</p>
+            <p class="has-text-weight-medium is-size-5 mb-5" style="color: #004080; vertical-align: middle">keyboard.tostring(<span style="color: #EA6AC3">key</span>, <span style="color: #EA6AC3">[modifier...]</span>)<span class ="tag is-rounded has-text-weight-medium is-warning ml-2 is-size-7" style="vertical-align: middle;">function</p>
             <p>Converts a combination of keys to the resulting string.</p>
-            
+            <p class="has-text-weight-medium is-size-6 mb-1 mt-6" style="color: #004080">Parameters</p>
+	            <p class="has-text-weight-medium is-size-6 mt-2 mb-0"><span style="color: #EA6AC3">key</span></p>
+                A <code>string</code> representing the key name (for example <code>"A"</code>, <code>"0"</code>, <code>"SPACE"</code>...).
+                    <p class="has-text-weight-medium is-size-6 mt-2 mb-0"><span style="color: #EA6AC3">[modifier...]</span></p>
+                Optional modifier key names such as <code>"SHIFT"</code>, <code>"CONTROL"</code>, <code>"MENU"</code>.
+        
             <p class="has-text-weight-medium is-size-6 mb-1 mt-5" style="color: #004080">Return value</p>
             This function returns a<code>string</code> representing the string that results of the provided keys combination.
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local kb = require "keyboard"
+--! luart-extensions
+import keyboard
 local sysutils = require "sysutils"
 
 if sys.locale == "fr-FR" then
     -- outputs a "@" character on french and italian keyboards
-    print(kb.tostring("0", "MENU", "CONTROL"))
+    print(keyboard.tostring("0", "MENU", "CONTROL"))
 else
     -- outputs a "@" on non french keyboards
-    print(kb.tostring("2", "SHIFT"))
+    print(keyboard.tostring("2", "SHIFT"))
 end
             </code></div>
             </div>

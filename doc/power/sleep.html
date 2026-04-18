@@ -175,7 +175,7 @@
         <div class="card-content pt-0">
           <div class="content mt-5" style="font-size:0.95em;">
             <p class="has-text-weight-medium is-size-5 mb-5" style="color: #004080; vertical-align: middle">power.sleep()<span class ="tag is-rounded has-text-weight-medium is-warning ml-2 is-size-7" style="vertical-align: middle;">function</p>
-            <p><br>power.hibernate() suspends the computer in sleep mode.<p><article class="message is-warning is-small mt-6 mb-6" style="margin-left: 10%; margin-right: 10%">
+            <p><br>power.sleep() suspends the computer in sleep mode.<p><article class="message is-warning is-small mt-6 mb-6" style="margin-left: 10%; margin-right: 10%">
         <div class="message-header mb-0">
           <p><i class="fas fa-pencil"></i> Notes</p>
         </div>
@@ -189,7 +189,8 @@
             This function returns <code>true</code> on success or <code>false</code> otherwise.
             <p class="has-text-weight-medium is-size-6 mt-5 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local power = require "power"
+--! luart-extensions
+import power
 
 print("Computer will sleep in 5sec !")
 

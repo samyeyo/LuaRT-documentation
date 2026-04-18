@@ -178,7 +178,8 @@
             <p><br>Determines whether Webview-specific accelerator keys are enabled :</p><ul><li><code>Ctrl-F</code> and <code>F3</code> for Find on Page</li><li><code>Ctrl-P</code> for Print</li><li><code>Ctrl-R</code> and <code>F5</code> for Reload</li><li><code>Ctrl-Plus</code> and <code>Ctrl-Minus</code> for zooming</li><li><code>Ctrl-Shift-C</code> and <code>F12</code> for DevTools</li><li>Special keys for browser functions, such as Back, Forward, and Search</li></ul>Please note that accelerator keys related to movement and text editing are not disabled :<ul><li><code>Home</code>, <code>End</code>,<code>Page Up</code>, and <code>Page Down</code></li><li>Clipboard functions <code>Ctrl-X</code>, <code>Ctrl-C</code>, <code>Ctrl-V</code></li><li><code>Ctrl-A</code> for Select All</li><li><code>Ctrl-Z</code> for Undo</li></ul></p>
             <p class="has-text-weight-medium is-size-6 mt-6 mb-0" style="color: #004080">Example</p>
             <div class="language-lua mr-6 ml-6"><code>
-local ui = require "ui"
+--! luart-extensions
+import ui
 require "webview"
 
 -- create a simple window
@@ -191,7 +192,7 @@ function Webview:onReady()
     Webview.acceleratorkeys = false
 end
 
-ui.run(win):wait()
+await win:showasync()
             </code></div>
             </div>
 	      </div>
