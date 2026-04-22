@@ -153,11 +153,15 @@
               <p class="mt-6">The easiest way to run a Lua<sup>rt</sup> application is to double-click on the <code>.lua</code> or <code>.wlua</code> source files in the Windows explorer.
               <br>All interpreters can also be executed from the command line.</p>
               <p class="has-text-weight-light is-size-3 mt-4 mb-3">Usage</p>
-              <p class="has-text-weight-light is-size-5 has-text-link-dark">luart.exe [-e "statement"] [filename arg1 arg2...]<br>
+              <p class="has-text-weight-light is-size-5 has-text-link-dark">luart.exe [-e "statement"] [-p] [-l module] filename [arg1 arg2...]<br>
               wluart.exe [-e "statement"] [filename arg1 arg2...]</p>
                   <p class="ml-6 has-text-weight-light is-size-5 has-text-link-dark mb-0">[-e "statement"]</p>
                   <p class="ml-6">Executes the Lua statement in double quotes and run the following script if specified (see below).</p>
-                  <p class="ml-6 has-text-weight-light is-size-5 has-text-link-dark mb-0">[filename arg1 arg2...]</p>
+                  <p class="ml-6 has-text-weight-light is-size-5 has-text-link-dark mb-0">[-p]</p>
+                  <p class="ml-6">Preprocesses the script and shows the generated output, then exits.</p>
+                  <p class="ml-6 has-text-weight-light is-size-5 has-text-link-dark mb-0">[-l module]</p>
+                  <p class="ml-6">Loads the specified module before running the script.</p>
+                  <p class="ml-6 has-text-weight-light is-size-5 has-text-link-dark mb-0">filename [arg1 arg2...]</p>
                   <p class="ml-6">Loads and executes the Lua script <code>"filename"</code>, with optional arguments. Each arguments will be available in the global table <code>arg</code> in your Lua script : 
                     <ul class="ml-6 pl-4">
                       <li><code>arg[-1]</code> contains the fullpath of the running interpreter, as a string, or the current executable fullpath for compiled scripts.</li>
